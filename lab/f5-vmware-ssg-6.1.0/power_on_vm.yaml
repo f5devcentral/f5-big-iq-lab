@@ -1,0 +1,19 @@
+---
+- name: Power On VMware
+  hosts: all
+  connection: local
+
+  # https://docs.ansible.com/ansible/2.6/modules/vmware_guest_powerstate_module.html
+
+  tasks:
+  - name: Set the state of a virtual machine to poweron
+    vmware_guest_powerstate:
+      hostname: 10.1.1.90
+      username: administrator@vsphere.local
+      password: "Purpl3$lab"
+      validate_certs: no
+      folder: /vm
+      uuid: "{{ uuid }}"
+      state: powered-on
+    delegate_to: localhost
+    register: deploy

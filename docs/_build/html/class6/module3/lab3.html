@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 3.3: Create iRule and attach to multiple virtual servers</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 3.3: Create iRule and attach to multiple virtual servers"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 3.3: Create iRule and attach to multiple virtual servers &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 3.4: Deploy Staged Changes" href="lab4.html" />
+    <link rel="prev" title="Lab 3.2: Create a new virtual server by cloning an existing virtual server" href="lab2.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 3.3: Create iRule and attach to multiple virtual servers</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class6.html">Class 6: BIG-IQ ADC Management</a>
+              &gt; <a href="module3.html">Module 3: Local Traffic Management Virtual Servers</a>
+
+          <span class="right">
+             <a href="../../_sources/class6/module3/lab3.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-3-3-create-irule-and-attach-to-multiple-virtual-servers">
+<h1>Lab 3.3: Create iRule and attach to multiple virtual servers<a class="headerlink" href="#lab-3-3-create-irule-and-attach-to-multiple-virtual-servers" title="Permalink to this headline">¶</a></h1>
+<p>BIG-IQ allows users to create iRules and use them on the virtual servers that are managed by BIG-IQ. The iRules can be attached to individual virtual servers or iRules can be attached to multiple virtual servers in the same operation.</p>
+<p>In this scenario, we will apply an iRule to a number of our virtual servers that presents a maintenance page if none of the pool members supporting the virtual are online and available.</p>
+<p>You can create an iRule on the BIG-IQ directly.</p>
+<p>To save time the <strong>VS_maintenance_irule</strong> has already been created on the BIG-IQ.</p>
+<ol class="arabic simple">
+<li><p>Steps 1-5 show that you can create an iRule on the BIG-IQ directly.</p></li>
+</ol>
+<p>To save time the <strong>VS_maintenance_irule</strong> has already been created on the BIG-IQ.</p>
+<dl class="simple">
+<dt>..NOTE::</dt><dd><p>Skip to step 6 to apply the already configured iRule, or you may create your own iRule for this lab.</p>
+</dd>
+</dl>
+<ol class="arabic simple" start="2">
+<li><p>Navigate to the <strong>Configuration</strong> tab on the top menu bar.</p></li>
+<li><p>Select <strong>LOCAL TRAFFIC &gt; iRules</strong></p></li>
+</ol>
+<p><a class="reference internal" href="../../_images/image242.png"><img alt="image24" src="../../_images/image242.png" style="width: 2.34346in; height: 1.44774in;" /></a></p>
+<ol class="arabic simple" start="4">
+<li><p>Click the Create button under iRules</p></li>
+</ol>
+<p><a class="reference internal" href="../../_images/image251.png"><img alt="image25" src="../../_images/image251.png" style="width: 1.12486in; height: 1.02071in;" /></a></p>
+<ol class="arabic simple" start="5">
+<li><p>Fill out the iRule Properties page
+| Name: <strong>VS_maintenance_irule</strong>
+| Partition: <strong>Common</strong>
+| Body: as below:</p></li>
+</ol>
+<p>when RULE_INIT {
+# sets the timer to return client to host URL
+set static::stime 10
+}</p>
+<p>when CLIENT_ACCEPTED {
+set default_pool [LB::server pool]
+}</p>
+<p>when HTTP_REQUEST {
+# Check if the URI is /maintenance
+switch [<a class="reference external" href="HTTP::uri">HTTP::uri</a>] {</p>
+<p>“/maintenance” {</p>
+<p># Send an HTTP 200 response with a Javascript meta-refresh pointing to the host using a refresh time
+<a class="reference external" href="HTTP::respond">HTTP::respond</a> 200 content \
+“&lt;html&gt;&lt;head&gt;&lt;title&gt;Maintenance page&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;metahttp-equiv=’REFRESH’ content=$static::stime;url=[<a class="reference external" href="HTTP::uri]">HTTP::uri]</a>&gt;&lt;/HEAD&gt;\
+&lt;p&gt;&lt;h2&gt;Sorry! This site is down for maintenance.&lt;/h2&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;” “Content-Type” “text/html”
+return
+}
+}</p>
+<p># If the default pool is down, redirect to the maintenance page
+if { [active_members $default_pool] &lt; 1 } {
+<a class="reference external" href="HTTP::redirect">HTTP::redirect</a> “/maintenance”
+return
+}
+}</p>
+<p><a class="reference internal" href="../../_images/image261.png"><img alt="image26" src="../../_images/image261.png" style="width: 6.50000in; height: 2.42917in;" /></a></p>
+<ol class="arabic" start="6">
+<li><div class="line-block">
+<div class="line">Navigate to <strong>LOCAL TRAFFIC &gt; Virtual Servers</strong></div>
+</div>
+</li>
+</ol>
+<p><a class="reference internal" href="../../_images/image165.png"><img alt="image27" src="../../_images/image165.png" style="width: 2.32263in; height: 0.78115in;" /></a></p>
+<p>Type ITwiki in the filter box on the right hand side of the screen and press return.</p>
+<p><a class="reference internal" href="../../_images/image271.png"><img alt="image28" src="../../_images/image271.png" style="width: 3.43707in; height: 0.69783in;" /></a></p>
+<div class="line-block">
+<div class="line">Click to select all the matching virtual servers</div>
+</div>
+<p><a class="reference internal" href="../../_images/image281.png"><img alt="image29" src="../../_images/image281.png" style="width: 6.50000in; height: 3.04375in;" /></a></p>
+<p>Click the <strong>Attach iRules</strong> button at the top of the screen</p>
+<p><a class="reference internal" href="../../_images/image29.png"><img alt="image30" src="../../_images/image29.png" style="width: 3.18125in; height: 0.98529in;" /></a></p>
+<dl>
+<dt>Fill out the Attach iRules section</dt><dd><div class="line-block">
+<div class="line">iRules: Select the <strong>VS_maintenance_irule</strong> iRule</div>
+</div>
+</dd>
+</dl>
+<p><a class="reference internal" href="../../_images/image30.png"><img alt="image31" src="../../_images/image30.png" style="width: 6.50000in; height: 3.36181in;" /></a></p>
+<p>Click <strong>Save &amp; Close</strong> in the lower right.</p>
+<p>Clear the filter from the Virtual Servers</p>
+<p><a class="reference internal" href="../../_images/image311.png"><img alt="image32" src="../../_images/image311.png" style="width: 2.91630in; height: 1.41649in;" /></a></p>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab2.html" title="Lab 3.2: Create a new virtual server by cloning an existing virtual server" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab4.html" title="Lab 3.4: Deploy Staged Changes" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

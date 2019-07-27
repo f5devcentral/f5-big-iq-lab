@@ -1,0 +1,83 @@
+---
+- name: BIG-IQ and AS3 Lab - Task 6 - Create custom HTTP AS3 Template on BIG-IQ
+  hosts: "{{ env }}"
+  vars_files:
+    - inventory/group_vars/{{ env }}.yml
+
+  tasks: 
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq_<user>.json)
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: "{{ lookup('file','{{ user }}') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: Task 6 - Create custom HTTP AS3 Template on BIG-IQ - POST /mgmt/cm/global/appsvcs-templates
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/cm/global/appsvcs-templates
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body:
+          # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          description: 'Task 6 - Create custom HTTP AS3 Template on BIG-IQ'
+          name: "{{ task6_bigiq_custom_template }}"
+          schemaOverlay:
+            type: object
+            properties:
+              class:
+                type: string
+                const: Application
+              schemaOverlay: {}
+              label: {}
+              remark: {}
+              template: {}
+              enable: {}
+              constants: {}
+            additionalProperties:
+              allOf:
+              - if:
+                  properties:
+                    class:
+                      const: Service_HTTP
+                then:
+                  "$ref": "#/definitions/Service_HTTP"
+              not:
+                anyOf:
+                - properties:
+                    class:
+                      const: IAM_Policy
+                - properties:
+                    class:
+                      const: WAF_Policy
+            required:
+            - class
+            definitions:
+              Service_HTTP:
+                type: object
+                properties:
+                  virtualPort:
+                    type: integer
+                    const: 8080
+                    default: 8080
+                dependencies:
+                  policyIAM:
+                    not: {}
+                  policyWAF:
+                    not: {}
+                additionalProperties: true
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - debug:
+        var: json_response.json

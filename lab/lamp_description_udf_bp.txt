@@ -1,0 +1,121 @@
+Name: Ubuntu 18.04 Lamp Server, RDP, Radius, Docker
+Type: Xubuntu Jumpbox v17
+
+################################################################################################################
+DESCRIPTION
+################################################################################################################
+
+List of Virtual Servers and Applications Servers where various type of traffic is being send to (check crontab config for more details).
+- Virtual IP addresses where the traffic generator sends HTTP clean traffic	10.1.10.110 to 10.1.10.142 (except 10.1.10.117, 10.1.10.119 and 10.1.10.121 (used for access in class 9)
+- Virtual IP addresses where the traffic generator sends HTTP bad traffic	10.1.10.110 to 10.1.10.136
+- Virtual IP address(es) where the traffic generator sends access traffic (class 9)	10.1.10.222
+- Virtual IP addresses (listeners) where the traffic generator sends DNS traffic (class 10)	10.1.10.203, 10.1.10.204
+- Virtual IP address(es) where the traffic generator sends DDOS attack (class 11)	10.1.10.136
+  - Servers Applications (running in docker containers)	10.1.20.110 to 10.1.20.145
+  - Port 80: hackazon application
+  - Port 8080: web-dvwa application
+  - Port 8081: f5-hello-world application
+  - Port 8082: f5-demo-httpd application
+  - Port 445: ASM Policy Validator
+
+IPs from 10.1.10.110 to 10.1.10.142 have a corresponding FQDN named from site10.example.com to site42.example.com.
+
+To run Kali Linux Docker Image: sudo docker run -t -i kalilinux/kali-linux-docker /bin/bash (run apt-get update && apt-get install metasploit-framework after starting Kali Linux)
+To connect to a docker instance: sudo docker exec -i -t <Container ID> /bin/bash
+
+This sever can also be used to run Postman.
+
+DHCP server on the Management Network: range 10.1.1.220 - 10.1.1.250
+
+Radius server:
+IP 10.1.1.5
+secret = default
+Users: marco, david, paula, paul, larry, olivia, dnsuser, certuser
+
+CREDENTIALS
+###########
+
+Username	Password	Notes
+f5student	purple123	ubuntu
+admin	password	web-dvwa application
+
+################################################################################################################
+ACCESS METHODS
+################################################################################################################
+
+SSH
+Protocol: SSHUser: ubuntu
+
+Local:
+10.1.1.5 port 22
+Web Shell
+Protocol: HTTPS(Authenticated)
+
+Local:
+10.1.1.5 port 47100
+XRDP
+Protocol: RDP
+
+Local:
+10.1.1.5 port 3389
+
+################################################################################################################
+SUBNETS
+################################################################################################################
+
+Management
+10.1.1.0/24
+Interface bound
+eth0:
+10.1.1.5
+primary
+
+Subnet 10 (External 1)
+10.1.10.0/24
+Interface bound
+eth1:
+10.1.10.5
+primary
+
+Subnet 20 (Internal)
+10.1.20.0/24
+Interface bound
+eth2:
+10.1.20.5
+primary
+10.1.20.110
+10.1.20.111
+10.1.20.112
+10.1.20.113
+10.1.20.114
+10.1.20.115
+10.1.20.116
+10.1.20.117
+10.1.20.118
+10.1.20.119
+10.1.20.120
+10.1.20.121
+10.1.20.122
+10.1.20.123
+10.1.20.124
+10.1.20.125
+10.1.20.126
+10.1.20.127
+10.1.20.128
+10.1.20.129
+10.1.20.130
+10.1.20.131
+10.1.20.132
+10.1.20.133
+10.1.20.134
+10.1.20.135
+10.1.20.136
+10.1.20.137
+10.1.20.138
+10.1.20.139
+10.1.20.140
+10.1.20.141
+10.1.20.142
+10.1.20.143
+10.1.20.144
+10.1.20.145

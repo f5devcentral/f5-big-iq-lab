@@ -1,0 +1,117 @@
+---
+- name: BIG-IQ and AS3 Lab - Example Demo App - Application Service
+  hosts: all
+  connection: local
+
+  tasks: 
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login
+      uri:
+        url: https://10.1.1.4/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: "{{ lookup('file','auth_bigiq_paula.json') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: HTTP Application Service - POST /mgmt/shared/appsvcs/declare?async=true
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body:
+          # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          class: AS3
+          action: deploy
+          declaration:
+            class: ADC
+            schemaVersion: 3.12.0
+            target:
+              address: 10.1.1.8
+            security:
+              class: Tenant
+              site16_boston:
+                class: Application
+                schemaOverlay: AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1
+                template: http
+                serviceMain:
+                  class: Service_HTTP
+                  virtualPort: 80
+                  profileAnalytics:
+                    use: Analytics_Profile
+                  profileHTTP:
+                    use: HTTP_Profile
+                  virtualAddresses:
+                  - 10.1.10.116
+                  pool: Pool
+                  enable: true
+                Analytics_Profile:
+                  class: Analytics_Profile
+                  collectClientSideStatistics: true
+                  collectResponseCode: true
+                  capturedTrafficInternalLogging: true
+                  captureFilter:
+                    requestCapturedParts: headers
+                    responseCapturedParts: all
+                HTTP_Profile:
+                  class: HTTP_Profile
+                  fallbackRedirect: https://www.f5.com/filenotfound
+                  fallbackStatusCodes:
+                  - 404
+                Pool:
+                  class: Pool
+                  members:
+                  - servicePort: 80
+                    adminState: enable
+                    serverAddresses:
+                    - 10.1.20.110
+                  - servicePort: 80
+                    serverAddresses:
+                    - 10.1.20.111
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - debug:
+        var: json_response.json
+
+### LOOP TO CHECK THE TASK - DO NOT MODIFY BELOW
+
+    - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+
+    - debug:
+        var: json_response_task.json
+
+    - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+      until: "json_response_task.json.results[0].message != 'in progress'"
+      retries: 20
+      delay: 30
+
+    - debug:
+        var: json_response_task.json

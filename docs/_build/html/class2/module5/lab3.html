@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 5.3: Review our SSG deployment in Azure</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 5.3: Review our SSG deployment in Azure"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 5.3: Review our SSG deployment in Azure &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 5.4: Deploy an application (Azure)" href="lab4.html" />
+    <link rel="prev" title="Lab 5.2: Deploy our SSG in Azure" href="lab2.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 5.3: Review our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> deployment in <code class="docutils literal notranslate"><span class="pre">Azure</span></code></a><ul>
+<li><a class="reference internal" href="#azure-configuration-review"><code class="docutils literal notranslate"><span class="pre">Azure</span></code> configuration review</a></li>
+<li><a class="reference internal" href="#big-iq-ssg-configuration-review-azure"><code class="docutils literal notranslate"><span class="pre">BIG-IQ</span> <span class="pre">SSG</span></code> configuration review - Azure</a></li>
+<li><a class="reference internal" href="#ssg-big-ip-configuration-review-azure"><code class="docutils literal notranslate"><span class="pre">SSG</span> <span class="pre">BIG-IP</span></code> configuration review - Azure</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a>
+              &gt; <a href="module5.html">Module 5: Setup a Service scaling group (SSG) in Azure</a>
+
+          <span class="right">
+             <a href="../../_sources/class2/module5/lab3.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-5-3-review-our-ssg-deployment-in-azure">
+<h1>Lab 5.3: Review our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> deployment in <code class="docutils literal notranslate"><span class="pre">Azure</span></code><a class="headerlink" href="#lab-5-3-review-our-ssg-deployment-in-azure" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="azure-configuration-review">
+<h2><code class="docutils literal notranslate"><span class="pre">Azure</span></code> configuration review<a class="headerlink" href="#azure-configuration-review" title="Permalink to this headline">¶</a></h2>
+<p>Connect to your <code class="docutils literal notranslate"><span class="pre">Azure</span> <span class="pre">Console</span></code> to review what has been created already.</p>
+<p>Go to <strong>Resource groups</strong></p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_1.png"><img alt="../../_images/img_module5_lab3_1.png" class="align-center" src="../../_images/img_module5_lab3_1.png" style="width: 927.5999999999999px; height: 444.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here you can see that 2 <code class="docutils literal notranslate"><span class="pre">Resource</span> <span class="pre">groups</span></code> have been deployed:</p>
+<ul>
+<li><dl>
+<dt>&lt;YOUR PREFIX&gt;<span class="classifier">This stack deploys a new VNET called <strong>vnet1demo</strong>.</span></dt><dd><p>We use this new VNET to avoid any conflict and ensure we won’t disrupt anything. We will
+create the subnets, gateway, VPN, an ubuntu instance that will behave
+as our app.</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>&lt;YOUR PREFIX&gt;-azure-ssg<span class="classifier">this will create the <code class="docutils literal notranslate"><span class="pre">Azure</span> <span class="pre">autoscale</span></code> deployment</span><span class="classifier">launch</span></dt><dd><p>configuration, auto scaling groups, …</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Those resource groups were deployed from our system called <strong>Ubuntu Lamp Server</strong>.
+If you want to review those, connect to this system and go to :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>f5@03a920f8b4c0410d8f:~$ cd f5-azure-vpn-ssg
+f5@03a920f8b4c0410d8f:~/f5-azure-vpn-ssg$  ls -l
+-rwxrwxr-x 1 f5student f5student  6736 Dec  8 11:54 000-RUN_ALL.sh
+-rwxrwxr-x 1 f5student f5student  1653 Dec  8 11:54 01-install_azure_cli.sh
+-rwxrwxr-x 1 f5student f5student  5703 Dec  8 11:54 02-create-vpn-azure_cli.sh
+-rwxrwxr-x 1 f5student f5student  4905 Dec  8 11:54 03-configure-bigip.sh
+-rw-rw-r-- 1 f5student f5student   868 Dec  8 12:38 04-docker-on-ubuntu-azure.log
+-rw-rw-r-- 1 f5student f5student  4757 Dec  8 11:54 04-docker-on-ubuntu-azure.yml
+-rw-rw-r-- 1 f5student f5student 14896 Dec  8 12:01 08a-create-azure-auto-scaling.yml
+-rwxrwxr-x 1 f5student f5student  6357 Dec  8 11:54 09a-create-azure-waf-app.py
+-rwxrwxr-x 1 f5student f5student  6463 Dec  8 11:54 09b-create-azure-https-app.py
+-rw-rw-r-- 1 f5student f5student  1045 Dec  8 11:54 10-delete-azure-app.yml
+-rwxrwxr-x 1 f5student f5student  4669 Dec  8 11:54 111-DELETE_ALL.sh
+-rwxrwxr-x 1 f5student f5student  1547 Dec  8 11:54 11-delete-azure-ssg-resources-check.py
+-rw-rw-r-- 1 f5student f5student  1082 Dec  8 11:54 11-delete-azure-ssg-resources.yml
+</pre></div>
+</div>
+<p>Take some time to review the different things setup in your own VNET.</p>
+</div>
+<div class="section" id="big-iq-ssg-configuration-review-azure">
+<h2><code class="docutils literal notranslate"><span class="pre">BIG-IQ</span> <span class="pre">SSG</span></code> configuration review - Azure<a class="headerlink" href="#big-iq-ssg-configuration-review-azure" title="Permalink to this headline">¶</a></h2>
+<p>Connect to the <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span> <span class="pre">UI</span></code> and go to <strong>Devices</strong> &gt; <strong>Device Templates</strong>.
+You should see a new device template called &lt;your PREFIX&gt;-Azure-device-template</p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_2.png"><img alt="../../_images/img_module5_lab3_2.png" class="align-center" src="../../_images/img_module5_lab3_2.png" style="width: 363.0px; height: 205.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on this new device template to review its configuration. You’ll see that
+only <strong>NTP</strong> and <strong>User Accounts</strong> have been setup.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the admin password used here is &lt;it’s in your config.yml file, BIGIP_PWD ATTRIBUTE&gt;</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[New 6.0.1]</strong> DNS server shouldn’t be set in the device template</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_3.png"><img alt="../../_images/img_module5_lab3_3.png" class="align-center" src="../../_images/img_module5_lab3_3.png" style="width: 381.0px; height: 176.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Next, you may go to <strong>Applications</strong> &gt; <strong>Environments</strong> &gt; <strong>Cloud Providers</strong>.
+You will see a new Cloud Providers called <strong>&lt;YOUR prefix&gt;-Azure-provider</strong>:</p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_4.png"><img alt="../../_images/img_module5_lab3_4.png" class="align-center" src="../../_images/img_module5_lab3_4.png" style="width: 447.0px; height: 162.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on this new cloud provider. You’ll see that it contains your <code class="docutils literal notranslate"><span class="pre">Tenant</span> <span class="pre">ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Client</span> <span class="pre">ID</span></code>, <code class="docutils literal notranslate"><span class="pre">Service</span> <span class="pre">Principal</span> <span class="pre">Secret</span></code>
+and your <code class="docutils literal notranslate"><span class="pre">Subscription</span> <span class="pre">ID</span></code>.</p>
+<p>Click on the <strong>Test</strong> button when you need to make sure your credentials are fine.</p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_5.png"><img alt="../../_images/img_module5_lab3_5.png" class="align-center" src="../../_images/img_module5_lab3_5.png" style="width: 330.0px; height: 212.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Go to <strong>Applications</strong> &gt; <strong>Environments</strong> &gt; <strong>Cloud Environments</strong>. Click on your cloud
+environment called <strong>&lt;YOUR PREFIX&gt;-Azure-environment</strong></p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_6.png"><img alt="../../_images/img_module5_lab3_6.png" class="align-center" src="../../_images/img_module5_lab3_6.png" style="width: 423.0px; height: 180.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>You will be able to retrieve a lot of the information that were defined in the <strong>config.yml</strong> file:</p>
+<ul class="simple">
+<li><p>Location</p></li>
+<li><p>License type</p></li>
+<li><p>BIG-IP image</p></li>
+<li><p>BIG-IQ information</p></li>
+</ul>
+<p>…</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>It may take some time for the page to load.</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_7.png"><img alt="../../_images/img_module5_lab3_7.png" class="align-center" src="../../_images/img_module5_lab3_7.png" style="width: 490.0px; height: 314.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Go to <strong>Applications</strong> &gt; <strong>Environments</strong> &gt; <strong>Service Scaling Groups</strong>. Click on your <code class="docutils literal notranslate"><span class="pre">SSG</span></code>
+called <strong>&lt;YOUR PREFIX&gt;-azure-ssg</strong></p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_8.png"><img alt="../../_images/img_module5_lab3_8.png" class="align-center" src="../../_images/img_module5_lab3_8.png" style="width: 468.0px; height: 245.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Go to <strong>Configuration</strong> &gt; <strong>Devices</strong>. You’ll be able to see your two provisioned <code class="docutils literal notranslate"><span class="pre">BIG-IPs`</span></code></p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_9.png"><img alt="../../_images/img_module5_lab3_9.png" class="align-center" src="../../_images/img_module5_lab3_9.png" style="width: 328.0px; height: 193.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on one of your <code class="docutils literal notranslate"><span class="pre">BIG-IP</span></code> to open its GUI in a new tab.</p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_10.png"><img alt="../../_images/img_module5_lab3_10.png" class="align-center" src="../../_images/img_module5_lab3_10.png" style="width: 330.5px; height: 209.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>Login: adminUser</p></li>
+<li><p>Password: &lt;it’s in your config.yml file, BIGIP_PWD ATTRIBUTE&gt;</p></li>
+</ul>
+</div>
+<div class="section" id="ssg-big-ip-configuration-review-azure">
+<h2><code class="docutils literal notranslate"><span class="pre">SSG</span> <span class="pre">BIG-IP</span></code> configuration review - Azure<a class="headerlink" href="#ssg-big-ip-configuration-review-azure" title="Permalink to this headline">¶</a></h2>
+<p>Once you’re logged in your <code class="docutils literal notranslate"><span class="pre">BIG-IP</span></code>, you can see a few things:</p>
+<ul class="simple">
+<li><p>it’s offically managed by <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span></code></p></li>
+<li><p>it’s in SYNC. Our <code class="docutils literal notranslate"><span class="pre">BIG-IPs</span></code> part of a <code class="docutils literal notranslate"><span class="pre">SSG</span></code> deployed in <code class="docutils literal notranslate"><span class="pre">Azure</span></code> will be setup as a cluster</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_11.png"><img alt="../../_images/img_module5_lab3_11.png" class="align-center" src="../../_images/img_module5_lab3_11.png" style="width: 271.0px; height: 42.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Ignore the Provisioning Warning which is due to the license used.</p>
+</div>
+<p>Go to <strong>Device Management</strong> &gt; Overview</p>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab3_12.png"><img alt="../../_images/img_module5_lab3_12.png" class="align-center" src="../../_images/img_module5_lab3_12.png" style="width: 765.5px; height: 339.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>You can see that <strong>Auto Sync</strong> is enabled for a Device Group called <strong>autoscale-group</strong>.</p>
+<p>Let’s deploy an application to see how it is setup on our different components (<code class="docutils literal notranslate"><span class="pre">Azure</span> <span class="pre">ALB</span></code>,
+<code class="docutils literal notranslate"><span class="pre">BIG-IPs</span></code> in the <code class="docutils literal notranslate"><span class="pre">SSG</span></code>).</p>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab2.html" title="Lab 5.2: Deploy our SSG in Azure" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab4.html" title="Lab 5.4: Deploy an application (Azure)" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

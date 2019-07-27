@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 2.2: Create a resource group and associate it with a role type</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 2.2: Create a resource group and associate it with a role type"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 2.2: Create a resource group and associate it with a role type &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 2.3: Add new custom role" href="lab3.html" />
+    <link rel="prev" title="Lab 2.1: Create a custom role type to give permissions to BIG-IP object types" href="lab1.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 2.2: Create a resource group and associate it with a role type</a><ul>
+<li><a class="reference internal" href="#steps-for-module-2">Steps for Module 2:</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class4.html">Class 4: BIG-IQ Platform</a>
+              &gt; <a href="module2.html">Module 2: Role Base Access Control (RBAC)</a>
+
+          <span class="right">
+             <a href="../../_sources/class4/module2/lab2.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-2-2-create-a-resource-group-and-associate-it-with-a-role-type">
+<h1>Lab 2.2: Create a resource group and associate it with a role type<a class="headerlink" href="#lab-2-2-create-a-resource-group-and-associate-it-with-a-role-type" title="Permalink to this headline">¶</a></h1>
+<p>Create a resource group with all of the BIG-IP objects you want to provide access to, and assign a role type to it.</p>
+<p><a class="reference internal" href="../../_images/image61.png"><img alt="image6" src="../../_images/image61.png" style="width: 6.25000in; height: 0.79167in;" /></a></p>
+<div class="section" id="steps-for-module-2">
+<h2>Steps for Module 2:<a class="headerlink" href="#steps-for-module-2" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Click ROLE MANAGEMENT &gt; Resource Groups on the left navigation area.</p></li>
+<li><p>Near the top of the screen, click the Add button.</p></li>
+<li><p>In the Name field, type a name to identify this group of resources,
+from the Role Type list, select the role type you want to provide
+access to for this group of resources.</p>
+<blockquote>
+<div><p>Name: <strong>NsresGroup</strong></p>
+<div class="line-block">
+<div class="line">Description: <strong>Network Security Resource Group</strong></div>
+<div class="line">Role Type: <strong>MyNetworkSecurityRole</strong></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<ol class="arabic">
+<li><p>From the Select Service list, select the service(s) you want to
+provide access to for this group of resources. From the Object
+Type list, select the type of object you want to add to this group of
+resources.</p>
+<div class="line-block">
+<div class="line">Select Service: <strong>Network Security (AFM)</strong></div>
+<div class="line">Select Object Type: <strong>Firewall Policies</strong></div>
+</div>
+</li>
+<li><p>For the Source setting, leave the default “Source: Selected
+Instances” unchanged.</p>
+<ul class="simple">
+<li><p>Selected Instances - Select this option to put only the source
+objects you selected into this resource group. If you select this
+option, the associated role will not have access to any new
+objects of the same type added in the future unless you explicitly
+add it to this resource group.</p></li>
+<li><p>Any Instance - Select this option if you want the associated role
+to have any instance of the specified object type, including
+future instances (newly configured objects of this type).</p></li>
+</ul>
+</li>
+<li><p>Select the check box next to the name of each object you want to add
+to this group of resources and click the Add Selected button.</p></li>
+</ol>
+<p><a class="reference internal" href="../../_images/image71.png"><img alt="image7" src="../../_images/image71.png" style="width: 6.48750in; height: 2.96250in;" /></a></p>
+<ol class="arabic simple" start="4">
+<li><p>Click the Save &amp; Close button.</p></li>
+</ol>
+<p>Next, you can create a custom role and associate this role type and
+resource group to the new role.</p>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab1.html" title="Lab 2.1: Create a custom role type to give permissions to BIG-IP object types" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab3.html" title="Lab 2.3: Add new custom role" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

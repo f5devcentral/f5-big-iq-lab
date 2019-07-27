@@ -1,0 +1,10 @@
+POST /rstats/ HTTP/1.1
+content-length=408
+accept-encoding=gzip
+current-type=application/x-www-form-urlencoded
+connection=Keep-Alive
+user-agent=Dalvik/2.1.0 (Linux; U; Android 5.1; Android SDK built for x86 Build/LKY45)
+host=10.64.6.242
+content-type=application/x-www-form-urlencoded
+
+fpm_alert_type=10&fpm_alert_component=4&fpm_alert_id=d4&fpm_guid=DDA1AE9CBEA28415982980CD531E824B&fpm_score=100&fpm_alert_details=%7B%22custom+value+%22%3A%22test1%22%2C%22msVersion%22%3A%221.2.1.0%22%2C%22version%22%3A%225.1%22%2C%22threshold%22%3A0%2C%22imei%22%3A%22000000000000000%22%2C%22imsi%22%3A%2289014103211118510720%22%2C%22locationLong%22%3A0%2C%22locationLat%22%3A0%2C%22realDevice%22%3Afalse%7D

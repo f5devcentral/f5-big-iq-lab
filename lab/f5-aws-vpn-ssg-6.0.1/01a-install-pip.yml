@@ -1,0 +1,36 @@
+---
+- name: Install and configure dependencies and verify environment
+  hosts: localhost
+  vars_files:
+    - ./config.yml
+  tasks:
+    - name: Install pip dependencies
+      pip:
+        name: 
+          - boto
+          - boto3
+          - botocore
+          - jmespath
+          - awscli      
+          - xmltodict
+          - Jinja2
+          - PyYAML
+          - Pygments
+          - bigsuds
+          - html
+          - httplib2
+          - json2html
+          - jsonpickle
+          - lockfile
+          - netaddr
+          - paramiko
+          - pexpect
+          - py
+          - pyasn1
+          - requests
+          - simplejson
+          - suds
+          - f5-sdk
+
+...
+

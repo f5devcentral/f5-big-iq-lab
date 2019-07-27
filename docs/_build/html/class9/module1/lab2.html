@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 1.2: Create custom security policies &amp; Application Service Template</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 1.2: Create custom security policies &amp; Application Service Template"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 1.2: Create custom security policies &amp; Application Service Template &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 1.3: Create Application" href="lab3.html" />
+    <link rel="prev" title="Lab 1.1: Access Built-in templates" href="lab1.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 1.2: Create custom security policies &amp; Application Service Template</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a>
+              &gt; <a href="module1.html">Module 1: Securing Application Access using Radius authentication</a>
+
+          <span class="right">
+             <a href="../../_sources/class9/module1/lab2.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-1-2-create-custom-security-policies-application-service-template">
+<h1>Lab 1.2: Create custom security policies &amp; Application Service Template<a class="headerlink" href="#lab-1-2-create-custom-security-policies-application-service-template" title="Permalink to this headline">¶</a></h1>
+<p>Connect as <strong>larry</strong></p>
+<ol class="arabic simple">
+<li><p>Clone an access policy from the default-access-group. Go to <em>Configuration</em> &gt; <em>ACCESS</em> &gt; <em>Access Groups</em> &gt; <em>default-access-group</em>.</p></li>
+</ol>
+<p>Before you can clone policies, you must have an Access group configured for your Service Scaling Group.
+Important: Do not edit access policies or configurations in the default Access group.
+You clone a default access policy to create a starting point for defining access policies for an Access group.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not edit default access policy templates. Clone a policy, then make any required edits in the cloned policy.</p>
+</div>
+<ul class="simple">
+<li><p>Click Configuration &gt; ACCESS &gt; Access Groups. The Access Groups screen opens.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_12.png"><img alt="../../_images/img_module1_lab2_12.png" class="align-center" src="../../_images/img_module1_lab2_12.png" style="width: 602.0px; height: 194.5px;" /></a>
+<ul class="simple">
+<li><p>Click default-access-group. The default-access-group General Properties screen opens.</p></li>
+<li><p>On the left, click Per-Session Policies. The Per-Session Policies (Shared) screen opens.</p></li>
+<li><p>Select the check box next to an access policy to clone, and click More &gt; Clone .</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_21.png"><img alt="../../_images/img_module1_lab2_21.png" class="align-center" src="../../_images/img_module1_lab2_21.png" style="width: 677.0px; height: 355.0px;" /></a>
+<ul class="simple">
+<li><p>In the Clone Policy dialog box that opens, select the target Access group, and select whether to reuse existing objects from the target Access group, then click Clone.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_31.png"><img alt="../../_images/img_module1_lab2_31.png" class="align-center" src="../../_images/img_module1_lab2_31.png" style="width: 725.0px; height: 389.5px;" /></a>
+<ul class="simple">
+<li><p>Check the target Access group to see that the target policy has been cloned.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_4.png"><img alt="../../_images/img_module1_lab2_4.png" class="align-center" src="../../_images/img_module1_lab2_4.png" style="width: 262.5px; height: 116.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_5.png"><img alt="../../_images/img_module1_lab2_5.png" class="align-center" src="../../_images/img_module1_lab2_5.png" style="width: 665.5px; height: 296.5px;" /></a>
+<p>Now you can edit the access policy, and the related objects created to support it on the target access group.</p>
+<ol class="arabic simple" start="2">
+<li><p>Review and edit resources associated with an access policy</p></li>
+</ol>
+<p>When you clone an access policy, the associated resources are also cloned. You can review and edit these resources, if necessary, on the target Access group.</p>
+<ul class="simple">
+<li><p>Under ACCESS POLICIES &gt; Per-Session Policies, click on <code class="docutils literal notranslate"><span class="pre">default_radius_auth_policy</span></code>.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_6.png"><img alt="../../_images/img_module1_lab2_6.png" class="align-center" src="../../_images/img_module1_lab2_6.png" style="width: 634.5px; height: 279.5px;" /></a>
+<ul>
+<li><p>Under AUTHENTICATION &gt; RADIUS, click on <code class="docutils literal notranslate"><span class="pre">default_radius_auth_policy_aaa_srvr</span></code>.</p>
+<p>Set the Radius IP address and passphrase:</p>
+<ul class="simple">
+<li><p>Server Address: <code class="docutils literal notranslate"><span class="pre">10.1.1.5</span></code></p></li>
+<li><p>Secret: <code class="docutils literal notranslate"><span class="pre">default</span></code></p></li>
+</ul>
+</li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_7.png"><img alt="../../_images/img_module1_lab2_7.png" class="align-center" src="../../_images/img_module1_lab2_7.png" style="width: 567.0px; height: 372.0px;" /></a>
+<ol class="arabic simple" start="3">
+<li><p>Make an access policy available in templates</p></li>
+</ol>
+<p>You can make an access policy available in templates, so that you can select it in a service template, and apply the settings from that policy to devices in a Service Scaling Group.
+At the top of the screen, select Configuration, then on the left side of the screen, click ACCESS &gt; Access Groups .</p>
+<p>Under ACCESS POLICIES &gt; Per-Session Policies, click on <code class="docutils literal notranslate"><span class="pre">default_radius_auth_policy</span></code> and confirm the policy is Available in Application Templates (set to Yes).</p>
+<p>If set to No, click on More, and click select <em>Make Available in Templates</em>.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_8.png"><img alt="../../_images/img_module1_lab2_8.png" class="align-center" src="../../_images/img_module1_lab2_8.png" style="width: 722.5px; height: 261.0px;" /></a>
+<ol class="arabic simple" start="4">
+<li><p>Clone the service template</p></li>
+</ol>
+<p>Click Applications SERVICE CATALOG, select Default-f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template, click More &gt; Clone .</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_9.png"><img alt="../../_images/img_module1_lab2_9.png" class="align-center" src="../../_images/img_module1_lab2_9.png" style="width: 701.0px; height: 302.5px;" /></a>
+<p>In the dialog box that opens, type the name for the cloned service template, <code class="docutils literal notranslate"><span class="pre">f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template-custom1</span></code> then click Clone.</p>
+<p>The Edit Template screen opens.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_10.png"><img alt="../../_images/img_module1_lab2_10.png" class="align-center" src="../../_images/img_module1_lab2_10.png" style="width: 842.5px; height: 469.0px;" /></a>
+<p>On the left, click SECURITY POLICIES. Scroll down to Access, select the Access Group from which you want to use access policies.
+Select the Access group to which you cloned default access policies.
+In the Virtual Server area, for the virtual server providing the access service, from the Type list select Access Profile.
+From the APM Policy/Profile list select the access policy you created.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_111.png"><img alt="../../_images/img_module1_lab2_111.png" class="align-center" src="../../_images/img_module1_lab2_111.png" style="width: 841.0px; height: 467.5px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not associate an APM policy or profile with the redirect virtual server.</p>
+</div>
+<p>Click Save &amp; Close.</p>
+<p>The Service Catalog screen opens.</p>
+<p>Select the check box next to the service template you created, and click Publish.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_121.png"><img alt="../../_images/img_module1_lab2_121.png" class="align-center" src="../../_images/img_module1_lab2_121.png" style="width: 749.0px; height: 351.0px;" /></a>
+<p>You can now use the published template to create applications.</p>
+<p>5. In order to allow Paula to use the custom application template, go to : <em>System</em> &gt; <em>Role Management</em> &gt; <em>Roles</em>
+and select <em>CUSTOM ROLES</em> &gt; <em>Application Roles</em> &gt; <em>Application Creator VMware</em> role (already assigned to Paula). Select the Template <em>f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template-custom1</em>, drag it to the right.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab2_13.png"><img alt="../../_images/img_module1_lab2_13.png" class="align-center" src="../../_images/img_module1_lab2_13.png" style="width: 767.5px; height: 485.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on <em>Save &amp; Close</em></p>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab1.html" title="Lab 1.1: Access Built-in templates" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab3.html" title="Lab 1.3: Create Application" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

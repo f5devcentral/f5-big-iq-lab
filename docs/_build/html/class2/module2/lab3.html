@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 2.3: Review our SSG Analytics</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 2.3: Review our SSG Analytics"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 2.3: Review our SSG Analytics &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Module 3: Upgrade - Scaling up a SSG (VMWare)" href="../module3/module3.html" />
+    <link rel="prev" title="Lab 2.2: Review our application deployment" href="lab2.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 2.3: Review our SSG Analytics</a><ul>
+<li><a class="reference internal" href="#overall-ssgs-analytics">Overall SSGs Analytics</a></li>
+<li><a class="reference internal" href="#ssg-specific-analytics">SSG Specific Analytics</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a>
+              &gt; <a href="module2.html">Module 2: Deploy an application on a SSG (VMWare)</a>
+
+          <span class="right">
+             <a href="../../_sources/class2/module2/lab3.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-2-3-review-our-ssg-analytics">
+<h1>Lab 2.3: Review our SSG Analytics<a class="headerlink" href="#lab-2-3-review-our-ssg-analytics" title="Permalink to this headline">¶</a></h1>
+<p>Our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> host a service and we sent some traffic through it. We can now review
+the kind of data that is available to us</p>
+<div class="section" id="overall-ssgs-analytics">
+<h2>Overall SSGs Analytics<a class="headerlink" href="#overall-ssgs-analytics" title="Permalink to this headline">¶</a></h2>
+<p>Go to <em>Applications</em> &gt; <em>Environments</em> &gt; <em>Service Scaling Groups</em></p>
+<p>The screen lists all of your <code class="docutils literal notranslate"><span class="pre">service</span> <span class="pre">scaling</span> <span class="pre">groups</span></code> (<code class="docutils literal notranslate"><span class="pre">SSG</span></code>) and current summary data
+about their overall health, <code class="docutils literal notranslate"><span class="pre">BIG-IP</span></code> device performance and active alerts.
+Use this screen to create, delete or oversee all of your SSGs.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">Summary</span> <span class="pre">Bar</span></code> provides summary information about your SSGs’ overall health,
+active alerts and device performance. Click the elements in this area to filter
+or sort the <code class="docutils literal notranslate"><span class="pre">SSG</span></code> list.</p>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_11.png"><img alt="../../_images/img_module2_lab3_11.png" class="align-center" src="../../_images/img_module2_lab3_11.png" style="width: 1032.0px; height: 161.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><em>SSGs with Active Alerts</em> lists the number of <code class="docutils literal notranslate"><span class="pre">SSGs</span></code> with either active warning or
+critical alerts. if you have alerts, click on this block to filter the involved
+<code class="docutils literal notranslate"><span class="pre">SSGs</span></code></p>
+<p>Below the summary bar, the screen lists all <code class="docutils literal notranslate"><span class="pre">SSGs</span></code> in either in a grid or tile mode.
+From here, you can create, delete or monitor your <code class="docutils literal notranslate"><span class="pre">SSGs</span></code>.</p>
+<p>Use one of the screen’s filter and sort settings to isolate information of
+interest.You can adjust the columns displayed by selecting the gear icon in the filter area.</p>
+</div>
+<div class="section" id="ssg-specific-analytics">
+<h2>SSG Specific Analytics<a class="headerlink" href="#ssg-specific-analytics" title="Permalink to this headline">¶</a></h2>
+<p>Click on our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> <em>SSGClass2</em>, this will redirect us to a dashboard specific to this
+<code class="docutils literal notranslate"><span class="pre">SSG</span></code>.</p>
+<p>At the top you get another Summary bar related to your <code class="docutils literal notranslate"><span class="pre">SSG</span></code>: Health, Active Alerts,
+Alert History, Average CPU Usage, Throughput (IN/OUT)</p>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_31.png"><img alt="../../_images/img_module2_lab3_31.png" class="align-center" src="../../_images/img_module2_lab3_31.png" style="width: 1046.0px; height: 162.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Under the Summary bar, you can either review the analytics related to this <code class="docutils literal notranslate"><span class="pre">SSG</span></code>
+(<em>Analytics</em> tab ) or its Setup (<em>Configuration</em> tab - already reviewed previously)</p>
+<p>Use the <em>Analytics</em> tab area to identify data trends and events, or alerts,
+within a selected time period. To further isolate information, expand the
+dimensions area to the right of the chart.
+Select specific entities within each dimension to adjust the data displayed
+in this tab. To view specific alert details, select an in-line notification,
+or choose one of the filters below each chart.</p>
+<p>Take the time to navigate in all the different charts.</p>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_21.png"><img alt="../../_images/img_module2_lab3_21.png" class="align-center" src="../../_images/img_module2_lab3_21.png" style="width: 1031.0px; height: 673.0px;" /></a>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab2.html" title="Lab 2.2: Review our application deployment" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="../module3/module3.html" title="Module 3: Upgrade - Scaling up a SSG (VMWare)" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

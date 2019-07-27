@@ -1,0 +1,313 @@
+---
+# Deploys SSG resources to BIG-IQ instance
+- name: Make BIG IQ Resources
+  hosts: bigiq-01
+  vars_files: 
+    - ./config.yml
+  become: root
+  tasks: 
+    - name: Create service catalog
+      include_tasks: ./helpers/post.yml
+      with_items:
+        - url: "{{BIGIQ_URI}}/cm/global/templates"        
+          body: > 
+            {
+              "name": "{{SERVICE_CATALOG_NAME}}",
+              "description": "Service catalog"
+            }
+
+          var_name: sc_result
+
+    - name: Create Node
+      include_tasks: ./helpers/post.yml
+      with_items:
+        - url: "{{BIGIQ_URI}}/cm/adc-core/template-config/ltm/node/"
+          body: >
+            {
+              "deviceReference": {
+                "link": ""
+              },
+              "address": "{{NODE_ADDRESS}}",
+              "connectionLimit": 0,
+              "description": "",
+              "dynamicRatio": 1,
+              "monitor": "default",
+              "rateLimit": "disabled",
+              "ratio": 1,
+              "sessionConfig": "user-enabled",
+              "stateConfig": "user-up",
+              "fqdn": {
+                "addressFamily": "ipv4",
+                "isAutoPopulate": false,
+                "downInterval": 5,
+                "interval": 3600
+              },
+              "name": "{{SERVICE_CATALOG_NAME}}_http-node",
+              "partition": "Common",
+              "kind": "cm:adc-core:working-config:ltm:node:adcnodestate"
+            }
+
+          var_name: node         
+
+    - name: Create ICMP Gateway Monitor
+      uri:
+        url: "{{BIGIQ_URI}}/cm/adc-core/working-config/ltm/monitor/gateway-icmp/"     
+        method: POST
+        body_format: json
+        body: >
+          {
+            "interval": 5,
+            "manualResume": false,
+            "timeUntilUp": 0,
+            "timeout": 16,
+            "upInterval": 0,
+            "adaptive": false,
+            "adaptiveDivergenceType": "relative",
+            "adaptiveDivergenceValue": 25,
+            "adaptiveLimit": 200,
+            "adaptiveSamplingTimespan": 300,
+            "destination": "*:*",
+            "transparent": false,
+            "supportsTransparent": true,
+            "isNoWrite": true,
+            "isNoDelete": true,
+            "partition": "Common",
+            "name": "gateway_icmp",
+            "generation": 1,
+            "kind": "cm:adc-core:working-config:ltm:monitor:gateway-icmp:adcmonitorgatewayicmpstate"
+          }
+
+      register: icmp_gateway
+
+    - name: Capture ICMP Response
+      set_fact: 
+        icmp_gateway: "{{icmp_gateway.json}}"
+
+    - name: Create Pool
+      include_tasks: ./helpers/post.yml
+      with_items:
+        - url: "{{BIGIQ_URI}}/cm/adc-core/template-config/ltm/pool/"          
+          body: >
+            {
+              "allowNat": true,
+              "allowSnat": true,
+              "description": "",
+              "ignorePersistedWeight": false,
+              "ipTosToClient": null,
+              "ipTosToServer": null,
+              "linkQosToClient": 65535,
+              "linkQosToServer": 65535,
+              "loadBalancingMode": "round-robin",             
+              "monitorReferences": [],
+              "minActiveMembers": 0,
+              "minUpMembers": null,
+              "queueDepthLimit": 0,
+              "enableQueueOnConnectionLimit": false,
+              "queueTimeLimit": 0,
+              "serviceDownAction": "none",
+              "slowRampTime": 10,
+              "reselectTries": 0,
+              "membersReference": {
+                "link": ""
+              },
+              "profiles": [],
+              "requestQueueTimeLimit": 0,
+              "deviceReference": {
+                "link": ""
+              },
+              "monitorGatewayIcmpReferences": [
+                {
+                  "name": "gateway_icmp",
+                  "partition": "Common",
+                  "link": "https://localhost/mgmt/cm/adc-core/working-config/ltm/monitor/gateway-icmp/{{icmp_gateway.id}}"
+                }
+              ],
+              "partition": "Common",
+              "kind": "cm:adc-core:working-config:ltm:pool:adcpoolstate",
+              "name": "{{SERVICE_CATALOG_NAME}}_pool",
+              "ipTosToClientControl": "pass-through",
+              "ipTosToServerControl": "pass-through",
+              "newMembers": []
+            }
+
+          var_name: pool
+
+    - name: Debug poo
+      debug: var=pool
+
+    - name: Create HTTP virtual server template
+      include_tasks: ./helpers/post.yml
+      with_items:      
+        - url: "{{BIGIQ_URI}}/cm/adc-core/template-config/ltm/virtual"        
+          body: >
+            {
+              "addressStatus": "yes",
+              "autoLasthop": "default",
+              "clonePools": [],
+              "connectionLimit": 0,
+              "rateLimit": "disabled",
+              "rateLimitMode": "object",
+              "deviceReference": {
+                "link": ""
+              },
+              "gtmScore": 0,
+              "poolReference": {
+                "link": "https://localhost/mgmt/cm/adc-core/template-config/ltm/pool/{{pool.id}}",
+                "selfLink": "https://localhost/mgmt/cm/adc-core/template-config/ltm/pool/{{pool.id}}",
+                "id": "{{pool.id}}",
+                "kind": "cm:adc-core:template-config:ltm:pool:adcpoolstate",
+                "partition": "Common",
+                "name": "{{SERVICE_CATALOG_NAME}}_pool"
+              },
+              "ipProtocol": "tcp",
+              "lastHopPoolReference": null,
+              "mirror": "disabled",
+              "nat64": "disabled",
+              "sourceAddress": "0.0.0.0/0",
+              "sourceAddressTranslation": {
+                "type": "automap"
+              },
+              "flowEvictionPolicyReference": null,
+              "sourcePort": "preserve",
+              "state": "enabled",
+              "translateAddress": "enabled",
+              "translatePort": "enabled",
+              "destinationAddress": "0.0.0.0",
+              "mask": "0.0.0.0",
+              "name": "{{SERVICE_CATALOG_NAME}}_http-vs",
+              "description": "",
+              "partition": "Common",
+              "kind": "cm:adc-core:working-config:ltm:virtual:adcvirtualstate",
+              "vlansEnabled": "disabled",
+              "internal": null,
+              "l2Forward": null,
+              "ipForward": null,
+              "stateless": null,
+              "reject": null,
+              "dhcpRelay": null,
+              "destinationPort": "1111",
+              "vlanReferences": null,
+              "tunnelReferences": null
+            }
+
+          var_name: result
+
+    - name: Get TCP Profile
+      uri:
+        url: "{{BIGIQ_URI}}/cm/adc-core/working-config/ltm/profile/tcp?$filter=name%20eq%20'tcp'"
+        method: GET
+      register: tcp_profile
+
+    - set_fact:
+        tcp_profile: "{{tcp_profile.json['items']}}"
+
+    - name: Get HTTP Profile
+      uri:
+        url: "{{BIGIQ_URI}}/cm/adc-core/working-config/ltm/profile/http?$filter=name%20eq%20'http'"
+        method: GET
+      register: http_profile
+
+    - set_fact:
+        http_profile: "{{http_profile.json['items']}}"
+
+    - name: Configure Protocol and HTTP Profiles
+      include_tasks: ./helpers/post.yml
+      with_items:
+        - url: "{{BIGIQ_URI}}/cm/adc-core/template-config/ltm/virtual/{{result.id}}/profiles"
+          body: >
+            {
+              "profileTcpReference": {
+                  "id": "{{tcp_profile[0].id}}",
+                  "name": "tcp",
+                  "partition": "Common",
+                  "link": "https://localhost/mgmt/cm/adc-core/working-config/ltm/profile/tcp/{{tcp_profile[0].id}}"
+              },
+              "context": "all",
+              "partition": "Common",
+              "name": "tcp",
+              "id": "{{tcp_profile[0].id}}"
+            }
+
+        - url: "{{BIGIQ_URI}}/cm/adc-core/template-config/ltm/virtual/{{result.id}}/profiles"
+          body: >            
+            {
+              "profileHttpReference": {
+                  "id": "{{http_profile[0].id}}",
+                  "name": "http",
+                  "kind": "cm:adc-core:working-config:ltm:profile:http:adcprofilehttpstate",
+                  "partition": "Common",
+                  "link": "https://localhost/mgmt/cm/adc-core/working-config/ltm/profile/http/{{http_profile[0].id}}"
+              },
+              "context": "all",
+              "partition": "Common",
+              "name": "http",
+              "id": "{{http_profile[0].id}}"              
+            }
+
+    - name: Attach HTTP virtual server template to service catalog {{SERVICE_CATALOG_NAME}} 
+      ignore_errors: yes
+      uri: 
+        url: "{{BIGIQ_URI}}/cm/global/templates"
+        method: PUT
+        body_format: json
+        body: >
+          {
+            "id": "{{sc_result.id}}",
+            "name": "{{SERVICE_CATALOG_NAME}}",
+            "resources": {
+              "ltm:virtual:{{result.id[24:]}}": {                  
+                  "prompt": "Add object of type: ltm virtual",
+                  "prototypeReference": {
+                      "link": "https://localhost/mgmt/cm/adc-core/template-config/ltm/virtual/{{result.id}}"
+                  },
+                  "parameters": {
+                    "name": {},
+                    "destinationPort": {},
+                    "destinationAddress": {},
+                    "mask": {}
+                  }
+              },
+              "ltm:pool:{{pool.id[24:]}}": {    
+                "prompt": "Add object of type: ltm pool",
+                  "prototypeReference": {
+                      "link": "https://localhost/mgmt/cm/adc-core/template-config/ltm/pool/{{pool.id}}"
+                  }              
+              },
+              "ltm:node:{{node.id[24:]}}": {   
+                "prompt": "Add object of type: ltm node",
+                  "prototypeReference": {
+                    "link": "https://localhost/mgmt/cm/adc-core/template-config/ltm/node/{{node.id}}"
+                }              
+              }
+            }
+          }
+
+    - name: Attach node to pool
+      include_tasks: ./helpers/post.yml
+      with_items:
+        - url: "{{BIGIQ_URI}}/cm/adc-core/template-config/ltm/pool/{{pool.id}}/members"
+          body: >
+            {
+              "nodeReference": {
+                "link": "https://localhost/mgmt/cm/adc-core/template-config/ltm/node/{{node.id}}",
+                "selfLink": "https://localhost/mgmt/cm/adc-core/template-config/ltm/node/{{node.id}}",
+                "id": "{{node.id}}",
+                "kind": "cm:adc-core:template-config:ltm:node:adcnodestate",
+                "partition": "Common",
+                "name": "{{SERVICE_CATALOG_NAME}}_http-node"
+              },
+              "ratio": 1,
+              "priorityGroup": 0,
+              "connectionLimit": 0,
+              "rateLimit": "disabled",
+              "dynamicRatio": 1,
+              "sessionConfig": "user-enabled",
+              "stateConfig": "user-up",
+              "name": "{{SERVICE_CATALOG_NAME}}_http-node:{{NODE_PORT}}",
+              "description": "test-node",
+              "kind": "cm:adc-core:working-config:ltm:pool:members:adcpoolmemberstate",
+              "partition": "Common",
+              "inlineMemberCreate": false,
+              "port": "{{POOL_MEMBER_PORT}}"
+            }
+...

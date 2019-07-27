@@ -1,0 +1,22 @@
+- name: Create Tower Template
+  hosts: tower
+  connection: local
+  gather_facts: false
+
+  tasks:
+  
+    - set_fact:
+        mgmt: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
+        tower_username: '{{ lookup("env", "TOWER_USERNAME") }}'
+        tower_password: '{{ lookup("env", "TOWER_PASSWORD") }}'
+
+    - name: Remove Tower Template
+      tower_job_template:
+        name: "{{ app_name }}"
+        job_type: "run"
+        inventory: "F5Env"
+        project: "BIG-IQ-LAB"
+        playbook: "lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml"
+        tower_host: "{{ mgmt }}"
+        state: absent
+      register: template_out

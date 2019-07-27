@@ -1,0 +1,8 @@
+GET /rstats/?fpm_alert_id=db&fpm_alert_type=6&fpm_alert_component=5&fpm_alert_details=http://malicious.com/evil.js&client_request_uri=http://samplebank.com HTTP/1.0
+fps-license=9ae0daaf
+x-forwarded-for=212.150.5.74
+host=vAlert
+connection=close
+fps-geoip=AS IL {Tel Aviv}
+fps-response=1
+

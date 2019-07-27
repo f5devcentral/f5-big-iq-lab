@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Module 2: Role Base Access Control (RBAC)</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Module 2: Role Base Access Control (RBAC)"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Module 2: Role Base Access Control (RBAC) &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 2.1: Create a custom role type to give permissions to BIG-IP object types" href="lab1.html" />
+    <link rel="prev" title="Lab 1.1: Custom login banner for GUI login screen" href="../module1/lab1.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Module 2: Role Base Access Control (RBAC)</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class4.html">Class 4: BIG-IQ Platform</a>
+
+          <span class="right">
+             <a href="../../_sources/class4/module2/module2.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="module-2-role-base-access-control-rbac">
+<h1>Module 2: Role Base Access Control (RBAC)<a class="headerlink" href="#module-2-role-base-access-control-rbac" title="Permalink to this headline">¶</a></h1>
+<p>The following labs will get you familiar with managing Role Based Access
+Control for the BIG-IP devices from BIG-IQ Centralized Management
+console. There are several built-in roles shipped with BIG-IQ, but there
+might be a reason you want to give a person one or set of permissions to
+interact only in a clearly defined way with specific resources.</p>
+<p><strong>About role-based user access</strong></p>
+<p>BIG-IQ provides you with the tools you need to provide granular access
+to users. You decide what BIG-IP objects a user interacts with, and how.
+You use these BIG-IQ components for applying role-based user access.</p>
+<p><a class="reference internal" href="../../_images/image17.png"><img alt="image1" src="../../_images/image17.png" style="width: 6.25000in; height: 2.45833in;" /></a></p>
+<p>BIG-IQ 5.4 first introduced the ability to create Custom Role Types and
+Resource Groups. The custom role types allow the admin to create
+additional roles types. The admin can set exactly what actions are
+permitted on which object types. The resource group functionality allows
+the admin to dictate what objects can be acted on by a user or group.
+The custom role type and resource group can be combined to create a
+custom role.</p>
+<p>Roles can be created with two different modes:</p>
+<blockquote>
+<div><p>Relaxed Mode - Users can view all objects related to the service(s)
+they have access to, but can modify only those they have explicit
+permission to. This is the default.</p>
+<p>Strict Mode - User can view or modify only the objects they have
+explicit permission to.</p>
+</div></blockquote>
+<p>BIG-IQ® Centralized Management makes it easy for you to give users
+specific permissions for access only to those BIG-IP® objects they need
+to do their job. Role-based access allows you to create a custom role
+with specific privileges to view or edit only those BIG-IP objects
+(resources) you explicitly assign to the role.</p>
+<p><strong>Pre-requisites for providing custom role-based access to an
+application</strong></p>
+<p>To complete this use case, you must have administrator access to BIG-IQ
+and have:</p>
+<ul class="simple">
+<li><p>Configured BIG-IQ.</p></li>
+<li><p>Discovered a BIG-IP device and imported the LTM service.</p></li>
+<li><p>Configured the SharePoint application on that BIG-IP device.</p></li>
+<li><p>Configured authentication for your users. In this use case scenario,
+we use BIG-IQ local authentication.</p></li>
+</ul>
+<p>There are several built-in roles shipped with BIG-IQ, but there might be
+a reason you want to give a person one or set of permissions to interact
+only in a clearly defined way with specific resources. To do that, you
+need to add each of the following to BIG-IQ:</p>
+<ol class="arabic simple">
+<li><p><strong>Custom role type</strong> - Select one or more services and define a set
+of permissions (read, add, edit, delete) for interacting with the
+objects associated with selected services.</p></li>
+<li><p><strong>Custom resource group</strong> - Select the specific type of resources you
+want to provide a user access to—for example, BIG-IP virtual servers.</p></li>
+<li><p><strong>Custom role</strong> - Associate this custom role with the custom role
+type and resource group you created, to combine the permissions you
+specified in the custom role type with the resources you defined for
+the custom resource group.</p></li>
+<li><p><strong>Custom user</strong> - Associate this user with the custom role you
+created to provide that person access and permissions to the
+resources you specified.</p></li>
+</ol>
+<p>The first step to providing your user access to an application is to
+create a <strong>custom *role type*</strong> and define a set of permissions to
+specify how that role type interacts with objects that are associated
+with a service. Then you can create a <strong>resource group</strong> that contains
+the specific virtual server hosting your application so that you can
+associate this role type and resource group to a role.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="lab1.html">Lab 2.1: Create a custom role type to give permissions to BIG-IP object types</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab2.html">Lab 2.2: Create a resource group and associate it with a role type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab3.html">Lab 2.3: Add new custom role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab4.html">Lab 2.4: Add a user to a custom role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab5.html">Lab 2.5: Test access privileges for the user with the custom role</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab6.html">Lab 2.6: Create users from the existing built-in Role Type and assign Resource Group to the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab7.html">Lab 2.7: Create users from the new Customer Role Type and assign Resource Group to the users</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab8.html">Lab 2.8: BIG-IQ objects which can be created but not seen through previous permissions, should be viewable by the creator</a></li>
+</ul>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="../module1/lab1.html" title="Lab 1.1: Custom login banner for GUI login screen" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab1.html" title="Lab 2.1: Create a custom role type to give permissions to BIG-IP object types" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

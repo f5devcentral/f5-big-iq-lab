@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 4.1: Configure High Availability for BIG-IQ (6.1 and before)</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 4.1: Configure High Availability for BIG-IQ (6.1 and before)"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 4.1: Configure High Availability for BIG-IQ (6.1 and before) &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 4.2: Configure High Availability for BIG-IQ (7.1 and after)" href="lab2.html" />
+    <link rel="prev" title="Module 4: BIG-IQ HA" href="module4.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 4.1: Configure High Availability for BIG-IQ (6.1 and before)</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class4.html">Class 4: BIG-IQ Platform</a>
+              &gt; <a href="module4.html">Module 4: BIG-IQ HA</a>
+
+          <span class="right">
+             <a href="../../_sources/class4/module4/lab1.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-4-1-configure-high-availability-for-big-iq-6-1-and-before">
+<h1>Lab 4.1: Configure High Availability for BIG-IQ (6.1 and before)<a class="headerlink" href="#lab-4-1-configure-high-availability-for-big-iq-6-1-and-before" title="Permalink to this headline">¶</a></h1>
+<p><strong>Add a peer BIG-IQ system for a high availability configuration</strong></p>
+<p>Before you can set up F5 BIG-IQ Centralized Management in a high availability (HA) pair, you must have two licensed BIG-IQ systems.</p>
+<p>For the high-availability pair to synchronize properly, each system must be running the same BIG-IQ version,
+and the clocks on each system must be synchronized to within 60 seconds. To make sure the clocks are in sync,
+take a look at the NTP settings on each system before you add a peer.</p>
+<p>Configuring BIG-IQ in a high availability (HA) pair means that you can still manage your BIG-IP devices even if one BIG-IQ systems fails.</p>
+<p><strong>Lab:</strong></p>
+<ol class="arabic simple">
+<li><p>Let’s first add a BIG-IQ CM image in the blueprint.</p></li>
+</ol>
+<ul class="simple">
+<li><p>In UDF:</p></li>
+</ul>
+<p>In the <code class="docutils literal notranslate"><span class="pre">F5</span> <span class="pre">Products</span></code> column, click on <strong>ADD</strong></p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_1a.png"><img alt="../../_images/img_module4_lab1_1a.png" class="align-center" src="../../_images/img_module4_lab1_1a.png" style="width: 510.99999999999994px; height: 324.79999999999995px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Select approriate release of BIG-IQ (same as the existing active BIG-IQ part of the blueprint) and set the following values for CPU/Memory/Disk:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>vCPUs: 4</p></li>
+<li><p>Memory: 16 GiB</p></li>
+<li><p>Disk Size: 500 GiB</p></li>
+</ul>
+</div></blockquote>
+<p>Click on <strong>CREATE</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_1b.png"><img alt="../../_images/img_module4_lab1_1b.png" class="align-center" src="../../_images/img_module4_lab1_1b.png" style="width: 589.4px; height: 546.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>After few minutes, the VM is created in UDF. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).</p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_1c.png"><img alt="../../_images/img_module4_lab1_1c.png" class="align-center" src="../../_images/img_module4_lab1_1c.png" style="width: 860.3px; height: 423.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Finally, start the new BIG-IQ.</p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_1d.png"><img alt="../../_images/img_module4_lab1_1d.png" class="align-center" src="../../_images/img_module4_lab1_1d.png" style="width: 358.4px; height: 278.59999999999997px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ul class="simple">
+<li><p>In Ravello:</p></li>
+</ul>
+<p>In the top left, click on the <strong>+</strong> sign and search for BIG-IQ 6.1 CM VM image.</p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_2a.png"><img alt="../../_images/img_module4_lab1_2a.png" class="align-center" src="../../_images/img_module4_lab1_2a.png" style="width: 474.59999999999997px; height: 373.09999999999997px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Add the image into the deployment.</p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_2b.png"><img alt="../../_images/img_module4_lab1_2b.png" class="align-center" src="../../_images/img_module4_lab1_2b.png" style="width: 692.3px; height: 542.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Got to the network tab and fix the IP addresses using <code class="docutils literal notranslate"><span class="pre">10.1.1.13</span></code>, <code class="docutils literal notranslate"><span class="pre">10.1.10.13</span></code> and <code class="docutils literal notranslate"><span class="pre">10.1.20.13</span></code>. Click on <strong>Update</strong></p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_2c.png"><img alt="../../_images/img_module4_lab1_2c.png" class="align-center" src="../../_images/img_module4_lab1_2c.png" style="width: 1339.1px; height: 629.3px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Then, start the new BIG-IQ CM VM.</p>
+<ol class="arabic" start="2">
+<li><p>Connect via <code class="docutils literal notranslate"><span class="pre">SSH</span></code> to the system <em>Ubuntu Lamp Server</em>.</p></li>
+<li><p>Request 1 BIG-IQ Evaluation license and set it in the inventory file in <code class="docutils literal notranslate"><span class="pre">bigiq_onboard_license_key</span></code> variable (<strong>Ravello only</strong>).</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd /home/f5/f5-ansible-bigiq-onboarding</span>
+<span class="c1"># vi inventory/group_vars/udf-bigiq-cm-02.yml</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Double check the IP address of the new secondary BIG-IQ and update it in <code class="docutils literal notranslate"><span class="pre">udf-bigiq-cm-02.yml</span></code> if necessary (<code class="docutils literal notranslate"><span class="pre">bigiq_onboard_server</span></code>)</p>
+</div>
+<ol class="arabic" start="4">
+<li><p>Once the new VE is full up and running, execute the following script to onboard this new secondary BIG-IQ CM.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd /home/f5/f5-ansible-bigiq-onboarding</span>
+<span class="c1"># ./cmd_bigiq_onboard_secondary_cm.sh nopause</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Verify the new secondary BIG-IQ CM has been correclty configured (check hostname, self IP, VLAN, NTP, DNS, license)</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_31.png"><img alt="../../_images/img_module4_lab1_31.png" class="align-center" src="../../_images/img_module4_lab1_31.png" style="width: 897.0px; height: 504.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="6">
+<li><p>Open active BIG-IQ, go to System &gt; BIG-IQ HA and Click the Add Secondary button.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_41.png"><img alt="../../_images/img_module4_lab1_41.png" class="align-center" src="../../_images/img_module4_lab1_41.png" style="width: 1091.3px; height: 515.1999999999999px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="7">
+<li><p>Type the properties for the BIG-IQ system that you are adding and click the Add button at the bottom of the screen.</p></li>
+</ol>
+<ul class="simple">
+<li><p>In the IP Address field, type the IP address for the secondary BIG-IQ system.</p></li>
+<li><p>In the Username and Password fields, type the administrator’s user name and password for the new BIG-IQ system.</p></li>
+<li><p>In the Root Password field, type the root password for the new BIG-IQ system.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_52.png"><img alt="../../_images/img_module4_lab1_52.png" class="align-center" src="../../_images/img_module4_lab1_52.png" style="width: 1090.6px; height: 651.6999999999999px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Then, click OK.</p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab1_62.png"><img alt="../../_images/img_module4_lab1_62.png" class="align-center" src="../../_images/img_module4_lab1_62.png" style="width: 572.4px; height: 303.3px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The BIG-IQ system synchronize. Once they are finished, both appear as ready (green).</p>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="module4.html" title="Module 4: BIG-IQ HA" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab2.html" title="Lab 4.2: Configure High Availability for BIG-IQ (7.1 and after)" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

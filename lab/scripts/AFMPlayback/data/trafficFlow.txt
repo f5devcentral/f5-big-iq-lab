@@ -1,0 +1,2 @@
+hostname="jitterbug.dmeast.acopianet.com",bigip_mgmt_ip="10.255.69.68",context_name="/Common/vip1",context_type="Virtual Server",date_time="Feb 20 2018 09:28:29",device_product="Advanced Firewall Module",device_vendor="F5",device_version="13.1.0.0.0.1867",errdefs_msgno="23003155",errdefs_msg_name="Traffic Statistics",severity="8",partition_name="Common",traffic_stat_type="Active Flow",traffic_stat_cnt="1"
+

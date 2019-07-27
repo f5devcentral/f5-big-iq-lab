@@ -1,0 +1,24 @@
+---
+- name: Power On VMware
+  hosts: all
+  connection: local
+
+  # https://docs.ansible.com/ansible/2.6/modules/vmware_vm_facts_module.html
+
+  tasks:
+  - name: Gather all registered virtual machines
+    vmware_vm_facts:
+      hostname: 10.1.1.90
+      username: administrator@vsphere.local
+      password: "Purpl3$lab"
+      vm_type: vm
+      validate_certs: no
+    delegate_to: localhost
+    register: vmfacts
+
+#  - debug: msg="{{vmfacts.virtual_machines}}"
+#    with_items:
+#      - "{{vmfacts.virtual_machines.items}}"
+
+  - name: Create resource file
+    copy: content="{{vmfacts}}" dest=./vmfact.json

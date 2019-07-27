@@ -1,0 +1,11 @@
+GET /rstats/?id=d4&c=im&phg=sDHm6gKPUs4a HTTP/1.1
+accept-language=en-US,en;q=0.8
+fps-license=9ae0daaf
+connection=close
+user-agent=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.111 Safari/537.36
+host=10.64.8.206
+cookie=ASP.NET_SessionId=nqfb0s4r4ltgcg34kj1mqkzg
+fps-username=user
+referer=http://www.phis-arti1.com/index2.html
+
+

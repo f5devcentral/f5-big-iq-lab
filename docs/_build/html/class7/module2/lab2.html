@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 2.2: Using BIG-IQ Multi-Device Packet and Flow Tracers to test AFM policy</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 2.2: Using BIG-IQ Multi-Device Packet and Flow Tracers to test AFM policy"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 2.2: Using BIG-IQ Multi-Device Packet and Flow Tracers to test AFM policy &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 2.3: Using BIG-IQ to Make Wide-Scale Changes to AFM Device DOS Profiles" href="lab3.html" />
+    <link rel="prev" title="Lab 2.1: Using BIG-IQ AFM Logging to View Centralized Firewall logs" href="lab1.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 2.2: Using BIG-IQ Multi-Device Packet and Flow Tracers to test AFM policy</a><ul>
+<li><a class="reference internal" href="#lab-2-2-1-create-and-run-a-multi-device-packet-test-on-big-iq">Lab 2.2.1: Create and Run a Multi-Device Packet Test On BIG-IQ:</a></li>
+<li><a class="reference internal" href="#lab-2-2-2-comparing-packet-traces-across-multiple-devices">Lab 2.2.2: Comparing Packet Traces Across Multiple Devices:</a></li>
+<li><a class="reference internal" href="#lab-2-2-3-use-packet-trace-as-filter-to-packet-flows-utility">Lab 2.2.3: Use Packet Trace as Filter to Packet Flows Utility:</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a>
+              &gt; <a href="module2.html">Module 2: Network Tools and Logs</a>
+
+          <span class="right">
+             <a href="../../_sources/class7/module2/lab2.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-2-2-using-big-iq-multi-device-packet-and-flow-tracers-to-test-afm-policy">
+<h1>Lab 2.2: Using BIG-IQ Multi-Device Packet and Flow Tracers to test AFM policy<a class="headerlink" href="#lab-2-2-using-big-iq-multi-device-packet-and-flow-tracers-to-test-afm-policy" title="Permalink to this headline">¶</a></h1>
+<p>In this lab, we will use the BIG-IQ Multi-Device Packet tracer and flow analyzers to test firewall policy.</p>
+<div class="section" id="lab-2-2-1-create-and-run-a-multi-device-packet-test-on-big-iq">
+<h2>Lab 2.2.1: Create and Run a Multi-Device Packet Test On BIG-IQ:<a class="headerlink" href="#lab-2-2-1-create-and-run-a-multi-device-packet-test-on-big-iq" title="Permalink to this headline">¶</a></h2>
+<p>All AFM devices have the ability to test packets through the collection of AFM firewall, dos, and IP intelligence policies to test and troubleshoot a given packet against enforced/staged policies.  BIG-IQ extends this functionality, allowing a security administrator to test a given packet against multiple AFM devices simultaneously.  In this exercise., we will configure a packet test against multiple devices.</p>
+<ol class="arabic">
+<li><p>Under <em>Monitoring</em> &gt; <em>Security</em> &gt; <em>Network Security</em>, click <em>Packet Traces</em></p></li>
+<li><p>Click the <em>Create</em> button in the Packet Traces list</p></li>
+<li><p>Edit the <em>Packet Parameters</em> as follows:
+- Name: <code class="docutils literal notranslate"><span class="pre">packet_136_1</span></code>
+- Source IP Address: <code class="docutils literal notranslate"><span class="pre">100.100.100.1</span></code>
+- Source Port: <code class="docutils literal notranslate"><span class="pre">36544</span></code>
+- TTL: 255
+- Destination Ip Address: <code class="docutils literal notranslate"><span class="pre">10.1.10.136</span></code>
+- Destination Port: <code class="docutils literal notranslate"><span class="pre">443</span></code>
+- Use Staged Policy: <code class="docutils literal notranslate"><span class="pre">No</span></code>
+- Trigger Log: <code class="docutils literal notranslate"><span class="pre">No</span></code></p></li>
+<li><p>In <em>Devices</em> section, click <em>Add</em>, the move all available devices to the <em>Selected</em> box.</p></li>
+<li><p>Set <em>Source VLAN</em> to <code class="docutils literal notranslate"><span class="pre">external</span></code> and leave the “Apply these VLANS to all Devices” box checked</p></li>
+<li><p>Click <em>Run Trace</em> button in the bottom right corner of page.</p></li>
+<li><p>Examine results for each of the devices.</p></li>
+<li><p>Click <em>Group By</em> drop down and select <em>Virtual Server Rules</em>, then <em>Result</em> as shown below</p>
+<a class="reference internal image-reference" href="../../_images/packettester_viewbyresult.png"><img alt="../../_images/packettester_viewbyresult.png" class="align-center" src="../../_images/packettester_viewbyresult.png" style="width: 735.0px; height: 390.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p>Click the <em>Device IP Intelligence</em> icon for the packet test on BOS-vBIGIP01 device to see which Global IP Intelligence policy was used to evaluate the packet.</p></li>
+<li><p>Click the <em>Virtual Server Rules</em> icon for the packet test on BOS-vBIGIP01 device to view details on the firewall policy used to evaluate the packet.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>AFM packet tester only performs policy matching on the active unit for a given traffic group.  The standby unit will show results as if no policies at any level have been matched.  This is an AFM behavior, not a BIG-IQ behavior.  So, results in this lab will show BOS-vBIGIP02 as drops based on default rule handling.</p>
+</div>
+</li>
+<li><p>Experiment with different ways to filter the results of the multi-device packet tests</p></li>
+</ol>
+</div>
+<div class="section" id="lab-2-2-2-comparing-packet-traces-across-multiple-devices">
+<h2>Lab 2.2.2: Comparing Packet Traces Across Multiple Devices:<a class="headerlink" href="#lab-2-2-2-comparing-packet-traces-across-multiple-devices" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>Under <em>Monitoring</em> &gt; <em>Security</em> &gt; <em>Network Security</em>, click <em>Packet Traces</em></p></li>
+<li><p>Click the <em>Create</em> button in the Packet Traces list</p></li>
+<li><p>Edit the <em>Packet Parameters</em> as follows:
+- Name: <code class="docutils literal notranslate"><span class="pre">packet_136_2</span></code>
+- Source IP Address: <code class="docutils literal notranslate"><span class="pre">5.188.11.36</span></code>
+- Source Port: <code class="docutils literal notranslate"><span class="pre">36544</span></code>
+- TTL: 255
+- Destination Ip Address: <code class="docutils literal notranslate"><span class="pre">10.1.10.136</span></code>
+- Destination Port: <code class="docutils literal notranslate"><span class="pre">443</span></code>
+- Use Staged Policy: <code class="docutils literal notranslate"><span class="pre">No</span></code>
+- Trigger Log: <code class="docutils literal notranslate"><span class="pre">No</span></code></p></li>
+<li><p>Click <em>Run Trace</em> in the bottom right corner of page.</p></li>
+<li><p>Examine the results of the <em>Virtual Server Rules</em> for BOS-vBIGIP01.  This packet should be dropped.</p></li>
+<li><p>In upper right hand cornet of packet test, click <em>Compare</em></p></li>
+<li><p>From the Packet Trace list select <code class="docutils literal notranslate"><span class="pre">packet_136_1</span></code>, the click the <em>Compare</em> button.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Notice the note in the Packet Parameters section calling out the fact that the packet parameters are different for selected traces.  This feature can be used in a couple ways.  It can be used to test the same policy against two different packets, to see how a given policy handles each condition.  Alternatively, and maybe more commonly, it can be used to test the same packet against two versions of the same policy.  In this case, we are testing two different packets against the same policy version.</p>
+</div>
+</li>
+<li><p>In the <em>Filter</em> box on the right hand side of Trace Results section, enter <code class="docutils literal notranslate"><span class="pre">vBIGIP01</span></code> to filter our trace results to our active firewalls.</p></li>
+<li><p>With results filtered, you can quickly see how two different packets would be evaluated against the same firewall policy on multiple firewalls throughout the fleet.</p>
+<a class="reference internal image-reference" href="../../_images/compare_packet_test.png"><img alt="../../_images/compare_packet_test.png" class="align-center" src="../../_images/compare_packet_test.png" style="width: 738.5px; height: 392.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+</ol>
+</div>
+<div class="section" id="lab-2-2-3-use-packet-trace-as-filter-to-packet-flows-utility">
+<h2>Lab 2.2.3: Use Packet Trace as Filter to Packet Flows Utility:<a class="headerlink" href="#lab-2-2-3-use-packet-trace-as-filter-to-packet-flows-utility" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p>From the <code class="docutils literal notranslate"><span class="pre">Ubuntu</span> <span class="pre">18.04</span> <span class="pre">Lamp</span> <span class="pre">Server</span></code> open an SSH session.</p></li>
+<li><p>From the SSH session, run the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">for i in {1..100}; do sudo nmap -sS 10.1.10.136 -D 100.100.100.1 -g 36544; done</span>
+</pre></div>
+</div>
+</li>
+<li><p>On BIG-IQ UI, under <em>Monitoring</em> &gt; <em>Security</em> &gt; <em>Network Security</em>, click <em>Packet Traces</em></p></li>
+<li><p>Click on <code class="docutils literal notranslate"><span class="pre">packet_136_1</span></code> from the packet traces list</p></li>
+<li><p>In the upper right-hand corner click the <em>Get Flows</em> button</p></li>
+<li><p>Enter <code class="docutils literal notranslate"><span class="pre">flow_136_1</span></code> in the name box, and verify all three AFM devices are in the selected box in the Select Device section</p></li>
+<li><p>Click <em>Get Flows</em></p></li>
+<li><p>BIG-IQ will now pull on flow data from all firewalls selected that match the packet trace we configured in previous steps.</p>
+<a class="reference internal image-reference" href="../../_images/flow_from_trace.png"><img alt="../../_images/flow_from_trace.png" class="align-center" src="../../_images/flow_from_trace.png" style="width: 735.0px; height: 336.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</li>
+<li><p>In <em>Filter</em> box, enter <code class="docutils literal notranslate"><span class="pre">BOS</span></code> to filter the flow data from only the BOS firewalls.</p></li>
+<li><p>Under <em>Monitoring</em> &gt; <em>Security</em> &gt; <em>Network Security</em>, click <em>Packet Flows</em></p></li>
+<li><p>You should see the flow you just created from the packet trace has now been saved to BIG-IQ as a packet flow.</p></li>
+</ol>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab1.html" title="Lab 2.1: Using BIG-IQ AFM Logging to View Centralized Firewall logs" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab3.html" title="Lab 2.3: Using BIG-IQ to Make Wide-Scale Changes to AFM Device DOS Profiles" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,286 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Description" : "This Cloud Formation Template creates the lab environment for the F5 Cloud Edition lab  **WARNING** This template creates Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template. This template is supplied with no warranty or support.",
+    "Parameters": {
+        "VPCNAME": {
+            "Type": "String"
+        },
+        "VPCCIDRBLOCK": {
+            "Type": "String"
+        },
+        "REGION": {
+            "Type": "String"
+        },
+        "SN1NAME": {
+            "Type": "String"
+        },
+        "SN1AZ": {
+            "Type": "String"
+        },
+        "SN1CIDRBLOCK": {
+            "Type": "String"
+        },
+        "SN2NAME": {
+            "Type": "String"
+        },
+        "SN2CIDRBLOCK": {
+            "Type": "String"
+        },
+        "SN2AZ": {
+            "Type": "String"
+        },
+        "IGWNAME": {
+            "Type": "String"
+        },
+        "RT1NAME": {
+            "Type": "String"
+        },
+        "RT2NAME": {
+            "Type": "String"
+        },
+        "ELBNAME": {
+            "Type": "String"
+        },
+        "ELBSCHEME": {
+            "Type": "String"
+        }
+    },
+    "Resources": {
+        "VPC": {
+            "Type": "AWS::EC2::VPC",
+            "Properties": {
+                "CidrBlock": {
+                    "Ref": "VPCCIDRBLOCK"
+                },
+                "InstanceTenancy": "default",
+                "EnableDnsSupport": "true",
+                "EnableDnsHostnames": "false",
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Ref": "VPCNAME"
+                        }
+                    }
+                ]
+            }
+        },
+        "ExternalSubnet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "CidrBlock": {
+                    "Ref": "SN1CIDRBLOCK"
+                },
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "AvailabilityZone" : {
+                    "Ref": "SN1AZ"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Ref": "SN1NAME"
+                        }
+                    }
+                ]
+            }
+        },
+        "InternalSubnet": {
+            "Type": "AWS::EC2::Subnet",
+            "Properties": {
+                "CidrBlock": {
+                    "Ref": "SN2CIDRBLOCK"
+                },
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "AvailabilityZone" : {
+                    "Ref": "SN2AZ"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Ref": "SN2NAME"
+                        }
+                    }
+                ]
+            }
+        },
+        "RouteTableInternal": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Ref": "RT1NAME"
+                        }
+                    }
+                ]
+            }
+        },
+        "RouteTableExternal": {
+            "Type": "AWS::EC2::RouteTable",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Ref": "RT2NAME"
+                        }
+                    }
+                ]
+            }
+        },
+        "InternalSubnetRouteTableAssociation": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "InternalSubnet"
+                },
+                "RouteTableId": {
+                    "Ref": "RouteTableInternal"
+                }
+            }
+        },
+        "ExternalSubnetRouteTableAssociation": {
+            "Type": "AWS::EC2::SubnetRouteTableAssociation",
+            "Properties": {
+                "SubnetId": {
+                    "Ref": "ExternalSubnet"
+                },
+                "RouteTableId": {
+                    "Ref": "RouteTableExternal"
+                }
+            }
+        },
+
+        "IGW": {
+            "Type": "AWS::EC2::InternetGateway",
+            "Properties": {
+                "Tags": [
+                    {
+                        "Key": "Name",
+                        "Value": {
+                            "Ref": "IGWNAME"
+                        }
+                    }
+                ]
+            }
+        },
+
+        "IGWAttachment": {
+            "Type": "AWS::EC2::VPCGatewayAttachment",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                },
+                "InternetGatewayId": {
+                    "Ref": "IGW"
+                }
+            }
+        },
+        "RouteInternalDefault": {
+            "Type": "AWS::EC2::Route",
+            "Properties": {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "RouteTableId": {
+                    "Ref": "RouteTableInternal"
+                },
+                "GatewayId": {
+                    "Ref": "IGW"
+                }
+            }
+        },
+        "RouteExternalDefault": {
+            "Type": "AWS::EC2::Route",
+            "Properties": {
+                "DestinationCidrBlock": "0.0.0.0/0",
+                "RouteTableId": {
+                    "Ref": "RouteTableExternal"
+                },
+                "GatewayId": {
+                    "Ref": "IGW"
+                }
+            },
+            "DependsOn": "IGWAttachment"
+        },
+        "VPCAcl": {
+            "Type": "AWS::EC2::NetworkAcl",
+            "Properties": {
+                "VpcId": {
+                    "Ref": "VPC"
+                }
+            }
+        },
+        "SecurityGroup": {
+            "Type" : "AWS::EC2::SecurityGroup",
+            "Properties" : {
+                "GroupName" : "VPCNAME",
+                "GroupDescription" : "VPCNAME",
+                "VpcId" : {
+                    "Ref": "VPC"
+                }
+            }
+        },
+        "ClassicELB": {
+            "Type": "AWS::ElasticLoadBalancing::LoadBalancer",
+            "Properties": {
+                "SecurityGroups": [ { "Ref": "SecurityGroup" } ],
+                "HealthCheck" : {
+                    "HealthyThreshold" : "10",
+                    "Interval" : "30",
+                    "Target" : "TCP:22",
+                    "Timeout" : "5",
+                    "UnhealthyThreshold" : "2"
+                },
+                "Listeners": [
+                    {
+                      "LoadBalancerPort": "80",
+                      "InstancePort": "80",
+                      "Protocol": "TCP",
+                      "InstanceProtocol" : "TCP"
+                    }
+                ],
+                "LoadBalancerName" : { "Ref": "ELBNAME" },
+                "Scheme" : { "Ref": "ELBSCHEME" },
+                "Subnets" : [ { "Ref": "InternalSubnet" }, { "Ref": "ExternalSubnet" } ]
+            }
+        }
+    },
+    "Outputs": {
+        "ElbId": {
+            "Description": "ELB ID",
+            "Value": { "Ref": "ClassicELB" }
+        },
+        "VPCId" : {
+          "Description" : "VPC ID",
+          "Value" : {"Ref": "VPC"}
+        },
+        "RT1Id" : {
+          "Description" : "Route Subnet ID",
+          "Value" : {"Ref": "RouteTableInternal"}
+        },
+        "RT2Id" : {
+          "Description" : "Route Subnet ID",
+          "Value" : {"Ref": "RouteTableExternal"}
+        },
+        "InternalSubnet" : {
+          "Description" : "Internal Subnet ID",
+          "Value" : {"Ref": "InternalSubnet"}
+        },
+        "ExternalSubnet" : {
+          "Description" : "External Subnet ID",
+          "Value" : {"Ref": "ExternalSubnet"}
+        }
+    }
+}

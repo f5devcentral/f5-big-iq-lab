@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 1.3: Managing DNS Listeners</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 1.3: Managing DNS Listeners"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 1.3: Managing DNS Listeners &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 1.4: Managing permissions for GSLB Objects" href="lab4.html" />
+    <link rel="prev" title="Lab 1.2: Managing DNS Profiles" href="lab2.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 1.3: Managing DNS Listeners</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class10.html">Class 10: BIG-IQ DNS</a>
+              &gt; <a href="module1.html">Module 1: BIG-IQ DNS Sync Group Administration</a>
+
+          <span class="right">
+             <a href="../../_sources/class10/module1/lab3.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-1-3-managing-dns-listeners">
+<h1>Lab 1.3: Managing DNS Listeners<a class="headerlink" href="#lab-1-3-managing-dns-listeners" title="Permalink to this headline">¶</a></h1>
+<p>A <em>listener</em> is a specialized virtual server that passively checks for DNS packets on port 53 and the IP address you assign to the listener.</p>
+<p>When a DNS query is sent to the IP address of the listener, BIG-IP DNS either handles the request locally or forwards the request to the appropriate resource.</p>
+<p>You can view the DNS listeners configured for the DNS sync groups you manage by navigating to “Configuration &gt; DNS &gt; Delivery &gt; Listeners”.</p>
+<p>From there, click a listener to edit it, click Create to set up a new one.</p>
+<p><strong>Edit an Existing DNS listener</strong></p>
+<p>You can view and modify the properties for existing DNS listeners. Since you are working with an existing listener, you can modify only some settings.</p>
+<ol class="arabic simple">
+<li><p>At the top of the screen, click Configuration, then, on the left, click “DNS &gt; Delivery &gt; Listeners”.</p></li>
+</ol>
+<p>The screen displays the list of listeners defined on this device.</p>
+<p><a class="reference internal" href="../../_images/image14.png"><img alt="image13" src="../../_images/image14.png" style="width: 6.49583in; height: 3.07500in;" /></a></p>
+<ol class="arabic simple" start="2">
+<li><p>Click the name of the listener you want to edit.</p></li>
+</ol>
+<p>The screen displays the current settings for the selected listener.</p>
+<p><a class="reference internal" href="../../_images/image15.png"><img alt="image14" src="../../_images/image15.png" style="width: 6.49167in; height: 5.00000in;" /></a></p>
+<ol class="arabic simple" start="3">
+<li><p>Make the changes to the settings you want to revise. Change VLAN Traffic from All VLANs to Enabled on /Common/External, and then, when your edits are complete, click Save &amp; Close.</p></li>
+</ol>
+<p><a class="reference internal" href="../../_images/image16.png"><img alt="image15" src="../../_images/image16.png" style="width: 6.50000in; height: 3.65625in;" /></a></p>
+<p>The system updates the listener with the settings you specified.</p>
+<p><strong>Create a DNS listener</strong></p>
+<p>Before you create a DNS listener, make sure you have a pool of DNS servers.</p>
+<p>You can configure a listener that alerts BIG-IP DNS to DNS queries
+destined for a pool of DNS servers. The best practice is to create four
+listeners: one with an IPv4 address that handles UDP traffic, and one
+with the same IPv4 address that handles TCP traffic; one with an IPv6
+address that handles UDP traffic, and one with the same IPv6 address
+that handles TCP traffic.</p>
+<ol class="arabic simple">
+<li><p>At the top of the screen, click Configuration, then, on the left, click “DNS &gt; Delivery &gt; Listeners”.</p></li>
+</ol>
+<p>The screen displays the list of listeners defined on this device.</p>
+<ol class="arabic simple" start="2">
+<li><p>Click Create.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/module1_lab4_1.png"><img alt="../../_images/module1_lab4_1.png" class="align-center" src="../../_images/module1_lab4_1.png" style="width: 622.5px; height: 152.5px;" /></a>
+<p>The New Listener screen opens.</p>
+<ol class="arabic simple" start="3">
+<li><p>Type a Name for the DNS listener: <strong>my-listener-udp</strong></p></li>
+<li><p>Select a BIG-IP Device on which the DNS listener will run: <strong>BOS-vBIGIP01.termmarc.com</strong></p></li>
+<li><p>In the Listener area, type the IP Address on which the BIG-IP system listens for connections: <strong>10.1.10.204</strong></p></li>
+</ol>
+<p>The BIG-IP system receives traffic sent to this IP address and processes it as needed.</p>
+<ol class="arabic simple" start="6">
+<li><p>Scroll down to the Service area and select the DNS Profile that defines how the listener handles DNS traffic: <strong>DNSprofile.</strong></p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/module1_lab4_2.png"><img alt="../../_images/module1_lab4_2.png" class="align-center" src="../../_images/module1_lab4_2.png" style="width: 435.0px; height: 430.0px;" /></a>
+<p>The options are a list of system-supplied and user-defined DNS profiles.</p>
+<ol class="arabic simple" start="7">
+<li><p>Specify any additional settings needed to suit the requirements for this listener.</p></li>
+</ol>
+<p>Name, Device, Address, and DNS Profile are the only required parameters when you create a listener. The remaining parameters on this screen are optional and perform the same function as they do when you configure a listener on a BIG-IP device.</p>
+<ol class="arabic simple" start="8">
+<li><p>Click Save &amp; Close.</p></li>
+</ol>
+<p>The system creates the new listener you specified and adds it to the list of listeners.</p>
+<ol class="arabic simple" start="9">
+<li><p>Create another listener with the same IPv4 address and configuration, but <strong>select the second BOS BIG-IP</strong>.</p></li>
+</ol>
+<div class="line-block">
+<div class="line">Name: <strong>my-listener-udp</strong></div>
+<div class="line">BIG-IP Device: <strong>BOS-vBIGIP01.termmarc.com</strong></div>
+<div class="line">IP Address: <strong>10.1.10.204</strong></div>
+<div class="line">DNS Profile: <strong>DNSprofile</strong></div>
+</div>
+<p>When you finish that, the BIG-IP device for which you created these
+listeners will be able to receive DNS queries, handle wide IP requests,
+and forward all other DNS queries to members of the pool of DNS servers.</p>
+<a class="reference internal image-reference" href="../../_images/module1_lab4_3.png"><img alt="../../_images/module1_lab4_3.png" class="align-center" src="../../_images/module1_lab4_3.png" style="width: 666.0px; height: 184.5px;" /></a>
+<p>Now the Listener is ready to be deployed.
+Navigate to the Deployment tab, create a new DNS Deployment named <strong>Listener-Deployment</strong>, and select both BOS BIG-IP devices. Click <strong>Create</strong> at the bottom of the page.</p>
+<a class="reference internal image-reference" href="../../_images/module1_lab4_4.png"><img alt="../../_images/module1_lab4_4.png" class="align-center" src="../../_images/module1_lab4_4.png" style="width: 794.5px; height: 380.5px;" /></a>
+<p>Once the evaluation is complete, select the Deployment and click <strong>Deploy</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/module1_lab4_5.png"><img alt="../../_images/module1_lab4_5.png" class="align-center" src="../../_images/module1_lab4_5.png" style="width: 635.0px; height: 169.0px;" /></a>
+<p>Now we can verify the Listener creation by logging into one of the BIG-IPs and checking the list of current Listeners.</p>
+<a class="reference internal image-reference" href="../../_images/module1_lab4_6.png"><img alt="../../_images/module1_lab4_6.png" class="align-center" src="../../_images/module1_lab4_6.png" style="width: 545.5px; height: 196.0px;" /></a>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab2.html" title="Lab 1.2: Managing DNS Profiles" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab4.html" title="Lab 1.4: Managing permissions for GSLB Objects" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,18 @@
+---
+
+######## BEGIN VPN SPECIFIC CONFIG ##########
+- hosts: bigip-01
+  gather_facts: False
+  vars_files:
+    - ./config.yml
+  pre_tasks:
+    - name: Load customer_gateway_configuration from XML
+      set_fact:
+        ExternalNetwork: "{{ hostvars[inventory_hostname].externalNetwork }}"
+        ExternalInterfacePrivateIp: "{{ hostvars[inventory_hostname].externalInterfacePrivateIp }}" 
+        customer_gateway_config: "{{ lookup('file', './cache/{{PREFIX}}/3-customer_gateway_configuration.xml') | xml_to_dict }}"
+  roles:
+    - bigip_vpn
+
+######## END VPN SPECIFIC CONFIG ##########
+

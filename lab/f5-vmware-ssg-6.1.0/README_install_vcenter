@@ -1,0 +1,3 @@
+# 1. sudo mount -o loop /tmp/VMware-VCSA-all-6.7.0-10244745.iso /mnt/
+# 2. verify config file embedded_vCSA_on_ESXi.json
+# 3. /mnt/vcsa-cli-installer/lin64/vcsa-deploy install embedded_vCSA_on_ESXi.json --accept-eula --acknowledge-ceip

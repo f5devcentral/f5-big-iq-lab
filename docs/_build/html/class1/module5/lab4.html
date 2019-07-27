@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 5.4: Delete AS3 Tenant/Applications on BIG-IQ</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 5.4: Delete AS3 Tenant/Applications on BIG-IQ"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 5.4: Delete AS3 Tenant/Applications on BIG-IQ &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 5.5: FQDN and Service Discovery" href="lab5.html" />
+    <link rel="prev" title="Lab 5.3: Deploying AS3 Templates on BIG-IQ" href="lab3.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 5.4: Delete AS3 Tenant/Applications on BIG-IQ</a><ul>
+<li><a class="reference internal" href="#task-9-delete-task1-with-its-as3-applications">Task 9 - Delete Task1 with its AS3 Applications</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a>
+              &gt; <a href="module5.html">Module 5: BIG-IQ Application Templates &amp; Deployment with AS3 using the API (new 6.1)</a>
+
+          <span class="right">
+             <a href="../../_sources/class1/module5/lab4.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-5-4-delete-as3-tenant-applications-on-big-iq">
+<h1>Lab 5.4: Delete AS3 Tenant/Applications on BIG-IQ<a class="headerlink" href="#lab-5-4-delete-as3-tenant-applications-on-big-iq" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="task-9-delete-task1-with-its-as3-applications">
+<h2>Task 9 - Delete Task1 with its AS3 Applications<a class="headerlink" href="#task-9-delete-task1-with-its-as3-applications" title="Permalink to this headline">¶</a></h2>
+<p>Here, we empty the tenant/partition of Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps
+should also disappear from BIG-IQ.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We are not using the DELETE method but a POST with a declaration containing a tenant with nothing in it.</p>
+</div>
+<ol class="arabic">
+<li><p>Using Postman, use the <strong>BIG-IQ Token (david)</strong> collections to authenticate you on the BIG-IQ and save the token.
+If your token expires, obtain a new token by resending the <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span> <span class="pre">Token</span> <span class="pre">(david)</span></code>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.</p>
+</div>
+</li>
+<li><p>Copy below example of an AS3 Declaration into the body of the <strong>BIG-IQ AS3 Declaration</strong> collection in order to create the service on the BIG-IP through BIG-IQ:</p></li>
+</ol>
+<p>POST <a class="reference external" href="https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true">https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true</a></p>
+<div class="highlight-yaml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="p p-Indicator">{</span>
+    <span class="s">&quot;class&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;AS3&quot;</span><span class="p p-Indicator">,</span>
+    <span class="s">&quot;action&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;deploy&quot;</span><span class="p p-Indicator">,</span>
+    <span class="s">&quot;persist&quot;</span><span class="p p-Indicator">:</span> <span class="nv">true</span><span class="p p-Indicator">,</span>
+    <span class="s">&quot;declaration&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+        <span class="s">&quot;class&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;ADC&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;schemaVersion&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;3.7.0&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;id&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;example-declaration-01&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;label&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Task9&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;remark&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Task</span><span class="nv"> </span><span class="s">9</span><span class="nv"> </span><span class="s">-</span><span class="nv"> </span><span class="s">Delete</span><span class="nv"> </span><span class="s">Tenants&quot;</span><span class="p p-Indicator">,</span>
+        <span class="s">&quot;target&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+            <span class="s">&quot;hostname&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;BOS-vBIGIP01.termmarc.com&quot;</span>
+        <span class="p p-Indicator">},</span>
+<span class="hll">        <span class="s">&quot;Task1&quot;</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span>
+</span><span class="hll">            <span class="s">&quot;class&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;Tenant&quot;</span>
+</span><span class="hll">        <span class="p p-Indicator">}</span>
+</span>    <span class="p p-Indicator">}</span>
+<span class="p p-Indicator">}</span>
+</pre></div>
+</td></tr></table></div>
+<ol class="arabic simple" start="3">
+<li><p>Check the tenant/application(s) has been correctly removed from the BIG-IP and BIG-IQ.</p></li>
+</ol>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab3.html" title="Lab 5.3: Deploying AS3 Templates on BIG-IQ" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab5.html" title="Lab 5.5: FQDN and Service Discovery" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

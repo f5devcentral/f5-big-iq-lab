@@ -1,0 +1,10 @@
+GET /rstats/?id=d4&c=im&phg=5tb1u0H9TN63 HTTP/1.1
+accept-language=en-US,en;q=0.8
+accept-encoding=gzip, deflate, sdch
+fps-license=9ae0daaf
+connection=close
+accept=image/webp,image/*,*/*;q=0.8
+user-agent=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36
+host=10.59.140.218
+referer=http://www.danserver.com/Demo%20Site.htm
+

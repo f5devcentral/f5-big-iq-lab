@@ -1,0 +1,4 @@
+GET /rstats/?client_ip=192.168.101.37&client_request_uri=http://10.64.6.242%2fLogin.aspx&fpm_additional_info=&fpm_alert_component=0&fpm_alert_details=Alert+on+script+element.configured%3d0%2cobserved%3d2&fpm_alert_id=d4&fpm_alert_type=2&fpm_guid=&fpm_license_id=9ae0daaf&fpm_score=50&fpm_transaction_data=&fpm_username=&http_referrer=http%3a%2f%2f10.64.6.242%2fLogin.aspx HTTP/1.1
+host=vAlert
+connection=Keep-Alive
+

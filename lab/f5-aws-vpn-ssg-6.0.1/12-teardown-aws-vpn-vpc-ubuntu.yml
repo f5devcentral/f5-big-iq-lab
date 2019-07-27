@@ -1,0 +1,26 @@
+---
+# Delete AWS resource
+- name: Delete AWS Resources
+  hosts: localhost
+  vars_files: 
+    - ./config.yml 
+  tasks:
+    - name: Delete CF Ubuntu Stack
+      cloudformation:
+        stack_name: "{{PREFIX}}-ubuntu-cf-stack"
+        state: absent
+
+    - name: Delete CF VPN Stack
+      cloudformation:
+        stack_name: "{{PREFIX}}-vpn-cf-stack"
+        state: absent
+
+    - name: Delete CF VPC ELB Stack
+      cloudformation:
+        stack_name: "{{PREFIX}}-vpc-elb-cf-stack"
+        state: absent
+
+    - name: Delete directory
+      file: path=./cache/{{PREFIX}} state=absent
+
+...

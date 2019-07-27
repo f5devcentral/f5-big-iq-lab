@@ -1,0 +1,124 @@
+---
+- name: BIG-IQ and AS3 Lab - Task 3a - HTTPS Application with Web Application Firewall
+  hosts: "{{ env }}"
+  vars_files:
+    - inventory/group_vars/{{ env }}.yml
+
+  tasks: 
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq_<user>.json)
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: "{{ lookup('file','{{ user }}') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: Task 3a - HTTPS Application with Web Application Firewall - POST /mgmt/shared/appsvcs/declare?async=true
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare?async=true
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body:
+          # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          class: AS3
+          action: deploy
+          persist: true
+          declaration:
+            class: ADC
+            schemaVersion: "{{ as3_schemaVersion }}"
+            id: isc-lab
+            label: Task3a
+            remark: Task 3a - HTTPS Application with WAF
+            target:
+              hostname: "{{ bigip_target }}"
+            Task3a:
+              class: Tenant
+              MyWebApp3waf:
+                class: Application
+                template: https
+                statsProfile:
+                  class: Analytics_Profile
+                  collectClientSideStatistics: true
+                  collectOsAndBrowser: false
+                  collectMethod: false
+                serviceMain:
+                  class: Service_HTTPS
+                  virtualAddresses:
+                  - "{{ task3a_vs }}"
+                  pool: web_pool
+                  profileAnalytics:
+                    use: statsProfile
+                  serverTLS: webtls
+                  policyWAF:
+                    bigip: "{{ task3a_policyWAF }}"
+                  securityLogProfiles:
+                  - bigip: "/Common/templates-default"
+                web_pool:
+                  class: Pool
+                  monitors:
+                  - http
+                  members:
+                  - servicePort: 80
+                    serverAddresses:
+                    - "{{ task3a_node1 }}"
+                    - "{{ task3a_node2 }}"
+                    shareNodes: true
+                webtls:
+                  class: TLS_Server
+                  certificates:
+                  - certificate: webcert
+                webcert:
+                  class: Certificate
+                  certificate:
+                    bigip: "/Common/default.crt"
+                  privateKey:
+                    bigip: "/Common/default.key"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - debug:
+        var: json_response.json
+
+### LOOP TO CHECK THE TASK - DO NOT MODIFY BELOW
+
+    - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+
+    - debug:
+        var: json_response_task.json
+
+    - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+      until: "json_response_task.json.results[0].message != 'in progress'"
+      retries: 20
+      delay: 30
+
+    - debug:
+        var: json_response_task.json

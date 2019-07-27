@@ -1,0 +1,13 @@
+##################################################################################################
+###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
+##################################################################################################
+# For Ansible SSH BIG-IP and BIG-IQ
+ansible_ssh_user: "admin"
+ansible_ssh_pass: "purple123"
+
+BIGIQ_HOST: localhost:8100
+BIGIQ_URI: http://{{BIGIQ_HOST}}
+BIGIQ_USER: admin
+BIGIQ_PWD: "purple123"
+
+SSG_NAME: "vmware-ssg"

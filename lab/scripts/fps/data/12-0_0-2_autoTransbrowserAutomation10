@@ -1,0 +1,9 @@
+GET /rstats/?client_request_uri=http://10.64.6.67%2fLogin10.aspx&fpm_additional_info=&fpm_alert_component=2&fpm_alert_details=12&fpm_alert_id=d4&fpm_alert_type=0&fpm_guid=zs8fvjf5gorl&fpm_score=10&fpm_transaction_data=password%3d12345678&http_referrer=%2fLogin10.aspx HTTP/1.1
+fps-license=9ae0daaf
+x-forwarded-for=192.168.101.37
+connection=Keep-Alive
+host=vAlert
+fps-geoip=AS IN {Andhra Pradesh}
+cookie=
+fps-username=user
+

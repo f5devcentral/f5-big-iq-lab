@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 4.1: Create multiple changes. Deploy single change</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 4.1: Create multiple changes. Deploy single change"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 4.1: Create multiple changes. Deploy single change &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 4.2: Deploy multiple changes and restore single change" href="lab2.html" />
+    <link rel="prev" title="Module 4: Partial Deployment &amp; Partial Restore" href="module4.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 4.1: Create multiple changes. Deploy single change</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class5.html">Class 5: BIG-IQ Device Management</a>
+              &gt; <a href="module4.html">Module 4: Partial Deployment &amp; Partial Restore</a>
+
+          <span class="right">
+             <a href="../../_sources/class5/module4/lab1.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-4-1-create-multiple-changes-deploy-single-change">
+<h1>Lab 4.1: Create multiple changes. Deploy single change<a class="headerlink" href="#lab-4-1-create-multiple-changes-deploy-single-change" title="Permalink to this headline">¶</a></h1>
+<p>The user has the ability to select a specific change out of many made for deploy. We will try to add an additional node to the existing pool in this task.</p>
+<p><strong>Take a snapshot</strong></p>
+<p>Before we start to deploy our first change, we will need to take a snapshot on the current configurations of the BIG-IQ, so we have a reference point to compare before and after the change.</p>
+<ul class="simple">
+<li><p>From the Deployment tab on the top, click on the left SNAPSHOTS &gt;&gt; Local Traffic &amp; Network on the left,</p></li>
+<li><p>Click on Create under Snapshot – Local Traffic &amp; Network title.</p></li>
+<li><p>Enter the name: <strong>Snapshot-Before-Deployment</strong>, then click on Create button on the lower right.</p></li>
+</ul>
+<p><strong>Create multiple changes</strong></p>
+<ul class="simple">
+<li><p>1<sup>st</sup> change</p></li>
+</ul>
+<p>We will first add a pool member to app1pool</p>
+<p>From the tab Configuration, click on LOCAL TRAFFIC &gt; Pools, enter “app1pool” in the upper right Filter and search, select a pool by clicking on name “app1pool” on either BOS-vBIGIP01 or 02.</p>
+<p><a class="reference internal" href="../../_images/image110.png"><img alt="image1" src="../../_images/image110.png" style="width: 6.49583in; height: 4.47500in;" /></a></p>
+<p>Click on New Member, select from Existing Node “app1node2” on port 80 HTTP</p>
+<p><a class="reference internal" href="../../_images/image26.png"><img alt="image2" src="../../_images/image26.png" style="width: 6.49583in; height: 4.87500in;" /></a></p>
+<p>Leave everything else default, and click on “Save and Close” on lower right</p>
+<p>We have just made a change to the BIG-IQ configuration for app1pool on the BOS HA pair.</p>
+<ul class="simple">
+<li><p>2<sup>nd</sup> change</p></li>
+</ul>
+<p>Now we will make a few changes on another pool “app2pool”.</p>
+<p>First, we will create a New Monitor <strong>mon-https</strong>.</p>
+<p>Click into Configuration &gt; LOCAL TRAFFIC &gt; Monitors and then click on “Create” button.</p>
+<p><a class="reference internal" href="../../_images/image33.png"><img alt="image3" src="../../_images/image33.png" style="width: 6.22917in; height: 2.67708in;" /></a></p>
+<dl class="simple">
+<dt>New Monitor</dt><dd><ul class="simple">
+<li><p>Name: <strong>mon-https</strong></p></li>
+<li><p>Type: <strong>HTTPS</strong></p></li>
+<li><p>Monitor template: <strong>https</strong></p></li>
+<li><p>username: <strong>admin</strong></p></li>
+<li><p>password: <strong>admin</strong> and confirm password.</p></li>
+</ul>
+</dd>
+</dl>
+<p>Click “Save and Close”</p>
+<p><a class="reference internal" href="../../_images/image43.png"><img alt="image4" src="../../_images/image43.png" style="width: 6.48958in; height: 4.21875in;" /></a></p>
+<ol class="arabic simple" start="2">
+<li><p>Next, we will add the new monitor to the app2pool.</p></li>
+</ol>
+<p>Add newly created Health Monitor <strong>mon-https</strong> to Pool “app2pool”</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Under Configuration &gt; LOCAL TRAFFIC &gt; Pools, search app2pool in the upper right filter</p></li>
+<li><p>Select a pool by clicking on name “app2pool” on either BOS-vBIGIP01 or 02</p></li>
+<li><p>On Health Monitors, select /Common/mon-https</p></li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="../../_images/image53.png"><img alt="image5" src="../../_images/image53.png" style="width: 6.50000in; height: 4.22917in;" /></a></p>
+<p>Click on New Member in Resources section and add a new pool member app2node2:80 to app2pool.</p>
+<p><a class="reference internal" href="../../_images/image63.png"><img alt="image6" src="../../_images/image63.png" style="width: 6.50000in; height: 4.92361in;" /></a></p>
+<p>Click Save and Close to add the pool member, and then click on Save and Close again to complete the change to the app2pool.</p>
+<p>Now that we made multiple changes, a new member to pool app1pool, a new mon-https monitor, the association of monitor to the app2pool, and a new member to app2pool.</p>
+<ol class="arabic simple" start="3">
+<li><p>Next, we will create evaluation and deploy one of these changes we just made above.</p></li>
+</ol>
+<p>Click on top Deployment tab, select under EVALUATE &amp; DEPLOY: Local Traffic &amp; Network</p>
+<p>Click Create under Evaluations and enter the following:</p>
+<blockquote>
+<div><p>Name: <strong>partial-deploy</strong></p>
+<p>From Evaluation &gt; Source Scope, Select “<strong>Partial Changes</strong>”</p>
+<p>From Source Objects &gt; Available, select “Pools”, from pool list, select <strong>only</strong> “app1pool” for Both BOS-vBIGIP01 &amp; 02, and add them to Selected on the right</p>
+<p>Under Target Devices, click “Find Relevant Devices”, select both and add to right</p>
+<p>Click “Create” to complete</p>
+</div></blockquote>
+<p><a class="reference internal" href="../../_images/image73.png"><img alt="image7" src="../../_images/image73.png" style="width: 6.49583in; height: 2.84583in;" /></a></p>
+<p>After the evaluation is done, you can click on the “view” link under the Difference column for “partial-deployment” evaluation.</p>
+<p><a class="reference internal" href="../../_images/image83.png"><img alt="image8" src="../../_images/image83.png" style="width: 6.50000in; height: 3.32645in;" /></a></p>
+<p><a class="reference internal" href="../../_images/image910.png"><img alt="image9" src="../../_images/image910.png" style="width: 6.50000in; height: 3.50000in;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Only changes to “app1pool” will be deployed. The monitor change on app2pool will not be deployed.</p>
+</div>
+<p>Now let’s deploy the change.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Cancel to dismiss the popup window and click on Deploy under Evaluation</p></li>
+<li><p>Confirm by click on Deploy button again.</p></li>
+</ul>
+</div></blockquote>
+<p><a class="reference internal" href="../../_images/image103.png"><img alt="image10" src="../../_images/image103.png" style="width: 6.50000in; height: 3.65625in;" /></a></p>
+<p>After deployment is complete, click into the “partial-deploy” to view the details of the deployment.</p>
+<p>You can see that the change went in is only the addition of the pool member which is the first change. The change on mon-https monitor did not get pushed to BIG-IP, because it was not selected as the Partial Deploy.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The deployment could fail if the targeted BIG-IP devices are not in full sync on configurations, due to timeout on waiting for sync to complete on target devices. Ensure the devices are in full sync before deploying changes.</p>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="module4.html" title="Module 4: Partial Deployment &amp; Partial Restore" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab2.html" title="Lab 4.2: Deploy multiple changes and restore single change" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

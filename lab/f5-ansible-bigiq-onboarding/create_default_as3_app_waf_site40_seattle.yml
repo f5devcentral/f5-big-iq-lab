@@ -1,0 +1,131 @@
+---
+- name: BIG-IQ and AS3 Lab - Example Demo App - HTTP Application Service
+  hosts: all
+  connection: local
+
+  tasks: 
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login
+      uri:
+        url: https://10.1.1.4/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: "{{ lookup('file','auth_bigiq_paul.json') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: HTTP Application Service - POST /mgmt/shared/appsvcs/declare?async=true
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body:
+          # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          class: AS3
+          action: deploy
+          persist: true
+          declaration:
+            class: ADC
+            schemaVersion: 3.7.0
+            id: mail-declaration-01
+            label: mail
+            remark: Mail Application Service
+            target:
+              hostname: SEA-vBIGIP01.termmarc.com
+            mail:
+              class: Tenant
+              site40waf:
+                class: Application
+                template: https
+                statsProfile:
+                  class: Analytics_Profile
+                  collectClientSideStatistics: true
+                  collectOsAndBrowser: false
+                  collectMethod: false
+                serviceMain:
+                  class: Service_HTTPS
+                  virtualAddresses:
+                  - "10.1.10.140"
+                  profileHTTP:
+                    use: "http_site40"
+                  pool: web_pool
+                  profileAnalytics:
+                    use: statsProfile
+                  serverTLS: webtls
+                  policyWAF:
+                    bigip: "/Common/asm-lab-2019"
+                  securityLogProfiles:
+                    - bigip: "/Common/asm-lab-2019"
+                http_site40:
+                  class: HTTP_Profile
+                  label: http_site40
+                  remark: http_site40
+                  trustXFF: true
+                  xForwardedFor: false
+                web_pool:
+                  class: Pool
+                  monitors:
+                  - http
+                  members:
+                  - servicePort: 80
+                    serverAddresses:
+                    - "10.1.20.140"
+                    - "10.1.20.141"
+                    shareNodes: true
+                webtls:
+                  class: TLS_Server
+                  certificates:
+                  - certificate: webcert
+                webcert:
+                  class: Certificate
+                  certificate:
+                    bigip: "/Common/default.crt"
+                  privateKey:
+                    bigip: "/Common/default.key"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - debug:
+        var: json_response.json
+
+### LOOP TO CHECK THE TASK - DO NOT MODIFY BELOW
+
+    - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+
+    - debug:
+        var: json_response_task.json
+
+    - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+      until: "json_response_task.json.results[0].message != 'in progress'"
+      retries: 20
+      delay: 30
+
+    - debug:
+        var: json_response_task.json

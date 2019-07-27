@@ -1,0 +1,33 @@
+---
+- name: Add BIG-IPs to BIG-IQ
+  hosts: all
+  connection: local
+  vars_files:
+    - inventory/group_vars/sjc-bigiq-cm-01.yml
+  roles:
+    - { role: f5devcentral.f5ansible }
+  
+  tasks:
+    - name: Discover BIG-IP 1 device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip1 }}"
+        device_username: "{{ bigip1user }}"
+        device_password: "{{ bigip1pass }}"
+        conflict_policy: "{{ bigip1conflict }}"
+        device_conflict_policy: "{{ bigip1device_conflict }}"
+        versioned_conflict_policy: "{{ bigip1versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip1device_statistics_enable }}"
+          interval: "{{ bigip1device_statistics_interval }}"
+          zone: "{{ bigip1device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip1device_statistics_module1 }}"
+            - "{{ bigip1device_statistics_module2 }}"
+        modules: "{{ bigip1modules }}"
+      register: result
+      delegate_to: localhost

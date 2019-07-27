@@ -1,0 +1,31 @@
+---
+- name: Delete the application
+  hosts: bigiq-01
+  vars_files:
+    - ./config.yml
+  connection: local
+
+  tasks:
+    - name: Remove application
+      bigiq_application_https_waf:
+        provider:
+          server: "{{ hostvars[inventory_hostname].ansible_host }}"
+          user: "{{ hostvars[inventory_hostname].f5_username }}"
+          password: "{{ hostvars[inventory_hostname].f5_password }}"
+          validate_certs: "{{ hostvars[inventory_hostname].validate_certs }}"
+        name: "{{APP_NAME}}"
+        wait: yes
+        state: absent
+      delegate_to: localhost
+
+    - name: Remove application
+      bigiq_application_https_offload:
+        provider:
+          server: "{{ hostvars[inventory_hostname].ansible_host }}"
+          user: "{{ hostvars[inventory_hostname].f5_username }}"
+          password: "{{ hostvars[inventory_hostname].f5_password }}"
+          validate_certs: "{{ hostvars[inventory_hostname].validate_certs }}"
+        name: "{{APP_NAME}}"
+        wait: yes
+        state: absent
+      delegate_to: localhost

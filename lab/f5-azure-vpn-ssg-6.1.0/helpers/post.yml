@@ -1,0 +1,45 @@
+---
+# Gracefully accept 400 Duplicate key responses
+# Treat a duplicate key as an indication that tthe resource was already created
+# This is intended only as a handler for POST requests
+- uri:
+    url: "{{item.url}}"
+    method: GET
+  register: get_response
+
+- set_fact:
+    item_name: "{{item.body.name}}"
+  when: item.identifier_name is not defined
+
+- set_fact:
+    item_name: "{{item.body[item.identifier_name]}}"
+  when: item.identifier_name is defined
+
+- set_fact:
+    jq_command: "json.items[?name=='{{item_name}}']"      
+
+- set_fact:            
+    duplicates: "{{get_response|json_query(jq_command)}}"
+
+- block:
+    - uri: 
+        url: "{{item.url}}"
+        method: POST
+        body_format: json
+        body: "{{item.body}}"
+        status_code: 200,400
+      register: response
+
+    - name: Fail when not 200 and not duplicate
+      fail: 
+        msg: Something went wrong with this {{response}}
+      when: response.status != 200 and 'Duplicate item' not in response.msg
+  when: duplicates|length == 0
+
+- set_fact: "{{item.var_name}}={{duplicates[0]}}"
+  when: item.var_name is defined and duplicates|length > 0
+
+- set_fact: "{{item.var_name}}={{response.json}}"
+  when: item.var_name is defined and duplicates|length == 0
+  
+...

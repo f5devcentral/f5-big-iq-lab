@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Class 6: BIG-IQ ADC Management</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Class 6: BIG-IQ ADC Management"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Class 6: BIG-IQ ADC Management &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Introduction class 6" href="intro.html" />
+    <link rel="prev" title="Lab 9.2: Device Onboarding with BIG-IQ" href="../class5/module9/lab2.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Class 6: BIG-IQ ADC Management</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+
+          <span class="right">
+             <a href="../_sources/class6/class6.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="class-6-big-iq-adc-management">
+<h1>Class 6: BIG-IQ ADC Management<a class="headerlink" href="#class-6-big-iq-adc-management" title="Permalink to this headline">¶</a></h1>
+<p>In this class, we will focus on Application Delivery Controller (ADC).</p>
+<p>To learn more on application delivery controllers, - <a class="reference external" href="https://devcentral.f5.com/articles/what-is-an-application-delivery-controller-part-1-24742">DevCentral</a>.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introduction class 6</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module1/module1.html">Module 1: Application Delivery Controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module2/module2.html">Module 2: SSL Certificate Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module3/module3.html">Module 3: Local Traffic Management Virtual Servers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="module4/module4.html">Module 4: Version Specific Objects</a></li>
+</ul>
+</div>
+<hr class="docutils" />
+<p>Let’s have a look at the <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Tab</span></code> in BIG-IQ.</p>
+<a class="reference internal image-reference" href="../_images/img_module1_11.png"><img alt="../_images/img_module1_11.png" class="align-center" src="../_images/img_module1_11.png" style="width: 1349.5px; height: 761.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>LOCAL TRAFFIC</strong></p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Click on the virtual server menu.  Show the state and availability.  Show the ability to sort the column in the table.  Show the ability to search and filter the table.</p></li>
+<li><p>Click on a virtual server that is installed on the clustered BIG-IPs (01 and 02), like the HR virtual server.  Point out that the editing view is very similar to the view on the BIG-IP.  Change something like the port and save the change.  Point out that BIG-IQ has updated the staged configuration for the virtual server on both cluster devices.</p></li>
+<li><p>Show the ability to clone a virtual server to create one that is very similar to an existing one.  Cloned virtuals can be created on the same device/cluster or on a different device/cluster.  Note: with the service template feature, this feature may become less used/useful, as this only clones the virtual, not all of the application components.</p></li>
+<li><p>Show the ability to bulk attach iRules.</p></li>
+<li><p>Show the ability to select one or more virtuals and create a partial deployment.</p></li>
+<li><p>Show the ability to edit iRules.  There is no context checking in BIG-IQ, but depending on the browser, you might see some editing assistance.</p></li>
+<li><p>Review the rest of the LTM components</p></li>
+<li><p>Click on the certificate management area</p>
+<ul>
+<li><p>Click on Certs and Keys: This is where we can manage traffic certs to be used in SSL profiles.</p></li>
+<li><p>Create button allows you to create self-signed certs or create a CSR to send off to a CA for a signed cert.</p></li>
+<li><p>After you receive the signed cert, you can click the Import button to import the cert, key, or PKCS#12 bundle.</p></li>
+<li><p>The generate report button exports a CSV file of all of the metadata about the certs that are on the BIG-IQ.</p></li>
+<li><p>The Alert Settings button takes you to the page to configure the alerts about certificate expiration.</p>
+<ul>
+<li><p>The currently available alerts are N days ahead of certificate expiration and an alert that the certificates has expired.</p></li>
+<li><p>These alerts are currently send via email only.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>The More button exposed additional options to clone or delete a certificate.</p></li>
+<li><p>The status column in the table gives a visual indication if the cert has expired, will expire soon, or if the expiration is significantly in the future (beyond the alert threshold that is set for N days alert)</p></li>
+<li><p>The state column indicates if the actual cert and key exist on the BIG-IQ or just the metadata.  Only the metadata can be discovered/imported from the BIG-IP, as there is no REST interface on the BIG-IP to pull the full cert and key at this time.  Certs and keys create or imported on BIG-IQ will show a “Managed” state and discovered certs will show an Unmanaged state until someone manually exports the cert and key from the BIG-IP GUI (save file or copy and paste).  You can accomplish this by clicking on the name of an unmanaged cert and importing the cert and key.</p></li>
+<li><p>If you click on the name of a cert that is Managed, you can renew the cert using the button in the upper right.  For self-signed certs, you are presented the self-signed cert page and for CA signed certs, you are brought to a CSR page.  You can change a cert from self-signed to CA signed here as well.</p></li>
+<li><p>Click on the row (not the name) for the “ f5test.com_self-signed_2015” cert.  The preview pane pops up at the bottom left and the bottom right allows you to show the items/objects related to this object. Click the Show button, to reveal the related items.  Anything that shows as a link will take you to the configuration page for that object.</p></li>
+<li><p>Click on Certificate Revocation Lists – This is where you can import CRLs from a BIG-IP.</p></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><p>Click on Eviction Policies – this is where you can configure Eviction Policies for use in various modules.</p></li>
+<li><p>General Settings – This is where you can associate an Eviction Policy with a device, as well as set the Default Per VS SYN Check Threshold, Global SYN Check Threshold, and Enable Hardware VLAN SYN Cookie Protection.</p></li>
+<li><p>Logs – This is where you can configure Log Filters, Log Publishers, and Log Destinations.  Some of these were available in Shared Security in prior releases, but have been moved to the LTM area in 5.4.</p></li>
+<li><p>Pinning Policies – This is where you can manage what objects are pinned to a device for LTM.  Objects that are pinned will be pushed to a device or will remain installed on a device, even if they are not used/referenced in the configuration for that device.</p></li>
+</ul>
+<p>Let’s have a look at the <code class="docutils literal notranslate"><span class="pre">Deployment</span> <span class="pre">Tab</span></code> in BIG-IQ.</p>
+<a class="reference internal image-reference" href="../_images/img_module1_21.png"><img alt="../_images/img_module1_21.png" class="align-center" src="../_images/img_module1_21.png" style="width: 1347.5px; height: 760.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>DEPLOYMENT TRACKING</strong></p>
+<p>This area shows the last deployment for a device in a module area.  Deployments are tracked separately from partial deployments.</p>
+<p><strong>EVALUATE AND DEPLOY</strong></p>
+<p>This is the area where changes are deployed from the BIG-IQ to the BIG-IP.  This area is also broken out by module area.  There are two main parts of this change process: evaluate and deploy.  During the evaluate process, the REST API is used to pull the latest configuration from the BIG-IP(s) that are involved and compare that configuration to a snapshot of the BIG-IQ configuration.  The output of this evaluation is presented to the user to review the diff of the changes that were discovered as part of the evaluation process.  BIG-IQ also evaluates the configuration for verification warnings or critical errors.  Verification warnings are things that might cause configuration issues, like a log profile not being attached to a virtual, but they do not block the deployment.  Critical errors are issues that will cause issues or fail the deployment, like a VLAN that is referenced doesn’t exist on the device, and BIG-IQ will not allow you to deploy these changes until the configuration is fixed.
+The “Source” for the evaluation can be done against the “Current Changes” that are staged in the BIG-IQ configuration or against an “Existing Snapshot.”  Deployments from an “Existing Snapshot” allow you to rollback configuration, or part of the configuration, for a module area to a prior point in time.
+Evaluations can be “scoped” against the entire configuration “All Changes” or a subset of the configuration “Partial Changes.”  If you choose “All Changes” BIG-IQ is going to evaluate differences for the entire configuration that BIG-IQ can manage for the module area for the selected BIG-IP devices. In 5.4 and above, when you choose “All Changes” you are also asked if you want to “Remove unused objects” or “Keep unused objects.”  An unused object is an object that is not referenced by another object in the BIG-IP configuration. If you choose to “remove unused objects,” the BIG-IQ will delete the objects from the BIG-IP configuration, while retaining them on the BIG-IQ.  If you choose “Partial Changes,” you select the specific objects that you want to evaluate for changes.  As part of this selection, you get to choose if you want to include supporting objects as part of the evaluation.  An example of a supporting object is the profile that is referenced by a virtual server.  If you select a virtual server and select to include supporting objects, the associated profile will also be evaluated.
+Once the evaluation step is complete, you can review the differences, to make sure the changes that have been detected are the changes that you want to make.  Finally, you can deploy the changes at that point, schedule the changes to happen later, or leave the evaluation for deployment at a later time by you or someone else with the deployment privilege.
+You can choose to create a deployment directly as well.  It will still go through the evaluate process, but will allow you to deploy in a single step.  The downside is that you don’t get a chance to review the differences before the deployment happens.</p>
+<p><strong>SNAPSHOTS</strong></p>
+<p>This area allows you to manage and compare the snapshots created by the BIG-IQ system.  Snapshots are automatically created by the evaluation and deployment process described above, but they can be created as part of configuration import or in an ad-hoc manner in this area.  These snapshots are a reference to the versions of the objects that are stored in the BIG-IQ database at the time the snapshot is taken.  You can compare two snapshots to see what differences there are between the two points in time the snapshots were taken.  The snapshots can be used as part of a deployment activity to roll back the configuration of an object or objects to a prior version and they can also be used to roll back the BIG-IQ configuration to a prior point in time.</p>
+<p><strong>RESTORE</strong></p>
+<p>The restore area allows you to restore all or part of the BIG-IQ configuration to a prior point in time.</p>
+<p><strong>QUICK UPDATES</strong>
+This area shows the list enable, disable, and force offline activities that have been launched by users.  These activities can be launched directly from the configuration area for virtual servers and pool members, by users with the right privileges.</p>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="../class5/module9/lab2.html" title="Lab 9.2: Device Onboarding with BIG-IQ" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="intro.html" title="Introduction class 6" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../_static/js/index.js"></script>
+  <script src="../_static/js/jquery.appear.js"></script>
+  <script src="../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

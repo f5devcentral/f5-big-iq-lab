@@ -1,0 +1,10 @@
+POST /rstats/ HTTP/1.1
+content-length=803
+accept-encoding=gzip
+current-type=application/x-www-form-urlencoded
+connection=Keep-Alive
+user-agent=Dalvik/2.1.0 (Linux; U; Android 5.1; Android SDK built for x86 Build/LKY45)
+host=10.64.6.252
+content-type=application/x-www-form-urlencoded
+
+fpm_alert_type=10&fpm_alert_component=2&fpm_alert_id=d5&fpm_guid=74662118D9145EAB3C848F8FD382449C&fpm_score=100&fpm_alert_details=%7B%22msVersion%22%3A%221.2.1.0%22%2C%22version%22%3A%225.1%22%2C%22threshold%22%3A0%2C%22imei%22%3A%22000000000000000%22%2C%22imsi%22%3A%2289014103211118510720%22%2C%22locationLong%22%3A0%2C%22locationLat%22%3A0%2C%22realDevice%22%3Afalse%2C%22vsigScore%22%3A100%2C%22vsigThreatDetected%22%3Atrue%2C%22resolvedHash%22%3A%223086D4BE17608F89C0523ED008F111B9%22%2C%22definedHash%22%3A%22%22%2C%22vsecScore%22%3A20%2C%22vsecThreatDetected%22%3Atrue%2C%22untrustedThreatDetected%22%3Atrue%2C%22untrustedScore%22%3A20%2C%22outdatedOSScore%22%3A0%2C%22vjailScore%22%3A0%2C%22vjailThreatDetected%22%3Afalse%7D&fpm_resolved_value=3086D4BE17608F89C0523ED008F111B9&fpm_defined_value=

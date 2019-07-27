@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 2.3: Create Application using Service Catalog Template</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 2.3: Create Application using Service Catalog Template"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 2.3: Create Application using Service Catalog Template &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 2.4: Security workflow (Service Catalog Templates)" href="lab4.html" />
+    <link rel="prev" title="Lab 2.2: Create custom security policy &amp; Application Service Catalog Template" href="lab2.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 2.3: Create Application using Service Catalog Template</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a>
+              &gt; <a href="module2.html">Module 2: BIG-IQ Application Templates &amp; Deployment (Service Catalog)</a>
+
+          <span class="right">
+             <a href="../../_sources/class1/module2/lab3.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-2-3-create-application-using-service-catalog-template">
+<h1>Lab 2.3: Create Application using Service Catalog Template<a class="headerlink" href="#lab-2-3-create-application-using-service-catalog-template" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.</p>
+</div>
+<p>Connect as <strong>paula</strong> to create a new application, and click on <em>Create</em>, select the template previously created <code class="docutils literal notranslate"><span class="pre">f5-HTTPS-WAF-lb-template-custom1</span></code>.</p>
+<p>Type in a Name for the application you are creating.</p>
+<ul class="simple">
+<li><p>Application Name: <code class="docutils literal notranslate"><span class="pre">site18.example.com</span></code></p></li>
+</ul>
+<p>To help identify this application when you want to use it later, in the Description field, type in a brief description for the application you are creating.</p>
+<ul class="simple">
+<li><p>Description: <code class="docutils literal notranslate"><span class="pre">My</span> <span class="pre">First</span> <span class="pre">Application</span> <span class="pre">on</span> <span class="pre">F5</span> <span class="pre">Cloud</span> <span class="pre">Edition</span></code></p></li>
+</ul>
+<p>Type  the domain of your application (then the ASM policy will always be transparent for this domain)</p>
+<ul class="simple">
+<li><p>Domain Names: <code class="docutils literal notranslate"><span class="pre">site18.example.com</span></code></p></li>
+</ul>
+<p>For Device, select the name of the device you want to deploy this application to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)</p>
+<ul class="simple">
+<li><p>BIG-IP: Select <code class="docutils literal notranslate"><span class="pre">BOS-vBIGIP01.termmarc.com</span></code> and check <code class="docutils literal notranslate"><span class="pre">Collect</span> <span class="pre">HTTP</span> <span class="pre">Statistics</span></code></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_1.png"><img alt="../../_images/img_module2_lab3_1.png" class="align-center" src="../../_images/img_module2_lab3_1.png" style="width: 1376.5px; height: 818.5px;" /></a>
+<p>Determine the objects that you want to deploy in this application.
+To omit any of the objects defined in this template, click the  (X) icon that corresponds to that object.
+To create additional copies of any of the objects defined in this template, click the  (+) icon that corresponds to that object.</p>
+<p>In the example, fill out the Server’s IP addresses/ports (nodes) and virtual servers names, IPs and ports.</p>
+<ul class="simple">
+<li><p>Servers (Pool Member): <code class="docutils literal notranslate"><span class="pre">10.1.20.118</span></code> and <code class="docutils literal notranslate"><span class="pre">10.1.20.119</span></code></p></li>
+<li><p>Service Port: <code class="docutils literal notranslate"><span class="pre">80</span></code></p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nodes and pool members are “device specific objects”</p>
+</div>
+<ul class="simple">
+<li><p>Name WAF &amp; LB (Virtual Server): <code class="docutils literal notranslate"><span class="pre">vs_site18.example.com_https</span></code></p></li>
+<li><p>Destination Address: <code class="docutils literal notranslate"><span class="pre">10.1.10.118</span></code></p></li>
+<li><p>Destination Network Mask: <code class="docutils literal notranslate"><span class="pre">255.255.255.255</span></code></p></li>
+<li><p>Service Port: <code class="docutils literal notranslate"><span class="pre">443</span></code></p></li>
+<li><p>Name HTTP Redirect (Virtual Server): <code class="docutils literal notranslate"><span class="pre">vs_site18.example.com_redirect</span></code></p></li>
+<li><p>Destination Address: <code class="docutils literal notranslate"><span class="pre">10.1.10.118</span></code></p></li>
+<li><p>Destination Network Mask: <code class="docutils literal notranslate"><span class="pre">255.255.255.255</span></code></p></li>
+<li><p>Service Port: <code class="docutils literal notranslate"><span class="pre">80</span></code></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_2.png"><img alt="../../_images/img_module2_lab3_2.png" class="align-center" src="../../_images/img_module2_lab3_2.png" style="width: 1378.5px; height: 818.5px;" /></a>
+<p>Then Click on Create (bottom right of the window).
+The Application is deployed.</p>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_3.png"><img alt="../../_images/img_module2_lab3_3.png" class="align-center" src="../../_images/img_module2_lab3_3.png" style="width: 1728.5px; height: 886.0px;" /></a>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In case the Application fails, connect as <strong>david</strong> (or <strong>marco</strong>) and go to Applications &gt; Application Deployments to have more details on the failure. You try retry in case of failure.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can tail the logs: /var/log/restjavad.0.log</p>
+</div>
+<p>In Paula’s Dashboard, she can see her Application.</p>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_4.png"><img alt="../../_images/img_module2_lab3_4.png" class="align-center" src="../../_images/img_module2_lab3_4.png" style="width: 958.5px; height: 465.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the Application and check the details (alarms, security enabled, configuration, …)</p>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_5.png"><img alt="../../_images/img_module2_lab3_5.png" class="align-center" src="../../_images/img_module2_lab3_5.png" style="width: 956.0px; height: 463.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on Traffic Management &gt; Configuration</p>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_6.png"><img alt="../../_images/img_module2_lab3_6.png" class="align-center" src="../../_images/img_module2_lab3_6.png" style="width: 957.5px; height: 463.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>A traffic generator located on the <em>Ubuntu Lamp Server</em> server, is sending good traffic every minute to the virtual servers.</p>
+</div>
+<p>Paula can update Application Health Alert Rules by clicking on the Health Icon on the top left of the Application Dashboard.</p>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_7.png"><img alt="../../_images/img_module2_lab3_7.png" class="align-center" src="../../_images/img_module2_lab3_7.png" style="width: 284.5px; height: 205.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_module2_lab3_8.png"><img alt="../../_images/img_module2_lab3_8.png" class="align-center" src="../../_images/img_module2_lab3_8.png" style="width: 841.0px; height: 649.5px;" /></a>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab2.html" title="Lab 2.2: Create custom security policy &amp; Application Service Catalog Template" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab4.html" title="Lab 2.4: Security workflow (Service Catalog Templates)" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

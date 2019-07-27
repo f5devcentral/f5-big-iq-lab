@@ -1,0 +1,3 @@
+[f5-test-bigiq]
+udf-bigiq-cm-01 ansible_host=root@10.1.1.4 ansible_ssh_pass=purple123
+udf-bigiq-dcd-01 ansible_host=root@10.1.1.6 ansible_ssh_pass=purple123

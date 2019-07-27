@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 1.3: View APM Audit logs and Dashboards</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 1.3: View APM Audit logs and Dashboards"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 1.3: View APM Audit logs and Dashboards &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Class 10: BIG-IQ DNS" href="../../class10/class10.html" />
+    <link rel="prev" title="Lab 1.2: Create a new VPN Access profile" href="lab2.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 1.3: View APM Audit logs and Dashboards</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a>
+              &gt; <a href="module3.html">Module 3: APM access and per-request policies</a>
+
+          <span class="right">
+             <a href="../../_sources/class9/module3/lab3.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-1-3-view-apm-audit-logs-and-dashboards">
+<h1>Lab 1.3: View APM Audit logs and Dashboards<a class="headerlink" href="#lab-1-3-view-apm-audit-logs-and-dashboards" title="Permalink to this headline">¶</a></h1>
+<p>In this workflow the Student will learn how to navigate through and use
+the BIG-IQ Centralized Management Access Monitoring tools to understand
+how they can benefit an Administrators day to day Access tasks and also
+how it can help with troubleshooting Access related issues.</p>
+<ul class="simple">
+<li><p>Navigate to Monitoring Audit Logs Access</p></li>
+</ul>
+<p><a class="reference internal" href="../../_images/image401.png"><img alt="image40" src="../../_images/image401.png" style="width: 6.49097in; height: 3.51875in;" /></a></p>
+<p>Note: In case you do not have any data in BIG-IQ, check the active
+session in Access tab in BIG-IP Boston Active cluster. If the session
+shows pending (blue), restart the apmd process on the BIG-IP (bigstart
+restart apmd).</p>
+<p>We will now walk through several different Dashboards available under
+the Access portion of BIG-IQ. During this exercise we will bring
+attention to several key areas of interest for Adminstrators.</p>
+<p>Start by following along the separate menu paths below to each sub-menu
+section for Access Dashboards:</p>
+<ul>
+<li><p>Navigate to Monitoring Dashboards Access</p></li>
+<li><p>View Access Summary</p>
+<p><a class="reference internal" href="../../_images/image412.png"><img alt="image41" src="../../_images/image412.png" style="width: 5.74642in; height: 3.22131in;" /></a></p>
+<p>Notice the layout provides a great overview of usage of the entire
+Access infrastructure of devices which are currently under management
+with BIG-IQ. This single page view provide a quick snapshot view of
+license usage, Geographic access usage, top users, Session counts and
+Denied Sign-Ins. There is a time slider at the top of the page
+allowing the Admin to apply constraints of the time period for which
+the graphs and session counts should display. Take notice of the
+current Session counts and Sign-In Denied count, then adjust the left
+time slider moving it to the right slightly. Then adjust the right
+slider moving it to the left slightly. You will notice the session
+counts have changed. Now notice from this point an Admin could
+quickly drill down into certain areas of interest for
+troubleshooting. Click on the Sign-in Denied number to review further
+details. On the lower portion of this page you will find a list of
+denied sessions. You can see the duration of the session for the
+given user along with the username, client ip, and in this example
+IP-Reputation matched that prevented access for many of the sessions.</p>
+</li>
+<li><p>Application Summary</p>
+<p><a class="reference internal" href="../../_images/image422.png"><img alt="image42" src="../../_images/image422.png" style="width: 5.62564in; height: 3.12295in;" /></a></p>
+<p>On the Application Summary screen we can see useage request for Top
+10 apps along with Bytes In/Out details and number of Unique Users
+per application. By clicking on an application name like Confluence
+we can drill down to the details for that specific application.</p>
+</li>
+<li><p>Federation -&gt; SAML -&gt;SP -&gt; SP Summary</p>
+<p><a class="reference internal" href="../../_images/image432.png"><img alt="image43" src="../../_images/image432.png" style="width: 5.33095in; height: 2.95082in;" /></a></p>
+<p>Federation is being used more widely these days. The BIG-IP Access
+Policy Manager can perform both SAML Service Provider as well as
+Identity Provider functions. In this summary screen we see the
+Federated Assertions for foreign Identity Providers for Services
+(Applications) hosted from the Access Policy Managers in the
+organization.</p>
+<p>Once again an Admin can use this screen to start diagnosing issues
+like Failed Assertions by clicking the lines in that section for
+drill down details.</p>
+</li>
+<li><p>Federation -&gt; SAML -&gt;IdP -&gt; IdP Summary</p>
+<p><a class="reference internal" href="../../_images/image442.png"><img alt="image44" src="../../_images/image442.png" style="width: 5.55220in; height: 3.69672in;" /></a></p>
+<p>In the IdP Summary screen we see when the BIG-IP Access Policy
+Manager is acting as the Identity Provider and providing assertions
+to external Service Provider hosted applications. Same drill
+down/troubleshooting benefits can be found here for the
+Administrators of the Access environment.</p>
+</li>
+<li><p>Remote Access -&gt; Network Access -&gt; Network Access Summary</p>
+<p><a class="reference internal" href="../../_images/image452.png"><img alt="image45" src="../../_images/image452.png" style="width: 5.78628in; height: 3.79508in;" /></a></p>
+<p>In the Network Access Summary screen you will notice something new
+between the user counts number at top and the graph below them. There
+are three TABS, Sessions, Connections, Bytes Transferred. You will
+currently be selected/presented with the Sessions Tab information.
+Click the Connections tab and review. Now click the Bytes Transferred
+tab. As of version 13.1 TMOS code that runs on the BIG-IPs the BIG-IQ
+5.4 can display these details for reporting and troubleshooting and
+capacity usage and planning.</p>
+</li>
+<li><p>Remote Access -&gt; Network Access -&gt; Network Access Usage</p>
+<p><a class="reference internal" href="../../_images/image461.png"><img alt="image46" src="../../_images/image461.png" style="width: 5.63562in; height: 2.88525in;" /></a></p>
+<p>This screen again is providing more detailed reporting of the Bytes
+In/Out/Transferred by given users for the Admin to utilize.</p>
+</li>
+<li><p>Remote Access -&gt; VDI Summary</p>
+<p><a class="reference internal" href="../../_images/image471.png"><img alt="image47" src="../../_images/image471.png" style="width: 4.54079in; height: 2.68033in;" /></a></p>
+<p>Many companies have implemented the use of Virtual Desktop
+Infrastructures of the years for deploying either individual
+published applications or full desktops for users. This summary
+screen provides reporting on the usage of those VDI objects being
+served through the BIG-IP Access Policy Manager working as a VDI
+Proxy for the three major flavors of VDI technology from Microsoft
+RDP, VMWare Horizon and Citrix XenApp/XenDesktop.</p>
+</li>
+<li><p>Sessions -&gt; Sessions Summary</p>
+<p><a class="reference internal" href="../../_images/image481.png"><img alt="image48" src="../../_images/image481.png" style="width: 5.66751in; height: 2.21311in;" /></a></p>
+<p>As we review the Session Summary screen you should notice under the
+ACTIVE column there are Green Dots for sessions that are currently
+active however this screen is displaying the list of all sessions
+even those denied sessions we reviewed earlier. You can click on the
+session ID to review the policy events for a given session.</p>
+</li>
+<li><p>Sessions -&gt; Active</p>
+<p><a class="reference internal" href="../../_images/image491.png"><img alt="image49" src="../../_images/image491.png" style="width: 5.33607in; height: 2.58012in;" /></a></p>
+<p>In this screen we are only reporting the Currently Active Sessions.
+Notice the check box to the left of eash session. You can click to
+check a box and the button above “Kill Selected Sessions” will be
+un-grayed allowing the Admin to kill the checked sessions. If the
+Admin were to click the check box in the Column header it would check
+all sessions boxes and the Kill All Sessions and/or Kill Selected
+Sessions buttons would then perform the kill on all sessions. In both
+scenarios the Admin is presented with a Confirmation Screen before
+actually killing those checked sessions.</p>
+</li>
+<li><p>Sessions -&gt; Bad IP Reputation</p>
+<p><a class="reference internal" href="../../_images/image501.png"><img alt="image50" src="../../_images/image501.png" style="width: 5.89531in; height: 7.63934in;" /></a></p>
+<p>In this section we can see the reported IP Reputation data for
+incoming requests to the APM Policies.</p>
+</li>
+<li><p>Sessions -&gt; Bowsers and OS</p>
+<p><a class="reference internal" href="../../_images/image512.png"><img alt="image51" src="../../_images/image512.png" style="width: 5.71040in; height: 3.10656in;" /></a></p>
+<p>This screen provide details of browser types and OSes being used to
+access the APM policies. This is great information if an organization
+has specific policies in place that stipulate which Browsers and OSes
+that support. The Admin can quickly see where they fall in line with
+those policies.</p>
+</li>
+<li><p>Sessions -&gt; By Geolocation</p>
+<p><a class="reference internal" href="../../_images/image522.png"><img alt="image52" src="../../_images/image522.png" style="width: 5.77749in; height: 3.49180in;" /></a></p>
+<p>This reporting screen provides a Heatmap displaying from where access
+attempts are being initiated from. If an organization only allowed or
+supported access from certain geographic regions this screen can
+provide quick details on possible bad actor attempts to the
+organizations Access infrastructure.</p>
+</li>
+<li><p>Endpoint Software -&gt; Endpoint Software Summary</p>
+<p><a class="reference internal" href="../../_images/image531.png"><img alt="image53" src="../../_images/image531.png" style="width: 5.79029in; height: 3.34426in;" /></a></p>
+<p>You may need to reset the Timeframe either by adjusting the sliders
+or using the Timeframe dropdown. This screen provides information of
+Endpoint Software in use by clients and detected via the Endpoint
+Inspection helper applications that run on clients systems and report
+back to the BIG-IP Access Policy Manager during access.</p>
+</li>
+<li><p>Endpoint Software -&gt; Endpoint Software Details</p>
+<p><a class="reference internal" href="../../_images/image541.png"><img alt="image54" src="../../_images/image541.png" style="width: 6.38622in; height: 1.81148in;" /></a></p>
+<p>This is another great troubleshooting screen to review versions of
+client AV software.</p>
+</li>
+<li><p>License Usage</p>
+<p><a class="reference internal" href="../../_images/image551.png"><img alt="image55" src="../../_images/image551.png" style="width: 6.08771in; height: 3.07377in;" /></a></p>
+<p>This screen provides an overview of the Access Policy Manager license
+usage for both Access Session licenses as well as Connectivity
+Session licenses per APM Device.</p>
+</li>
+<li><p>User Summary</p>
+<p><a class="reference internal" href="../../_images/image56.png"><img alt="image56" src="../../_images/image56.png" style="width: 5.97027in; height: 3.72951in;" /></a></p>
+<p>In the user summary screen one item that can be useful to an Admin is
+the Filter Search field by Username. If your organization has a large
+community of users accessing in many different methods or
+applications the ability to filter by username and drill into those
+sessions for a specific user are helpful for troubleshooting issues.</p>
+</li>
+</ul>
+<p>These were just a few of the screens available however taking the time
+to review this Monitoring Dashboards with live data can be helpful in
+getting familiar with Admin duties for Access Policy infrastructure
+using the BIG-IQ Centralized Manager.</p>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab2.html" title="Lab 1.2: Create a new VPN Access profile" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="../../class10/class10.html" title="Class 10: BIG-IQ DNS" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

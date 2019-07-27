@@ -1,0 +1,3 @@
+---
+bigip-01 ansible_ssh_host=10.1.1.7 bigip=10.1.1.7 hostname=ip-10-1-1-7.us-west-2.compute.internal externalNetwork=10.1.10.0/24 externalInterfacePrivateIp=10.1.10.7
+bigiq-01 ansible_ssh_host=admin@10.1.1.4 ansible_host=10.1.1.4 f5_username=admin f5_password="purple123" validate_certs=no

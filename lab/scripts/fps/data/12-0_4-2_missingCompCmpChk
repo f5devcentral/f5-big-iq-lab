@@ -1,0 +1,9 @@
+GET /rstats/?client_request_uri=http://10.57.140.201%2flogin.aspx&fpm_additional_info=&fpm_alert_component=2&fpm_alert_details=4&fpm_alert_id=d4&fpm_alert_type=4&fpm_guid=gxtqk5iv0ojh&fpm_score=0&fpm_transaction_data=&http_referrer=%2flogin.aspx HTTP/1.1
+fps-license=9ae0daaf
+x-forwarded-for=192.168.101.37
+connection=Keep-Alive
+host=vAlert
+fps-geoip=NA US {California}
+cookie=
+fps-username=
+

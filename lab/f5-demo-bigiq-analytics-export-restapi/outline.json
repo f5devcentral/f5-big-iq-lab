@@ -1,0 +1,9 @@
+{
+  "map": [
+    ["timeMillis", "timeMillis"],
+    ["transactions$avg-count-per-sec", "transactions$avg-count-per-sec"],
+    ["transaction-response-size$avg-value-per-sec", "transaction-response-size$avg-value-per-sec"],
+    ["transaction-request-size$avg-value-per-sec", "transaction-request-size$avg-value-per-sec"]
+  ],
+  "collection": "result"
+}

@@ -1,0 +1,29 @@
+---
+- name: Install and configure dependencies and verify environment
+  hosts: localhost
+  vars_files:
+    - ./config.yml
+  tasks:
+    - name: Configure AWS CLI
+      block:
+        - command: aws --version
+      rescue: 
+        - fail: 
+            msg: >
+              pip modules are not availble in your path. 
+              run `pip show awscli`. Add the directory under "Location:" to your path.
+
+    - name: Add secret key and secret key id
+      block:
+        - command: aws configure set aws_access_key_id {{AWS_ACCESS_KEY_ID}}
+        - command: aws configure set aws_secret_access_key {{AWS_SECRET_ACCESS_KEY}}
+        - command: aws configure set default.region {{DEFAULT_REGION}}
+        - command: aws ec2 describe-vpcs
+      rescue:
+        - debug: 
+            msg: |
+              There is a problem with your AWS credentials or you do not have access to VPC resources.
+              Please correct this and run this playbook again to verify your environment before proceeding."    
+
+...
+

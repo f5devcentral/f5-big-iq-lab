@@ -1,0 +1,54 @@
+##################################################################################################
+###########################         UPDATE VARIABLE BELOW          ###############################
+##################################################################################################
+
+# A unique searchable prefix to all resources which are created
+# Use a prefix w/o spaces or special characters (not end with - or special characters)
+# MUST BE LESS OR EQUAL 15 CHARACTERES
+PREFIX: udf-gcp-demo
+# Also used for the Azure Resource group name
+
+# Select on of  the region below (default East US) - westus, westeurope, eastasia, brazilsouth ...
+# run az account list-locations --output table
+DEFAULT_LOCATION: eastus
+
+##################################################################################################
+###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
+##################################################################################################
+
+# Public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
+# The script will get the IP automatically, you should not need to update it.
+# dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+CUSTOMER_GATEWAY_IP: 0.0.0.0
+
+# VPC cidr block should encompass the subnets you specify
+VPC_CIDR_BLOCK: 172.300.0.0/16
+SUBNET1_CIDR_BLOCK: 172.300.1.0/24
+SUBNET2_CIDR_BLOCK: 172.300.2.0/24
+SUBNET3_CIDR_BLOCK: 172.300.255.0/27
+SUBNET3_BGP_PEERING: 172.300.255.254
+
+VPC1: vnet1demo
+VPC_SUBNET1: subnet1demo
+VPC_SUBNET2: subnet2demo
+
+EXT_NETWORK_UDF_VPN: 10.1.10.0/24
+# BIG-IP Customer gw (Seattle BIG-IP)
+EXT_NETWORK_UDF_PEERING: 10.1.10.7
+MGT_NETWORK_UDF: 10.1.1.7
+LOCAL_GATEWAY: UDF
+SHARED_KEY: 4UbtTd2CXf7PJxkt6qgz
+ASN1: 65010 #VPN gateway
+ASN2: 65020 #local network gateway
+
+IPSEC_DESTINATION_NETWORK: 169.253.1.32
+IPSEC_DESTINATION_ADDRESS1: 169.253.1.33
+IPSEC_DESTINATION_ADDRESS2: 169.253.1.34
+IPSEC_DESTINATION_MASK: 30
+
+# BIG-IP Customer Gateway Config
+ansible_ssh_user: "admin"
+ansible_ssh_pass: "purple123"
+
+bigip_rest_user: "admin"
+bigip_rest_password: "purple123"

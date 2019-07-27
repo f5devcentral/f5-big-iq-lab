@@ -1,0 +1,10 @@
+GET /rstats/?client_request_uri=http%253A%252F%252F10.64.6.242%252FLogin.aspx&fpm_additional_info=&fpm_alert_component=7&fpm_alert_details=for%2520support&fpm_alert_id=d4&fpm_alert_type=6&fpm_guid=bjsmkczcmc84&fpm_score=0&fpm_transaction_data=&fpm_url_name=%252Flogin.aspx&http_referrer=http%253A%252F%252F10.64.6.242%252F&fpm_defined_value=&fpm_resolved_value= HTTP/1.1
+fps-license=9ae0daaf
+x-forwarded-for=192.168.101.165
+connection=Keep-Alive
+user-agent=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36
+host=vAlert
+fps-geoip=
+cookie=
+fps-username=
+

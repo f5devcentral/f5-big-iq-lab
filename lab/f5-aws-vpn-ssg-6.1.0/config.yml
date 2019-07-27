@@ -1,0 +1,108 @@
+##################################################################################################
+###########################         UPDATE VARIABLE BELOW          ###############################
+##################################################################################################
+
+# Select AWA Cloud for BIG-IQ SSG: AWS, AWA_CHINA, AWA_US_GOVERNMENT
+AWS_BIGIQ_CLOUD: AWS
+
+## Did you subscribed and agreed to the software terms for F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) in AWS Marketplace?
+## https://aws.amazon.com/marketplace/pp/B07G5MT2KT
+
+AWS_ACCESS_KEY_ID: <key_id>
+AWS_SECRET_ACCESS_KEY: <key_secret>
+
+# Update your SSH AWS KEY (EC2 > NETWORK & SECURITY > Key Pairs)
+AWS_SSH_KEY: <name_of_the_aws_key>
+
+# A unique searchable prefix to all resources which are created
+# Use a prefix w/o spaces or special characters (not end with - or special characters)
+# MUST BE LESS OR EQUAL 10 CHARACTERES
+PREFIX: udf-demo
+
+# Select on of  the region below (default US EST N. Virginia)
+#us-east-1, us-east-2, us-west-1, us-west-2, us-west-3, eu-central-1, eu-west-1, eu-west-2, ap-southeast-1, ap-southeast-2, ap-northeast-1, ap-northeast-2
+DEFAULT_REGION: us-east-1
+AWS_AZ_1A: us-east-1a
+AWS_AZ_1B: us-east-1b
+
+# AllOneBootLocation (make sure it exists on the F5 mapping file https://github.com/F5Networks/f5-aws-cloudformation/tree/master/AMI%20Maps)
+BIGIP_RELEASE: 13.1.1-0.0.4
+# other option: 14.1.0.3-0.0.6
+# Do not modified if using UDF Cloud Account, the AMI is automatically updated based above release
+BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
+# See links for other AMI: https://github.com/F5Networks/f5-aws-cloudformation/tree/master/AMI%20Maps
+MODULE: WAF # LTM OR WAF
+
+##################################################################################################
+###############  DO NOT EDIT AFTER THIS LINE UNLESS YOU KNOW WHAT YOU ARE DOING  #################
+##################################################################################################
+
+# Public IP of SEA-vBIGIP01.termmarc.com, go to Access Methods, e.g. nslookup 49efa5b7-224c-4e7b-9f04-cf52591ec443.access.udf.f5.com)
+# The script will get the IP automatically, you should not need to update it.
+# dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}'
+CUSTOMER_GATEWAY_IP: 0.0.0.0
+
+
+### UDF GET AWS CLOUD DETAILS
+UDF_CLOUD: AWS
+UDF_METADATA_URL: 10.1.1.1:8888
+
+# VPC cidr block should encompass the subnets you specify
+VPC_CIDR_BLOCK: 172.100.0.0/16
+SUBNET1_CIDR_BLOCK: 172.100.1.0/24
+SUBNET2_CIDR_BLOCK: 172.100.2.0/24
+
+# BIG-IP Customer gw (Seattle BIG-IP)
+MGT_NETWORK_UDF: 10.1.1.7
+
+BIGIQ_MGT_HOST: 10.1.1.4
+
+# Ubuntu Web Server IP Address (in Subnet 2):
+NODE_ADDRESS: 172.100.2.50
+NODE_PORT: 80
+VIRTUAL_SERVER_PORT: 80
+POOL_MEMBER_PORT: 80
+
+# ELB SCHEME (internet-facing or internal)
+ELB_SCHEME: internet-facing
+ELB_NAME: "{{PREFIX}}-elb"
+APP_NAME: "{{PREFIX}}-app-aws"
+
+# For Ansible SSH BIG-IP and BIG-IQ
+ansible_ssh_user: "admin"
+ansible_ssh_pass: "purple123"
+
+bigip_rest_user: "admin"
+bigip_rest_password: "purple123"
+
+# BIG-IQ SSG CONFIG
+BIGIP_USER: admin
+BIGIP_PWD: "74ZEws7axzWdKBap3DkQ"
+
+BIGIQ_HOST: localhost:8100
+BIGIQ_URI: http://{{BIGIQ_HOST}}
+BIGIQ_USER: admin
+BIGIQ_PWD: "purple123"
+
+# IP Address of BIG IQ setup as license provider
+# This BIQ must have netowrk access to the VPC in which the BIG-IP VE will be created
+BYOL_BIGIQ_HOST: 10.1.10.4
+BYOL_BIGIQ_USER: admin
+BYOL_BIGIQ_PWD: "purple123"
+#BYOL_POOL_NAME: byol-pool
+BYOL_POOL_NAME: byol-pool-perAppVE
+
+PROTOCOL_PROFILE_CLIENT: tcp-lan-optimized
+PROTOCOL_PROFILE_SERVER: tcp-lan-optimized
+HTTP_PROFILE: http
+#Comma separated, string encapsulated list of DNS IP addresses. Leave the outer single quotes in place
+NTP_SERVER: time.google.com
+
+SSG_NAME:               "{{PREFIX}}-aws-ssg"
+CLOUD_ENVIRONMENT_NAME: "{{PREFIX}}-aws-environment"
+CLOUD_PROVIDER_NAME:    "{{PREFIX}}-aws-provider"
+DEVICE_TEMPLATE_NAME:   "{{PREFIX}}-aws-device-template"
+TEMPLATE_NODE_NAME:     "{{PREFIX}}-aws-service-node"
+TEMPLATE_POOL_NAME:     "{{PREFIX}}-aws-pool"
+SERVICE_CATALOG_NAME:   "{{PREFIX}}-aws-service-catalog"
+LTM_RESOURCE_NAME:      "{{PREFIX}}-aws-resource-name"

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 5.1: Using BIG-IQ as a license server for BIG-IP Virtual Edition devices</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 5.1: Using BIG-IQ as a license server for BIG-IP Virtual Edition devices"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 5.1: Using BIG-IQ as a license server for BIG-IP Virtual Edition devices &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Module 6: Managing a BIG-IP in Public Cloud" href="../module6/module6.html" />
+    <link rel="prev" title="Module 5: License Management" href="module5.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 5.1: Using BIG-IQ as a license server for BIG-IP Virtual Edition devices</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class5.html">Class 5: BIG-IQ Device Management</a>
+              &gt; <a href="module5.html">Module 5: License Management</a>
+
+          <span class="right">
+             <a href="../../_sources/class5/module5/lab1.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-5-1-using-big-iq-as-a-license-server-for-big-ip-virtual-edition-devices">
+<h1>Lab 5.1: Using BIG-IQ as a license server for BIG-IP Virtual Edition devices<a class="headerlink" href="#lab-5-1-using-big-iq-as-a-license-server-for-big-ip-virtual-edition-devices" title="Permalink to this headline">¶</a></h1>
+<p>Log in to the BIG-IQ system with your user name (david) and password (david).</p>
+<p>On the top menu bar, select Devices from the BIG-IQ menu.</p>
+<p>On the left-hand menu bar, click License Management.</p>
+<p>This screen displays information about active licenses.</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_11.png"><img alt="lab-5-1" src="../../_images/img_module5_lab1_11.png" style="width: 1409.6000000000001px; height: 743.2px;" /></a></p>
+<ul class="simple">
+<li><p>To find a specific license in this list, type all or part of the license name in the Filter box, and then press the Enter key.</p></li>
+<li><p>To add and activate a new pool license, click the Add License button.</p></li>
+<li><p>To create a registration key pool for standalone BIG-IP VE licenses, click the Add RegKey Pool button.</p></li>
+<li><p>To reactivate a license, select the check box next to the license and click the Reactivate button.</p></li>
+<li><p>To delete a license from BIG-IQ, select the check box next to the license and click the Delete button.</p></li>
+<li><p>To assign a license or view details about a license (including current license assignments), click the license name.</p></li>
+</ul>
+<p>There are 4 types of licence pools:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Purchased</span> <span class="pre">pool</span></code> - Prepaid pool of a specific number of concurrent license grants for a single BIG-IP service, such as LTM. For example, a purchased pool of 25 licenses for BIG-IP LTM allows you to license up to 25 concurrent BIG-IP VE systems for LTM.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Utility</span> <span class="pre">pool</span></code> - Designed for service providers, utility pools contain licenses for BIG-IP services you grant for a specific unit of measure (hourly, daily, monthly, or yearly). This means you can pay for licenses as needed with no limit to the number of licenses you can grant. From BIG-IQ, you can automatically submit a license usage report. F5 uses that report to calculate billing based on the licensed services, duration of the license grant, and the unit-of-measure pricing. To purchase a utility pool license, you must have a master service agreement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Volume</span> <span class="pre">pool</span></code> - Prepaid subscription (1 and 3 year terms) for a fixed number of concurrent license grants for multiple BIG-IP services. To purchase a volume pool, you must have a master service agreement.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Registration</span> <span class="pre">key</span> <span class="pre">pool</span></code> - A pool of single standalone BIG-IP VE registration keys for one or more BIG-IP services. Because you are managing these registration keys from BIG-IQ (instead of directly from the BIG-IP device), you can revoke and reassign a license to BIG-IP VE systems without having to contact F5 to allow the license to be moved.</p></li>
+</ol>
+<p>The <strong>Add License</strong> option is to add a License Pool (e.g. Purchases, Utility or Volume pool).</p>
+<p>The <strong>Add RegKey Pool</strong> option is to add indiviual Registration keys.</p>
+<p>Let’s use both options as an example.</p>
+<ol class="arabic simple">
+<li><p>First, let’s add the a pool license type. Click on <strong>Add License</strong>.</p></li>
+</ol>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_11.png"><img alt="lab-5-1" src="../../_images/img_module5_lab1_11.png" style="width: 1409.6000000000001px; height: 743.2px;" /></a></p>
+<p>Set a License Name and following Purchased pool Registration Key <code class="docutils literal notranslate"><span class="pre">R0698-10072-16119-58296-7323784</span></code>.</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_22.png"><img alt="lab-5-2" src="../../_images/img_module5_lab1_22.png" style="width: 488.0px; height: 293.6px;" /></a></p>
+<p>Click on <strong>Activate</strong>.</p>
+<p>Once the license has been activated, it will show in the Licenses list.</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_31.png"><img alt="lab-5-3" src="../../_images/img_module5_lab1_31.png" style="width: 1072.0px; height: 328.0px;" /></a></p>
+<ol class="arabic simple" start="2">
+<li><p>Let’s now add indiviual Registration keys. Click on <strong>Add RegKey Pool</strong>, set a Registration Key Pool Name.</p></li>
+</ol>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_41.png"><img alt="lab-5-4" src="../../_images/img_module5_lab1_41.png" style="width: 1081.0px; height: 535.0px;" /></a></p>
+<p>Click the Add RegKey button to add new standalone registration key(s) to this pool:</p>
+<p><code class="docutils literal notranslate"><span class="pre">I6422-93902-12096-91072-2592888</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">U1518-45188-32185-88097-8895588</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">V0951-08388-67526-48941-9468555</span></code></p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_51.png"><img alt="lab-5-5" src="../../_images/img_module5_lab1_51.png" style="width: 1544.0px; height: 595.0px;" /></a></p>
+<p>Add the key one by one (or use the Import CSV optionl, the CSV format is: regkey,notes/comments)</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_61.png"><img alt="lab-5-6" src="../../_images/img_module5_lab1_61.png" style="width: 585.0px; height: 343.0px;" /></a></p>
+<p>Click on <strong>Activate</strong>.</p>
+<p>Once the keys have been activated, they will show in the Licenses list.</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_7.png"><img alt="lab-5-7" src="../../_images/img_module5_lab1_7.png" style="width: 1650.0px; height: 770.0px;" /></a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[New 6.1.0]</strong> If you want to associate this new pool with an optional identifier, type it in the Description field.</p>
+</div>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_8.png"><img alt="lab-5-8" src="../../_images/img_module5_lab1_8.png" style="width: 1121.0px; height: 414.0px;" /></a></p>
+<ol class="arabic simple" start="3">
+<li><p>Now we have added various type of license, let’s use the indiviual Regkeys pool to license the <strong>SJC-vBIGIP01.termmarc.com</strong> device.</p></li>
+</ol>
+<p>Select the Registration Key Pool previously created.</p>
+<p>To assign an active registration key to a device, select the registration key’s check box, and click the Assign button.</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_9.png"><img alt="lab-5-9" src="../../_images/img_module5_lab1_9.png" style="width: 577.0px; height: 225.0px;" /></a></p>
+<p>Select the device to license, <strong>SJC-vBIGIP01.termmarc.com</strong></p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_10.png"><img alt="lab-5-10" src="../../_images/img_module5_lab1_10.png" style="width: 542.0px; height: 378.0px;" /></a></p>
+<p>Click on <strong>Assign</strong>, then a confirmation window appears. Click <strong>Ok</strong>.</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_111.png"><img alt="lab-5-11" src="../../_images/img_module5_lab1_111.png" style="width: 838.0px; height: 437.0px;" /></a></p>
+<p>Once the license is assigned to the device, you can see the Device Name and Device Address are populated.</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_12.png"><img alt="lab-5-12" src="../../_images/img_module5_lab1_12.png" style="width: 1648.0px; height: 423.0px;" /></a></p>
+<p>On the left-hand menu bar, click License Management, Assignments. This screen displays all assigned licenses.</p>
+<p><a class="reference internal" href="../../_images/img_module5_lab1_13.png"><img alt="lab-5-13" src="../../_images/img_module5_lab1_13.png" style="width: 1376.0px; height: 505.6px;" /></a></p>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="module5.html" title="Module 5: License Management" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="../module6/module6.html" title="Module 6: Managing a BIG-IP in Public Cloud" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

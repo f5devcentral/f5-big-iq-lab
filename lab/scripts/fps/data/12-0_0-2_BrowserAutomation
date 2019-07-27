@@ -1,0 +1,10 @@
+GET /rstats/?client_request_uri=http://10.64.6.242%2flogin.aspx&fpm_additional_info=&fpm_alert_component=2&fpm_alert_details=88&fpm_alert_id=d4&fpm_alert_type=0&fpm_guid=Wk0FENbfnk6p&fpm_score=85&fpm_transaction_data=&fpm_url_name=%2flogin.aspx&http_referrer=%2flogin.aspx&fpm_defined_value=%7b%22A%22%3a5%2c%22B%22%3a2%2c%22C%22%3a40%2c%22D%22%3a2%2c%22E%22%3a20%2c%22F%22%3a50%2c%22G%22%3a50%2c%22H%22%3a50%2c%22I%22%3a25%2c%22J%22%3a50%7d&fpm_resolved_value=%7b%22A%22%3a0%2c%22B%22%3a0%2c%22C%22%3a0%2c%22D%22%3a0%2c%22E%22%3a0%2c%22F%22%3a0%2c%22H%22%3a0%2c%22G%22%3a0%2c%22I%22%3a1%2c%22J%22%3a0%2c%22K%22%3a0%2c%22L%22%3a0%7d HTTP/1.1
+fps-license=9ae0daaf
+x-forwarded-for=192.168.101.165
+connection=Keep-Alive
+user-agent=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36
+host=vAlert
+fps-geoip=
+cookie=
+fps-username=
+

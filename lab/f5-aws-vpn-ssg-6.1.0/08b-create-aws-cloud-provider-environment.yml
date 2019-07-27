@@ -1,0 +1,54 @@
+---
+# Creates auto scaling resources on BIG-IQ
+- name: Make BIG IQ Auto Scaling Resources
+  hosts: bigiq-01
+  vars_files:     
+    - ./config.yml
+    - ./cache/{{PREFIX}}/1-vpc.yml
+  become: root
+  tasks:             
+    - name: Create resources
+      include_tasks: ./helpers/post.yml
+      with_items:
+        - name: Creating cloud provider
+          url: "{{BIGIQ_URI}}/cm/cloud/providers"
+          body: >
+            {
+                "providerType": "AWS",
+                "name": "{{CLOUD_PROVIDER_NAME}}",
+                "description": "AWS cloud provider",
+                "awsProperties": {
+                    "awsCloud": "{{AWS_BIGIQ_CLOUD}}",
+                    "accessKeyId": "{{AWS_ACCESS_KEY_ID}}",
+                    "secretAccessKey": "{{AWS_SECRET_ACCESS_KEY}}"
+                }
+            }
+
+          var_name: cloud_provider_result
+
+    - include_tasks: ./helpers/post.yml
+      with_items:
+        - name: Creating cloud environment
+          url: "{{BIGIQ_URI}}/cm/cloud/environments"
+          body: >
+            {
+                "name": "{{CLOUD_ENVIRONMENT_NAME}}",
+                "description": "AWS cloud environment for DO",
+                "providerReference": {
+                    "link": "https://localhost/mgmt/cm/cloud/providers/{{cloud_provider_result.id}}"
+                },
+                "awsProperties": {
+                    "region": "{{DEFAULT_REGION}}",
+                    "vpc": "{{AWS_VPC}}",
+                    "availabilityZones": [ "{{AWS_AZ_1A}}" ],
+                    "subnets": [ "{{AWS_SUBNET_1A}}" ],
+                    "restrictedSourceAddress": "0.0.0.0/0",
+                    "moduleSelection": "{{MODULE}}",
+                    "licenseType": "BYOL",
+                    "imageId": "{{BYOL_BIGIP_AMI}}",
+                    "instanceType": "m4.xlarge"
+                }
+            }
+
+          var_name: cloud_environment_result
+...

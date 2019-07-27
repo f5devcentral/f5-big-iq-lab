@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 1.2: Configuring BIG-IP for DDoS Logging to BIG-IQ</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 1.2: Configuring BIG-IP for DDoS Logging to BIG-IQ"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 1.2: Configuring BIG-IP for DDoS Logging to BIG-IQ &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Module 2: Configure DoS Profile Settings" href="../module2/module2.html" />
+    <link rel="prev" title="Lab 1.1: Configuring BIG-IQ for DoS Visibility" href="lab1.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 1.2: Configuring BIG-IP for DDoS Logging to BIG-IQ</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a>
+              &gt; <a href="module1.html">Module 1: Required Configuration For DDoS Monitoring</a>
+
+          <span class="right">
+             <a href="../../_sources/class11/module1/lab2.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-1-2-configuring-big-ip-for-ddos-logging-to-big-iq">
+<h1>Lab 1.2: Configuring BIG-IP for DDoS Logging to BIG-IQ<a class="headerlink" href="#lab-1-2-configuring-big-ip-for-ddos-logging-to-big-iq" title="Permalink to this headline">¶</a></h1>
+<p>BIG-IP uses logging profiles to format and send DoS log messages to one more destinations. Prior to BIG-IQ 6.0, this confifuration
+was done using log destinations, publishers and creating profiles in multiple steps.</p>
+<p>BIG-IQ CM offers a quick way to create this profile, along with all the plumbing bits of a pool member, monitor etc… when using DCDs as the log destination.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This procedure is near identical to lab 2.1.1 in <em>Class 7</em> which configures logging for AFM events. What is different is the service ports for log message desinations, so a DoS Publisher still is required in this use case.</p>
+</div>
+<p>Begin by creating a Device DoS Log Publisher which can then be re-used for virtual server specific DoS publishing as needed.</p>
+<ol class="arabic simple">
+<li><p>Log into the BIG-IQ CM</p></li>
+<li><p>Under <em>Configuration</em> &gt; <em>Security</em> &gt; <em>Shared Security</em> &gt; <em>DoS Protection</em> &gt; <em>Device DoS Configurations</em>, we see all Managed BIG-IPs with Device DoS Profiles</p></li>
+<li><p>Select both <em>BOS-vBIGIP01</em>, and <em>BOS-vBIGIP02</em> and the <em>Configure DoS Logging</em> button will be enabled</p></li>
+<li><p>Click this button to view the following pop up window</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/dos-log-config.png"><img alt="../../_images/dos-log-config.png" class="align-center" src="../../_images/dos-log-config.png" style="width: 604.5px; height: 576.5px;" /></a>
+<ol class="arabic simple" start="6">
+<li><p>Click <em>Continue</em> to have BIG-IQ create the objects and observe the pop up window: it outlines the objects being created that you can now view/browse in BIG-IQ. Since this was the Device DoS, only a new publisher has been created (not a profile as that Device DoS is a built in profile).</p></li>
+<li><p>Click on both <em>BOS</em> devices and notice that the publisher is now assigned to both Device DoS configurations:</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/dos-log-publisher.png"><img alt="../../_images/dos-log-publisher.png" class="align-center" src="../../_images/dos-log-publisher.png" style="width: 258.0px; height: 171.0px;" /></a>
+<p>Logging publishers created by BIG-IQ use HSL to the DCD as the only log destination: no othe no other destinations are in the publisher by default. If local DB or syslog logging of DoS Events is desired for troubleshooting on the BIG-IP, the publisher be edited to include these destinations. Often local syslog is helpful: lets add that now.</p>
+<ol class="arabic simple">
+<li><p>Under <em>Configuration &gt; Local Traffic &gt; Logs &gt; Log Publishers</em>  select the newly created publisher <em>dos-remote-logging-publisher</em></p></li>
+<li><p>From here additional log destinations can be added: select and add <em>local-syslog</em>, then save and close changes</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/dos-local-pub.png"><img alt="../../_images/dos-local-pub.png" class="align-center" src="../../_images/dos-local-pub.png" style="width: 678.5px; height: 304.5px;" /></a>
+<p>Finally the changes need to be deployed to the BIG-IPs in order to take affect. Since there is a combination of ADC object (new publisher) and Network Security objects (Device DoS change), the ADC deployment must be done first otherwise Network Security will <strong>fail</strong> due to missing the referenced LTM log profile. Device DoS settings can be viewed under Shared Security in the evaluation differences.</p>
+<ol class="arabic simple">
+<li><p>Under <em>Deployment &gt; Evaluate &gt; Local Traffic</em> create a new Evalation for <em>BOS-vBIGIP01 and 02</em> and deploy the changes after optionally looking at the differences</p></li>
+<li><p>Under <em>Deployment &gt; Evaluate &gt; Network Security</em> create a new Evalation for <em>BOS-vBIGIP01 and 02</em> and deploy the changes after optionally looking at the differences</p></li>
+</ol>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab1.html" title="Lab 1.1: Configuring BIG-IQ for DoS Visibility" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="../module2/module2.html" title="Module 2: Configure DoS Profile Settings" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

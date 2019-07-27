@@ -1,0 +1,110 @@
+---
+- name: BIG-IQ and AS3 Lab - Task 4 - Generic Services
+  hosts: "{{ env }}"
+  vars_files:
+    - inventory/group_vars/{{ env }}.yml
+
+  tasks: 
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq_<user>.json)
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: "{{ lookup('file','{{ user }}') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: Task 4 - Generic Services - POST /mgmt/shared/appsvcs/declare?async=true
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare?async=true
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body:
+          # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          class: AS3
+          action: deploy
+          persist: true
+          declaration:
+            class: ADC
+            schemaVersion: "{{ as3_schemaVersion }}"
+            id: isc-lab
+            label: Task4
+            remark: Task 4 - Generic Services
+            target:
+              hostname: "{{ bigip_target }}"
+            Task4:
+              class: Tenant
+              MyWebApp4generic:
+                class: Application
+                template: generic
+                statsProfile:
+                  class: Analytics_Profile
+                  collectClientSideStatistics: true
+                  collectOsAndBrowser: false
+                  collectMethod: false
+                myServiceTCP:
+                  class: Service_Generic
+                  virtualAddresses:
+                  - "{{ task4_vs }}"
+                  virtualPort: 8080
+                  pool: web_pool
+                  profileAnalytics:
+                    use: statsProfile
+                web_pool:
+                  class: Pool
+                  monitors:
+                  - tcp
+                  members:
+                  - servicePort: 80
+                    serverAddresses:
+                    - "{{ task4_node1 }}"
+                    - "{{ task4_node2 }}"
+                    shareNodes: true
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - debug:
+        var: json_response.json
+
+### LOOP TO CHECK THE TASK - DO NOT MODIFY BELOW
+
+    - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+
+    - debug:
+        var: json_response_task.json
+
+    - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+      until: "json_response_task.json[0].results != 'pending'"
+      retries: 20
+      delay: 30
+
+    - debug:
+        var: json_response_task.json

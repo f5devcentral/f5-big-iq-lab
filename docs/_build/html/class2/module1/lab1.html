@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 1.1: Setup a device template</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 1.1: Setup a device template"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 1.1: Setup a device template &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 1.2: Define your Cloud Environment" href="lab2.html" />
+    <link rel="prev" title="Module 1: Setup a Service scaling group (SSG) in VMWARE" href="module1.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 1.1: Setup a device template</a><ul>
+<li><a class="reference internal" href="#license-pool-setup">License Pool Setup</a></li>
+<li><a class="reference internal" href="#ip-pools-setup">IP Pools Setup</a></li>
+<li><a class="reference internal" href="#device-template-setup">Device Template Setup</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a>
+              &gt; <a href="module1.html">Module 1: Setup a Service scaling group (SSG) in VMWARE</a>
+
+          <span class="right">
+             <a href="../../_sources/class2/module1/lab1.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-1-1-setup-a-device-template">
+<h1>Lab 1.1: Setup a device template<a class="headerlink" href="#lab-1-1-setup-a-device-template" title="Permalink to this headline">¶</a></h1>
+<p>The first thing to setup to be able to deploy <code class="docutils literal notranslate"><span class="pre">Service</span> <span class="pre">Scaling</span> <span class="pre">Group</span></code> (SSG) is
+to setup a <code class="docutils literal notranslate"><span class="pre">device</span> <span class="pre">template</span></code></p>
+<p>A device template contains all the configuration items that should be pushed
+on a newly provisioned F5 Virtual edition:</p>
+<ul class="simple">
+<li><p>Hostname (prefix/Serial Number/suffix)</p></li>
+<li><p>Default route (if you don’t use DHCP)</p></li>
+<li><p>Management port (may vary if you use VMWare - 443 - or AWS - 8443 -)</p></li>
+<li><p>License</p></li>
+<li><p>Modules to provision</p></li>
+<li><p>VLANs</p></li>
+<li><p>Self-IPs</p></li>
+<li><p>User accounts</p></li>
+</ul>
+<p>In this lab, we will create a device template that will be used for our <code class="docutils literal notranslate"><span class="pre">SSG</span></code></p>
+<div class="section" id="license-pool-setup">
+<h2>License Pool Setup<a class="headerlink" href="#license-pool-setup" title="Permalink to this headline">¶</a></h2>
+<p>Your BIG-IQ should already have a license pool setup.</p>
+<p>Connect to your BIG-IQ (as <em>admin</em>)and go to : <em>Devices</em> &gt; <em>License Management</em> &gt; <em>Licenses</em></p>
+<p>Here you should see a license pool called <code class="docutils literal notranslate"><span class="pre">byol-pool</span></code></p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_9.png"><img alt="../../_images/img_module1_lab1_9.png" class="align-center" src="../../_images/img_module1_lab1_9.png" style="width: 514.5px; height: 101.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="ip-pools-setup">
+<h2>IP Pools Setup<a class="headerlink" href="#ip-pools-setup" title="Permalink to this headline">¶</a></h2>
+<p>When you provision dynamically new F5 virtual edition, you need to be able to
+automatically assign Self IPs to this instance. To do that, we will rely on
+the <code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">Pool</span></code> feature of <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span></code></p>
+<p>For our lab, we will need two IP pools:</p>
+<ul class="simple">
+<li><p>One for the network between Tier1 (<code class="docutils literal notranslate"><span class="pre">Service</span> <span class="pre">Scaler</span></code>) and Tier2 (<code class="docutils literal notranslate"><span class="pre">SSG</span></code>)</p></li>
+<li><p>One for the servers network</p></li>
+</ul>
+<p>Go to <em>Devices</em> &gt; <em>IP POOLS</em>, you should see two already defined <code class="docutils literal notranslate"><span class="pre">IP</span> <span class="pre">Pool</span></code>:</p>
+<ul class="simple">
+<li><p>external</p></li>
+<li><p>internal</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_10.png"><img alt="../../_images/img_module1_lab1_10.png" class="align-center" src="../../_images/img_module1_lab1_10.png" style="width: 503.0px; height: 114.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="device-template-setup">
+<h2>Device Template Setup<a class="headerlink" href="#device-template-setup" title="Permalink to this headline">¶</a></h2>
+<p>To create your Device Template, go to <em>Devices</em> &gt; <em>Device Templates</em> and click
+on <em>Create</em></p>
+<p>you should see this:</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_1.png"><img alt="../../_images/img_module1_lab1_1.png" class="align-center" src="../../_images/img_module1_lab1_1.png" style="width: 552.0px; height: 152.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the button <em>Add/remove</em> to select the configuration items you want to
+enforce when deploying a new F5 virtual edition in your <code class="docutils literal notranslate"><span class="pre">SSG</span></code></p>
+<p>Here, for the <em>Provider Type</em>, select <em>VMWare</em>. It will automatically select
+all the required information related to a VMWare environment (in regards to Using
+<code class="docutils literal notranslate"><span class="pre">Service</span> <span class="pre">Scaling</span> <span class="pre">Group</span></code>)</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[New 6.0.1]</strong> The Provider selection has been moved to Template Properties section in the device template.</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_2.png"><img alt="../../_images/img_module1_lab1_2.png" class="align-center" src="../../_images/img_module1_lab1_2.png" style="width: 543.0px; height: 514.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click <em>OK</em>. You’ll see new tabs under the <em>Objects</em> column.</p>
+<p>In the Name field, specify your <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Template</span></code> name: <em>SSGSetupClass2</em></p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_3.png"><img alt="../../_images/img_module1_lab1_3.png" class="align-center" src="../../_images/img_module1_lab1_3.png" style="width: 559.0px; height: 134.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <strong>configuration</strong> tab , DO NOT CLICK SAVE YET or you’ll lose the
+unconfigured tabs</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_4.png"><img alt="../../_images/img_module1_lab1_4.png" class="align-center" src="../../_images/img_module1_lab1_4.png" style="width: 198.0px; height: 373.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Setup the configuration tab like this:</p>
+<ul class="simple">
+<li><p>Hostname Components:</p>
+<ul>
+<li><p>Default Route: LEAVE EMPTY</p></li>
+<li><p>Management port: 443</p></li>
+<li><p>Check <em>Text (prefix)</em> and put: SSGClass2-</p></li>
+<li><p>Check <em>Serial Number</em></p></li>
+<li><p>Check <em>Text (suffix)</em> and put: .f5demo.local</p></li>
+</ul>
+</li>
+</ul>
+<img alt="../../_images/img_module1_lab1_5.png" class="align-center" src="../../_images/img_module1_lab1_5.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <em>License</em> tab and setup the following:</p>
+<ul class="simple">
+<li><p>License Type : Select <em>Purchased Pool</em></p></li>
+<li><p>License Name: Select <em>byol-pool</em></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_12.png"><img alt="../../_images/img_module1_lab1_12.png" class="align-center" src="../../_images/img_module1_lab1_12.png" style="width: 612.0px; height: 212.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <em>Provisioning</em> tab,</p>
+<ul class="simple">
+<li><p>Select the module <em>Local Traffic Manager (LTM)</em> and set it to <em>Nominal</em></p></li>
+<li><p>Select the module <em>Application Visibility and Reporting</em> and set it to
+<em>Minimum</em></p></li>
+<li><p>Select the module <em>Application Security (ASM)</em> and set it to <em>Nominal</em></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_7.png"><img alt="../../_images/img_module1_lab1_7.png" class="align-center" src="../../_images/img_module1_lab1_7.png" style="width: 726.0px; height: 195.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <em>DNS &amp; NTP</em> tab and setup the following:</p>
+<ul class="simple">
+<li><p>Lookup Servers: 8.8.4.4</p></li>
+<li><p>NTP Server: pool.ntp.org</p></li>
+<li><p>Timezone: America/Los_Angeles</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_8.png"><img alt="../../_images/img_module1_lab1_8.png" class="align-center" src="../../_images/img_module1_lab1_8.png" style="width: 618.0px; height: 305.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[New 6.0.1]</strong> IP Pool can be used for the management IP. See BIG-IQ documentation for more information (the VM template need some pre-work).</p>
+</div>
+<p><strong>[New 6.0.1]</strong>  Click on the <em>DManagement IP</em> tab and setup the following:</p>
+<ul class="simple">
+<li><p>IP Address: DHCP</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_8b.png"><img alt="../../_images/img_module1_lab1_8b.png" class="align-center" src="../../_images/img_module1_lab1_8b.png" style="width: 345.0px; height: 157.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <em>VLANs</em> tab. You should see a vlan defined by default: <em>external</em>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you create/update a VLAN, you’ll see the interface 1.1 being pre-populated.
+In fact, it is showed as an example. You need to type
+the interface yourself -ie 1.1 / 1.2 / …</p>
+</div>
+<p>Click on the <em>Add</em> button:</p>
+<ul class="simple">
+<li><p>Name: internal</p></li>
+<li><p>Tag: EMPTY</p></li>
+<li><p>Interface: 1.2</p></li>
+</ul>
+<p>Click on the <em>Save and Close</em> button. Click on the external vlan and assign the
+interface 1.1 to it.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_13.png"><img alt="../../_images/img_module1_lab1_13.png" class="align-center" src="../../_images/img_module1_lab1_13.png" style="width: 658.0px; height: 303.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <em>Self IP’s</em> tab. You should see a Self IP defined called <em>external</em>.
+Click on the <em>Add</em> button:</p>
+<ul class="simple">
+<li><p>Name: internal</p></li>
+<li><p>IP Address: IP Pool &gt; Select <em>internal</em></p></li>
+<li><p>VLAN: internal</p></li>
+<li><p>Port lockdown: Allow None</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_14.png"><img alt="../../_images/img_module1_lab1_14.png" class="align-center" src="../../_images/img_module1_lab1_14.png" style="width: 666.0px; height: 342.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <em>Save and Close</em> button. Click on the <em>external</em> self ip to set it up</p>
+<ul class="simple">
+<li><p>Name: external</p></li>
+<li><p>IP Address: IP Pool &gt; Select <em>external</em></p></li>
+<li><p>VLAN: external</p></li>
+<li><p>Port lockdown: Allow None</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_15.png"><img alt="../../_images/img_module1_lab1_15.png" class="align-center" src="../../_images/img_module1_lab1_15.png" style="width: 677.0px; height: 279.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">external</span></code> self IP is important because this is the self IP we will use
+to LB traffic between our tier1 (<code class="docutils literal notranslate"><span class="pre">Service</span> <span class="pre">Scaler</span></code>) and tier2 BIG-IPs (<code class="docutils literal notranslate"><span class="pre">SSG</span></code>).
+You need to use it as is. if you don’t use a <code class="docutils literal notranslate"><span class="pre">external</span></code> self IP on your
+tier2 device, <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span></code> won’t know which interface to use</p>
+</div>
+<p>Click on the <em>Root Account</em> tab. Specify a new password for the root account:
+<em>purple</em></p>
+<img alt="../../_images/img_module1_lab1_16.png" class="align-center" src="../../_images/img_module1_lab1_16.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the <em>User Accounts</em> tab. You will see the admin user. Click on the <em>Admin</em>
+user.</p>
+<ul class="simple">
+<li><p>Role: select <em>Administrator</em></p></li>
+<li><p>Username: admin</p></li>
+<li><p>Password: purple</p></li>
+<li><p>Confirm Password: purple</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab1_11.png"><img alt="../../_images/img_module1_lab1_11.png" class="align-center" src="../../_images/img_module1_lab1_11.png" style="width: 607.0px; height: 203.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on the button <em>Save &amp; Close</em>, Click on the button <em>Save &amp; Close</em> again</p>
+<p>You should see your <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Template</span></code> available now.</p>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="module1.html" title="Module 1: Setup a Service scaling group (SSG) in VMWARE" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab2.html" title="Lab 1.2: Define your Cloud Environment" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

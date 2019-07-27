@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 4.2: Deploy our SSG in AWS</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 4.2: Deploy our SSG in AWS"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 4.2: Deploy our SSG in AWS &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 4.3: Review our SSG deployment in AWS" href="lab3.html" />
+    <link rel="prev" title="Lab 4.1: Prepare your AWS deployment" href="lab1.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 4.2: Deploy our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> in <code class="docutils literal notranslate"><span class="pre">AWS</span></code></a><ul>
+<li><a class="reference internal" href="#launch-our-ssg-access-our-orchestrator">Launch our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> - Access our orchestrator</a></li>
+<li><a class="reference internal" href="#launch-our-ssg-update-config-yml">Launch our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> - Update config.yml</a></li>
+<li><a class="reference internal" href="#launch-our-ssg-update-our-ssg-configuration">Launch our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> - Update our SSG configuration</a></li>
+<li><a class="reference internal" href="#launch-our-ssg-trigger-the-deployment">Launch our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> - Trigger the deployment</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a>
+              &gt; <a href="module4.html">Module 4: Setup a Service scaling group (SSG) in AWS</a>
+
+          <span class="right">
+             <a href="../../_sources/class2/module4/lab2.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-4-2-deploy-our-ssg-in-aws">
+<h1>Lab 4.2: Deploy our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> in <code class="docutils literal notranslate"><span class="pre">AWS</span></code><a class="headerlink" href="#lab-4-2-deploy-our-ssg-in-aws" title="Permalink to this headline">¶</a></h1>
+<p>Since we have already seen the different components needed to deploy a <code class="docutils literal notranslate"><span class="pre">SSG</span></code> successfully,
+we will automatically deploy it and review its configuration.</p>
+<div class="section" id="launch-our-ssg-access-our-orchestrator">
+<h2>Launch our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> - Access our orchestrator<a class="headerlink" href="#launch-our-ssg-access-our-orchestrator" title="Permalink to this headline">¶</a></h2>
+<p>To setup <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span></code> and <code class="docutils literal notranslate"><span class="pre">AWS</span></code> automatically, open a <code class="docutils literal notranslate"><span class="pre">SSH</span></code> connection on the system called: <strong>Ubuntu Lamp Server</strong></p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab2_1.png"><img alt="../../_images/img_module4_lab2_1.png" class="align-center" src="../../_images/img_module4_lab2_1.png" style="width: 508.5px; height: 402.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Once connected via <code class="docutils literal notranslate"><span class="pre">SSH</span></code>, go into the folder: <strong>f5-aws-vpn-ssg</strong>:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">cd</span> <span class="pre">f5-aws-vpn-ssg/</span></code></p>
+</div></blockquote>
+<p>we will need to edit the following files:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>config.yml</strong>: This file will contains all the information needed to</dt><dd><p>deploy the <code class="docutils literal notranslate"><span class="pre">AWS</span></code> environment successfully.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>08a-create-aws-auto-scaling.yml</strong>: we will change the setup of the default <code class="docutils literal notranslate"><span class="pre">SSG</span></code></dt><dd><p>that gets deployed. we want to deploy 2 instances to review how it is setup as
+part of a <code class="docutils literal notranslate"><span class="pre">SSG</span></code> group.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="launch-our-ssg-update-config-yml">
+<h2>Launch our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> - Update config.yml<a class="headerlink" href="#launch-our-ssg-update-config-yml" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For UDF lab, the UDF Cloud Account is used, if you want to use your own AWS account,
+comment out the line <code class="docutils literal notranslate"><span class="pre">01-configure-cloud-udf.sh</span></code> in <code class="docutils literal notranslate"><span class="pre">000-RUN_ALL.sh</span></code>.</p>
+</div>
+<p>In the case you are <strong>NOT</strong> using the UDF Cloud account, use your favorite editor to update this file.</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">vi</span> <span class="pre">config.yml</span></code></p>
+</div></blockquote>
+<p>Here are the settings you will need to change to deploy everything successfully:</p>
+<ul>
+<li><dl class="simple">
+<dt>AWS_ACCESS_KEY_ID: Use the <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">Access</span> <span class="pre">Key</span></code> you retrieved from the previous</dt><dd><p>lab (IAM section).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>AWS_SECRET_ACCESS_KEY: Use the <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">Secret</span> <span class="pre">Access</span> <span class="pre">Key</span></code> you retrieve from the</dt><dd><p>previous lab (IAM section).</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>PREFIX: Specify a <code class="docutils literal notranslate"><span class="pre">prefix</span></code> that will be used on each object automatically</dt><dd><p>created. we will use <strong>udf-&lt;your NAME&gt;</strong>. For example: <strong>udf-MENANT</strong></p>
+</dd>
+</dl>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>DO NOT PUT a <code class="docutils literal notranslate"><span class="pre">-</span></code> at the end or your deployment will fail.</p>
+<p>We need you to put something so that your PREFIX will be UNIQUE to you or it will overlap with
+other student’s env. If your name is ‘common’, pick something else that should be unique or append
+your first name to it.</p>
+<p>Remember that the PREFIX must be 10 CHARACTERS MAX</p>
+</div>
+</li>
+<li><dl class="simple">
+<dt>AWS_SSH_KEY: Use the <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">Key</span> <span class="pre">Pair</span></code> we created in the previous lab. In our example, it was <strong>CE-Lab-MENANT</strong></dt><dd><p>but yours should have a different name.</p>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Save the config file.</p>
+<p>Here is an example of the updated <strong>config.yml</strong> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">##################################################################################################</span>
+<span class="c1">###########################         UPDATE VARIABLE BELOW          ###############################</span>
+<span class="c1">##################################################################################################</span>
+
+<span class="n">AWS_ACCESS_KEY_ID</span><span class="p">:</span> <span class="o">*****************</span>
+<span class="n">AWS_SECRET_ACCESS_KEY</span><span class="p">:</span> <span class="o">*********************</span>
+
+<span class="c1"># A unique searchable prefix to all resources which are created</span>
+<span class="c1"># Use a prefix w/o spaces or special characters (NO MORE THAN 10 CHARACTERS, no end with - or special characters)</span>
+<span class="n">PREFIX</span><span class="p">:</span> <span class="n">udf</span><span class="o">-</span><span class="n">MENANT</span>
+
+<span class="c1"># Select on of  the region below (default US EST N. Virginia)</span>
+<span class="n">DEFAULT_REGION</span><span class="p">:</span> <span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span>
+<span class="n">AWS_AZ_1A</span><span class="p">:</span> <span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="n">a</span>
+<span class="n">AWS_AZ_1B</span><span class="p">:</span> <span class="n">us</span><span class="o">-</span><span class="n">east</span><span class="o">-</span><span class="mi">1</span><span class="n">b</span>
+
+<span class="c1"># Update your SSH AWS KEY (EC2 &gt; NETWORK &amp; SECURITY &gt; Key Pairs)</span>
+<span class="n">AWS_SSH_KEY</span><span class="p">:</span> <span class="n">CE</span><span class="o">-</span><span class="n">Lab</span><span class="o">-</span><span class="n">MENANT</span>
+
+<span class="n">BYOL_BIGIP_AMI</span><span class="p">:</span> <span class="s2">&quot;ami-58c3d327&quot;</span> <span class="c1"># us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>We don’t have to change anything else as long as we use the US-East (N. Virginia) Region</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>in your <strong>config.yml</strong> file, you have the default password that will be used for the admin user
+This password will be enforced on all the VEs deployed in your <code class="docutils literal notranslate"><span class="pre">SSG</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># BIG-IQ SSG CONFIG</span>
+<span class="n">BIGIP_USER</span><span class="p">:</span> <span class="n">admin</span>
+<span class="n">BIGIP_PWD</span><span class="p">:</span> <span class="o">**************</span>
+</pre></div>
+</div>
+<p>MAKE SURE TO NOTE IT SOMEWHERE</p>
+</div>
+<p>In case want to use your own AWS account, comment out the line <code class="docutils literal notranslate"><span class="pre">01-configure-cloud-udf.sh</span></code> in <code class="docutils literal notranslate"><span class="pre">000-RUN_ALL.sh</span></code>.</p>
+</div>
+<div class="section" id="launch-our-ssg-update-our-ssg-configuration">
+<h2>Launch our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> - Update our SSG configuration<a class="headerlink" href="#launch-our-ssg-update-our-ssg-configuration" title="Permalink to this headline">¶</a></h2>
+<p>To update configuration pushed by the orchestrator, we will update the file called
+<strong>08a-create-aws-auto-scaling.yml</strong>. Use your favorite editor to update it.</p>
+<p>Look for this section in the file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">include_tasks</span><span class="p">:</span> <span class="o">./</span><span class="n">helpers</span><span class="o">/</span><span class="n">post</span><span class="o">.</span><span class="n">yml</span>
+  <span class="n">with_items</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Create</span> <span class="n">service</span> <span class="n">scaling</span> <span class="n">group</span>
+      <span class="n">url</span><span class="p">:</span> <span class="s2">&quot;{{BIGIQ_URI}}/cm/cloud/service-scaling-groups&quot;</span>
+      <span class="n">body</span><span class="p">:</span> <span class="o">&gt;</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;{{SSG_NAME}}&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS scaling group&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;environmentReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/cm/cloud/environments/{{cloud_environment_result.id}}&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;minSize&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;maxSize&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;maxSupportedApplications&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;desiredSize&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="s2">&quot;postDeviceCreationUserScriptReference&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;preDeviceDeletionUserScriptReference&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;scalingPolicies&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;scale-out&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cooldown&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+                <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;ADD&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ChangeCount&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;scale-in&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cooldown&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+                <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;REMOVE&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ChangeCount&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}]</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+<p>Change the <strong>minSize</strong> and <strong>desiredSize</strong> from 1 to 2 :</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">include_tasks</span><span class="p">:</span> <span class="o">./</span><span class="n">helpers</span><span class="o">/</span><span class="n">post</span><span class="o">.</span><span class="n">yml</span>
+  <span class="n">with_items</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">Create</span> <span class="n">service</span> <span class="n">scaling</span> <span class="n">group</span>
+      <span class="n">url</span><span class="p">:</span> <span class="s2">&quot;{{BIGIQ_URI}}/cm/cloud/service-scaling-groups&quot;</span>
+      <span class="n">body</span><span class="p">:</span> <span class="o">&gt;</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;{{SSG_NAME}}&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS scaling group&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;environmentReference&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;link&quot;</span><span class="p">:</span> <span class="s2">&quot;https://localhost/mgmt/cm/cloud/environments/{{cloud_environment_result.id}}&quot;</span>
+            <span class="p">},</span>
+            <span class="s2">&quot;minSize&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;maxSize&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;maxSupportedApplications&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s2">&quot;desiredSize&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+            <span class="s2">&quot;providerType&quot;</span><span class="p">:</span> <span class="s2">&quot;AWS&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;postDeviceCreationUserScriptReference&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;preDeviceDeletionUserScriptReference&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s2">&quot;scalingPolicies&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;scale-out&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cooldown&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+                <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;ADD&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ChangeCount&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;scale-in&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;cooldown&quot;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span>
+                <span class="s2">&quot;direction&quot;</span><span class="p">:</span> <span class="s2">&quot;REMOVE&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;ChangeCount&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="mi">1</span>
+            <span class="p">}]</span>
+        <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="launch-our-ssg-trigger-the-deployment">
+<h2>Launch our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> - Trigger the deployment<a class="headerlink" href="#launch-our-ssg-trigger-the-deployment" title="Permalink to this headline">¶</a></h2>
+<p>Now that the relevant files have been updated, we can trigger the deployment.</p>
+<p>To trigger the deployment, run the following command:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">./000-RUN_ALL.sh</span> <span class="pre">ssg</span></code></p>
+</div></blockquote>
+<p>It will ask you to press Enter to confirm that you subscribed and agreed to
+the EULA in the marketplace. Make sure you subscribed, then press enter to start the deployment.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The AWS console URL, login, password are in the Cloud Accounts tab if using UDF.</p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab2_2a.png"><img alt="../../_images/img_module4_lab2_2a.png" src="../../_images/img_module4_lab2_2a.png" style="width: 768.5px; height: 450.0px;" /></a>
+</div>
+<p>You should see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>f5student@xjumpbox:~/f5-aws-vpn-ssg$ ./000-RUN_ALL.sh ssg
+
+Before moving further, subscribed and agreed to the software terms in AWS Marketplace for:
+- F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) https://aws.amazon.com/marketplace/pp/B07G5MT2KT/
+- F5 BIG-IQ Virtual Edition - (BYOL) https://aws.amazon.com/marketplace/pp/B00KIZG6KA/
+
+AWS console Credentials: https://console.aws.amazon.com/
+        - accountId: &quot;12345678908&quot;
+        - consoleUsername: &quot;udf&quot;
+        - consolePassword: &quot;423BeMhe23iLt23weazkas2&quot;
+
+Press [Enter] key to continue... CTRL+C to Cancel
+
+
+[DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it can also be a list of hosts, a directory or a list of paths , use [defaults] inventory=/path/to/file|dir
+instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+PLAY [Install and configure dependencies and verify environment] ************************************************************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [command] **************************************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [command] **************************************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [command] **************************************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [command] **************************************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [command] **************************************************************************************************************************************************************************
+changed: [localhost]
+
+PLAY RECAP ******************************************************************************************************************************************************************************
+localhost                  : ok=6    changed=5    unreachable=0    failed=0
+
+[DEPRECATION WARNING]: [defaults]hostfile option, The key is misleading as it can also be a list of hosts, a directory or a list of paths , use [defaults] inventory=/path/to/file|dir
+instead. This feature will be removed in version 2.8. Deprecation warnings can be disabled by setting deprecation_warnings=False in ansible.cfg.
+
+PLAY [Deploy prerequisite infrastructure for SSG to AWS] ********************************************************************************************************************************
+
+TASK [Gathering Facts] ******************************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [Set AWS Region] *******************************************************************************************************************************************************************
+changed: [localhost]
+
+TASK [Retrieve available subnets] *******************************************************************************************************************************************************
+ok: [localhost]
+
+TASK [Fail if there aren&#39;t enough availability zones] ***********************************************************************************************************************************
+skipping: [localhost]
+
+TASK [Build VPC CloudFormation] *********************************************************************************************************************************************************
+</pre></div>
+</div>
+<p>At this stage, we should start deploying your environment in <code class="docutils literal notranslate"><span class="pre">AWS</span></code>.
+In your <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">Console</span></code>, go to <strong>Services</strong> &gt; <strong>CloudFormation</strong>.</p>
+<a class="reference internal image-reference" href="../../_images/img_module4_lab2_3.png"><img alt="../../_images/img_module4_lab2_3.png" class="align-center" src="../../_images/img_module4_lab2_3.png" style="width: 784.0px; height: 220.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here we can see that <code class="docutils literal notranslate"><span class="pre">CloudFormation</span> <span class="pre">Stacks</span></code> are being deployed with the prefix
+<strong>udf-MENANT</strong> as mentioned in <strong>config.yml</strong> file (prefix attribute)</p>
+<p>In the next lab, we will review what has been setup on <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span></code> and what was
+deployed in our <code class="docutils literal notranslate"><span class="pre">AWS</span> <span class="pre">VPC</span></code>.</p>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab1.html" title="Lab 4.1: Prepare your AWS deployment" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab3.html" title="Lab 4.3: Review our SSG deployment in AWS" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

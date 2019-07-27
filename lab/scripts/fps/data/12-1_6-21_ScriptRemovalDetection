@@ -1,0 +1,9 @@
+GET /rstats/?client_request_uri=http%253A%252F%252F10.64.8.206%252FLogin.aspx&fpm_additional_info=&fpm_alert_component=21&fpm_alert_config=&fpm_alert_details=http%253A%252F%252F10.64.1.127%252Fscripts%252FdemoTools.js&fpm_alert_id=d4&fpm_alert_type=6&fpm_guid=9d9g2xxs5ihh&fpm_score=0&fpm_transaction_data=&fpm_url_name=%252Flogin.aspx&http_referrer=http%253A%252F%252F10.64.8.206%252FLogin.aspx HTTP/1.1
+fps-license=9ae0daaf
+x-forwarded-for=192.168.101.162
+connection=Keep-Alive
+user-agent=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.80 Safari/537.36
+host=vAlert
+fps-geoip=
+cookie=ASP.NET_SessionId=2vce0lb0ht2tkaecqmbotsdu; ExvFa=08db45f38aab280091d827d7d3bda39146a78579eca9ca284d12d748e131605dea154d02dff8d6ca06cc92258606b9d0; SU4t2l=08da89559f061000467848d3fbf449faa0611fd36df16336; tX5JCn=08da89559f0210003e5e2a38517c1b11270ac5bb76666d20
+fps-username=user

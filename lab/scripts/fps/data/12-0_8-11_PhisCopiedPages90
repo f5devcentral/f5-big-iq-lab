@@ -1,0 +1,10 @@
+GET /rstats/?fpm_alert_type=8&fpm_alert_component=11&fpm_alert_id=d4&fpm_additional_info=http://10.57.140.201/login.aspx&client_request_uri=http://www.scotte.com/Demo%20Site.html&fpm_score=90&http_referrer=HTTP/1.1foo90
+accept-language=en-US,en;q=0.8
+accept-encoding=gzip, deflate, sdch
+fps-license=9ae0daaf
+connection=close
+accept=image/webp,*/*;q=0.8
+user-agent=Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36 foo90
+host=10.57.140.201
+referer=http://www.scotte.com/Demo%20Site.html
+

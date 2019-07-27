@@ -1,0 +1,9 @@
+GET /rstats/?client_request_uri=http://10.57.140.201%2flogin.aspx&fpm_additional_info=&fpm_alert_component=15&fpm_alert_details=&fpm_alert_id=d4&fpm_alert_type=1&fpm_guid=&fpm_score=0&fpm_transaction_data=&http_referrer= HTTP/1.1
+fps-license=9ae0daaf
+x-forwarded-for=192.168.101.37
+connection=Keep-Alive
+host=vAlert
+fps-geoip=AS CN {Beijing}
+cookie=ASP.NET_SessionId=o1djrnlf4ywa5wrj0k3fjqgf
+fps-username=user
+

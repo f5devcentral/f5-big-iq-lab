@@ -1,0 +1,64 @@
+{
+    "description": "",
+    "name": "",
+    "spec": [
+        {
+            "required": true,
+            "min": 0,
+            "default": "{{ app_name }}",
+            "max": 1024,
+            "question_description": "",
+            "choices": "",
+            "variable": "app_name",
+            "question_name": "App Name",
+            "type": "text"
+        },
+        {
+            "required": true,
+            "min": 0,
+            "default": "{{ vsip }}",
+            "max": 1024,
+            "question_description": "",
+            "choices": "",
+            "new_question": true,
+            "variable": "vsip",
+            "question_name": "Service IP",
+            "type": "text"
+        },
+        {
+            "required": true,
+            "min": 0,
+            "default": "{{ node1 }}",
+            "max": 1024,
+            "question_description": "",
+            "choices": "",
+            "new_question": true,
+            "variable": "node1",
+            "question_name": "Node 1",
+            "type": "text"
+        },
+        {
+            "required": true,
+            "min": 0,
+            "default": "{{ node2 }}",
+            "max": 1024,
+            "question_description": "",
+            "choices": "",
+            "new_question": true,
+            "variable": "node2",
+            "question_name": "Node 2",
+            "type": "text"
+        },
+        {
+            "question_description": "",
+            "min": null,
+            "default": "{{ app_type }}",
+            "max": null,
+            "required": true,
+            "choices": "http_app\nwaf_app",
+            "variable": "app_type",
+            "question_name": "App Type",
+            "type": "multiplechoice"
+        }
+    ]
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 1.3: Deploy your Service Scaling Group</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 1.3: Deploy your Service Scaling Group"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 1.3: Deploy your Service Scaling Group &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 1.4: Troubleshoot a SSG" href="lab4.html" />
+    <link rel="prev" title="Lab 1.2: Define your Cloud Environment" href="lab2.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 1.3: Deploy your Service Scaling Group</a><ul>
+<li><a class="reference internal" href="#service-scaling-group-setup">Service Scaling Group Setup</a></li>
+</ul>
+</li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a>
+              &gt; <a href="module1.html">Module 1: Setup a Service scaling group (SSG) in VMWARE</a>
+
+          <span class="right">
+             <a href="../../_sources/class2/module1/lab3.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-1-3-deploy-your-service-scaling-group">
+<h1>Lab 1.3: Deploy your Service Scaling Group<a class="headerlink" href="#lab-1-3-deploy-your-service-scaling-group" title="Permalink to this headline">¶</a></h1>
+<p>Before setting up our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> and deploy it, do the following:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>it is recommended to launch your <code class="docutils literal notranslate"><span class="pre">SSH</span></code> sessions from the UDF portal.</p>
+</div>
+<ul>
+<li><p>Open <strong>2</strong> <code class="docutils literal notranslate"><span class="pre">SSH</span></code> sessions on your <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span></code>.</p></li>
+<li><p>On the first <code class="docutils literal notranslate"><span class="pre">SSH</span></code> session, run the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">/var/log/restjavad.0.log</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">vmware</span></code></p>
+</li>
+<li><p>On the second <code class="docutils literal notranslate"><span class="pre">SSH</span></code> session, run the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">tail</span> <span class="pre">-f</span> <span class="pre">/var/log/orchestrator.log</span></code></p>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Keep those sessions open until the end of the class.</p>
+</div>
+<ul>
+<li><p>Connect via <code class="docutils literal notranslate"><span class="pre">SSH</span></code> to the system <em>Ubuntu Lamp Server</em>
+and run the command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">isc-dhcp-server</span> <span class="pre">status</span></code></p>
+<p>if you see something like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>f5@03a920f8b4c0410d8f:~$ sudo service isc-dhcp-server status
+isc-dhcp-server stop/waiting
+</pre></div>
+</div>
+<p>then run the command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">isc-dhcp-server</span> <span class="pre">start</span></code></p>
+<p>otherwise (to be safe), run the command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">service</span> <span class="pre">isc-dhcp-server</span> <span class="pre">force-reload</span></code></p>
+</li>
+</ul>
+<p>From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the <em>Access</em> button
+of the <em>Ubuntu Lamp Server</em> system and select <em>Console</em> or <em>XRDP</em></p>
+<a class="reference internal image-reference" href="../../_images/udf_ubuntu1.png"><img alt="../../_images/udf_ubuntu1.png" class="align-center" src="../../_images/udf_ubuntu1.png" style="width: 363.5px; height: 202.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>If you are using Ravello, select the <em>Ubuntu Lamp Server</em> and click on <em>Console</em>:</p>
+<a class="reference internal image-reference" href="../../_images/ravello_ubuntu1.png"><img alt="../../_images/ravello_ubuntu1.png" class="align-center" src="../../_images/ravello_ubuntu1.png" style="width: 879.5px; height: 240.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>You can use the copy/past feature if you are using the Console:</p>
+<a class="reference internal image-reference" href="../../_images/ubuntu_console.png"><img alt="../../_images/ubuntu_console.png" class="align-center" src="../../_images/ubuntu_console.png" style="width: 729.0px; height: 327.5px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You may have a QWERTY keyboard for the password, keep this in mind</p>
+</div>
+<p>Launch Chrome and click on the <em>vSphere Web Client</em> bookmark.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_6.png"><img alt="../../_images/img_module1_lab3_6.png" class="align-center" src="../../_images/img_module1_lab3_6.png" style="width: 273.0px; height: 160.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Use the following credentials:</p>
+<ul class="simple">
+<li><p>login: <a class="reference external" href="mailto:administrator&#37;&#52;&#48;vsphere&#46;local">administrator<span>&#64;</span>vsphere<span>&#46;</span>local</a></p></li>
+<li><p>password: Purpl3$lab</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_4.png"><img alt="../../_images/img_module1_lab3_4.png" class="align-center" src="../../_images/img_module1_lab3_4.png" style="width: 451.0px; height: 598.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>the login/authentication takes a bit of time.</p>
+</div>
+<p>Once logged in, click on the <em>VMs and Templates</em> button to see the list of VMs
+and folder.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_7.png"><img alt="../../_images/img_module1_lab3_7.png" class="align-center" src="../../_images/img_module1_lab3_7.png" style="width: 408.0px; height: 210.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>In the previous lab, in our Cloud environment, we specified a VM template called
+<em>BIGIP-13.1.0.5-0.0.5.ALL_1SLOT_template</em>. You can see that it is listed here.</p>
+<p>This template will give us the required information to deploy the VEs related to
+our <code class="docutils literal notranslate"><span class="pre">SSG</span></code>:</p>
+<ul class="simple">
+<li><p>Nb of vCPUs</p></li>
+<li><p>Amount of memory allocated</p></li>
+<li><p>Disk size and datastore used by this <code class="docutils literal notranslate"><span class="pre">SSG</span></code></p></li>
+</ul>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_8.png"><img alt="../../_images/img_module1_lab3_8.png" class="align-center" src="../../_images/img_module1_lab3_8.png" style="width: 309.0px; height: 437.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<div class="section" id="service-scaling-group-setup">
+<h2>Service Scaling Group Setup<a class="headerlink" href="#service-scaling-group-setup" title="Permalink to this headline">¶</a></h2>
+<p>To deploy your <code class="docutils literal notranslate"><span class="pre">Service</span> <span class="pre">Scaling</span> <span class="pre">Group</span></code> (SSG), go to <em>Applications</em> &gt;
+<em>Environments</em> &gt; <em>Service Scaling Groups</em> and click the <em>Create</em> button</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_1.png"><img alt="../../_images/img_module1_lab3_1.png" class="align-center" src="../../_images/img_module1_lab3_1.png" style="width: 656.0px; height: 319.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Service Scaling Group Properties:</p>
+<ul class="simple">
+<li><p>Name : SSGClass2</p></li>
+<li><p>Cloud Environment: select <em>SSGClass2VMWAreEnvironment</em></p></li>
+<li><p>Minimum Device(s) Required: 2</p></li>
+<li><p>Desired Number of Device(s): 2</p></li>
+<li><p>Maximum Device(s) Required : 3</p></li>
+<li><p>Maximum Application(s) Allowed: 3</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>[New 6.0.1]</strong> SSG can be used along with an Access Group. APM module will need to be provisioned in the device template and proper license pool will need to be configure.
+The access group to use need to be specified in the SSG configuration.</p>
+<img alt="../../_images/img_module1_lab3_1b.png" src="../../_images/img_module1_lab3_1b.png" />
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>In UDF, the provisioning of a SSG VE may take up to 10 min. So it may takes
+up to 20 min to build those 2 devices. If you are short on time, it may be
+better to specify 1 minimum device and 1 desired device instead of 2.</p>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_2.png"><img alt="../../_images/img_module1_lab3_2.png" class="align-center" src="../../_images/img_module1_lab3_2.png" style="width: 410.0px; height: 306.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Let’s review those parameters.</p>
+<ul class="simple">
+<li><p>Minimum Device(s) Required : specify how many BIG-IP VE(s) should always
+be available at any time</p></li>
+<li><p>Desired Number of Device(s): specify the ideal number of BIG-IP VE(s)
+should be available when no scale-out scenario is triggered</p></li>
+<li><p>Maximum Device(s) Required: specify the maximum number of BIG-IP VE(s)
+that can be created in this SSG. The purpose is to make sure that under some
+scenarios (like being DDOS), we won’t add constantly new devices</p></li>
+<li><p>Maximum Application(s) Allowed: specify how many applications we will
+be able to deploy on top of this SSG. The idea is to ensure that if we use a
+Cloud edition VE, we won’t try to go over the license limit</p></li>
+</ul>
+<p>Load-Balancer:</p>
+<ul class="simple">
+<li><p>Devices: Select the already discovered BIG-IPs <em>BOS-vBIGIP01.termmarc.com</em> and
+<em>BOS-vBIGIP02.termmarc.com</em></p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_3.png"><img alt="../../_images/img_module1_lab3_3.png" class="align-center" src="../../_images/img_module1_lab3_3.png" style="width: 1367.0px; height: 322.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The device(s) we select here will behave as our <code class="docutils literal notranslate"><span class="pre">Service</span> <span class="pre">Scaler</span></code> devices. They will load
+balance the traffic aimed at this <code class="docutils literal notranslate"><span class="pre">SSG</span></code>.</p>
+<p>Scaling Rules:</p>
+<ul class="simple">
+<li><p>Scale-Out: Select <em>Throughput(In)</em> Greater than 20 Mbps</p></li>
+<li><p>Scale-In: Select <em>Troughput(In)</em> Less than 5 Mbps</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_9.png"><img alt="../../_images/img_module1_lab3_9.png" class="align-center" src="../../_images/img_module1_lab3_9.png" style="width: 596.0px; height: 154.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here we define our threshold to scale-in/scale-out.The <code class="docutils literal notranslate"><span class="pre">cooldown</span> <span class="pre">period</span></code>
+mentions an interval where we don’t do any scaling. The idea is to see how
+the situation evolves after a scale-in scale-out event.</p>
+<p>Click on <em>Save &amp; Close</em> and your SSG will start being provisioned.</p>
+<p>In order to allow Paula to use the SSG previously created, go to : <em>System</em> &gt; <em>Role Management</em> &gt; <em>Roles</em>
+and select <em>CUSTOM ROLES</em> &gt; <em>Application Roles</em> &gt; <em>Application Creator VMware</em> role (already assigned to Paula). Select the Service Scaling Groups <em>SSGClass2</em>, drag it to the right.</p>
+<a class="reference internal image-reference" href="../../_images/img_module1_lab3_10.png"><img alt="../../_images/img_module1_lab3_10.png" class="align-center" src="../../_images/img_module1_lab3_10.png" style="width: 1280.5px; height: 636.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click on <em>Save &amp; Close</em></p>
+<p>Go to the next lab to see how to troubleshoot/monitor your SSG Deployment.</p>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="lab2.html" title="Lab 1.2: Define your Cloud Environment" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab4.html" title="Lab 1.4: Troubleshoot a SSG" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

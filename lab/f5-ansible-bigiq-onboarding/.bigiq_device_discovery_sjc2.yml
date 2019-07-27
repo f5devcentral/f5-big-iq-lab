@@ -1,0 +1,113 @@
+---
+- name: Add BIG-IPs to BIG-IQ
+  hosts: all
+  connection: local
+  vars_files:
+    - inventory/group_vars/sjc2-bigiq-cm-01.yml
+  roles:
+    - { role: f5devcentral.f5ansible }
+  
+  tasks:
+    - name: Discover BIG-IP 1 device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip1 }}"
+        device_username: "{{ bigip1user }}"
+        device_password: "{{ bigip1pass }}"
+        conflict_policy: "{{ bigip1conflict }}"
+        device_conflict_policy: "{{ bigip1device_conflict }}"
+        versioned_conflict_policy: "{{ bigip1versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip1device_statistics_enable }}"
+          interval: "{{ bigip1device_statistics_interval }}"
+          zone: "{{ bigip1device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip1device_statistics_module1 }}"
+            - "{{ bigip1device_statistics_module2 }}"
+            - "{{ bigip1device_statistics_module3 }}"
+        ha_name: "{{ bigip1cluster }}"
+        modules: "{{ bigip1modules }}"
+      register: result
+      delegate_to: localhost
+
+    - name: Discover BIG-IP 2 device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip2 }}"
+        device_username: "{{ bigip2user }}"
+        device_password: "{{ bigip2pass }}"
+        conflict_policy: "{{ bigip2conflict }}"
+        device_conflict_policy: "{{ bigip2device_conflict }}"
+        versioned_conflict_policy: "{{ bigip2versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip2device_statistics_enable }}"
+          interval: "{{ bigip2device_statistics_interval }}"
+          zone: "{{ bigip2device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip2device_statistics_module1 }}"
+            - "{{ bigip2device_statistics_module2 }}"
+            - "{{ bigip2device_statistics_module3 }}"
+        ha_name: "{{ bigip2cluster }}"
+        modules: "{{ bigip2modules }}"
+      register: result
+      delegate_to: localhost
+
+    - name: Discover BIG-IP 3 device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip3 }}"
+        device_username: "{{ bigip3user }}"
+        device_password: "{{ bigip3pass }}"
+        conflict_policy: "{{ bigip3conflict }}"
+        device_conflict_policy: "{{ bigip3device_conflict }}"
+        versioned_conflict_policy: "{{ bigip3versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip3device_statistics_enable }}"
+          interval: "{{ bigip3device_statistics_interval }}"
+          zone: "{{ bigip3device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip3device_statistics_module1 }}"
+            - "{{ bigip3device_statistics_module2 }}"
+            - "{{ bigip3device_statistics_module3 }}"
+        ha_name: "{{ bigip3cluster }}"
+        modules: "{{ bigip3modules }}"
+      register: result
+      delegate_to: localhost
+
+    - name: Discover BIG-IP 4 device and import config, use default conflict policy
+      bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_onboard_server }}"
+          user: admin
+          password: "{{ bigiq_onboard_new_admin_password }}"
+          validate_certs: no
+        device_address: "{{ bigip4 }}"
+        device_username: "{{ bigip4user }}"
+        device_password: "{{ bigip4pass }}"
+        conflict_policy: "{{ bigip4conflict }}"
+        device_conflict_policy: "{{ bigip4device_conflict }}"
+        versioned_conflict_policy: "{{ bigip4versioned_conflict }}"
+        statistics:
+          enable: "{{ bigip4device_statistics_enable }}"
+          interval: "{{ bigip4device_statistics_interval }}"
+          zone: "{{ bigip4device_statistics_zone }}"
+          stat_modules:
+            - "{{ bigip4device_statistics_module1 }}"
+            - "{{ bigip4device_statistics_module2 }}"
+            - "{{ bigip4device_statistics_module3 }}"
+        ha_name: "{{ bigip4cluster }}"
+        modules: "{{ bigip4modules }}"
+      register: result
+      delegate_to: localhost

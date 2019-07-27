@@ -1,0 +1,130 @@
+---
+
+# ---------------------------------
+# Configure VPN Device specific config
+# ---------------------------------
+
+
+- name: Create ZebOS.conf from template
+  delegate_to: localhost
+  template: src=./bigip_vpn/templates/zebos.cfg.j2 dest=./cache/{{PREFIX}}/{{inventory_hostname}}_ZebOS.conf
+
+- name: Creates directory
+  file: path=/config/zebos/rd0 state=directory
+
+- name: Copy over ZebOS.conf
+  copy: src=./cache/{{PREFIX}}/{{inventory_hostname}}_ZebOS.conf dest=/config/zebos/rd0/ZebOS.conf
+
+#- name: debug
+#  debug:
+#    msg: "{{ item }}"
+#  loop: "{{ customer_gateway_config.vpn_connection.ipsec_tunnel }}"
+
+- name: Adding IKE Peers
+  bigip_config:
+    provider:
+      server: "{{ ansible_ssh_host }}"
+      user: "{{ bigip_rest_user }}"
+      password: "{{ bigip_rest_password }}"
+      validate_certs: no
+    merge_content: |
+       net ipsec ike-peer /Common/aws_vpn_conn_peer_{{ idx + 1 }} {
+         lifetime 480
+         nat-traversal on
+         my-id-type address
+         peers-id-type address
+         phase1-auth-method pre-shared-key
+         phase1-encrypt-algorithm aes128
+         preshared-key-encrypted "{{ item['ike']['pre_shared_key'] }}"
+         remote-address "{{ item['vpn_gateway']['tunnel_outside_address']['ip_address'] }}"
+         verify-cert true
+         version { v1 }
+       }
+  delegate_to: localhost
+  loop: "{{ customer_gateway_config.vpn_connection.ipsec_tunnel }}"
+  loop_control:
+    index_var: idx
+
+#Using ipsubnet() TO GET SUBNET FROM HOST ADDRESS
+#http://docs.ansible.com/ansible/latest/user_guide/playbooks_filters_ipaddr.html
+#https://github.com/ansible/ansible/blob/f34b55ac2bcfd71640b3db91f3c4e177f723cd03/lib/ansible/plugins/filter/ipaddr.py
+
+#- name: debug
+#  debug:
+#    msg: "{{ item['vpn_gateway']['tunnel_inside_address']['ip_address'] | ipsubnet(item['vpn_gateway']['tunnel_inside_address']['network_cidr']) }}"
+#  loop: "{{ customer_gateway_config.vpn_connection.ipsec_tunnel }}"
+
+- name: Adding Traffic Selectors
+  bigip_config:
+    provider:
+      server: "{{ ansible_ssh_host }}"
+      user: "{{ bigip_rest_user }}"
+      password: "{{ bigip_rest_password }}"
+      validate_certs: no
+    merge_content: |
+       net ipsec traffic-selector /Common/aws_conn_tun_{{ idx + 1 }}_selector {
+         destination-address "{{ item['vpn_gateway']['tunnel_inside_address']['ip_address'] | ipsubnet(item['vpn_gateway']['tunnel_inside_address']['network_cidr']) }}"
+         ipsec-policy /Common/ipsec-policy-vpn-aws
+         source-address "{{ item['vpn_gateway']['tunnel_inside_address']['ip_address'] | ipsubnet(item['vpn_gateway']['tunnel_inside_address']['network_cidr']) }}"
+       }
+  delegate_to: localhost
+  loop: "{{ customer_gateway_config.vpn_connection.ipsec_tunnel }}"
+  loop_control:
+    index_var: idx
+
+- name: Adding ipsec tunnels profiles
+  bigip_config:
+    provider:
+      server: "{{ ansible_ssh_host }}"
+      user: "{{ bigip_rest_user }}"
+      password: "{{ bigip_rest_password }}"
+      validate_certs: no
+    merge_content: |
+       net tunnels ipsec /Common/aws_conn_tun_{{ idx + 1 }}_profile {
+         app-service none
+         defaults-from /Common/ipsec
+         traffic-selector /Common/aws_conn_tun_{{ idx + 1 }}_selector
+       }
+  delegate_to: localhost
+  loop: "{{ customer_gateway_config.vpn_connection.ipsec_tunnel }}"
+  loop_control:
+    index_var: idx
+
+- name: Adding IPsec tunnels
+  bigip_config:
+    provider:
+      server: "{{ ansible_ssh_host }}"
+      user: "{{ bigip_rest_user }}"
+      password: "{{ bigip_rest_password }}"
+      validate_certs: no
+    merge_content: |
+       net tunnels tunnel /Common/aws_conn_tun_{{ idx + 1 }} {
+         local-address {{ ExternalInterfacePrivateIp }}
+         mtu 1390
+         profile /Common/aws_conn_tun_{{ idx + 1 }}_profile
+         remote-address "{{ item['vpn_gateway']['tunnel_outside_address']['ip_address'] }}"
+       }
+  delegate_to: localhost
+  loop: "{{ customer_gateway_config.vpn_connection.ipsec_tunnel }}"
+  loop_control:
+    index_var: idx
+
+- name: Adding Self IPs
+  bigip_config:
+    provider:
+      server: "{{ ansible_ssh_host }}"
+      user: "{{ bigip_rest_user }}"
+      password: "{{ bigip_rest_password }}"
+      validate_certs: no
+    merge_content: |
+       net self /Common/{{ item['customer_gateway']['tunnel_inside_address']['ip_address'] }} {
+         address "{{ item['customer_gateway']['tunnel_inside_address']['ip_address'] }}/{{ item['customer_gateway']['tunnel_inside_address']['network_cidr'] }}"
+         allow-service all
+         traffic-group /Common/traffic-group-local-only
+         vlan /Common/aws_conn_tun_{{ idx + 1 }}
+       }
+  delegate_to: localhost
+  loop: "{{ customer_gateway_config.vpn_connection.ipsec_tunnel }}"
+  loop_control:
+    index_var: idx
+

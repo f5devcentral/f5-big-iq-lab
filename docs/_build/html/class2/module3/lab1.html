@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 3.1: Update our Cloud Environment</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 3.1: Update our Cloud Environment"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 3.1: Update our Cloud Environment &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 3.2: Upgrade and scale-up our SSG" href="lab2.html" />
+    <link rel="prev" title="Module 3: Upgrade - Scaling up a SSG (VMWare)" href="module3.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class4/class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 3.1: Update our Cloud Environment</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a>
+              &gt; <a href="module3.html">Module 3: Upgrade - Scaling up a SSG (VMWare)</a>
+
+          <span class="right">
+             <a href="../../_sources/class2/module3/lab1.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-3-1-update-our-cloud-environment">
+<h1>Lab 3.1: Update our Cloud Environment<a class="headerlink" href="#lab-3-1-update-our-cloud-environment" title="Permalink to this headline">¶</a></h1>
+<p>When we deploy or scale-out a <code class="docutils literal notranslate"><span class="pre">SSG</span></code>. The provisioned instances will rely on the
+information specified in the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Environment</span></code> to know what it needs to deploy.</p>
+<p>In the <strong>(Module1)Lab 1.2: Define your Cloud Environment</strong>, we defined the <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Environment</span></code>
+used by our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> <strong>SSGClass2</strong></p>
+<p>This <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Environment</span></code> specifies a few information:</p>
+<ul class="simple">
+<li><p>vCenter credentials</p></li>
+<li><p>VMWare specific information like Datacenter name, resource pool, folder, …</p></li>
+<li><p>VM image template to clone and start as a new SSG instance</p></li>
+<li><p>Networking setup for the new VM image</p></li>
+</ul>
+<p>The key component for the upgrade/scale-up use cases is the <code class="docutils literal notranslate"><span class="pre">VM</span> <span class="pre">Image</span></code> field. This field
+specifies the VM Template we need to clone as our new instance. What is important is that
+when we created this template we:</p>
+<ul class="simple">
+<li><p>used a specific F5 Virtual edition image that will enforce the version to use</p></li>
+<li><p>we allocated compute resources to it: vCPUs, Memory, Datastore to it.</p></li>
+<li><p>we specified the number of interfaces to attach to our Virtual edition</p></li>
+</ul>
+<p>Here is the configuration of the VM template we use in our existing <code class="docutils literal notranslate"><span class="pre">SSG</span></code> <strong>SSGClass2</strong></p>
+<a class="reference internal image-reference" href="../../_images/img_module3_lab1_4.png"><img alt="../../_images/img_module3_lab1_4.png" class="align-center" src="../../_images/img_module3_lab1_4.png" style="width: 813.0px; height: 526.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Here we can see that we use:</p>
+<ul class="simple">
+<li><p>2 vCPUs</p></li>
+<li><p>8 Gb of Memory</p></li>
+<li><p>BIG-IP version 13.1.1</p></li>
+</ul>
+<p><strong>[New 6.0.1]</strong> you can also check the BIG-IP version by selecting the device part of the SSG.</p>
+<a class="reference internal image-reference" href="../../_images/img_module3_lab1_4b.png"><img alt="../../_images/img_module3_lab1_4b.png" class="align-center" src="../../_images/img_module3_lab1_4b.png" style="width: 901.0px; height: 454.0px;" /></a>
+<p>If we need to upgrade AND/OR scale-up our <code class="docutils literal notranslate"><span class="pre">SSG</span></code>, we just need to do the following:</p>
+<ul class="simple">
+<li><p>Deploy a new F5 Virtual Edition image as a template with the relevant version</p></li>
+<li><p>Update (or not) the resources allocated to it if we want to scale up (more vCPUs, memory)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>we could also scale down a SSG if we realized we allocated too much compute to it</p>
+</div>
+<p>In this lab, we already have another VM template available to test this:
+BIGIP-14.0.0.1-0.0.2.ALL_1SLOT_template</p>
+<a class="reference internal image-reference" href="../../_images/img_module3_lab1_1.png"><img alt="../../_images/img_module3_lab1_1.png" class="align-center" src="../../_images/img_module3_lab1_1.png" style="width: 402.5px; height: 271.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>We can review the configuration of this VM template:</p>
+<ul class="simple">
+<li><p>4 vCPUs</p></li>
+<li><p>8 Gb of Memory</p></li>
+<li><p>BIG-IP Version 14.0.0</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/img_module3_lab1_3.png"><img alt="../../_images/img_module3_lab1_3.png" class="align-center" src="../../_images/img_module3_lab1_3.png" style="width: 808.0px; height: 539.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>So if we switch from our previous template to this one, we will UPGRADE our environment AND SCALE-UP:</p>
+<ul class="simple">
+<li><p>upgrade from 13.1.0.7 to 13.1.1 or 14.0.0</p></li>
+<li><p>add more vCPUs to the instances (2 -&gt; 4 vCPUs)</p></li>
+</ul>
+<p>In your <code class="docutils literal notranslate"><span class="pre">BIG-IQ</span></code> UI, Go to <em>Applications</em> &gt; <em>Environments</em> &gt; <em>Cloud Environments</em>, Select
+<strong>SSGClass2VMWareEnvironment</strong> to edit it.</p>
+<p>Update the <em>VM Image</em> field to use the new VM Template: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_template or BIGIP-13.1.1-0.0.4.ALL_1SLOT_template</p>
+<a class="reference internal image-reference" href="../../_images/img_module3_lab1_2.png"><img alt="../../_images/img_module3_lab1_2.png" class="align-center" src="../../_images/img_module3_lab1_2.png" style="width: 681.0px; height: 677.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Click <em>Save &amp; Close</em>. Now that our <code class="docutils literal notranslate"><span class="pre">Cloud</span> <span class="pre">Environment</span></code> is updated, we can upgrade our <code class="docutils literal notranslate"><span class="pre">SSG</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>bear in the mind that from now on, if our <code class="docutils literal notranslate"><span class="pre">SSG</span></code> need to scale-out, it will use
+this new VM Template also</p>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="module3.html" title="Module 3: Upgrade - Scaling up a SSG (VMWare)" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab2.html" title="Lab 3.2: Upgrade and scale-up our SSG" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

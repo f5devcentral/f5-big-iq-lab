@@ -1,0 +1,65 @@
+---
+- name: TOWER-AS3-BIG-IQ - Delete App Service
+  hosts: bigiq
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - set_fact:
+        mgmt: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}:{{ hostvars[inventory_hostname]['mgmt_port'] }}"
+
+    - name: Authenticate to BIG-IQ
+      uri:
+        url: "https://{{ mgmt }}/mgmt/shared/authn/login"
+        method: POST
+        headers:
+          Content-Type: application/json
+        body:
+          username: "{{ bigiq_user }}"
+          password: "{{ bigiq_pass }}"
+          loginProviderName: RadiusServer
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: Send AS3 Declaration
+      uri:
+        url: https://{{ mgmt }}/mgmt/shared/appsvcs/declare?async=true
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body: "{{ lookup('template','j2/delete_app.j2') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - pause:
+        seconds: 5
+
+    ## LOOP TO CHECK THE TASK
+
+    - name: Loop to check for AS3 status
+      uri:
+        url: https://{{ mgmt }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+      until: "json_response_task.json.results[0].message != 'in progress'"
+      retries: 20
+      delay: 15
+
+    - debug:
+        var: json_response_task.json
+
+# Create Ansible Tower Template based on Application
+- import_playbook: tower_template_delete.yml

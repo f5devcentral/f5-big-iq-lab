@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<head>
+  
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-PPZPQ6');</script>
+  <!-- End Google Tag Manager -->
+    <title>Lab 5.1: Onboard BIG-IQ using Ansible Galaxy</title>
+  
+
+  <meta charset="utf-8">
+  <!-- Twitter Bootstrap viewport setting -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- F5 metadata -->
+  <meta name="title" content="Lab 5.1: Onboard BIG-IQ using Ansible Galaxy"/>
+  <meta name="product" content="F5 BIG-IQ &amp; Cloud Edition Lab"/>
+  <meta name="version" content=""/>
+  <meta name="updated_date"  content="2019-07-26 04:33:11"/>
+  <meta name="archived" content="Archived documents excluded"/>
+  <meta name="doc_type" content="Manual"/>
+  <meta name="lifecycle" content="release"/>
+  <meta name="F5 BIG-IQ &amp; Cloud Edition Lab" content=""/>
+
+
+  
+
+  
+  <link href="https://cdn.f5.com/favicon.ico" rel="icon">
+
+</head>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta charset="utf-8" />
+    <title>Lab 5.1: Onboard BIG-IQ using Ansible Galaxy &#8212; F5 BIG-IQ &amp; Cloud Edition Lab  documentation</title>
+    <link rel="stylesheet" href="../../_static/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/graphviz.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/css/f5_agility_theme.css" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/f5-theme.css" type="text/css" />
+    <link rel="stylesheet" href="/assets/css/CoveoFullSearch.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/21fb8a09c3.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/language_data.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Lab 5.2: Onboard BIG-IQ in AWS" href="lab2.html" />
+    <link rel="prev" title="Module 5: BIG-IQ Automated onboarding" href="module5.html" />
+
+  
+    
+
+  
+  </head><body>
+  <div id="clouddocs-header"></div>
+
+    <div id="sidebar" class="section-nav">
+      
+      <!--  version selector ------------------>
+      <div id="version_selector_wrapper">
+      </div>
+      <nav class="nav-sidebartoc">
+
+        
+         <h5>F5 BIG-IQ & Cloud Edition Lab  </h5>
+        
+<div id="searchbox" role="search">
+  <form class="search" action="../../search.html" method="get">
+    <input type="text" class="search" name="q" placeholder=" Search..." />
+    <button type="submit" class="btn btn-info navbar-btn"><i class="fa fa-search"></i></button>
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        <hr>
+        <span class="nav-sidebartoc">
+            <p class="caption"><span class="caption-text">Contents/Lab:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../class1/class1.html">Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class2/class2.html">Class 2: BIG-IQ Deployment with auto-scale on AWS, Azure &amp; VMware (Cloud Edition)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class3/class3.html">Class 3:  BIG-IQ Analytics (Cloud Edition)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../class4.html">Class 4: BIG-IQ Platform</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class5/class5.html">Class 5: BIG-IQ Device Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class6/class6.html">Class 6: BIG-IQ ADC Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class7/class7.html">Class 7: BIG-IQ Application Firewall Manager (AFM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class8/class8.html">Class 8: BIG-IQ Application Security Manager (ASM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class9/class9.html">Class 9: BIG-IQ Access Policy Manager (APM)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class10/class10.html">Class 10: BIG-IQ DNS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../class11/class11.html">Class 11: BIG-IQ DDoS Monitoring and Dashboard</a></li>
+</ul>
+
+        </span><!-- Use this file to add extra links to the bottom of the ToC sidebar -->
+<hr>
+  <span class="nav-sidebartoc">
+ <!-- insert content here -->
+  </span>
+      </nav>
+    </div>
+
+
+    <div id="right-sidebar">
+      <h7 style="font-weight:normal">On this page:</h7>
+      <nav class="nav-sidebartoc">
+        <span class="nav-sidebartoc">
+            <ul>
+<li><a class="reference internal" href="#">Lab 5.1: Onboard BIG-IQ using Ansible Galaxy</a></li>
+</ul>
+
+         </span>
+      </nav>
+    </div>
+
+
+
+
+
+  
+  <div class="main active" id="content" >
+    <article class="docs-container site-article-inner">
+              <!-- custom breadcrumb -->
+        <h5>
+            <a href="../../index.html">F5 BIG-IQ &amp; Cloud Edition Lab</a>
+              &gt; <a href="../class4.html">Class 4: BIG-IQ Platform</a>
+              &gt; <a href="module5.html">Module 5: BIG-IQ Automated onboarding</a>
+
+          <span class="right">
+             <a href="../../_sources/class4/module5/lab1.rst.txt" rel="nofollow">Source</a> |
+             <a href="https://github.com/f5devcentral/f5-big-iq-lab">Edit on <i class="fa fa-github" aria-hidden="true"></i></a>
+          </span>
+        </h5>
+        <!-- end custom breadcrumb -->
+      
+
+
+    <!--a title="Export PDF" id="export-pdf" class="btn btn btn-link pull-right">View PDF</a-->
+    <button type="button" id="export-pdf" class="btn btn-link right">PDF</button>
+
+
+    
+     
+         <div class="sidebar" id="version-warning" style="display: none;">
+           <p class="first sidebar-title">
+           <span class="icon fa fa-info-circle fa-lg"></span> Version notice:</p>
+           <p class="last" id="currentVersion"></p>
+          </div>
+
+
+     <div role="main">
+        
+  <div class="section" id="lab-5-1-onboard-big-iq-using-ansible-galaxy">
+<h1>Lab 5.1: Onboard BIG-IQ using Ansible Galaxy<a class="headerlink" href="#lab-5-1-onboard-big-iq-using-ansible-galaxy" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>This lab has steps to reset the BIG-IQ CM and DCD to its factory configuration. Plan accordingly if you need to run other classes/labs.</p>
+</div>
+<p>F5 provides Ansible Galaxy roles to onboard BIG-IQ Centralized Management (CM) and BIG-IQ Data Collection Device (DCD).</p>
+<p>This automation scenario is composed of 4 parts:</p>
+<ul>
+<li><p>Erase the current BIG-IQ CM and DCD configuration to default.</p></li>
+<li><p>Onboard BIG-IQ CM and DCD</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://galaxy.ansible.com/f5devcentral/bigiq_onboard">bigiq_onboard</a> <strong>ansible Role</strong>: Performs a basic series of on-boarding steps to bootstrap a BIG-IQ system to the point that it can accept configuration.</p></li>
+<li><p><a class="reference external" href="https://galaxy.ansible.com/f5devcentral/register_dcd">register_dcd</a>  <strong>ansible Role</strong>: Performs a series of steps needed to register a BIG-IQ provisioned as a Data Collection Device (DCD) to a BIG-IQ provisioned as a Configuration Management (CM) device.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Add BIG-IPs to the BIG-IQ</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigiq_device_discovery_module.html">bigiq_device_discovery</a>  <strong>ansible module</strong>: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ <strong>(BIG-IQ 6.1 and above)</strong>.</p></li>
+<li><p><a class="reference external" href="https://downloads.f5.com/esd/eula.sv?sw=BIG-IQ&amp;pro=big-iq_CM&amp;ver=6.0.1&amp;container=v6.0.1.1&amp;path=&amp;file=&amp;B1=I+Accept">bulkDiscovery.pl</a>  <strong>perl script</strong>: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ <strong>(BIG-IQ 5.4, 6.0.x)</strong>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Create Application Services</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><a class="reference external" href="../../class01/module5/module5.html">Ansible using AS3</a> <strong>playbook</strong>: Use BIG-IQ Ansible and AS3 to deploy application services (see class 1, module 5, lab 7) <strong>(BIG-IQ 6.1 and above)</strong>.</p></li>
+<li><p><a class="reference external" href="../../class01/module3/module3.html">Ansible using Service Catalog</a> <strong>playbook</strong>: Use BIG-IQ Ansible Modules to deploy application services (see class 1, module 3, lab 1) <strong>(BIG-IQ 6.0.x)</strong>.</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p><strong>Lab:</strong></p>
+<ol class="arabic">
+<li><p>Connect via <code class="docutils literal notranslate"><span class="pre">SSH</span></code> to the system <em>Ubuntu Lamp Server</em>.</p></li>
+<li><p>Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in <code class="docutils literal notranslate"><span class="pre">bigiq_onboard_license_key</span></code> variable (<strong>Ravello only</strong>).</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd /home/f5/f5-ansible-bigiq-onboarding</span>
+<span class="c1"># vi inventory/group_vars/udf-bigiq-dcd-01.yml</span>
+<span class="c1"># vi inventory/group_vars/udf-bigiq-cm-01.yml</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Reset both BIG-IQ CM and DCD.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd /home/f5/f5-ansible-bigiq-onboarding</span>
+<span class="c1"># ./cmd_bigiq_onboard_reset.sh nopause</span>
+</pre></div>
+</div>
+<p>The script will do in this order:</p>
+<ol class="arabic simple">
+<li><p>Delete existing applications (BIG-IQ and AS3)</p></li>
+<li><p>Execute the <code class="docutils literal notranslate"><span class="pre">clear-rest-storage</span> <span class="pre">-d</span></code> command on both BIG-IQ CM and DCD</p></li>
+<li><p>Reboot</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Wait both BIG-IQ CM and DCD come back up.</p></li>
+<li><p>Execute the script</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cd /home/f5/f5-ansible-bigiq-onboarding</span>
+<span class="c1"># ./cmd_bigiq_onboard.sh nopause</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab1_1.png"><img alt="../../_images/img_module5_lab1_1.png" class="align-center" src="../../_images/img_module5_lab1_1.png" style="width: 758.8px; height: 452.2px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The script will perform in this order:</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF or Description field in Ravello).</p></li>
+<li><p>Install ansible-galaxy roles</p></li>
+<li><p>Onboarding BIG-IQ CM and DCD:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Using bigiq_onboard role: setup hostname, role, dns, ntp, self-ip, master key, passwords (DCD first, then CM)</p></li>
+<li><p>Using register_dcd role: add DCD to CM, activate necessary services (asm, afm, …)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>Add &amp; discover BIG-IPs to BIG-IQ CM using the bulkDiscovery.pl or Ansible module bigiq_device_discovery.</p></li>
+<li><p>Create Applications using Ansible playbook (AS3 or none AS3).</p></li>
+</ol>
+</div></blockquote>
+<p>Ignore the following errors:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">TASK</span> <span class="pre">[f5devcentral.bigiq_onboard</span> <span class="pre">:</span> <span class="pre">Test</span> <span class="pre">authentication</span> <span class="pre">-</span> <span class="pre">old</span> <span class="pre">credentials]</span> <span class="pre">***********************************************************</span>
+<span class="pre">fatal:</span> <span class="pre">[udf-bigiq-dcd-01]:</span> <span class="pre">FAILED!</span> <span class="pre">=&gt;</span> <span class="pre">{&quot;cache_control&quot;:</span> <span class="pre">&quot;no-store,</span> <span class="pre">no-cache,</span> <span class="pre">must-revalidate&quot;,</span> <span class="pre">&quot;changed&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;connection&quot;:</span> <span class="pre">&quot;close&quot;,</span> <span class="pre">&quot;content&quot;:</span> <span class="pre">&quot;{\&quot;code\&quot;:401,\&quot;message\&quot;:\&quot;Authentication</span> <span class="pre">failed.\&quot;,\&quot;originalRequestBody\&quot;:\&quot;{\\\&quot;username\\\&quot;:\\\&quot;admin\\\&quot;,\\\&quot;generation\\\&quot;:0,\\\&quot;lastUpdateMicros\\\&quot;:0}\&quot;,\&quot;restOperationId\&quot;:1067315,\&quot;errorStack\&quot;:[],\&quot;kind\&quot;:\&quot;:resterrorresponse\&quot;}&quot;,</span> <span class="pre">&quot;content_length&quot;:</span> <span class="pre">&quot;206&quot;,</span> <span class="pre">&quot;content_type&quot;:</span> <span class="pre">&quot;application/json;</span> <span class="pre">charset=UTF-8&quot;,</span> <span class="pre">&quot;date&quot;:</span> <span class="pre">&quot;Mon,</span> <span class="pre">15</span> <span class="pre">Oct</span> <span class="pre">2018</span> <span class="pre">21:15:41</span> <span class="pre">GMT&quot;,</span> <span class="pre">&quot;expires&quot;:</span> <span class="pre">&quot;-1&quot;,</span> <span class="pre">&quot;json&quot;:</span> <span class="pre">{&quot;code&quot;:</span> <span class="pre">401,</span> <span class="pre">&quot;errorStack&quot;:</span> <span class="pre">[],</span> <span class="pre">&quot;kind&quot;:</span> <span class="pre">&quot;:resterrorresponse&quot;,</span> <span class="pre">&quot;message&quot;:</span> <span class="pre">&quot;Authentication</span> <span class="pre">failed.&quot;,</span> <span class="pre">&quot;originalRequestBody&quot;:</span> <span class="pre">&quot;{\&quot;username\&quot;:\&quot;admin\&quot;,\&quot;generation\&quot;:0,\&quot;lastUpdateMicros\&quot;:0}&quot;,</span> <span class="pre">&quot;restOperationId&quot;:</span> <span class="pre">1067315},</span> <span class="pre">&quot;msg&quot;:</span> <span class="pre">&quot;Status</span> <span class="pre">code</span> <span class="pre">was</span> <span class="pre">401</span> <span class="pre">and</span> <span class="pre">not</span> <span class="pre">[200]:</span> <span class="pre">HTTP</span> <span class="pre">Error</span> <span class="pre">401:</span> <span class="pre">Unauthorized&quot;,</span> <span class="pre">&quot;pragma&quot;:</span> <span class="pre">&quot;no-cache&quot;,</span> <span class="pre">&quot;redirected&quot;:</span> <span class="pre">false,</span> <span class="pre">&quot;server&quot;:</span> <span class="pre">&quot;webd&quot;,</span> <span class="pre">&quot;status&quot;:</span> <span class="pre">401,</span> <span class="pre">&quot;url&quot;:</span> <span class="pre">&quot;https://10.1.1.6:443/mgmt/shared/authn/login&quot;}</span>
+<span class="pre">...ignoring</span></code></p>
+</div></blockquote>
+<ol class="arabic simple" start="5">
+<li><p>At the end of the lab, the BIG-IQ CM and DCD should be configured with BIG-IP being managed and few application services deployed.</p></li>
+</ol>
+<a class="reference internal image-reference" href="../../_images/img_module5_lab1_21.png"><img alt="../../_images/img_module5_lab1_21.png" class="align-center" src="../../_images/img_module5_lab1_21.png" style="width: 729.5px; height: 430.0px;" /></a>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+
+
+     </div>
+    
+     <div class="row next-prev-btn-row">
+       <div class="col-lg-12">
+       
+        <a href="module5.html" title="Module 5: BIG-IQ Automated onboarding" accesskey="p" class="btn btn-primary left"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i> Previous</a>
+       
+       
+          <a href="lab2.html" title="Lab 5.2: Onboard BIG-IQ in AWS" accesskey="n" class="btn btn-primary right">Next <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a>
+       
+     </div>
+     </div>
+    
+
+    </article>
+  </div>
+
+</div>
+
+
+  <div id="clouddocs-footer"></div>
+  <!-- Bootstrap core JavaScript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+
+  <script src="../../_static/js/index.js"></script>
+  <script src="../../_static/js/jquery.appear.js"></script>
+  <script src="../../_static/js/printThis.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/clouddocs.js"></script>
+  <script src="/assets/js/CoveoJsSearch.Lazy.min.js"></script>
+  </body>
+</html>

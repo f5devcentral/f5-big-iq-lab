@@ -1,0 +1,26 @@
+---
+- name: Create the HTTP application
+  hosts: all
+  connection: local
+
+  tasks: 
+    - name: Load balance an HTTP application on port 80 on BIG-IP
+      bigiq_application_http:
+        provider:
+          server: 10.1.1.4
+          user: olivia
+          password: olivia
+          validate_certs: no
+        name: "site22.example.com"
+        wait: yes
+        description: Load balance HTTP
+        service_environment: "SEA-vBIGIP01.termmarc.com"
+        add_analytics: yes
+        servers:
+          - address: 10.1.20.122
+            port: 80
+        inbound_virtual:
+          address: 10.1.10.122
+          netmask: 255.255.255.255
+          port: 80
+      delegate_to: localhost
