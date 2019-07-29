@@ -12,7 +12,7 @@ HTTP Service using AS3 through GUI
 		Grouping: New Application
 		Application Name: as3guiapp.example.com
 		Select an Application Service Template
-     	Template Type: Select => AS3-F5-HTTP-lb-template-big-iq-default-v9 [AS3] (Are you able to find it?)
+     	Template Type: Select => AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3] (Are you able to find it?)
   
 	It is expected that the mentioned template is not in the list. If we want Paula to deploy this ‘AS3-F5-HTTP-lb-template-big-iq-default-v9 [AS3]’ template, we first need to have those templates assigned to hear via an administrator. 
 
