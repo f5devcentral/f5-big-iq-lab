@@ -41,15 +41,17 @@ It is expected that the mentioned template is not in the list. If we want Paula 
 
 	    Leave the Analytics_Profile at its default but check out the options you have.
   
-	    Leave HTTP_Profile at its default.
-
-    	Pool
+	    Leave HTTP_Profile at its default
+	    
+	    Pool
 	    Members: 10.1.20.130 <just picked at random, you want to change this>  
   
 	    Service_HTTP
 	    Virtual addresses: 10.1.10.130 <just picked at random, you want to change this>  
       
-      Go to View Sample API Request in the right upper corner and select it. You will have a full AS3 declaration schema, scroll through it and hit close when done.
+		Go to View Sample API Request in the right upper corner and select it. You will have a full AS3 declaration 			schema, scroll through it and hit close when done.
+	
+	<picture>
 	
     	Click Create.
   
@@ -60,8 +62,11 @@ It is expected that the mentioned template is not in the list. If we want Paula 
 19.	Testing the application. Open a browser in the jumphost and type the VS IP address.
 
 20.	Select as3guiapp.example.com. You will notice as3guiapp.example.com acts as grouping application or global application where underneath multiple services can be gathered.  The next window will show you that a new application has been created, named: Task3_http_service.
- 
+
+<picture>
 
 21.	Select Task3_http_service and select Application Service and Configuration. Here you can find the deployed AS3 declaration.
- 
+
+<picture>
+
 Notice, though you deployed a config through the GUI via template, since this template was based upon AS3 it will show the according structure of a JSON schema.
