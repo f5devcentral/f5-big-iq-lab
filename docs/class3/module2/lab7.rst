@@ -44,7 +44,7 @@ of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
 
 |
 
-Open Chrome and navigate on the website http://site42.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
+Open Chrome and navigate on the website (http) site42.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
 
 .. image:: ../pictures/module2/img_module2_lab7_2.png
    :align: center

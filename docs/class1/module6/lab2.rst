@@ -11,7 +11,6 @@ HTTP Service using AS3 through GUI
 		Application properties
 		Grouping: New Application
 		Application Name: as3guiapp.example.com
-
 		Select an Application Service Template
      	Template Type: Select => AS3-F5-HTTP-lb-template-big-iq-default-v9 [AS3] (Are you able to find it?)
   
