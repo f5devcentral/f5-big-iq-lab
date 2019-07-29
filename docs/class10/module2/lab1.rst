@@ -8,7 +8,7 @@ For this lab, we will be creating a WIP to be used on the devices in the BosSeaD
   :align: center
   :scale: 50%
 
-In the *New Wide IP section, fill out the name (Must be a FQDN) with *www.example.com*. Next, select the BosSeaDNS sync group and define the type as *A* (leave the rest of the options as default). There are the same options you would see on the BIG-IP TMUI for creating a WIP. To go to the next step, click on the *Add Pool* button.
+In the *New Wide IP section, fill out the name (Must be a FQDN) with *www.example.com*. Next, select the BosSeaDNS sync group and define the type as *A* (leave the rest of the options as default). Options you would see on the BIG-IP TMUI for creating a WIP exists. To go to the next step, click on the *Add Pool* button.
 
 .. image:: ../pictures/module2/Createwip_Step2.png
   :align: center
