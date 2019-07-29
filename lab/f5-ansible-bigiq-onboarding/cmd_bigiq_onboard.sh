@@ -253,7 +253,7 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-# Create apps only for UDF/Ravello BP
+# Create apps only for UDF BP
 if [[  $env == "udf" ]]; then
   echo -e "\n${GREEN}Create AS3 Applications${NC}"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"

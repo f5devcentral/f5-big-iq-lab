@@ -38,7 +38,7 @@ This automation scenario is composed of 4 parts:
 
 1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-2. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key`` variable (**Ravello only**).
+2. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key`` variable.
 
     ::
 
@@ -78,7 +78,7 @@ This automation scenario is composed of 4 parts:
 
 The script will perform in this order:
 
-    1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF or Description field in Ravello).
+    1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF).
     2. Install ansible-galaxy roles
     3. Onboarding BIG-IQ CM and DCD:
 

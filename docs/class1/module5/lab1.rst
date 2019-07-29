@@ -18,14 +18,6 @@ You can also directly using Postman on your laptop and use the following URL (Go
 
 |
 
-If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*:
-
-.. image:: ../../pictures/ravello_ubuntu.png
-    :align: center
-    :scale: 50%
-
-|
-
 Open Chrome and Postman.
 
 For Postman, click right and click on execute (wait ~2 minutes).

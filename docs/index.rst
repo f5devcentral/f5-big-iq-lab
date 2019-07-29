@@ -19,7 +19,7 @@ significant portion of the BIG-IQ product. The Linux box in the
 environment has multiple cron jobs that are generating traffic that
 populates the monitoring tab.
 
-There is lab environment available in UDF and Ravello (Oracle Public Cloud) for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
+This lab environment is available in UDF for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
 
 .. _F5 representative: https://f5.com/products/how-to-buy#3013
 
@@ -74,7 +74,7 @@ There is lab environment available in UDF and Ravello (Oracle Public Cloud) for 
 
 ------------
 
-.. warning:: When using the UDF or Ravello Lab, make sure:
+.. warning:: When using the UDF, make sure:
 
    #. STOP the ESXi if you do not plan to demo VMware SSG.
    #. STOP your deployment at the end of your demo.

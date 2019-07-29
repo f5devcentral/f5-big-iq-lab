@@ -29,7 +29,7 @@ This is where BIG-IQ high availability is configured.  BIG-IQ supports an active
 
 **BIG-IQ DATA COLLECTION**
 
-This is where BIG-IQ Data Collection Devices (DCDs) are managed and configured. There is also high-level reporting on the health and performance of the DCDs. 
+This is where BIG-IQ Data Collection Devices (DCDs) are managed and configured. A high-level reporting on the health and performance of the DCDs is presented there. 
 
 **PROXIES**
 

@@ -14,7 +14,7 @@ In the *New Wide IP section, fill out the name (Must be a FQDN) with *www.exampl
   :align: center
   :scale: 50%
 
-For the pool, click the dropdown button and select the */common/site36.example.com* Virtual server. There is an option to select more than one pool by clicking on the *Add/Remove* button.
+For the pool, click the dropdown button and select the */common/site36.example.com* Virtual server. An option let you select more than one pool by clicking on the *Add/Remove* button.
 
 .. image:: ../pictures/module2/Createwip_Step3.png
   :align: center

@@ -3,7 +3,7 @@ Class 1 Introduction
 
 This class will cover the creation of Application Template and deployment of Applications.
 
-.. warning:: When using the UDF or Ravello Lab, make sure:
+.. warning:: When using the UDF Lab, make sure:
 
   1. STOP the ESXi if you do not plan to demo VMware SSG.
   2. STOP your deployment at the end of your demo.

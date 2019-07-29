@@ -1,7 +1,7 @@
 Introduction class 7
 ====================
 
-.. warning:: When using the UDF or Ravello Lab, make sure:
+.. warning:: When using the UDF Lab, make sure:
 
   1. STOP the ESXi if you do not plan to demo VMware SSG.
   2. STOP your deployment at the end of your demo.
