@@ -21,7 +21,7 @@ populates the monitoring tab.
 
 This lab environment is available in UDF for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
 
-.. _F5 representative: https://f5.com/products/how-to-buy#3013
+.. _F5 representative: https://f5.com/products/how-to-buy
 
 .. image:: ./pictures/diagram_udf.png
    :align: center
@@ -136,4 +136,4 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 
 .. note:: A draft version of this lab guide can be found `here`_.
 
-.. _here: https://f5-big-iq-lab.readthedocs.io/en/develop/
+.. _here: https://www.f5.com

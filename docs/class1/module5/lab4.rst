@@ -16,7 +16,7 @@ should also disappear from BIG-IQ.
 
 2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 
-POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+POST 10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
 .. code-block:: yaml
    :linenos:

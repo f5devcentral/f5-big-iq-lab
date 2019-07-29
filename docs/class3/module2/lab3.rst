@@ -25,9 +25,9 @@ You can use the copy/past feature if you are using the Console:
 
 |
 
-Open Chrome and Firefox and navigate on the website https://site42.example.com/f5_browser_issue.php.
+Open Chrome and Firefox and navigate on the website (protocol https) site42.example.com/f5_browser_issue.php.
 
-.. note:: Go firt to https://site42.example.com to accept the private certificates.
+.. note:: Accept the private certificates.
 
 A page f5_browser_issue.php is behaving differenty on Chrome compare to other browsers.
 

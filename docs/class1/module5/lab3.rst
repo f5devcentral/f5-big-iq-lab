@@ -126,7 +126,7 @@ In this task, we will create a template which require a Service_HTTP object, for
 2. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
 It will create a new template in BIG-IQ AS3 Service Catalogue:
 
-    POST https://10.1.1.4/mgmt/cm/global/appsvcs-templates
+    POST 10.1.1.4/mgmt/cm/global/appsvcs-templates
 
 .. code-block:: yaml
    :linenos:
@@ -248,7 +248,7 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
 
 2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 
-POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+POST 10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
 
 .. code-block:: yaml
@@ -315,7 +315,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 
 3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   GET 10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
 4. As expected, note the error message returned due to the static value set in the template::
 
