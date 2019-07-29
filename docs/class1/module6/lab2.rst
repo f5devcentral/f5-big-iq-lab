@@ -1,8 +1,8 @@
 Lab 6.2: Application Creation using AS3 through BIG-IQ GUI
 ----------------------------------------------------------
 
-Task3a – HTTP Service using AS3 through GUI
--------------------------------------------
+HTTP Service using AS3 through GUI
+----------------------------------
 
 8.	Log in as Paula in BIG-IQ.
 9.	Select Create Application to Create an Application Service
@@ -17,7 +17,7 @@ It is expected that the mentioned template is not in the list. If we want Paula 
 
 10.	Logout as Paula and login to BIG-IQ as David. (if asked: Leave site? Select: Leave)
 11.	Select Applications > Application Templates and notice the ‘Published’ templates. The template Paula wants to use is not listed as a ‘Published’ template.
-12.	Select AS3-F5-HTTP-lb-template-big-iq-default-v9 and click Published.
+12.	Select AS3-F5-HTTP-lb-template-big-iq-default-<version> and click Published.
 <picture>
 13.	Go to System > Role Management > Roles and select Application Roles at the Custom Roles section (not at Application Roles). Here you will see the collection of the Custom Application Roles. 
 14.	Scroll down to AS3 Templates. As you can see, Paula does not have permission the create applications based on AS3 Templates. Let’s change this:
@@ -33,7 +33,7 @@ It is expected that the mentioned template is not in the list. If we want Paula 
       Description: My first AS3 template deployment through a GUI
 	
       Select an Application Service Template
-	    Template Type: AS3-F5-HTTP-lb-template-big-iq-default-v9 [AS3]
+	    Template Type: AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]
 	    General Properties
 	    Application Service Name: http_service
 	    Target: BOS-vBIGIP01.termmarc.com

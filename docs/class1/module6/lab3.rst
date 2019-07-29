@@ -1,7 +1,6 @@
 Lab 6.3: Application modification
 ---------------------------------
-Task3b – Application modification
----------------------------------
+
 Through the GUI and when allowed, the application owner is able to make small modifications.
 
 22.	In Task3_http_service, select Servers and Configuration and add a Pool Member.
@@ -14,5 +13,7 @@ Through the GUI and when allowed, the application owner is able to make small mo
 
 <picture> 
 
-Through the API you can’t modify the application service once deployed. With AS3 via the GUI you can. Remember, that through the API you would do a redeploy to add additional services. From the flipside, the GUI only allows you to modify what has been permitted (made editable) when the template was created. 
+Through the API you can’t modify the application service once deployed. With AS3 via the GUI you can.
+Remember, that through the API you would do a redeploy to add additional services.
+From the flipside, the GUI only allows you to modify what has been permitted (made editable) when the template was created. 
 
