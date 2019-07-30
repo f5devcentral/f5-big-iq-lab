@@ -2,13 +2,8 @@
 
 git clone https://github.com/f5devcentral/f5-big-iq-lab
 
-Demo lab guide: https://clouddocs.f5.com/training/community/cloud-edition/html/
+Demo lab guide: https://clouddocs.f5.net/training/community/big-iq-cloud-edition/html
 
+.. image:: https://travis-ci.org/f5devcentral/f5-big-iq-lab.svg?branch=develop
+    :target: https://travis-ci.org/f5devcentral/f5-big-iq-lab.svg
 
-Prod:
-.. image:: https://travis-ci.org/F5Networks/f5devcentral/f5-big-iq-lab?branch=master
-    :target: https://travis-ci.org/f5devcentral/f5-big-iq-lab
-
-Staged:
-.. image:: https://travis-ci.org/F5Networks/f5devcentral/f5-big-iq-lab?branch=develop
-    :target: https://travis-ci.org/f5devcentral/f5-big-iq-lab

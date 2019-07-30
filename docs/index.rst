@@ -142,4 +142,4 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 
 .. note:: A draft version of this lab guide can be found `here`_.
 
-.. _here: https://www.f5.com
+.. _here: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/

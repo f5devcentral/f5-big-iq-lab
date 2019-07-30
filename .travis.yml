@@ -28,13 +28,13 @@ deploy:
     repo: f5devcentral/f5-big-iq-lab
 
 # DEPLOY TO PRODUCTION
-#- provider: s3
-#  skip_cleanup: true
-#  access_key_id: $AWS_ACCESS_KEY_ID
-#  secret_access_key: $AWS_SECRET_ACCESS_KEY
-#  bucket: $AWS_S3_BUCKET
-#  local_dir: docs/_build/html
-#  upload_dir: $AWS_S3_DIR
-#  on:
-#    branch: master
-#    repo: f5devcentral/f5-big-iq-lab
+- provider: s3
+  skip_cleanup: true
+  access_key_id: $AWS_ACCESS_KEY_ID
+  secret_access_key: $AWS_SECRET_ACCESS_KEY
+  bucket: $AWS_S3_BUCKET
+  local_dir: docs/_build/html
+  upload_dir: $AWS_S3_DIR
+  on:
+    branch: master
+    repo: f5devcentral/f5-big-iq-lab
