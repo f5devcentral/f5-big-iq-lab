@@ -119,14 +119,14 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 - `BIG-IP Cloud Edition Auto scaling with AWS`_
 - `BIG-IP Cloud Edition Using the BIG IP Cloud Edition Dashboard`_
 
-.. _Analytics in BIG-IP Cloud Edition: https://www.youtube.com/watch?v=6Oh6fBPLw6A
-.. _Deploying an Application with BIG-IP Cloud Edition: https://www.youtube.com/watch?v=Qwr3RIfUobo
-.. _BIG-IP Cloud Edition Application Services Catalog: https://www.youtube.com/watch?v=otH_YxdCly0
-.. _BIG-IP Cloud Edition Deploy and Secure an Application: https://www.youtube.com/watch?v=0a5e-70vS-4
-.. _BIG-IP Cloud Edition Auto-scaling with VMware: https://www.youtube.com/watch?v=fA22obOF_iY
-.. _BIG-IP Cloud Edition Auto scaling with AWS: https://www.youtube.com/watch?v=YByW7Q3jAvQ
+.. _Analytics in BIG-IP Cloud Edition: https://youtu.be/6Oh6fBPLw6A
+.. _Deploying an Application with BIG-IP Cloud Edition: https://youtu.be/Qwr3RIfUobo
+.. _BIG-IP Cloud Edition Application Services Catalog: https://youtu.be/otH_YxdCly0
+.. _BIG-IP Cloud Edition Deploy and Secure an Application: https://youtu.be/0a5e-70vS-4
+.. _BIG-IP Cloud Edition Auto-scaling with VMware: https://youtu.be/fA22obOF_iY
+.. _BIG-IP Cloud Edition Auto scaling with AWS: https://youtu.be/YByW7Q3jAvQ
 .. _BIG-IP Cloud Edition Auto scaling with Azure: https://youtu.be/dDWybCsQGgY
-.. _BIG-IP Cloud Edition Using the BIG IP Cloud Edition Dashboard: https://www.youtube.com/watch?v=FjyJq_9NS2Y
+.. _BIG-IP Cloud Edition Using the BIG IP Cloud Edition Dashboard: https://youtu.be/FjyJq_9NS2Y
 
 **Tools**:
 
