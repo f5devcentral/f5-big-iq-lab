@@ -3,7 +3,7 @@ Lab 6.3: Application modification
 
 Through the GUI and when allowed, the application owner is able to make small modifications.
 
-#.	In Task3_http_service, select Servers and Configuration and add a Pool Member.
+#. In ``tenant1_http_service``, select Servers and Configuration and add a Pool Member.
 
     a.	Click the + next to Server Addresses and add: ``10.1.20.121``.
 
@@ -11,11 +11,11 @@ Through the GUI and when allowed, the application owner is able to make small mo
 
     <picture>
 
-#.	Check ``BOS-vBIGIP01.termmarc.com`` (partition ``tenant1``) Local Traffic > Pools and find **Pool**.
-    (it will have tenant1/http_service as the partition/path or use search. Select Pool and go to members.
+#. Check ``BOS-vBIGIP01.termmarc.com`` (partition ``tenant1``) Local Traffic > Pools and find **Pool**.
 
-#.	Now back to the BIG-IQ and ``tenant1_http_service`` application and select Application Service > Configuration and 
-    scroll down in the AS3 declaration and find that the schema has added the second pool member.
+   (it will have tenant1/http_service as the partition/path or use search. Select Pool and go to members.
+
+#.	Now back to the BIG-IQ and ``tenant1_http_service`` application and select Application Service > Configuration and scroll down in the AS3 declaration and find that the schema has added the second pool member.
 
 <picture> 
 

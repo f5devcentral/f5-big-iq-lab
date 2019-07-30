@@ -7,11 +7,11 @@ From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. Go 
 
 .. image:: ../pictures/module6/lab-1-1.png
   :align: center
-  :scale: 50%
+  :scale: 30%
 
 View AS3 templates section
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-#. Logon to BIG-IQ by opening a browser and go to: ``https\:\/\/10.1.1.4``
+#. Logon to BIG-IQ by opening a browser and go to: ``https://10.1.1.4``
 
 #. Go to Applications > Application Templates and review the top section which is titled **AS3 Templates**.
 
@@ -26,7 +26,7 @@ Import AS3 templates
 
 #. Make yourself familiar with the Github page and understand which AS3 templates are available.
 
-#. When the AS3 templates are already imported in BIG-IQ you don’t need to perform step 5, instead continue with step 6.
+#. When the AS3 templates are already imported in BIG-IQ you don’t need to perform next step, instead continue with the following step.
 
 #. Use the provided instructions on the Github page to import the templates into BIG-IQ.
 

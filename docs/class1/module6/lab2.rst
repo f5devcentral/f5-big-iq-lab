@@ -70,12 +70,12 @@ HTTP Service using AS3 through GUI
 
 #.	Logon to BIG-IQ as Paula and check out the Application tab. 
 
-    (if not visible, click refresh in the upper right corner)
+	.. note:: if not visible, click refresh in the upper right corner.
 
 #.	Testing the application. Open a browser in the jumphost and type the VS IP address.
 
 #.	Select ``as3guiapp.example.com``. You will notice as3guiapp.example.com acts as grouping application or global application where underneath multiple services can be gathered.
-    The next window will show you that a new application has been created, named: ``Task3_http_service``.
+    The next window will show you that a new application has been created, named: ``tenant1_http_service``.
 
 <picture>
 
