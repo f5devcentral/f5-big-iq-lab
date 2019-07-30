@@ -1,5 +1,5 @@
-Module 8: Device Lifecycle Management on AWS (new 7.0)
-======================================================
+Module 8: Declarative Onboarding and VE Creation on AWS (new 7.0)
+=================================================================
 
 **[New 7.0.0]**
 
