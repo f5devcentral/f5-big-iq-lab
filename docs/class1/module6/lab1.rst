@@ -10,7 +10,7 @@ From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. Go 
 
 View AS3 templates section
 --------------------------
-#. Logon to BIG-IQ by opening a browser and go to: 10.1.1.4
+#. Logon to BIG-IQ by opening a browser and go to: https 10.1.1.4
 
 #. Go to Applications > Application Templates and review the top section which is titled “AS3 Templates”.
 
