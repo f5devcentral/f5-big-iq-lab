@@ -139,7 +139,3 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 .. _BIG-IQ Onboarding with Docker and Ansible: https://github.com/f5devcentral/f5-big-iq-onboarding
 
 ------------
-
-.. note:: A draft version of this lab guide can be found `here`_.
-
-.. _here: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/
