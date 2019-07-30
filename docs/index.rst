@@ -42,7 +42,7 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 1x BIG-IP 14.1 / 1 standalone (SEA)
 - 1x BIG-IP 12.1 / 1 standalone (SJC)
-- LAMP Server - Radius, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
+- LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
 
 **Components available**:
 
@@ -76,12 +76,9 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 
 .. warning:: When using the UDF, make sure:
 
-   #. STOP the ESXi if you do not plan to demo VMware SSG.
    #. STOP your deployment at the end of your demo.
-   #. Do not forget to tear down your AWS & Azure SSG if any.
+   #. Do not forget to tear down your AWS & Azure SSG or VE(s) if any.
    #. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
-
-.. warning:: The licenses used to license the BIG-IP and BIG-IQ are dev licenses and might need to be re-activated.
 
 ------------
 
@@ -94,9 +91,7 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 - `Light Product Demo`_ 
 - `Troubleshoot Your Application Health and Performance with F5`_
 - `AS3 Documentation`_
-- `AS3 on GitHub`_
 - `DO Documentation`_
-- `DO on GitHub`_
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=6.0.1
 .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
@@ -105,9 +100,7 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 .. _Light Product Demo: http://engage.f5.com/BIG-IP-demo
 .. _Troubleshoot Your Application Health and Performance with F5: https://interact.f5.com/troubleshooting-your-application-health-webinar.html
 .. _AS3 Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
-.. _AS3 on GitHub: https://github.com/F5Networks/f5-appsvcs-extension
 .. _DO Documentation: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/
-.. _DO on GitHub: https://github.com/f5networks/f5-declarative-onboarding/
 
 **Videos**:
 
