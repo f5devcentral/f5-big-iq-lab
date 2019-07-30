@@ -7,18 +7,19 @@ From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. Go 
 
 .. image:: ../pictures/module6/lab-1-1.png
   :align: center
+  :scale: 50%
 
 View AS3 templates section
---------------------------
-#. Logon to BIG-IQ by opening a browser and go to: https\:\/\/10.1.1.4
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Logon to BIG-IQ by opening a browser and go to: ``https\:\/\/10.1.1.4``
 
-#. Go to Applications > Application Templates and review the top section which is titled “AS3 Templates”.
+#. Go to Applications > Application Templates and review the top section which is titled **AS3 Templates**.
 
-A new BIG-IQ v7.0 deployment will NOT include AS3 templates out of the box. If you want to start using AS3 templates which are provided by F5, then those AS3 templates can be found through the following link: https://github.com/f5devcentral/f5-big-iq
+A new BIG-IQ v7.0 deployment will NOT include AS3 templates out of the box. If you want to start using AS3 templates which are provided by F5, then those AS3 templates can be found through the following link: https://www.f5.com/bigiqgithub
 
 Import AS3 templates
---------------------
-#. Select “Import Templates” at the right top corner.
+^^^^^^^^^^^^^^^^^^^^
+#. Select **Import Templates** at the right top corner.
 
 .. image:: ../pictures/module6/lab-1-2.png
   :align: center
@@ -29,4 +30,8 @@ Import AS3 templates
 
 #. Use the provided instructions on the Github page to import the templates into BIG-IQ.
 
-#. Walk through the provided templates and select them to understand the structure. If familiar with AS3 you will notice the structure. Otherwise go make sure you have gone through module 5 or visit: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/examples.html.
+#. Walk through the provided templates and select them to understand the structure. If familiar with AS3 you will notice the structure. 
+   Otherwise go make sure you have gone through `Module 5`_ or visit `AS3 Example declarations`_.
+
+.. _Module 5: ../module5
+.. _AS3 Example declarations: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/examples.html.
