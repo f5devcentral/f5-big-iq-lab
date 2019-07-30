@@ -1,5 +1,5 @@
-Module 9: Device Lifecycle Management on Azure (new 7.0)
-========================================================
+Module 9: Declarative Onboarding and VE Creation on Azure (new 7.0)
+===================================================================
 
 **[New 7.0.0]**
 
