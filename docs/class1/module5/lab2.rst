@@ -153,13 +153,13 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
 4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
 
-   POST 10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+   POST https 10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
 5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET 10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   GET https 10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
 6. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
@@ -231,13 +231,13 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
 4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
 
-   POST 10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+   POST https 10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
 5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET 10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   GET https 10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
 6. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 

@@ -111,22 +111,9 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 
 **Videos**:
 
-- `Analytics in BIG-IP Cloud Edition`_
-- `Deploying an Application with BIG-IP Cloud Edition`_
-- `BIG-IP Cloud Edition Application Services Catalog`_
-- `BIG-IP Cloud Edition Deploy and Secure an Application`_
-- `BIG-IP Cloud Edition Auto-scaling with VMware`_
-- `BIG-IP Cloud Edition Auto scaling with AWS`_
-- `BIG-IP Cloud Edition Using the BIG IP Cloud Edition Dashboard`_
+- `Look for the BIG-IQ videos on the YouTube DevCentral Channel`_
 
-.. _Analytics in BIG-IP Cloud Edition: https://youtu.be/6Oh6fBPLw6A
-.. _Deploying an Application with BIG-IP Cloud Edition: https://youtu.be/Qwr3RIfUobo
-.. _BIG-IP Cloud Edition Application Services Catalog: https://youtu.be/otH_YxdCly0
-.. _BIG-IP Cloud Edition Deploy and Secure an Application: https://youtu.be/0a5e-70vS-4
-.. _BIG-IP Cloud Edition Auto-scaling with VMware: https://youtu.be/fA22obOF_iY
-.. _BIG-IP Cloud Edition Auto scaling with AWS: https://youtu.be/YByW7Q3jAvQ
-.. _BIG-IP Cloud Edition Auto scaling with Azure: https://youtu.be/dDWybCsQGgY
-.. _BIG-IP Cloud Edition Using the BIG IP Cloud Edition Dashboard: https://youtu.be/FjyJq_9NS2Y
+.. _Look for the BIG-IQ videos on the YouTube DevCentral Channel: https://www.youtube.com/user/devcentral/videos
 
 **Tools**:
 
@@ -139,7 +126,3 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 .. _BIG-IQ Onboarding with Docker and Ansible: https://github.com/f5devcentral/f5-big-iq-onboarding
 
 ------------
-
-.. note:: A draft version of this lab guide can be found `here`_.
-
-.. _here: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/
