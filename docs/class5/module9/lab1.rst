@@ -95,4 +95,4 @@ Lab 2 of this module will cover Onboarding the newly created VE.
    :width: 50%
 
 
-.. _Application: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key
+.. _Application: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
