@@ -60,7 +60,7 @@
                     responseCapturedParts: all
                 HTTP_Profile:
                   class: HTTP_Profile
-                  fallbackRedirect: https://www.f5.com/filenotfound
+                  fallbackRedirect: https://www.example.com/404
                   fallbackStatusCodes:
                   - 404
                 Pool:

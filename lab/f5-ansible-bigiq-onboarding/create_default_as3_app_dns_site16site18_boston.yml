@@ -36,7 +36,7 @@
             path: "/security/fqdn"
             value:
               class: Application
-              schemaOverlay: AS3-F5-DNS-FQDN-A-type-template-default-v1
+              schemaOverlay: AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1
               template: generic
               dnsMain:
                 domainName: airports.example.com
