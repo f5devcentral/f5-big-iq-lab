@@ -24,7 +24,8 @@ HTTP Service using AS3 through GUI
 
 #.	Select ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` and click Published.
 
-	<picture>
+.. image:: ../pictures/module6/lab-2-1.png
+  :align: center
 
 #.	Go to System > Role Management > Roles and select Application Roles at the Custom Roles section (not at Application Roles). Here you will see the collection of the Custom Application Roles. 
 
@@ -62,7 +63,8 @@ HTTP Service using AS3 through GUI
 		
 			Go to View Sample API Request in the right upper corner and select it. You will have a full AS3 declaration 			schema, scroll through it and hit close when done.
 	
-			<picture>
+.. image:: ../pictures/module6/lab-2-2.png
+  :align: center
 	
     	Click Create.
   
@@ -77,11 +79,13 @@ HTTP Service using AS3 through GUI
 #.	Select ``as3guiapp.example.com``. You will notice as3guiapp.example.com acts as grouping application or global application where underneath multiple services can be gathered.
     The next window will show you that a new application has been created, named: ``tenant1_http_service``.
 
-<picture>
+.. image:: ../pictures/module6/lab-2-3.png
+  :align: center
 
 #.	Select ``tenant1_http_service`` and select Application Service and Configuration. 
     Here you can find the deployed AS3 declaration.
 
-<picture>
+.. image:: ../pictures/module6/lab-2-4.png
+  :align: center
 
 Notice, though you deployed a config through the GUI via template, since this template was based upon AS3 it will show the according structure of a JSON schema.
