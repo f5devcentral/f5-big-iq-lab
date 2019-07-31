@@ -38,7 +38,7 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 
 **List of instances**:
 
-- BIGIQ <> DCD 7.0.0
+- BIG-IQ <> DCD 7.0.0
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 1x BIG-IP 14.1 / 1 standalone (SEA)
 - 1x BIG-IP 12.1 / 1 standalone (SJC)

@@ -5,7 +5,6 @@ recommonmark
 sphinxjp.themes.basicstrap
 cloud_sptheme
 git+git://github.com/f5devcentral/f5-sphinx-theme@master#egg=f5_sphinx_theme
-sphinxcontrib-googleanalytics
 sphinxcontrib-addmetahtml
 sphinxcontrib-nwdiag
 sphinxcontrib-blockdiag
