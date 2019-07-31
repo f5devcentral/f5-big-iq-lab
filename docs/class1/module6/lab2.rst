@@ -74,13 +74,13 @@ If we want Paula to deploy this ``AS3-F5-HTTP-lb-template-big-iq-default-<versio
  .. image:: ../pictures/module6/lab-2-2.png
   :align: center
 	
-10. Click Create.
+10. Click **Create**.
   
 11.	Logon to ``SEA-vBIGIP01.termmarc.com`` and verify the Application is correctly deployed in partition ``tenant1``.
 
 12.	Logon to BIG-IQ as Paula and check out the Application tab. 
 
-	.. note:: if not visible, click refresh in the upper right corner.
+	.. note:: If not visible, click refresh in the upper right corner.
 
 13.	Testing the application. Open a browser in the jumphost and type the VS IP address.
 
