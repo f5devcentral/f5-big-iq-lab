@@ -33,7 +33,7 @@ All AFM devices have the ability to test packets through the collection of AFM f
 #. Click the *Device IP Intelligence* icon for the packet test on BOS-vBIGIP01 device to see which Global IP Intelligence policy was used to evaluate the packet.
 #. Click the *Virtual Server Rules* icon for the packet test on BOS-vBIGIP01 device to view details on the firewall policy used to evaluate the packet.
 
-   .. note:: AFM packet tester only performs policy matching on the active unit for a given traffic group.  The standby unit will show results as if no policies at any level have been matched.  This is an AFM behavior, not a BIG-IQ behavior.  So, results in this lab will show BOS-vBIGIP02 as drops based on default rule handling.
+   .. note:: AFM packet tester only performs policy matching on the active unit for a given traffic group. The standby unit will show results as if no policies at any level have been matched. This is an AFM behavior, not a BIG-IQ behavior. Results in this lab will show BOS-vBIGIP02 as drops based on default rule handling.
 
 #. Experiment with different ways to filter the results of the multi-device packet tests
 

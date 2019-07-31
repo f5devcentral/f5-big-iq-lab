@@ -44,23 +44,7 @@ of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
 
 |
 
-If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*:
-
-.. image:: ../../pictures/ravello_ubuntu.png
-   :align: center
-   :scale: 50%
-
-|
-
-You can use the copy/past feature if you are using the Console:
-
-.. image:: ../../pictures/ubuntu_console.png
-   :align: center
-   :scale: 50%
-
-|
-
-Open Chrome and navigate on the website http://site42.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
+Open Chrome and navigate on the website (http) site42.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
 
 .. image:: ../pictures/module2/img_module2_lab7_2.png
    :align: center

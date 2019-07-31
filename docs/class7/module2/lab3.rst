@@ -4,7 +4,7 @@ Prior to BIG-IQ 6.0.1, AFM Device Dos Profile could be managed centrally using B
 
 .. note:: All steps in this lab will be completed using the persona Larry.
 
-.. note:: The multi-device device dos feature requires that source and target BIG-IP's are running the same version of TMOS.  Also, BIG-IQ will not allow you to deploy DOS configurations to an individual member of device group.  The lab environment available has only two BIG-IPs running the same version of TMOS, and they are in an HA pair.  So, in below steps, we will walk through what is required to leverage the multi-device device dos edit feature, but will not actually deploy the changes.
+.. note:: The multi-device device dos feature requires that source and target BIG-IP's are running the same version of TMOS.  Also, BIG-IQ will not allow you to deploy DOS configurations to an individual member of device group.  The lab environment available has only two BIG-IPs running the same version of TMOS, and they are in an HA pair.  In below steps, we will walk through what is required to leverage the multi-device device dos edit feature, but will not actually deploy the changes.
 
 Lab 2.3.1: Deploy Device DOS Configurations to Multiple Systems on Single Push:
 ********************************************************************************

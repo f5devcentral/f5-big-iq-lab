@@ -18,14 +18,6 @@ You can also directly using Postman on your laptop and use the following URL (Go
 
 |
 
-If you are using Ravello, select the *Ubuntu Lamp Server* and click on *Console*:
-
-.. image:: ../../pictures/ravello_ubuntu.png
-    :align: center
-    :scale: 50%
-
-|
-
 Open Chrome and Postman.
 
 For Postman, click right and click on execute (wait ~2 minutes).
@@ -139,13 +131,13 @@ Modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110
 4. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the AS3 declaration from the validator to the declaration body into Postman:
 
-   POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
 5. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
 
-   GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
    
 .. note:: Notice that the app deployment may take a few minutes.
 
@@ -168,7 +160,7 @@ Now we are going to create another service but this time, we will do some SSL of
 1. Using Postman, use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the below AS3 declaration into the body (Postman):
 
-   POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
@@ -255,7 +247,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 
 3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
@@ -367,13 +359,13 @@ Update the WAF policy section below with the policy available on BIG-IP::
 2. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the above AS3 declaration into the declaration body into Postman (DON'T FORGET TO UPDATE THE WAF Policy):
 
-   POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
 3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
@@ -452,13 +444,13 @@ Modify the Generic virtual with something other than <generic_virtual>.
 2. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the above AS3 declaration into the declaration body of Postman:
 
-   POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
 3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.

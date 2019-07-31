@@ -55,37 +55,11 @@ Finally, start the new BIG-IQ.
 
 |
 
-- In Ravello:
-
-In the top left, click on the **+** sign and search for BIG-IQ 6.1 CM VM image.
-
-.. image:: ../pictures/module4/img_module4_lab1_2a.png
-  :align: center
-  :scale: 70%
-
-|
-
-Add the image into the deployment.
-
-.. image:: ../pictures/module4/img_module4_lab1_2b.png
-  :align: center
-  :scale: 70%
-
-|
-
-Got to the network tab and fix the IP addresses using ``10.1.1.13``, ``10.1.10.13`` and ``10.1.20.13``. Click on **Update**
-
-.. image:: ../pictures/module4/img_module4_lab1_2c.png
-  :align: center
-  :scale: 70%
-
-|
-
 Then, start the new BIG-IQ CM VM.
 
 2. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-3. Request 1 BIG-IQ Evaluation license and set it in the inventory file in ``bigiq_onboard_license_key`` variable (**Ravello only**).
+3. Request 1 BIG-IQ Evaluation license and set it in the inventory file in ``bigiq_onboard_license_key`` variable.
 
     ::
 

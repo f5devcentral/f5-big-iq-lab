@@ -75,12 +75,6 @@ deployed in a certain manner:
 
 In this lab, we will create a ``Service Scaling Group`` in a ``VMWare`` environment.
 
-
-.. note::
-
-  The VMs in vSphere aren't restarted automatically in case the deployment is stop/start in UDF.
-  There is a script which restart the powerOff VMs after 15min the deployment is started ``~/f5-vmware-ssg/cmd_power_on_vm.sh``
-
 .. toctree::
    :maxdepth: 1
    :glob:

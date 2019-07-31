@@ -165,8 +165,8 @@ if [[  $currentuser == "root" ]]; then
     docker ps -a
     docker ps
 
-    # Create default SSG at the boot and restart the VM if already created
-    #sleep 900 && /home/$user/f5-vmware-ssg/cmd_create_vmware_ssg_app.sh > /home/$user/f5-vmware-ssg/cmd_create_vmware_ssg_app.log 2> /dev/null &
+    # Restart the VM if already created (SSG and VE creation)
+    sleep 900 && /home/$user/f5-vmware-ssg/cmd_power_on_vm.sh > /home/$user/f5-vmware-ssg/cmd_power_on_vm.log 2> /dev/null &
     sleep 1100 && sudo chown -R $user:$user /home/$user/f5-vmware-ssg/*.log 2> /dev/null &
 fi
 

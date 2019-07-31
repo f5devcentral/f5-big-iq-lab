@@ -27,11 +27,11 @@ if [ -f vmfact.json ]; then
         while IFS= read -r uuid
         do
             echo -e "\n#### $uuid"
-            # power on SSG VMs
+            # power on VMs
             ansible-playbook -i notahost, power_on_vm.yaml --extra-vars "uuid=$uuid"
         done < uuid.txt
     else
-        echo "No SSG VM(s) to power on."
+        echo "No VM(s) to power on."
     fi
     # cleanup
     rm -f vmfact.json uuid.txt poweredOff.txt
