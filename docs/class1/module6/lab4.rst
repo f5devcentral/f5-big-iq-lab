@@ -65,8 +65,9 @@ Until now we used a default AS3 template out-of-the-box for deploying an applica
 
  * Select partition ``tenant1`` and search for ``https_waf_service``
 
-.. image:: ../pictures/module6/lab-4-4.png
+ .. image:: ../pictures/module6/lab-4-4.png
   :align: center
+  
  * Notice that new https_waf_service comes with a redirect.
  * Select the HTTPS VS, Select Security and hit Policies. Application Security Policy is Enabled and the Log Profile has a Security_Log_Profile selected.
  * Go to Security > Application Security > Security Policies and select WAF_Policy to get more detail of the deployed application security policy. 
