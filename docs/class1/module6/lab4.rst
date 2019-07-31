@@ -11,17 +11,17 @@ Until now we used a default AS3 template out-of-the-box for deploying an applica
 
 3.	Open the template ``as3guiapp-https-waf-template`` and select Certificate.
 
-4.	Configure:
+ Configure:
  
-    PCS#12 certificate+key Options
-    Certificate Schema Type: Object Schema
+ *PCS#12 certificate+key Options*
+  * Certificate Schema Type: Object Schema
 
-    Certificate
-    BIG-IP component pathname: ``/Common/default.crt`` (select **editable**)
-    privateKey Schema Type: Object Schema
+ *Certificate*
+  * BIG-IP component pathname = ``/Common/default.crt`` (select **editable**)
+  * privateKey Schema Type: Object Schema
 
-    PrivateKey
-    BIG-IP component pathname: ``/Common/default.key`` (select **editable**)
+ *PrivateKey*
+  * BIG-IP component pathname = ``/Common/default.key`` (select **editable**)
     
 5.	Click **Save & Close**.
 
