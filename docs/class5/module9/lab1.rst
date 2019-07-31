@@ -40,7 +40,7 @@ There are several parts of the Cloud Environment that you may not want to config
 
 Navigate to Devices > BIG-IP VE Creation > and choose **Create**
 
-  |image04|
+  |image05|
 
 Fill in the Create BIG-IP VE Options.
   - Task Name will be the task (which is tracked) to deploy the BIG-IP
@@ -49,21 +49,21 @@ Fill in the Create BIG-IP VE Options.
   - Cloud Environment is what we build it step 2
   - Number of BIG-IP VE to Create utilizing the Cloud Environment template (Only 1 can be created in Azure at a time)
 
-  |image6|
+  |image06|
 
 Once all the attributes are configured **Create** the VE
 
-  |iamge7|
+  |iamge07|
 
 BIG-IQ will gather all the needed pieces from our Provider, Environment, and Creation options. These will be send to the Azure API for building out our instance.
 
-  |image8|
+  |image08|
 
 From the Azure Portal you can see the newly created instance, along with the instance BIG-IQ has created a Network Interface Card, Security Group, Storage account, and a Public IP Address.
 
 .. Warning:: You cannot change this options at this time, a Public address will be created and the Security Group will have ports (22,8443,443,4353) open from *Any* source. If you delete the BIG-IP you will need to manually clean up the Security Group created.
 
-  |image9|
+  |image09|
 
 BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the Public IP address.
 
@@ -73,23 +73,23 @@ Lab 2 of this module will cover Onboarding the newly created VE.
 
   |image10|
 
-.. |image1| image:: pictures/image1.png
+.. |image01| image:: pictures/image1.png
    :width: 50%
-.. |image2| image:: pictures/image2.png
+.. |image02| image:: pictures/image2.png
    :width: 50%
-.. |image3| image:: pictures/image3.png
+.. |image03| image:: pictures/image3.png
    :width: 50%
-.. |image4| image:: pictures/image4.png
+.. |image04| image:: pictures/image4.png
    :width: 50%
-.. |image5| image:: pictures/image5.png
+.. |image05| image:: pictures/image5.png
    :width: 50%
-.. |image6| image:: pictures/image6.png
+.. |image06| image:: pictures/image6.png
    :width: 50%
-.. |image7| image:: pictures/image7.png
+.. |image07| image:: pictures/image7.png
    :width: 50%
-.. |image8| image:: pictures/image8.png
+.. |image08| image:: pictures/image8.png
    :width: 50%
-.. |image9| image:: pictures/image9.png
+.. |image09| image:: pictures/image9.png
    :width: 50%
 .. |image10| image:: pictures/image10.png
    :width: 50%
