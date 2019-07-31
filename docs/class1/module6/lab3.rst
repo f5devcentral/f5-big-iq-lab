@@ -20,6 +20,7 @@ Through the GUI and when allowed, the application owner is able to make small mo
 
 .. image:: ../pictures/module6/lab-3-2.png
   :align: center
+  :scale: 70
 
 Through the API you can’t modify the application service once deployed. With AS3 via the GUI you can.
 Remember, that through the API you would do a redeploy to add additional services.
