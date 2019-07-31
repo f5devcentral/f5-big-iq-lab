@@ -7,12 +7,13 @@ HTTP Service using AS3 through GUI
 #.	Log in as **Paula** in BIG-IQ.
 
 #.	Select Create Application to Create an Application Service
-
-	Application properties
-	Grouping: New Application
-	Application Name: ``as3guiapp.example.com``
-	Select an Application Service Template
-	Template Type: Select ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` (Are you able to find it?)
+        
+	|Application properties |
+	|----------------------|------------|
+	|Grouping | New Application |
+	|Application Name | ``as3guiapp.example.com`` |
+	|Select an Application Service Template|
+	|Template Type | Select ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` (Are you able to find it?)|
 
 	It is expected that the mentioned template is not in the list.
 	If we want Paula to deploy this ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` template, 
@@ -31,8 +32,8 @@ HTTP Service using AS3 through GUI
 
 #.	Scroll down to AS3 Templates. As you can see, Paula does not have permission the create applications based on AS3 Templates. Let’s change this:
 
-      a.	Select all AS3 Templates and click the arrow to get all templates in the ‘Selected’ section
-      b.	Select Save & Close.
+      - Select all AS3 Templates and click the arrow to get all templates in the ‘Selected’ section
+      - Select Save & Close.
 
 #.	Logout as David and log back in as Paula and click Create application.
 
