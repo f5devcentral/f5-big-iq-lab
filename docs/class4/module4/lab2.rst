@@ -8,13 +8,19 @@ As said, full-automated fail-over is only available for VMware. For public cloud
 .. note:: If you haven’t setup a **SECOND** BIG-IQ Central Manager, please go to Lab 4.1 and follow the steps.
 
 1. Login to BIG-IQ 1 as user David and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. Check that the current used High Available method is Manual Failover.
- 
+
+.. image:: ../pictures/module4/lab2_1.png
+  :align: center
+  
  BIG-IQ HA Settings does not have a quorum device configured and this a way to recognize that the used failover is the manual failover.
 
 2. We need to switch the failover method from manual failover to automated failover and therefore we need to break this HA setup. In BIG-IQ HA Settings click **Reset to Standalone**.
 
 3. A pop-up shows up: Reset to Standalone? Click **OK**.
- 
+
+.. image:: ../pictures/module4/lab2_2.png
+  :align: center
+  
 This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 
 4. Once the login window returns for BIG-IQ 1 CM, login as user David and go to System > BIG-IQ HA. Will notice that only one BIG-IQ system is present, and no HA is configured.
@@ -37,7 +43,10 @@ This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 
 Creating the Automate failover setup with the quorum device takes about 5 minutes.
 Once the process is completed the pop-up window will tell you and you can close the window. 
- 
+
+.. image:: ../pictures/module4/lab2_3.png
+  :align: center
+  
 At BIG-IQ HA you will find three devices configured:
  - bigiq1cm.example.com
  - bigiq2cm.example.com
@@ -46,9 +55,15 @@ At BIG-IQ HA you will find three devices configured:
 The second BIG-IQ central manager acts as the standby device and the only DCD available in the lab acts as the quorum device. This does not mean it will take CM takes when one fails, but instead it delivers the tiebreak when the active CM fails and failover takes place from active to standby, which than will become the active CM.
 
 7. Click **BIG-IQ HA Settings**.
- 
+
+.. image:: ../pictures/module4/lab2_4.png
+  :align: center
+  
 BIG-IQ HA Settings delivers a bit more detail and also shows us the configured floating IP Address and can be used as the cluster management IP address.
 
+.. image:: ../pictures/module4/lab2_5.png
+  :align: center
+  
 8. To test this, grab a browser on your jumphost and go: https://10.1.1.15 . Which BIG-IQ took the call? 
 9. Login with David and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
 10.	Repeat step 7.
