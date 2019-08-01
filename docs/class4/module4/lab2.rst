@@ -66,15 +66,20 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
   :align: center
   
 8. To test this, grab a browser on your jumphost and go: https://10.1.1.15 . Which BIG-IQ took the call? 
+
 9. Login with David and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
+
 10.	Repeat step 7.
 
 11.	From the jumphost, open Postman. *(If double-clicking does not work, try right-side of the mouse and press execute or open a terminal and type postman and hit enter.)*
+
 12.	Open the ``BIG-IQ AS3 Lab Postman Collection`` and select **POST BIG-IQ Token (Olivia)**. Before sending, first change the IP address from 10.1.1.4 to 10.1.1.15 and hit **Send**.
+
 13.	Select ``POST BIG-IQ AS3 Declaration`` and change the management IP address to **10.1.1.15**.
+
 14.	Copy below example of an AS3 Declaration and paste as the Body of your declaration.
 
-  POST https://10.1.1.15/mgmt/shared/appsvcs/declare?async=true
+  POST https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true
 
 .. code-block:: yaml
 
@@ -105,7 +110,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
                    "serviceMain": {
                        "class": "Service_HTTP",
                        "virtualAddresses": [
-                           "10.1.10.100"
+                           "10.1.10.116"
                        ],
                        "pool": "web_pool",
                        "profileAnalytics": {
@@ -165,8 +170,11 @@ POST https://10.1.1.15/mgmt/shared/appsvcs/declare?async=true and Check if the d
 
 Before finishing this lab, there is one task to do. If you are done testing BIG-IQ HA, stop BIG-IQ CM Secondary to avoid additional costs. You might want to switch the active BIG-IQ before stopping the secondary… (or stop BIG-IQ primary in UDF or Ravello and skip the next steps)
 
-16.	Go to BIG-IQ CM Secondary https://10.1.1.13 and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
+16.	Go to BIG-IQ CM Secondary https\:\/\/10.1.1.13 and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
+
 17.	Promote the standby device bigiq1cm.example.com, at the pop-up click **OK**.
+
 18.	Refresh the Browser window and wait (takes ~5min) until the BIG-IQ failover IP gets redirected to BIG-IQ CM (10.1.1.4) and check if it has become the primary unit.
+
 19.	Stop BIG-IQ CM Secondary in either UDF or Ravello.
 

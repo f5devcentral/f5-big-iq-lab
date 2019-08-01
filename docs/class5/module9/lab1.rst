@@ -29,10 +29,10 @@ Navigate to Applications > Environments > Cloud Environments and choose **Create
 
 The Cloud Environment is where our BIG-IP will be deployed. If your credentials are valid, utilizing your just created **Cloud Provider** will expose resources available to you in your Azure account.
 
-There are several parts of the Cloud Environment that you may not want to configure here because you are planning on using F5 Declarative Onboarding. 
+Several parts of the Cloud Environment you may not want to configure here because you are planning on using F5 Declarative Onboarding. 
   - Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.
   - You must accept Programmatic Deployments for any BIG-IP you wish to deploy from the BIG-IQ interface, not doing this will result in a failure to launch.
-  - There are two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool, alternativly if you are planning to have F5 Declarative Onboarding do your licensing you will not specify anything.
+  - Two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool, alternativly if you are planning to have F5 Declarative Onboarding do your licensing you will not specify anything.
 
   |image04|
 
@@ -95,4 +95,4 @@ Lab 2 of this module will cover Onboarding the newly created VE.
    :width: 50%
 
 
-.. _Application: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-application-id-and-authentication-key
+.. _Application: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
