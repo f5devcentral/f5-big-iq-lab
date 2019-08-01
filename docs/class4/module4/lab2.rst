@@ -9,7 +9,7 @@ As said, full-automated fail-over is only available for VMware. For public cloud
 
 1. Login to BIG-IQ 1 as user David and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. Check that the current used High Available method is Manual Failover.
 
-.. image:: ../pictures/module4/lab2_1.png
+ .. image:: ../pictures/module4/lab2_1.png
   :align: center
   
  BIG-IQ HA Settings does not have a quorum device configured and this a way to recognize that the used failover is the manual failover.
