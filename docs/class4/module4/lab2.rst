@@ -9,17 +9,18 @@ As said, full-automated fail-over is only available for VMware. For public cloud
 
 1. Login to BIG-IQ 1 as user David and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. Check that the current used High Available method is Manual Failover.
 
- .. image:: ../pictures/module4/lab2_1.png
+ .. image:: ../pictures/module4/lab-2-1.png
   :align: center
   
- BIG-IQ HA Settings does not have a quorum device configured and this a way to recognize that the used failover is the manual failover.
+BIG-IQ HA Settings does not have a quorum device configured and this a way to recognize that the used failover is the manual failover.
 
 2. We need to switch the failover method from manual failover to automated failover and therefore we need to break this HA setup. In BIG-IQ HA Settings click **Reset to Standalone**.
 
 3. A pop-up shows up: Reset to Standalone? Click **OK**.
 
-.. image:: ../pictures/module4/lab2_2.png
+.. image:: ../pictures/module4/lab-2-2.png
   :align: center
+  :scale: 30
   
 This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 
@@ -44,7 +45,7 @@ This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 Creating the Automate failover setup with the quorum device takes about 5 minutes.
 Once the process is completed the pop-up window will tell you and you can close the window. 
 
-.. image:: ../pictures/module4/lab2_3.png
+.. image:: ../pictures/module4/lab-2-3.png
   :align: center
   
 At BIG-IQ HA you will find three devices configured:
@@ -56,12 +57,12 @@ The second BIG-IQ central manager acts as the standby device and the only DCD av
 
 7. Click **BIG-IQ HA Settings**.
 
-.. image:: ../pictures/module4/lab2_4.png
+.. image:: ../pictures/module4/lab-2-4.png
   :align: center
   
 BIG-IQ HA Settings delivers a bit more detail and also shows us the configured floating IP Address and can be used as the cluster management IP address.
 
-.. image:: ../pictures/module4/lab2_5.png
+.. image:: ../pictures/module4/lab-2-5.png
   :align: center
   
 8. To test this, grab a browser on your jumphost and go: https://10.1.1.15 . Which BIG-IQ took the call? 
