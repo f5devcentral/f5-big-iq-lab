@@ -8,13 +8,20 @@ As said, full-automated fail-over is only available for VMware. For public cloud
 .. note:: If you haven’t setup a **SECOND** BIG-IQ Central Manager, please go to Lab 4.1 and follow the steps.
 
 1. Login to BIG-IQ 1 as user David and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. Check that the current used High Available method is Manual Failover.
- 
- BIG-IQ HA Settings does not have a quorum device configured and this a way to recognize that the used failover is the manual failover.
+
+ .. image:: ../pictures/module4/lab-2-1.png
+  :align: center
+  
+BIG-IQ HA Settings does not have a quorum device configured and this a way to recognize that the used failover is the manual failover.
 
 2. We need to switch the failover method from manual failover to automated failover and therefore we need to break this HA setup. In BIG-IQ HA Settings click **Reset to Standalone**.
 
 3. A pop-up shows up: Reset to Standalone? Click **OK**.
- 
+
+.. image:: ../pictures/module4/lab-2-2.png
+  :align: center
+  :scale: 30
+  
 This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 
 4. Once the login window returns for BIG-IQ 1 CM, login as user David and go to System > BIG-IQ HA. Will notice that only one BIG-IQ system is present, and no HA is configured.
@@ -37,7 +44,10 @@ This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 
 Creating the Automate failover setup with the quorum device takes about 5 minutes.
 Once the process is completed the pop-up window will tell you and you can close the window. 
- 
+
+.. image:: ../pictures/module4/lab-2-3.png
+  :align: center
+  
 At BIG-IQ HA you will find three devices configured:
  - bigiq1cm.example.com
  - bigiq2cm.example.com
@@ -46,21 +56,33 @@ At BIG-IQ HA you will find three devices configured:
 The second BIG-IQ central manager acts as the standby device and the only DCD available in the lab acts as the quorum device. This does not mean it will take CM takes when one fails, but instead it delivers the tiebreak when the active CM fails and failover takes place from active to standby, which than will become the active CM.
 
 7. Click **BIG-IQ HA Settings**.
- 
+
+.. image:: ../pictures/module4/lab-2-4.png
+  :align: center
+  
 BIG-IQ HA Settings delivers a bit more detail and also shows us the configured floating IP Address and can be used as the cluster management IP address.
 
+.. image:: ../pictures/module4/lab-2-5.png
+  :align: center
+  
 8. To test this, grab a browser on your jumphost and go: https://10.1.1.15 . Which BIG-IQ took the call? 
+
 9. Login with David and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
+
 10.	Repeat step 7.
 
 11.	From the jumphost, open Postman. *(If double-clicking does not work, try right-side of the mouse and press execute or open a terminal and type postman and hit enter.)*
+
 12.	Open the ``BIG-IQ AS3 Lab Postman Collection`` and select **POST BIG-IQ Token (Olivia)**. Before sending, first change the IP address from 10.1.1.4 to 10.1.1.15 and hit **Send**.
+
 13.	Select ``POST BIG-IQ AS3 Declaration`` and change the management IP address to **10.1.1.15**.
+
 14.	Copy below example of an AS3 Declaration and paste as the Body of your declaration.
 
+  POST https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true
+
 .. code-block:: yaml
-   :linenos:
-   
+
    {
        "class": "AS3",
        "action": "deploy",
@@ -88,7 +110,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
                    "serviceMain": {
                        "class": "Service_HTTP",
                        "virtualAddresses": [
-                           "10.1.20.100"
+                           "10.1.10.116"
                        ],
                        "pool": "web_pool",
                        "profileAnalytics": {
@@ -118,16 +140,41 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 
 15. Check if it was successful.
 
- * In The response section of Postman
- * Login to BOS-vBIG01.termmarc.com by browsing to https://10.1.1.8 (admin/purple123) and check if the partition was created, Task1.
- * POST BIG-IQ AS3 Declaration (Delete) to remove the declaration. Check if it happened.
+- In the response section of Postman
+- Login to BOS-vBIG01.termmarc.com by browsing to https://10.1.1.8 (admin/purple123) and check if the partition was created, Task1.
+- POST BIG-IQ AS3 Declaration (Delete) to remove the declaration. COpy and paste below declaration and:
 
+POST https://10.1.1.15/mgmt/shared/appsvcs/declare?async=true and Check if the declaration got deleted.
+
+.. code-block:: yaml
+
+  {
+    "class": "AS3",
+    "action": "deploy",
+    "persist": true,
+    "declaration": {
+        "class": "ADC",
+        "schemaVersion": "3.7.0",
+        "id": "delete",
+        "label": "delete",
+        "remark": "delete",
+        "target": {
+            "hostname": "BOS-vBIGIP01.termmarc.com"
+        },
+        "apptesting": {
+            "class": "Tenant"
+        }
+    }
+  }
 
 
 Before finishing this lab, there is one task to do. If you are done testing BIG-IQ HA, stop BIG-IQ CM Secondary to avoid additional costs. You might want to switch the active BIG-IQ before stopping the secondary… (or stop BIG-IQ primary in UDF or Ravello and skip the next steps)
 
-16.	Go to BIG-IQ CM Secondary https://10.1.1.13 and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
+16.	Go to BIG-IQ CM Secondary https\:\/\/10.1.1.13 and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
+
 17.	Promote the standby device bigiq1cm.example.com, at the pop-up click **OK**.
+
 18.	Refresh the Browser window and wait (takes ~5min) until the BIG-IQ failover IP gets redirected to BIG-IQ CM (10.1.1.4) and check if it has become the primary unit.
+
 19.	Stop BIG-IQ CM Secondary in either UDF or Ravello.
 
