@@ -65,7 +65,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 .. image:: ../pictures/module4/lab-2-5.png
   :align: center
   
-8. To test this, grab a browser on your jumphost and go: https://10.1.1.15 . Which BIG-IQ took the call? 
+8. To test this, grab a browser on your jumphost and go: https\:\/\/10.1.1.15 . Which BIG-IQ took the call? 
 
 9. Login with David and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
 
@@ -141,10 +141,10 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 15. Check if it was successful.
 
 - In the response section of Postman
-- Login to BOS-vBIG01.termmarc.com by browsing to https://10.1.1.8 (admin/purple123) and check if the partition was created, Task1.
+- Login to BOS-vBIG01.termmarc.com by browsing to https\:\/\/10.1.1.8 (admin/purple123) and check if the partition was created, Task1.
 - POST BIG-IQ AS3 Declaration (Delete) to remove the declaration. COpy and paste below declaration and:
 
-POST https://10.1.1.15/mgmt/shared/appsvcs/declare?async=true and Check if the declaration got deleted.
+POST https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true and Check if the declaration got deleted.
 
 .. code-block:: yaml
 
