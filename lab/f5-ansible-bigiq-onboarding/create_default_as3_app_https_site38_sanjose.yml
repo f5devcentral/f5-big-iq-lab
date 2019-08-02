@@ -32,12 +32,12 @@
           declaration:
             class: ADC
             schemaVersion: 3.7.0
-            id: finance-declaration-01
-            label: finance
-            remark: finance Application Service
+            id: inventory-declaration-01
+            label: inventory
+            remark: inventory Application Service
             target:
               hostname: SJC-vBIGIP01.termmarc.com
-            finance:
+            inventory:
               class: Tenant
               site38httpsBigip121:
                 class: Application
