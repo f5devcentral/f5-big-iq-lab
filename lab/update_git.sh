@@ -92,7 +92,7 @@ else
     chown -R $user:$user . > /dev/null 2>&1
 
     # Cleanup Clouds credentials
-    rm -f /home/$user/.aws/*
+    rm -fr /home/$user/.aws/*
     rm -fr /home/$user/.azure/*
 
     if [[ $env == "sjc" ]]; then
@@ -143,7 +143,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
 
     # load f5demo.ldif and expose port 389 for LDAP access
-    docker run --volume `pwd`/home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
+    docker run --volume `/home/$user/ldap`/home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
             -e LDAP_ORGANISATION="F5 Networks" \
             -e LDAP_DOMAIN="f5demo.com" \
             -e LDAP_ADMIN_PASSWORD=ldappass \
@@ -168,6 +168,7 @@ if [[  $currentuser == "root" ]]; then
     # Restart the VM if already created (SSG and VE creation)
     sleep 900 && /home/$user/f5-vmware-ssg/cmd_power_on_vm.sh > /home/$user/f5-vmware-ssg/cmd_power_on_vm.log 2> /dev/null &
     sleep 1100 && sudo chown -R $user:$user /home/$user/f5-vmware-ssg/*.log 2> /dev/null &
+    chown -R $user:$user /home/$user
 fi
 
 exit 0

@@ -17,7 +17,7 @@
         validate_certs: false
       register: auth
 
-    - name: Delete site40 AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
+    - name: Delete AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
         url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
         method: POST
@@ -33,10 +33,11 @@
             class: ADC
             schemaVersion: 3.7.0
             id: example-declaration-01
-            label: mail
             remark: Delete
             target:
+              # Update desire hostname or address
               hostname: SEA-vBIGIP01.termmarc.com
+            # Update desire tenant to delete
             mail:
               class: Tenant
         body_format: json
