@@ -10,7 +10,7 @@
         method: POST
         headers:
           Content-Type: application/json
-        body: "{{ lookup('file','auth_bigiq_paul.json') }}"
+        body: "{{ lookup('file','auth_bigiq_admin.json') }}"
         body_format: json
         timeout: 60
         status_code: 200, 202
@@ -34,7 +34,7 @@
             schemaVersion: 3.7.0
             id: example-declaration-01
             label: mail
-            remark: Delete Task1 AS3 Applications
+            remark: Delete
             target:
               hostname: SEA-vBIGIP01.termmarc.com
             mail:
