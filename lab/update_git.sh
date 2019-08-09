@@ -65,7 +65,7 @@ else
     bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
 
     echo "Cleanup previous files..."
-    rm -rf AWS* AZURE* GCP* ALIBABA* vmware-ansible demo-app-troubleshooting build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
+    rm -rf AWS* AZURE* GCP* ALIBABA* certs* vmware-ansible demo-app-troubleshooting build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -149,9 +149,9 @@ if [[  $currentuser == "root" ]]; then
             -e LDAP_ADMIN_PASSWORD=ldappass \
             -p 389:389 \
             --name my-openldap-container \
-            --detach osixia/openldap:1.2.0 \
+            --detach osixia/openldap:1.2.4 \
             --copy-service
-    # to test
+
     ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > /home/$user/ldap/f5-ldap.log
 
     docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')

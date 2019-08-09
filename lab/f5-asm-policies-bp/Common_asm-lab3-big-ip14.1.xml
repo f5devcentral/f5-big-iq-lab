@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<policy integrity_check="92353250ad3eb40d27f1b86093b8178a" bigip_version="14.1.0" name="/Common/asm-lab-2019">
+<policy integrity_check="92353250ad3eb40d27f1b86093b8178a" bigip_version="14.1.0" name="/Common/asm-lab3">
   <type>Security</type>
   <policy_version>
     <timestamp>2019-02-28T07:13:30Z</timestamp>
     <device_name>SEA-vBIGIP01.termmarc.com</device_name>
-    <policy_name>/Common/asm-lab-2019</policy_name>
-    <last_change>Parameter * [update] { audit: policy = /Common/asm-lab-2019, username = admin, client IP = 10.1.1.4 }</last_change>
+    <policy_name>/Common/asm-lab3</policy_name>
+    <last_change>Parameter * [update] { audit: policy = /Common/asm-lab3-2019, username = admin, client IP = 10.1.1.4 }</last_change>
   </policy_version>
   <encoding>utf-8</encoding>
   <description>Fundamental Policy</description>
@@ -1887,91 +1887,6 @@ Connection: close</response_header>
     </file_type>
   </file_types>
   <urls>
-    <url protocol="HTTPS" type="explicit" name="/user/login">
-      <learning_mode>Never</learning_mode>
-      <check_flows>false</check_flows>
-      <is_entry_point>false</is_entry_point>
-      <is_referrer>false</is_referrer>
-      <can_change_domain_cookie>false</can_change_domain_cookie>
-      <description></description>
-      <user_config_level>basic</user_config_level>
-      <check_metachars>false</check_metachars>
-      <check_methods>false</check_methods>
-      <in_staging>true</in_staging>
-      <last_updated>2019-02-28T01:24:20Z</last_updated>
-      <clickjacking_protection>
-        <enabled>false</enabled>
-        <allow_rendering_in_frames>Never</allow_rendering_in_frames>
-      </clickjacking_protection>
-      <cors_enforcement_enable>false</cors_enforcement_enable>
-      <allow_cors>false</allow_cors>
-      <cors_allow_credentials_handling>unmodified</cors_allow_credentials_handling>
-      <cors_allow_credentials_value>disallow</cors_allow_credentials_value>
-      <cors_check_maximum_age>false</cors_check_maximum_age>
-      <cors_maximum_age>1800</cors_maximum_age>
-      <cors_allowed_origins_handling>unmodified</cors_allowed_origins_handling>
-      <cors_allowed_methods_handling>unmodified</cors_allowed_methods_handling>
-      <cors_allowed_headers_handling>unmodified</cors_allowed_headers_handling>
-      <cors_exposed_headers_handling>unmodified</cors_exposed_headers_handling>
-      <flg_wildcard_includes_slash>false</flg_wildcard_includes_slash>
-      <check_attack_signatures>true</check_attack_signatures>
-      <in_classification>false</in_classification>
-      <is_allowed>true</is_allowed>
-      <content_profile>
-        <header_name>*</header_name>
-        <header_value>*</header_value>
-        <header_order>0</header_order>
-        <enforcement_type>apply_value_signatures</enforcement_type>
-      </content_profile>
-      <content_profile>
-        <header_name>Content-Type</header_name>
-        <header_value>*form*</header_value>
-        <header_order>1</header_order>
-        <enforcement_type>http</enforcement_type>
-      </content_profile>
-      <content_profile>
-        <profile_name>Default</profile_name>
-        <header_name>Content-Type</header_name>
-        <header_value>*json*</header_value>
-        <header_order>2</header_order>
-        <enforcement_type>json</enforcement_type>
-      </content_profile>
-      <content_profile>
-        <profile_name>Default</profile_name>
-        <header_name>Content-Type</header_name>
-        <header_value>*xml*</header_value>
-        <header_order>3</header_order>
-        <enforcement_type>xml</enforcement_type>
-      </content_profile>
-      <brute_force>
-        <maximum_login_attempts>20</maximum_login_attempts>
-        <session_expiration_in_seconds>180</session_expiration_in_seconds>
-        <measurement_period>120</measurement_period>
-        <force_blocking>false</force_blocking>
-        <login_attempts_reached>50</login_attempts_reached>
-        <identify_device>false</identify_device>
-        <maximum_prevention_time>180</maximum_prevention_time>
-        <last_updated>1551317749</last_updated>
-        <detection_threshold_credentials_stuffing_matches_reached>50</detection_threshold_credentials_stuffing_matches_reached>
-        <detection_threshold_action>alarm</detection_threshold_action>
-        <login_attempts_from_the_same_user_threshold>3</login_attempts_from_the_same_user_threshold>
-        <login_attempts_from_the_same_user_action>alarm-and-client-side-integrity</login_attempts_from_the_same_user_action>
-        <login_attempts_from_the_same_device_id_threshold>3</login_attempts_from_the_same_device_id_threshold>
-        <login_attempts_from_the_same_device_id_action>alarm-and-captcha</login_attempts_from_the_same_device_id_action>
-        <login_attempts_from_the_same_ip_action>alarm</login_attempts_from_the_same_ip_action>
-        <captcha_bypass_threshold>5</captcha_bypass_threshold>
-        <captcha_bypass_threshold_action>alarm-and-drop</captcha_bypass_threshold_action>
-        <client_side_integrity_bypass_threshold>3</client_side_integrity_bypass_threshold>
-        <client_side_integrity_bypass_threshold_action>alarm-and-captcha</client_side_integrity_bypass_threshold_action>
-        <source_based_protection_detection_period>120</source_based_protection_detection_period>
-        <detect_credentials_stuffing_attack>true</detect_credentials_stuffing_attack>
-        <detect_distributed_brute_force_attack>true</detect_distributed_brute_force_attack>
-        <detect_login_attempts_from_the_same_user>true</detect_login_attempts_from_the_same_user>
-        <detect_login_attempts_from_the_same_ip>true</detect_login_attempts_from_the_same_ip>
-        <captcha_bypass>false</captcha_bypass>
-        <client_side_integrity_bypass>false</client_side_integrity_bypass>
-      </brute_force>
-    </url>
     <url protocol="HTTPS" type="wildcard" name="*">
       <wildcard_order>1</wildcard_order>
       <learning_mode>Never</learning_mode>
@@ -2956,18 +2871,6 @@ Connection: close</response_header>
   <flows>
     <flow_access>
       <expiration_period>0</expiration_period>
-      <login_url protocol="HTTPS" type="explicit" url="/user/login">
-        <username_parameter>username</username_parameter>
-        <password_parameter>password</password_parameter>
-        <auth_type>form</auth_type>
-        <response_contains></response_contains>
-        <response_doesnt_contain></response_doesnt_contain>
-        <expected_http_response>302</expected_http_response>
-        <header_contains>Location /account</header_contains>
-        <header_omits></header_omits>
-        <cookie_contains></cookie_contains>
-        <parameter_contains></parameter_contains>
-      </login_url>
       <response_page>
         <response_type>default</response_type>
         <response_header>HTTP/1.1 200 OK
