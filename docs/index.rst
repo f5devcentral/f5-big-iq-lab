@@ -19,9 +19,7 @@ significant portion of the BIG-IQ product. The Linux box in the
 environment has multiple cron jobs that are generating traffic that
 populates the monitoring tab.
 
-This lab environment is available in UDF for internal F5 users as well as Partners (please feel free to contact an `F5 representative`_).
-
-.. _F5 representative: https://f5.com/products/how-to-buy
+This lab environment is available in UDF for internal F5 users.
 
 .. image:: ./pictures/diagram_udf.png
    :align: center
@@ -47,7 +45,7 @@ This lab environment is available in UDF for internal F5 users as well as Partne
 **Components available**:
 
 - "System" - Manage all aspects for BIG-IQ, 
-- "Device"  - Discover, Import, Create, Onboard and manage BIGIP devices. 
+- "Device" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
 - "Configuration" - ADC, Security (ASM config/monitoring, AFM config, FPS monitoring.)
 - "Deployment" - Manage evaluation task and deployment.
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.

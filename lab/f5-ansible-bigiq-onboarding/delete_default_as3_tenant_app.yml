@@ -10,14 +10,14 @@
         method: POST
         headers:
           Content-Type: application/json
-        body: "{{ lookup('file','auth_bigiq_paula.json') }}"
+        body: "{{ lookup('file','auth_bigiq_admin.json') }}"
         body_format: json
         timeout: 60
         status_code: 200, 202
         validate_certs: false
       register: auth
 
-    - name: Delete site38 AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
+    - name: Delete AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
         url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
         method: POST
@@ -33,11 +33,12 @@
             class: ADC
             schemaVersion: 3.7.0
             id: example-declaration-01
-            label: finance
-            remark: Delete Task1 AS3 Applications
+            remark: Delete
             target:
-              hostname: SJC-vBIGIP01.termmarc.com
-            finance:
+              # Update desire hostname or address
+              hostname: SEA-vBIGIP01.termmarc.com
+            # Update desire tenant to delete
+            mail:
               class: Tenant
         body_format: json
         timeout: 60

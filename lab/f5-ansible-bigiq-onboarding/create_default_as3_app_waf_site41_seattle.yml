@@ -60,7 +60,7 @@
                   policyWAF:
                     bigip: "/Common/asm-lab3-2019"
                   securityLogProfiles:
-                    - bigip: "/Common/asm-lab-2019"
+                    - bigip: "/Common/templates-default"
                 http_site41:
                   class: HTTP_Profile
                   label: http_site41

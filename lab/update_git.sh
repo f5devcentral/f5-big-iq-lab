@@ -65,7 +65,7 @@ else
     bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
 
     echo "Cleanup previous files..."
-    rm -rf AWS* AZURE* GCP* ALIBABA* vmware-ansible demo-app-troubleshooting build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
+    rm -rf AWS* AZURE* GCP* ALIBABA* certs* vmware-ansible demo-app-troubleshooting build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
     echo "Install new scripts..."
     #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -92,7 +92,7 @@ else
     chown -R $user:$user . > /dev/null 2>&1
 
     # Cleanup Clouds credentials
-    rm -f /home/$user/.aws/*
+    rm -fr /home/$user/.aws/*
     rm -fr /home/$user/.azure/*
 
     if [[ $env == "sjc" ]]; then
@@ -143,15 +143,15 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
 
     # load f5demo.ldif and expose port 389 for LDAP access
-    docker run --volume `pwd`/home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
+    docker run --volume `/home/$user/ldap`/home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
             -e LDAP_ORGANISATION="F5 Networks" \
             -e LDAP_DOMAIN="f5demo.com" \
             -e LDAP_ADMIN_PASSWORD=ldappass \
             -p 389:389 \
             --name my-openldap-container \
-            --detach osixia/openldap:1.2.0 \
+            --detach osixia/openldap:1.2.4 \
             --copy-service
-    # to test
+
     ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > /home/$user/ldap/f5-ldap.log
 
     docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
@@ -168,6 +168,7 @@ if [[  $currentuser == "root" ]]; then
     # Restart the VM if already created (SSG and VE creation)
     sleep 900 && /home/$user/f5-vmware-ssg/cmd_power_on_vm.sh > /home/$user/f5-vmware-ssg/cmd_power_on_vm.log 2> /dev/null &
     sleep 1100 && sudo chown -R $user:$user /home/$user/f5-vmware-ssg/*.log 2> /dev/null &
+    chown -R $user:$user /home/$user
 fi
 
 exit 0
