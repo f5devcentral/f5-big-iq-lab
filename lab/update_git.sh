@@ -65,9 +65,8 @@ else
     bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
 
     echo "Cleanup previous files..."
-    rm -rf AWS* AZURE* GCP* ALIBABA* certs* vmware-ansible demo-app-troubleshooting build* f5-* scripts* class1* Common* crontab* > /dev/null 2>&1
+    rm -rf f5-* scripts* crontab* ldap build* > /dev/null 2>&1
     echo "Install new scripts..."
-    #git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch master
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
     mv /home/$user/f5-big-iq-lab/lab/* /home/$user
 
@@ -86,7 +85,7 @@ else
     mv f5-ansible-bigiq-as3-demo-$bigiq_version_as3 f5-ansible-bigiq-as3-demo > /dev/null 2>&1
 
     # cleanup other versions
-    rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* f5-ansible-bigiq-as3-demo-* > /dev/null 2>&1
+    rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* f5-vmware-ssg-* f5-ansible-bigiq-as3-demo-* > /dev/null 2>&1
     echo "Fixing permissions..."
     chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*py f5-*/*pl > /dev/null 2>&1
     chown -R $user:$user . > /dev/null 2>&1
