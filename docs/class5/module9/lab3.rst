@@ -60,6 +60,7 @@ BIG-IQ will gather all the needed pieces from our DO options. These will be send
 
 Once onboarding is complete the BIG-IP VE will be a managed BIG-IP within BIG-IQ and can be used for Application and Service Deployments.
 
+  |image24|
 
 .. |image11| image:: pictures/image11.png
    :width: 50%
@@ -82,5 +83,7 @@ Once onboarding is complete the BIG-IP VE will be a managed BIG-IP within BIG-IQ
 .. |image20| image:: pictures/image20.png
    :width: 50%
 .. |image23| image:: pictures/image14.png
+   :width: 50%
+.. |image24| image:: pictures/image14.png
    :width: 50%
 
