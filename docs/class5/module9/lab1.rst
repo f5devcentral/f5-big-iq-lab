@@ -1,98 +1,138 @@
-Lab 9.1: VE creation
---------------------
+Lab 9.1: Prepare your ``Azure`` Account 
+---------------------------------------
 
-Prereqisites to this module:
-  - Register an Enterprise Application_ on your Azure portal
-  - Already have an Azure Virtual Network created
-  - Have your Enterprise Application credentials available
-  - Added the BIG-IP instance type to your subscription for "Programmatic Deployments"
+.. warning:: If you already created this account from Class2 (Azure SSG you do not need to recreate this item)
 
-.. Note:: VE Creation may not require the BIG-IQ and created BIG-IP's to have communication (Utility Licensing or Declarative Onboarding). The BIG-IQ is targetting the Azure public API to create these instance resources.
+Setting up a Service Principal Account
 
-1. Create your BIG-IQ "Cloud Provider" for Azure
+.. note:: Needs to be done by an admin in the subscription
 
-Navigate to Applications > Environments > Cloud Providers and choose **Create**
+1. Registering an application
 
-  |image01|
+  - On the Azure portal, go to Azure Active Directory → App registrations
+  - Click on "+ New registration"
+  - Enter the following values
+    Name: <Name of the application>
+  - Click Create
 
-Fill in the Cloud Provider object with your Enterprise Application information.
+.. image:: pictures/img_module5_lab1_1a.png
+  :align: center
+  :scale: 50%
 
-  |image02|
+|
 
-.. Note:: If your credentials are correct you should be able to **Test** the connectivity between BIG-IQ and the Azure API.
+  - Click on Certificates & secrets → New client secret
+  - Enter a Description and select Expiration period.
 
-2. Create your BIG-IQ "Cloud Environment" for Azure
+.. image:: pictures/img_module5_lab1_1b.png
+  :align: center
+  :scale: 50%
 
-Navigate to Applications > Environments > Cloud Environments and choose **Create**
+|
 
-  |image03|
+2. Adding additional Application Owners
 
-The Cloud Environment is where our BIG-IP will be deployed. If your credentials are valid, utilizing your just created **Cloud Provider** will expose resources available to you in your Azure account.
+  - On the Azure portal, go to Azure Active Directory → App registrations → <the app you created in Registering an application>
+  - Click on Settings → Owners → Add owner
+  - Enter the user's F5 email address to search
+  - Select the user and Click on Select
 
-Several parts of the Cloud Environment you may not want to configure here because you are planning on using F5 Declarative Onboarding. 
-  - Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.
-  - You must accept Programmatic Deployments for any BIG-IP you wish to deploy from the BIG-IQ interface, not doing this will result in a failure to launch.
-  - Two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool, alternativly if you are planning to have F5 Declarative Onboarding do your licensing you will not specify anything.
+.. image:: pictures/img_module5_lab1_2.png
+  :align: center
+  :scale: 50%
 
-  |image04|
+|
 
-2. Create your BIG-IP in Azure
+3. Generating Service Principal Secret
 
-Navigate to Devices > BIG-IP VE Creation > and choose **Create**
+  - On the Azure portal, go to Azure Active Directory → App registrations → <the app you created in Registering an application>
+  - Click on Settings → Keys
+  - Enter the user's name in the Description field and select "Never Expires" for the duration
+  - Click on Save
+  - Copy the Value field and save it somewhere. This will need to be provided to the user to be able to configure an Azure provider in BIG-IQ
 
-  |image05|
+.. image:: pictures/img_module5_lab1_3.png
+  :align: center
+  :scale: 50%
 
-Fill in the Create BIG-IP VE Options.
-  - Task Name will be the task (which is tracked) to deploy the BIG-IP
-  - BIG-IP VE Name will be the VE Name created in Azure (not the BIG-IP TMOS name)
-  - Description is a descriptive field
-  - Cloud Environment is what we build it step 2
-  - Number of BIG-IP VE to Create utilizing the Cloud Environment template (Only 1 can be created in Azure at a time)
+|
 
-  |image06|
+4. Granting access control to the application
 
-Once all the attributes are configured **Create** the VE
+- On the Azure portal, go to Azure Active Directory → All Services
+- Click on Subscriptions
+- Click on the subscription that you are using for the application
+- Click on Access Control (IAM) 
+- Click on Add
+- Select Role Assignment
+- Select "Contributor" in the drop down for the Role
+- Type in the Application name created in Step 1.
+- Click on Save
 
-  |iamge07|
+.. image:: pictures/img_module5_lab1_4.png
+  :align: center
+  :scale: 50%
 
-BIG-IQ will gather all the needed pieces from our Provider, Environment, and Creation options. These will be send to the Azure API for building out our instance.
+|
 
-  |image08|
+5. Credentials needed for configuring Azure Provider in BIG-IQ
 
-From the Azure Portal you can see the newly created instance, along with the instance BIG-IQ has created a Network Interface Card, Security Group, Storage account, and a Public IP Address.
+The following pieces of information is needed to configure an Azure Provider.
+This information is required to make API calls to Azure for resource CRUD operations, either through Java or through Ansible.
 
-.. Warning:: You cannot change this options at this time, a Public address will be created and the Security Group will have ports (22,8443,443,4353) open from *Any* source. If you delete the BIG-IP you will need to manually clean up the Security Group created.
+- **Subscription Id**: You can get this by clicking on Subscriptions in Azure portal and copying the Subscription Id for the f5-AZR_7801_PTG_MANOVA-Dev subscription
+- **Tenant Id**: Go to Azure Active Directory → Properties and copy the value of the Directory ID. This is the tenant Id.
+- **Client Id**: Go to Azure Active Directory → App registrations and copy the value of the Application ID. This is the client ID.
+- **Service Principal Secret**: Copy the value saved in step 5 of Generating Service Principal Secret
 
-  |image09|
-
-BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the Public IP address.
-
-.. Note:: All deployments are Single-NIC so management will be on 8443
-
-Lab 2 of this module will cover Onboarding the newly created VE.
-
-  |image10|
-
-.. |image01| image:: pictures/image1.png
-   :width: 50%
-.. |image02| image:: pictures/image2.png
-   :width: 50%
-.. |image03| image:: pictures/image3.png
-   :width: 50%
-.. |image04| image:: pictures/image4.png
-   :width: 50%
-.. |image05| image:: pictures/image5.png
-   :width: 50%
-.. |image06| image:: pictures/image6.png
-   :width: 50%
-.. |image07| image:: pictures/image7.png
-   :width: 50%
-.. |image08| image:: pictures/image8.png
-   :width: 50%
-.. |image09| image:: pictures/image9.png
-   :width: 50%
-.. |image10| image:: pictures/image10.png
-   :width: 50%
+.. warning:: we need something unique for the User name since other student will do the lab and you may use 
+  same Azure corporate account. 
 
 
-.. _Application: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal
+6. Subscribe to the BIG-IP instance in the ``Azure MArketplace``
+
+Before being able to deploy an instance in ``Azure``, you'll have to **subscribe** to this license agreement
+
+Go here to **subscribe** to the right F5 instance we will use in this lab: 
+
+`F5 BIG-IP VE – ALL (BYOL, 1 Boot Location) <https://azuremarketplace.microsoft.com/en-us/marketplace/>`_
+
+Once you've subscribed, you should see something like this: 
+
+.. image:: pictures/img_module5_lab1_5.png
+  :align: center
+  :scale: 50%
+
+.. image:: pictures/img_module5_lab1_6.png
+  :align: center
+  :scale: 50%
+
+
+7. Create Azure Objects from Ansible Scripts.
+
+To create the VPN between UDF and Azure and create the cloud provider and environement for DO
+
+SSH Ubuntu host in UDF:
+
+.. image:: pictures/image22.png
+  :align: center
+  :scale: 50%
+
+Navigate to:
+``cd f5-azure-vpn-ssg``
+
+Modify the **config.yml** file:
+
+``vi config.yml``
+
+Modify the following four items to reflect the Azure Application you created above:
+
+  SUBSCRIPTION_ID: <Subscription Id>
+  TENANT_ID: <Tenant Id>
+  CLIENT_ID: <Client Id>
+  SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>
+  PREFIX: Specify a prefix that will be used on each object automatically created.
+
+Execute the Ansible scripts to create the VPN 
+
+``./000-RUN_ALL.sh ve``
