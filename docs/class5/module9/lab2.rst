@@ -1,118 +1,147 @@
-Lab 9.2: Device Onboarding with BIG-IQ
---------------------------------------
+Lab 9.2: VE creation
+--------------------
 
 Prereqisites to this module:
-  - A BIG-IP available that you would like to target with F5 Declarative Onboarding
-  - Connectivity to/from the BIG-IQ (CM/DCD) and the BIG-IP if you are going to onboard the BIG-IP into BIG-IQ
+  - Register an Enterprise_Application_ within your Azure portal
+  - Have an Azure Virtual Network created
+  - Have the Enterprise Application credentials available
+  - Added the BIG-IP instance type to your subscription for "Programmatic Deployments"
 
-BIG-IP Onboarding can be started from two locations in BIG-IQ. From a newly created VE you can choose to onboard right away, alternativly you can use the **BIG-IP Onboarding** menu option.
+.. Note:: VE Creation may not require the BIG-IQ and created BIG-IP's to communicate (Utility Licensing or Declarative Onboarding). The BIG-IQ will target the public Azure API for VE Creation, and the BIG-IP VE public IP for Onboarding.
 
-From the VE Creation in BIG-IQ:
+1. Create your BIG-IQ "Cloud Provider" for Azure
 
-  |image11|
+Navigate to Applications > Environments > Cloud Providers and choose **Create**
 
-From the BIG-IP Onboarding Menu:
+  |image01|
 
-  |image12|
+Fill in the Cloud Provider object with your Enterprise Application information.
 
-Choosing either method will take you too the correct Onboarding interface.
+  |image02|
 
-.. Note:: You do not need to have created the BIG-IP VE from BIG-IQ to send Declarative Onboarding payloads. If you did create the VE from BIG-IQ it will show up in the BIG-IP VE drop down list, if you didnt not create it you will need to specify the Target information.
+.. Note:: If your credentials are valid you should be able to **Test** the connectivity between BIG-IQ and the Azure API.
 
-1. For the Onboarding Menu option Navigate to Devices > BIG-IP Onboarding > and choose **Create**
+2. Create your BIG-IQ "Cloud Environment" for Azure
 
-F5 Declarative Onboarding like Application Services 3 utilize **Classes** as configuration objects. If you were to build DO without BIG-IQ you would need to strutuce the Classes into a payload that is able to be sent at a BIG-IP. From the BIG-IQ Onboard Properties screen we can see the DO classes available to us, which will form the payload to be sent at a targeted BIG-IP.
+Navigate to Applications > Environments > Cloud Environments and choose **Create**
 
-  |image13|
+  |image03|
 
-The two main differences between DO native and BIG-IQ with DO are the **BIG-IQ Settings**, and the **License** classes. 
-  - The BIG-IQ settings class is used to replace the Discovery and Import process of traditional BIG-IPs into the BIG-IQ platform.
-  - The License class can be used to license the BIG-IP VE with a regKey directly or utilizing a licensePool from either the Current BIG-IQ or a different BIG-IQ
+The Cloud Environment is where our BIG-IP will be deployed. If your credentials were valid, utilizing your just created **Cloud Provider** will expose resources available to you in your Azure account.
 
-  |image14||image15|
+Several parts of the Cloud Environment you may not want to configure here because you are planning on using F5 Declarative Onboarding. 
+  - Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.
+  - You must accept Programmatic Deployments for any BIG-IP you wish to deploy from the BIG-IQ interface, not doing this will result in a failure to launch.
+  - Two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool, alternativly if you are planning to have F5 Declarative Onboarding do your licensing you will not specify anything.
 
-2. Build our Declarative Onboarding configuration
+  |image04|
 
-Our VE created in the previous lab was a single instance with 1-NIC, and a utility license. From our perspective DO doesnt need many options, except a hostname, BIG-IQ management and ASM / AVR provisioned for our to come Application Template.
+For this lab we are going to choose a simple deployment of a BIG-IP VE.
 
-Check the BIG-IQ Settings and Provision options to add the class to our configuration, our newly created BIG-IP VE has never been configured with any configuration so we can leave the default options for the BIG-IQ Settings class. Add in our demo hostname, under provisioning make sure that AVR and AWAF are configured with nominal.
+.. Note:: The Location and VNet names will be different then the example
 
-Similar to Application Templates and AS3 Templates, Declarative Onboarding has a Sample API request to see what this payload would look like being sent programmatically into the BIG-IQ
++----------------------------+------------------------------------------------------------------------------+
+| Cloud Environment Settings |                                                                              |
++============================+==============================================================================+
+| Name                       | Azure_Cloud_Environment                                                      |
++----------------------------+------------------------------------------------------------------------------+
+| Description                |                                                                              |
++----------------------------+------------------------------------------------------------------------------+
+| Device Template            | None                                                                         |
++----------------------------+------------------------------------------------------------------------------+
+| Cloud Provider             | Azure_Cloud_Provider                                                         |
++----------------------------+------------------------------------------------------------------------------+
+| Location                   | East US                                                                      |
++----------------------------+------------------------------------------------------------------------------+
+| License type               | Utility                                                                      |
++----------------------------+------------------------------------------------------------------------------+
+| BIG-IP Image Name          | f5-big-ip-per-app-ve-awf-25m-hourly                                          |
++----------------------------+------------------------------------------------------------------------------+
+| Services to Deploy         | Local Traffic + Web Application Security + Advanced Visibility and Reporting |
++----------------------------+------------------------------------------------------------------------------+
+| Instance Type              | Standard_DS4_v2                                                              |
++----------------------------+------------------------------------------------------------------------------+
+| Restricted Source Address  | *                                                                            |
++----------------------------+------------------------------------------------------------------------------+
+| VNet Name                  | vnet1demo | (Your Prefix Resource Group)                                     |
++----------------------------+------------------------------------------------------------------------------+
+| Management Subnet          | subnet1demo                                                               |
++----------------------------+------------------------------------------------------------------------------+
 
-  |image20|
+Once you have the Environment setup complete, **Save & Close**
 
-.. Note:: Azure does not require the use of an SSH key to log into the instance to be configured.
+  |image21|
 
-  |image16||image17|
+3. Creating your BIG-IP in Azure
 
-3. Onboard BIG-IP
+Navigate to Devices > BIG-IP VE Creation > and choose **Create**
 
-With the configuration set click the **Onboard** button.
+  |image05|
 
-  |image18|
+Fill in the Create BIG-IP VE Options.
 
-BIG-IQ will gather all the needed pieces from our DO options. These will be send to the BIG-IP VE target API for configuring our device.
+  |image06|
 
-  |image19|
+.. Note:: You can only create 1 VE at a time in Azure, also the BIG-IP VE name is the Instance name in Azure, not the TMOS name.
 
-Once onboarding is complete the BIG-IP VE will be a managed BIG-IP within BIG-IQ and can be used for Application and Service Deployments.
++-------------------------------+---------------------------+
+| BIG-IP VE Creation            |                           |
++===============================+===========================+
+| Task Name                     | Deploy BIG-IP VE in Azure |
++-------------------------------+---------------------------+
+| BIG-IP VE Name                | bigipvm01                 |
++-------------------------------+---------------------------+
+| Description                   | Created with BIG-IQ       |
++-------------------------------+---------------------------+
+| Cloud Environment             | Azure_Cloud_Environment   |
++-------------------------------+---------------------------+
+| Admin Password                | Password123!              |
++-------------------------------+---------------------------+
+| Number of BIG-IP VE to Create | 1                         |
++-------------------------------+---------------------------+
 
+Once all the attributes are configured **Create** the VE
 
-.. |image11| image:: pictures/image11.png
+  |image07|
+
+BIG-IQ will gather all the needed pieces from our Provider, Environment, and Creation options. These will be send to the Azure API for building out our instance.
+
+  |image08|
+
+From the Azure Portal you can see the newly created instance, along with the instance BIG-IQ has created a Network Interface Card, Security Group, Storage account, and a Public IP Address.
+
+  |image09|
+
+.. Warning:: You cannot change these options at this time, a Public address will be created, and the Security Group will have ports (22,8443,443,4353) open from *Any* source. If you delete the BIG-IP you will need to manually clean up the Security Group created.
+
+BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the Public IP address.
+
+.. Note:: All deployments are Single-NIC so management will be on 8443
+
+Lab 2 of this module will cover Onboarding the newly created VE.
+
+  |image10|
+
+.. |image01| image:: pictures/image1.png
    :width: 50%
-.. |image12| image:: pictures/image12.png
+.. |image02| image:: pictures/image2.png
    :width: 50%
-.. |image13| image:: pictures/image13.png
+.. |image03| image:: pictures/image3.png
    :width: 50%
-.. |image14| image:: pictures/image14.png
+.. |image04| image:: pictures/image4.png
+   :width: 75%
+.. |image05| image:: pictures/image5.png
    :width: 50%
-.. |image15| image:: pictures/image15.png
+.. |image06| image:: pictures/image6.png
    :width: 50%
-.. |image16| image:: pictures/image16.png
+.. |image07| image:: pictures/image7.png
    :width: 50%
-.. |image17| image:: pictures/image17.png
+.. |image08| image:: pictures/image8.png
+   :width: 90%
+.. |image09| image:: pictures/image9.png
    :width: 50%
-.. |image18| image:: pictures/image18.png
-   :width: 50%
-.. |image19| image:: pictures/image19.png
-   :width: 50%
-.. |image20| image:: pictures/image20.png
-   :width: 50%
+.. |image10| image:: pictures/image10.png
+   :width: 90%
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-To create the VPN between UDF and Azyre and create the cloud provider and environement for DO
-
-SSH Ubuntu host in UDF
-go To go To ~/lab/f5-azure-vpn-ssg
-run ./000-RUN_ALL.sh ve
-
-=> SHOULD NOT NEED TO TOUCH
-
-The script uses user's Azure account so the config.yml needs to be filled (look at Azure SSG lab in class2)
-
-We will need to highlight the difference between cloud env for SSG and for DO (different required fields)
-
-Then we should show creation of the VE via
-- the UI step by step
-- via the API
-=> I started to write playbooks in folder lab/f5-ansible-bigiq-ve-creation-do-demo
-
-Then we should show onboarding the VE via
-- the UI step by step
-- via the API
-=> I started to write playbooks in folder lab/f5-ansible-bigiq-ve-creation-do-demo
+.. _Enterprise_Application: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal

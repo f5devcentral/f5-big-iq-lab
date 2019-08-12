@@ -13,10 +13,6 @@ To start managing a BIG-IP VE device in a cloud environment, you'll need to comp
 
 .. Note:: After you save the configuration for the BIG-IP VE devices you created, BIG-IQ sends an API call to apply that configuration to the targeted BIG-IP VE devices. After BIG-IQ successfully applies the configuration, it then discovers and imports the services the device is licensed for. This means you don't have to discover and import services in a separate step.
 
-.. image:: ../../pictures/under-construction-03.jpg
-  :align: center
-  :scale: 25%
-
 .. toctree::
    :maxdepth: 1
    :glob:
