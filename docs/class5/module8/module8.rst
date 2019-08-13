@@ -3,15 +3,16 @@ Module 8: Declarative Onboarding and VE Creation on AWS (new 7.0)
 
 **[New 7.0.0]**
 
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+BIG-IQ Centralized Management makes it easy for you to create, configure, and manage BIG-IP VE devices in an AWS environment.
 
-Automate the initial setup of BIG-IPs to prepare them for application deployment
-Declarative Onboarding provides a declarative interface for bringing BIG-IPs up to the point where they are ready to provide application services
-Declarative Onboarding works on BIG-IP, no matter where the BIG-IPs are installed, so it is not dependent on environment specific templates. 
+To start managing a BIG-IP VE device in a cloud environment, you'll need to complete the following workflows.
+  - Configure your AWS Virtual Private Cloud
+  - Specify your cloud provider details
+  - Create your cloud environment
+  - Create a BIG-IP VE device
+  - Onboard your BIG-IP VE device or BIG-IP VE device cluster
 
-.. image:: ../../pictures/under-construction-01.jpg
-  :align: center
-  :scale: 25%
+.. Note:: After you save the configuration for the BIG-IP VE devices you created, BIG-IQ sends an API call to apply that configuration to the targeted BIG-IP VE devices. After BIG-IQ successfully applies the configuration, it then discovers and imports the services the device is licensed for. This means you don't have to discover and import services in a separate step.
 
 .. toctree::
    :maxdepth: 1
