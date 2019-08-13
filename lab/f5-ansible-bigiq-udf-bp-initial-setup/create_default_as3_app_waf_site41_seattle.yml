@@ -26,7 +26,6 @@
           X-F5-Auth-Token: "{{auth.json.token.token}}"
         body:
           # used https://www.json2yaml.com/ to convert JSON declaration to YAML
-          # APP USED FOR BRUTE FORCE ATTACK LAB
           class: AS3
           action: deploy
           persist: true
@@ -38,9 +37,9 @@
             remark: Mail Application Service
             target:
               hostname: SEA-vBIGIP01.termmarc.com
-            mail:
+            conference:
               class: Tenant
-              site40waf:
+              site41waf:
                 class: Application
                 template: https
                 statsProfile:
@@ -51,21 +50,21 @@
                 serviceMain:
                   class: Service_HTTPS
                   virtualAddresses:
-                  - "10.1.10.140"
+                  - "10.1.10.141"
                   profileHTTP:
-                    use: "http_site40"
+                    use: "http_site41"
                   pool: web_pool
                   profileAnalytics:
                     use: statsProfile
                   serverTLS: webtls
                   policyWAF:
-                    bigip: "/Common/asm-lab2"
+                    bigip: "/Common/asm-lab3"
                   securityLogProfiles:
                     - bigip: "/Common/templates-default"
-                http_site40:
+                http_site41:
                   class: HTTP_Profile
-                  label: http_site40
-                  remark: http_site40
+                  label: http_site41
+                  remark: http_site41
                   trustXFF: true
                   xForwardedFor: false
                 web_pool:

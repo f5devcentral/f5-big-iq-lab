@@ -1140,7 +1140,7 @@ postalAddress: Adelaide Acree$89415 East Street$Chattanooga, MI  92072
 postalCode: 92072
 uid: paul
 description: This is the description for Adelaide Acree.
-userPassword: {SSHA}R+b558jWoaZ2jrAkJV8DXMXlGKptgr4KL2p+2w==
+userPassword: paul
 employeeNumber: 47
 initials: AKA
 givenName: Adelaide
@@ -1164,7 +1164,7 @@ postalAddress: Adele Acres$91853 Meadow Street$Madison, WV  28790
 postalCode: 28790
 uid: paula
 description: This is the description for Adele Acres.
-userPassword: {SSHA}D6WGxbIG9gaTiv/8f5FEnFZ996ZZBSkVHlZbuQ==
+userPassword: paula
 employeeNumber: 48
 initials: AJA
 givenName: Adele

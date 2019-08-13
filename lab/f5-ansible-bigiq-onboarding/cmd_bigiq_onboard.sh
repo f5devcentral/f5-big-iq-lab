@@ -257,6 +257,7 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 if [[  $env == "udf" ]]; then
   echo -e "\n${GREEN}Create AS3 Applications${NC}"
   [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+  cd ../f5-ansible-bigiq-udf-bp-initial-setup
 
   # replacing all users by admin as users are not re-created part of the onboarding
   #sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_as3_app_waf_site15_boston.yml
