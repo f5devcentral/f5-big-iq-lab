@@ -73,11 +73,7 @@ if [[  $env != "udf" ]]; then
     rm -f *iso *iso.md5 *iso.md5.verify activeVolume status
     # remove cookie if older than 1 day
     if [[ $(find "./.cookie" -mmin +120 -print 2> /dev/null) ]]; then
-<<<<<<< HEAD
-      echo "${GREEN}Deleted .cookie older than 2 hours.${NC}"
-=======
       echo -e "${GREEN}Deleted .cookie older than 2 hours"
->>>>>>> origin/master
       rm -f ./.cookie
     fi
     if [ ! -f ./.cookie ]; then
