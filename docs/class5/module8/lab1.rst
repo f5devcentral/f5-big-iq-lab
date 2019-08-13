@@ -1,18 +1,27 @@
-Lab 8.1: VE creation
---------------------
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+Lab 9.1: Prepare your AWS Account 
+---------------------------------------
 
-To create the VPN between UDF and AWS and create the cloud provider and environement for DO
+.. warning:: If you already created an AWS Application in Class 2 (AWS SSG) you do not need to recreate this item.
 
-SSH Ubuntu host in UDF
-go To ~/lab/f5-aws-vpn-ssg
-run ./000-RUN_ALL.sh ve
+1. Create the VPN between UDF and AWS
 
-=> SHOULD NOT NEED TO TOUCH
+SSH Ubuntu host in UDF:
 
-We will need to highlight the difference between cloud env for SSG and for DO (different required fields)
+.. image:: pictures/image22.png
+  :align: left
+  :scale: 80%
 
-Then we should show creation of the VE via
-- the UI step by step
-- via the API
-=> I started to write playbooks in folder lab/f5-ansible-bigiq-ve-creation-do-demo
+Navigate to: ``cd f5-aws-vpn-ssg``
+
+Execute the Ansible scripts to create the VPN 
+
+``./000-RUN_ALL.sh ve``
+
+.. note:: VPN object and servers can take up to 45 minutes to complete.
+
+The console will output your ephemeral credentials for the resources being created, ** yours will be different88. Save these for later use.
+
+ |image1|
+
+.. |image01| image:: pictures/image1.png
+   :width: 100%

@@ -1,7 +1,7 @@
 Lab 9.2: VE creation
 --------------------
 
-Prereqisites to this module:
+Prerequisites to this module:
   - Register an Enterprise_Application_ within your Azure portal
   - Have an Azure Virtual Network created
   - Have the Enterprise Application credentials available
@@ -19,7 +19,7 @@ Fill in the Cloud Provider object with your Enterprise Application information.
 
   |image02|
 
-.. Note:: If your credentials are valid you should be able to **Test** the connectivity between BIG-IQ and the Azure API.
+.. Note:: If your credentials are valid, you should be able to **Test** the connectivity between BIG-IQ and the Azure API.
 
 2. Create your BIG-IQ "Cloud Environment" for Azure
 
@@ -32,13 +32,9 @@ The Cloud Environment is where our BIG-IP will be deployed. If your credentials 
 Several parts of the Cloud Environment you may not want to configure here because you are planning on using F5 Declarative Onboarding. 
   - Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.
   - You must accept Programmatic Deployments for any BIG-IP you wish to deploy from the BIG-IQ interface, not doing this will result in a failure to launch.
-  - Two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool, alternativly if you are planning to have F5 Declarative Onboarding do your licensing you will not specify anything.
+  - Two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool. Alternatively, if you are planning to have F5 Declarative Onboarding specify a license, you will not define anything
 
-  |image04|
-
-For this lab we are going to choose a simple deployment of a BIG-IP VE.
-
-.. Note:: The Location and VNet names will be different then the example
+For this lab, we are going to choose a simple BYOL deployment of a BIG-IP Per-app VE.
 
 +----------------------------+------------------------------------------------------------------------------+
 | Cloud Environment Settings |                                                                              |
@@ -53,9 +49,9 @@ For this lab we are going to choose a simple deployment of a BIG-IP VE.
 +----------------------------+------------------------------------------------------------------------------+
 | Location                   | East US                                                                      |
 +----------------------------+------------------------------------------------------------------------------+
-| License type               | Utility                                                                      |
+| License type               | BYOL                                                                         |
 +----------------------------+------------------------------------------------------------------------------+
-| BIG-IP Image Name          | f5-big-ip-per-app-ve-awf-25m-hourly                                          |
+| BIG-IP Image Name          | f5-big-ip-per-app-ve-awf-byol                                                |
 +----------------------------+------------------------------------------------------------------------------+
 | Services to Deploy         | Local Traffic + Web Application Security + Advanced Visibility and Reporting |
 +----------------------------+------------------------------------------------------------------------------+
@@ -65,7 +61,7 @@ For this lab we are going to choose a simple deployment of a BIG-IP VE.
 +----------------------------+------------------------------------------------------------------------------+
 | VNet Name                  | vnet1demo | (Your Prefix Resource Group)                                     |
 +----------------------------+------------------------------------------------------------------------------+
-| Management Subnet          | subnet1demo                                                               |
+| Management Subnet          | subnet1demo                                                                  |
 +----------------------------+------------------------------------------------------------------------------+
 
 Once you have the Environment setup complete, **Save & Close**
@@ -80,9 +76,7 @@ Navigate to Devices > BIG-IP VE Creation > and choose **Create**
 
 Fill in the Create BIG-IP VE Options.
 
-  |image06|
-
-.. Note:: You can only create 1 VE at a time in Azure, also the BIG-IP VE name is the Instance name in Azure, not the TMOS name.
+.. Note:: You can only create 1 VE at a time in Azure. Also, the BIG-IP VE name is the Instance name in Azure, not the TMOS name.
 
 +-------------------------------+---------------------------+
 | BIG-IP VE Creation            |                           |
@@ -100,38 +94,40 @@ Fill in the Create BIG-IP VE Options.
 | Number of BIG-IP VE to Create | 1                         |
 +-------------------------------+---------------------------+
 
-Once all the attributes are configured **Create** the VE
+  |image06|
+
+Once all the attributes are configured **Create** the VE.
 
   |image07|
 
-BIG-IQ will gather all the needed pieces from our Provider, Environment, and Creation options. These will be send to the Azure API for building out our instance.
+BIG-IQ will gather all the needed pieces from our Provider, Environment, and Creation options. These will be sent to the Azure API for building out our instance.
 
   |image08|
 
-From the Azure Portal you can see the newly created instance, along with the instance BIG-IQ has created a Network Interface Card, Security Group, Storage account, and a Public IP Address.
+From the Azure Portal, you can see the newly created instance, along with the instance BIG-IQ has created a Network Interface Card, Security Group, Storage Account, and a Public IP Address.
 
   |image09|
 
-.. Warning:: You cannot change these options at this time, a Public address will be created, and the Security Group will have ports (22,8443,443,4353) open from *Any* source. If you delete the BIG-IP you will need to manually clean up the Security Group created.
+.. Warning:: You cannot change these options at this time, a Public address will be created, and the Security Group will have ports (22,8443,443,4353) open from *Any* source. If you delete the BIG-IP, you will need to manually clean up the Security Group created.
 
 BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the Public IP address.
 
-.. Note:: All deployments are Single-NIC so management will be on 8443
+.. Note:: All deployments are Single-NIC, so management will be on 8443
 
 Lab 2 of this module will cover Onboarding the newly created VE.
 
   |image10|
 
 .. |image01| image:: pictures/image1.png
-   :width: 50%
+   :width: 75%
 .. |image02| image:: pictures/image2.png
-   :width: 50%
+   :width: 75%
 .. |image03| image:: pictures/image3.png
    :width: 50%
 .. |image04| image:: pictures/image4.png
-   :width: 75%
+   :width: 85%
 .. |image05| image:: pictures/image5.png
-   :width: 50%
+   :width: 75%
 .. |image06| image:: pictures/image6.png
    :width: 50%
 .. |image07| image:: pictures/image7.png
@@ -142,6 +138,8 @@ Lab 2 of this module will cover Onboarding the newly created VE.
    :width: 50%
 .. |image10| image:: pictures/image10.png
    :width: 90%
+.. |image21| image:: pictures/image10.png
+   :width: 80%
 
 
 .. _Enterprise_Application: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal

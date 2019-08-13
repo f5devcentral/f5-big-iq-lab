@@ -1,7 +1,7 @@
-Lab 9.1: Prepare your ``Azure`` Account 
+Lab 9.1: Prepare your Azure Account 
 ---------------------------------------
 
-.. warning:: If you already created this account from Class2 (Azure SSG you do not need to recreate this item)
+.. warning:: If you already created an Azure Application in Class 2 (Azure SSG) you do not need to recreate this item.
 
 Setting up a Service Principal Account
 
@@ -19,8 +19,6 @@ Setting up a Service Principal Account
   :align: center
   :scale: 50%
 
-|
-
   - Click on Certificates & secrets → New client secret
   - Enter a Description and select Expiration period.
 
@@ -28,20 +26,16 @@ Setting up a Service Principal Account
   :align: center
   :scale: 50%
 
-|
-
 2. Adding additional Application Owners
 
   - On the Azure portal, go to Azure Active Directory → App registrations → <the app you created in Registering an application>
   - Click on Settings → Owners → Add owner
   - Enter the user's F5 email address to search
-  - Select the user and Click on Select
+  - Select the user and click on Select
 
 .. image:: pictures/img_module5_lab1_2.png
   :align: center
   :scale: 50%
-
-|
 
 3. Generating Service Principal Secret
 
@@ -55,8 +49,6 @@ Setting up a Service Principal Account
   :align: center
   :scale: 50%
 
-|
-
 4. Granting access control to the application
 
 - On the Azure portal, go to Azure Active Directory → All Services
@@ -65,7 +57,7 @@ Setting up a Service Principal Account
 - Click on Access Control (IAM) 
 - Click on Add
 - Select Role Assignment
-- Select "Contributor" in the drop down for the Role
+- Select "Contributor" in the drop-down for the Role
 - Type in the Application name created in Step 1.
 - Click on Save
 
@@ -73,25 +65,21 @@ Setting up a Service Principal Account
   :align: center
   :scale: 50%
 
-|
-
 5. Credentials needed for configuring Azure Provider in BIG-IQ
 
-The following pieces of information is needed to configure an Azure Provider.
+The following pieces of information are needed to configure an Azure Provider.
 This information is required to make API calls to Azure for resource CRUD operations, either through Java or through Ansible.
 
-- **Subscription Id**: You can get this by clicking on Subscriptions in Azure portal and copying the Subscription Id for the f5-AZR_7801_PTG_MANOVA-Dev subscription
-- **Tenant Id**: Go to Azure Active Directory → Properties and copy the value of the Directory ID. This is the tenant Id.
-- **Client Id**: Go to Azure Active Directory → App registrations and copy the value of the Application ID. This is the client ID.
-- **Service Principal Secret**: Copy the value saved in step 5 of Generating Service Principal Secret
+- **Subscription Id**: You can get this by clicking on Subscriptions in Azure portal and copying the ``Subscription Id``.
+- **Tenant Id**: Go to Azure Active Directory → Properties and copy the value of the Directory ID. This is the ``Tenant Id``.
+- **Client Id**: Go to Azure Active Directory → App registrations and copy the value of the Application ID. This is the ``Client Id``.
+- **Service Principal Secret**: Copy the value saved in step 5 of generating ``Service Principal Secret``.
 
-.. warning:: we need something unique for the User name since other student will do the lab and you may use 
-  same Azure corporate account. 
+.. warning:: we need something unique for the Username since other students will do the lab and you may use same Azure corporate account. 
 
+6. Subscribe to the BIG-IP instance in the ``Azure Marketplace``
 
-6. Subscribe to the BIG-IP instance in the ``Azure MArketplace``
-
-Before being able to deploy an instance in ``Azure``, you'll have to **subscribe** to this license agreement
+Before being able to deploy an instance in ``Azure``, you'll have to **subscribe** to this license agreement.
 
 Go here to **subscribe** to the right F5 instance we will use in this lab: 
 
@@ -107,32 +95,28 @@ Once you've subscribed, you should see something like this:
   :align: center
   :scale: 50%
 
-
-7. Create Azure Objects from Ansible Scripts.
-
-To create the VPN between UDF and Azure and create the cloud provider and environement for DO
+7. Create the VPN between UDF and Azure
 
 SSH Ubuntu host in UDF:
 
 .. image:: pictures/image22.png
-  :align: center
-  :scale: 50%
+  :align: left
+  :scale: 80%
 
-Navigate to:
-``cd f5-azure-vpn-ssg``
+Navigate to: ``cd f5-azure-vpn-ssg``
 
-Modify the **config.yml** file:
-
-``vi config.yml``
+Modify the **config.yml** file: ``vi config.yml``
 
 Modify the following four items to reflect the Azure Application you created above:
 
-  SUBSCRIPTION_ID: <Subscription Id>
-  TENANT_ID: <Tenant Id>
-  CLIENT_ID: <Client Id>
-  SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>
-  PREFIX: Specify a prefix that will be used on each object automatically created.
+  - SUBSCRIPTION_ID: <Subscription Id>
+  - TENANT_ID: <Tenant Id>
+  - CLIENT_ID: <Client Id>
+  - SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>
+  - PREFIX: Specify a prefix that will be used on each object automatically created.
 
 Execute the Ansible scripts to create the VPN 
 
 ``./000-RUN_ALL.sh ve``
+
+.. note:: VPN object and servers can take up to 45 minutes to complete.
