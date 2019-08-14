@@ -122,6 +122,15 @@ sed -i '1s/^/BYOL_BIGIP_AMI: "ami-58c3d327"\n/' config.yml
 sed -i '1s/^/CUSTOMER_GATEWAY_IP: 0.0.0.0\n/' config.yml
 sed -i '1s/^/### Config file reset to defaut\n\n/' config.yml
 
+sed -i '1s/^/SSG_NAME:               "{{PREFIX}}-aws-ssg"\n/' config.yml
+sed -i '1s/^/CLOUD_ENVIRONMENT_NAME: "{{PREFIX}}-aws-environment"\n/' config.yml
+sed -i '1s/^/CLOUD_PROVIDER_NAME:    "{{PREFIX}}-aws-provider"\n/' config.yml
+sed -i '1s/^/DEVICE_TEMPLATE_NAME:   "{{PREFIX}}-aws-device-template"\n/' config.yml
+sed -i '1s/^/TEMPLATE_NODE_NAME:     "{{PREFIX}}-aws-service-node"\n/' config.yml
+sed -i '1s/^/TEMPLATE_POOL_NAME:     "{{PREFIX}}-aws-pool"\n/' config.yml
+sed -i '1s/^/SERVICE_CATALOG_NAME:   "{{PREFIX}}-aws-service-catalog"\n/' config.yml
+sed -i '1s/^/LTM_RESOURCE_NAME:      "{{PREFIX}}-aws-resource-name"\n/' config.yml
+
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "Clear cache directory and *retry"

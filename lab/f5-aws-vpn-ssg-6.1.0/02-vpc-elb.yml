@@ -1,6 +1,6 @@
 ---
 # Sets up prerequisite AWS network infrastructure
-- name: Deploy prerequisite infrastructure for SSG to AWS
+- name: Deploy prerequisite infrastructure to AWS
   hosts: localhost
   vars_files:
     - ./config.yml
