@@ -1,7 +1,7 @@
 Lab 9.1: Prepare your Azure Account 
----------------------------------------
+-----------------------------------
 
-.. warning:: If you already created an Azure Application in Class 2 (Azure SSG) you do not need to recreate this item.
+.. warning:: If you already created an Azure Application in Class 2 (Azure SSG), you do not need to recreate this item.
 
 Setting up a Service Principal Account
 
@@ -9,18 +9,18 @@ Setting up a Service Principal Account
 
 1. Registering an application
 
-  - On the Azure portal, go to Azure Active Directory → App registrations
-  - Click on "+ New registration"
-  - Enter the following values
-    Name: <Name of the application>
-  - Click Create
+- On the Azure portal, go to Azure Active Directory → App registrations
+- Click on "+ New registration"
+- Enter the following values
+  Name: <Name of the application>
+- Click Create
 
 .. image:: pictures/img_module5_lab1_1a.png
   :align: center
   :scale: 50%
 
-  - Click on Certificates & secrets → New client secret
-  - Enter a Description and select Expiration period.
+- Click on Certificates & secrets → New client secret
+- Enter a Description and select Expiration period.
 
 .. image:: pictures/img_module5_lab1_1b.png
   :align: center
@@ -28,10 +28,10 @@ Setting up a Service Principal Account
 
 2. Adding additional Application Owners
 
-  - On the Azure portal, go to Azure Active Directory → App registrations → <the app you created in Registering an application>
-  - Click on Settings → Owners → Add owner
-  - Enter the user's F5 email address to search
-  - Select the user and click on Select
+- On the Azure portal, go to Azure Active Directory → App registrations → <the app you created in Registering an application>
+- Click on Settings → Owners → Add owner
+- Enter the user's F5 email address to search
+- Select the user and click on Select
 
 .. image:: pictures/img_module5_lab1_2.png
   :align: center
@@ -39,11 +39,11 @@ Setting up a Service Principal Account
 
 3. Generating Service Principal Secret
 
-  - On the Azure portal, go to Azure Active Directory → App registrations → <the app you created in Registering an application>
-  - Click on Settings → Keys
-  - Enter the user's name in the Description field and select "Never Expires" for the duration
-  - Click on Save
-  - Copy the Value field and save it somewhere. This will need to be provided to the user to be able to configure an Azure provider in BIG-IQ
+- On the Azure portal, go to Azure Active Directory → App registrations → <the app you created in Registering an application>
+- Click on Settings → Keys
+- Enter the user's name in the Description field and select "Never Expires" for the duration
+- Click on Save
+- Copy the Value field and save it somewhere. This needs to be provided to the user, to be able to configure an Azure provider in BIG-IQ
 
 .. image:: pictures/img_module5_lab1_3.png
   :align: center
@@ -75,7 +75,7 @@ This information is required to make API calls to Azure for resource CRUD operat
 - **Client Id**: Go to Azure Active Directory → App registrations and copy the value of the Application ID. This is the ``Client Id``.
 - **Service Principal Secret**: Copy the value saved in step 5 of generating ``Service Principal Secret``.
 
-.. warning:: we need something unique for the Username since other students will do the lab and you may use same Azure corporate account. 
+.. warning:: we need something unique for the Username since other students do the lab, and you may use the same Azure corporate account. 
 
 6. Subscribe to the BIG-IP instance in the ``Azure Marketplace``
 
@@ -95,7 +95,9 @@ Once you've subscribed, you should see something like this:
   :align: center
   :scale: 50%
 
-7. Create the VPN between UDF and Azure
+7. Create the Azure environment and VPN
+
+The below script takes Azure parameters and creates Azure resources. These resources are used in BIG-IQ as a place to our BIG-IP to be deployed and configured.
 
 SSH Ubuntu host in UDF:
 
@@ -109,14 +111,14 @@ Modify the **config.yml** file: ``vi config.yml``
 
 Modify the following four items to reflect the Azure Application you created above:
 
-  - SUBSCRIPTION_ID: <Subscription Id>
-  - TENANT_ID: <Tenant Id>
-  - CLIENT_ID: <Client Id>
-  - SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>
-  - PREFIX: Specify a prefix that will be used on each object automatically created.
+- SUBSCRIPTION_ID: <Subscription Id>
+- TENANT_ID: <Tenant Id>
+- CLIENT_ID: <Client Id>
+- SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>
+- PREFIX: Specify a prefix that will be used on each object automatically created.
 
-Execute the Ansible scripts to create the VPN 
+Execute the Ansible scripts to create Azure resources.
 
 ``./000-RUN_ALL.sh ve``
 
-.. note:: VPN object and servers can take up to 45 minutes to complete.
+.. note:: The Azure objects can take up to 45 minutes to complete.

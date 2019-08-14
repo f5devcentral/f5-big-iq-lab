@@ -1,72 +1,35 @@
-Lab 9.2: VE creation
---------------------
+Lab 9.2: Azure BIG-IP VE Creation
+---------------------------------
 
 Prerequisites to this module:
-  - Register an Enterprise_Application_ within your Azure portal
-  - Have an Azure Virtual Network created
-  - Have the Enterprise Application credentials available
-  - Added the BIG-IP instance type to your subscription for "Programmatic Deployments"
+- Run the script creation file at the end of the previous lab
 
-.. Note:: VE Creation may not require the BIG-IQ and created BIG-IP's to communicate (Utility Licensing or Declarative Onboarding). The BIG-IQ will target the public Azure API for VE Creation, and the BIG-IP VE public IP for Onboarding.
+.. Note:: VE Creation may not require the BIG-IQ and created BIG-IP's to communicate (Utility Licensing or Declarative Onboarding). The BIG-IQ targets the public Azure API for VE creation, and the BIG-IP VE public IP for onboarding.
 
-1. Create your BIG-IQ "Cloud Provider" for Azure
+1. Verify your BIG-IQ "Cloud Provider" for Azure
 
-Navigate to Applications > Environments > Cloud Providers and choose **Create**
+Navigate to Applications > Environments > Cloud Providers
 
   |image01|
 
-Fill in the Cloud Provider object with your Enterprise Application information.
+View the Cloud Provider object with your Enterprise Application information.
 
   |image02|
 
 .. Note:: If your credentials are valid, you should be able to **Test** the connectivity between BIG-IQ and the Azure API.
 
-2. Create your BIG-IQ "Cloud Environment" for Azure
+2. Verify your BIG-IQ "Cloud Environment" for Azure
 
-Navigate to Applications > Environments > Cloud Environments and choose **Create**
+Navigate to Applications > Environments > Cloud Environments
 
   |image03|
 
 The Cloud Environment is where our BIG-IP will be deployed. If your credentials were valid, utilizing your just created **Cloud Provider** will expose resources available to you in your Azure account.
 
-Several parts of the Cloud Environment you may not want to configure here because you are planning on using F5 Declarative Onboarding. 
-  - Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.
-  - You must accept Programmatic Deployments for any BIG-IP you wish to deploy from the BIG-IQ interface, not doing this will result in a failure to launch.
-  - Two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool. Alternatively, if you are planning to have F5 Declarative Onboarding specify a license, you will not define anything
-
-For this lab, we are going to choose a simple BYOL deployment of a BIG-IP Per-app VE.
-
-+----------------------------+------------------------------------------------------------------------------+
-| Cloud Environment Settings |                                                                              |
-+============================+==============================================================================+
-| Name                       | Azure_Cloud_Environment                                                      |
-+----------------------------+------------------------------------------------------------------------------+
-| Description                |                                                                              |
-+----------------------------+------------------------------------------------------------------------------+
-| Device Template            | None                                                                         |
-+----------------------------+------------------------------------------------------------------------------+
-| Cloud Provider             | Azure_Cloud_Provider                                                         |
-+----------------------------+------------------------------------------------------------------------------+
-| Location                   | East US                                                                      |
-+----------------------------+------------------------------------------------------------------------------+
-| License type               | BYOL                                                                         |
-+----------------------------+------------------------------------------------------------------------------+
-| BIG-IP Image Name          | f5-big-ip-per-app-ve-awf-byol                                                |
-+----------------------------+------------------------------------------------------------------------------+
-| Services to Deploy         | Local Traffic + Web Application Security + Advanced Visibility and Reporting |
-+----------------------------+------------------------------------------------------------------------------+
-| Instance Type              | Standard_DS4_v2                                                              |
-+----------------------------+------------------------------------------------------------------------------+
-| Restricted Source Address  | *                                                                            |
-+----------------------------+------------------------------------------------------------------------------+
-| VNet Name                  | vnet1demo | (Your Prefix Resource Group)                                     |
-+----------------------------+------------------------------------------------------------------------------+
-| Management Subnet          | subnet1demo                                                                  |
-+----------------------------+------------------------------------------------------------------------------+
-
-Once you have the Environment setup complete, **Save & Close**
-
-  |image21|
+Several parts of the Cloud Environment you may not want to be configured because you are planning on using F5 Declarative Onboarding. 
+- Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.
+- You must accept Programmatic Deployments for any BIG-IP you wish to deploy from the BIG-IQ interface, not doing this will result in a failure to launch.
+- Two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool. Alternatively, if you are planning to have F5 Declarative Onboarding specify a license, you will not define anything
 
 3. Creating your BIG-IP in Azure
 
@@ -87,7 +50,7 @@ Fill in the Create BIG-IP VE Options.
 +-------------------------------+---------------------------+
 | Description                   | Created with BIG-IQ       |
 +-------------------------------+---------------------------+
-| Cloud Environment             | Azure_Cloud_Environment   |
+| Cloud Environment             | (your script created env) |
 +-------------------------------+---------------------------+
 | Admin Password                | Password123!              |
 +-------------------------------+---------------------------+
@@ -95,6 +58,8 @@ Fill in the Create BIG-IP VE Options.
 +-------------------------------+---------------------------+
 
   |image06|
+
+.. Note:: You can only create 1 VE at a time in Azure. Also, the BIG-IP VE name is the Instance name in Azure, not the TMOS name.
 
 Once all the attributes are configured **Create** the VE.
 
@@ -112,7 +77,7 @@ From the Azure Portal, you can see the newly created instance, along with the in
 
 BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the Public IP address.
 
-.. Note:: All deployments are Single-NIC, so management will be on 8443
+.. Note:: All deployments are Single-NIC so that management will be on 8443
 
 Lab 2 of this module will cover Onboarding the newly created VE.
 

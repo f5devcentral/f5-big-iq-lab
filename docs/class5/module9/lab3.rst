@@ -25,25 +25,26 @@ F5 Declarative Onboarding like Application Services 3 utilizes **Classes** as co
 
   |image13|
 
-The two main differences between DO native and BIG-IQ with DO are the **BIG-IQ Settings**, and the **License** classes. 
+The two main differences between DO native, and BIG-IQ with DO, are the **BIG-IQ Settings**, and the **License** classes. 
   - The BIG-IQ settings class is used to replace the Discovery and Import process of traditional BIG-IPs into the BIG-IQ platform.
   - The License class can be used to license the BIG-IP VE with a regKey directly or utilizing a licensePool from either the Current BIG-IQ or a different BIG-IQ
 
 2. Build our Declarative Onboarding configuration
 
-Our VE created in the previous lab was a single instance with 1-NIC and a BYOL license. From our perspective, DO doesn't need many options, BIG-IQ management, ASM / AVR provisioned, and a License. Then it will be ready for our Application Template.
+Our VE created in the previous lab was a single instance with 1-NIC and a BYOL license. From our perspective, DO doesn't need many options, BIG-IQ management, ASM / AVR provisioned, and a License. Then it will be ready for AS3 or Application Templates.
 
 Check the BIG-IQ Settings and Provision options to add the class to our configuration, our newly created BIG-IP VE has never been configured with any configuration so we can leave the default options for the BIG-IQ Settings class. Add in our demo hostname, under-provisioning make sure that AVR and AWAF are configured with nominal.
 
   |image16|
   |image23|
   |image17|
-
-  Similar to Application Templates and AS3 Templates, Declarative Onboarding has a Sample API request to see what this payload would look like being sent programmatically into the BIG-IQ.
-
-  |image20|
+  |image26|
 
 .. Note:: Azure does not require the use of an SSH key to log into the instance to be configured.
+
+Similar to Application Templates and AS3 Templates, Declarative Onboarding has a Sample API request to see what this payload would look like being sent programmatically into the BIG-IQ.
+
+  |image20|
 
 3. Onboard BIG-IP
 
@@ -79,8 +80,12 @@ Once onboarding is complete, the BIG-IP VE will be a managed BIG-IP within BIG-I
    :width: 75%
 .. |image20| image:: pictures/image20.png
    :width: 75%
-.. |image23| image:: pictures/image14.png
+.. |image23| image:: pictures/image23.png
    :width: 75%
-.. |image24| image:: pictures/image14.png
+.. |image24| image:: pictures/image24.png
+   :width: 50%
+.. |image25| image:: pictures/image25.png
+   :width: 50%
+.. |image26| image:: pictures/image26.png
    :width: 50%
 
