@@ -132,6 +132,15 @@ sed -i '1s/^/PREFIX: udf-azure-demo\n/' config.yml
 sed -i '1s/^/CUSTOMER_GATEWAY_IP: 0.0.0.0\n/' config.yml
 sed -i '1s/^/### Config file reset to defaut\n\n/' config.yml
 
+sed -i '1s/^/SSG_NAME:               "{{PREFIX}}-azure-ssg"\n/' config.yml
+sed -i '1s/^/CLOUD_ENVIRONMENT_NAME: "{{PREFIX}}-azure-environment"\n/' config.yml
+sed -i '1s/^/CLOUD_PROVIDER_NAME:    "{{PREFIX}}-azure-provider"\n/' config.yml
+sed -i '1s/^/DEVICE_TEMPLATE_NAME:   "{{PREFIX}}-azure-device-template"\n/' config.yml
+sed -i '1s/^/TEMPLATE_NODE_NAME:     "{{PREFIX}}-azure-service-node"\n/' config.yml
+sed -i '1s/^/TEMPLATE_POOL_NAME:     "{{PREFIX}}-azure-pool"\n/' config.yml
+sed -i '1s/^/SERVICE_CATALOG_NAME:   "{{PREFIX}}-azure-service-catalog"\n/' config.yml
+sed -i '1s/^/LTM_RESOURCE_NAME:      "{{PREFIX}}-azure-resource-name"\n/' config.yml
+
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "Clear cache directory and *retry"

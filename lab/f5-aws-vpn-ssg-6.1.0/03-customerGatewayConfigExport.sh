@@ -9,11 +9,14 @@ aws ec2 describe-vpn-connections --query 'VpnConnections[*].{ID:CustomerGatewayC
 
 if [ -f ./cache/$PREFIX/3-customer_gateway_configuration.xml ]; then
    sed -i '1d' ./cache/$PREFIX/3-customer_gateway_configuration.xml
+   # Remove the first line if contains None
    if [ $(grep None ./cache/$PREFIX/3-customer_gateway_configuration.xml) ]; then
      sed -i '/None/d' ./cache/$PREFIX/3-customer_gateway_configuration.xml
    fi
+   # In case 1st line is missing
    if [ ! $(grep 'vpn_connection id' ./cache/$PREFIX/3-customer_gateway_configuration.xml) ]; then
-     sed -i '1 s/^/<vpn_connection id="vpn-03dcde03d0c5877dd">\n/' ./cache/$PREFIX/3-customer_gateway_configuration.xml
+     rm -f ./cache/$PREFIX/3-customer_gateway_configuration.xml
+     aws ec2 describe-vpn-connections --query 'VpnConnections[*].{ID:CustomerGatewayConfiguration}' --filters Name=tag:Name,Values=$PREFIXVPN --output text > ./cache/$PREFIX/3-customer_gateway_configuration.xml
    fi
    echo "Customer Gateway Configuration file export OK"
 else
