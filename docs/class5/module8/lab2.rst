@@ -2,20 +2,20 @@ Lab 8.2: AWS BIG-IP VE Creation
 -------------------------------
 
 Prerequisites to this module:
-- Run the script creation file at the end of the previous lab
+  - Run the script creation file at the end of the previous lab
 
 An AWS account with full access permissions for the following AWS resources
-- Auto Scale Groups
-- Instances
-- SQS
-- S3
-- CloudWatch
-- CloudFormation
+  - Auto Scale Groups
+  - Instances
+  - SQS
+  - S3
+  - CloudWatch
+  - CloudFormation
 
 IAM role/rolePolicy/InstanceProfile containing
-- List
-- Create
-- Delete 
+  - List
+  - Create
+  - Delete 
 
 .. Note:: VE Creation may not require the BIG-IQ and created BIG-IP's to communicate (Utility Licensing or Declarative Onboarding). The BIG-IQ targets the public AWS API for VE Creation and the BIG-IP VE public IP for Onboarding.
 

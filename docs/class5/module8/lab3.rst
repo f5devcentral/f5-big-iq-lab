@@ -16,8 +16,8 @@ Prerequisites to this module:
 F5 Declarative Onboarding like Application Services 3 utilizes **Classes** as configuration objects. If you were to build DO without BIG-IQ, you would need to structure the Classes into a payload that is able to be sent at a BIG-IP. From the BIG-IQ Onboard Properties screen, we can see the DO classes available to us, which will form the payload to be sent at a targeted BIG-IP.
 
 The two main differences between DO native and BIG-IQ with DO are the **BIG-IQ Settings**, and the **License** classes. 
-- The BIG-IQ settings class is used to replace the Discovery and Import process of traditional BIG-IPs into the BIG-IQ platform.
-- The License class can be used to license the BIG-IP VE with a regKey directly or utilizing a licensePool from either the Current BIG-IQ or a different BIG-IQ
+  - The BIG-IQ settings class is used to replace the Discovery and Import process of traditional BIG-IPs into the BIG-IQ platform.
+  - The License class can be used to license the BIG-IP VE with a regKey directly or utilizing a licensePool from either the Current BIG-IQ or a different BIG-IQ
 
 Our VE created in the previous lab was a single instance with 1-NIC and a BYOL license. From our perspective, DO doesn't need many options, BIG-IQ management, ASM / AVR provisioned, User, and a License. Then it will be ready for AS3 or Application Templates.
 
@@ -42,14 +42,16 @@ Once onboarding is complete, the BIG-IP VE will be a managed BIG-IP within BIG-I
 
   |image15|
 
+.. |image9| image:: pictures/image9.png
+   :width: 100%
 .. |image10| image:: pictures/image10.png
-   :width: 80%
+   :width: 100%
 .. |image11| image:: pictures/image11.png
-   :width: 80%
+   :width: 100%
 .. |image12| image:: pictures/image12.png
-   :width: 75%
+   :width: 100%
 .. |image13| image:: pictures/image13.png
-   :width: 80%
+   :width: 100%
 .. |image14| image:: pictures/image14.png
    :width: 75%
 .. |image15| image:: pictures/image15.png
