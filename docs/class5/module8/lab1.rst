@@ -19,9 +19,9 @@ Execute the Ansible scripts to create the VPN
 
 .. note:: VPN object and servers can take up to 45 minutes to complete.
 
-The console will output your ephemeral credentials for the resources created, ** yours will be different88. Save these for later use.
+The console will output your ephemeral credentials for the resources created, **yours will be different**. Save these for later use.
 
  |image01|
 
 .. |image01| image:: pictures/image1.png
-   :width: 100%
+   :width: 75%
