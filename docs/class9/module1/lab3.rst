@@ -85,7 +85,7 @@ of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
 
 |
 
-Open Chrome and navigate on the website (https) site19auth.example.com. 
+Open Chrome and navigate on the website https\:\/\/site19auth.example.com. 
 
 .. image:: ../pictures/module1/img_module1_lab3_5.png
    :align: center

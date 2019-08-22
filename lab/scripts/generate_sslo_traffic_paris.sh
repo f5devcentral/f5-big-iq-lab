@@ -26,6 +26,9 @@ then
     curl -k https://www.perdu.com
     curl -k https://www.health.com
     curl -k https://www.harley-davidson.com/fr/fr/index.html
+    curl -k https://www.mizuhobank.co.jp/index.html
+    curl -k https://www.bde.es/bde/es/
+    curl -k https://societegenerale.bj
     ((count++))
     done
 
@@ -44,6 +47,9 @@ then
     curl -k https://www.suunto.com
     curl -k https://www.ford.fr
     curl -k https://www.harley-davidson.com/fr/fr/index.html
+    curl -k https://www.mizuhobank.co.jp/index.html
+    curl -k https://www.bde.es/bde/es/
+    curl -k https://societegenerale.bj
     ((count++))
     done
 

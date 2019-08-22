@@ -12,10 +12,6 @@ The Enhanced Analytics allows you to increase the application data visibility by
 
 2. Let's generate additonnal traffic to the application ``site42.example.com``, connect on the *Ubuntu Lamp Server* and launch the following command:
 
-``# docker_hackazon_id=$(sudo docker ps | grep hackazon | awk '{print $1}')``
-
-``# sudo docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web``
-
 ``# /home/f5/f5-demo-app-troubleshooting/503.sh``
 
 3. Back to BIG-IQ Application dashboard, open application ``site42.example.com`` and display the *Transaction* Analytics.

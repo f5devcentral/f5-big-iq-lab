@@ -19,4 +19,7 @@ have to spend requesting and distributing certificates and keys to your managed 
    In 7.0, BIG-IQ does not detect/sync changes made on Venafi itself. Also the BIG-IQ doesn't push the certs to BIG-IP automatically, 
    and it does not automatically disconnect the Venafi from pushing to certs to the BIG-IPs directly.
 
+More information in Knowledge Center > `BIG-IQ Centralized Management: Integrating Venafi with BIG-IQ for Certificate Management`_.
+
+.. _`BIG-IQ Centralized Management: Integrating Venafi with BIG-IQ for Certificate Management`: https://techdocs.f5.com/en-us/bigiq-7-0-0/integrating-venafi-for-certificate-management.html
 

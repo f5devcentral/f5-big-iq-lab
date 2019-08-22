@@ -1,7 +1,7 @@
 Introduction class 12
 =====================
 
-This class will cover BIG-IQ SSL Orchetrator Configuration and Monitoring to BIG-IQ 7.0.
+This class will cover BIG-IQ SSL Orchestrator Configuration and Monitoring to BIG-IQ 7.0.
 
 .. warning:: When using the UDF Lab, make sure:
 

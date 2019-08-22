@@ -17,7 +17,7 @@ support items that are not currently covered.
 This lab environment is designed to allow for quick and easy demos of a
 significant portion of the BIG-IQ product. The Linux box in the
 environment has multiple cron jobs that are generating traffic that
-populates the monitoring tab.
+populates the Monitoring tab and Application dashboard.
 
 This lab environment is available in UDF for internal F5 users.
 
@@ -71,11 +71,11 @@ This lab environment is available in UDF for internal F5 users.
 **Components available**:
 
 - "System" - Manage all aspects for BIG-IQ, 
-- "Device" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
+- "Devices" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
 - "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
 - "Deployment" - Manage evaluation task and deployment.
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-- "Application" - Application Management (Cloud Edition, AS3) and Service Scaling Group
+- "Applications" - Application Management (Cloud Edition, AS3) and Service Scaling Group
 
 ------------
 

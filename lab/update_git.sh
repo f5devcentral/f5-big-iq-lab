@@ -50,7 +50,7 @@ else
         echo "6.1.0" > /home/$user/bigiq_version_aws
     fi
     if [ ! -f /home/$user/bigiq_version_azure ]; then
-        echo "6.1.0" > /home/$user/bigiq_version_azure
+        echo "7.0.0" > /home/$user/bigiq_version_azure
     fi
     if [ ! -f /home/$user/bigiq_version_vmware ]; then
         echo "6.1.0" > /home/$user/bigiq_version_vmware

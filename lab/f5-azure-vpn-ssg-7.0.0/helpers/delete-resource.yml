@@ -1,0 +1,19 @@
+---
+# Delete a single resource following a uniform URI pattern
+- name: "Deleting {{item.label}}"
+  uri: 
+    url: "{{item.url}}"
+    method: GET
+  register: result        
+
+- set_fact:
+    jq_command: "json.items[?name=='{{item.name}}'].id"
+
+- set_fact:    
+    ids: "{{result|json_query(jq_command)}}"  
+
+- uri: 
+    url: "{{item.url}}/{{ids[0]}}"
+    method: DELETE
+  ignore_errors: yes
+...
