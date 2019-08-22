@@ -37,6 +37,7 @@ This lab environment is available in UDF for internal F5 users.
    class9/class9
    class10/class10
    class11/class11
+   class12/class12
 
 ------------
 

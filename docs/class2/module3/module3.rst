@@ -18,9 +18,8 @@ When you need to deploy a new version or change its configuration, you deploy a 
 (or Virtual Machine/Container) that will include all the required changes.
 
 If you want to learn more about mutable / immutable infrastructure, you may review 
-some of those links: 
+some below link: 
 
-* `What is immutable infrastructure? <https://www.digitalocean.com/community/tutorials/what-is-immutable-infrastructure>`_
 * `Can network infrastructure be immutable infrastructure? <https://devcentral.f5.com/articles/can-network-infrastructure-be-immutable-infrastructure>`_
 
 With ``Service Scaling Groups``, we enforce an ``immutable infrastructure`` philosophy. 

@@ -4,8 +4,8 @@
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
 @reboot perl -le 'sleep 1200' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
 
-## ASM Attacks
-@reboot perl -le 'sleep 1200' && /home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh > /home/f5/scripts/asm-brute-force/asm_brute_force_attach.log
+## ASM Brute Force Attacks
+@reboot perl -le 'sleep 1800' && /home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh > /home/f5/scripts/asm-brute-force/asm_brute_force_attach.log
 
 ## Troubleshooting 503 Service Unavailable (class 3 module 2 lab 7)
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/f5-demo-app-troubleshooting/503.log
