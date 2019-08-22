@@ -1,5 +1,7 @@
-Class 8: BIG-IQ Application Security Manager (ASM)
-==================================================
+Class 11: BIG-IQ SSL Orechestrator
+==================================
+
+**[New 7.0.0]** 
 
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
@@ -9,7 +11,7 @@ Class 8: BIG-IQ Application Security Manager (ASM)
 
    intro
    module*/module*
-
+   
 ------------
 
 List of Virtual Servers and Applications Servers where various type of traffic is being send to (check ``crontab`` config for more details).
@@ -38,3 +40,5 @@ List of Virtual Servers and Applications Servers where various type of traffic i
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
 .. note:: IPs from ``10.1.10.110`` to ``10.1.10.142`` have a corresponding FQDN named from ``site10.example.com`` to ``site42.example.com``.
+
+

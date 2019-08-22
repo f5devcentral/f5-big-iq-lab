@@ -21,38 +21,6 @@ populates the monitoring tab.
 
 This lab environment is available in UDF for internal F5 users.
 
-.. image:: ./pictures/diagram_udf.png
-   :align: center
-   :scale: 50%
-
-**Networks**:
-
-- 10.1.1.0/24 UDF Management Network
-- 10.1.10.0/24 UDF External Network
-- 10.1.20.0/24 UDF Internal Network
-- 172.17.0.0/16 UDF Docker Internal Network
-- 172.100.0.0/16 AWS Internal Network
-- 172.200.0.0/16 Azure Internal Network
-
-**List of instances**:
-
-- BIG-IQ <> DCD 7.0.0
-- 2x BIG-IP 13.1 / 1 cluster (BOS)
-- 1x BIG-IP 14.1 / 1 standalone (SEA)
-- 1x BIG-IP 12.1 / 1 standalone (SJC)
-- LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
-
-**Components available**:
-
-- "System" - Manage all aspects for BIG-IQ, 
-- "Device" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
-- "Configuration" - ADC, Security (ASM config/monitoring, AFM config, FPS monitoring.)
-- "Deployment" - Manage evaluation task and deployment.
-- "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-- "Application" - Application Management (Cloud Edition, AS3)
-
-------------
-
 .. toctree::
    :maxdepth: 1
    :caption: Contents/Lab:
@@ -72,11 +40,41 @@ This lab environment is available in UDF for internal F5 users.
 
 ------------
 
-.. warning:: When using the UDF, make sure:
+.. image:: ./pictures/diagram_udf.png
+   :align: center
+   :scale: 50%
 
-   #. STOP your deployment at the end of your demo.
-   #. Do not forget to tear down your AWS & Azure SSG or VE(s) if any.
-   #. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
+**Networks**:
+
+- 10.1.1.0/24 UDF Management Network
+- 10.1.10.0/24 UDF External Network
+- 10.1.20.0/24 UDF Internal Network
+- 10.1.30.0/24 UDF SSLo Inline L2 IN Network
+- 10.1.40.0/24 UDF SSLo Inline L2 OUT Network
+- 10.1.50.0/24 UDF SSLo TAP Network
+- 172.17.0.0/16 UDF Docker Internal Network
+- 172.100.0.0/16 AWS Internal Network
+- 172.200.0.0/16 Azure Internal Network
+
+**List of instances**:
+
+- BIG-IQ <> DCD 7.0.0
+- 2x BIG-IP 13.1 / 1 cluster (BOS)
+- 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
+- 1x BIG-IP 12.1 / 1 standalone (SJC)
+- LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
+- Ansible Tower
+- SSLo Service TAP and L2
+- ESXi 6.5.0 + vCenter
+
+**Components available**:
+
+- "System" - Manage all aspects for BIG-IQ, 
+- "Device" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
+- "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
+- "Deployment" - Manage evaluation task and deployment.
+- "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
+- "Application" - Application Management (Cloud Edition, AS3) and Service Scaling Group
 
 ------------
 
@@ -91,7 +89,7 @@ This lab environment is available in UDF for internal F5 users.
 - `AS3 Documentation`_
 - `DO Documentation`_
 
-.. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=6.0.1
+.. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.0.0
 .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
 .. _BIG-IP Cloud Edition FAQ: https://devcentral.f5.com/articles/big-ip-cloud-edition-faq-31270
 .. _BIG-IP Cloud Edition Solution Guide: https://f5.com/resources/white-papers/big-ip-cloud-edition-solution-guide-31373
@@ -100,11 +98,15 @@ This lab environment is available in UDF for internal F5 users.
 .. _AS3 Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
 .. _DO Documentation: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/
 
+------------
+
 **Videos**:
 
 - `Look for the BIG-IQ videos on the YouTube DevCentral Channel`_
 
 .. _Look for the BIG-IQ videos on the YouTube DevCentral Channel: https://www.youtube.com/user/devcentral/videos
+
+------------
 
 **Tools**:
 
@@ -115,5 +117,14 @@ This lab environment is available in UDF for internal F5 users.
 .. _BIG-IP Cloud Edition trial on AWS and Azure: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
 .. _BIG-IQ Onboarding with Docker and Ansible: https://github.com/f5devcentral/f5-big-iq-onboarding
+
+------------
+
+.. warning:: When using the UDF, make sure:
+
+   #. STOP the ESXi if you do not plan to demo VMware SSG or VE creation.
+   #. STOP your deployment at the end of your demo.
+   #. Do not forget to tear down your AWS & Azure SSG or VE(s) if any.
+   #. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
 
 ------------

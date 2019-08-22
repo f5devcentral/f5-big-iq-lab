@@ -74,8 +74,10 @@ In Paula's Dashboard, she can see her Application.
 
 |
 
-Launch a RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *XRDP*
+Launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
+
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
 
 .. image:: ../pictures/module1/img_module1_lab3_5.png
    :align: center

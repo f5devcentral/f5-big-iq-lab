@@ -1,4 +1,4 @@
-bigiq_onboard_server: 10.1.1.13
+bigiq_onboard_server: 10.1.1.14
 bigiq_onboard_hostname: big-iq-cm-02.example.com
 bigiq_onboard_node_type: cm
 bigiq_onboard_discovery_address: 10.1.10.13/24

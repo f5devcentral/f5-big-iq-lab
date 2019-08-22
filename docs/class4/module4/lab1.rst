@@ -15,9 +15,7 @@ Configuring BIG-IQ in a high availability (HA) pair means that you can still man
 
 1. Let's first add a BIG-IQ CM image in the blueprint.
 
-- In UDF:
-
-In the ``F5 Products`` column, click on **ADD**
+In UDF, on the ``F5 Products`` column, click on **ADD**
 
 .. image:: ../pictures/module4/img_module4_lab1_1a.png
   :align: center
