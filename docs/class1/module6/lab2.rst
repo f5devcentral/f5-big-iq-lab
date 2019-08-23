@@ -25,7 +25,7 @@ If we want Paula to deploy this ``AS3-F5-HTTP-lb-template-big-iq-default-<versio
 
 3.	Select **Applications > Application Templates** and notice the ‘Published’ templates. The template Paula wants to use is not listed as a ‘Published’ template.
 
-4.	Select ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` and click Published.
+4.	Notice the AS3 template ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` is Published.
 
  .. image:: ../pictures/module6/lab-2-1.png
   :align: center

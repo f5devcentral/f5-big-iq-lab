@@ -52,7 +52,13 @@
                   enable: true
                 Analytics_Profile:
                   class: Analytics_Profile
+                  collectUserAgent: true
                   collectClientSideStatistics: true
+                  collectGeo: true
+                  collectUrl: true
+                  collectPageLoadTime: true
+                  collectOsAndBrowser: true
+                  collectMethod: true
                   collectResponseCode: true
                   capturedTrafficInternalLogging: true
                   captureFilter:

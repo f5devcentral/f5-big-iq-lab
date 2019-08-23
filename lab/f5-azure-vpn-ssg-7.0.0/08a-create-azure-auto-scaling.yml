@@ -50,11 +50,11 @@
 
     - include_tasks: ./helpers/post.yml
       with_items:
-        - name: Creating cloud environment
+        - name: Creating cloud environment SSG
           url: "{{BIGIQ_URI}}/cm/cloud/environments"
           body: >
             {
-                "name": "{{CLOUD_ENVIRONMENT_NAME}}",
+                "name": "{{CLOUD_ENVIRONMENT_NAME}}_SSG",
                 "description": "AZURE cloud environment for SSG",
                 "providerReference": {
                     "link": "https://localhost/mgmt/cm/cloud/providers/{{cloud_provider_result.id}}"
@@ -71,6 +71,7 @@
                     "moduleSelection": "{{MODULE}}",
                     "licenseType": "BYOL",
                     "imageName": "{{BYOL_BIGIP_NAME}}",
+                    "imageOffer": "{{BYOL_BIGIP_OFFER}}",
                     "bigipVersion": "{{BYOL_BIGIP_VERSION}}",
                     "instanceType": "Standard_DS4_v2",
                     "byolLicenseInformation": {
