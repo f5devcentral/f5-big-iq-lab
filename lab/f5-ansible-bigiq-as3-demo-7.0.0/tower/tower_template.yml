@@ -28,7 +28,7 @@
         job_type: "run"
         inventory: "F5Env"
         project: "BIG-IQ-LAB"
-        playbook: "lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml"
+        playbook: "lab/f5-ansible-bigiq-as3-demo-7.0.0/tower/app_create.yml"
         survey_enabled: yes
         survey_spec: "{{ lookup('template', 'j2/tower_survey.j2') }}"
         tower_host: "{{ mgmt }}"
