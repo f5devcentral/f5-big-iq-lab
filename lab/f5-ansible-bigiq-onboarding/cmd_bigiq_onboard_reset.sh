@@ -120,13 +120,6 @@ if [[  $env != "udf" ]]; then
                 --data $DATA -H "Origin: https://$a" -H "Content-Type: application/json;charset=UTF-8")
             poll_task $(echo $TASK | jq -r .id)
         done
-
-        #ssh -o StrictHostKeyChecking=no $b@$a bigstart stop restjavad restnoded < /dev/null
-        #ssh -o StrictHostKeyChecking=no $b@$a rm -rf /var/config/rest/storage < /dev/null
-        #ssh -o StrictHostKeyChecking=no $b@$a rm -rf /var/config/rest/index < /dev/null
-        #ssh -o StrictHostKeyChecking=no $b@$a bigstart start restjavad restnoded < /dev/null
-        #ssh -o StrictHostKeyChecking=no $b@$a rm -f /var/config/rest/downloads/*.rpm < /dev/null
-        #ssh -o StrictHostKeyChecking=no $b@$a rm -f /var/config/rest/iapps/RPMS/*.rpm < /dev/null
     done < inventory/$env-bigip.csv
 fi
 

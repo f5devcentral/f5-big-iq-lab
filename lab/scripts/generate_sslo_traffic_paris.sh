@@ -2,6 +2,13 @@
 # Uncomment set command below for code debuging bash
 # set -x
 
+already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
+if [  $already -gt 2 ]; then
+    echo "The script is already running `expr $already - 2` time."
+    killall $(basename "$0")
+    exit 1
+fi
+
 bigip1="10.1.20.13"  #Paris
 bigip2="10.1.20.7"   #Seattle
 defaultgw="10.1.1.2" #UDF
