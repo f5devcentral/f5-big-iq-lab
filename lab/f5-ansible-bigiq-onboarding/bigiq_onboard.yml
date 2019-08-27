@@ -8,8 +8,10 @@
       - f5devcentral.bigiq_onboard
     tags: onboarding
 
-  - pause:
-    minutes: 5
+  - hosts: hostname
+    gather_facts: false
+    tasks:
+      - pause: seconds=120
 
   - hosts: f5-bigiq-cm
     connection: local
