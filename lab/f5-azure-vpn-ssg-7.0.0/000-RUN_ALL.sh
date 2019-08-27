@@ -24,6 +24,9 @@ SECONDS=0
 
 cd /home/f5/f5-azure-vpn-ssg
 
+# Reset default GW in case SSLO script gets kill in the middle of it
+sudo ip route change default via 10.1.1.2 dev eth0
+
 getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 if [[ ! -z $getPublicIP ]]; then
     sed -i "s/0.0.0.0/$getPublicIP/g" ./config.yml

@@ -56,21 +56,32 @@ Then, start the new BIG-IQ DCD VM.
 
 2. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-3. Request 1 BIG-IQ Evaluation license and set it in the inventory file in ``bigiq_onboard_license_key`` variable.
+3. Edit the hosts file and make sure only the ``big-iq-dcd-2.example.com`` is not commented with a ``#``.
 
-    ::
+    .. code-block:: yaml
+    :linenos:
+    :emphasize-lines: 10
 
         # cd /home/f5/f5-ansible-bigiq-onboarding 
-        # vi inventory/group_vars/udf-bigiq-dcd-02.yml
+        # vi hosts
+    
+        [f5-bigiq-cm]
+        #big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
+        #big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
 
-.. note:: Double check the IP address of the new secondary BIG-IQ and update it in ``udf-bigiq-dcd-02.yml`` if necessary (``bigiq_onboard_server``)
+        [f5-bigiq-dcd]
+        #big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
+        big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
+
+.. warning:: Double check the IP address of the new secondary BIG-IQ and update it if necessary
 
 4. Once the new VE is full up and running, execute the following script to onboard this new secondary BIG-IQ CM.
 
     ::
 
         # cd /home/f5/f5-ansible-bigiq-onboarding
-        # ./cmd_bigiq_onboard_secondary_dcd.sh nopause
+        # sudo docker build -t f5-big-iq-onboarding .
+        # ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
 
 
 5. Verify the new secondary BIG-IQ DCD has been correctly added to the BIG-IQ Data Colletion Devices list.

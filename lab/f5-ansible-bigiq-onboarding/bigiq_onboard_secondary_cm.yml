@@ -1,7 +1,0 @@
----
-- name: Set up a secondary CM BIG-IQ
-  hosts: udf-bigiq-cm-02
-  vars_files:
-    - inventory/group_vars/udf-bigiq-cm-02.yml
-  roles:
-    - { role: f5devcentral.bigiq_onboard }

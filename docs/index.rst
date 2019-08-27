@@ -43,7 +43,7 @@ This lab environment is available in UDF for internal F5 users.
 
 .. image:: ./pictures/diagram_udf.png
    :align: center
-   :scale: 50%
+   :scale: 70%
 
 **Networks**:
 
