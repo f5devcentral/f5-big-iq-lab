@@ -3,7 +3,9 @@ Lab 5.7: Perform lab 1 to 3 using Ansible URI module
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-Execute the playbooks for each tasks
+Execute the playbooks for each tasks.
+
+.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 - Task 1: HTTP Application Service::
 
@@ -64,7 +66,7 @@ Execute the playbooks for each tasks
     # cd /home/f5/f5-ansible-bigiq-as3-demo
     # ./cmd_playbook.sh as3_bigiq_task05b_modify_patch_http_app.yml paula
 
-    .. warning:: The PATCH operation will be fully supported started BIG-IQ 7.0/AS3.12 and above (not supported in BIG-IQ 6.1/AS3.7)
+  .. warning:: The PATCH operation will be fully supported started BIG-IQ 7.0/AS3.12 and above (not supported in BIG-IQ 6.1/AS3.7)
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
 

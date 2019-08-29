@@ -149,6 +149,8 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
 
 |lab-1-3|
 
+.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+
 Click on your Application, Properties > CONFIGURATION, look at AS3 Declaration.
 
 |lab-1-4|
@@ -253,6 +255,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
+.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 Task 3a - HTTPS Application with Web Application Firewall
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -371,6 +374,8 @@ Copy/Paste the above AS3 declaration into the declaration body into Postman (DON
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
+.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+
 Task 4 - Generic Services
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -456,6 +461,8 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
+
+.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 .. |lab-1-1| image:: ../pictures/module5/lab-1-1.png
    :scale: 60%

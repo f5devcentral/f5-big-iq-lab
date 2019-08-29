@@ -330,6 +330,8 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 
 7. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
 
+.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+
 |lab-3-4|
 
 
