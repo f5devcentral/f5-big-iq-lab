@@ -1,5 +1,5 @@
 ---
-  - hosts: f5-bigiq
+  - hosts: f5_bigiq
     connection: local
     serial: 1
     gather_facts: false
@@ -8,12 +8,12 @@
       - f5devcentral.bigiq_onboard
     tags: onboarding
 
-  - hosts: hostname
+  - hosts: localhost
     gather_facts: false
     tasks:
       - pause: seconds=120
 
-  - hosts: f5-bigiq-cm
+  - hosts: f5_bigiq_cm
     connection: local
     serial: 1
     gather_facts: false

@@ -30,13 +30,8 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-if [ -z "$1" ]; then
-  env="udf"
-  user="f5student"
-else
-  env=$1
-  user="f5"
-fi
+env="udf"
+user="f5student"
 
 echo -e "Environement:${RED} $env ${NC}"
 
@@ -56,7 +51,7 @@ else
         echo "6.1.0" > /home/$user/bigiq_version_vmware
     fi
     if [ ! -f /home/$user/bigiq_version_as3 ]; then
-        echo "6.1.0" > /home/$user/bigiq_version_as3
+        echo "7.0.0" > /home/$user/bigiq_version_as3
     fi
 
     bigiq_version_aws=$(cat /home/$user/bigiq_version_aws)
@@ -93,19 +88,6 @@ else
     # Cleanup Clouds credentials
     rm -fr /home/$user/.aws/*
     rm -fr /home/$user/.azure/*
-
-    if [[ $env == "sjc" ]]; then
-        # for SCJ - DCD lab IP
-        sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
-        sed -i 's/10.1.10.4/10.192.75.180/g' /home/$user/scripts/*sh
-        sed -i '13,$d' /home/$user/crontab.txt
-    fi
-    if [[ $env == "sjc2" ]]; then
-        # for SCJ - DCD lab IP
-        sed -i 's/10.1.10.6/10.192.75.186/g' /home/$user/scripts/*sh
-        sed -i 's/10.1.10.4/10.192.75.185/g' /home/$user/scripts/*sh
-        sed -i '13,$d' /home/$user/crontab.txt
-    fi
 
     echo "Installing new crontab"
     if [ "$(whoami)" == "$user" ]; then

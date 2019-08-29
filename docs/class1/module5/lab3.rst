@@ -134,6 +134,7 @@ It will create a new template in BIG-IQ AS3 Service Catalogue:
     {
         "description": "Task 6 - Create custom HTTP AS3 Template on BIG-IQ",
         "name": "HTTPcustomTemplateTask6",
+        "published": "true",
         "schemaOverlay": {
             "type": "object",
             "properties": {

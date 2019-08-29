@@ -1,8 +1,6 @@
 #!/bin/bash
 # Uncomment set command below for code debugging bash
 #set -x
-# Uncomment set command below for code debugging ansible
-#DEBUG_arg="-vvvv"
 
 # Default value set to UDF
 env="udf"

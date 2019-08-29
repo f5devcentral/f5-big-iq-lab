@@ -37,7 +37,7 @@
             label: Task10
             remark: Task 10 - FQDN pool members
             target:
-              hostname: "{{ bigip_target }}"
+              address: "{{ bigip_target_ip }}"
             Task10:
               class: Tenant
               MyWebApp10fqdn:

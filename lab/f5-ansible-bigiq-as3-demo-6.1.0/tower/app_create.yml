@@ -25,7 +25,7 @@
         validate_certs: false
       register: auth
 
-    - name: Send AS3 Declaration
+    - name: Send AS3 Declaration - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
         url: https://{{ mgmt }}/mgmt/shared/appsvcs/declare?async=true
         method: POST
@@ -44,7 +44,7 @@
 
     ## LOOP TO CHECK THE TASK
 
-    - name: Loop to check for AS3 status
+    - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
       uri:
         url: https://{{ mgmt }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
         method: GET

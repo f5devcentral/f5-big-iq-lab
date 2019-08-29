@@ -17,6 +17,19 @@
         status_code: 200, 202
         validate_certs: false
       register: auth
+      
+    - name: Validate AS3 Rest Worker is ready
+      uri:
+        url: "https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare"
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        validate_certs: false
+      retries: 30
+      delay: 5
+      register: result
+      until: "(result is success) and (result.status == 200)"
 
     - name: Task 10 - Deploy the HTTP Application Service using an FQDN pool to identify pool members - POST /mgmt/shared/appsvcs/declare?async=true
       uri:
@@ -37,7 +50,7 @@
             label: Task10
             remark: Task 10 - FQDN pool members
             target:
-              hostname: "{{ bigip_target }}"
+              address: "{{ bigip_target_ip }}"
             Task10:
               class: Tenant
               MyWebApp10fqdn:
@@ -79,22 +92,10 @@
     - debug:
         var: json_response.json
 
+    - pause:
+        seconds: 15
+
 ### LOOP TO CHECK THE TASK - DO NOT MODIFY BELOW
-
-    - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
-      uri:
-        url: https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
-        method: GET
-        headers:
-          Content-Type: application/json
-          X-F5-Auth-Token: "{{auth.json.token.token}}"
-        timeout: 60
-        status_code: 200, 202
-        validate_certs: false
-      register: json_response_task
-
-    - debug:
-        var: json_response_task.json
 
     - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
       uri:
@@ -108,7 +109,7 @@
       register: json_response_task
       until: "json_response_task.json.results[0].message != 'in progress'"
       retries: 20
-      delay: 30
+      delay: 10
 
     - debug:
         var: json_response_task.json

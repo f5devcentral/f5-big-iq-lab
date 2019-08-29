@@ -79,8 +79,23 @@ echo -e "\n${GREEN}Discover and Import BIG-IPs to BIG-IQ CM.${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
+echo -e "\n${GREEN}Import default AS3 templates${NC}"
+ssh -o StrictHostKeyChecking=no root@$ip_cm1 << EOF
+  bash
+  cd /home/admin;
+  rm -rf f5-big-iq*.tar.gz f5devcentral-f5-big-iq-*;
+  curl -L https://github.com/f5devcentral/f5-big-iq/tarball/7.0.0 > f5-big-iq.tar.gz;
+  tar -xzvf f5-big-iq.tar.gz;
+  cd f5*/f5-appsvcs-templates-big-iq/default/json/;
+  sed -i 's/"published": false/"published": true/g' *json
+  for json in *.json; do 
+  curl -s -k -H "Content-Type: application/json" -X POST -d @$json http://localhost:8100/cm/global/appsvcs-templates ;
+  done
+EOF
+
 echo -e "\n${GREEN}Create AS3 Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+
 cd ../f5-ansible-bigiq-udf-bp-initial-setup
 
 # replacing all users by admin as users are not re-created part of the onboarding
@@ -109,6 +124,8 @@ sleep 15
 ansible-playbook -i notahost, create_default_as3_app_dns_site16site18_boston.yml $DEBUG_arg
 sleep 15
 ansible-playbook -i notahost, create_default_global_app_site16_site18_dns_bigiq.yml $DEBUG_arg
+
+cd -
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

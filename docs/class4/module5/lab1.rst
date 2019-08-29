@@ -47,11 +47,11 @@ This automation scenario is composed of 4 parts:
         # cd /home/f5/f5-ansible-bigiq-onboarding 
         # vi hosts
     
-        [f5-bigiq-cm]
+        [f5_bigiq_cm]
         big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
         #big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
 
-        [f5-bigiq-dcd]
+        [f5_bigiq_dcd]
         big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
         #big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
 

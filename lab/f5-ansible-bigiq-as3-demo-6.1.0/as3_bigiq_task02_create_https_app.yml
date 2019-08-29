@@ -37,7 +37,7 @@
             label: Task2
             remark: Task 2 - HTTPS Application Service
             target:
-              hostname: "{{ bigip_target }}"
+              address: "{{ bigip_target_ip }}"
             Task2:
               class: Tenant
               MyWebApp2https:

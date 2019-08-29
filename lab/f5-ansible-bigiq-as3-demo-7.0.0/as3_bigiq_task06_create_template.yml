@@ -17,6 +17,19 @@
         status_code: 200, 202
         validate_certs: false
       register: auth
+      
+    - name: Validate AS3 Rest Worker is ready
+      uri:
+        url: "https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare"
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        validate_certs: false
+      retries: 30
+      delay: 5
+      register: result
+      until: "(result is success) and (result.status == 200)"
 
     - name: Task 6 - Create custom HTTP AS3 Template on BIG-IQ - POST /mgmt/cm/global/appsvcs-templates
       uri:
@@ -29,6 +42,7 @@
           # used https://www.json2yaml.com/ to convert JSON declaration to YAML
           description: 'Task 6 - Create custom HTTP AS3 Template on BIG-IQ'
           name: "{{ task6_bigiq_custom_template }}"
+          published: true
           schemaOverlay:
             type: object
             properties:

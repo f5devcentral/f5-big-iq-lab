@@ -1,26 +1,26 @@
-[f5-bigiq:children]
-f5-bigiq-cm
-f5-bigiq-dcd
+[f5_bigiq:children]
+f5_bigiq_cm
+f5_bigiq_dcd
 
-[f5-bigiq-cm]
+[f5_bigiq_cm]
 # Remove discoveryip if you want to use the management IP as discovery address (recommended for AWS and Azure deployment)
 # discoveryip should include a mask as shown in the example below (this will create a self-ip on the BIG-IQ)
 # The hostname must be a Fully Qualified Domain Name
 #big-iq-cm-1.example.com ansible_host=10.1.1.4 discoveryip=10.1.10.4/24 bigiq_onboard_node_type=cm haprimary=True bigiq_onboard_license_key=Q0558-866155-422-7867054-4573666
 big-iq-cm-2.example.com ansible_host=10.1.1.15 discoveryip=10.1.10.15/24 bigiq_onboard_node_type=cm haprimary=false bigiq_onboard_license_key=W7910-531806-979-9214061-0509584
 
-[f5-bigiq-dcd]
+[f5_bigiq_dcd]
 #big-iq-dcd-1.example.com ansible_host=10.1.1.6 discoveryip=10.1.10.6/24  bigiq_onboard_node_type=dcd bigiq_onboard_license_key=I8423-127807-587-4169936-4646194
 #big-iq-dcd-2.example.com ansible_host=10.1.1.15  discoveryip=10.1.10.15/24  bigiq_onboard_node_type=dcd bigiq_onboard_license_key=B1970-582364-948-9857046-6393697
 
-[f5-bigip]
-bigip-boston-1 device_address=10.1.1.8 device_username=admin device_password=purple123 conflict_policy=keep_version ha_name=bostonCluster enable=yes stat_modules='["device","ltm","dns"]' modules='["ltm","afm","dns","asm","security_shared"]'
-bigip-boston-2 device_address=10.1.1.10 device_username=admin device_password=purple123 conflict_policy=keep_version ha_name=bostonCluster enable=yes stat_modules='["device","ltm","dns"]' modules='["ltm","afm","dns","asm","security_shared"]'
-bigip-seattle-1 device_address=10.1.1.7 device_username=admin device_password=purple123 conflict_policy=keep_version ha_name=seattleCluster enable=yes stat_modules='["device","ltm"]' modules='["ltm","afm","dns","asm","security_shared"]'
-bigip-sanjose-1 device_address=10.1.1.11 device_username=admin device_password=purple123 conflict_policy=keep_version ha_name=SanJoseCluster enable=yes stat_modules='["device","ltm"]' modules='["ltm","asm","security_shared"]'
-bigip-paris-1 device_address=10.1.1.13 device_username=admin device_password=purple123 conflict_policy=keep_version ha_name=parisCluster enable=yes stat_modules='["device","ltm"]' modules='["ltm"]'
+[f5_bigip]
+bigip-boston-1 device_address=10.1.1.8 device_username=admin device_password=purple123 conflict_policy=use_bigip ha_name=bostonCluster enable=yes stat_modules='["device","ltm","dns"]' modules='["ltm","afm","dns","asm","security_shared"]'
+bigip-boston-2 device_address=10.1.1.10 device_username=admin device_password=purple123 conflict_policy=use_bigip ha_name=bostonCluster enable=yes stat_modules='["device","ltm","dns"]' modules='["ltm","afm","dns","asm","security_shared"]'
+bigip-seattle-1 device_address=10.1.1.7 device_username=admin device_password=purple123 conflict_policy=use_bigip ha_name=seattleCluster enable=yes stat_modules='["device","ltm"]' modules='["ltm","afm","dns","asm","security_shared"]'
+bigip-sanjose-1 device_address=10.1.1.11 device_username=admin device_password=purple123 conflict_policy=use_bigip ha_name=SanJoseCluster enable=yes stat_modules='["device","ltm"]' modules='["ltm","asm","security_shared"]'
+bigip-paris-1 device_address=10.1.1.13 device_username=admin device_password=purple123 conflict_policy=use_bigip ha_name=parisCluster enable=yes stat_modules='["device","ltm"]' modules='["ltm"]'
 
-[f5-bigiq:vars]
+[f5_bigiq:vars]
 bigiq_onboard_new_root_password=default
 bigiq_onboard_new_admin_password=purple123
 #bigiq_onboard_old_root_password=default
@@ -30,4 +30,4 @@ bigiq_onboard_ntp_servers='["time.google.com"]'
 bigiq_onboard_dns_nameservers='["8.8.8.8","8.8.4.4"]'
 bigiq_onboard_dns_search='["example.com"]'
 bigiq_onboard_timezone=America/Los_Angeles
-bigiq_dcd_groupname=f5-bigiq-dcd
+bigiq_dcd_groupname=f5_bigiq_dcd

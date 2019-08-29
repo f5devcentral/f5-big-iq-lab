@@ -1,11 +1,11 @@
 ---
-  - hosts: f5-bigip
+  - hosts: f5_bigip
     connection: local
     serial: 1
     gather_facts: false
     vars:
-      bigiq_ip: "{{ hostvars[groups['f5-bigiq-cm'][0]]['ansible_host'] }}"
-      bigiq_password: "{{ hostvars[groups['f5-bigiq'][0]]['bigiq_onboard_new_admin_password'] }}"
+      bigiq_ip: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
+      bigiq_password: "{{ hostvars[groups['f5_bigiq'][0]]['bigiq_onboard_new_admin_password'] }}"
 
     roles:
       - f5devcentral.f5ansible
@@ -22,6 +22,8 @@
         device_password: "{{ device_password }}"
         modules: "{{ modules | list }}"
         conflict_policy: "{{ conflict_policy }}"
+        device_conflict_policy: "{{ device_conflict_policy }}"
+        versioned_conflict_policy: "{{ versioned_conflict_policy }}"
         statistics:
           enable: "{{ enable }}"
           stat_modules: "{{ stat_modules | list }}"

@@ -37,7 +37,7 @@
             label: Task9
             remark: Task 9 - Delete Task1 AS3 Applications
             target:
-              hostname: "{{ bigip_target }}"
+              address: "{{ bigip_target_ip }}"
             Task1:
               class: Tenant
         body_format: json
