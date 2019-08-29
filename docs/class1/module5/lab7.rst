@@ -12,12 +12,16 @@ Execute the playbooks for each tasks
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
+|
+
 - Task 2: HTTPS Offload::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
     # ./cmd_playbook.sh as3_bigiq_task02_create_https_app.yml paula
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
+
+|
 
 - Task 3a: HTTPS Application with Web Application Firewall::
 
@@ -26,6 +30,8 @@ Execute the playbooks for each tasks
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
+|
+
 - Task 3b: HTTPS Application with Web Application Firewall using an External ASM policy::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
@@ -33,12 +39,16 @@ Execute the playbooks for each tasks
 
   Connect as **paul** and check on BIG-IQ the application has been correctly created.
 
+|
+
 - Task 4: Generic Services::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
     # ./cmd_playbook.sh as3_bigiq_task04_create_generic_app.yml paul
 
-Connect as **paul** and check on BIG-IQ the application has been correctly created.
+  Connect as **paul** and check on BIG-IQ the application has been correctly created.
+
+|
 
 - Task 5a: Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)::
 
@@ -46,6 +56,8 @@ Connect as **paul** and check on BIG-IQ the application has been correctly creat
     # ./cmd_playbook.sh as3_bigiq_task05a_modify_post_http_app.yml paul
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
+
+|
 
 - Task 5b: Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)::
 
@@ -55,6 +67,8 @@ Connect as **paul** and check on BIG-IQ the application has been correctly creat
     .. warning:: The PATCH operation will be fully supported started BIG-IQ 7.0/AS3.12 and above (not supported in BIG-IQ 6.1/AS3.7)
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
+
+|
 
 - Task 6: Create custom HTTP AS3 Template on BIG-IQ::
 
@@ -70,12 +84,13 @@ Connect as **paul** and check on BIG-IQ the application has been correctly creat
   .. warning:: the AS3 Template cannot be created through BIG-IQ UI but only using the API in 6.1.
                Go to `Module 6`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
 
-  .. _Module 6: ../module6.html
+  .. _Module 6: ../module6/module6.html
 
   You can see the Template in JSON format if you click on it.
 
   |lab-3-2|
 
+|
 
 - Task 7: Admin set RBAC for Olivia on BIG-IQ
 
@@ -87,6 +102,8 @@ Connect as **paul** and check on BIG-IQ the application has been correctly creat
 
   |lab-3-3|
 
+|
+
 - Task 8: Deploy the HTTP Application Service using a Custom Template::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
@@ -95,6 +112,8 @@ Connect as **paul** and check on BIG-IQ the application has been correctly creat
   Connect as **olivia** and check on BIG-IQ the application has been correctly created.
 
   |lab-3-4|
+
+|
 
 - Task 9: Delete Task1 with their AS3 Applications::
 

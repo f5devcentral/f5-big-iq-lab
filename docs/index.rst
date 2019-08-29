@@ -127,5 +127,3 @@ This lab environment is available in UDF for internal F5 users.
    #. STOP your deployment at the end of your demo.
    #. Do not forget to tear down your AWS & Azure SSG or VE(s) if any.
    #. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
-
-------------
