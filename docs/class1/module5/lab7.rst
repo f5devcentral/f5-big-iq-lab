@@ -5,7 +5,7 @@ Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
 Execute the playbooks for each tasks.
 
-.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 - Task 1: HTTP Application Service::
 
@@ -83,7 +83,7 @@ Execute the playbooks for each tasks.
 
   |lab-3-1|
 
-  .. warning:: the AS3 Template cannot be created through BIG-IQ UI but only using the API in 6.1.
+  .. warning:: AS3 Templates cannot be created through BIG-IQ UI but only using the API in 6.1.
                Go to `Module 6`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
 
   .. _Module 6: ../module6/module6.html

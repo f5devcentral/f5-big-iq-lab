@@ -4,6 +4,11 @@ Lab 5.3: Deploying AS3 Templates on BIG-IQ
 Task 6 - Create custom HTTP AS3 Template on BIG-IQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. warning:: AS3 Templates cannot be created through BIG-IQ UI but only using the API in 6.1.
+             Go to `Module 6`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
+
+.. _Module 6: ../module6/module6.html
+
 Administrators will employ the BIG-IQ Service Catalog to construct and manage a set of JSON Schema templates.  Non-administrative users may be selectively allowed to deploy configurations using these templates according to BIG-IQ RBAC policies.  The purpose of the templates is to filter the information being supplied to AS3 in 3 ways:
 
 - Force the inclusion of specific AS3 class objects
@@ -330,7 +335,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 
 7. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
 
-.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 |lab-3-4|
 

@@ -43,4 +43,4 @@ POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
 3. Check the tenant/application(s) has been correctly removed from the BIG-IP and BIG-IQ.
 
-.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.

@@ -163,7 +163,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
 6. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
-.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 Task 5b - Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -243,7 +243,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
 6. Logon on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
-.. warning:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 .. |lab-2-1| image:: ../pictures/module5/lab-2-1.png
    :scale: 80%
