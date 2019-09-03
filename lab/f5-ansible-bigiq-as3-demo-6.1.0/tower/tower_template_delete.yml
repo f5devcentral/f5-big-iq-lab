@@ -16,7 +16,7 @@
         job_type: "run"
         inventory: "F5Env"
         project: "BIG-IQ-LAB"
-        playbook: "lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml"
+        playbook: "lab/f5-ansible-bigiq-as3-demo-6.1.0/tower/app_create.yml"
         tower_host: "{{ mgmt }}"
         state: absent
       register: template_out

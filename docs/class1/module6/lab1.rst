@@ -1,13 +1,21 @@
 Lab 6.1: Importing AS3 templates
 --------------------------------
 
-Official documentation about AS3 via a GUI can be found: https://github.com/f5devcentral/f5-big-iq
+Official documentation about AS3 application service management via a GUI can be found on the `BIG-IQ Knowledge Center`_.
 
-From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. Go to Ubuntu Jumphost and select Details > XRDP and select the resolution of choice. (Tip: modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
+.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/monitoring-managing-applications-using-big-iq.html
 
-.. image:: ../pictures/module6/lab-1-1.png
-  :align: center
-  :scale: 30%
+From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. 
+To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
+
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
+
+.. image:: ../../pictures/udf_ubuntu.png
+    :align: left
+    :scale: 70%
+
+|
 
 View AS3 templates section
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -15,7 +23,8 @@ View AS3 templates section
 
 #. Go to Applications > Application Templates and review the top section which is titled **AS3 Templates**.
 
-A new BIG-IQ v7.0 deployment will NOT include AS3 templates out of the box. If you want to start using AS3 templates which are provided by F5, then those AS3 templates can be found through the following link: https://www.f5.com/bigiqgithub
+A new BIG-IQ v7.0 deployment will NOT include AS3 templates out of the box.
+If you want to start using AS3 templates which are provided by F5, then those AS3 templates can be found through the following link: https://github.com/f5devcentral/f5-big-iq
 
 Import AS3 templates
 ^^^^^^^^^^^^^^^^^^^^

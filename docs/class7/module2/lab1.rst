@@ -24,7 +24,7 @@ Unlike ASM logging configurations, Network Firewall logging configurations refer
 6. Click the ``afm-remote-logging-profile`` created by BIG-IQ in previous step, the *Network Firewall* tab on left
 7. Examine the options set by BIG-IQ when creating the logging profile.
 
-.. note:: per https://support.f5.com/kb/en-us/products/big-iq-centralized-mgmt/manuals/product/big-iq-centralized-management-security-6-0-1/23.html, none of the objects created in this manner should be modified.  Need to confirm whether this is the case.  Certainly seems reasonable that a customer would want to tweak these settings to meet their requirements.
+.. note:: per 2https://techdocs.f5.com/kb/en-us/products/big-iq-centralized-mgmt/manuals/product/big-iq-centralized-management-access-6-0-1.html/23.html, none of the objects created in this manner should be modified.  Need to confirm whether this is the case.  Certainly seems reasonable that a customer would want to tweak these settings to meet their requirements.
 
 8. Click *Cancel*
 

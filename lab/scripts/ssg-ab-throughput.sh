@@ -19,14 +19,11 @@ if [[ -z $2 ]]; then
 	ssh admin@10.1.1.7 ab -n 1000000 -c 100 http://${ip:1:-1}/ > /dev/null 2>&1 &
 	ssh admin@10.1.1.8 ab -n 1000000 -c 100 http://${ip:1:-1}/ > /dev/null 2>&1 &
 	ssh admin@10.1.1.10 ab -n 1000000 -c 100 http://${ip:1:-1}/ > /dev/null 2>&1 &
-	ssh admin@10.1.1.4 ab -n 1000000 -c 100 http://${ip:1:-1}/ > /dev/null 2>&1 &
-
 else
 	ab -n 1000000 -c 100 https://${ip:1:-1}/ &
 	ssh admin@10.1.1.7 ab -n 1000000 -c 100 https://${ip:1:-1}/ > /dev/null 2>&1 &
 	ssh admin@10.1.1.8 ab -n 1000000 -c 100 https://${ip:1:-1}/ > /dev/null 2>&1 &
 	ssh admin@10.1.1.10 ab -n 1000000 -c 100 https://${ip:1:-1}/ > /dev/null 2>&1 &
-	ssh admin@10.1.1.4 ab -n 1000000 -c 100 https://${ip:1:-1}/ > /dev/null 2>&1 &
 fi
 
 

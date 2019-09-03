@@ -36,15 +36,17 @@ In order to test it quickly, let's manually set in the HTTP profile attached to 
 
 
 From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
+of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
+
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
 
 .. image:: ../../pictures/udf_ubuntu.png
-   :align: center
-   :scale: 50%
+    :align: left
+    :scale: 70%
 
 |
 
-Open Chrome and navigate on the website (http) site42.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
+Open Chrome and navigate on the website https\:\/\/site42.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
 
 .. image:: ../pictures/module2/img_module2_lab7_2.png
    :align: center

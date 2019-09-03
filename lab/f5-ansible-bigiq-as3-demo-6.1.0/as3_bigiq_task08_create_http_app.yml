@@ -35,7 +35,7 @@
             id: isc-lab
             label: Task8
             target:
-              hostname: "{{ bigip_target }}"
+              address: "{{ bigip_target_ip }}"
             Task8:
               class: Tenant
               MyWebApp8http:

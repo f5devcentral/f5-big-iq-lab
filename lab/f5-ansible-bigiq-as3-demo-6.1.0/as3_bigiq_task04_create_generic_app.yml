@@ -37,7 +37,7 @@
             label: Task4
             remark: Task 4 - Generic Services
             target:
-              hostname: "{{ bigip_target }}"
+              address: "{{ bigip_target_ip }}"
             Task4:
               class: Tenant
               MyWebApp4generic:

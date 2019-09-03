@@ -38,20 +38,29 @@ This automation scenario is composed of 4 parts:
 
 1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-2. Request 2 BIG-IQ Evaluation licenses and set them in the inventory files in ``bigiq_onboard_license_key`` variable.
+2. 3. Edit the hosts file and make sure only the ``big-iq-cm-1.example.com`` and ``big-iq-dcd-1.example.com `` are not commented with a ``#``.
 
-    ::
+    .. code-block:: yaml
+    :linenos:
+    :emphasize-lines: 5,9
 
         # cd /home/f5/f5-ansible-bigiq-onboarding 
-        # vi inventory/group_vars/udf-bigiq-dcd-01.yml
-        # vi inventory/group_vars/udf-bigiq-cm-01.yml
+        # vi hosts
+    
+        [f5_bigiq_cm]
+        big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
+        #big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
+
+        [f5_bigiq_dcd]
+        big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
+        #big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
 
 3. Reset both BIG-IQ CM and DCD.
 
     ::
 
         # cd /home/f5/f5-ansible-bigiq-onboarding
-        # ./cmd_bigiq_onboard_reset.sh nopause
+        # ./cmd_bigiq_onboard_reset.sh
 
     The script will do in this order:
     
@@ -66,7 +75,7 @@ This automation scenario is composed of 4 parts:
     ::
 
         # cd /home/f5/f5-ansible-bigiq-onboarding
-        # ./cmd_bigiq_onboard.sh nopause
+        # ./cmd_bigiq_onboard.sh
 
 | 
 

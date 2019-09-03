@@ -15,3 +15,6 @@ done
 
 # Kill some extra stuff (launched by generate_dns_ddos_traffic_real.sh)
 sudo killall nping hping3
+
+# Reset default GW in case SSLO script gets kill in the middle of it
+sudo ip route change default via 10.1.1.2 dev eth0

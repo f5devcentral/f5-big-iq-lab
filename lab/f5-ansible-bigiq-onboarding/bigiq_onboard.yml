@@ -1,25 +1,26 @@
 ---
-- name: Set up a DCD BIG-IQ
-  hosts: udf-bigiq-dcd-01
-  vars_files:
-    - inventory/group_vars/udf-bigiq-dcd-01.yml
-  roles:
-    - { role: f5devcentral.bigiq_onboard }
+  - hosts: f5_bigiq
+    connection: local
+    serial: 1
+    gather_facts: false
 
-- name: Set up a CM BIG-IQ
-  hosts: udf-bigiq-cm-01
-  vars_files:
-    - inventory/group_vars/udf-bigiq-cm-01.yml
-  roles:
-    - { role: f5devcentral.bigiq_onboard }
+    roles:
+      - f5devcentral.bigiq_onboard
+    tags: onboarding
 
-- name: Add DCD devices to CM device concurrently
-  hosts: udf-bigiq-dcd-01
-  vars_files:
-    - inventory/group_vars/udf-bigiq-dcd-01.yml
-  tasks:
-    - name: Add DCD to CM
-      include_role:
-        name: f5devcentral.register_dcd
-      vars:
-        register_dcd_dcd_server: "{{ bigiq_onboard_server }}"
+  - hosts: localhost
+    gather_facts: false
+    tasks:
+      - pause: seconds=120
+
+  - hosts: f5_bigiq_cm
+    connection: local
+    serial: 1
+    gather_facts: false
+    vars:
+      register_cm_password: "{{ bigiq_onboard_new_admin_password }}"
+      register_dcd_password: "{{ bigiq_onboard_new_admin_password }}"
+
+    roles:
+      - f5devcentral.register_dcd
+    tags: dcdreg

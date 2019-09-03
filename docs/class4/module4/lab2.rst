@@ -5,7 +5,13 @@ Lab 4.2: Configure High Availability for BIG-IQ (7.0 and after)
 With BIG-IQ v7.0 and above, BIG-IQ CM High Availability can be automated for VMware. Election of the primary BIG-IQ Central Manager goes via a quorum-based technology which enforces consistent fail-over. In case of a fail-over, quorum will make that the secondary BIG-IQ central manager will be able to automatically take over, without an administrator doing the election or promotion from standby to master manually.
 As said, full-automated fail-over is only available for VMware. For public cloud providers, like: AWS and Azure, currently only the manual fail-over is supported.
 
-.. note:: If you haven’t setup a **SECOND** BIG-IQ Central Manager, please go to Lab 4.1 and follow the steps.
+Official documentation about BIG-IQ High Availability Auto Failover Configuration can be found on the `BIG-IQ Knowledge Center`_.
+
+.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/creating-a-big-iq-high-availability-auto-fail-over-config.html
+
+.. note:: If you haven’t setup a **SECOND** BIG-IQ Central Manager, please go to `Lab 4.1`_ and follow the steps.
+
+.. _Lab 4.1: ../lab1.html
 
 1. Login to BIG-IQ 1 as user David and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. Check that the current used High Available method is Manual Failover.
 
@@ -29,7 +35,7 @@ This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 5. Click ``Add System`` and fill in the following:
 
 *Properties*
- * IP Address =	10.1.10.13
+ * IP Address =	10.1.10.14
  * Username = admin
  * Password = purple123
  * Root Password = Purple123
@@ -79,7 +85,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 
 14.	Copy below example of an AS3 Declaration and paste as the Body of your declaration.
 
-  POST https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true
+  POST ``https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true``
 
 .. code-block:: yaml
 
@@ -141,10 +147,10 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 15. Check if it was successful.
 
 - In the response section of Postman
-- Login to BOS-vBIG01.termmarc.com by browsing to https\:\/\/10.1.1.8 (admin/purple123) and check if the partition was created, Task1.
-- POST BIG-IQ AS3 Declaration (Delete) to remove the declaration. COpy and paste below declaration and:
+- Login to ``BOS-vBIG01.termmarc.com`` by browsing to ``https\:\/\/10.1.1.8`` (admin/purple123) and check if the partition was created, Task1.
+- POST BIG-IQ AS3 Declaration (Delete) to remove the declaration. Copy and paste below declaration and:
 
-POST https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true and Check if the declaration got deleted.
+POST ``https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true`` and Check if the declaration got deleted.
 
 .. code-block:: yaml
 
@@ -170,7 +176,7 @@ POST https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true and Check if th
 
 Before finishing this lab, there is one task to do. If you are done testing BIG-IQ HA, stop BIG-IQ CM Secondary to avoid additional costs. You might want to switch the active BIG-IQ before stopping the secondary… (or stop BIG-IQ primary in UDF or Ravello and skip the next steps)
 
-16.	Go to BIG-IQ CM Secondary https\:\/\/10.1.1.13 and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
+16.	Go to BIG-IQ CM Secondary ``https\:\/\/10.1.1.15`` and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
 
 17.	Promote the standby device bigiq1cm.example.com, at the pop-up click **OK**.
 

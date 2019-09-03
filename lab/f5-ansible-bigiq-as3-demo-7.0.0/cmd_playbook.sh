@@ -10,19 +10,13 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Default value set to UDF
-if [ -z "$3" ]; then
-  env="udf"
-else
-  #env="sjc"
-  #env="sjc2"
-  env=$3
-fi
+env="udf"
 
 echo -e "\nEnvironement:${RED} $env ${NC}\n"
 
 # Usage
 if [[ -z $1 || -z $2 ]]; then
-    echo -e "\nUsage: ${RED} $0 <playbook.yml> <admin/david/paula/paul/olivia> <udf/sjc/sjc2> ${NC} (1st and 2nd parameters mandatory)\n"
+    echo -e "\nUsage: ${RED} $0 <playbook.yml> <admin/david/paula/paul/olivia> ${NC}\n"
     ls -l *.yml
     exit 1;
 fi
@@ -37,27 +31,11 @@ fi
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 # pass a variable in Ansible playbook
-if [[  $env == "udf" ]]; then
-    env_playbook="udf-bigiq-cm-01"
-    if [[  $2 == "admin" ]]; then
-        user_playbook="auth_bigiq_admin.json"
-    else
-        user_playbook="auth_bigiq_$2.json"
-    fi
-elif [[  $env == "sjc2" ]]; then
-    env_playbook="sjc2-bigiq-cm-01"
-    if [[  $2 == "admin" ]]; then
-        user_playbook=".auth_bigiq_admin.json"
-    else
-        user_playbook="auth_bigiq_$2.json"
-    fi
-elif [[  $env == "sjc" ]]; then
-    env_playbook="sjc-bigiq-cm-01"
-    if [[  $2 == "admin" ]]; then
-        user_playbook=".auth_bigiq_admin.json"
-    else
-        user_playbook="auth_bigiq_$2.json"
-    fi
+env_playbook="udf-bigiq-cm-01"
+if [[  $2 == "admin" ]]; then
+    user_playbook="auth_bigiq_admin.json"
+else
+    user_playbook="auth_bigiq_$2.json"
 fi
 
 if [ ! -f $user_playbook ]; then

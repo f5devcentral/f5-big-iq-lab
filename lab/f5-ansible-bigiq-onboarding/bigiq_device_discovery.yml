@@ -1,116 +1,33 @@
 ---
-- name: Add BIG-IPs to BIG-IQ
-  hosts: all
-  connection: local
-  vars_files:
-    - inventory/group_vars/udf-bigiq-cm-01.yml
-  roles:
-    - { role: f5devcentral.f5ansible }
+  - hosts: f5_bigip
+    connection: local
+    serial: 1
+    gather_facts: false
+    vars:
+      bigiq_ip: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
+      bigiq_password: "{{ hostvars[groups['f5_bigiq'][0]]['bigiq_onboard_new_admin_password'] }}"
 
-  tasks:
-    - name: Discover Boston Cluster device and import config, use default conflict policy
+    roles:
+      - f5devcentral.f5ansible
+    tasks:
+    - name: discover and Import BIG-IP in BIG-IQ
       bigiq_device_discovery:
         provider:
-          server: "{{ bigiq_onboard_server }}"
+          server: "{{ bigiq_ip }}"
           user: admin
-          password: "{{ bigiq_onboard_new_admin_password }}"
+          password: "{{ bigiq_password }}"
           validate_certs: no
-        device_address: "{{ bigip1 }}"
-        device_username: "{{ bigip1user }}"
-        device_password: "{{ bigip1pass }}"
-        conflict_policy: "{{ bigip1conflict }}"
-        device_conflict_policy: "{{ bigip1device_conflict }}"
-        versioned_conflict_policy: "{{ bigip1versioned_conflict }}"
+        device_address: "{{ device_address }}"
+        device_username: "{{ device_username }}"
+        device_password: "{{ device_password }}"
+        modules: "{{ modules | list }}"
+        conflict_policy: "{{ conflict_policy }}"
+        device_conflict_policy: "{{ device_conflict_policy }}"
+        versioned_conflict_policy: "{{ versioned_conflict_policy }}"
         statistics:
-          enable: "{{ bigip1device_statistics_enable }}"
-          interval: "{{ bigip1device_statistics_interval }}"
-          zone: "{{ bigip1device_statistics_zone }}"
-          stat_modules:
-            - "{{ bigip1device_statistics_module1 }}"
-            - "{{ bigip1device_statistics_module2 }}"
-            - "{{ bigip1device_statistics_module3 }}"
-        ha_name: "{{ bigip1cluster }}"
-        access_conflict_policy: "{{ bigip1access_conflict_policy }}"
-        access_group_first_device: "{{  bigip1access_group_first_device }}"
-        access_group_name: "{{ bigip1access_group_name }}"
-        modules: "{{ bigip1modules }}"
-      register: result
+          enable: "{{ enable }}"
+          stat_modules: "{{ stat_modules | list }}"
+        ha_name: "{{ ha_name }}"
+        force: yes
       delegate_to: localhost
-
-    - name: Discover Boston Cluster device and import config, use default conflict policy
-      bigiq_device_discovery:
-        provider:
-          server: "{{ bigiq_onboard_server }}"
-          user: admin
-          password: "{{ bigiq_onboard_new_admin_password }}"
-          validate_certs: no
-        device_address: "{{ bigip2 }}"
-        device_username: "{{ bigip2user }}"
-        device_password: "{{ bigip2pass }}"
-        conflict_policy: "{{ bigip2conflict }}"
-        device_conflict_policy: "{{ bigip2device_conflict }}"
-        versioned_conflict_policy: "{{ bigip2versioned_conflict }}"
-        statistics:
-          enable: "{{ bigip2device_statistics_enable }}"
-          interval: "{{ bigip2device_statistics_interval }}"
-          zone: "{{ bigip2device_statistics_zone }}"
-          stat_modules:
-            - "{{ bigip2device_statistics_module1 }}"
-            - "{{ bigip2device_statistics_module2 }}"
-            - "{{ bigip2device_statistics_module3 }}"
-        ha_name: "{{ bigip2cluster }}"
-        access_conflict_policy: "{{ bigip2access_conflict_policy }}"
-        access_group_first_device: "{{  bigip2access_group_first_device }}"
-        access_group_name: "{{ bigip2access_group_name }}"
-        modules: "{{ bigip2modules }}"
-      register: result
-      delegate_to: localhost
-
-    - name: Discover Seattle device and import config, use default conflict policy
-      bigiq_device_discovery:
-        provider:
-          server: "{{ bigiq_onboard_server }}"
-          user: admin
-          password: "{{ bigiq_onboard_new_admin_password }}"
-          validate_certs: no
-        device_address: "{{ bigip3 }}"
-        device_username: "{{ bigip3user }}"
-        device_password: "{{ bigip3pass }}"
-        conflict_policy: "{{ bigip3conflict }}"
-        device_conflict_policy: "{{ bigip3device_conflict }}"
-        versioned_conflict_policy: "{{ bigip3versioned_conflict }}"
-        statistics:
-          enable: "{{ bigip3device_statistics_enable }}"
-          interval: "{{ bigip3device_statistics_interval }}"
-          zone: "{{ bigip3device_statistics_zone }}"
-          stat_modules:
-            - "{{ bigip3device_statistics_module1 }}"
-            - "{{ bigip3device_statistics_module2 }}"
-            - "{{ bigip3device_statistics_module3 }}"
-        modules: "{{ bigip3modules }}"
-      register: result
-      delegate_to: localhost
-
-    - name: Discover San Jose device and import config, use default conflict policy
-      bigiq_device_discovery:
-        provider:
-          server: "{{ bigiq_onboard_server }}"
-          user: admin
-          password: "{{ bigiq_onboard_new_admin_password }}"
-          validate_certs: no
-        device_address: "{{ bigip4 }}"
-        device_username: "{{ bigip4user }}"
-        device_password: "{{ bigip4pass }}"
-        conflict_policy: "{{ bigip4conflict }}"
-        device_conflict_policy: "{{ bigip4device_conflict }}"
-        versioned_conflict_policy: "{{ bigip4versioned_conflict }}"
-        statistics:
-          enable: "{{ bigip4device_statistics_enable }}"
-          interval: "{{ bigip4device_statistics_interval }}"
-          zone: "{{ bigip4device_statistics_zone }}"
-          stat_modules:
-            - "{{ bigip4device_statistics_module1 }}"
-            - "{{ bigip4device_statistics_module2 }}"
-        modules: "{{ bigip4modules }}"
-      register: result
-      delegate_to: localhost
+    tags: bigip

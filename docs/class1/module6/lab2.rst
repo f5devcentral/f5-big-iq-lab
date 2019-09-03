@@ -19,13 +19,13 @@ HTTP Service using AS3 through GUI
  * Template Type = Select ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` (Are you able to find it?)
 
 It is expected that the mentioned template is not in the list.
-If we want Paula to deploy this ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` template, we first need to have those templates assigned to hear via an administrator. 
+If we want Paula to deploy this ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` template, we first need to have those templates assigned to her via an administrator. 
 
 2.	Logout as Paula and login to BIG-IQ as David. (if asked: Leave site? Select: Leave)
 
 3.	Select **Applications > Application Templates** and notice the ‘Published’ templates. The template Paula wants to use is not listed as a ‘Published’ template.
 
-4.	Select ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` and click Published.
+4.	Notice the AS3 template ``AS3-F5-HTTP-lb-template-big-iq-default-<version> [AS3]`` is Published.
 
  .. image:: ../pictures/module6/lab-2-1.png
   :align: center

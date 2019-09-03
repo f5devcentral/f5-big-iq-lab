@@ -159,7 +159,7 @@ Click on the *DNS & NTP* tab and setup the following:
 
 .. note:: **[New 6.0.1]** IP Pool can be used for the management IP. See BIG-IQ documentation for more information (the VM template need some pre-work).
 
-**[New 6.0.1]**  Click on the *DManagement IP* tab and setup the following:
+Click on the *Management IP* tab and setup the following:
 
 * IP Address: DHCP
 

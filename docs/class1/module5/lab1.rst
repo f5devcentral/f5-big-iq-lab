@@ -2,11 +2,13 @@ Lab 5.1: Application Creation using AS3 through BIG-IQ
 ------------------------------------------------------
 
 From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
+of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
+
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
 
 .. image:: ../../pictures/udf_ubuntu.png
-    :align: center
-    :scale: 50%
+    :align: left
+    :scale: 70%
 
 |
 
@@ -147,6 +149,8 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
 
 |lab-1-3|
 
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+
 Click on your Application, Properties > CONFIGURATION, look at AS3 Declaration.
 
 |lab-1-4|
@@ -251,6 +255,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 Task 3a - HTTPS Application with Web Application Firewall
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -369,6 +374,8 @@ Copy/Paste the above AS3 declaration into the declaration body into Postman (DON
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+
 Task 4 - Generic Services
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -454,6 +461,8 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
+
+.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
 
 .. |lab-1-1| image:: ../pictures/module5/lab-1-1.png
    :scale: 60%

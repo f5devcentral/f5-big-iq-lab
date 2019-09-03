@@ -2,25 +2,27 @@
 ## Traffic Generator (HTTP)
 */5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /dev/null 2>&1
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
-@reboot perl -le 'sleep 1200' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
+@reboot perl -le 'sleep 2300' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
 
-## ASM Attacks
-@reboot perl -le 'sleep 1200' && /home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh > /home/f5/scripts/asm-brute-force/asm_brute_force_attach.log
+## ASM Brute Force Attacks
+@reboot perl -le 'sleep 2400' && /home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh > /home/f5/scripts/asm-brute-force/asm_brute_force_attach.log
 
-## Troubleshooting 503 Service Unavailable (class 3 module 2 lab 7)
+## Troubleshooting 503 Service Unavailable (class 3 module 2)
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/f5-demo-app-troubleshooting/503.log
+0 0,2,5,8,11,14,17,20 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/404.sh > /home/f5/f5-demo-app-troubleshooting/404.log
+0 0,4,7,10,13,16,19,22 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/iloveyou.sh > /home/f5/f5-demo-app-troubleshooting/iloveyou.log
 
 ## DOS data
-*/10 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /dev/null 2>&1
+*/11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /dev/null 2>&1
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_L7_ddos.sh > /dev/null 2>&1
-@reboot perl -le 'sleep rand 1900' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/generate_L7_ddos.log
+@reboot perl -le 'sleep 2600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/generate_L7_ddos.log
 
 ## DNS DDOS data
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /dev/null 2>&1
-@reboot perl -le 'sleep rand 1850' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/generate_dns_ddos_traffic_real.log
+@reboot perl -le 'sleep 3000' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/generate_dns_ddos_traffic_real.log
 
 ## AFM data
-#*/10 * * * * /home/f5/scripts/generate_afm_traffic.sh > /dev/null 2>&1
+#*/13 * * * * /home/f5/scripts/generate_afm_traffic.sh > /dev/null 2>&1
 
 ## DNS Traffic
 */3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null 2>&1
@@ -29,7 +31,10 @@
 */10 * * * * /home/f5/scripts/generate_access_traffic.sh > /dev/null 2>&1
 
 ## FPS Traffic
-*/30 * * * * /home/f5/scripts/generate_fps_traffic_fake.sh > /dev/null 2>&1
+*/28 * * * * /home/f5/scripts/generate_fps_traffic_fake.sh > /dev/null 2>&1
+
+## SSLO Traffic
+*/14 * * * * /home/f5/scripts/generate_sslo_traffic_paris.sh > /dev/null 2>&1
 
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
 @reboot sleep 400 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /tmp/config-sync.log
