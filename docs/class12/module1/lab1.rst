@@ -1,5 +1,5 @@
 Lab 1.1: Review device discovery
-------------------------------------
+--------------------------------
 
 - Click on Configuration > SSL Orchestrator > Devices
 

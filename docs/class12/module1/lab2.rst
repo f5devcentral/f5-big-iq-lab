@@ -1,5 +1,5 @@
 Lab 1.2: Review the security services
-------------------------------------
+-------------------------------------
 
 - Click on Configuration > SSL Orchestrator > Services
 

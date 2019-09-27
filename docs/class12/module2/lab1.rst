@@ -1,5 +1,5 @@
 Lab 2.1: Review SSLo Overview dashboard
-------------------------------------
+---------------------------------------
 
 - Click on Configuration > SSL Orchestrator > SSLo Overview
 

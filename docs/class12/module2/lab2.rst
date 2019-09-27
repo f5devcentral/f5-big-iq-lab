@@ -1,5 +1,5 @@
 Lab 2.2: Review SSLo Analytics
-------------------------------------
+------------------------------
 
 - Click on Monitoring > SSL Orchestrator > SSLo Analytics
 

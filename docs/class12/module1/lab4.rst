@@ -1,5 +1,5 @@
 Lab 1.4: Review the security policy
-------------------------------------
+-----------------------------------
 
 - Click on Configuration > SSL Orchestrator > Security Policies
 

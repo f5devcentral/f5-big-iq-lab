@@ -1,5 +1,5 @@
 Lab 1.3: Review the service chains
-------------------------------------
+----------------------------------
 
 - Click on Configuration > SSL Orchestrator > Service Chains
 
