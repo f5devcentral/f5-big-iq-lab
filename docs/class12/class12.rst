@@ -1,9 +1,11 @@
-Class 11: BIG-IQ SSL Orchestrator
+Class 12: BIG-IQ SSL Orchestrator
 =================================
 
 **[New 7.0.0]** 
 
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+In this class, we will review new SSL Orchestrator integration in BIG-IQ 7.0. We will deploy services and topologies.
+
+Then we will review the analytics from BIG-IQ 7.0
 
 .. toctree::
    :maxdepth: 1
