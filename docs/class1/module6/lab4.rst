@@ -48,7 +48,7 @@ Until now we used a default AS3 template out-of-the-box for deploying an applica
     Members: ``10.1.20.122`` and ``10.1.20.123``
     
     Service_HTTPS
-    Virtual addresses: ``10.10.1.121``
+    Virtual addresses: ``10.1.10.121``
 
     We leave the rest of the template to its default, but notice the Certificate section, it contains the previous configured default certificate and key.
 

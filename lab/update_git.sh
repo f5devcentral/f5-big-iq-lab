@@ -61,6 +61,10 @@ else
 
     echo "Cleanup previous files..."
     rm -rf f5-* scripts* crontab* ldap build* > /dev/null 2>&1
+
+    # Reset default GW in case SSLO script is running
+    sudo ip route change default via 10.1.1.2 dev eth0
+
     echo "Install new scripts..."
     git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
     mv /home/$user/f5-big-iq-lab/lab/* /home/$user
@@ -122,6 +126,8 @@ if [[  $currentuser == "root" ]]; then
     # ASM Brute Force
     docker build /home/$user/scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
+    # Splunk
+    docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=purple123" --name splunk splunk/splunk:latest
 
     # load f5demo.ldif and expose port 389 for LDAP access
     docker run --volume `/home/$user/ldap`/home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \

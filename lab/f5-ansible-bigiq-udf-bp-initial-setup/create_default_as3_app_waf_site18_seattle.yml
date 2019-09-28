@@ -33,7 +33,8 @@
             schemaVersion: 3.12.0
             target:
               address: 10.1.1.7
-            security:
+            security2:
+              # remove the '2' so tenant is only security (BIQPROJ-14966 fix 7.1)
               class: Tenant
               site18_seattle:
                 class: Application

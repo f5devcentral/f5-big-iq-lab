@@ -7,35 +7,21 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-if [ -z "$5" ]; then
-  env="udf"
-  user="f5student"
-  bigiq="10.1.1.4"
-  bigiq_user="admin"
-  bigiq_password="purple123"
-else
-  env=$5
-  user="f5"
-  if [[  $env == "sjc" ]]; then
-    bigiq="10.192.75.180"
-  fi
-  if [[  $env == "sjc2" ]]; then
-    bigiq="10.192.75.185"
-  fi
-  bigiq_user="admin"
-  bigiq_password="admin"
-fi
+env="udf"
+user="f5student"
+bigiq="10.1.1.4"
+bigiq_user="admin"
+bigiq_password="purple123"
 
 echo -e "\n------ Export Transactions (Request/Response) to CSV file ------\n"
 
 # Usage
 if [[ -z $1 ]]; then
     echo -e "Usage: ${RED} $0 <virtual> <from> <to> <duration> <udf/sjc/sjc2>${NC}\n"
-    echo -e "Example: $0 /ecommerce/site15waf/serviceMain -P1H now 30\n"
+    echo -e "Example: $0 /conference/site41waf/serviceMain -P1H now 30\n"
     exit 1;
 fi
 
-# SJC2: virtual="/sanjose1site1/MyWebApp215/serviceMain"
 virtual=$1
 
 # If no from/to/duration not specified, set default values
