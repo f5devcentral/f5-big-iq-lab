@@ -1,9 +1,9 @@
 <dashboard theme="dark">
-  <label>BIG-IQ HTTP Statistics</label>
+  <label>BIG-IQ Transaction Analytics</label>
   <description>https://clouddocs.f5networks.net/products/big-iq/mgmt-api/v7.0.0/ApiReferences/bigiq_public_api_ref/entity_catalog/http.html</description>
   <row>
     <panel>
-      <title>Number of transactions</title>
+      <title>Number of transactions (conference site41waf)</title>
       <chart>
         <title>The average number of transactions per second that reached the server and got response, hence have relevant information of server latency</title>
         <search>

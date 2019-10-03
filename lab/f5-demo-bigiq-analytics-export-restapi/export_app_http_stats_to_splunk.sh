@@ -16,11 +16,8 @@ bigiq_password="purple123"
 echo -e "\n------ Export Transactions (Request/Response) to CSV file ------\n"
 
 # Usage
-if [[ -z $1 ]]; then
-    echo -e "Usage: ${RED} $0 <virtual> <from> <to> <duration>${NC}\n"
-    echo -e "Example: $0 /conference/site41waf/serviceMain -5m now 30\n"
-    exit 1;
-fi
+echo -e "Usage: ${RED} $0 <virtual> <from> <to> <duration>${NC}\n"
+echo -e "Example: $0 /conference/site41waf/serviceMain -5m now 30\n"
 
 if [[ -z $1 ]]; then
     virtual="/conference/site41waf/serviceMain"
@@ -92,12 +89,8 @@ rm tmp.json
 
 # Send the Json over to splunk HTTP Event Collector
 if [ -s input.json ]; then
-    # wrap BIG-IQ Analytics Json into JSON Splunk Event
-    sed -i '1i{"event":' input.json
-    echo '}' >> input.json
-    # cat input.json | jq .
     # using token created in splunk in the update_git.sh
-    curl -k -H "Content-Type: application/json" -H "Authorization: Splunk $(cat /home/$user/splunk-token)" -X POST -d "$(cat input.json)" https://localhost:8088/services/collector
+    curl -k https://localhost:8088/services/collector -H "Content-Type: application/json" -H "Authorization: Splunk $(cat /home/$user/splunk-token)" -d '{"event": "$(echo input.json)"}'
 else
     echo -e "\n${RED}Something went wrong, input.json file empty.${NC}\n"
 fi
