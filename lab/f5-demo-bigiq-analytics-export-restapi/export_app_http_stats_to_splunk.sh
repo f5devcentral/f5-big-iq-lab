@@ -18,17 +18,21 @@ echo -e "\n------ Export Transactions (Request/Response) to CSV file ------\n"
 # Usage
 if [[ -z $1 ]]; then
     echo -e "Usage: ${RED} $0 <virtual> <from> <to> <duration>${NC}\n"
-    echo -e "Example: $0 /conference/site41waf/serviceMain -1h now 60\n"
+    echo -e "Example: $0 /conference/site41waf/serviceMain -5m now 30\n"
     exit 1;
 fi
 
-virtual=$1
+if [[ -z $1 ]]; then
+    virtual="/conference/site41waf/serviceMain"
+else
+    virtual=$1
+fi
 
 # If no from/to/duration not specified, set default values
 if [[ -z $2 ]]; then
-    from="-1h"
+    from="-5m"
     to="now"
-    duration="60" # in SECONDS
+    duration="30" # in SECONDS
 else
     from="$2"
     to="$3"
@@ -86,25 +90,14 @@ curl --silent --output tmp.json -k \
 cat tmp.json | jq .result > input.json
 rm tmp.json
 
-# Install json2csv tool
-if [ ! -d "json2csv" ]; then
-    git clone https://github.com/evidens/json2csv.git
-    sudo pip install -r json2csv/requirements.txt
-fi
-
-# Install csv tool
-if [ ! -f "/usr/bin/csvtool" ]; then
-    sudo apt-get install csvtool
-fi
-
-# Convert JSON to CSV (if file not empty)
+# Send the Json over to splunk HTTP Event Collector
 if [ -s input.json ]; then
-    cd json2csv
-    python json2csv.py ../input.json ../outline.json -o ../output.csv > /dev/null 2>&1
-    cd ..
-    echo
-    # Display CSV
-    csvtool readable output.csv
+    # wrap BIG-IQ Analytics Json into JSON Splunk Event
+    sed -i '1i{"event":' input.json
+    echo '}' >> input.json
+    # cat input.json | jq .
+    # using token created in splunk in the update_git.sh
+    curl -k -H "Content-Type: application/json" -H "Authorization: Splunk $(cat /home/$user/splunk-token)" -X POST -d "$(cat input.json)" https://localhost:8088/services/collector
 else
     echo -e "\n${RED}Something went wrong, input.json file empty.${NC}\n"
 fi

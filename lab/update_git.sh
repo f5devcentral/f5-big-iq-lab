@@ -126,8 +126,16 @@ if [[  $currentuser == "root" ]]; then
     # ASM Brute Force
     docker build /home/$user/scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
-    # Splunk
-    docker run -d -p 8000:8000 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=purple123" --name splunk splunk/splunk:latest
+    # Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
+    docker run -d -p 8000:8000 -p 8088:8088 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=purple123" --name splunk splunk/splunk:latest
+    docker_splunk_id=$(docker ps | grep splunk | awk '{print $1}')
+    docker cp splunk/bigiq_http_statistics.xml $docker_splunk_id:/opt/splunk/etc/users/admin/search/local/data/ui/views
+    docker exec -i -t $docker_splunk_id sudo su -c "chown splunk:splunk /opt/splunk/etc/users/admin/search/local/data/ui/views/*"
+    docker cp splunk/user-prefs.conf $docker_splunk_id:/opt/splunk/etc/users/admin/user-prefs/local
+    docker exec -i -t $docker_splunk_id sudo su -c "chown splunk:splunk /opt/splunk/etc/users/admin/user-prefs/local/*"
+    # create spunlk HTTP Event Collector and enable it
+    docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description "demo splunk" -disabled 0 -index log -sourcetype _json -auth admin:purple123 | grep "token=" | awk 'BEGIN { FS="=" } { print $2 }' > /home/$user/splunk-token
+    docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -auth admin:purple123
 
     # load f5demo.ldif and expose port 389 for LDAP access
     docker run --volume `/home/$user/ldap`/home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
