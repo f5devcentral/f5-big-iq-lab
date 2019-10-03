@@ -127,6 +127,7 @@ if [[  $currentuser == "root" ]]; then
     docker build /home/$user/scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
     # Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
+    # ==> data stored under /opt/splunk/var/lib/splunk
     docker run -d -p 8000:8000 -p 8088:8088 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=purple123" --name splunk splunk/splunk:latest
     docker_splunk_id=$(docker ps | grep splunk | awk '{print $1}')
     # Splunk enable SSL
@@ -141,8 +142,9 @@ if [[  $currentuser == "root" ]]; then
     # Splunk fix permissions
     docker exec -i -t $docker_splunk_id sudo su -c "chown -R splunk:splunk /opt/splunk/etc/users"
     # Splunk create spunlk HTTP Event Collector and enable it
-    docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description "demo splunk" -disabled 0 -index main -indexes main,summary,history -sourcetype _json -auth admin:purple123 | grep "token=" | awk 'BEGIN { FS="=" } { print $2 }' > /home/$user/splunk-token
+    docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description "demo splunk" -disabled 0 -index main -indexes main,summary,history -sourcetype _json -auth admin:purple123
     docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123
+    docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector list -uri https://localhost:8089 -auth admin:purple123 | grep "token=" | awk 'BEGIN { FS="=" } { print $2 }' > /home/$user/splunk-token
     docker exec -i -t $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk restart"
 
     # load f5demo.ldif and expose port 389 for LDAP access

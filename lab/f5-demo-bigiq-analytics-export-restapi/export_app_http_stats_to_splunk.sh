@@ -78,19 +78,25 @@ body="{
     }
 }"
 
+cd /home/$user/f5-demo-bigiq-analytics-export-restapi
 # Get the analytics data in JSON
-curl --silent --output tmp.json -k \
+curl --silent --output input.json -k \
     -H "Accept: application/json" \
     -H "Content-Type:application/json" \
     -X POST --data "$body" "https://$bigiq_user:$bigiq_password@$bigiq/mgmt/ap/query/v1/tenants/default/products/local-traffic/metric-query"
 
-cat tmp.json | jq .result > input.json
-rm tmp.json
 
 # Send the Json over to splunk HTTP Event Collector
 if [ -s input.json ]; then
-    # using token created in splunk in the update_git.sh
-    curl -k https://localhost:8088/services/collector -H "Content-Type: application/json" -H "Authorization: Splunk $(cat /home/$user/splunk-token)" -d '{"event": "$(echo input.json)"}'
+    # wrap BIG-IQ JSON into Splunk format
+    sed -i '1i{"event":' input.json
+    echo '}' >> input.json
+    cat input.json | jq . > input2.json
+    # using token created in splunk in the update_git.sh, send the data to collector
+    curl --silent -k \
+        -H "Content-Type: application/json" \
+        -H "Authorization: Splunk $(cat /home/$user/splunk-token)" \
+        -X POST -d "$(cat input.json2)" https://localhost:8088/services/collector
 else
     echo -e "\n${RED}Something went wrong, input.json file empty.${NC}\n"
 fi
