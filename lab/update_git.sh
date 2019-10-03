@@ -141,7 +141,7 @@ if [[  $currentuser == "root" ]]; then
     # Splunk fix permissions
     docker exec -i -t $docker_splunk_id sudo su -c "chown -R splunk:splunk /opt/splunk/etc/users"
     # Splunk create spunlk HTTP Event Collector and enable it
-    docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description "demo splunk" -disabled 0 -index log -sourcetype _json -auth admin:purple123 | grep "token=" | awk 'BEGIN { FS="=" } { print $2 }' > /home/$user/splunk-token
+    docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description "demo splunk" -disabled 0 -index main -indexes main,summary,history -sourcetype _json -auth admin:purple123 | grep "token=" | awk 'BEGIN { FS="=" } { print $2 }' > /home/$user/splunk-token
     docker exec -i -t $docker_splunk_id /opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123
     docker exec -i -t $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk restart"
 
