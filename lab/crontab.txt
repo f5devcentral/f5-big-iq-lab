@@ -3,7 +3,7 @@
 */5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /dev/null 2>&1
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
 @reboot perl -le 'sleep 2300' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
-*/5 * * * * /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_to_splunk.sh >> /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_to_splunk.log
+* * * * * /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.sh >> /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.log
 
 ## ASM Brute Force Attacks
 @reboot perl -le 'sleep 2400' && /home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh > /home/f5/scripts/asm-brute-force/asm_brute_force_attach.log
