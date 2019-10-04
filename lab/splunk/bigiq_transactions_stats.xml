@@ -8,7 +8,7 @@
         <title>The average number of transactions per second that reached the server and got response, hence have relevant information of server latency</title>
         <search>
           <query>index = "main" |table _time,result.result{}.transactions$avg-count-per-sec | rename result.result{}.transactions$avg-count-per-sec as transactions | spath</query>
-          <earliest>-8h@m</earliest>
+          <earliest>-6h@m</earliest>
           <latest>now</latest>
           <sampleRatio>1</sampleRatio>x
           <refresh>30s</refresh>

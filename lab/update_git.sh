@@ -130,6 +130,8 @@ if [[  $currentuser == "root" ]]; then
     # ==> data stored under /opt/splunk/var/lib/splunk
     docker run -d -p 8000:8000 -p 8088:8088 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=purple123" --name splunk splunk/splunk:latest
     docker_splunk_id=$(docker ps | grep splunk | awk '{print $1}')
+    # wait for splunk to initalize
+    sleep 30
     # Splunk enable SSL
     docker exec $docker_splunk_id sudo su -c "sed -i 's/enableSplunkWebSSL = false/enableSplunkWebSSL = true/g' /opt/splunk/etc/system/default/web.conf"
     # Splunk create admin directories
@@ -142,7 +144,7 @@ if [[  $currentuser == "root" ]]; then
     # Splunk fix permissions
     docker exec $docker_splunk_id sudo su -c "chown -R splunk:splunk /opt/splunk/etc/users"
     # Splunk create spunlk HTTP Event Collector and enable it
-    docker exec $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk http-event-collector create token-big-iq32 -uri https://localhost:8089 -description 'demo splunk' -disabled 0 -index main -sourcetype _json -auth admin:purple123"
+    docker exec $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk http-event-collector create token-big-iq32 -uri https://localhost:8089 -description 'demo splunk' -disabled 0 -index main -indexes main -sourcetype _json -auth admin:purple123"
     docker exec $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123"
     docker exec $docker_splunk_id /opt/splunk/bin/splunk http-event-collector list -uri https://localhost:8089 -auth admin:purple123 | grep 'token=' | awk 'BEGIN { FS="=" } { print $2 }' | tr -dc '[:print:]' > /home/$user/splunk-token
     docker exec $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk restart"
@@ -164,7 +166,7 @@ if [[  $currentuser == "root" ]]; then
     docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
-    docker exec -i -t $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
+    docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
     docker images
     docker ps -a

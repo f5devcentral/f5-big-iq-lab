@@ -17,7 +17,7 @@ echo -e "\n------ Export Transactions (Request/Response) to CSV file ------\n"
 
 # Usage
 echo -e "Usage: ${RED} $0 <virtual> <from> <to> <duration>${NC}\n"
-echo -e "Example: $0 /conference/site41waf/serviceMain -5m now 30\n"
+echo -e "Example: $0 /conference/site41waf/serviceMain -1m now 30\n"
 
 if [[ -z $1 ]]; then
     virtual="/conference/site41waf/serviceMain"
@@ -27,7 +27,7 @@ fi
 
 # If no from/to/duration not specified, set default values
 if [[ -z $2 ]]; then
-    from="-5m"
+    from="-1m"
     to="now"
     duration="30" # in SECONDS
 else
