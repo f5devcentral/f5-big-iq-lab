@@ -27,7 +27,7 @@
       
     - name: Validate AS3 Rest Worker is ready
       uri:
-        url: "https://{{ bigiq_cm_server }}/mgmt/shared/appsvcs/declare"
+        url: "https://{{ mgmt }}/mgmt/shared/appsvcs/declare"
         method: GET
         headers:
           Content-Type: application/json
