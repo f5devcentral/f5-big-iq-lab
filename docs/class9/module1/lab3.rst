@@ -66,7 +66,7 @@ The Application is deployed.
 
 .. note:: You can tail the logs: /var/log/restjavad.0.log
 
-In Paula's Dashboard, she can see her Application.
+In **Paula**'s Dashboard, she can see her Application.
 
 .. image:: ../pictures/module1/img_module1_lab3_4.png
    :align: center

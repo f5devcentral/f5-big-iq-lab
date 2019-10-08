@@ -1,9 +1,9 @@
 Lab 2.2: Using BIG-IQ Multi-Device Packet and Flow Tracers to test AFM policy
----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 In this lab, we will use the BIG-IQ Multi-Device Packet tracer and flow analyzers to test firewall policy.
 
-Lab 2.2.1: Create and Run a Multi-Device Packet Test On BIG-IQ:
-****************************************************************
+Lab 2.2.1: Create and Run a Multi-Device Packet Test On BIG-IQ
+**************************************************************
 
 All AFM devices have the ability to test packets through the collection of AFM firewall, dos, and IP intelligence policies to test and troubleshoot a given packet against enforced/staged policies.  BIG-IQ extends this functionality, allowing a security administrator to test a given packet against multiple AFM devices simultaneously.  In this exercise., we will configure a packet test against multiple devices.
 
@@ -37,8 +37,8 @@ All AFM devices have the ability to test packets through the collection of AFM f
 
 #. Experiment with different ways to filter the results of the multi-device packet tests
 
-Lab 2.2.2: Comparing Packet Traces Across Multiple Devices:
-************************************************************
+Lab 2.2.2: Comparing Packet Traces Across Multiple Devices
+**********************************************************
 
 #. Under *Monitoring* > *Security* > *Network Security*, click *Packet Traces*
 #. Click the *Create* button in the Packet Traces list
@@ -67,8 +67,8 @@ Lab 2.2.2: Comparing Packet Traces Across Multiple Devices:
 
    |
 
-Lab 2.2.3: Use Packet Trace as Filter to Packet Flows Utility:
-***************************************************************
+Lab 2.2.3: Use Packet Trace as Filter to Packet Flows Utility
+*************************************************************
 
 #. From the ``Ubuntu 18.04 Lamp Server`` open an SSH session.
 #. From the SSH session, run the following command:

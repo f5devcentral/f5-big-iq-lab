@@ -186,7 +186,7 @@ the situation evolves after a scale-in scale-out event.
 
 Click on *Save & Close* and your SSG will start being provisioned.
 
-In order to allow Paula to use the SSG previously created, go to : *System* > *Role Management* > *Roles*
+In order to allow **Paula** to use the SSG previously created, go to : *System* > *Role Management* > *Roles*
 and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Service Scaling Groups *SSGClass2*, drag it to the right.
 
 .. image:: ../pictures/module1/img_module1_lab3_10.png

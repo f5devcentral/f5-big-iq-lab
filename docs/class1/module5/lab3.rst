@@ -126,7 +126,7 @@ In this task, we will create a template which require a Service_HTTP object, for
 1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
    If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
 It will create a new template in BIG-IQ AS3 Service Catalogue:
@@ -226,7 +226,7 @@ You can see the Template in JSON format if you click on it.
 
 |lab-3-2|
 
-.. note :: For help with JSON Schema, there are lots of resources, but one good place to start is https://json-schema.org/learn.
+.. note:: For help with JSON Schema, there are lots of resources, but one good place to start is https://json-schema.org/learn.
 
 
 Task 7 - Admin set RBAC for Olivia on BIG-IQ
@@ -250,7 +250,7 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
 1. Using Postman, use the **BIG-IQ Token (olivia)** collections to authenticate you on the BIG-IQ and save the token.
    If your token expires, obtain a new token by resending the ``BIG-IQ Token (olivia)``.
 
-   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 
@@ -335,7 +335,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 
 7. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
 
 |lab-3-4|
 

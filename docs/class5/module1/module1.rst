@@ -27,7 +27,7 @@ In this scenario, we will import a BIG-IP device and associate it with
 an existing Cluster, review the device information available in BIG-IQ,
 export our inventory to a CSV file, and review the inventory.
 
-.. NOTE::
+.. note::
      Be aware of the following dependencies when adding a BIG-IP device to BIG-IQ CM
 
 1.	The BIG-IP device must be located in your network.

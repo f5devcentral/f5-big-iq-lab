@@ -147,6 +147,7 @@ if [[  $currentuser == "root" ]]; then
     docker exec $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk http-event-collector create token-big-iq32 -uri https://localhost:8089 -description 'demo splunk' -disabled 0 -index main -indexes main -sourcetype _json -auth admin:purple123"
     docker exec $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123"
     docker exec $docker_splunk_id /opt/splunk/bin/splunk http-event-collector list -uri https://localhost:8089 -auth admin:purple123 | grep 'token=' | awk 'BEGIN { FS="=" } { print $2 }' | tr -dc '[:print:]' > /home/$user/splunk-token
+    sleep 5
     docker exec $docker_splunk_id sudo su -c "/opt/splunk/bin/splunk restart"
 
     # load f5demo.ldif and expose port 389 for LDAP access

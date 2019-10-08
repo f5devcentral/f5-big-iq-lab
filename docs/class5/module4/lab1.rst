@@ -103,7 +103,7 @@ After the evaluation is done, you can click on the “view” link under the Dif
 
 |image9|
 
-.. NOTE::
+.. note::
 	 Only changes to “app1pool” will be deployed. The monitor change on app2pool will not be deployed.
 
 Now let's deploy the change.
@@ -118,7 +118,7 @@ After deployment is complete, click into the “partial-deploy” to view the de
 
 You can see that the change went in is only the addition of the pool member which is the first change. The change on mon-https monitor did not get pushed to BIG-IP, because it was not selected as the Partial Deploy.
 
-.. NOTE::
+.. note::
 	 The deployment could fail if the targeted BIG-IP devices are not in full sync on configurations, due to timeout on waiting for sync to complete on target devices. Ensure the devices are in full sync before deploying changes.
 
 .. |image1| image:: media/image1.png

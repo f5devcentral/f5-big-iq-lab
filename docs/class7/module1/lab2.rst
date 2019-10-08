@@ -1,5 +1,5 @@
-Lab 1.2: Renaming Firewall Objects:
-------------------------------------
+Lab 1.2: Renaming Firewall Objects
+----------------------------------
 BIG-IP and BIG-IQ object models have long lacked support for renaming core configuration objects.  BIG-IQ 6.0.1 has added support for renaming various AFM objects.  In this lab, we will work with this new functionality.
 
 .. note:: This lab uses firewall objects created on Class 7 Module 1, and also uses previously created application deployments (site36.example.com).  Please verify the application site36.example.com is a currently deployed application in your environment, and complete the steps in Module 1 before proceeding with steps below
@@ -33,8 +33,8 @@ Lab 1.2.1: Rename Port Lists
 
 In this release, BIG-IQ also supports renaming of the following objects: Firewall Rule Schedules, Address Lists, Rule Lists, and Firewall Policies not assocatied with application templates.
 
-Lab 1.2.2: Rename Firewall Policy Associated With An Application Template:
-***************************************************************************
+Lab 1.2.2: Rename Firewall Policy Associated With An Application Template
+*************************************************************************
 
 #. Under *Configuration* > *Security* > *Network Security* > *Firewall Policies*
 #. Click the checkbox next to ``f5-afm-policy_136``, the click the *More* button dropdown, and select *Rename*

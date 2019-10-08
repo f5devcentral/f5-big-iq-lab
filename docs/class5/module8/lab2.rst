@@ -35,7 +35,7 @@ Navigate to Applications > Environments > Cloud Environments
 
   |image03|
 
-The Cloud Environment is where our BIG-IP will be deployed. If your credentials were valid, utilizing your just created **Cloud Provider** will expose resources available to you in your Azure account.
+The Cloud Environment is where our BIG-IP will be deployed. If your credentials were valid, utilizing your just created **Cloud Provider** will expose resources available to you in your AWS account.
 
 Several parts of the Cloud Environment you may not want to be configured because you are planning on using F5 Declarative Onboarding. 
 - Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.

@@ -2,21 +2,28 @@ Lab 2.3: Create Application using Service Catalog Template
 ----------------------------------------------------------
 .. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
 
-Connect as **paula** to create a new application, and click on *Create*, select the template previously created ``f5-HTTPS-WAF-lb-template-custom1``.
+.. warning:: Starting BIG-IQ 7.0, BIG-IQ introduces Multi-Tier/Multi-Cloud Application Visibility.
+             You will need first to name your Application, then your Application Service. Look at `Module 7`_ for more information.
+
+.. _Module 7: ../module7
+
+Connect as **paula** to create a new application service, and click on *Create*, select the template previously created ``f5-HTTPS-WAF-lb-template-custom1``.
 
 Type in a Name for the application you are creating.
 
-- Application Name: ``site18.example.com``
+- Application Name: ``Example`` **[New 7.0.0]**
 
-To help identify this application when you want to use it later, in the Description field, type in a brief description for the application you are creating.
+- Application Service Name: ``site18.example.com``
 
-- Description: ``My First Application on F5 Cloud Edition``
+To help identify this application service when you want to use it later, in the Description field, type in a brief description for the application you are creating.
 
-Type  the domain of your application (then the ASM policy will always be transparent for this domain)
+- Description: ``My First Application Service on F5 Cloud Edition``
+
+Type  the domain of your application service (then the ASM policy will always be transparent for this domain)
 
 - Domain Names: ``site18.example.com``
 
-For Device, select the name of the device you want to deploy this application to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
+For Device, select the name of the device you want to deploy this application service to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
 
 - BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
 
@@ -24,7 +31,7 @@ For Device, select the name of the device you want to deploy this application to
   :align: center
   :scale: 50%
 
-Determine the objects that you want to deploy in this application.
+Determine the objects that you want to deploy in this application service.
 To omit any of the objects defined in this template, click the  (X) icon that corresponds to that object.
 To create additional copies of any of the objects defined in this template, click the  (+) icon that corresponds to that object.
 
@@ -50,7 +57,7 @@ In the example, fill out the Server's IP addresses/ports (nodes) and virtual ser
   :scale: 50%
 
 Then Click on Create (bottom right of the window).
-The Application is deployed.
+The Application Serviceis deployed.
 
 .. image:: ../pictures/module2/img_module2_lab3_3.png
   :align: center
@@ -60,7 +67,7 @@ The Application is deployed.
 
 .. note:: You can tail the logs: /var/log/restjavad.0.log
 
-In Paula's Dashboard, she can see her Application.
+In **Paula**'s Dashboard, she can see her Application Service.
 
 .. image:: ../pictures/module2/img_module2_lab3_4.png
   :align: center
@@ -68,7 +75,7 @@ In Paula's Dashboard, she can see her Application.
 
 |
 
-Click on the Application and check the details (alarms, security enabled, configuration, ...)
+Click on the Application Service and check the details (alarms, security enabled, configuration, ...)
 
 .. image:: ../pictures/module2/img_module2_lab3_5.png
   :align: center
@@ -86,7 +93,7 @@ Click on Traffic Management > Configuration
 
 .. note:: A traffic generator located on the *Ubuntu Lamp Server* server, is sending good traffic every minute to the virtual servers.
 
-Paula can update Application Health Alert Rules by clicking on the Health Icon on the top left of the Application Dashboard.
+**Paula** can update Application Service Health Alert Rules by clicking on the Health Icon on the top left of the Application Dashboard.
 
 .. image:: ../pictures/module2/img_module2_lab3_7.png
   :align: center

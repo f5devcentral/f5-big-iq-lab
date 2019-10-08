@@ -29,7 +29,7 @@ Important: A user must belong to a group or have an assigned role, or authentic
 
 1. You aren't required to associate a user group at this point; you can do that later if you want.
 
-.. NOTE::
+.. note::
 	 User’s access to certain parts of the BIG-IQ user interface depends on which role they are assigned.
 
 |image12|

@@ -128,7 +128,7 @@ Modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110
 3. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
    If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 4. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the AS3 declaration from the validator to the declaration body into Postman:
@@ -149,7 +149,7 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
 
 |lab-1-3|
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
 
 Click on your Application, Properties > CONFIGURATION, look at AS3 Declaration.
 
@@ -247,7 +247,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 2. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
    If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
@@ -255,7 +255,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
 
 Task 3a - HTTPS Application with Web Application Firewall
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -359,7 +359,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
 1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
    If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the above AS3 declaration into the declaration body into Postman (DON'T FORGET TO UPDATE THE WAF Policy):
@@ -374,7 +374,7 @@ Copy/Paste the above AS3 declaration into the declaration body into Postman (DON
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
 
 Task 4 - Generic Services
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -446,7 +446,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
 1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
    If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-   .. WARNING:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
    
 2. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
 Copy/Paste the above AS3 declaration into the declaration body of Postman:
@@ -462,7 +462,7 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
 
 .. |lab-1-1| image:: ../pictures/module5/lab-1-1.png
    :scale: 60%

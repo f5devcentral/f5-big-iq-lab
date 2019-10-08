@@ -59,7 +59,7 @@ This lab environment is available in UDF for internal F5 users.
 
 **List of instances**:
 
-- BIG-IQ <> DCD 7.0.0
+- BIG-IQ <> DCD 7.0.0.1
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 12.1 / 1 standalone (SJC)
@@ -89,6 +89,7 @@ This lab environment is available in UDF for internal F5 users.
 - `Troubleshoot Your Application Health and Performance with F5`_
 - `AS3 Documentation`_
 - `DO Documentation`_
+- `BIG-IQ compatibility with Application Services 3 Extension and declarative onboarding`_
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.0.0
 .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
@@ -98,6 +99,8 @@ This lab environment is available in UDF for internal F5 users.
 .. _Troubleshoot Your Application Health and Performance with F5: https://interact.f5.com/troubleshooting-your-application-health-webinar.html
 .. _AS3 Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
 .. _DO Documentation: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/
+.. _BIG-IQ compatibility with Application Services 3 Extension and declarative onboarding: https://support.f5.com/csp/article/K54909607
+
 
 ------------
 

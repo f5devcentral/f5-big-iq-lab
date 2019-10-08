@@ -42,7 +42,7 @@ Connect as **paula**
 
 Select ``site18.example.com``
 
-1. Paula enforce the policy APPLICATION SERVICES > Security > CONFIGURATION tab > click on ``Start Blocking``
+1. **Paula** enforce the policy APPLICATION SERVICES > Security > CONFIGURATION tab > click on ``Start Blocking``
 
 .. image:: ../pictures/module2/img_module2_lab4_5.png
   :align: center

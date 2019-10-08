@@ -5,7 +5,7 @@ Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
 Execute the playbooks for each tasks.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
 
 - Task 1: HTTP Application Service::
 
@@ -117,7 +117,7 @@ Execute the playbooks for each tasks.
 
 |
 
-- Task 9: Delete Task1 with their AS3 Applications::
+- Task 9: Delete Task1 with their AS3 application services::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
     # ./cmd_playbook.sh as3_bigiq_task09_delete_task1_app.yml david

@@ -1,7 +1,27 @@
-Lab 7.1: Application Creation using AS3 through BIG-IQ UI
----------------------------------------------------------
+Lab 7.1: Move Application Services in BIG-IQ
+--------------------------------------------
 
+1. Connect as **paula**.
 
+3 Applications are showing on the dashboard: ``IT_apps``, ``airport_security`` and ``Unknown Applications``.
 
-.. |lab-1-1| image:: ../pictures/module7/lab-1-1.png
-   :scale: 60%
+.. image:: ../pictures/module7/lab-1-1.png
+  :scale: 70%
+  :align: center
+
+..note:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+
+2. Navigate into the ``IT_apps`` Application, select ``inventory_site38httpsBigip121`` Application Service and click on **Move**.
+   A windwo opens. Select *New Application*, set ``Inventory_Global`` for the Application Name, then click **OK**.
+
+.. image:: ../pictures/module7/lab-1-2.png
+  :scale: 70%
+  :align: center
+
+3. The Application Service ``inventory_site38httpsBigip121`` is now under Application ``Inventory_Global``.
+
+.. image:: ../pictures/module7/lab-1-3.png
+  :scale: 70%
+  :align: center
+
+..note :: This operation did not deployed or changed anything on the BIG-IP but only on the BIG-IQ.

@@ -25,6 +25,6 @@ Execute the playbook::
 
 .. warning :: If the ansible playbook run successfully but the app doesn't show up, please, review david's role.
 
-.. note :: If you prefer not to wait until the app is created, you can switch the variable ``wait`` to ``no`` in the playbook.
+.. note:: If you prefer not to wait until the app is created, you can switch the variable ``wait`` to ``no`` in the playbook.
 
 Connect as **olivia** (select Auth Provider local) and check on BIG-IQ the application has been correctly created.

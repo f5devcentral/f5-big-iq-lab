@@ -61,7 +61,7 @@ VMWare Properties:
 |  internal  |
 +------------+
 
-.. note :: **[New 6.0.1]** the Network Interfaces have been removed in 6.0.1, the mapping is done in the order the interfaces are configured on the VM template.
+.. note:: **[New 6.0.1]** the Network Interfaces have been removed in 6.0.1, the mapping is done in the order the interfaces are configured on the VM template.
 
 .. image:: ../pictures/module1/img_module1_lab2_3.png
     :align: center

@@ -40,11 +40,11 @@ The system creates the new profile you specified and adds it to the list of prof
   :align: center
   :scale: 50%
 
-.. NOTE:: When you edit a default profile, you cannot override the parent profile settings, because default profiles do not have a parent.
+.. note:: When you edit a default profile, you cannot override the parent profile settings, because default profiles do not have a parent.
 
 Since we intend to use this new Profile when we create a Listener, it's necessary to Deploy it to the devices ahead of the Listener deployment.
 
-.. NOTE:: When you attempt to deploy a Listener that references a Profile that doesn't exist on the target device, you will receive and error.
+.. note:: When you attempt to deploy a Listener that references a Profile that doesn't exist on the target device, you will receive and error.
 
 **Deploying your DNS Profile**
 

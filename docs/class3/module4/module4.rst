@@ -3,12 +3,13 @@ Module 4: Analytics Reporting (new 7.0)
 
 **[New 7.0.0]**
 
-Customers want to be able to create reports from the statistical data that is stored on the BIG-IQ
-Reports should be configurable, downloadable, and schedulable
-Customers want API access to the statistical data on the BIG-IQ for use in other systems/reports
-Individual metrics should be available for download based on time ranges, device or device groups, and presented in a format that can be fed into other systems.  
+BIG-IQ offer new ways to export the statistical data that is stored on the BIG-IQ.
 
-+ the PDF export
+BIG-IQ now supports exporting chart data from Analytics dashboards to PDF. You can convert either all data from a selected time period, 
+or filtered data within an Analytics screen.
+
+BIG-IQ now provides Analytics querying capabilities from the REST-API. This allows you to access application or 
+environment data that is specific to queried metrics, devices, device groups, and resource groups over a selected period of time.
 
 .. toctree::
    :maxdepth: 1
