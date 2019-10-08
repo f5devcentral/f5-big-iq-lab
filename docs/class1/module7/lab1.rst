@@ -24,4 +24,4 @@ Lab 7.1: Move Application Services in BIG-IQ
   :scale: 70%
   :align: center
 
-..note :: This operation did not deployed or changed anything on the BIG-IP but only on the BIG-IQ.
+.. note:: This operation did not deployed or changed anything on the BIG-IP but only on the BIG-IQ.

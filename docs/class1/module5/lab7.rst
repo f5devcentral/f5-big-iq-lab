@@ -124,7 +124,7 @@ Execute the playbooks for each tasks.
 
   Connect as **david** on BIG-IQ.
 
-  Here, we empty the tenant/partition Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
+  Here, we empty the tenant/partition Task1. This should remove those partitions from SEA-vBIGIP01.termmarc.com. The relevant Apps 
   should also disappear from BIG-IQ. 
 
 .. |lab-3-1| image:: ../pictures/module5/lab-3-1.png

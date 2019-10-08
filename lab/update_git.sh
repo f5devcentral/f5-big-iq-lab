@@ -59,51 +59,58 @@ else
     bigiq_version_vmware=$(cat /home/$user/bigiq_version_vmware)
     bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
 
-    echo "Cleanup previous files..."
-    rm -rf f5-* scripts* crontab* ldap build* > /dev/null 2>&1
-
-    # Reset default GW in case SSLO script is running
+    # Reset default GW in case SSLO script is running (or was running and terminated)
     sudo ip route change default via 10.1.1.2 dev eth0
 
-    echo "Install new scripts..."
-    git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
-    mv /home/$user/f5-big-iq-lab/lab/* /home/$user
-
-    if [[  $env == "udf" ]]; then
-        # remove repo directory only if UDF, keep it for PME lab so people can run the ./containthedocs-cleanbuild.sh to validate lab guide
-        rm -rf /home/$user/f5-big-iq-lab
-    fi
-
-    echo "AWS scripts"
-    mv f5-aws-vpn-ssg-$bigiq_version_aws f5-aws-vpn-ssg > /dev/null 2>&1
-    echo "Azure scripts"
-    mv f5-azure-vpn-ssg-$bigiq_version_azure f5-azure-vpn-ssg > /dev/null 2>&1
-    echo "Vmware scripts"
-    mv f5-vmware-ssg-$bigiq_version_vmware f5-vmware-ssg > /dev/null 2>&1
-    echo "AS3 playbooks"
-    mv f5-ansible-bigiq-as3-demo-$bigiq_version_as3 f5-ansible-bigiq-as3-demo > /dev/null 2>&1
-
-    # cleanup other versions
-    rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* f5-vmware-ssg-* f5-ansible-bigiq-as3-demo-* > /dev/null 2>&1
-    echo "Fixing permissions..."
-    chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*py f5-*/*pl > /dev/null 2>&1
-    chown -R $user:$user . > /dev/null 2>&1
-
-    # Cleanup Clouds credentials
-    rm -fr /home/$user/.aws/*
-    rm -fr /home/$user/.azure/*
-
-    echo "Installing new crontab"
-    if [ "$(whoami)" == "$user" ]; then
-        crontab < crontab.txt
+    checkDNSworks=$(nslookup "github.com" | awk -F':' '/^Address: / { matched = 1 } matched { print $2}' | xargs)
+    if [[ -z "$checkDNSworks" ]]; then
+        echo -e "DNS resolution isn't working (cannot clone repo https://github.com/f5devcentral/f5-big-iq-lab)\n- Check default route 10.1.1.2 (udf), route -n\n- Check internet connectivity, ping google.com"
+        exit 1
     else
-        # as root
-        su - $user -c "crontab < crontab.txt"
+        # DNS and internet connectivity working
+        echo "Cleanup previous files..."
+        rm -rf f5-* scripts* crontab* ldap build* > /dev/null 2>&1
+
+        echo "Install new scripts..."
+        git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
+        mv /home/$user/f5-big-iq-lab/lab/* /home/$user
+
+        if [[  $env == "udf" ]]; then
+            # remove repo directory only if UDF, keep it for PME lab so people can run the ./containthedocs-cleanbuild.sh to validate lab guide
+            rm -rf /home/$user/f5-big-iq-lab
+        fi
+
+        echo "AWS scripts"
+        mv f5-aws-vpn-ssg-$bigiq_version_aws f5-aws-vpn-ssg > /dev/null 2>&1
+        echo "Azure scripts"
+        mv f5-azure-vpn-ssg-$bigiq_version_azure f5-azure-vpn-ssg > /dev/null 2>&1
+        echo "Vmware scripts"
+        mv f5-vmware-ssg-$bigiq_version_vmware f5-vmware-ssg > /dev/null 2>&1
+        echo "AS3 playbooks"
+        mv f5-ansible-bigiq-as3-demo-$bigiq_version_as3 f5-ansible-bigiq-as3-demo > /dev/null 2>&1
+
+        # cleanup other versions
+        rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* f5-vmware-ssg-* f5-ansible-bigiq-as3-demo-* > /dev/null 2>&1
+        echo "Fixing permissions..."
+        chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*py f5-*/*pl > /dev/null 2>&1
+        chown -R $user:$user . > /dev/null 2>&1
+
+        # Cleanup Clouds credentials
+        rm -fr /home/$user/.aws/*
+        rm -fr /home/$user/.azure/*
+
+        echo "Installing new crontab"
+        if [ "$(whoami)" == "$user" ]; then
+            crontab < crontab.txt
+        else
+            # as root
+            su - $user -c "crontab < crontab.txt"
+        fi
+    
+        touch udf_auto_update_git
+        rm -f last_update_*
+        touch last_update_$(date +%Y-%m-%d_%H-%M)
     fi
- 
-    touch udf_auto_update_git
-    rm -f last_update_*
-    touch last_update_$(date +%Y-%m-%d_%H-%M)
 fi
 
 # run only when server boots (through /etc/rc.local as root)
