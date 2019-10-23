@@ -3,12 +3,7 @@ Introduction class 2
 
 .. note:: On this page there is no actions to be done here regarding the lab itself
 
-.. warning:: When using the UDF, make sure:
-
-   1. STOP your deployment at the end of your demo.
-   2. Do not forget to tear down your AWS & Azure SSG or VE(s) if any.
-   3. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
-
+.. include:: ../warnings.rst
 
 Definition of Cloud Auto-scaling
 ********************************

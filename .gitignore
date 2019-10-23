@@ -3,3 +3,4 @@ docs/_build/
 _build/
 docs/errors.txt
 src/
+.DS_Store

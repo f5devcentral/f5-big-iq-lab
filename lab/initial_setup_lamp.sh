@@ -21,6 +21,9 @@ function pause(){
    read -p "$*"
 }
 
+# Remove exit before running
+exit 3
+
 cd /root
 
 read -p "Configure Network? (Y/N) (Default=N): " answer

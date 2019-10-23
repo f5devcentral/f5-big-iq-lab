@@ -23,3 +23,16 @@ More information in Knowledge Center > `BIG-IQ Centralized Management: Integrati
 
 .. _`BIG-IQ Centralized Management: Integrating Venafi with BIG-IQ for Certificate Management`: https://techdocs.f5.com/en-us/bigiq-7-0-0/integrating-venafi-for-certificate-management.html
 
+Also:
+
+- `F5 Newsroom Article`_
+- `DevCentral Lightboard Lesson`_
+- `DevCentral Technical Blog Post`_
+- `Video Demo - Key and Certificate Management with F5 and Venafi`_
+- `Solution Overview - Automating Protection: Machine Identities, F5 and Venafi`_
+
+.. _`F5 Newsroom Article`: https://www.f5.com/company/blog/machine-identity-protection-is-a-critical-part-of-modern-app-dev
+.. _`DevCentral Lightboard Lesson`: https://www.youtube.com/watch?v=MUl74aWxE88&feature=youtu.be
+.. _`DevCentral Technical Blog Post`: https://devcentral.f5.com/s/articles/F5-Venafi-Solution-for-enterprise-Key-and-Certificate-management
+.. _`Video Demo - Key and Certificate Management with F5 and Venafi`: https://www.youtube.com/watch?v=-LfDKoMYa9Y&feature=youtu.be
+.. _`Solution Overview - Automating Protection: Machine Identities, F5 and Venafi`: https://www.f5.com/services/resources/use-cases/automating-protection--machine-identities--f5-and-venafi

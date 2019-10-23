@@ -114,10 +114,12 @@ This lab environment is available in UDF for internal F5 users.
 
 **Tools**:
 
+- `BIG-IQ trial on AWS and Azure`_
 - `BIG-IP Cloud Edition trial on AWS and Azure`_
 - `BIG-IQ PM team GitHub (various automation tools)`_
 - `BIG-IQ Onboarding with Docker and Ansible`_
 
+.. _BIG-IQ trial on AWS and Azure: https://github.com/f5devcentral/f5-big-iq-trial-quick-start
 .. _BIG-IP Cloud Edition trial on AWS and Azure: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
 .. _BIG-IQ Onboarding with Docker and Ansible: https://github.com/f5devcentral/f5-big-iq-onboarding

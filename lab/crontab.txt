@@ -3,6 +3,8 @@
 */5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /dev/null 2>&1
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
 @reboot perl -le 'sleep 2300' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
+
+## Export Analytics to Splunk
 * * * * * /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.sh >> /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.log
 
 ## ASM Brute Force Attacks
@@ -12,6 +14,9 @@
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/f5-demo-app-troubleshooting/503.log
 0 0,2,5,8,11,14,17,20 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/404.sh > /home/f5/f5-demo-app-troubleshooting/404.log
 0 0,4,7,10,13,16,19,22 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/iloveyou.sh > /home/f5/f5-demo-app-troubleshooting/iloveyou.log
+
+## DNS Traffic
+*/3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null 2>&1
 
 ## DOS data
 */11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /dev/null 2>&1
@@ -24,9 +29,6 @@
 
 ## AFM data
 #*/13 * * * * /home/f5/scripts/generate_afm_traffic.sh > /dev/null 2>&1
-
-## DNS Traffic
-*/3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /dev/null 2>&1
 
 ## Access Traffic
 */10 * * * * /home/f5/scripts/generate_access_traffic.sh > /dev/null 2>&1

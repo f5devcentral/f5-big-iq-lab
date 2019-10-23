@@ -99,6 +99,13 @@ else
         rm -fr /home/$user/.aws/*
         rm -fr /home/$user/.azure/*
 
+        if [[ $env != "udf" ]]; then
+            # for SCJ - DCD lab IP
+            sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
+            sed -i 's/10.1.10.4/10.192.75.180/g' /home/$user/scripts/*sh
+            sed -i '23,$d' /home/$user/crontab.txt
+        fi
+
         echo "Installing new crontab"
         if [ "$(whoami)" == "$user" ]; then
             crontab < crontab.txt

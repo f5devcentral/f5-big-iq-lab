@@ -1,5 +1,5 @@
-Module 9: Declarative Onboarding and VE Creation on Azure (new 7.0)
-===================================================================
+Module 9: Declarative Onboarding and VE Creation on Azure (7.0 and above)
+=========================================================================
 
 **[New 7.0.0]**
 

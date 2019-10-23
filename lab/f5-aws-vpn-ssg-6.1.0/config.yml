@@ -77,7 +77,7 @@ bigip_rest_password: "purple123"
 
 # BIG-IQ SSG CONFIG
 BIGIP_USER: admin
-BIGIP_PWD: "74ZEws7axzWdKBap3DkQ"
+BIGIP_PWD: "u7BnD@4f5"
 
 BIGIQ_HOST: localhost:8100
 BIGIQ_URI: http://{{BIGIQ_HOST}}

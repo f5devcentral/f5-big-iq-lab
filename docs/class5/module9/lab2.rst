@@ -52,7 +52,7 @@ Fill in the Create BIG-IP VE Options.
 +-------------------------------+---------------------------+
 | Cloud Environment             | (your script created env) |
 +-------------------------------+---------------------------+
-| Admin Password                | Password123!              |
+| Admin Password                | u7BnD@4f5                 |
 +-------------------------------+---------------------------+
 | Number of BIG-IP VE to Create | 1                         |
 +-------------------------------+---------------------------+

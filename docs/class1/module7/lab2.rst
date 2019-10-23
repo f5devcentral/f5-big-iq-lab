@@ -72,7 +72,7 @@ This Application is composed of 3 Application Services:
 +----------------+---------------------------------------+
 | Bigip          | /Common/SEA-vBIGIP01.termmarc.com     |
 +----------------+---------------------------------------+
-| Virtual Server | /security3/site14_seattle/serviceMain |
+| Virtual Server | /security2/site14_seattle/serviceMain |
 +----------------+---------------------------------------+
 
 .. image:: ../pictures/module7/lab-2-5.png

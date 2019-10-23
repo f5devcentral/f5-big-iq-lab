@@ -241,8 +241,8 @@ user.
 
 * Role: select *Administrator*
 * Username: admin
-* Password: purple
-* Confirm Password: purple
+* Password: u7BnD@4f5
+* Confirm Password: u7BnD@4f5
 
 .. image:: ../pictures/module1/img_module1_lab1_11.png
   :align: center
