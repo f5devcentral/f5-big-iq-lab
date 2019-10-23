@@ -7,7 +7,7 @@ Lab 4.3: BIG-IQ Analytics and Splunk
 - An `HTTP Event Collector`_ listening on port 8088 to receive JSON events has been configured.
 
 .. _container: https://hub.docker.com/r/splunk/splunk/
-.. _HTTP Event Collector: http://dev.splunk.com/view/event-collector/SP-CAAAE7D
+.. _HTTP Event Collector: https://dev.splunk.com/enterprise/docs/dataapps/httpeventcollector/
 
 **Custom script to export BIG-IQ analytics and send them over to Splunk**
 

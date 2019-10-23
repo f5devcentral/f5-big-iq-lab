@@ -69,10 +69,6 @@ The custom role type and resource group can be combined to create a custom role.
 * Relaxed Mode - Users can view all objects related to the service(s) they have access to, but can modify only those they have explicit permission to. This is the default.
 * Strict Mode - User can view or modify only the objects they have explicit permission to.
 
-.. note:: `Internal video of the Fine Grained RBAC`_
-
-.. _Internal video of the Fine Grained RBAC: https://hive.f5.com/videos/6653
-
 **USER MANAGEMENT**
 
 This area allows for management of local users and groups, as well as integration with 3rd party authentication providers (RADIUS, LDAP, or TACACS+). 
