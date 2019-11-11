@@ -90,6 +90,7 @@ This lab environment is available in UDF for internal F5 users.
 - `AS3 Documentation`_
 - `DO Documentation`_
 - `BIG-IQ compatibility with Application Services 3 Extension and declarative onboarding`_
+- `Free Training Courses - Getting Started with BIG-IQ Centralized Management`_
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.0.0
 .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
@@ -100,7 +101,7 @@ This lab environment is available in UDF for internal F5 users.
 .. _AS3 Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
 .. _DO Documentation: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/
 .. _BIG-IQ compatibility with Application Services 3 Extension and declarative onboarding: https://support.f5.com/csp/article/K54909607
-
+.. _Free Training Courses - Getting Started with BIG-IQ Centralized Management: https://f5.com/education/training/free-courses/getting-started-with-big-iq
 
 ------------
 
@@ -108,7 +109,7 @@ This lab environment is available in UDF for internal F5 users.
 
 - `Look for the BIG-IQ videos on the YouTube DevCentral Channel`_
 
-.. _Look for the BIG-IQ videos on the YouTube DevCentral Channel: https://www.youtube.com/user/devcentral/videos
+.. _Look for the BIG-IQ videos on the YouTube DevCentral Channel: https://www.youtube.com/user/devcentral/search?query=BIG-IQ
 
 ------------
 
