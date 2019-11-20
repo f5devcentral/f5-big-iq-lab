@@ -150,6 +150,8 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
 |lab-1-3|
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Click on your Application, Properties > CONFIGURATION, look at AS3 Declaration.
 
@@ -256,6 +258,8 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Task 3a - HTTPS Application with Web Application Firewall
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -375,6 +379,8 @@ Copy/Paste the above AS3 declaration into the declaration body into Postman (DON
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Task 4 - Generic Services
 ~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -463,6 +469,11 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
 
 .. |lab-1-1| image:: ../pictures/module5/lab-1-1.png
    :scale: 60%

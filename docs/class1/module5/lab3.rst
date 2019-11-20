@@ -336,6 +336,11 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 7. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
 
 |lab-3-4|
 

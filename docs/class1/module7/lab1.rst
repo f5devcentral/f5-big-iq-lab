@@ -9,7 +9,12 @@ Lab 7.1: Move Application Services in BIG-IQ
   :scale: 70%
   :align: center
 
-..note:: BIG-IQ displays AS3 applications created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
 
 2. Navigate into the ``IT_apps`` Application, select ``inventory_site38httpsBigip121`` Application Service and click on **Move**.
    A windwo opens. Select *New Application*, set ``Inventory_Global`` for the Application Name, then click **OK**.

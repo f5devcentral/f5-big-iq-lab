@@ -7,11 +7,12 @@
       bigiq_ip: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
       bigiq_password: "{{ hostvars[groups['f5_bigiq'][0]]['bigiq_onboard_new_admin_password'] }}"
 
-    roles:
-      - f5devcentral.f5ansible
+    collections:
+    - f5networks.f5_module
+
     tasks:
     - name: discover and Import BIG-IP in BIG-IQ
-      bigiq_device_discovery:
+      f5networks.f5_modules.bigiq_device_discovery:
         provider:
           server: "{{ bigiq_ip }}"
           user: admin

@@ -84,16 +84,15 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 9. Logon on **BIG-IQ** as **paula**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
 
 .. image:: ../pictures/module5/lab-8-11.png
   :scale: 70%
   :align: center
-
-.. note:: The templates are now pointing to the AS3 Declare API. An AS3 application created using the AS3 Declare API appears 
-          with the Unknown Applications in the BIG-IQ. You can move it using the UI or by using the AS3 Move/Merge API.
-          You can also use directly the `AS3 Deploy API`_ to define the BIG-IQ Application name.
-
-.. _AS3 Deploy API: https://clouddocs.f5networks.net/products/big-iq/mgmt-api/v7.0.0/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
 
 Select ``Unknown Applications`` Application, select ``MyAppDeployedWithAnsibleTower_M...`` Application Service and look HTTP traffic analytics.
 

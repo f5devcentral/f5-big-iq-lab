@@ -44,3 +44,8 @@ POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 3. Check the tenant/application(s) has been correctly removed from the BIG-IP and BIG-IQ.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html

@@ -11,12 +11,30 @@ Lab 4.3: BIG-IQ Analytics and Splunk
 
 **Custom script to export BIG-IQ analytics and send them over to Splunk**
 
-Setup a script in the cron table on a Linux machine where the container runs to fetch the BIG-IQ analytics data using the API in 7.0 every X min
+A `script`_ is setup in the crontab (Linux Scheduler) where the Splunk container runs,
+This script is getting the Analytics using BIG-IQ API, then sending the JSON result
+to Splunk HTTP Event collector every minutes.
 
-POST /mgmt/ap/query/v1/tenants/default/products/local-traffic/metric-query => JSON result file with the analytics requested
+.. _script: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-demo-bigiq-analytics-export-restapi
 
-The event in JSON format are received every minute with the analytics requested (in the example transactions)
+The events (in JSON format) are received in Splunk and dashboards can be easily created using the search query field.
 
-Built a Slunk Dashboard based on the JSON values of the events collects (in this example the transactions)
+Below is an example of a search query used to display the HTTP Transactions:
 
 ``index = "main" |table _time,result.result{}.transactions$avg-count-per-sec | rename result.result{}.transactions$avg-count-per-sec as transactions | spath``
+
+*Dashboard in Splunk*
+
+.. image:: ../pictures/module4/img_lab3_1.png
+  :align: center
+  :scale: 70%
+
+|
+
+*Dashboard in BIG-IQ*
+
+.. image:: ../pictures/module4/img_lab3_2.png
+  :align: center
+  :scale: 70%
+
+|
