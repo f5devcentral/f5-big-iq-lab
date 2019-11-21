@@ -60,10 +60,9 @@ For two panels titled "Top Sources IPs – Average TPS" & "Top DNS Domain Names 
     - They only show data for BIG-IP device version >=13.1.0.5
     - They will show data only if AVRD is provisioned
     - Further details:
-          - IPs & Domain names are collected by AVR. So AVR has to be provisioned (DoS provisioning 
+          - IPs & Domain names are collected by AVR. AVR has to be provisioned (DoS provisioning 
             will likely also make it available, since AVR is embedded inside DoS and DoS serves also DNS activity).
           - Integration between AVR and BIG-IQ started only from BIG-IP version 13.1.0.5 (recommended 
-            to use today 13.1.2).  So if you use BIG-IP 12.1, BIG-IQ doesn’t get the AVR data.
-          - There is tight integration between AVR & AFM.  AVR is providing AFM many of its visibility 
-            features, so bugs related to AFM DoS visibility can turn out as AVR issues, so sometimes 
-            it is also the other way around.
+            to use today 13.1.2).  If you use BIG-IP 12.1, BIG-IQ doesn’t get the AVR data.
+          - There is tight integration between AVR & AFM. AVR is providing AFM many of its visibility 
+            features.
