@@ -41,3 +41,29 @@ The Top Charts tab provides summary of top source IPs, Domain names, and Wide IP
 .. image:: ../pictures/module4/TopCharts.png
   :align: center
   :scale: 50%
+
+For Four panels titled “Top WideIP Names”
+---------------------------------------------
+    - These panes will show data only for BIG-IP devices where GTM/DNS has been enabled
+    - Further details:
+           - in BIG-IP, the WideIP object definition comes from the DNS module. If DNS were not 
+             provisioned (installed) on that BIG-IP, there wouldn’t be any WideIPs for data to be 
+             collected about, and those “Wide-IP” graphs wouldn’t be relevant.
+           - in BIG-IP, “GTM” and “DNS” refer to the same module – BIG-IP renamed the “GTM” module to be “DNS”, 
+             presumably as a more user-friendly name.  E.g., in BIG-IP’s System -> Resource Provisioning page, 
+             the module is listed as “Global Traffic (DNS)” in the table, and the CPU/Disk/Memory 
+             Resource Allocation bars near the top show its color with the label 
+
+For two panels titled "Top Sources IPs – Average TPS" & "Top DNS Domain Names – Average TPS"
+----------------------------------------------------------------------------------------------
+    - They will NOT show any data for BIG-IP v12 devices (or lower)
+    - They only show data for BIG-IP device version >=13.1.0.5
+    - They will show data only if AVRD is provisioned
+    - Further details:
+          - IPs & Domain names are collected by AVR. So AVR has to be provisioned (DoS provisioning 
+            will likely also make it available, since AVR is embedded inside DoS and DoS serves also DNS activity).
+          - Integration between AVR and BIG-IQ started only from BIG-IP version 13.1.0.5 (recommended 
+            to use today 13.1.2).  So if you use BIG-IP 12.1, BIG-IQ doesn’t get the AVR data.
+          - There is tight integration between AVR & AFM.  AVR is providing AFM many of its visibility 
+            features, so bugs related to AFM DoS visibility can turn out as AVR issues, so sometimes 
+            it is also the other way around.
