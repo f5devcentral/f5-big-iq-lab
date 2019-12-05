@@ -72,7 +72,8 @@ else
         rm -rf f5-* scripts* crontab* ldap build* > /dev/null 2>&1
 
         echo "Install new scripts..."
-        git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop --filter=blob:limit=10m
+        # GIT_LFS_SKIP_SMUDGE=1 will skip download files in the LFS (ucs files)
+        GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
         mv /home/$user/f5-big-iq-lab/lab/* /home/$user
 
         if [[  $env == "udf" ]]; then

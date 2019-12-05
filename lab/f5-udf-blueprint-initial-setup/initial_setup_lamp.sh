@@ -24,6 +24,11 @@ function pause(){
 # Remove exit before running
 exit 3
 
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root" 
+   exit 1
+fi
+
 cd /root
 
 read -p "Configure Network? (Y/N) (Default=N): " answer
@@ -84,81 +89,39 @@ fi
 
 #### UDF TEAM WILL PROVIDE AN UBUNTU IMAGE ALREADY IN 18.04 SO WE DON'T HAVE TO UPGRADE
 
-read -p "Perform Ubuntu Upgrade 17.04 to 17.10? (Y/N) (Default=N): " answer
+read -p "Perform Ubuntu Upgrade 18.04 to 19.04? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
-    echo 'deb http://archive.ubuntu.com/ubuntu artful main restricted
-    deb-src http://archive.ubuntu.com/ubuntu artful main restricted
-
-    deb http://archive.ubuntu.com/ubuntu artful-updates main restricted
-    deb-src http://archive.ubuntu.com/ubuntu artful-updates main restricted
-
-    deb http://archive.ubuntu.com/ubuntu artful universe
-    deb-src http://archive.ubuntu.com/ubuntu artful universe
-    deb http://archive.ubuntu.com/ubuntu artful-updates universe
-    deb-src http://archive.ubuntu.com/ubuntu artful-updates universe
-
-    deb http://archive.ubuntu.com/ubuntu artful multiverse
-    deb-src http://archive.ubuntu.com/ubuntu artful multiverse
-    deb http://archive.ubuntu.com/ubuntu artful-updates multiverse
-    deb-src http://archive.ubuntu.com/ubuntu artful-updates multiverse
-
-    deb http://archive.ubuntu.com/ubuntu artful-backports main restricted universe multiverse
-    deb-src http://archive.ubuntu.com/ubuntu artful-backports main restricted universe multiverse
-
-    deb http://security.ubuntu.com/ubuntu artful-security main restricted
-    deb-src http://security.ubuntu.com/ubuntu artful-security main restricted
-    deb http://security.ubuntu.com/ubuntu artful-security universe
-    deb-src http://security.ubuntu.com/ubuntu artful-security universe
-    deb http://security.ubuntu.com/ubuntu artful-security multiverse
-    deb-src http://security.ubuntu.com/ubuntu artful-security multiverse' > /etc/apt/sources.list
-
-    lsb_release -a 
-    apt update
-    export DEBIAN_FRONTEND=noninteractive
-    apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
-    apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
-    apt autoremove -y
     lsb_release -a
+    apt update && sudo apt dist-upgrade
+    apt install update-manager-core -y
+    sed -i 's/lts/normal/g' /etc/update-manager/release-upgrades
+    sed -i 's/bionic/disco/g' /etc/apt/sources.list
+    sed -i 's/^/#/' /etc/apt/sources.list.d/*.list
+    apt update
+    apt upgrade -y
+    apt update
+    apt dist-upgrade -y
+    apt dist-upgrade -y
+    apt autoremove -y
+    apt clean
 
+    lsb_release -a
     read -p "Reboot? (Y/N) (Default=N): " answer
     if [[  $answer == "Y" ]]; then
         init 6
     fi
+
 fi
 
 lsb_release -a
 
-read -p "Perform Ubuntu Upgrade 17.10 to 18.04? (Y/N) (Default=N): " answer
+read -p "Perform Ubuntu Post Upgrade task 19.04? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
-    apt update
-    export DEBIAN_FRONTEND=noninteractive
-    apt --fix-broken install -y
-    do-release-upgrade -f DistUpgradeViewNonInteractive
-    apt autoremove -y
     lsb_release -a
-
-    read -p "Reboot? (Y/N) (Default=N): " answer
-    if [[  $answer == "Y" ]]; then
-        init 6
-    fi
-fi
-
-lsb_release -a
-
-read -p "Perform Ubuntu Post Upgrade task 18.04? (Y/N) (Default=N):" answer
-if [[  $answer == "Y" ]]; then
+    sed -i '/deb/s/^#//g' /etc/apt/sources.list.d/*.list
+    sed -i 's/bionic/disco/g' /etc/apt/sources.list.d/*.list
+    sed -i 's/disco/bionic/g' /etc/apt/sources.list
     apt update
-    export DEBIAN_FRONTEND=noninteractive
-    apt --fix-broken -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install -y
-    apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" upgrade -y
-    apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade -y
-    apt autoremove -y
-    lsb_release -a
-
-    read -p "Reboot? (Y/N) (Default=N): " answer
-    if [[  $answer == "Y" ]]; then
-        init 6
-    fi
 fi
 
 echo -e "Cleanup unnessary packages"
@@ -471,6 +434,9 @@ sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.8
 sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.10 
 sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
 sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.6
+
+echo -e "\n Add @reboot /usr/sbin/netplan apply in root crontab"
+crontab -l|sed "\$a@reboot /usr/sbin/netplan apply"|crontab -
 
 ## Add there things to do manually
 echo -e "\nPost-Checks:
