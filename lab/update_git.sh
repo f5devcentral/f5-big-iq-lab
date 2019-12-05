@@ -72,7 +72,7 @@ else
         rm -rf f5-* scripts* crontab* ldap build* > /dev/null 2>&1
 
         echo "Install new scripts..."
-        git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
+        git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop --filter=blob:limit=10m
         mv /home/$user/f5-big-iq-lab/lab/* /home/$user
 
         if [[  $env == "udf" ]]; then

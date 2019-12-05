@@ -44,12 +44,14 @@ done
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Onboard BIG-IQ CM and DCD severs.${NC}"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 sudo docker build -t f5-big-iq-onboarding .
 sudo docker run -t f5-big-iq-onboarding ansible-playbook --version
 ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts $DEBUG_arg
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
-
+echo -e "\n${GREEN}Customization BIG-IQ CM and DCD severs.${NC}"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 # loop around the BIG-IQ CM/DCD
 # enable ssh for admin and set-basic-auth on
 for ip in "${ips[@]}"; do
@@ -74,12 +76,13 @@ sleep 120
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Discover and Import BIG-IPs to BIG-IQ CM.${NC}"
-
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ./ansible_helper ansible-playbook /ansible/bigiq_device_discovery.yml -i /ansible/hosts $DEBUG_arg
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Import default AS3 templates${NC}"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ssh -o StrictHostKeyChecking=no root@$ip_cm1 << EOF
   bash
   cd /home/admin;
@@ -96,7 +99,7 @@ EOF
 echo -e "\n${GREEN}Create AS3 Applications${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
-cd ../f5-ansible-bigiq-udf-bp-initial-setup
+cd ../f5-udf-blueprint-initial-setup
 
 # replacing all users by admin as users are not re-created part of the onboarding
 #sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_as3_app_waf_site15_boston.yml

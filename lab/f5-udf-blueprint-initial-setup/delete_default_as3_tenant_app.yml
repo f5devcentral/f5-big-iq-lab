@@ -1,0 +1,82 @@
+---
+- name: Delete Example AS3 Applications
+  hosts: all
+  connection: local
+    
+  tasks: 
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login (auth_bigiq_<user>.json)
+      uri:
+        url: https://10.1.1.4/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: "{{ lookup('file','auth_bigiq_admin.json') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: Delete AS3 Applications - POST /mgmt/shared/appsvcs/declare?async=true
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body:
+          # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          class: AS3
+          action: deploy
+          persist: true
+          declaration:
+            class: ADC
+            schemaVersion: 3.7.0
+            id: example-declaration-01
+            remark: Delete
+            target:
+              # Update desire hostname or address
+              hostname: SEA-vBIGIP01.termmarc.com
+            # Update desire tenant to delete
+            mail:
+              class: Tenant
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - debug:
+        var: json_response.json
+
+### LOOP TO CHECK THE TASK - DO NOT MODIFY BELOW
+
+    - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+
+    - debug:
+        var: json_response_task.json
+
+    - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        status_code: 200, 202, 207
+        validate_certs: false
+      register: json_response_task
+      until: "json_response_task.json.results[0].message != 'in progress'"
+      retries: 90
+      delay: 10
+      ignore_errors: yes

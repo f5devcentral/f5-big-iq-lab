@@ -1,0 +1,110 @@
+---
+- name: BIG-IQ and AS3 Lab - Example Demo App - WAF Application Service
+  hosts: all
+  connection: local
+
+  tasks: 
+    - name: Get BIG-IQ Token POST /mgmt/shared/authn/login
+      uri:
+        url: https://10.1.1.4/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: "{{ lookup('file','auth_bigiq_paula.json') }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: auth
+
+    - name: HTTP Application Service - POST /mgmt/shared/appsvcs/declare?async=true
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body:
+          # used https://www.json2yaml.com/ to convert JSON declaration to YAML
+          class: AS3
+          action: patch
+          patchBody:
+          - class: ADC
+            target:
+              address: 10.1.1.8
+            op: add
+            path: "/security/fqdn"
+            value:
+              class: Application
+              schemaOverlay: AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1
+              template: generic
+              dnsMain:
+                domainName: airports.example.com
+                enabled: true
+                pools:
+                - use: GSLB_Pool
+                class: GSLB_Domain
+              GSLB_Monitor:
+                class: GSLB_Monitor
+                monitorType: https
+                send: GET / HTTP/1.0
+                receive: HTTP/1.1 200 OK
+              GSLB_Pool:
+                class: GSLB_Pool
+                members:
+                - server:
+                    bigip: "/Common/BOS-vBIGIP01.termmarc.com"
+                  virtualServer: "/security/site16_boston/serviceMain"
+                - server:
+                    bigip: "/Common/BOS-vBIGIP02.termmarc.com"
+                  virtualServer: "/security/site16_boston/serviceMain"
+                - virtualServer: "/security/site18_seattle/serviceMain"
+                  server:
+                    bigip: "/Common/SEA-vBIGIP01.termmarc.com"
+                lbModePreferred: round-robin
+                lbModeAlternate: round-robin
+                lbModeFallback: return-to-dns
+                monitors:
+                - use: GSLB_Monitor
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response
+
+    - debug:
+        var: json_response.json
+
+### LOOP TO CHECK THE TASK - DO NOT MODIFY BELOW
+
+    - name: Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+
+    - debug:
+        var: json_response_task.json
+
+    - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
+      uri:
+        url: https://10.1.1.4/mgmt/shared/appsvcs/task/{{json_response.json.id}}
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        status_code: 200, 202
+        validate_certs: false
+      register: json_response_task
+      until: "json_response_task.json.results[0].message != 'in progress'"
+      retries: 20
+      delay: 30
+
+    - debug:
+        var: json_response_task.json
