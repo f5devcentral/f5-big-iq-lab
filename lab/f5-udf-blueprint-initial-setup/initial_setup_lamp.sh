@@ -11,7 +11,7 @@
 
 # Initial script install:
 # sudo su - 
-# curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/initial_setup_lamp.sh
+# curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/f5-udf-blueprint-initial-setup/initial_setup_lamp.sh
 # chmod +x /root/initial_setup_lamp.sh
 # ./initial_setup_lamp.sh
 
@@ -21,9 +21,6 @@ function pause(){
    read -p "$*"
 }
 
-# Remove exit before running
-exit 3
-
 if [[ $EUID -ne 0 ]]; then
    echo "This script must be run as root" 
    exit 1
@@ -31,17 +28,57 @@ fi
 
 cd /root
 
+read -p "Perform Ubuntu Upgrade 18.04 to 19.04? (Y/N) (Default=N): " answer
+if [[  $answer == "Y" ]]; then
+    lsb_release -a
+    apt update
+    apt dist-upgrade -y
+    sed -i 's/lts/normal/g' /etc/update-manager/release-upgrades
+    sed -i 's/bionic/disco/g' /etc/apt/sources.list
+    apt update
+    apt upgrade -y
+    apt update
+    apt dist-upgrade -y
+    apt autoremove -y
+    apt clean
+
+    lsb_release -a
+    read -p "Reboot? (Y/N) (Default=N): " answer
+    if [[  $answer == "Y" ]]; then
+        init 6
+    fi
+
+fi
+
+lsb_release -a
+
+echo -e "Cleanup unnessary packages"
+apt --purge remove apache2 chromium-browser -y
+apt update
+apt upgrade -y
+apt autoremove -y
+
+read -p "Install Netplan? (Y/N) (Default=N):" answer
+if [[  $answer == "Y" ]]; then
+    apt install netplan -y
+    read -p "Reboot? (Y/N) (Default=N): " answer
+    if [[  $answer == "Y" ]]; then
+        init 6
+    fi
+fi
+
 read -p "Configure Network? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     # Configure Network
     echo 'network:
+  version: 2
   ethernets:
-    eth0:
-        addresses:
-            - 10.1.1.5/24
-        gateway4: 10.1.1.2
-        nameservers:
-          addresses: [10.1.1.1]
+    #eth0:
+    #    addresses:
+    #        - 10.1.1.5/24
+    #    gateway4: 10.1.1.2
+    #    nameservers:
+    #      addresses: [10.1.1.1]
     eth2:
         addresses:
             - 10.1.20.5/24
@@ -74,176 +111,27 @@ if [[  $answer == "Y" ]]; then
             - 10.1.20.136/24
             - 10.1.20.137/24
             - 10.1.20.138/24
-            - 10.1.20.139/24
-            - 10.1.20.140/24
-            - 10.1.20.141/24
-            - 10.1.20.142/24
-            - 10.1.20.143/24
-            - 10.1.20.144/24
-            - 10.1.20.145/24
-            - 10.1.20.146/24
     eth1:
         addresses:
             - 10.1.10.5/24' > /etc/netplan/01-netcfg.yaml
+
+    netplan --debug apply
 fi
-
-#### UDF TEAM WILL PROVIDE AN UBUNTU IMAGE ALREADY IN 18.04 SO WE DON'T HAVE TO UPGRADE
-
-read -p "Perform Ubuntu Upgrade 18.04 to 19.04? (Y/N) (Default=N): " answer
-if [[  $answer == "Y" ]]; then
-    lsb_release -a
-    apt update && sudo apt dist-upgrade
-    apt install update-manager-core -y
-    sed -i 's/lts/normal/g' /etc/update-manager/release-upgrades
-    sed -i 's/bionic/disco/g' /etc/apt/sources.list
-    sed -i 's/^/#/' /etc/apt/sources.list.d/*.list
-    apt update
-    apt upgrade -y
-    apt update
-    apt dist-upgrade -y
-    apt dist-upgrade -y
-    apt autoremove -y
-    apt clean
-
-    lsb_release -a
-    read -p "Reboot? (Y/N) (Default=N): " answer
-    if [[  $answer == "Y" ]]; then
-        init 6
-    fi
-
-fi
-
-lsb_release -a
-
-read -p "Perform Ubuntu Post Upgrade task 19.04? (Y/N) (Default=N):" answer
-if [[  $answer == "Y" ]]; then
-    lsb_release -a
-    sed -i '/deb/s/^#//g' /etc/apt/sources.list.d/*.list
-    sed -i 's/bionic/disco/g' /etc/apt/sources.list.d/*.list
-    sed -i 's/disco/bionic/g' /etc/apt/sources.list
-    apt update
-fi
-
-echo -e "Cleanup unnessary packages"
-apt --purge remove apache2 chromium-browser -y
-apt autoremove -y
 
 echo -e "\nIP config check"
 ip addr
 
-echo -e "\nInstall Docker"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install apt-transport-https ca-certificates curl software-properties-common -y
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-apt-key fingerprint 0EBFCD88
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-apt update
-apt install docker-ce -y
-docker version
-docker info
-docker network ls
-/etc/init.d/docker status
-
-echo -e "\nInstall DHCP service"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install isc-dhcp-server -y
-echo 'INTERFACES="eth0"' > /etc/default/isc-dhcp-server
-echo 'default-lease-time 600;
-max-lease-time 7200;
-
-subnet 10.1.1.0 netmask 255.255.255.0 {
-option routers                  10.1.1.1;
-option subnet-mask              255.255.255.0;
-option domain-search            "example.com";
-option domain-name-servers      8.8.8.8;
-range   10.1.1.220   10.1.1.250;
-}' > /etc/dhcp/dhcpd.conf
-/etc/init.d/isc-dhcp-server restart
-/etc/init.d/isc-dhcp-server status
-dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
-
-echo -e "\nInstall Radius service"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install freeradius -y
-freeradius –v
-echo 'paula   Cleartext-Password := "paula"
-paul    Cleartext-Password := "paul"
-marco   Cleartext-Password := "marco"
-larry   Cleartext-Password := "larry"
-david   Cleartext-Password := "david"' >> /etc/freeradius/3.0/users
-
-echo 'client 0.0.0.0/0 {
-secret = default
-shortname = bigiq
-}' >> /etc/freeradius/3.0/radiusd.conf
-/etc/init.d/freeradius restart
-/etc/init.d/freeradius status
-
-echo -e "\nInstall Apache Benchmark, Git, SNMPD"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install apache2-utils -y
-apt install git -y
-apt install snmpd snmptrapd -y
-
-echo -e "\nInstall Ansible and sshpass"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install software-properties-common -y
-add-apt-repository ppa:ansible/ansible -y
-apt update
-apt install ansible -y
-apt install sshpass -y
-ansible-playbook --version
-
-echo -e "\nInstall Postman"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install cdcat libqt5core5a libqt5network5 libqt5widgets5 -y 
-wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
-tar -xzf postman.tar.gz -C /opt
-rm postman.tar.gz
-sudo ln -s /opt/Postman/Postman /usr/bin/postman
-
-echo -e "\nInstall DNS perf"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
-apt install gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev -y
-wget ftp://ftp.nominum.com/pub/nominum/dnsperf/2.0.0.0/dnsperf-src-2.0.0.0-1.tar.gz
-tar xfvz dnsperf-src-2.0.0.0-1.tar.gz
-cd dnsperf-src-2.0.0.0-1
-./configure
-make
-make install
-rm -f dnsperf-src-2.0.0.0-1.tar.gz
-
-echo -e "\nInstall Chrome"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-dpkg -i google-chrome-stable_current_amd64.deb
-
-echo -e "\nInstall Azure CLI"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-AZ_REPO=$(lsb_release -cs)
-echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
-tee /etc/apt/sources.list.d/azure-cli.list
-# Get the Microsoft signing key:
-curl -L https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -
-# Install the CLI:
-apt update
-apt install apt-transport-https azure-cli -y
+echo -e "\nAdd user f5student"
+adduser f5student --disabled-password --gecos ""
+echo "f5student:purple123" | chpasswd
 
 echo -e "\nCustomisation Users"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 ln -snf /home/f5student /home/f5
 chown -R f5student:f5student /home/f5
 echo 'f5student ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
-# some cleanup
-cd /home/f5student
-rm -rf AVR\ Demo.jmx hackazon* AB_DOS.sh baseline_menu.sh jmeter.log scripts dos30.sh Templates Documents source Desktop/putty.desktop Desktop/wireshark.desktop Desktop/Notes* Desktop/DoS3_0.desktop Desktop/jmeter.desktop Desktop/chromium-browser.desktop /home/f5student/.config/Postman/* Downloads/*
-rmdir /home/f5student/*
-mkdir rmdir /home/f5student/Downloads
-rm -rf /root/scripts
-# Reset user's password
-yes purple123 | passwd f5student
+
+echo xfce4-session > /home/f5student/.xsession
 
 # bashrc config
 echo 'cd /home/f5student
@@ -275,6 +163,9 @@ cp /root/.vimrc /home/ubuntu/.vimrc
 cp /root/.vimrc /home/f5student/.vimrc
 chown ubuntu:ubuntu /home/ubuntu/.vimrc
 chown f5student:f5student /home/f5student/.vimrc
+
+mkdir /home/f5student/Desktop
+mkdir /home/f5student/Downloads
 
 # Add links on f5student desktop
 echo '[Desktop Entry]
@@ -337,10 +228,127 @@ Terminal=false
 StartupNotify=false' > /home/f5student/Desktop/Postman_postman.desktop
 
 chmod +x /home/f5student/Desktop/*.desktop
+chown -R f5student:f5student /home/f5student
 
 # WA Chrome always ask for keyring
 rm /home/f5student/.local/share/keyrings/*
 rm /var/crash/*
+
+echo -e "\nInstall Docker"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+apt-key fingerprint 0EBFCD88
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+apt update
+apt install docker-ce -y
+docker version
+docker info
+docker network ls
+/etc/init.d/docker status
+
+echo -e "\nInstall DHCP service"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install isc-dhcp-server -y
+echo 'INTERFACES="eth0"' > /etc/default/isc-dhcp-server
+echo 'default-lease-time 600;
+max-lease-time 7200;
+
+subnet 10.1.1.0 netmask 255.255.255.0 {
+option routers                  10.1.1.1;
+option subnet-mask              255.255.255.0;
+option domain-search            "example.com";
+option domain-name-servers      8.8.8.8;
+range   10.1.1.220   10.1.1.250;
+}' > /etc/dhcp/dhcpd.conf
+/etc/init.d/isc-dhcp-server restart
+/etc/init.d/isc-dhcp-server status
+dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
+
+echo -e "\nInstall Radius service"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install freeradius -y
+freeradius –v
+echo 'paula   Cleartext-Password := "paula"
+paul    Cleartext-Password := "paul"
+marco   Cleartext-Password := "marco"
+larry   Cleartext-Password := "larry"
+david   Cleartext-Password := "david"' >> /etc/freeradius/3.0/users
+
+echo 'client 0.0.0.0/0 {
+secret = default
+shortname = bigiq
+}' >> /etc/freeradius/3.0/radiusd.conf
+/etc/init.d/freeradius restart
+/etc/init.d/freeradius status
+
+echo -e "\nInstall Apache Benchmark, Git, SNMPD"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install apache2-utils -y
+apt install git -y
+apt install snmpd snmptrapd -y
+
+echo -e "\nInstall Ansible and sshpass"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install software-properties-common -y
+apt-add-repository --yes --update ppa:ansible/ansible
+apt update
+apt install ansible -y
+apt install sshpass -y
+ansible-playbook --version
+
+echo -e "\nInstall Postman"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install cdcat libqt5core5a libqt5network5 libqt5widgets5 -y 
+wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+tar -xzf postman.tar.gz -C /opt
+rm postman.tar.gz
+ln -s /opt/Postman/Postman /usr/bin/postman
+
+echo -e "\nInstall DNS perf"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
+apt install gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev -y
+wget ftp://ftp.nominum.com/pub/nominum/dnsperf/2.0.0.0/dnsperf-src-2.0.0.0-1.tar.gz
+tar xfvz dnsperf-src-2.0.0.0-1.tar.gz
+cd dnsperf-src-2.0.0.0-1
+./configure
+make
+make install
+rm -f dnsperf-src-2.0.0.0-1.tar.gz
+
+echo -e "\nInstall Chrome"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+dpkg -i google-chrome-stable_current_amd64.deb
+
+echo -e "\nInstall Azure CLI"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+AZ_REPO=$(lsb_release -cs)
+echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
+tee /etc/apt/sources.list.d/azure-cli.list
+# Get the Microsoft signing key:
+curl -L https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
+# Install the CLI:
+apt update
+apt install apt-transport-https azure-cli -y
+
+echo -e "\nInstall and Desktop and xRDP"
+apt install -y ubuntu-desktop xrdp
+apt install -y xfce4 xfce4-goodies
+echo "polkit.addRule(function(action, subject) {
+if ((action.id == “org.freedesktop.color-manager.create-device” ||
+action.id == “org.freedesktop.color-manager.create-profile” ||
+action.id == “org.freedesktop.color-manager.delete-device” ||
+action.id == “org.freedesktop.color-manager.delete-profile” ||
+action.id == “org.freedesktop.color-manager.modify-device” ||
+action.id == “org.freedesktop.color-manager.modify-profile”) &&
+subject.isInGroup(“{users}”)) {
+return polkit.Result.YES;
+}
+});" > /etc/polkit-1/localauthority.conf.d/02-allow-color.d.conf 
+service xrdp restart
 
 echo -e "\nSystem customisation (e.g. host file)"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -381,8 +389,6 @@ echo '10.1.10.110 site10.example.com
 10.1.10.144 site44.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
 
-hostnamectl set-hostname xjumpbox
-
 # Disable IPv6?
 echo 'net.ipv4.ip_forward = 1
 net.ipv6.conf.all.disable_ipv6 = 1
@@ -391,9 +397,6 @@ net.ipv6.conf.lo.disable_ipv6 = 1
 net.ipv6.conf.eth0.disable_ipv6 = 1
 net.ipv6.conf.eth1.disable_ipv6 = 1
 net.ipv6.conf.eth2.disable_ipv6 = 1' >> /etc/sysctl.conf
-
-echo -e "\nInstall and xRDP"
-#### TO BE ADDED
 
 echo -e "\nInstall and execution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -404,12 +407,10 @@ curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcen
 /home/f5student/update_git.sh > /home/f5student/update_git.log
 chown -R f5student:f5student /home/f5student
 
-hostnamectl set-hostname xjumpbox
-
 exit 0' > /etc/rc.local
 chmod +x /etc/rc.local
 
-curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
+curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 chown f5student:f5student /home/f5student/update_git.sh
 chmod +x /home/f5student/update_git.sh
 
@@ -435,9 +436,6 @@ sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.10
 sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
 sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.6
 
-echo -e "\n Add @reboot /usr/sbin/netplan apply in root crontab"
-crontab -l|sed "\$a@reboot /usr/sbin/netplan apply"|crontab -
-
 ## Add there things to do manually
 echo -e "\nPost-Checks:
 - Test Reboot (init 6)
@@ -452,8 +450,8 @@ echo -e "\nPost-Checks:
 - Test Launch Chrome & Firefox
 - Add bookmark of the BIG-IQ CE lab guide
 - Remove bottom task bar (click right, properties, remove)
-- Add postman collection, disable SSL in postman\n\n
+- Add postman collection from f5-ansible-bigiq-as3-demo-7.0.0, disable SSL in postman\n\n
 
-/!\ Make sure you delete /home/f5student/udf_auto_update_git file before saving the BP /!\"
+/!\ Make sure you delete /home/f5student/udf_auto_update_git file before saving the blueprint /!\"
 
 exit 0

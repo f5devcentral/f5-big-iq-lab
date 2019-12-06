@@ -39,7 +39,7 @@ elif [[ "$1" = "restore" ]]; then
 
     for ((i=1; i <= ${#ip[@]}; i++)); do 
         echo -e "${ip[i]} - ${name[i]}\n"
-        sshpass -p "purple123" ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh load /sys ucs /var/local/ucs/${name[i]}-$(date +%m%d%y).ucs
+        sshpass -p "default" ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh load /sys ucs /var/local/ucs/${name[i]}-$(date +%m%d%y).ucs
     done
 
 else

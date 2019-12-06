@@ -24,4 +24,4 @@ List of Virtual Servers and Applications Servers where various type of traffic i
 |                                                                                           | - Port ``445``: ASM Policy Validator                                                     |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
-.. note:: IPs from ``10.1.10.110`` to ``10.1.10.142`` have a corresponding FQDN named from ``site10.example.com`` to ``site42.example.com``.
+.. note:: IPs from ``10.1.10.110`` to ``10.1.10.138`` have a corresponding FQDN named from ``site10.example.com`` to ``site42.example.com``.

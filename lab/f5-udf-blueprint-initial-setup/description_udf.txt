@@ -1,0 +1,81 @@
+Demo lab guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
+Draft version of the demo lab guide: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/
+
+DOCUMENTATIONS:
+- BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.0.0
+- Customer Deck: https://hive.f5.com/community/product/solutions/management
+
+This environment will allow you to demonstrate BIG-IQ Central Management and Statistic Collection leveraging a Data Collection Device.
+
+Components available: 
+- "System" - Manage all aspects for BIG-IQ, 
+- "Device" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
+- "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
+- "Deployment" - Manage evaluation task and deployment.
+- "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
+- "Application" - Application Management (Cloud Edition, AS3) and Service Scaling Group
+
+List of instances.
+- BIG-IQ <> DCD 7.0.0.1
+- 2x BIG-IP 13.1 / 1 cluster (BOS)
+- 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
+- 1x BIG-IP 12.1 / 1 standalone (SJC)
+- LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
+- Ansible Tower 3.4.3 
+- SSLo Service TAP and L2
+
+If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com) or Kyle Oliver (k.oliver@f5.com)
+
+###################################################
+Name: Ubuntu 19.04 Lamp Server, RDP, Radius, Docker
+
+List of Virtual Servers and Applications Servers where various type of traffic is being send to (check crontab config for more details).
+- Virtual IP addresses where the traffic generator sends HTTP clean traffic	10.1.10.110 to 10.1.10.142 (except 10.1.10.117, 10.1.10.119 and 10.1.10.121 (used for access in class 9)
+- Virtual IP addresses where the traffic generator sends HTTP bad traffic	10.1.10.110 to 10.1.10.136
+- Virtual IP address(es) where the traffic generator sends access traffic (class 9)	10.1.10.222
+- Virtual IP addresses (listeners) where the traffic generator sends DNS traffic (class 10)	10.1.10.203, 10.1.10.204
+- Virtual IP address(es) where the traffic generator sends DDOS attack (class 11)	10.1.10.136
+  - Servers Applications (running in docker containers)	10.1.20.110 to 10.1.20.145
+  - Port 80: hackazon application
+  - Port 8080: web-dvwa application
+  - Port 8081: f5-hello-world application
+  - Port 8082: f5-demo-httpd application
+  - Port 445: ASM Policy Validator
+
+IPs from 10.1.10.110 to 10.1.10.138 have a corresponding FQDN named from site10.example.com to site42.example.com.
+
+To run Kali Linux Docker Image: sudo docker run -t -i kalilinux/kali-linux-docker /bin/bash (run apt-get update && apt-get install metasploit-framework after starting Kali Linux)
+To connect to a docker instance: sudo docker exec -i -t <Container ID> /bin/bash
+
+This sever can also be used to run Postman.
+
+DHCP server on the Management Network: range 10.1.1.220 - 10.1.1.250
+- Status: 
+/etc/init.d/isc-dhcp-server status; dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
+- Clear DHCP leases: (as root)
+cd /var/lib/dhcp
+cat /dev/null > dhcpd.leases
+cat /dev/null > dhcpd.leases~
+/etc/init.d/isc-dhcp-server restart
+/etc/init.d/isc-dhcp-server status
+
+Radius server:
+IP 10.1.1.5
+secret = default
+Users: marco, david, paula, paul, larry, olivia, dnsuser, certuser
+
+LDAP server:
+IP 10.1.1.5
+Bind User Distinguished Name: cn=admin,dc=f5demo,dc=com
+Bind User Password: ldappass
+User Bind Template: uid={username},ou=People,dc=f5demo,dc=com
+Root Distinguished Name: dc=f5demo,dc=com
+Group Search Filter: (&(objectClass=groupOfUniqueNames)(cn={searchterm}*))
+Group Membership Filter: uniqueMember={userDN}
+Directory User Search Filter: uid={username}
+Group Distinguished Name: cn=admin,ou=Groups,dc=f5demo,dc=com
+Users: look at ldap/f5demo.ldif file
+
+Splunk server:
+IP 10.1.1.5 port 8000 https
+HTTP Event Data Collector port 8088
