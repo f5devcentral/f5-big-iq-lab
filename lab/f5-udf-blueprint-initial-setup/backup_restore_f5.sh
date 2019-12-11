@@ -18,10 +18,13 @@ ip[4]="10.1.1.13"
 name[5]="SJC-vBIGIP01.termmarc.com"
 ip[5]="10.1.1.11"
 
+iq_cm="10.1.1.4"
+iq_dcd="10.1.1.6"
+
 d=$2
 
 if [[ -z $1 ]]; then
-    echo -e "\nOPTIONS: [backup, setup or restore] [date with 1st option restore only]\n"
+    echo -e "\nOPTIONS: [backup, sshkeys, disk or restore] [date - option along with restore only]\n"
     ls -lrth ./ucs | grep ucs
 
 elif [[ "$1" = "backup" ]]; then
@@ -39,7 +42,7 @@ elif [[ "$1" = "backup" ]]; then
         sshpass -p "purple123" scp -o StrictHostKeyChecking=no root@${ip[i]}:/var/local/ucs/${name[i]}-$(date +%m%d%y).ucs ucs
     done
 
-elif [[ "$1" = "setup" ]]; then
+elif [[ "$1" = "sshkeys" ]]; then
 
     echo -e "\n---------- INITIAL SETUP BIG-IPs -----------\n"
 
@@ -61,6 +64,21 @@ elif [[ "$1" = "setup" ]]; then
         done
     fi
 
+    echo -e "\n---------- INITIAL SETUP BIG-IQs -----------\n"
+    echo -e "\nRun on both BIG-IQ CM and DCD:\n"
+    echo -e "For root: su - ; tmsh modify auth password (set default)"
+    echo -e "For admin: tmsh modify auth user admin password admin"
+    echo -e "tmsh modify auth user admin shell bash; tmsh save sys config\n"
+
+    echo -e "---------- SSH KEY EXCHANGES BIG-IQs -----------\n"
+    read -p "Continue (Y/N) (Default=N):" answer
+    if [[  $answer == "Y" ]]; then
+        sshpass -p admin ssh-copy-id -o StrictHostKeyChecking=no admin@$iq_cm
+        sshpass -p admin ssh-copy-id -o StrictHostKeyChecking=no admin@$iq_dcd
+    fi
+
+elif [[ "$1" = "disk" ]]; then
+
     echo -e "---------- INCREASE PARTITION SIZE -----------\n"
     for ((i=1; i <= ${#ip[@]}; i++)); do
         echo -e "** ${ip[i]}"
@@ -76,19 +94,6 @@ elif [[ "$1" = "setup" ]]; then
             ssh -o StrictHostKeyChecking=no root@${ip[i]} reboot
         fi
     done
-
-    echo -e "\n---------- INITIAL SETUP BIG-IQs -----------\n"
-    echo -e "\nRun on both BIG-IQ CM and DCD:\n"
-    echo -e "For root: tmsh modify auth password (set default)"
-    echo -e "For admin: tmsh modify auth user admin password admin"
-    echo -e "tmsh modify auth user admin shell bash; tmsh save sys config\n"
-
-    echo -e "---------- SSH KEY EXCHANGES BIG-IQs -----------\n"
-    read -p "Continue (Y/N) (Default=N):" answer
-    if [[  $answer == "Y" ]]; then
-        sshpass -p admin ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
-        sshpass -p admin ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.6
-    fi
 
 elif [[ "$1" = "restore" ]]; then
     echo -e "\n---------- RESTORE BIG-IPs -----------\n"
@@ -118,12 +123,13 @@ elif [[ "$1" = "restore" ]]; then
 
     echo -e "\nAfter the restore, check UDF SSH connectivity with all BIG-IPs/BIG-IQs."
 
-    ## Add there things to do manually
-    echo -e "\nPost-Checks:
-    - Connect to each BIG-IP and check state is ONLINE and there are no problem with loading the configuration and license
-    - Onboard BIG-IQ CM and DCD using scripts under ./f5-ansible-bigiq-onboarding (edit hosts file to only select cm-1 and dcd-1)
-    - Connect to BIG-IQ CM and DCD and make sure it's onboarded correctly
-    - Upgrade BIG-IQ to the latest version or version needed
-    - Restore UCS on BIG-IQ CM and DCD using UI (https://support.f5.com/csp/article/K45246805)
-    - Import BIG-IPs to BIG-IQ"
 fi
+
+## Add there things to do manually
+echo -e "\nPost-Checks:
+- Connect to each BIG-IP and check state is ONLINE and there are no problem with loading the configuration and license
+- Onboard BIG-IQ CM and DCD using scripts under ./f5-ansible-bigiq-onboarding (edit hosts file to only select cm-1 and dcd-1)
+- Connect to BIG-IQ CM and DCD and make sure it's onboarded correctly
+- Upgrade BIG-IQ to the latest version or version needed
+- Restore UCS on BIG-IQ CM and DCD using UI (https://support.f5.com/csp/article/K45246805)
+- Import BIG-IPs to BIG-IQ"
