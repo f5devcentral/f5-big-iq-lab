@@ -60,16 +60,17 @@ else
     bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
 
     # Reset default GW in case SSLO script is running (or was running and terminated)
-    sudo ip route change default via 10.1.1.2 dev eth0
+    interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
+    sudo ip route change default via 10.1.1.2 dev $interface
 
-    checkDNSworks=$(nslookup "github.com" | awk -F':' '/^Address: / { matched = 1 } matched { print $2}' | xargs)
+    checkDNSworks=$(nslookup "github.com" | awk -F':' '/^Address: / { matched = 1 } matched { print $2 }' | xargs)
     if [[ -z "$checkDNSworks" ]]; then
         echo -e "DNS resolution isn't working (cannot clone repo https://github.com/f5devcentral/f5-big-iq-lab)\n- Check default route 10.1.1.2 (udf), route -n\n- Check internet connectivity, ping google.com"
         exit 1
     else
         # DNS and internet connectivity working
         echo "Cleanup previous files..."
-        rm -rf f5-* scripts* crontab* ldap build* > /dev/null 2>&1
+        rm -rf f5-* scripts* crontab* ldap build* splunk > /dev/null 2>&1
 
         echo "Install new scripts..."
         # GIT_LFS_SKIP_SMUDGE=1 will skip download files in the LFS (ucs files)

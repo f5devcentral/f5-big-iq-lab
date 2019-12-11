@@ -24,12 +24,6 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Usage
-if [[ -z $1 ]]; then
-    echo -e "\nUsage: ${RED} $0 ${NC}\n"
-    exit 1;
-fi
-
 # SECONDS used for total execution time (see end of the script)
 SECONDS=0
 

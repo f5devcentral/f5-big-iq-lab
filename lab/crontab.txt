@@ -45,9 +45,6 @@
 ## WA reboot xrdp if dead
 */5 * * * * /home/f5/scripts/xrdp_monitor.sh > /dev/null 2>&1
 
-## WA ravello eth0 not set to 10.1.1.5
-*/5 * * * * /home/f5/scripts/eth0_lamp_monitor.sh > /dev/null 2>&1
-
 ## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
 @reboot sleep 82800 && /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.log
 @reboot sleep 82800 && /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL.log

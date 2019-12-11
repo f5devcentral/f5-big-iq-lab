@@ -62,7 +62,8 @@ then
 
 
     echo "Change gateway to default gateway"
-    sudo ip route change default via $defaultgw dev eth0
+    interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
+    sudo ip route change default via $defaultgw dev $interface
 else
     echo "$bigip1 not up. Please start PARIS-vBIGIP01.termmarc.com.v14.1, SSLo Service TAP and SSLo Service Inline L2 in UDF."
 fi

@@ -32,13 +32,13 @@ read -p "Perform Ubuntu Upgrade 18.04 to 19.04? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     lsb_release -a
     apt update
-    apt dist-upgrade -y
+    DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
     sed -i 's/lts/normal/g' /etc/update-manager/release-upgrades
     sed -i 's/bionic/disco/g' /etc/apt/sources.list
     apt update
     apt upgrade -y
     apt update
-    apt dist-upgrade -y
+    DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
     apt autoremove -y
     apt clean
 
@@ -60,7 +60,7 @@ apt autoremove -y
 
 read -p "Install Netplan? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
-    apt install netplan -y
+    apt install netplan.io -y
     read -p "Reboot? (Y/N) (Default=N): " answer
     if [[  $answer == "Y" ]]; then
         init 6
@@ -73,13 +73,13 @@ if [[  $answer == "Y" ]]; then
     echo 'network:
   version: 2
   ethernets:
-    #eth0:
+    #ens3:
     #    addresses:
     #        - 10.1.1.5/24
     #    gateway4: 10.1.1.2
     #    nameservers:
     #      addresses: [10.1.1.1]
-    eth2:
+    ens4:
         addresses:
             - 10.1.20.5/24
             - 10.1.20.110/24
@@ -111,11 +111,12 @@ if [[  $answer == "Y" ]]; then
             - 10.1.20.136/24
             - 10.1.20.137/24
             - 10.1.20.138/24
-    eth1:
+    ens5:
         addresses:
             - 10.1.10.5/24' > /etc/netplan/01-netcfg.yaml
 
-    netplan --debug apply
+    netplan generate
+    netplan try
 fi
 
 echo -e "\nIP config check"
@@ -131,7 +132,6 @@ ln -snf /home/f5student /home/f5
 chown -R f5student:f5student /home/f5
 echo 'f5student ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-echo xfce4-session > /home/f5student/.xsession
 
 # bashrc config
 echo 'cd /home/f5student
@@ -163,71 +163,6 @@ cp /root/.vimrc /home/ubuntu/.vimrc
 cp /root/.vimrc /home/f5student/.vimrc
 chown ubuntu:ubuntu /home/ubuntu/.vimrc
 chown f5student:f5student /home/f5student/.vimrc
-
-mkdir /home/f5student/Desktop
-mkdir /home/f5student/Downloads
-
-# Add links on f5student desktop
-echo '[Desktop Entry]
-Version=1.0
-Name=Google Chrome
-GenericName=Web Browser
-Comment=Access the Internet
-Exec=/usr/bin/google-chrome-stable %U
-StartupNotify=true
-Terminal=false
-Icon=google-chrome
-Type=Application
-Categories=Network;WebBrowser;
-MimeType=text/html;text/xml;application/xhtml_xml;image/webp;x-scheme-handler/http;x-scheme-handler/https;x-scheme-handler/ftp;
-Actions=new-window;new-private-window;
-
-[Desktop Action new-window]
-Name=New Window
-Exec=/usr/bin/google-chrome-stable
-
-[Desktop Action new-private-window]
-Name=New Incognito Window
-Exec=/usr/bin/google-chrome-stable --incognito' > /home/f5student/Desktop/google-chrome.desktop
-
-echo '[Desktop Entry]
-Version=1.0
-Type=Application
-Exec=exo-open --launch TerminalEmulator
-Icon=utilities-terminal
-StartupNotify=true
-Terminal=false
-Categories=Utility;X-XFCE;X-Xfce-Toplevel;
-OnlyShowIn=XFCE;
-Name=Terminal Emulator
-Comment=Use the command line' > /home/f5student/Desktop/exo-terminal-emulator.desktop
-
-curl -O https://www.logolynx.com/images/logolynx/19/191dac9f3656d7c08de542b49e827f39.png
-mv 191dac9f3656d7c08de542b49e827f39.png /home/f5student/Downloads/vcenter_logo.png
-
-echo '[Desktop Entry]
-Version=1.0
-Type=Link
-Name=vCenter
-Comment=
-Icon=/home/f5student/Downloads/vcenter_logo.png
-URL=https://10.1.1.90/ui' > /home/f5student/Desktop/vCenter.desktop
-
-curl -O https://www.getpostman.com/img/v2/logo-glyph.png
-mv logo-glyph.png /home/f5student/Downloads/postman_logo.png
-
-echo '[Desktop Entry]
-Version=1.0
-Type=Application
-Name=postman
-Comment=
-Exec=/usr/bin/postman
-Icon=/home/f5student/Downloads/postman_logo.png
-Path=
-Terminal=false
-StartupNotify=false' > /home/f5student/Desktop/Postman_postman.desktop
-
-chmod +x /home/f5student/Desktop/*.desktop
 chown -R f5student:f5student /home/f5student
 
 # WA Chrome always ask for keyring
@@ -250,7 +185,7 @@ docker network ls
 echo -e "\nInstall DHCP service"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install isc-dhcp-server -y
-echo 'INTERFACES="eth0"' > /etc/default/isc-dhcp-server
+echo 'INTERFACES="ens3"' > /etc/default/isc-dhcp-server
 echo 'default-lease-time 600;
 max-lease-time 7200;
 
@@ -285,7 +220,7 @@ shortname = bigiq
 echo -e "\nInstall Apache Benchmark, Git, SNMPD"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apache2-utils -y
-apt install git -y
+apt install git git-lfs -y
 apt install snmpd snmptrapd -y
 
 echo -e "\nInstall Ansible and sshpass"
@@ -300,15 +235,17 @@ ansible-playbook --version
 echo -e "\nInstall Postman"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install cdcat libqt5core5a libqt5network5 libqt5widgets5 -y 
-wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
-tar -xzf postman.tar.gz -C /opt
-rm postman.tar.gz
-ln -s /opt/Postman/Postman /usr/bin/postman
+#wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+#tar -xzf postman.tar.gz -C /opt
+#rm postman.tar.gz
+#ln -s /opt/Postman/Postman /usr/bin/postman
+snap install postman
 
 echo -e "\nInstall DNS perf"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
 apt install gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev -y
+apt --fix-broken install
 wget ftp://ftp.nominum.com/pub/nominum/dnsperf/2.0.0.0/dnsperf-src-2.0.0.0-1.tar.gz
 tar xfvz dnsperf-src-2.0.0.0-1.tar.gz
 cd dnsperf-src-2.0.0.0-1
@@ -319,7 +256,7 @@ rm -f dnsperf-src-2.0.0.0-1.tar.gz
 
 echo -e "\nInstall Chrome"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
+#echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 dpkg -i google-chrome-stable_current_amd64.deb
 
@@ -332,10 +269,12 @@ tee /etc/apt/sources.list.d/azure-cli.list
 curl -L https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 # Install the CLI:
 apt update
+apt --fix-broken install
 apt install apt-transport-https azure-cli -y
 
 echo -e "\nInstall and Desktop and xRDP"
-apt install -y ubuntu-desktop xrdp
+apt --fix-broken install
+apt install -y ubuntu-desktop gnome-shell-extension-desktop-icons gnome xrdp
 apt install -y xfce4 xfce4-goodies
 echo "polkit.addRule(function(action, subject) {
 if ((action.id == “org.freedesktop.color-manager.create-device” ||
@@ -347,7 +286,10 @@ action.id == “org.freedesktop.color-manager.modify-profile”) &&
 subject.isInGroup(“{users}”)) {
 return polkit.Result.YES;
 }
-});" > /etc/polkit-1/localauthority.conf.d/02-allow-color.d.conf 
+});" > /etc/polkit-1/localauthority.conf.d/02-allow-color.d.conf
+# ONLY FOR UDF option to have no passwords to JumpHost
+#sed -i 's/username=ask/username=f5student/g' /etc/xrdp/xrdp.ini
+#sed -i 's/password=ask/password=purple123/g' /etc/xrdp/xrdp.ini
 service xrdp restart
 
 echo -e "\nSystem customisation (e.g. host file)"
@@ -389,15 +331,6 @@ echo '10.1.10.110 site10.example.com
 10.1.10.144 site44.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
 
-# Disable IPv6?
-echo 'net.ipv4.ip_forward = 1
-net.ipv6.conf.all.disable_ipv6 = 1
-net.ipv6.conf.default.disable_ipv6 = 1
-net.ipv6.conf.lo.disable_ipv6 = 1
-net.ipv6.conf.eth0.disable_ipv6 = 1
-net.ipv6.conf.eth1.disable_ipv6 = 1
-net.ipv6.conf.eth2.disable_ipv6 = 1' >> /etc/sysctl.conf
-
 echo -e "\nInstall and execution of update_git.sh"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
@@ -414,6 +347,8 @@ curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcen
 chown f5student:f5student /home/f5student/update_git.sh
 chmod +x /home/f5student/update_git.sh
 
+# remove GIT_LFS_SKIP_SMUDGE=1 to get the qkviews
+sed -i 's/GIT_LFS_SKIP_SMUDGE=1//g' /home/f5student/update_git.sh
 /home/f5student/update_git.sh
 chown -R f5student:f5student /home/f5student
 killall sleep
@@ -421,6 +356,7 @@ killall sleep
 echo -e "\nInstall AWS CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install python-pip -y
+apt --fix-broken install
 pip --version
 cd /home/f5student/f5-aws-vpn-ssg
 ansible-playbook 01a-install-pip.yml
@@ -429,12 +365,7 @@ echo -e "\nInstall PyVmomi for VMware ansible playbooks"
 su - f5student -c "sudo pip install PyVmomi"
 
 echo -e "\nSSH keys exchanges between Lamp server and BIG-IP and BIG-IQ CM/DCD"
-ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
-sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.7
-sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.8
-sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.10 
-sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.4
-sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no admin@10.1.1.6
+su - f5student -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
 
 ## Add there things to do manually
 echo -e "\nPost-Checks:
@@ -443,15 +374,16 @@ echo -e "\nPost-Checks:
 - Test Access traffic is showing on BIG-IQ
 - Test DNS traffic is showing on BIG-IQ
 - Test Radius user can connect on BIG-IQ
-- Test VMware SSG working using DHCP
+- Test VMware SSG working using DHCP (only if ESX available)
 - Test VMware Ansible playbook
 - Test AWS and Azure playbooks
 - Test Connection to RDP
+- Disable keying (https://www.fosslinux.com/2561/how-to-disable-keyring-in-ubuntu-elementary-os-and-linux-mint.htm)
+- Re-arrange Favorites in the task bar (have Chrome, Firefox, Terminal, Postman)
 - Test Launch Chrome & Firefox
-- Add bookmark of the BIG-IQ CE lab guide
-- Remove bottom task bar (click right, properties, remove)
+- Add bookmark of the BIG-IQ CE lab guide and Splunk
 - Add postman collection from f5-ansible-bigiq-as3-demo-7.0.0, disable SSL in postman\n\n
 
-/!\ Make sure you delete /home/f5student/udf_auto_update_git file before saving the blueprint /!\"
+/!\ Make sure you delete /home/f5student/udf_auto_update_git file before saving the blueprint /!\ "
 
 exit 0
