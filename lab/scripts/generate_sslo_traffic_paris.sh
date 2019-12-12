@@ -11,7 +11,13 @@ fi
 
 bigip1="10.1.20.13"  #Paris
 bigip2="10.1.20.7"   #Seattle
-defaultgw="10.1.1.2" #UDF
+
+# if AWS, do not run the SSLO script just yet
+type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+if [[  $type == 1 ]]; then
+    # aws
+    exit 2;
+fi
 
 # Only run the script if PARIS-vBIGIP01.termmarc.com.v14.1 is alive.
 
@@ -60,10 +66,18 @@ then
     ((count++))
     done
 
-
     echo "Change gateway to default gateway"
     interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
-    sudo ip route change default via $defaultgw dev $interface
+    # check if AWS or Ravello
+    type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+    if [[  $type == 1 ]]; then
+        # aws
+        sudo ip route change default via 10.1.1.1 dev $interface
+    else
+        # ravello
+        sudo ip route change default via 10.1.1.2 dev $interface
+    fi
+
 else
     echo "$bigip1 not up. Please start PARIS-vBIGIP01.termmarc.com.v14.1, SSLo Service TAP and SSLo Service Inline L2 in UDF."
 fi

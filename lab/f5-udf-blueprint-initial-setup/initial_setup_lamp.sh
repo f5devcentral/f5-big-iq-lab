@@ -370,13 +370,6 @@ su - f5student -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
 ## Add there things to do manually
 echo -e "\nPost-Checks:
 - Test Reboot (init 6)
-- Test HTTP traffic is showing on BIG-IQ
-- Test Access traffic is showing on BIG-IQ
-- Test DNS traffic is showing on BIG-IQ
-- Test Radius user can connect on BIG-IQ
-- Test VMware SSG working using DHCP (only if ESX available)
-- Test VMware Ansible playbook
-- Test AWS and Azure playbooks
 - Test Connection to RDP
 - Disable keying (https://www.fosslinux.com/2561/how-to-disable-keyring-in-ubuntu-elementary-os-and-linux-mint.htm)
 - Re-arrange Favorites in the task bar (have Chrome, Firefox, Terminal, Postman)

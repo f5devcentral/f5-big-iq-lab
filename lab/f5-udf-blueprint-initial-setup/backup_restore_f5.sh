@@ -38,7 +38,7 @@ elif [[ "$1" = "backup" ]]; then
     mkdir ucs
 
     for ((i=1; i <= ${#ip[@]}; i++)); do 
-        echo -e "** $ip\n"
+        echo -e "** ${ip[i]} - ${name[i]}\n"
         sshpass -p "purple123" scp -o StrictHostKeyChecking=no root@${ip[i]}:/var/local/ucs/${name[i]}-$(date +%m%d%y).ucs ucs
     done
 
@@ -46,11 +46,12 @@ elif [[ "$1" = "sshkeys" ]]; then
 
     echo -e "\n---------- INITIAL SETUP BIG-IPs -----------\n"
 
-    echo -e "\nRun on all BIG-IPs:\n"
+    echo -e "\nRun on all BIG-IPs as root:\n"
     echo -e 'echo "root:default" | chpasswd'
     echo -e 'echo "admin:admin" | chpasswd'
     echo -e "tmsh modify auth user admin shell bash"
-    echo -e "tmsh modify /sys db systemauth.disablerootlogin value false;tmsh save sys config\n"
+    echo -e "tmsh modify /sys db systemauth.disablerootlogin value false"
+    echo -e "tmsh save sys config\n"
 
     echo -e "---------- SSH KEY EXCHANGES BIG-IPs -----------\n"
     read -p "Continue (Y/N) (Default=N):" answer
@@ -65,10 +66,12 @@ elif [[ "$1" = "sshkeys" ]]; then
     fi
 
     echo -e "\n---------- INITIAL SETUP BIG-IQs -----------\n"
-    echo -e "\nRun on both BIG-IQ CM and DCD:\n"
-    echo -e "For root: su - ; tmsh modify auth password (set default)"
-    echo -e "For admin: tmsh modify auth user admin password admin"
-    echo -e "tmsh modify auth user admin shell bash; tmsh save sys config\n"
+    echo -e "\nRun on both BIG-IQ CM and DCD as root:\n"
+    echo -e "tmsh modify auth password (set default)"
+    echo -e "tmsh modify auth user admin password admin"
+    echo -e "tmsh modify /sys db systemauth.disablerootlogin value false"
+    echo -e "tmsh modify auth user admin shell bash"
+    echo -e "tmsh save sys config\n"
 
     echo -e "---------- SSH KEY EXCHANGES BIG-IQs -----------\n"
     read -p "Continue (Y/N) (Default=N):" answer
@@ -128,8 +131,35 @@ fi
 ## Add there things to do manually
 echo -e "\nPost-Checks:
 - Connect to each BIG-IP and check state is ONLINE and there are no problem with loading the configuration and license
+- Check GTM https://support.f5.com/csp/article/K25311653
+- Check SSH connection without password using ssh keys (chown root:webusers /etc/ssh/admin/authorized_keys)
 - Onboard BIG-IQ CM and DCD using scripts under ./f5-ansible-bigiq-onboarding (edit hosts file to only select cm-1 and dcd-1)
 - Connect to BIG-IQ CM and DCD and make sure it's onboarded correctly
 - Upgrade BIG-IQ to the latest version or version needed
-- Restore UCS on BIG-IQ CM and DCD using UI (https://support.f5.com/csp/article/K45246805)
-- Import BIG-IPs to BIG-IQ"
+- Import default AS3 templates
+- Import ASM policies
+- Configure Radius Server on BIG-IQ
+- Configure LDAP Server on BIG-IQ
+- Create Paula, Marco, David, Larry, Paul (radius) and Olivia (local) users
+- Add licenses pools examples: byol-pool, byol-pool-perAppVE, byol-pool-utility
+- Add example TMSH script: config-sync boston cluster (tmsh run cm config-sync force-full-load-push to-group datasync-global-dg)
+- Import BIG-IPs to BIG-IQ
+- Create the App Services:
+    airport_security:
+        AS3 security2_site18_seattle 10.1.10.118 SEA
+        AS3 security_site16_boston 10.1.10.116 BOS
+        AS3 security_fqdn airports.example.com BOS
+    IT_apps
+        AS3 inventory_site38httpsBigip121 10.1.10.138
+        SC site36.example.com 10.1.10.136 BOS
+        SC site42.example.com 10.1.10.142 SEA
+    firance_apps
+        AS3 conference_site41waf 10.1.10.141
+        AS3 mail_side40waf 10.1.10.142
+- Test HTTP traffic is showing on BIG-IQ
+- Test Access traffic is showing on BIG-IQ
+- Test DNS traffic is showing on BIG-IQ
+- Test Radius user can connect on BIG-IQ
+- Test VMware SSG working using DHCP (only if ESX available)
+- Test VMware Ansible playbook
+- Test AWS and Azure playbooks\n"
