@@ -37,7 +37,7 @@
             label: mail
             remark: Mail Application Service
             target:
-              hostname: SEA-vBIGIP01.termmarc.com
+              address: 10.1.1.7
             mail:
               class: Tenant
               site40waf:
@@ -75,8 +75,8 @@
                   members:
                   - servicePort: 80
                     serverAddresses:
-                    - "10.1.20.116"
-                    - "10.1.20.116"
+                    - 10.1.20.116
+                    - 10.1.20.117
                     shareNodes: true
                 webtls:
                   class: TLS_Server
