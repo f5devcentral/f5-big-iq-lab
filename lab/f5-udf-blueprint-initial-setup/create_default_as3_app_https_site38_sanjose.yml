@@ -55,8 +55,8 @@
                   members:
                   - servicePort: 80
                     serverAddresses:
-                    - "10.1.20.138"
-                    - "10.1.20.139"
+                    - "10.1.20.112"
+                    - "10.1.20.113"
                     shareNodes: true
                 webtls:
                   class: TLS_Server
