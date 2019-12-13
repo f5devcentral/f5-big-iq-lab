@@ -28,10 +28,10 @@ cd /home/f5/f5-azure-vpn-ssg
 interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
 type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
-       # aws
+       echo "AWS"
        sudo ip route change default via 10.1.1.1 dev $interface
 else
-       # ravello
+       echo "Ravello"
        sudo ip route change default via 10.1.1.2 dev $interface
 fi
 

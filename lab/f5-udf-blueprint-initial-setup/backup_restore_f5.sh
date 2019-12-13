@@ -154,8 +154,9 @@ echo -e "\nPost-Checks:
         SC site36.example.com 10.1.10.136 BOS
         SC site42.example.com 10.1.10.142 SEA
     firance_apps
-        AS3 conference_site41waf 10.1.10.141
-        AS3 mail_side40waf 10.1.10.142
+        AS3 conference_site41waf 10.1.10.141 SEA
+        AS3 mail_side40waf 10.1.10.140 SEA
+        AS3 ecommerce_site15_boston 10.1.10.115 BOS
 - Test HTTP traffic is showing on BIG-IQ
 - Test Access traffic is showing on BIG-IQ
 - Test DNS traffic is showing on BIG-IQ

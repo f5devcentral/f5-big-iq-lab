@@ -1,13 +1,7 @@
 #!/bin/bash
 
-# Ubuntu 18.04 Lamp Server, RDP, Radius, Docker
+# Ubuntu 19.10 Lamp Server, RDP, Radius, Docker
 # Use Xubuntu Jumpbox v17 as a baseline in UDF
-#### UDF TEAM WILL PROVIDE AN UBUNTU IMAGE ALREADY IN 18.04 SO WE DON'T HAVE TO UPGRADE
-# vCPUs: 2
-# Memory: 2 GiB
-# Disk Size: 60 GiB
-# Networking Limits
-# Interfaces: 10
 
 # Initial script install:
 # sudo su - 
@@ -28,24 +22,25 @@ fi
 
 cd /root
 
-read -p "Perform Ubuntu Upgrade 18.04 to 19.04? (Y/N) (Default=N): " answer
+read -p "Perform Ubuntu Upgrade 18.04 to 19.10? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     lsb_release -a
     apt update
-    DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
+    export DEBIAN_FRONTEND=noninteractive; apt dist-upgrade -y
+    apt install update-manager-core -y
     sed -i 's/lts/normal/g' /etc/update-manager/release-upgrades
-    sed -i 's/bionic/disco/g' /etc/apt/sources.list
+    sed -i 's/bionic/eoan/g' /etc/apt/sources.list
     apt update
     apt upgrade -y
     apt update
-    DEBIAN_FRONTEND=noninteractive apt dist-upgrade -y
+    export DEBIAN_FRONTEND=noninteractive; apt dist-upgrade -y
     apt autoremove -y
     apt clean
 
     lsb_release -a
     read -p "Reboot? (Y/N) (Default=N): " answer
     if [[  $answer == "Y" ]]; then
-        init 6
+        shutdown -r now
     fi
 
 fi
@@ -61,25 +56,18 @@ apt autoremove -y
 read -p "Install Netplan? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     apt install netplan.io -y
-    read -p "Reboot? (Y/N) (Default=N): " answer
-    if [[  $answer == "Y" ]]; then
-        init 6
-    fi
 fi
 
-read -p "Configure Network? (Y/N) (Default=N): " answer
+read -p "Configure Network with Netplan? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     # Configure Network
     echo 'network:
   version: 2
   ethernets:
-    #ens3:
-    #    addresses:
-    #        - 10.1.1.5/24
-    #    gateway4: 10.1.1.2
-    #    nameservers:
-    #      addresses: [10.1.1.1]
     ens4:
+        addresses:
+            - 10.1.10.5/24
+    ens5:
         addresses:
             - 10.1.20.5/24
             - 10.1.20.110/24
@@ -110,10 +98,7 @@ if [[  $answer == "Y" ]]; then
             - 10.1.20.135/24
             - 10.1.20.136/24
             - 10.1.20.137/24
-            - 10.1.20.138/24
-    ens5:
-        addresses:
-            - 10.1.10.5/24' > /etc/netplan/01-netcfg.yaml
+            - 10.1.20.138/24' > /etc/netplan/01-netcfg.yaml
 
     netplan generate
     netplan try
@@ -121,60 +106,60 @@ fi
 
 echo -e "\nIP config check"
 ip addr
+ifconfig
 
-echo -e "\nAdd user f5student"
-adduser f5student --disabled-password --gecos ""
-echo "f5student:purple123" | chpasswd
+read -p "\nAdd user f5student? (Y/N) (Default=N):" answer
+if [[  $answer == "Y" ]]; then
+    adduser f5student --disabled-password --gecos ""
+    echo "f5student:purple123" | chpasswd
 
-echo -e "\nCustomisation Users"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-ln -snf /home/f5student /home/f5
-chown -R f5student:f5student /home/f5
-echo 'f5student ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+    echo -e "\nCustomisation Users"
+    [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+    ln -snf /home/f5student /home/f5
+    chown -R f5student:f5student /home/f5
+    echo 'f5student ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
 
-# bashrc config
-echo 'cd /home/f5student
-echo
-sudo docker images;
-echo
-sudo docker ps
-echo
-echo "To run Kali Linux Docker Image: sudo docker run -t -i kalilinux/kali-linux-docker /bin/bash"
-echo "(run apt update && apt install metasploit-framework after starting Kali Linux)"
-echo
-echo "To connect to a docker instance: sudo docker exec -i -t <Container ID> /bin/bash"
-echo
-echo -e "To get the latest tools/scripts, execute: ./update_git.sh"
-echo
-sudo su - f5student' >> /home/ubuntu/.bashrc
+    # bashrc config
+    echo 'cd /home/f5student
+    echo
+    sudo docker images;
+    echo
+    sudo docker ps
+    echo
+    echo "To run Kali Linux Docker Image: sudo docker run -t -i kalilinux/kali-linux-docker /bin/bash"
+    echo "(run apt update && apt install metasploit-framework after starting Kali Linux)"
+    echo
+    echo "To connect to a docker instance: sudo docker exec -i -t <Container ID> /bin/bash"
+    echo
+    echo -e "To get the latest tools/scripts, execute: ./update_git.sh"
+    echo
+    sudo su - f5student' >> /home/ubuntu/.bashrc
 
-# customize vim
-echo 'let &t_SI .= "\<Esc>[?2004h"
-let &t_EI .= "\<Esc>[?2004l"
-inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+    # customize vim
+    echo 'let &t_SI .= "\<Esc>[?2004h"
+    let &t_EI .= "\<Esc>[?2004l"
+    inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
 
-function! XTermPasteBegin()
-  set pastetoggle=<Esc>[201~
-  set paste
-  return ""
-endfunction' > /root/.vimrc
-cp /root/.vimrc /home/ubuntu/.vimrc
-cp /root/.vimrc /home/f5student/.vimrc
-chown ubuntu:ubuntu /home/ubuntu/.vimrc
-chown f5student:f5student /home/f5student/.vimrc
-chown -R f5student:f5student /home/f5student
-
-# WA Chrome always ask for keyring
-rm /home/f5student/.local/share/keyrings/*
-rm /var/crash/*
+    function! XTermPasteBegin()
+    set pastetoggle=<Esc>[201~
+    set paste
+    return ""
+    endfunction' > /root/.vimrc
+    cp /root/.vimrc /home/ubuntu/.vimrc
+    cp /root/.vimrc /home/f5student/.vimrc
+    chown ubuntu:ubuntu /home/ubuntu/.vimrc
+    chown f5student:f5student /home/f5student/.vimrc
+    chown -R f5student:f5student /home/f5student
+fi
 
 echo -e "\nInstall Docker"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 apt-key fingerprint 0EBFCD88
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu disco stable"
 apt update
 apt install docker-ce -y
 docker version
@@ -269,8 +254,19 @@ tee /etc/apt/sources.list.d/azure-cli.list
 curl -L https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 # Install the CLI:
 apt update
-apt --fix-broken install
+apt --fix-broken install -y
 apt install apt-transport-https azure-cli -y
+
+echo -e "\nInstall AWS CLI"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install python-pip -y
+apt --fix-broken install -y
+pip --version
+cd /home/f5student/f5-aws-vpn-ssg
+ansible-playbook 01a-install-pip.yml
+
+echo -e "\nInstall PyVmomi for VMware ansible playbooks (as f5sutdent)"
+su - f5student -c "sudo pip install PyVmomi"
 
 echo -e "\nInstall and Desktop and xRDP"
 apt --fix-broken install
@@ -353,23 +349,12 @@ sed -i 's/GIT_LFS_SKIP_SMUDGE=1//g' /home/f5student/update_git.sh
 chown -R f5student:f5student /home/f5student
 killall sleep
 
-echo -e "\nInstall AWS CLI"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install python-pip -y
-apt --fix-broken install
-pip --version
-cd /home/f5student/f5-aws-vpn-ssg
-ansible-playbook 01a-install-pip.yml
-
-echo -e "\nInstall PyVmomi for VMware ansible playbooks"
-su - f5student -c "sudo pip install PyVmomi"
-
 echo -e "\nSSH keys exchanges between Lamp server and BIG-IP and BIG-IQ CM/DCD"
 su - f5student -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
 
 ## Add there things to do manually
 echo -e "\nPost-Checks:
-- Test Reboot (init 6)
+- Test Reboot (shutdown -r now) and stop/start from UDF
 - Test Connection to RDP
 - Disable keying (https://www.fosslinux.com/2561/how-to-disable-keyring-in-ubuntu-elementary-os-and-linux-mint.htm)
 - Re-arrange Favorites in the task bar (have Chrome, Firefox, Terminal, Postman)

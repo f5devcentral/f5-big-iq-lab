@@ -71,10 +71,10 @@ then
     # check if AWS or Ravello
     type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
     if [[  $type == 1 ]]; then
-        # aws
+        echo "AWS"
         sudo ip route change default via 10.1.1.1 dev $interface
     else
-        # ravello
+        echo "Ravello"
         sudo ip route change default via 10.1.1.2 dev $interface
     fi
 

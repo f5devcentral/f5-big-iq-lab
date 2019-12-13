@@ -23,6 +23,8 @@ EOF
 byolpool[1]="7686f428-3849-4450-a1a2-ea288c6bcbe0" #byol-pool
 byolpool[2]="2b161bb3-4579-44f0-8792-398f7f54512e" #byol-pool-access 
 byolpool[3]="0a2f68b5-1646-4a60-a276-8626e3e9fb8e" #byol-pool-perAppVE
+byolpool[4]="50637134-a5d1-491f-b843-7d1b4eff865e" #byol-pool
+byolpool[5]="67ce6cf0-3234-492c-81de-634c27000b23" #byol-pool-perAppVE
 
 # get length of the array
 arraylength=${#byolpool[@]}

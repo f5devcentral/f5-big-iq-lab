@@ -60,15 +60,15 @@ else
     bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
 
     # Reset default GW in case SSLO script is running (or was running and terminated)
-    #interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
-    #type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
-    #if [[  $type == 1 ]]; then
-    #    # aws
-    #    sudo ip route change default via 10.1.1.1 dev $interface
-    #else
-    #    # ravello
-    #    sudo ip route change default via 10.1.1.2 dev $interface
-    #fi
+    interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
+    type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+    if [[  $type == 1 ]]; then
+        echo "AWS"
+        sudo ip route change default via 10.1.1.1 dev $interface
+    else
+        echo "Ravello"
+        sudo ip route change default via 10.1.1.2 dev $interface
+    fi
 
     checkDNSworks=$(nslookup "github.com" | awk -F':' '/^Address: / { matched = 1 } matched { print $2 }' | xargs)
     if [[ -z "$checkDNSworks" ]]; then
