@@ -71,7 +71,8 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Discover and Import BIG-IPs to BIG-IQ CM.${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-./ansible_helper ansible-playbook /ansible/bigiq_device_discovery.yml -i /ansible/hosts $DEBUG_arg
+./ansible_helper ansible-playbook /ansible/bigiq_device_discovery_cluster.yml -i /ansible/hosts $DEBUG_arg
+./ansible_helper ansible-playbook /ansible/bigiq_device_discovery_standalone.yml -i /ansible/hosts $DEBUG_arg
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

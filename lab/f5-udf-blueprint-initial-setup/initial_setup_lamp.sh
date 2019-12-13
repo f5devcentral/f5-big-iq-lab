@@ -108,7 +108,21 @@ echo -e "\nIP config check"
 ip addr
 ifconfig
 
-read -p "\nAdd user f5student? (Y/N) (Default=N):" answer
+echo -e "\nInstall Docker"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install apt-transport-https ca-certificates curl software-properties-common -y
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+apt-key fingerprint 0EBFCD88
+# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu disco stable"
+apt update
+apt install docker-ce -y
+docker version
+docker info
+docker network ls
+/etc/init.d/docker status
+
+read -p "Add user f5student? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     adduser f5student --disabled-password --gecos ""
     echo "f5student:purple123" | chpasswd
@@ -119,6 +133,7 @@ if [[  $answer == "Y" ]]; then
     chown -R f5student:f5student /home/f5
     echo 'f5student ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+    usermod -aG docker f5student
 
     # bashrc config
     echo 'cd /home/f5student
@@ -152,20 +167,6 @@ if [[  $answer == "Y" ]]; then
     chown f5student:f5student /home/f5student/.vimrc
     chown -R f5student:f5student /home/f5student
 fi
-
-echo -e "\nInstall Docker"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install apt-transport-https ca-certificates curl software-properties-common -y
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-apt-key fingerprint 0EBFCD88
-# add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
-add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu disco stable"
-apt update
-apt install docker-ce -y
-docker version
-docker info
-docker network ls
-/etc/init.d/docker status
 
 echo -e "\nInstall DHCP service"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -202,11 +203,12 @@ shortname = bigiq
 /etc/init.d/freeradius restart
 /etc/init.d/freeradius status
 
-echo -e "\nInstall Apache Benchmark, Git, SNMPD"
+echo -e "\nInstall Apache Benchmark, Git, SNMPD, jq"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apache2-utils -y
 apt install git git-lfs -y
 apt install snmpd snmptrapd -y
+apt install jq -y
 
 echo -e "\nInstall Ansible and sshpass"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -238,12 +240,6 @@ cd dnsperf-src-2.0.0.0-1
 make
 make install
 rm -f dnsperf-src-2.0.0.0-1.tar.gz
-
-echo -e "\nInstall Chrome"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-#echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
-wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-dpkg -i google-chrome-stable_current_amd64.deb
 
 echo -e "\nInstall Azure CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -284,9 +280,16 @@ return polkit.Result.YES;
 }
 });" > /etc/polkit-1/localauthority.conf.d/02-allow-color.d.conf
 # ONLY FOR UDF option to have no passwords to JumpHost
-#sed -i 's/username=ask/username=f5student/g' /etc/xrdp/xrdp.ini
-#sed -i 's/password=ask/password=purple123/g' /etc/xrdp/xrdp.ini
+sed -i 's/username=ask/username=f5student/g' /etc/xrdp/xrdp.ini
+sed -i 's/password=ask/password=purple123/g' /etc/xrdp/xrdp.ini
 service xrdp restart
+
+# Chrome needs to be before Deskop
+echo -e "\nInstall Chrome"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+#echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+dpkg -i google-chrome-stable_current_amd64.deb
 
 echo -e "\nSystem customisation (e.g. host file)"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"

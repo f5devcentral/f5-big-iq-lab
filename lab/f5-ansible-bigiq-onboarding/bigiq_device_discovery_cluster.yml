@@ -1,0 +1,34 @@
+---
+  - hosts: f5_bigip_cluster
+    connection: local
+    serial: 1
+    gather_facts: false
+    vars:
+      bigiq_ip: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
+      bigiq_password: "{{ hostvars[groups['f5_bigiq'][0]]['bigiq_onboard_new_admin_password'] }}"
+    
+    collections:
+    - f5networks.f5_module
+
+    tasks:
+    - name: discover and Import BIG-IP in BIG-IQ
+      f5networks.f5_modules.bigiq_device_discovery:
+        provider:
+          server: "{{ bigiq_ip }}"
+          user: admin
+          password: "{{ bigiq_password }}"
+          validate_certs: no
+        device_address: "{{ device_address }}"
+        device_username: "{{ device_username }}"
+        device_password: "{{ device_password }}"
+        modules: "{{ modules | list }}"
+        conflict_policy: "{{ conflict_policy }}"
+        device_conflict_policy: "{{ device_conflict_policy }}"
+        versioned_conflict_policy: "{{ versioned_conflict_policy }}"
+        statistics:
+          enable: "{{ enable }}"
+          stat_modules: "{{ stat_modules | list }}"
+        ha_name: "{{ ha_name }}"
+        force: yes
+      delegate_to: localhost
+    tags: bigip

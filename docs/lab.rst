@@ -14,7 +14,7 @@ List of Virtual Servers and Applications Servers where various type of traffic i
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Virtual IP address(es) where the traffic generator sends DDOS attack (class 11)           | ``10.1.10.136``                                                                          |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Servers Applications (running in docker containers)                                       | ``10.1.20.110`` to ``10.1.20.145``                                                       |
+| Servers Applications (running in docker containers)                                       | ``10.1.20.110`` to ``10.1.20.123``                                                       |
 |                                                                                           |                                                                                          |
 |                                                                                           |                                                                                          |
 |                                                                                           | - Port ``80``: hackazon application                                                      |
