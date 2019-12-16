@@ -69,7 +69,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
            "label": "Task1",
            "remark": "Task 1 - HTTP Application Service",
            "target": {
-               "hostname": "<hostname>"
+               "address": "<BIG-IP ip address>"
            },
            "Task1": {
                "class": "Tenant",
@@ -116,7 +116,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 2. Now that the AS3 declation is validated, let's add the target (BIG-IP device)::
 
     "target": {
-        "hostname": "BOS-vBIGIP01.termmarc.com"
+        "address": "10.1.1.8"
     },
 
 .. note:: The target BIG-IP is standalone but it could be configured as an HA pair.
@@ -184,7 +184,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
            "label": "Task2",
            "remark": "Task 2 - HTTPS Application Service",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com"
+               "address": "10.1.1.8"
            },
            "Task2": {
                "class": "Tenant",
@@ -290,7 +290,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
            "label": "Task3a",
            "remark": "Task 3a - HTTPS Application with WAF",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com"
+               "address": "10.1.1.8"
            },
            "Task3": {
                "class": "Tenant",
@@ -404,7 +404,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
            "label": "Task4",
            "remark": "Task 4 - Generic Services",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com"
+               "address": "10.1.1.8"
            },
            "Task4": {
                "class": "Tenant",

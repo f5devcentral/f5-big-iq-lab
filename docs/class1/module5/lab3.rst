@@ -270,7 +270,7 @@ POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
             "id": "isc-lab",
             "label": "Task8",
             "target": {
-                "hostname": "BOS-vBIGIP01.termmarc.com"
+                "address": "10.1.1.8"
             },
             "Task8": {
                 "class": "Tenant",

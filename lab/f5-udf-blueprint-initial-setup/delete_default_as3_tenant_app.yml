@@ -35,8 +35,8 @@
             id: example-declaration-01
             remark: Delete
             target:
-              # Update desire hostname or address
-              hostname: SEA-vBIGIP01.termmarc.com
+              # Update desire address
+              address: 10.1.1.7
             # Update desire tenant to delete
             mail:
               class: Tenant

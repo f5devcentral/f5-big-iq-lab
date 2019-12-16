@@ -106,15 +106,15 @@ sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_as3_app_
 sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_as3_app_dns_site16site18_boston.yml 
 sed -i 's/auth_bigiq_paula.json/auth_bigiq_admin.json/g' create_default_global_app_site16_site18_dns_bigiq.yml
 
-#ansible-playbook -i notahost, create_default_as3_app_waf_site15_boston.yml $DEBUG_arg
-#sleep 15
+# finance_apps
 ansible-playbook -i notahost, create_default_as3_app_waf_site40_seattle.yml $DEBUG_arg
 sleep 15
 ansible-playbook -i notahost, create_default_as3_app_waf_site41_seattle.yml $DEBUG_arg
 sleep 15
+# IT_apps
 ansible-playbook -i notahost, create_default_as3_app_https_site38_sanjose.yml $DEBUG_arg
 sleep 15
-# Below apps are for 7.0
+# airport_security
 ansible-playbook -i notahost, create_default_as3_app_http_site16_boston.yml $DEBUG_arg
 sleep 15
 ansible-playbook -i notahost, create_default_as3_app_waf_site18_seattle.yml $DEBUG_arg

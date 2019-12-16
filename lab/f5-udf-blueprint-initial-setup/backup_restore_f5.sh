@@ -6,6 +6,7 @@ function pause(){
    read -p "$*"
 }
 
+iq_lamp="10.1.1.5"
 
 name[1]="SEA-vBIGIP01.termmarc.com"
 ip[1]="10.1.1.7"
@@ -24,22 +25,21 @@ iq_dcd="10.1.1.6"
 d=$2
 
 if [[ -z $1 ]]; then
-    echo -e "\nOPTIONS: [backup, sshkeys, disk or restore] [date - option along with restore only]\n"
+    echo -e "\nOPTIONS: \n[sshkeys] [admin_password] [root_password]\n[backup]\n[restore] [date - option along with restore only]\n[resizedisk]\n"
     ls -lrth ./ucs | grep ucs
 
 elif [[ "$1" = "backup" ]]; then
     echo -e "\n---------- BACKUP BIG-IPs -----------\n"
     for ((i=1; i <= ${#ip[@]}; i++)); do 
         echo -e "** ${ip[i]} - ${name[i]}\n"
-        sshpass -p "purple123" ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh save sys ucs ${name[i]}-$(date +%m%d%y)
+        ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh save sys ucs ${name[i]}-$(date +%m%d%y)
     done
 
     rm -rf ./ucs
     mkdir ucs
 
     for ((i=1; i <= ${#ip[@]}; i++)); do 
-        echo -e "** ${ip[i]} - ${name[i]}\n"
-        sshpass -p "purple123" scp -o StrictHostKeyChecking=no root@${ip[i]}:/var/local/ucs/${name[i]}-$(date +%m%d%y).ucs ucs
+        scp -o StrictHostKeyChecking=no root@${ip[i]}:/var/local/ucs/${name[i]}-$(date +%m%d%y).ucs ucs
     done
 
 elif [[ "$1" = "sshkeys" ]]; then
@@ -56,12 +56,23 @@ elif [[ "$1" = "sshkeys" ]]; then
     echo -e "---------- SSH KEY EXCHANGES BIG-IPs -----------\n"
     read -p "Continue (Y/N) (Default=N):" answer
     if [[  $answer == "Y" ]]; then
+        if [[ -z $2 ]]; then
+            admin_password="admin"
+        else
+            admin_password="$2"
+        fi
+        if [[ -z $3 ]]; then
+            root_password="default"
+        else
+            root_password="$2"
+        fi
+        ssh-keygen -R "$iq_lamp"
         for ((i=1; i <= ${#ip[@]}; i++)); do
             echo -e "\n** ${ip[i]}"
             echo -e "- root user:"
-            sshpass -p default ssh-copy-id -o StrictHostKeyChecking=no root@${ip[i]}
+            sshpass -p "$root_password" ssh-copy-id -o StrictHostKeyChecking=no root@${ip[i]}
             echo -e "- admin user:"
-            sshpass -p admin ssh-copy-id -o StrictHostKeyChecking=no admin@${ip[i]}
+            sshpass -p "$admin_password" ssh-copy-id -o StrictHostKeyChecking=no admin@${ip[i]}
         done
     fi
 
@@ -80,7 +91,7 @@ elif [[ "$1" = "sshkeys" ]]; then
         sshpass -p admin ssh-copy-id -o StrictHostKeyChecking=no admin@$iq_dcd
     fi
 
-elif [[ "$1" = "disk" ]]; then
+elif [[ "$1" = "resizedisk" ]]; then
 
     echo -e "---------- INCREASE PARTITION SIZE -----------\n"
     for ((i=1; i <= ${#ip[@]}; i++)); do
@@ -153,7 +164,7 @@ echo -e "\nPost-Checks:
         AS3 inventory_site38httpsBigip121 10.1.10.138
         SC site36.example.com 10.1.10.136 BOS
         SC site42.example.com 10.1.10.142 SEA
-    firance_apps
+    finance_apps
         AS3 conference_site41waf 10.1.10.141 SEA
         AS3 mail_side40waf 10.1.10.140 SEA
 - Test HTTP traffic is showing on BIG-IQ

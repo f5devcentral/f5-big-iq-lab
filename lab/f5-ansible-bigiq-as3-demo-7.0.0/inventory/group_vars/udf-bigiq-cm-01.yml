@@ -1,6 +1,6 @@
 bigiq_cm_server: 10.1.1.4
-# SEA-vBIGIP01.termmarc.com
-bigip_target_ip: 10.1.1.7
+# BOS-vBIGIP01.termmarc.com
+bigip_target_ip: 10.1.1.8
 as3_schemaVersion: 3.12.0
 task1_vs: 10.1.10.111
 task1_node1: 10.1.20.110

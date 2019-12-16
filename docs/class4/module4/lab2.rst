@@ -100,7 +100,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
            "label": "Task1",
            "remark": "Task 1 - HTTP Application Service",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com"
+               "address": "10.1.1.8"
            },
            "Task1": {
                "class": "Tenant",
@@ -165,7 +165,7 @@ POST ``https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true`` and Check i
         "label": "delete",
         "remark": "delete",
         "target": {
-            "hostname": "BOS-vBIGIP01.termmarc.com"
+            "address": "10.1.1.8"
         },
         "apptesting": {
             "class": "Tenant"

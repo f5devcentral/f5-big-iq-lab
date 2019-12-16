@@ -36,7 +36,7 @@
             label: inventory
             remark: inventory Application Service
             target:
-              hostname: SJC-vBIGIP01.termmarc.com
+              address: 10.1.1.11
             inventory:
               class: Tenant
               site38httpsBigip121:

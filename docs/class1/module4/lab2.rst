@@ -17,4 +17,4 @@ To help identify this application when you want to use it later, in the Descript
 
 For Device, select the name of the device you want to deploy this application to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
 
-- BIG-IP: Select ``SEA-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
+- BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``

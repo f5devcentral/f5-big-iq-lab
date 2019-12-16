@@ -45,6 +45,9 @@
 ## Make sure BOS BIG-IP01 is always active (limiation UDF AWS)
 */5 * * * * /home/f5/scripts/forceActiveBigipBostonCluster.sh
 
+## Set Hostname BIG-IPs (limiation UDF AWS)
+*/5 * * * * /home/f5/scripts/changeHostnameBigipAWS.sh
+
 ## WA reboot xrdp if dead
 */5 * * * * /home/f5/scripts/xrdp_monitor.sh > /dev/null 2>&1
 

@@ -33,7 +33,7 @@ POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
            "label": "Task9",
            "remark": "Task 9 - Delete Tenants",
            "target": {
-               "hostname": "BOS-vBIGIP01.termmarc.com"
+               "address": "10.1.1.8"
            },
            "Task1": {
                "class": "Tenant"
