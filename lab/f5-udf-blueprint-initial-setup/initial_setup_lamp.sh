@@ -228,6 +228,15 @@ apt install cdcat libqt5core5a libqt5network5 libqt5widgets5 -y
 #ln -s /opt/Postman/Postman /usr/bin/postman
 snap install postman
 
+echo -e "\nInstall Java"
+add-apt-repository --yes --update ppa:linuxuprising/java
+apt update
+apt install openjdk-12-jdk -y
+
+echo -e "\nInstall nmap"
+apt-get install nmap -y
+
+
 echo -e "\nInstall DNS perf"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
@@ -261,8 +270,10 @@ pip --version
 cd /home/f5student/f5-aws-vpn-ssg
 ansible-playbook 01a-install-pip.yml
 
-echo -e "\nInstall PyVmomi for VMware ansible playbooks (as f5sutdent)"
-su - f5student -c "sudo pip install PyVmomi"
+echo -e "\nInstall Python librairies (as f5sutdent)"
+su - f5student -c "pip install PyVmomi" # VMware ansible playbooks 
+su - f5student -c "pip install dnspython" # for DDOS DNS traffic generator
+su - f5student -c "sudo pip install jmespath" # for AS3 ansible playbooks 
 
 echo -e "\nInstall and Desktop and xRDP"
 apt --fix-broken install

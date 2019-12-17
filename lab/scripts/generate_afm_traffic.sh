@@ -41,7 +41,7 @@ do
         if [[  $port == 443 || $port == 80 ]]; then
                 echo -e "\n# site $i ${sitefqdn[$i]} nmap"
 
-                nmap -sS ${sitefqdn[$i]} -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
+                sudo nmap -sS ${sitefqdn[$i]} -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
 
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"

@@ -125,6 +125,8 @@ elif [[ "$1" = "restore" ]]; then
         read -p "Continue (Y/N) (Default=N):" answer
         if [[  $answer == "Y" ]]; then
             ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh load /sys ucs /var/local/ucs/${name[i]}-$d.ucs
+            # Enable iApps  ››  Package Management LX in BIG-IP UI
+            ssh -o StrictHostKeyChecking=no root@${ip[i]} touch /var/config/rest/iapps/enable
         fi
     done
 
@@ -157,19 +159,19 @@ echo -e "\nPost-Checks:
 - Import BIG-IPs to BIG-IQ
 - Create the App Services:
     airport_security:
-        AS3 security2_site18_seattle 10.1.10.118 SEA
-        AS3 security_site16_boston 10.1.10.116 BOS
-        AS3 security_fqdn airports.example.com BOS
+        AS3 security2_site18_seattle 10.1.10.118 SEA AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v1 (Paula)
+        AS3 security_site16_boston 10.1.10.116 BOS AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1 (Paula)
+        AS3 security_fqdn airports.example.com BOS AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1 (Paula)
     IT_apps
-        AS3 inventory_site38httpsBigip121 10.1.10.138
-        SC site36.example.com 10.1.10.136 BOS
-        SC site42.example.com 10.1.10.142 SEA
+        AS3 inventory_site38httpsBigip121 10.1.10.138 SJC without AS3 template (Paula)
+        SC site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template (Paula)
+        SC site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template (Paul)
     finance_apps
-        AS3 conference_site41waf 10.1.10.141 SEA
-        AS3 mail_side40waf 10.1.10.140 SEA
+        AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
+        AS3 mail_side40waf 10.1.10.140 SEA without AS3 template (Paul)
 - Test HTTP traffic is showing on BIG-IQ
 - Test Access traffic is showing on BIG-IQ
-- Test DNS traffic is showing on BIG-IQ
+- Test DNS traffic is showing on BIG-IQ (add site36.example.com 443 to Pool and add f5_https_header monitor)
 - Test Radius user can connect on BIG-IQ
 - Test VMware SSG working using DHCP (only if ESX available)
 - Test VMware Ansible playbook

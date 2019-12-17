@@ -15,7 +15,7 @@ bigip2="10.1.20.7"   #Seattle
 # if AWS, do not run the SSLO script just yet
 type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
-    # aws
+    echo "Running on AWS. Exit."
     exit 2;
 fi
 

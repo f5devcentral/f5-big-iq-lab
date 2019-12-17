@@ -58,9 +58,9 @@
                 - server:
                     bigip: "/Common/BOS-vBIGIP02.termmarc.com"
                   virtualServer: "/security/site16_boston/serviceMain"
-                - virtualServer: "/security/site18_seattle/serviceMain"
-                  server:
+                - server:
                     bigip: "/Common/SEA-vBIGIP01.termmarc.com"
+                  virtualServer: "/security2/site18_seattle/serviceMain"
                 lbModePreferred: round-robin
                 lbModeAlternate: round-robin
                 lbModeFallback: return-to-dns
