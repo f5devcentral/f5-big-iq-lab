@@ -9,9 +9,6 @@ GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-ANSIBLE_PATH="/usr/local/bin"
-PYTHON_PATH="/usr/bin"
-
 function pause(){
    read -p "$*"
 }
@@ -56,7 +53,7 @@ clear
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
 echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"
-$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 10-delete-azure-app.yml -i inventory/hosts
+ansible-playbook $DEBUG_arg 10-delete-azure-app.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
@@ -65,18 +62,18 @@ echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AZURE
 sleep 300
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
-$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 11-delete-azure-ssg-resources.yml -i inventory/hosts
+ansible-playbook $DEBUG_arg 11-delete-azure-ssg-resources.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 sleep 300
 
 # Retry delete in case first one failed
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
-$ANSIBLE_PATH/ansible-playbook $DEBUG_arg 11-delete-azure-ssg-resources.yml -i inventory/hosts
+ansible-playbook $DEBUG_arg 11-delete-azure-ssg-resources.yml -i inventory/hosts
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
-$PYTHON_PATH/python 11-delete-azure-ssg-resources-check.py
+python 11-delete-azure-ssg-resources-check.py
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "${RED}/!\ IS YOUR SSG COMPLETLY REMOVED FROM YOUR AZURE ACCOUNT? /!\ \n"
