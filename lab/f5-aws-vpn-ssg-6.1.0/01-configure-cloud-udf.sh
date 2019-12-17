@@ -10,13 +10,22 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 UDF_CLOUD="$(cat config.yml | grep UDF_CLOUD | awk '{print $2}')"
-UDF_METADATA_URL="$(cat config.yml | grep UDF_METADATA_URL | awk '{print $2}')"
+UDF_METADATA_URL_AWS="$(cat config.yml | grep UDF_METADATA_URL_AWS | awk '{print $2}')"
+UDF_METADATA_URL_RAVELLO="$(cat config.yml | grep UDF_METADATA_URL_RAVELLO | awk '{print $2}')"
 BIGIP_RELEASE="$(cat config.yml | grep BIGIP_RELEASE | awk '{print $2}')"
 
 # Create random number to make the PREFIX uniq
 sed -i "s/udf-demo/demo-$((RANDOM%9999))/g" ./config.yml
 PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 
+type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+if [[  $type == 1 ]]; then
+       echo "AWS"
+       UDF_METADATA_URL=$UDF_METADATA_URL_AWS
+else
+       echo "Ravello"
+       UDF_METADATA_URL=$UDF_METADATA_URL_RAVELLO
+fi
 cloudProvider=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.provider')
 cloudProvider=${cloudProvider:1:${#cloudProvider}-2}
 

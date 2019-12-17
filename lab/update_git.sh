@@ -201,9 +201,11 @@ if [[  $currentuser == "root" ]]; then
     #sleep 1100 && sudo chown -R $user:$user /home/$user/f5-vmware-ssg/*.log 2> /dev/null &
     chown -R $user:$user /home/$user
 
-    # Restart radius Server
+    echo -e "\nRestart Radius Server"
     /etc/init.d/freeradius restart
     /etc/init.d/freeradius status
+
+    echo -e "\n\nLAMP server initialisation COMPLETED"
 fi
 
 exit 0

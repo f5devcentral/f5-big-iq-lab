@@ -29,7 +29,7 @@ cd /home/f5/f5-aws-vpn-ssg
 #sudo easy_install pip
 #sudo pip install ansible
 #sudo apt-get install sshpass
-#sudo ansible-playbook $DEBUG_arg 01a-install-pip.yml
+ansible-playbook $DEBUG_arg 01a-install-pip.yml
 
 # Reset default GW in case SSLO script gets kill in the middle of it
 interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
@@ -57,8 +57,18 @@ PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 nPREFIX="$(echo $PREFIX | wc -m)"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
 BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
-UDF_METADATA_URL="$(cat config.yml | grep UDF_METADATA_URL | awk '{print $2}')"
+UDF_METADATA_URL_AWS="$(cat config.yml | grep UDF_METADATA_URL_AWS | awk '{print $2}')"
+UDF_METADATA_URL_RAVELLO="$(cat config.yml | grep UDF_METADATA_URL_RAVELLO | awk '{print $2}')"
 UDF_CLOUD="$(cat config.yml | grep UDF_CLOUD | awk '{print $2}')"
+
+type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+if [[  $type == 1 ]]; then
+       echo "AWS"
+       UDF_METADATA_URL=$UDF_METADATA_URL_AWS
+else
+       echo "Ravello"
+       UDF_METADATA_URL=$UDF_METADATA_URL_RAVELLO
+fi
 
 if [[ $c1 == 1 || $c3 == 1 || $c4 == 1 ]]; then
        echo -e "${RED}\nPlease, edit config.yml to configure:\n - AWS credential\n - AWS Region\n - SSH Key Name\n - Prefix (optional)"
