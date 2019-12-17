@@ -66,9 +66,10 @@ elif [[ "$1" = "sshkeys" ]]; then
         else
             root_password="$2"
         fi
-        ssh-keygen -R "$iq_lamp"
+        
         for ((i=1; i <= ${#ip[@]}; i++)); do
             echo -e "\n** ${ip[i]}"
+            ssh-keygen -R "${ip[i]}"
             echo -e "- root user:"
             sshpass -p "$root_password" ssh-copy-id -o StrictHostKeyChecking=no root@${ip[i]}
             echo -e "- admin user:"
@@ -87,6 +88,8 @@ elif [[ "$1" = "sshkeys" ]]; then
     echo -e "---------- SSH KEY EXCHANGES BIG-IQs -----------\n"
     read -p "Continue (Y/N) (Default=N):" answer
     if [[  $answer == "Y" ]]; then
+        ssh-keygen -R "$iq_cm"
+        ssh-keygen -R "$iq_dcd"
         sshpass -p admin ssh-copy-id -o StrictHostKeyChecking=no admin@$iq_cm
         sshpass -p admin ssh-copy-id -o StrictHostKeyChecking=no admin@$iq_dcd
     fi
@@ -136,6 +139,8 @@ elif [[ "$1" = "restore" ]]; then
     echo -e "reloadlic"
 
     echo -e "\nFor BIG-IP Cluster: tmsh run cm config-sync force-full-load-push to-group datasync-global-dg"
+
+    echo -e "\nApply https://support.f5.com/csp/article/K45728203 to address hostname issue in AWS."
 
     echo -e "\nAfter the restore, check UDF SSH connectivity with all BIG-IPs/BIG-IQs."
 

@@ -59,17 +59,6 @@ else
     bigiq_version_vmware=$(cat /home/$user/bigiq_version_vmware)
     bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
 
-    # Reset default GW in case SSLO script is running (or was running and terminated)
-    interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
-    type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
-    if [[  $type == 1 ]]; then
-        echo "AWS"
-        sudo ip route change default via 10.1.1.1 dev $interface
-    else
-        echo "Ravello"
-        sudo ip route change default via 10.1.1.2 dev $interface
-    fi
-
     checkDNSworks=$(nslookup "github.com" | awk -F':' '/^Address: / { matched = 1 } matched { print $2 }' | xargs)
     if [[ -z "$checkDNSworks" ]]; then
         echo -e "DNS resolution isn't working (cannot clone repo https://github.com/f5devcentral/f5-big-iq-lab)\n- Check default route 10.1.1.2 (udf), route -n\n- Check internet connectivity, ping google.com"
