@@ -49,7 +49,7 @@
 */15 * * * * /home/f5/scripts/changeHostnameBigipAWS.sh
 
 ## WA reboot xrdp if dead
-/home/f5/scripts/xrdp_monitor.sh > /dev/null 2>&1
+*/5 * * * * /home/f5/scripts/xrdp_monitor.sh > /dev/null 2>&1
 
 ## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
 @reboot sleep 82800 && /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.log
