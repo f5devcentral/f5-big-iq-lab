@@ -50,6 +50,7 @@ elif [[ "$1" = "sshkeys" ]]; then
     echo -e 'echo "root:default" | chpasswd'
     echo -e 'echo "admin:admin" | chpasswd'
     echo -e "tmsh modify auth user admin shell bash"
+    echo -e "tmsh modify /sys db users.strictpasswords value disable"
     echo -e "tmsh modify /sys db systemauth.disablerootlogin value false"
     echo -e "tmsh save sys config\n"
 
@@ -161,7 +162,7 @@ echo -e "\nPost-Checks:
 - Create Paula, Marco, David, Larry, Paul (radius) and Olivia (local) users
 - Add licenses pools examples: byol-pool, byol-pool-perAppVE, byol-pool-utility
 - Add example TMSH script: config-sync boston cluster (tmsh run cm config-sync force-full-load-push to-group datasync-global-dg)
-- Import BIG-IPs to BIG-IQ
+- Import BIG-IPs to BIG-IQ using using scripts under ./f5-ansible-bigiq-onboarding or manually using the BIG-IQ UI
 - Create the App Services:
     airport_security:
         AS3 security2_site18_seattle 10.1.10.118 SEA AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v1 (Paula)
