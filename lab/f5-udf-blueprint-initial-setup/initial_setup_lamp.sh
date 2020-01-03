@@ -273,7 +273,8 @@ ansible-playbook 01a-install-pip.yml
 echo -e "\nInstall Python librairies (as f5sutdent)"
 su - f5student -c "pip install PyVmomi" # VMware ansible playbooks 
 su - f5student -c "pip install dnspython" # for DDOS DNS traffic generator
-su - f5student -c "sudo pip install jmespath" # for AS3 ansible playbooks 
+su - f5student -c "pip install jmespath" # for AS3 ansible playbooks 
+su - f5student -c "pip install enum34" # for Ansible Tower in case it gets installed there (might be using pip3)
 
 echo -e "\nInstall and Desktop and xRDP"
 apt --fix-broken install

@@ -7,7 +7,7 @@ home="/home/f5/scripts"
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 if [  $already -gt 2 ]; then
     echo -e "The script is already running `expr $already - 2` time."
-    #killall $(basename "$0")
+    killall $(basename "$0") > /dev/null 2>&1
     exit 1
 fi
 

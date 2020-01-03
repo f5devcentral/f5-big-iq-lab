@@ -159,7 +159,17 @@ echo -e "\nPost-Checks:
 - Import ASM policies
 - Configure Radius Server on BIG-IQ
 - Configure LDAP Server on BIG-IQ
-- Create Paula, Marco, David, Larry, Paul (radius) and Olivia (local) users
+- Create Paula, Paul, Marco, David, Larry (radius) and Olivia (local) users
+- Create Cutom Application Roles
+    Application Creator AS3
+        user: olivia
+        Allow using AS3 without Template
+    Application Creator Cloud
+        user: paul
+        AS3-F5-HTTP-lb, AS3-F5-HTTPS-WAF-external-url-lb, AS3-F5-TCP-lb
+    Application Creator VMware
+        user: paula
+        AS3-F5-HTTP-lb, AS3-F5-HTTP-lb-traffic-capture, AS3-F5-HTTPS-WAF-external-url-lb, AS3-F5-FastL4-TCP-lb, AS3-F5-DNS-FQDN-A-type
 - Add licenses pools examples: byol-pool, byol-pool-perAppVE, byol-pool-utility
 - Add example TMSH script: config-sync boston cluster (tmsh run cm config-sync force-full-load-push to-group datasync-global-dg)
 - Import BIG-IPs to BIG-IQ using using scripts under ./f5-ansible-bigiq-onboarding or manually using the BIG-IQ UI
