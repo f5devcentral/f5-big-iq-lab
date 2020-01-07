@@ -2,8 +2,8 @@
   {
     "credential_type": "BIG-IQ_Creds", 
     "inputs": {
-      "iq_pass": "", 
-      "iq_user": ""
+      "iq_pass": "paula", 
+      "iq_user": "paula"
     }, 
     "asset_relation": {
       "roles": [
@@ -32,8 +32,8 @@
   {
     "credential_type": "BIG-IQ_Creds", 
     "inputs": {
-      "iq_pass": "", 
-      "iq_user": ""
+      "iq_pass": "paul", 
+      "iq_user": "paul"
     }, 
     "asset_relation": {
       "roles": [
@@ -63,7 +63,7 @@
     "credential_type": "Ansible Tower", 
     "inputs": {
       "host": "10.1.1.5", 
-      "password": "", 
+      "password": "purple123", 
       "username": "admin"
     }, 
     "asset_relation": {
@@ -329,14 +329,16 @@
     "first_name": "", 
     "last_name": "", 
     "asset_type": "user", 
-    "email": "paul@localhost.com"
+    "email": "paul@localhost.com",
+    "password": "paul"
   }, 
   {
     "username": "paula", 
     "first_name": "", 
     "last_name": "", 
     "asset_type": "user", 
-    "email": "p.local@localhost.com"
+    "email": "p.local@localhost.com",
+    "password": "paula"
   }, 
   {
     "asset_relation": {
