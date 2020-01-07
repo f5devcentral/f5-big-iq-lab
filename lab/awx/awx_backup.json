@@ -11,7 +11,8 @@
           "team": [], 
           "name": "Admin", 
           "user": [
-            "admin"
+            "admin", 
+            "paula"
           ]
         }, 
         {
@@ -41,7 +42,8 @@
           "team": [], 
           "name": "Admin", 
           "user": [
-            "admin"
+            "admin", 
+            "paul"
           ]
         }, 
         {
@@ -78,7 +80,10 @@
         {
           "team": [], 
           "name": "Use", 
-          "user": []
+          "user": [
+            "paul", 
+            "paula"
+          ]
         }, 
         {
           "team": [], 
@@ -107,7 +112,10 @@
         {
           "team": [], 
           "name": "Execute", 
-          "user": []
+          "user": [
+            "paul", 
+            "paula"
+          ]
         }, 
         {
           "team": [], 
@@ -121,22 +129,22 @@
         "Tower_Creds"
       ], 
       "survey_spec": {
-        "name": "", 
         "description": "", 
         "spec": [
           {
             "question_name": "App Name", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
             "question_description": "", 
             "required": true, 
-            "type": "text", 
+            "new_question": true, 
             "variable": "app_name", 
-            "min": 0, 
-            "max": 1024, 
-            "default": "", 
             "choices": "", 
-            "new_question": true
+            "type": "text"
           }
-        ]
+        ], 
+        "name": ""
       }
     }, 
     "project": "BIG-IQ-LAB", 
@@ -162,7 +170,10 @@
         {
           "team": [], 
           "name": "Execute", 
-          "user": []
+          "user": [
+            "paul", 
+            "paula"
+          ]
         }, 
         {
           "team": [], 
@@ -176,70 +187,70 @@
         "Tower_Creds"
       ], 
       "survey_spec": {
-        "name": "", 
         "description": "", 
         "spec": [
           {
             "question_name": "App Name", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
             "question_description": "", 
             "required": true, 
-            "type": "text", 
+            "new_question": true, 
             "variable": "app_name", 
-            "min": 0, 
-            "max": 1024, 
-            "default": "", 
             "choices": "", 
-            "new_question": true
+            "type": "text"
           }, 
           {
             "question_name": "App Type", 
+            "min": null, 
+            "default": "http_app", 
+            "max": null, 
             "question_description": "", 
             "required": true, 
-            "type": "multiplechoice", 
+            "new_question": true, 
             "variable": "app_type", 
-            "min": null, 
-            "max": null, 
-            "default": "http_app", 
             "choices": "http_app\nwaf_app", 
-            "new_question": true
+            "type": "multiplechoice"
           }, 
           {
             "question_name": "Service IP", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
             "question_description": "", 
             "required": true, 
-            "type": "text", 
+            "new_question": true, 
             "variable": "vsip", 
-            "min": 0, 
-            "max": 1024, 
-            "default": "", 
             "choices": "", 
-            "new_question": true
+            "type": "text"
           }, 
           {
             "question_name": "Node 1", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
             "question_description": "", 
             "required": true, 
-            "type": "text", 
+            "new_question": true, 
             "variable": "node1", 
-            "min": 0, 
-            "max": 1024, 
-            "default": "", 
             "choices": "", 
-            "new_question": true
+            "type": "text"
           }, 
           {
             "question_name": "Node 2", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
             "question_description": "", 
             "required": true, 
-            "type": "text", 
+            "new_question": true, 
             "variable": "node2", 
-            "min": 0, 
-            "max": 1024, 
-            "default": "", 
             "choices": "", 
-            "new_question": true
+            "type": "text"
           }
-        ]
+        ], 
+        "name": ""
       }
     }, 
     "project": "BIG-IQ-LAB", 
@@ -296,8 +307,7 @@
         {
           "id": "iq_user", 
           "type": "string", 
-          "label": "BIG-IQ User", 
-          "secret": true
+          "label": "BIG-IQ User"
         }, 
         {
           "id": "iq_pass", 
@@ -321,23 +331,25 @@
     "last_name": "", 
     "email": "root@localhost", 
     "is_superuser": true, 
-    "last_login": "2020-01-07T17:25:46.036241Z", 
+    "last_login": "2020-01-07T22:21:32.042393Z", 
     "asset_type": "user"
   }, 
   {
     "username": "paul", 
     "first_name": "", 
     "last_name": "", 
-    "asset_type": "user", 
-    "email": "paul@localhost.com",
+    "email": "paul@localhost.com", 
+    "last_login": "2020-01-07T22:21:13.509551Z", 
+    "asset_type": "user",
     "password": "paul"
   }, 
   {
     "username": "paula", 
     "first_name": "", 
     "last_name": "", 
-    "asset_type": "user", 
-    "email": "p.local@localhost.com",
+    "email": "p.local@localhost.com", 
+    "last_login": "2020-01-07T22:16:47.616773Z", 
+    "asset_type": "user",
     "password": "paula"
   }, 
   {
@@ -422,7 +434,7 @@
           "name": "bigiq"
         }, 
         {
-          "variables": "mgmt_port: 443\nmgmt_ip: 10.1.1.12", 
+          "variables": "mgmt_port: 9001\nmgmt_ip: 10.1.1.5", 
           "name": "tower"
         }
       ], 
