@@ -35,11 +35,10 @@ user="f5student"
 
 echo -e "Environement:${RED} $env ${NC}"
 
-cd /home/$user
-
-if [ -f /home/$user/udf_auto_update_git ]; then
-    echo -e "\nIn order to force the scripts/tools updates, delete the file udf_auto_update_git and re-run ./update_git.sh (optional).\n"
-else
+# run only when server boots (through /etc/rc.local as root)
+currentuser=$(whoami)
+if [[  $currentuser == "root" ]]; then
+    cd /home/$user
     # create default BIG-IQ version file
     if [ ! -f /home/$user/bigiq_version_aws ]; then
         echo "6.1.0" > /home/$user/bigiq_version_aws
@@ -116,11 +115,7 @@ else
         rm -f last_update_*
         touch last_update_$(date +%Y-%m-%d_%H-%M)
     fi
-fi
 
-# run only when server boots (through /etc/rc.local as root)
-currentuser=$(whoami)
-if [[  $currentuser == "root" ]]; then
     # Cleanup docker
     docker kill $(docker ps -q)
     docker stop $(docker ps -q)
@@ -129,8 +124,8 @@ if [[  $currentuser == "root" ]]; then
     /home/$user/scripts/cleanup-docker.sh
 
     # Start AWX Compose
-    mkdir -p ~/.awx/awxcompose/
-    cp /home/$user/awx/* ~/.awx/awxcompose/
+    mkdir -p ~/.awx/awxcompose
+    cp -p /home/$user/awx/* ~/.awx/awxcompose
     docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
 
     # Starting docker images
@@ -211,6 +206,9 @@ if [[  $currentuser == "root" ]]; then
     /etc/init.d/freeradius status
 
     echo -e "\n\nLAMP server initialisation COMPLETED"
+
+else
+    echo -e "\nIn order to force the scripts/tools updates, run ./update_git.sh as root user.\n"
 fi
 
 exit 0
