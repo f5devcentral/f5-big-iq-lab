@@ -120,6 +120,7 @@ if [[  $currentuser == "root" ]]; then
     /home/$user/scripts/cleanup-docker.sh
 
     # Start AWX Compose
+    rm -rf ~/.awx
     mkdir -p ~/.awx
     ls -lrt /home/$user/awx
     ln -snf /home/f5student/awx ~/.awx/awxcompose
