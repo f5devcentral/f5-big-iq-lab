@@ -73,8 +73,8 @@ post_body = """
         "ltm:node:9e76a6323321": [
             {
                 "parameters": {
-                    "name": "10.1.20.113",
-                    "address": "10.1.20.113"
+                    "name": "10.1.20.120",
+                    "address": "10.1.20.121"
                 },
                 "parametersToRemove": []
             },

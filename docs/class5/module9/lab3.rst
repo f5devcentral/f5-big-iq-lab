@@ -60,6 +60,8 @@ Once onboarding is complete, the BIG-IP VE will be a managed BIG-IP within BIG-I
 
   |image24|
 
+.. Warning:: In case you get following error: *"Task Failed: Failed to complete onboarding task: Unexpected response from declartive onboarding: code: 404, message: Please confirm Declartive Onboarding (DO) is running on BIG-IQ. See log for details."*, restart restnoded on the BIG-IQ CM. SSH the BIG-IQ CM server and execute ``bigstart restart restnoded``.
+
 .. |image11| image:: pictures/image11.png
    :width: 80%
 .. |image12| image:: pictures/image12.png

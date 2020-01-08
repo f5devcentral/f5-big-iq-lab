@@ -1,9 +1,8 @@
-Lab 5.8: AS3 Application Creation using Ansible Tower and BIG-IQ
-----------------------------------------------------------------
+Lab 5.8: AS3 Application Creation using AWX/Ansible Tower and BIG-IQ
+--------------------------------------------------------------------
 
-From UDF, start the **Ansible Tower 3.4.3 + Samba Server**.
-After few minutes (once the server show green), open the Ansible Tower Web Console.
-Click on the *Access* button and select *HTTPS*. Use ``admin/purple123`` to authenticate.
+Click on the *AWX (Ansible Tower)* button on the system *Ubuntu Lamp Server* in UDF.
+Use ``admin/purple123`` to authenticate.
 
 .. image:: ../pictures/module5/lab-8-1.png
   :scale: 70%

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Ubuntu 19.10 Lamp Server, RDP, Radius, Docker
-# Use Xubuntu Jumpbox v17 as a baseline in UDF
+# Ubuntu 19.10 Lamp Server
+# Use Ubuntu 18.04 LTS as a baseline in UDF
 
 # Initial script install:
-# sudo su - 
+# sudo su -
 # curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/f5-udf-blueprint-initial-setup/initial_setup_lamp.sh
 # chmod +x /root/initial_setup_lamp.sh
 # ./initial_setup_lamp.sh
@@ -116,7 +116,10 @@ apt-key fingerprint 0EBFCD88
 # add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
 add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu disco stable"
 apt update
-apt install docker-ce -y
+apt install docker-compose -y
+systemctl unmask docker.service
+systemctl unmask docker.socket
+systemctl start docker.service
 docker version
 docker info
 docker network ls
@@ -138,7 +141,7 @@ if [[  $answer == "Y" ]]; then
     # bashrc config
     echo 'cd /home/f5student
     echo
-    sudo docker images;
+    sudo docker images
     echo
     sudo docker ps
     echo
@@ -274,7 +277,7 @@ echo -e "\nInstall Python librairies (as f5sutdent)"
 su - f5student -c "pip install PyVmomi" # VMware ansible playbooks 
 su - f5student -c "pip install dnspython" # for DDOS DNS traffic generator
 su - f5student -c "pip install jmespath" # for AS3 ansible playbooks 
-su - f5student -c "pip install enum34" # for Ansible Tower in case it gets installed there (might be using pip3)
+su - f5student -c "pip install ansible-tower-cli" # for AWX / Ansible Tower
 
 echo -e "\nInstall and Desktop and xRDP"
 apt --fix-broken install
