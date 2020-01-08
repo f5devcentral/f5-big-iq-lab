@@ -122,7 +122,7 @@ if [[  $currentuser == "root" ]]; then
     # Start AWX Compose
     mkdir -p ~/.awx
     ls -lrt /home/$user/awx
-    mv /home/$user/awx ~/.awx/awxcompose
+    cp -p /home/$user/awx/* ~/.awx/awxcompose
     ls -lrt ~/.awx/awxcompose
     docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
 
