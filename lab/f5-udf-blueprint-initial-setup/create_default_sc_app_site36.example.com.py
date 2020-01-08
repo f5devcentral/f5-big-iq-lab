@@ -20,14 +20,14 @@ session.verify = False # BIG-IQ uses self-signed cert. Note: you can also supply
 session.auth = ('admin', 'purple123') # BIG-IQ must be configured for basic auth, in the console run `set-basic-auth on`
 
 # Get the template
-the_url = HOST + TEMPLATES_URL + "?$filter=name eq 'Default-f5-HTTPS-WAF-lb-template'"
+the_url = HOST + TEMPLATES_URL + "?$filter=name%20eq%20'Default-f5-HTTPS-WAF-lb-template'"
 print(the_url)
-templates = session.get(HOST + TEMPLATES_URL + "?$filter=name eq 'Default-f5-HTTPS-WAF-lb-template'").json()
+templates = session.get(HOST + TEMPLATES_URL + "?$filter=name%20eq%20'Default-f5-HTTPS-WAF-lb-template'").json()
 template_link = templates['items'][0]["selfLink"]
 
 # Get the target device
-the_url = HOST + DEVICES_URL  + "?$filter=managementAddress eq '10.1.1.8'"
-device = session.get(HOST + DEVICES_URL  + "?$filter=managementAddress eq '10.1.1.8'").json()['items'][0] # Just pick the first one
+the_url = HOST + DEVICES_URL  + "?$filter=managementAddress%20eq%20'10.1.1.8'"
+device = session.get(HOST + DEVICES_URL  + "?$filter=managementAddress%20eq%20'10.1.1.8'").json()['items'][0] # Just pick the first one
 device_link = device["selfLink"]
 
 post_body = """

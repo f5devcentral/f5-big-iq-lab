@@ -27,7 +27,7 @@ List of instances.
 If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com) or Kyle Oliver (k.oliver@f5.com)
 
 ###################################################
-Name: Ubuntu 19.04 Lamp Server, RDP, Radius, Docker
+Name: Ubuntu 19.10 Lamp Server, RDP, Docker, AWX
 
 List of Virtual Servers and Applications Servers where various type of traffic is being send to (check crontab config for more details).
 - Virtual IP addresses where the traffic generator sends HTTP clean traffic	10.1.10.110 to 10.1.10.142 (except 10.1.10.117, 10.1.10.119 and 10.1.10.121 (used for access in class 9)
@@ -40,7 +40,7 @@ List of Virtual Servers and Applications Servers where various type of traffic i
   - Port 8080: web-dvwa application
   - Port 8081: f5-hello-world application
   - Port 8082: f5-demo-httpd application
-  - Port 445: ASM Policy Validator
+  - Port 446: ASM Policy Validator
 
 IPs from 10.1.10.110 to 10.1.10.138 have a corresponding FQDN named from site10.example.com to site42.example.com.
 
@@ -79,3 +79,11 @@ Users: look at ldap/f5demo.ldif file
 Splunk server:
 IP 10.1.1.5 port 8000 https
 HTTP Event Data Collector port 8088
+
+AWX (Ansible Tower):
+IP 10.1.1.5 port 9001 http
+
+Samba:
+IP 10.1.1.5
+/dcdbackup
+workgroup = WORKGROUP

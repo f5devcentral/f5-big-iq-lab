@@ -112,6 +112,10 @@ if [[  $currentuser == "root" ]]; then
         touch last_update_$(date +%Y-%m-%d_%H-%M)
     fi
 
+    echo -e "\nRestart Radius Server"
+    /etc/init.d/freeradius restart
+    /etc/init.d/freeradius status
+
     # Cleanup docker
     docker kill $(docker ps -q)
     docker stop $(docker ps -q)
@@ -197,8 +201,7 @@ if [[  $currentuser == "root" ]]; then
     #sleep 1100 && sudo chown -R $user:$user /home/$user/f5-vmware-ssg/*.log 2> /dev/null &
     chown -R $user:$user /home/$user
 
-    echo -e "\nRestart Radius Server"
-    /etc/init.d/freeradius restart
+    echo -e "\nStatus Radius Server"
     /etc/init.d/freeradius status
 
     echo -e "\n\nLAMP server initialisation COMPLETED"
