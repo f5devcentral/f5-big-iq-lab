@@ -128,6 +128,11 @@ if [[  $currentuser == "root" ]]; then
     docker rmi $(docker images -q) -f
     /home/$user/scripts/cleanup-docker.sh
 
+    # Start AWX Compose
+    mkdir -p ~/.awx/awxcompose/
+    cp /home/$user/awx/* ~/.awx/awxcompose/
+    docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
+
     # Starting docker images
     docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
     docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
@@ -180,6 +185,17 @@ if [[  $currentuser == "root" ]]; then
     docker cp f5-demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
     docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
+
+    # AWX Configure
+    # Configure AWX
+    tower-cli config host http://localhost:9001
+    tower-cli config username admin
+    tower-cli config password purple123
+    tower-cli config verify_ssl False
+    echo "Sleeping 2m for AWX db to be ready"
+    sleep 2m
+    tower-cli send ~/.awx/awxcompose/awx_backup.json
+    tower-cli send ~/.awx/awxcompose/awx_backup.json
 
     docker images
     docker ps -a

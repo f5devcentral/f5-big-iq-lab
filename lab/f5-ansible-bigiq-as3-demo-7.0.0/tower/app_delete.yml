@@ -73,6 +73,3 @@
 
     - debug:
         var: json_response_task.json
-
-# Create Ansible Tower Template based on Application
-- import_playbook: tower_template_delete.yml
