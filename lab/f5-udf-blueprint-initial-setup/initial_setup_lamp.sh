@@ -272,7 +272,7 @@ mkdir /dcdbackup
 chown -R nobody:nogroup /dcdbackup
 systemctl restart smbd
 smbclient -L localhost -N
-echo -e "\nTo test the Samba/CIFS server from BIG-IQ: mount.cifs //10.1.1.12/dcdbackup /tmp/testfolder user=admin\nworkgroup = WORKGROUP"
+echo -e "\nTo test the Samba/CIFS server from BIG-IQ:\nmkdir /tmp/testfolder\nmount.cifs //10.1.1.5/dcdbackup /tmp/testfolder -o user=,password=\n\nworkgroup = WORKGROUP\n"
 
 echo -e "\nInstall Azure CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
