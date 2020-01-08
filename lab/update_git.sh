@@ -122,9 +122,7 @@ if [[  $currentuser == "root" ]]; then
     # Start AWX Compose
     rm -rf ~/.awx
     mkdir -p ~/.awx
-    ls -lrt /home/$user/awx
-    ln -snf /home/f5student/awx ~/.awx/awxcompose
-    ls -lrt ~/.awx/awxcompose/
+    ln -snf /home/$user/awx ~/.awx/awxcompose
     docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
 
     # Starting docker images
@@ -133,7 +131,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
     docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     # ASM Policy Validator
-    docker run --restart=unless-stopped --name=app-sec -dit -p 445:8443 artioml/f5-app-sec
+    docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
     # ASM Brute Force
     docker build /home/$user/scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
@@ -180,13 +178,12 @@ if [[  $currentuser == "root" ]]; then
     docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
     docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
-    # AWX Configure
     # Configure AWX
     tower-cli config host http://localhost:9001
     tower-cli config username admin
     tower-cli config password purple123
     tower-cli config verify_ssl False
-    echo "Sleeping 2m for AWX db to be ready"
+    echo "Sleeping 2 min for AWX db to be ready."
     sleep 2m
     tower-cli send ~/.awx/awxcompose/awx_backup.json
     tower-cli send ~/.awx/awxcompose/awx_backup.json
@@ -207,7 +204,7 @@ if [[  $currentuser == "root" ]]; then
     echo -e "\n\nLAMP server initialisation COMPLETED"
 
 else
-    echo -e "\nIn order to force the scripts/tools updates, run ./update_git.sh as root user.\n"
+    echo -e "\nIn order to force the lab scripts updates and re-build ALL docker containers, run ./update_git.sh as root user.\n"
 fi
 
 exit 0

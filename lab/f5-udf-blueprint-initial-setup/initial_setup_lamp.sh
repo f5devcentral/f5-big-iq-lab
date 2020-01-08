@@ -147,7 +147,7 @@ if [[  $answer == "Y" ]]; then
     echo
     echo "To connect to a docker instance: sudo docker exec -i -t <Container ID> /bin/bash"
     echo
-    echo -e "To get the latest tools/scripts, execute: ./update_git.sh as root"
+    echo -e "\nIn order to force the lab scripts updates and re-build ALL docker containers, run ./update_git.sh as root user.\n"
     echo
     sudo su - f5student' >> /home/ubuntu/.bashrc
 
@@ -249,6 +249,30 @@ cd dnsperf-src-2.0.0.0-1
 make
 make install
 rm -f dnsperf-src-2.0.0.0-1.tar.gz
+
+echo -e "\nInstall Samba"
+[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+apt install samba samba-client -y
+cp -p /etc/samba/smb.conf /etc/samba/smb.conf.orig
+echo "[global]
+workgroup = WORKGROUP
+server string = Samba Server %v
+netbios name = centos
+security = user
+map to guest = bad user
+dns proxy = no
+#============================ Share Definitions ==============================
+[dcdbackup]
+path = /dcdbackup
+browsable =yes
+writable = yes
+guest ok = yes
+read only = no" > /etc/samba/smb.conf
+mkdir /dcdbackup
+chown -R nobody:nogroup /dcdbackup
+systemctl restart smbd
+smbclient -L localhost -N
+echo -e "\nTo test the Samba/CIFS server from BIG-IQ: mount.cifs //10.1.1.12/dcdbackup /tmp/testfolder user=admin\nworkgroup = WORKGROUP"
 
 echo -e "\nInstall Azure CLI"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
