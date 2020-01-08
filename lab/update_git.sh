@@ -120,11 +120,11 @@ if [[  $currentuser == "root" ]]; then
     /home/$user/scripts/cleanup-docker.sh
 
     # Start AWX Compose
-    mkdir -p ~/.awx
+    mkdir -p /root/.awx
     ls -lrt /home/$user/awx
-    cp -p /home/$user/awx/* ~/.awx/awxcompose
-    ls -lrt ~/.awx/awxcompose
-    docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
+    cp -p /home/$user/awx/* /root/.awx/awxcompose
+    ls -lrt /root/.awx/awxcompose
+    docker-compose -f /root/.awx/awxcompose/docker-compose.yml up -d
 
     # Starting docker images
     docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
@@ -187,8 +187,8 @@ if [[  $currentuser == "root" ]]; then
     tower-cli config verify_ssl False
     echo "Sleeping 2m for AWX db to be ready"
     sleep 2m
-    tower-cli send ~/.awx/awxcompose/awx_backup.json
-    tower-cli send ~/.awx/awxcompose/awx_backup.json
+    tower-cli send /root/.awx/awxcompose/awx_backup.json
+    tower-cli send /root/.awx/awxcompose/awx_backup.json
 
     docker images
     docker ps -a
