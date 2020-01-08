@@ -38,4 +38,3 @@ rm -f ~/ldap/f5-ldap.log
 rm -f ~/f5-vmware-ssg/*.log
 rm -f ~/update_git.log
 rm -f ~/.bash_history
-rm -f ~/udf_auto_update_git

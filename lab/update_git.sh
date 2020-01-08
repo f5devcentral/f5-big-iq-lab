@@ -20,9 +20,6 @@
 # If you need to force a folder to be a specific version different than the default one set in the flat file in the blueprint, edit the file.
 # e.g. echo "6.1.0" > ~/bigiq_version_aws
 
-# BEFORE SAVING THE BLUEPRINT, DELETE udf_auto_update_git so new deployment will download the latest version of the lab scripts/tools.
-# rm ~/udf_auto_update_git 
-
 #####################################################
 
 RED='\033[0;31m'
@@ -111,7 +108,6 @@ if [[  $currentuser == "root" ]]; then
             su - $user -c "crontab < crontab.txt"
         fi
     
-        touch udf_auto_update_git
         rm -f last_update_*
         touch last_update_$(date +%Y-%m-%d_%H-%M)
     fi

@@ -145,12 +145,9 @@ if [[  $answer == "Y" ]]; then
     echo
     sudo docker ps
     echo
-    echo "To run Kali Linux Docker Image: sudo docker run -t -i kalilinux/kali-linux-docker /bin/bash"
-    echo "(run apt update && apt install metasploit-framework after starting Kali Linux)"
-    echo
     echo "To connect to a docker instance: sudo docker exec -i -t <Container ID> /bin/bash"
     echo
-    echo -e "To get the latest tools/scripts, execute: ./update_git.sh"
+    echo -e "To get the latest tools/scripts, execute: ./update_git.sh as root"
     echo
     sudo su - f5student' >> /home/ubuntu/.bashrc
 
@@ -378,8 +375,6 @@ echo -e "\nPost-Checks:
 - Re-arrange Favorites in the task bar (have Chrome, Firefox, Terminal, Postman)
 - Test Launch Chrome & Firefox
 - Add bookmark of the BIG-IQ CE lab guide and Splunk
-- Add postman collection from f5-ansible-bigiq-as3-demo-7.0.0, disable SSL in postman\n\n
-
-/!\ Make sure you delete /home/f5student/udf_auto_update_git file before saving the blueprint /!\ "
+- Add postman collection from f5-ansible-bigiq-as3-demo-7.0.0, disable SSL in postman\n\n"
 
 exit 0
