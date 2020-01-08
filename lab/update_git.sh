@@ -120,8 +120,9 @@ if [[  $currentuser == "root" ]]; then
     /home/$user/scripts/cleanup-docker.sh
 
     # Start AWX Compose
-    mkdir -p ~/.awx/awxcompose
-    cp -p /home/$user/awx/* ~/.awx/awxcompose
+    mkdir -p ~/.awx
+    ls -lrt /home/$user/awx
+    cp -rp /home/$user/awx ~/.awx/awxcompose
     docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
 
     # Starting docker images
