@@ -15,13 +15,11 @@ Official documentation about BOT Monitoring on BIG-IQ can be found on the `BIG-I
 
 Connect as **david** on BIG-IQ.
 
-1. Create the DCD Pool and Log Destinations.
+1. Create the DCD Pool and Log Destinations. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
-Naviate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
-
-Name: bot-remote-dcd-asm-pool
-Health Monitors: tcp
-Pool Member/Port: 10.1.10.6:8514
+- Name: bot-remote-dcd-asm-pool
+- Health Monitors: tcp
+- Pool Member/Port: 10.1.10.6:8514
 
 .. image:: ../pictures/module1/img_module1_lab1_1.png
   :align: center
@@ -29,11 +27,11 @@ Pool Member/Port: 10.1.10.6:8514
 
 |
 
-Naviate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
+  Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
-Name Log Destination hslog: bot-remote-logging-destination-remote-hslog-8514
-Device: SEA-vBIGIP01.termmarc.com
-Pool: bot-remote-dcd-asm-pool (previously created)
+- Name Log Destination hslog: bot-remote-logging-destination-remote-hslog-8514
+- Device: SEA-vBIGIP01.termmarc.com
+- Pool: bot-remote-dcd-asm-pool (previously created)
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
@@ -41,11 +39,11 @@ Pool: bot-remote-dcd-asm-pool (previously created)
 
 |
 
-Naviate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
+  Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
-Name Log Destination Splunk: bot-remote-logging-destination-splunk-8514
-Type: Splunk
-Forward To: Remote High Speed Log - bot-remote-logging-destination-remote-hslog-8514 (previously created)
+- Name Log Destination Splunk: bot-remote-logging-destination-splunk-8514
+- Type: Splunk
+- Forward To: Remote High Speed Log - bot-remote-logging-destination-remote-hslog-8514 (previously created)
 
 .. image:: ../pictures/module1/img_module1_lab1_3.png
   :align: center
@@ -53,14 +51,12 @@ Forward To: Remote High Speed Log - bot-remote-logging-destination-remote-hslog-
 
 |
 
-.. note:: this is to add the formating supported by BIG-IQ)
+.. note:: This is to add the formating supported by BIG-IQ
 
-2. Create the Log Publisher.
+2. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
 
-Naviate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
-
-Name: bot-remote-logging-publisher-8514
-Log Destinations: bot-remote-logging-destination-splunk-8514  (previously created)
+- Name: bot-remote-logging-publisher-8514
+- Log Destinations: bot-remote-logging-destination-splunk-8514  (previously created)
 
 .. image:: ../pictures/module1/img_module1_lab1_4.png
   :align: center
@@ -68,9 +64,7 @@ Log Destinations: bot-remote-logging-destination-splunk-8514  (previously crea
 
 |
 
-3. Pin the new Log Publisher to the SEA-vBIGIP01.termmarc.com device.
-
-Naviate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
+3. Pin the new Log Publisher to the SEA-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_5.png
   :align: center
@@ -92,7 +86,7 @@ Make sure the deployment is successfull.
 
 Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
-6. Create the Bot Defense Profile. Naviate to Security > Bot Defense. Click Create.
+6. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
 
 .. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
 
@@ -195,7 +189,7 @@ of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
 
 |
 
-Open Chrome and naviate to the URL http\:\/\/10.1.10.124.
+Open Chrome and Navigate to the URL http\:\/\/10.1.10.124.
 
 .. image:: ../pictures/module1/img_module1_lab1_15.png
   :align: center
