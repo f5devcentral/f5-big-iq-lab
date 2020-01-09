@@ -5,6 +5,10 @@ Protects apps from automated attacks by bots and other malicious tools.
 The goal of this lab is to show how to use BIG-IQ to configure the BOT protection to an HTTP Application Service 
 and how to use BIG-IQ BOT Dashboards to monitors the BOT traffic.
 
+.. note:: This lab requires BIG-IP 14.1 and BIG-IQ 7.0 minimum. AVR also needs to be provisioned on the device. See more details `K12121934`_.
+
+.. _`K12121934`: https://support.f5.com/csp/article/K12121934
+
 Official documentation about BOT Monitoring on BIG-IQ can be found on the `BIG-IQ Knowledge Center`_.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/mitigating-managing-bot-defense-using-big-iq/monitoring-bot-defense-activity.html
@@ -177,7 +181,7 @@ Connect as **david** on BIG-IQ.
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
-``while true; do curl http://10.1.10.124; sleep 1; done``
+``while true; do curl http\:\/\/10.1.10.124; sleep 1; done``
 
 From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. 
 To do this, in your UDF deployment, click on the *Access* button
@@ -191,7 +195,7 @@ of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
 
 |
 
-Open Chrome and naviate to the URL http://10.1.10.124.
+Open Chrome and naviate to the URL http\:\/\/10.1.10.124.
 
 .. image:: ../pictures/module1/img_module1_lab1_15.png
   :align: center
