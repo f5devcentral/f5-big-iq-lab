@@ -56,7 +56,7 @@ Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click C
 2. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
 
 - Name: bot-remote-logging-publisher-8514
-- Log Destinations: bot-remote-logging-destination-splunk-8514  previously created
+- Log Destinations: bot-remote-logging-destination-splunk-8514 previously created
 
 .. image:: ../pictures/module1/img_module1_lab1_4.png
   :align: center
