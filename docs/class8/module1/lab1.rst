@@ -27,11 +27,11 @@ Connect as **david** on BIG-IQ.
 
 |
 
-  Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
+Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
 - Name Log Destination hslog: bot-remote-logging-destination-remote-hslog-8514
 - Device: SEA-vBIGIP01.termmarc.com
-- Pool: bot-remote-dcd-asm-pool (previously created)
+- Pool: bot-remote-dcd-asm-pool previously created
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
@@ -39,11 +39,11 @@ Connect as **david** on BIG-IQ.
 
 |
 
-  Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
+Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
 - Name Log Destination Splunk: bot-remote-logging-destination-splunk-8514
 - Type: Splunk
-- Forward To: Remote High Speed Log - bot-remote-logging-destination-remote-hslog-8514 (previously created)
+- Forward To: Remote High Speed Log - bot-remote-logging-destination-remote-hslog-8514 previously created
 
 .. image:: ../pictures/module1/img_module1_lab1_3.png
   :align: center
@@ -56,7 +56,7 @@ Connect as **david** on BIG-IQ.
 2. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
 
 - Name: bot-remote-logging-publisher-8514
-- Log Destinations: bot-remote-logging-destination-splunk-8514  (previously created)
+- Log Destinations: bot-remote-logging-destination-splunk-8514  previously created
 
 .. image:: ../pictures/module1/img_module1_lab1_4.png
   :align: center
