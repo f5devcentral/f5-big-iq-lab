@@ -21,9 +21,9 @@ interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ prin
 type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
     echo "AWS"
-    sudo route del default gw 10.1.20.13
-    sudo route del default gw 10.1.20.7
-    sudo route add default gw 10.1.1.1
+    #sudo route del default gw 10.1.20.13
+    #sudo route del default gw 10.1.20.7
+    #sudo route add default gw 10.1.1.1
 else
     echo "Ravello"
     sudo ip route change default via 10.1.1.2 dev $interface

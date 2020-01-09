@@ -1,5 +1,5 @@
-Class 10: BIG-IQ DNS
-====================
+Class 10: BIG-IQ DNS Management 
+===============================
 
 In this class, we will review the DNS Management in BIG-IQ 6.0 and above.
 

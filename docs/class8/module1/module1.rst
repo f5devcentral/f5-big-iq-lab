@@ -1,11 +1,7 @@
-Module 1: Configuration and Visualization ASM on BIG-IQ
-=======================================================
+Module 1: Advanced Web Application Firewall (WAF) on BIG-IQ
+===========================================================
 
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
-
-`Open a Pull request on GitHub`_
-
-.. _Open a Pull request on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/pulls
+In this class, we will review the Advanced Web Application Firewall (WAF) in BIG-IQ 7.0 and above.
 
 .. toctree::
    :maxdepth: 1

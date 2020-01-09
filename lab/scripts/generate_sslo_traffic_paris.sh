@@ -14,6 +14,13 @@ if [  $already -gt 2 ]; then
     exit 1
 fi
 
+# check if AWS or Ravello
+type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+if [[  $type == 1 ]]; then
+    echo "AWS"
+    exit 2
+fi
+
 # Only run the script if PARIS-vBIGIP01.termmarc.com.v14.1 is alive.
 if ping -c 1 $bigip1 &> /dev/null
 then
@@ -68,9 +75,9 @@ then
     type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
     if [[  $type == 1 ]]; then
         echo "AWS"
-        sudo route del default gw $bigip1
-        sudo route del default gw $bigip2
-        sudo route add default gw 10.1.1.1
+        #sudo route del default gw $bigip1
+        #sudo route del default gw $bigip2
+        #sudo route add default gw 10.1.1.1
     else
         echo "Ravello"
         sudo ip route change default via 10.1.1.2 dev $interface2

@@ -157,8 +157,8 @@ echo -e "\nPost-Checks:
 - Upgrade BIG-IQ to the latest version or version needed
 - Import default AS3 templates
 - Import ASM policies
-- Configure Radius Server on BIG-IQ
-- Configure LDAP Server on BIG-IQ
+- Configure Radius Server on BIG-IQ: RadiusServer
+- Configure LDAP Server on BIG-IQ: serverLdap
 - Create Paula, Paul, Marco, David, Larry (radius) and Olivia (local) users
 - Create Cutom Application Roles
     Application Creator AS3
@@ -182,6 +182,7 @@ echo -e "\nPost-Checks:
         AS3 inventory_site38httpsBigip121 10.1.10.138 SJC without AS3 template (Paula)
         Service Catalog site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template (Paula)
         Service Catalog site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template (Paul)
+        Legacy App media.site34.example.com 10.1.10.134 BOS (Paula)
     # finance_apps
         AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
         AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)

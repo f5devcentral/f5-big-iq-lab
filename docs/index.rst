@@ -63,10 +63,9 @@ This lab environment is available in UDF for internal F5 users.
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 12.1 / 1 standalone (SJC)
-- LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
-- Ansible Tower
-- SSLo Service TAP and L2
-- ESXi 6.5.0 + vCenter
+- LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security), Samba, AWX/Ansible Tower.
+- SSLo Service TAP and L2 (only with UDF Ravello)
+- ESXi 6.5.0 + vCenter (only with UDF Ravello)
 
 **Components available**:
 
@@ -128,12 +127,3 @@ This lab environment is available in UDF for internal F5 users.
 .. _BIG-IP Cloud Edition Trial on AWS and Azure: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
 .. _BIG-IQ Onboarding with Docker and Ansible: https://github.com/f5devcentral/f5-big-iq-onboarding
-
-------------
-
-.. warning:: When using the UDF, make sure:
-
-   #. STOP the ESXi if you do not plan to demo VMware SSG or VE creation.
-   #. STOP your deployment at the end of your demo.
-   #. Do not forget to tear down your AWS & Azure SSG or VE(s) if any.
-   #. In case of demonstrating VMware SSG, use only Arizona, Virginia or Frankfurt region to get good performance.
