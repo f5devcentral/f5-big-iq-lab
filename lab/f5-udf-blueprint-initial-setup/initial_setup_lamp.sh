@@ -109,7 +109,7 @@ ip addr
 ifconfig
 
 echo -e "\nInstall Docker"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apt-transport-https ca-certificates curl software-properties-common -y
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 apt-key fingerprint 0EBFCD88
@@ -131,7 +131,7 @@ if [[  $answer == "Y" ]]; then
     echo "f5student:purple123" | chpasswd
 
     echo -e "\nCustomisation Users"
-    [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+    pause "Press [Enter] key to continue... CTRL+C to Cancel"
     ln -snf /home/f5student /home/f5
     chown -R f5student:f5student /home/f5
     echo 'f5student ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
@@ -169,7 +169,7 @@ if [[  $answer == "Y" ]]; then
 fi
 
 echo -e "\nInstall DHCP service"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install isc-dhcp-server -y
 echo 'INTERFACES="ens3"' > /etc/default/isc-dhcp-server
 echo 'default-lease-time 600;
@@ -187,7 +187,7 @@ range   10.1.1.220   10.1.1.250;
 dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
 
 echo -e "\nInstall Radius service"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install freeradius -y
 freeradius –v
 echo 'paula   Cleartext-Password := "paula"
@@ -204,14 +204,14 @@ shortname = bigiq
 /etc/init.d/freeradius status
 
 echo -e "\nInstall Apache Benchmark, Git, SNMPD, jq"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apache2-utils -y
 apt install git git-lfs -y
 apt install snmpd snmptrapd -y
 apt install jq -y
 
 echo -e "\nInstall Ansible and sshpass"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install software-properties-common -y
 apt-add-repository --yes --update ppa:ansible/ansible
 apt update
@@ -220,7 +220,7 @@ apt install sshpass -y
 ansible-playbook --version
 
 echo -e "\nInstall Postman"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install cdcat libqt5core5a libqt5network5 libqt5widgets5 -y 
 #wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
 #tar -xzf postman.tar.gz -C /opt
@@ -238,7 +238,7 @@ apt install nmap -y
 apt install hping3 -y
 
 echo -e "\nInstall DNS perf"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
 apt install gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev -y
 apt --fix-broken install
@@ -251,7 +251,7 @@ make install
 rm -f dnsperf-src-2.0.0.0-1.tar.gz
 
 echo -e "\nInstall Samba"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install samba samba-client -y
 cp -p /etc/samba/smb.conf /etc/samba/smb.conf.orig
 echo "[global]
@@ -275,7 +275,7 @@ smbclient -L localhost -N
 echo -e "\nTo test the Samba/CIFS server from BIG-IQ:\nmkdir /tmp/testfolder\nmount.cifs //10.1.1.5/dcdbackup /tmp/testfolder -o user=,password=\n\nworkgroup = WORKGROUP\n"
 
 echo -e "\nInstall Azure CLI"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 AZ_REPO=$(lsb_release -cs)
 echo "deb [arch=amd64] https://packages.microsoft.com/repos/azure-cli/ $AZ_REPO main" | \
 tee /etc/apt/sources.list.d/azure-cli.list
@@ -287,7 +287,7 @@ apt --fix-broken install -y
 apt install apt-transport-https azure-cli -y
 
 echo -e "\nInstall AWS CLI"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install python-pip -y
 apt --fix-broken install -y
 pip --version
@@ -322,13 +322,13 @@ service xrdp restart
 
 # Chrome needs to be before Deskop
 echo -e "\nInstall Chrome"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 #echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 dpkg -i google-chrome-stable_current_amd64.deb
 
 echo -e "\nSystem customisation (e.g. host file)"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 echo '10.1.10.110 site10.example.com
 10.1.10.111 site11.example.com
 10.1.10.112 site12.example.com
@@ -367,7 +367,7 @@ echo '10.1.10.110 site10.example.com
 10.1.10.145 site45.example.com' >> /etc/hosts
 
 echo -e "\nInstall and execution of update_git.sh"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo '#!/bin/sh -e
 

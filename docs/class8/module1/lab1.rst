@@ -175,7 +175,7 @@ Connect as **david** on BIG-IQ.
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
-``while true; do curl http\:\/\/10.1.10.124; sleep 1; done``
+``while true; do curl http://10.1.10.124; sleep 1; done``
 
 From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. 
 To do this, in your UDF deployment, click on the *Access* button
