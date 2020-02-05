@@ -15,7 +15,13 @@ Official documentation about BOT Monitoring on BIG-IQ can be found on the `BIG-I
 
 Connect as **david** on BIG-IQ.
 
-1. Create the DCD Pool and Log Destinations. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
+1. First make sure your device has ASM module discovered and imported.
+
+2. Check if the ASM service is Active.
+
+System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
+
+3. Create the DCD Pool and Log Destinations. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
 - Name: bot-remote-dcd-asm-pool
 - Health Monitors: tcp
@@ -53,7 +59,7 @@ Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click C
 
 .. note:: This is to add the formating supported by BIG-IQ
 
-2. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
+4. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
 
 - Name: bot-remote-logging-publisher-8514
 - Log Destinations: bot-remote-logging-destination-splunk-8514 previously created
@@ -64,7 +70,7 @@ Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click C
 
 |
 
-3. Pin the new Log Publisher to the SEA-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
+5. Pin the new Log Publisher to the SEA-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_5.png
   :align: center
@@ -72,7 +78,7 @@ Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click C
 
 |
 
-4. Deploy the Pool, Log Destinations and Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
+6. Deploy the Pool, Log Destinations and Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
 
 Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
@@ -86,7 +92,7 @@ Make sure the deployment is successfull.
 
 Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
-6. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
+7. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
 
 .. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
 
@@ -114,7 +120,7 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 |
 
-6. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+8. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
 
 .. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
 
@@ -136,7 +142,7 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 |
 
 
-7. Create an HTTP Virtual Server with the following parameters:
+9. Create an HTTP Virtual Server with the following parameters:
 
 .. warning:: This step could be done from BIG-IQ but in order to avoid going back and forth between BIG-IP and BIG-IQ,
              we are creating the HTTP Application Service from BIG-IP.
@@ -157,7 +163,7 @@ Edit the VIP and go to Security tab. Assign the Bot Defense Profile and the Log 
 
 Connect as **david** on BIG-IQ.
 
-8. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
+10. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
@@ -171,7 +177,7 @@ Connect as **david** on BIG-IQ.
 
 |
 
-9. On Lamp server, generate HTTP traffic from a browser and CLI.
+11. On Lamp server, generate HTTP traffic from a browser and CLI.
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
@@ -199,7 +205,7 @@ Open Chrome and Navigate to the URL http\:\/\/10.1.10.124.
 
 Notice the HTTP requests are going through when using a real browser but are blocked when using curl.
 
-10. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under Monitoring > DASHBOARDS > Bot Traffic.
+12. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under Monitoring > DASHBOARDS > Bot Traffic.
 
 .. image:: ../pictures/module1/img_module1_lab1_16.png
   :align: center

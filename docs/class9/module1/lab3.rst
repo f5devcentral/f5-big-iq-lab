@@ -1,116 +1,120 @@
-Lab 1.3: Create Application
----------------------------
-Connect as **paula** to create a new application, and click on *Create*, select the template previously created ``f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template-custom1``.
+Lab 1.3: Create a new VPN Access profile
+----------------------------------------
 
-Type in a Name for the application you are creating.
+-  Navigate to ConfigurationAccessAccess Groups
 
-- Application Name: ``site19auth.example.com``
+-  Select BostonAG
 
-To help identify this application when you want to use it later, in the Description field, type in a brief description for the application you are creating.
+|image24|
 
-- Description: ``My Application on F5 Cloud Edition with authentication``
+You can see all of the access policies listed in the Per Session
+Policies:
 
-Type  the domain of your application (then the ASM policy will always be transparent for this domain)
+|image25|
 
-- Domain Names: ``site19auth.example.com``
+Click Create and you will see the Access Policy creation screen. Give it
+a name of “VPN-AP” and click on **Save & Close**. You can change the
+view from Basic -> Advanced if you want to modify additional settings
+such as timeouts, SSO, logout URI, etc..
 
-For Device, select the name of the device you want to deploy this application to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
+|image26|
 
-- BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
+Then click “New” in macros and select “AD Auth and resources” template.
+Then click the “OK” button.
 
-.. image:: ../pictures/module1/img_module1_lab3_1.png
-   :align: center
-   :scale: 50%
+|image27|
 
-|
+Click on the AD Auth object and use the Server drop down to select
+FrogPolicy-olympus-ad then click Save.
 
-Determine the objects that you want to deploy in this application.
-To omit any of the objects defined in this template, click the  (X) icon that corresponds to that object.
-To create additional copies of any of the objects defined in this template, click the  (+) icon that corresponds to that object.
+|image28| |image29|
 
-In the example, fill out the Server's IP addresses/ports (nodes) and virtual servers names, IPs and ports.
+Now click the Resource Assign object. In the pop up window click the Add
+button. Expand the Network Access section and move the
+/Common/FrogPolicy-F5\_VPN from the Available section to the Selected
+section and click the Save button.
 
-- Servers (Pool Member): ``10.1.20.125`` and ``10.1.20.133``
-- Service Port: ``8081``
+|image30|
 
-LB (Virtual Server):
+The result will look like the picture below, click the Save button on
+this screen.
 
-- Destination Address: ``10.1.10.119``
-- Destination Network Mask: ``255.255.255.255``
-- Service Port: ``443``
+|image31|
 
-HTTP Redirect (Virtual Server):
+Then add the macro into the VPE by hovering mouse over blue line and
+selecting the Green plus sign. Then change the ending on the
+“Successful” branch to **Allow**. Then click Save buttons to complete.
 
-- Destination Address: ``10.1.10.119``
-- Destination Network Mask: ``255.255.255.255``
-- Service Port: ``80``
+|image32|\ |image33|
 
-It is good practice to type the Prefix that you want the system to use to make certain that all of the objects created when you deploy an application are uniquely named.
+|image34|
 
-.. image:: ../pictures/module1/img_module1_lab3_2.png
-   :align: center
-   :scale: 50%
+After creating and saving the access profile, go to “Deployment - >
+Evaluate & Deploy -> Access”.
 
-|
+Click on “Create” in Evaluations, give it a name, and select
+BOS-vBIGIP01/02 devices.
 
-Then Click on Create (bottom right of the window).
-The Application is deployed.
+|image35|
 
-.. image:: ../pictures/module1/img_module1_lab3_3.png
-   :align: center
-   :scale: 50%
+Click on View after the evaluation is done to view the changes in Green.
 
-|
+|image36|
 
-.. note:: In case the Application fails, connect as **Marco** and go to Applications > Application Deployments to have more details on the failure. You try retry in case of failure.
+|image37|
 
-.. note:: You can tail the logs: /var/log/restjavad.0.log
+Then Click on Deploy and verify the new VPN Access Profile is pushed
+onto the BIG-IP device BOS01.
 
-In **Paula**'s Dashboard, she can see her Application.
+|image38|
 
-.. image:: ../pictures/module1/img_module1_lab3_4.png
-   :align: center
-   :scale: 50%
+|image39|
 
-|
-
-Launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
-
-.. image:: ../pictures/module1/img_module1_lab3_5.png
-   :align: center
-   :scale: 50%
-
-|
-
-Open Chrome and navigate on the website https\:\/\/site19auth.example.com. 
-
-.. image:: ../pictures/module1/img_module1_lab3_5.png
-   :align: center
-   :scale: 50%
-
-|
-
-Fill in user/password to authenticate to the application: ``paula``/``paula``
-
-.. image:: ../pictures/module1/img_module1_lab3_6.png
-   :align: center
-   :scale: 50%
-
-|
-
-Back on BIG-IQ, click on the Application and check the Analytics coming in.
-
-.. image:: ../pictures/module1/img_module1_lab3_7.png
-   :align: center
-   :scale: 50%
-
-|
-
-.. note:: The timeout on the access policy were updated for the purpose of this lab:
-
-  - Inactivity Timeout: ``120 seconds``
-  - Access Policy Timeout:	``60 seconds``
-  - Maximum Session Timeout:	``180 seconds``
+.. |image24| image:: module1/image24.png
+   :width: 4.65572in
+   :height: 1.92569in
+.. |image25| image:: module1/image25.png
+   :width: 6.50000in
+   :height: 2.40619in
+.. |image26| image:: module1/image26.png
+   :width: 6.50000in
+   :height: 2.50820in
+.. |image27| image:: module1/image27.png
+   :width: 4.68368in
+   :height: 1.79508in
+.. |image28| image:: module1/image28.png
+   :width: 2.02459in
+   :height: 1.45833in
+.. |image29| image:: module1/image29.png
+   :width: 2.40984in
+   :height: 2.40984in
+.. |image30| image:: module1/image30.png
+   :width: 4.45082in
+   :height: 2.90920in
+.. |image31| image:: module1/image31.png
+   :width: 5.20370in
+   :height: 2.30328in
+.. |image32| image:: module1/image32.png
+   :width: 2.23084in
+   :height: 1.94221in
+.. |image33| image:: module1/image33.png
+   :width: 2.32787in
+   :height: 2.07099in
+.. |image34| image:: module1/image34.png
+   :width: 6.50000in
+   :height: 3.47222in
+.. |image35| image:: module1/image35.png
+   :width: 6.49097in
+   :height: 3.44444in
+.. |image36| image:: module1/image36.png
+   :width: 6.49097in
+   :height: 1.23770in
+.. |image37| image:: module1/image37.png
+   :width: 6.48125in
+   :height: 2.13934in
+.. |image38| image:: module1/image38.png
+   :width: 6.48125in
+   :height: 2.35208in
+.. |image39| image:: module1/image39.png
+   :width: 6.50000in
+   :height: 2.56557in

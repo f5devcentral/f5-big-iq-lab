@@ -1,30 +1,50 @@
-Lab 3.1: Create Application via API with Ansible (6.0.x only)
--------------------------------------------------------------
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ. Go `here`_ if you are on 6.1 or later.
+Lab 3.1: Importing AS3 templates
+--------------------------------
 
-.. _here: ../module5/module5.html
+Official documentation about AS3 application service management via a GUI can be found on the `BIG-IQ Knowledge Center`_.
 
-In this lab, we are going to deploy a basic HTTP application using Ansible.
+.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/monitoring-managing-applications-using-big-iq.html
 
-The following parameters are filled in the playbook ``create_http_bigiq_app.yaml``.
+From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. 
+To do this, in your UDF deployment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
 
-- BIG-IP: Select ``SEA-vBIGIP01.termmarc.com``
-- Collect HTTP Statistics ``yes``
-- Application Name: ``site22.example.com``
-- Destination Address: ``10.1.10.122``
-- Destination Network Mask: ``255.255.255.255``
-- Service Port: ``80``
-- Servers (Pool Member): ``10.1.20.122``
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
 
-Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+.. image:: ../../pictures/udf_ubuntu.png
+    :align: left
+    :scale: 70%
 
-Execute the playbook::
+|
 
-    # cd /home/f5/f5-ansible-bigiq-service-catalog-demo
-    # ansible-playbook -i notahost, create_http_bigiq_app.yaml -vvvv
+View AS3 templates section
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Logon to BIG-IQ by opening a browser and go to: ``https://10.1.1.4``
 
-.. warning :: If the ansible playbook run successfully but the app doesn't show up, please, review david's role.
+#. Go to Applications > Application Templates and review the top section which is titled **AS3 Templates**.
 
-.. note:: If you prefer not to wait until the app is created, you can switch the variable ``wait`` to ``no`` in the playbook.
+A new BIG-IQ v7.0 deployment will NOT include AS3 templates out of the box.
+If you want to start using AS3 templates which are provided by F5, then those AS3 templates can be found 
+through the following link: https://github.com/f5devcentral/f5-big-iq
 
-Connect as **olivia** (select Auth Provider local) and check on BIG-IQ the application has been correctly created.
+Import AS3 BIG-IQ templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+#. Select **Import Templates** at the right top corner.
+
+.. image:: ../pictures/module3/lab-1-2.png
+  :scale: 80%
+  :align: center
+
+#. Make yourself familiar with the Github page and understand which AS3 templates are available.
+
+#. When the AS3 templates are already imported in BIG-IQ you don’t need to perform next step, instead continue with the following step.
+
+#. Use the provided instructions on the Github page to import the templates into BIG-IQ.
+
+.. note:: The F5 default AS3 BIG-IQ templates are already imported in the UDF blueprint.
+
+#. Walk through the provided templates and select them to understand the structure. If familiar with AS3 you will notice the structure. 
+   Otherwise go make sure you have gone through `Module 2`_ or visit `AS3 Example declarations`_.
+
+.. _Module 2: ../module2
+.. _AS3 Example declarations: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/examples.html.

@@ -1,88 +1,51 @@
-Lab 2.4: Security workflow (Service Catalog Templates)
-------------------------------------------------------
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
+Lab 2.4: Delete AS3 Tenant/Applications on BIG-IQ
+-------------------------------------------------
 
-Connect as **larry**
+Task 9 - Delete Task1 with its AS3 application services
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Larry check the Web Application Security for ``f5-asm-policy1`` ASM Policy.
+Here, we empty the tenant/partition of Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
+should also disappear from BIG-IQ. 
 
-Go to Configuration > SECURITY > Web Application Security > Policies
+.. note:: We are not using the DELETE method but a POST with a declaration containing a tenant with nothing in it.
 
-Click on Suggestions, then **Accept** the Learning.
+1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
-.. image:: ../pictures/module2/img_module2_lab4_3.png
-  :align: center
-  :scale: 50%
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-|
+2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 
-.. note:: in case the app is deployed on a BIG-IP HA pair, the learning is not sync unless the failover group is set to automatic or the centrally builder feature is used.
+POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
-2. Go to Deployment > EVALUATE & DEPLOY > Web Application Security
+.. code-block:: yaml
+   :linenos:
+   :emphasize-lines: 14,15,16
 
-Under Deployments, click on **Create**. Name your Deployment, select BOS-vBIGIP01.termmarc.com, choose method **Deploy immediately**, then click on **Create**.
+   {
+       "class": "AS3",
+       "action": "deploy",
+       "persist": true,
+       "declaration": {
+           "class": "ADC",
+           "schemaVersion": "3.7.0",
+           "id": "example-declaration-01",
+           "label": "Task9",
+           "remark": "Task 9 - Delete Tenants",
+           "target": {
+               "address": "10.1.1.8"
+           },
+           "Task1": {
+               "class": "Tenant"
+           }
+       }
+   }
 
-.. image:: ../pictures/module2/img_module2_lab4_3b.png
-  :align: center
-  :scale: 50%
+3. Check the tenant/application(s) has been correctly removed from the BIG-IP and BIG-IQ.
 
-|
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
-3. Go back to Configuration > SECURITY > Web Application Security > Policies
-
-Update the Enforcement Mode to ``Blocking`` (this might be already set to Blocking in the BP, if the case, move on).
-
-.. image:: ../pictures/module2/img_module2_lab4_4.png
-  :align: center
-  :scale: 50%
-
-|
-
-Connect as **paula**
-
-Select ``site18.example.com``
-
-1. **Paula** enforce the policy APPLICATION SERVICES > Security > CONFIGURATION tab > click on ``Start Blocking``
-
-.. image:: ../pictures/module2/img_module2_lab4_5.png
-  :align: center
-  :scale: 50%
-
-|
-
-After Blocking is turned on:
-
-.. image:: ../pictures/module2/img_module2_lab4_6.png
-  :align: center
-  :scale: 50%
-
-|
-
-.. note:: The Enforcement Mode is controlled by the Application owner, the Host Name of the application (FQDN) will be configured in the ASM Policy.
-          For more information, read following article https://support.f5.com/csp/article/K67438310
-
-.. note:: The BIG-IQ Web Application Security module does not support changes to ASM Blocking Mode when managing BIG-IP devices running 14.1.0. The issue is tracked as ID 750683 (BIG-IP).
-
-.. image:: ../pictures/module2/img_module2_lab4_6a.png
-  :align: center
-  :scale: 50%
-
-|
-
-2. Let's generate some bad traffic, connect on the *Ubuntu Lamp Server* server and launch the following script:
-
-``# /home/f5/scripts/generate_http_bad_traffic.sh``
-
-3. In Application Dashboard, navigate to the Security Statistics and notice the Malicious Transactions.
-
-Connect as **larry**
-
-1. Check ASM type of attacks
-
-Monitoring > EVENTS > Web Application Security > Event Logs > Events
-
-.. image:: ../pictures/module2/img_module2_lab4_7.png
-  :align: center
-  :scale: 50%
-
-2. Stop the bad traffic script, connect on the *Ubuntu Lamp Server* server and ``CTRL+C``.
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html

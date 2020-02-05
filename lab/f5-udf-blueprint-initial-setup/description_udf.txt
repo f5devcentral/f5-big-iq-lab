@@ -1,6 +1,48 @@
 Demo lab guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
 Draft version of the demo lab guide: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/
 
+APPLICATION SERVICES IN THE BLUEPRINT:
+    # airport_security:
+        AS3 security2_site18_seattle 10.1.10.118 SEA AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v1 (Paula)
+        AS3 security_site16_boston 10.1.10.116 BOS AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1 (Paula)
+        AS3 security_fqdn airports.example.com BOS AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1 (Paula)
+    # IT_apps
+        AS3 inventory_site38httpsBigip121 10.1.10.138 SJC without AS3 template (Paula)
+        SC site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template (Paula)
+        SC site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template (Paul)
+    # finance_apps
+        AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
+        AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
+        AS3 access_site17https 10.1.10.117 BOS without AS3 template (Paul)
+
+IP ADDRESSES AVAILABLE TO USE WITH TRAFFIC:
+    # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
+        10.1.10.111
+        10.1.10.113
+        10.1.10.123
+        10.1.10.127
+        10.1.10.129
+        10.1.10.131
+        10.1.10.133
+        10.1.10.134
+
+    # SEA-vBIGIP01.termmarc.com.v14.1 (VPN, SSLO)
+        10.1.10.114
+        10.1.10.118
+        10.1.10.120
+        10.1.10.122
+        10.1.10.124
+
+    # Pool Members (on the Ubuntu 19.10 Lamp)
+        10.1.20.110-123
+
+DNS LISTENERS:
+    # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
+        10.1.10.201
+        10.1.10.203
+        10.1.10.204
+
+
 DOCUMENTATIONS:
 - BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.0.0
 - Customer Deck: https://hive.f5.com/community/product/solutions/management

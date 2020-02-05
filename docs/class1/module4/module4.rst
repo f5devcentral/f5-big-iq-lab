@@ -1,8 +1,20 @@
-Module 4: BIG-IQ Custom Application Templates & Deployment with Service Catalog (v6.0 only)
-===========================================================================================
-In this module, we will learn how to use Custom Application Templates and deploy an **Application** from it.
+Module 4: Multi-Tier/Multi-Cloud Application Visibility (7.0 and above)
+=======================================================================
 
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
+**[New 7.0.0]**
+
+BIG-IQ applications are now collections of application services. By combining these individual services into a single application, 
+you can visualize and manage the aggregation of these services to get a full application view across multiple cloud environments, 
+tiers, or geographies. You can also drill down into the individual services that make up the application to get more specific views 
+and analytics to determine the health and performance of each part of the Application.
+
+This feature will allow customers to visualize:
+
+- Applications fronted by BIG-IP DNS with services in multiple data centers / clouds (see documentation available on the `F5 Knowledge Center`_)
+- Applications where security services are provided by different BIG-IPs
+- Applications groupings that support an overall service 
+
+.. _F5 Knowledge Center: https://techdocs.f5.com/en-us/bigiq-7-0-0/creating-multi-cloud-applications/creating-multi-cloud-app.html
 
 .. toctree::
    :maxdepth: 1

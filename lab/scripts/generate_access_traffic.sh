@@ -15,18 +15,18 @@ fi
 echo "# generate_access_reports_data.sh"
 cd $home/access
 count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_data.sh accessmock 1.1.1.1 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
+./generate_access_reports_data.sh accessmock 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
 count=`shuf -i 1-2 -n 1`;
 ./generate_access_reports_data.sh access 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
 count=`shuf -i 1-2 -n 1`;
 ./generate_access_reports_data.sh accesssessions 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
 
-echo "# generate_access_reports_mock_data.sh"
-cd $home/access
-count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP01.termmarc.com $count
-count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP02.termmarc.com $count
+#echo "# generate_access_reports_mock_data.sh"
+#cd $home/access
+#count=`shuf -i 1-2 -n 1`;
+#./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP01.termmarc.com $count
+#count=`shuf -i 1-2 -n 1`;
+#./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP02.termmarc.com $count
 
 #echo "# rate-ht-sender.py"
 #cd $home/access

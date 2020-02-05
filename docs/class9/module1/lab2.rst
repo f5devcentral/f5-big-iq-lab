@@ -1,130 +1,203 @@
-Lab 1.2: Create custom security policies & Application Service Template
------------------------------------------------------------------------
-Connect as **larry**
+Lab 1.2: Modifying an existing APM access policy using Virtual Policy Editor (VPE)
+----------------------------------------------------------------------------------
 
-1. Clone an access policy from the default-access-group. Go to *Configuration* > *ACCESS* > *Access Groups* > *default-access-group*.
+Access Policy Review
+~~~~~~~~~~~~~~~~~~~~
 
-Before you can clone policies, you must have an Access group configured for your Service Scaling Group.
-Important: Do not edit access policies or configurations in the default Access group.
-You clone a default access policy to create a starting point for defining access policies for an Access group.
+Navigate to Configuration Access Access Groups BostonAG Access Policies
+Per-Session Policies TestAccessProfile
 
-.. note:: Do not edit default access policy templates. Clone a policy, then make any required edits in the cloned policy.
+|image5|
 
-- Click Configuration > ACCESS > Access Groups. The Access Groups screen opens.
+The access policy will be displayed in a new screen as shown below.
+Compare the Access policy in BIG IQ with the policy in BIG IP source
+device and ensure that they are exactly same. Open the browser shortcut
+for the BIG-IP01 in a new tab from Chrome.
 
-.. image:: ../pictures/module1/img_module1_lab2_1.png
-   :align: center
-   :scale: 50%
+|image6| |image7|
 
-- Click default-access-group. The default-access-group General Properties screen opens.
-- On the left, click Per-Session Policies. The Per-Session Policies (Shared) screen opens.
-- Select the check box next to an access policy to clone, and click More > Clone .
+Location Specific Object Modification
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. image:: ../pictures/module1/img_module1_lab2_2.png
-   :align: center
-   :scale: 50%
+-  Navigate to Configuration Access Access Groups BostonAG
+   Authentication Active Directory Active Directory
 
-- In the Clone Policy dialog box that opens, select the target Access group, and select whether to reuse existing objects from the target Access group, then click Clone.
+    |image8|
 
-.. image:: ../pictures/module1/img_module1_lab2_3.png
-   :align: center
-   :scale: 50%
+    LSO or Location Specific Objects are objects within an access
+    profile/policy that relate to more specific geographic areas
+    normally and are not shared between all devices by default to
+    prevent misconfigurations. As an example, AAA servers are located in
+    all office/data centers globally however if an end user is accessing
+    a policy on an APM in Europe we wouldn’t want their authentication
+    requests to be sent over a WAN link to some Domain Controller in
+    another country and cause a tremendous delay for that user.
 
-- Check the target Access group to see that the target policy has been cloned.
+-  Click the check box for the FrogPolicy-olympus-ad for the BIGIP02
+   device.
 
-.. image:: ../pictures/module1/img_module1_lab2_4.png
-   :align: center
-   :scale: 50%
+-  Click the Mark Shared button and accept the warning
 
-|
+    |image9|
 
-.. image:: ../pictures/module1/img_module1_lab2_5.png
-   :align: center
-   :scale: 50%
+    This will move the object from the device specific location to the
+    Shared resources location.
 
-Now you can edit the access policy, and the related objects created to support it on the target access group.
+-  Click on the AAA object to edit the properties
 
-2. Review and edit resources associated with an access policy
+-  Change the Timeout value from 15 to 1500
 
-When you clone an access policy, the associated resources are also cloned. You can review and edit these resources, if necessary, on the target Access group.
+-  Click Save & Close
 
-- Under ACCESS POLICIES > Per-Session Policies, click on ``default_radius_auth_policy``.
+    |image10|
 
-.. image:: ../pictures/module1/img_module1_lab2_6.png
-   :align: center
-   :scale: 50%
+    BIG IQ provides the ability to transition LSO objects to Shared
+    Objects and vice versa. When an LSO object is made Shared it will
+    have the same configuration across all the BIG IPs after deployment.
 
-- Under AUTHENTICATION > RADIUS, click on ``default_radius_auth_policy_aaa_srvr``.
+Modifying an existing APM access policy using VPE
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  Set the Radius IP address and passphrase:
+-  Navigate to ConfigurationAccessAccess Groups
 
-  - Server Address: ``10.1.1.5``
-  - Secret: ``default``
+-  Select BostonAG
 
-.. image:: ../pictures/module1/img_module1_lab2_7.png
-   :align: center
-   :scale: 50%
+|image11|
 
-3. Make an access policy available in templates
+Click on Access Policies -> Per Session Policies:
 
-You can make an access policy available in templates, so that you can select it in a service template, and apply the settings from that policy to devices in a Service Scaling Group.
-At the top of the screen, select Configuration, then on the left side of the screen, click ACCESS > Access Groups .
+Select TestAccessProfile and add the following objects:
 
-Under ACCESS POLICIES > Per-Session Policies, click on ``default_radius_auth_policy`` and confirm the policy is Available in Application Templates (set to Yes).
+-  Logon page (accept default settings)
 
-If set to No, click on More, and click select *Make Available in Templates*.
+-  AD Auth using FrogPolicy-Olympus-AD
 
-.. image:: ../pictures/module1/img_module1_lab2_8.png
-   :align: center
-   :scale: 50%
+-  If AD Auth successful, your allowed access
 
+|image12|
 
-4. Clone the service template
+Start by hovering the mouse over the blue line in the policy flow
+between the Start and Ending points and clicking the Green Plus sign.
 
-Click Applications SERVICE CATALOG, select Default-f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template, click More > Clone .
+|image13|
 
-.. image:: ../pictures/module1/img_module1_lab2_9.png
-   :align: center
-   :scale: 50%
+Now select the “Logon Page” object on the right side of the pop up
+window. Then click “Save” on the next pop up window.
 
-In the dialog box that opens, type the name for the cloned service template, ``f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template-custom1`` then click Clone.
+|image14|
 
-The Edit Template screen opens. 
+The result should look like the picture below.
 
-.. image:: ../pictures/module1/img_module1_lab2_10.png
-   :align: center
-   :scale: 50%
+|image15|
 
-On the left, click SECURITY POLICIES. Scroll down to Access, select the Access Group from which you want to use access policies. 
-Select the Access group to which you cloned default access policies.
-In the Virtual Server area, for the virtual server providing the access service, from the Type list select Access Profile.
-From the APM Policy/Profile list select the access policy you created.
+Now repeat the steps by hovering the mouse on the blue line between the
+Logon Page object and the Ending Deny and click the Green plus sign to
+add the Authentication object of AD Auth.
 
-.. image:: ../pictures/module1/img_module1_lab2_11.png
-   :align: center
-   :scale: 50%
+|image16|
 
-.. note:: Do not associate an APM policy or profile with the redirect virtual server.
+Now click the Server drop down to select FrogPolicy-olympus-ad and then
+click “Save”.
 
-Click Save & Close.
+|image17|
 
-The Service Catalog screen opens.
+Change the Ending DENY to ALLOW.
 
-Select the check box next to the service template you created, and click Publish.
+Notice the Yellow Banner warning that there are un-saved changes. Click
+the Save button at the bottom of the profile page. Click OK on the
+Policy Save Conformation pop up window.
 
-.. image:: ../pictures/module1/img_module1_lab2_12.png
-   :align: center
-   :scale: 50%
+|image18|
 
-You can now use the published template to create applications.
+After modifying the access profile, go to “Deployment tab- > Evaluate &
+Deploy -> Access”
 
-5. In order to allow **Paula** to use the custom application template, go to : *System* > *Role Management* > *Roles*
-and select *CUSTOM ROLES* > *Application Roles* > *Application Creator VMware* role (already assigned to Paula). Select the Template *f5-HTTPS-offload-lb-Access-RADIUS-Authentication-template-custom1*, drag it to the right.
+Click on Create in Evaluation section. Enter a name in the Name Field
+then click the Checkbox in the Available section of Target Devices and
+Click the arrow to the right to move both BOS BIGIP deivces to the
+Selected area and then click the Create button at the bottom.
 
-.. image::  ../pictures/module1/img_module1_lab2_13.png
-   :align: center
-   :scale: 50%
+|image19|
 
-|
+The BIG-IQ will now start evaluating the configurations on the BIG-IP
+devices and provide a comparison of the changes between the stored
+configuration within the BIG-IQ versus the current running
+configurations on the BIG-IP systems. When the evaluation completes you
+will see a screen like the one below. Click the “VIEW” link under the
+Access column.
 
-Click on *Save & Close*
+|image20|
+
+In the evaluation section, you will be able to view the added/changed
+items. After reviewing click the Cancel button at the bottom of the pop
+up window.
+
+|image21|
+
+Now click the Deploy button in the Evaluations section and wait for the
+Deployment tast to complete.
+
+|image22|
+
+You can verify on BigIP that the access profile changes were pushed:
+
+|image23|
+
+.. |image5| image:: module1/image6.png
+   :width: 5.63056in
+   :height: 2.99033in
+.. |image6| image:: module1/image7.png
+   :width: 2.47222in
+   :height: 2.09016in
+.. |image7| image:: module1/image8.png
+   :width: 3.38525in
+   :height: 1.15301in
+.. |image8| image:: module1/image9.png
+   :width: 6.50000in
+   :height: 3.60625in
+.. |image9| image:: module1/image10.png
+   :width: 6.50000in
+   :height: 1.68889in
+.. |image10| image:: module1/image11.png
+   :width: 5.08264in
+   :height: 3.92222in
+.. |image11| image:: module1/image12.png
+   :width: 4.32020in
+   :height: 2.10656in
+.. |image12| image:: module1/image13.png
+   :width: 6.50000in
+   :height: 2.52917in
+.. |image13| image:: module1/image7.png
+   :width: 2.47222in
+   :height: 2.09016in
+.. |image14| image:: module1/image14.png
+   :width: 4.78697in
+   :height: 2.31967in
+.. |image15| image:: module1/image15.png
+   :width: 3.07377in
+   :height: 1.79768in
+.. |image16| image:: module1/image16.png
+   :width: 4.77869in
+   :height: 2.19636in
+.. |image17| image:: module1/image17.png
+   :width: 3.31246in
+   :height: 2.75083in
+.. |image18| image:: module1/image18.png
+   :width: 4.09836in
+   :height: 1.84640in
+.. |image19| image:: module1/image19.png
+   :width: 6.27138in
+   :height: 3.25000in
+.. |image20| image:: module1/image20.png
+   :width: 6.50000in
+   :height: 1.39028in
+.. |image21| image:: module1/image21.png
+   :width: 5.69672in
+   :height: 2.82593in
+.. |image22| image:: module1/image22.png
+   :width: 3.99163in
+   :height: 1.47222in
+.. |image23| image:: module1/image23.png
+   :width: 6.49097in
+   :height: 2.34236in
+

@@ -1,10 +1,7 @@
-Module 1: Securing Application Access using Radius authentication
-=================================================================
-In this module, we will learn how to deploy an **Secured Application** using the default access templates.
-
-More information in Knowledge Center > `BIG-IQ Centralized Management: Access - Manage Access Groups`_.
-
-.. _`BIG-IQ Centralized Management: Access - Manage Access Groups`: https://techdocs.f5.com/kb/en-us/products/big-iq-centralized-mgmt/manuals/product/big-iq-centralized-management-access-6-0-1/03.html
+Module 2: APM access and per-request policies
+=============================================
+  
+Objective is to show BIG-IQ can create, modify, and delete APM access and per-request policies.
 
 .. toctree::
    :maxdepth: 1

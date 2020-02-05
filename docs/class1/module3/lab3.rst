@@ -1,48 +1,32 @@
-Lab 3.3: Create Application via API with Python
------------------------------------------------
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ. Go `here`_ if you are on 6.1 or later.
+Lab 3.3: Application modification
+---------------------------------
 
-.. _here: ../module5/module5.html
+Through the GUI and when allowed, the application owner is able to make small modifications.
 
-In this lab, we are going to create an application using Python script and BIG-IQ API.
+1. In ``tenant1_https_app_service``, select Servers and Configuration and add a Pool Member.
 
-On BIG-IQ, connect as **david** to create a new application, click on **Create**, select the template previously created ``Default-f5-HTTP-lb-template``.
+* Click the + next to Server Addresses and add: ``10.1.20.122``.
 
-- BIG-IP: Select ``SEA-vBIGIP01.termmarc.com``
-- Application Name: ``site20.example.com``
-- Destination Address: ``10.1.10.120``
-- Destination Network Mask: ``255.255.255.255``
-- Service Port: ``80``
-- Servers (Pool Member): ``10.1.20.120`` and ``10.1.20.121``
+* Click **Save & Close**.
 
-**Do NOT click on Create** but on **View Sample API Request** at the top right corner.
-
-.. image:: ../pictures/module3/img_module3_lab3_1.png
+.. image:: ../pictures/module3/lab-3-1.png
+  :scale: 80%
   :align: center
-  :scale: 50%
 
-|
+2. Check ``SEA-vBIGIP01.termmarc.com`` (partition ``tenant1``) Local Traffic > Pools and find **Pool**.
+   It will have tenant1/https_app_service as the partition/path (or use search). Select Pool and go to members.
 
-Open a SSH session to *Ubuntu Lamp Server* in UDF.
+.. image:: ../pictures/module3/lab-3-2.png
+  :scale: 80%
+  :align: center   
 
-Look at the file ``/home/f5/f5-ansible-bigiq-service-catalog-demo/class1mod3.py``
+3. Now back to the BIG-IQ and ``tenant1_https_app_service`` application and select **Application Service > Configuration** and
+   scroll down in the AS3 declaration and find that the schema has added the second pool member.
 
-- The application name was set: APP_NAME = "``site20.example.com``"
-- Template name configured in ``templates`` variable (e.g. Default-f5-HTTP-lb-template)
-- BIG-IP management IP is used to filter the device where the app will be deployed in variable ``device`` (e.g. 10.1.1.7 for SEA-vBIGIP01.termmarc.com)
-- The API Sample Request generated previously from BIG-IQ UI was inserted in the script in the ``post_body`` variable (only until ``addAnalytics`` line)
+.. image:: ../pictures/module3/lab-3-3.png
+  :align: center
+  :scale: 70
 
-Execute the Python script::
-
-    # /home/f5/f5-ansible-bigiq-service-catalog-demo/class1mod3.py
-
-Output::
-
-    u'Polling task, Status: STARTED'
-    u'Polling task, Status: STARTED'
-    ....
-    u'Polling task, Status: STARTED'
-    u'Polling task, Status: STARTED'
-    u'Polling task, Status: FINISHED'
-
-Connect as **david** and check on BIG-IQ the application has been correctly created.
+Through the API you can’t modify the application service once deployed. With AS3 via the GUI you can.
+Remember, that through the API you would do a redeploy to add additional services.
+From the flipside, the GUI only allows you to modify what has been permitted (made 'editable') when the template was created.

@@ -1,32 +1,18 @@
-Module 3: BIG-IQ Application Deployment via API with Service Catalog (v6.0 only)
-================================================================================
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services programmatically through BIG-IQ. Go `here`_ if you are on 6.1 or later.
+Module 2: BIG-IQ Application Templates & Deployment with AS3 using the UI (7.0 and above)
+=========================================================================================
 
-.. _here: ../module5/module5.html
+**[New 7.0.0]**
 
-- Create and Delete Application from Default-f5-HTTP-lb-template: **bigiq_application_http**
-- Create and Delete Application from Default-f5-HTTPS-offload-lb-template: **bigiq_application_https_offload**
-- Create and Delete Application from Default-f5-HTTPS-WAF-lb-template: **bigiq_application_https_waf**
-- Create and Delete Application from Default-f5-fastHTTP-lb-template: **bigiq_application_fasthttp**
-- Create and Delete Application from Default-f5-FastL4-TCP-lb-template: **bigiq_application_fastl4_tcp**
-- Create and Delete Application from Default-f5-FastL4-UDP-lb-template: **bigiq_application_fastl4_udp**
+Support of AS3 was delivered in v6.1 which got released December 2018, but only included usage via REST-API. 
+With the release of BIG-IQ v7.0, AS3 is now also supported via the use of a GUI. 
 
-More information on all `F5 Ansible Modules`_ (GitHub repository `Ansible F5 github`_)
+NetOps will start driving most of the use case through the GUI via Central Management and having AS3 as a GUI 
+feature will drive the expectation that AS3 templates are easier to setup and will give Network and 
+Security administrators a kickstart using AS3 as a declarative interface.
 
-.. _F5 Ansible Modules: https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/list_of_all_modules.html
-.. _Ansible F5 github: https://github.com/F5Networks/f5-ansible
+See `Module 2`_ for more details on BIG-IQ and AS3 integration.
 
-.. warning:: Ansible 2.6+ only support App deployment on VMware environement. 
-
-You can access the API & Ansible BIG-IQ documentations from the **BIG-IQ External Resources**:
-
-.. image:: ../pictures/module3/img_module3_1.png
-  :align: center
-  :scale: 50%
-
-|
-
-In this module, we will learn how to see create and delete an application using Ansible Playbook, also look at an example of straight API payload from BIG-IQ UI.
+.. _Module 2: ../module2
 
 .. toctree::
    :maxdepth: 1

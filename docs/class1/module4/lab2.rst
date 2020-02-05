@@ -1,20 +1,102 @@
-Lab 4.2: Create Application using Service Catalog Template
-----------------------------------------------------------
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
+Lab 4.2: DNS Application Service Creation
+-----------------------------------------
 
-Connect as **paula** to create a new application. Click on the *Create* button
-and select the template previously created ``f5-HTTP-lb-custom-template``.
+1. Connect as **paula**. Navigate to the ``airport_security`` Application.
 
-Follow the same steps as described in *Lab 2.3: Create Application* (use the default values set in the template for the virtual servers and nodes).
+This Application is composed of 3 Application Services:
 
-Type in a Name for the application you are creating.
+- ``security_site16_boston``: Application Service serving a security app located in Boston.
+- ``security2_site18_seattle``: Application Service serving a the same security app but located in Seattle.
+- ``security_fqdn``: This the Wide-IP service serving the previous Application Services located in Boston and Seattle. 
+  The FQDN for this Wide-IP is **airports.example.com**.
 
-- Application Name: ``site16.example.com``
+.. note:: A wide IP maps a fully-qualified domain name (FQDN) to one or more pools of virtual servers that host the content of a domain. 
 
-To help identify this application when you want to use it later, in the Description field, type in a brief description for the application you are creating.
+.. image:: ../pictures/module4/lab-2-1.png
+  :scale: 70%
+  :align: center
 
-- Description: ``My Second Application on F5 Cloud Edition``
+2. Let's deploy a 3rd Application Service serving a the same security app also located in Seattle 
+   as there is more demand in traffic in this part of the world. Select Create Application to Create an Application Service:
 
-For Device, select the name of the device you want to deploy this application to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
++----------------------------------------------------------------------------------------------------+
+| Application properties:                                                                            |
++----------------------------------------------------------------------------------------------------+
+| * Grouping = Part of an Existing Application                                                       |
+| * Application Name = ``airport_security``                                                          |
+| * Description = ``airports.example.com``                                                           |
++----------------------------------------------------------------------------------------------------+
+| Select an Application Service Template:                                                            |
++----------------------------------------------------------------------------------------------------+
+| * Template Type = Select ``AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default [AS3]``          |
++----------------------------------------------------------------------------------------------------+
+| General Properties:                                                                                |
++----------------------------------------------------------------------------------------------------+
+| * Application Service Name = ``site14_seattle``                                                    |
+| * Target = ``SEA-vBIGIP01.termmarc.com``                                                           |
+| * Tenant = ``security2``                                                                           |
++----------------------------------------------------------------------------------------------------+
+| Analytics_Profile. Keep default                                                                    |
++----------------------------------------------------------------------------------------------------+
+| HTTP_Profile. Keep default                                                                         |
++----------------------------------------------------------------------------------------------------+
+| Pool                                                                                               |
++----------------------------------------------------------------------------------------------------+
+| * Members: ``10.1.20.120``                                                                         |
++----------------------------------------------------------------------------------------------------+
+| Service_HTTP                                                                                       |
++----------------------------------------------------------------------------------------------------+
+| * Virtual addresses: ``10.1.10.114``                                                               |
++----------------------------------------------------------------------------------------------------+
 
-- BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
+.. image:: ../pictures/module4/lab-2-2.png
+  :scale: 70%
+  :align: center
+
+3. Once ``security_site14_seattle`` new Application Service has been created, you can see it on **Paula**'s application dashboard.
+
+.. image:: ../pictures/module4/lab-2-3.png
+  :scale: 70%
+  :align: center
+
+4. Click on the ``security_site14_seattle`` application services, then under Properties,
+   look for the value of **DNS Virtual Server Name**.
+
+.. image:: ../pictures/module4/lab-2-4.png
+  :scale: 70%
+  :align: center
+
+5. Navigate back to the ``airport_security`` Application, under **FQND** > **CONFIGURATION** tab, scroll down and
+   add the new Member and click on **Save & Close**.
+
++----------------+---------------------------------------+
+| Bigip          | /Common/SEA-vBIGIP01.termmarc.com     |
++----------------+---------------------------------------+
+| Virtual Server | /security2/site14_seattle/serviceMain |
++----------------+---------------------------------------+
+
+.. image:: ../pictures/module4/lab-2-5.png
+  :scale: 70%
+  :align: center
+
+Notice the new Application Service have been added under *APPLICATION SERVICES*.
+
+.. image:: ../pictures/module4/lab-2-6.png
+  :scale: 70%
+  :align: center
+
+6. Now, let's look on the BIG-IP and verify the Application is correctly deployed in partition ``security``.
+   Logon to ``BOSvBIGIP01.termmarc.com`` BIG-IP from UDF. Select the partition ``security`` and look at 
+   the objects created on the BIG-IP.
+
+Under DNS > GSLB > Servers > Service List
+
+.. image:: ../pictures/module4/lab-2-7.png
+  :scale: 70%
+  :align: center
+
+Under DNS > GSLB > Pools > Pool List > GSLB_Pool > Members
+
+.. image:: ../pictures/module4/lab-2-8.png
+  :scale: 70%
+  :align: center

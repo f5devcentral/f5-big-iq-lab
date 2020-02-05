@@ -1,106 +1,355 @@
-Lab 2.3: Create Application using Service Catalog Template
-----------------------------------------------------------
-.. warning:: Starting BIG-IQ 6.1, AS3 should be the preferred method to deploy application services through BIG-IQ.
+Lab 2.3: Deploying AS3 Templates on BIG-IQ
+------------------------------------------
 
-.. warning:: Starting BIG-IQ 7.0, BIG-IQ introduces Multi-Tier/Multi-Cloud Application Visibility.
-             You will need first to name your Application, then your Application Service. Look at `Module 7`_ for more information.
+Task 6 - Create custom HTTP AS3 Template on BIG-IQ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. _Module 7: ../module7
+.. warning:: AS3 Templates cannot be created through BIG-IQ UI but only using the API in 6.1.
+             Go to `Module 2`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
 
-Connect as **paula** to create a new application service, and click on *Create*, select the template previously created ``f5-HTTPS-WAF-lb-template-custom1``.
+.. _Module 2: ../module2/module2.html
 
-Type in a Name for the application you are creating.
+Administrators will employ the BIG-IQ Service Catalog to construct and manage a set of JSON Schema templates.  Non-administrative users may be selectively allowed to deploy configurations using these templates according to BIG-IQ RBAC policies.  The purpose of the templates is to filter the information being supplied to AS3 in 3 ways:
 
-- Application Name: ``Example`` **[New 7.0.0]**
+- Force the inclusion of specific AS3 class objects
+- Restrict specific AS3 properties and/or classes
+- Override specific AS3 default property values
 
-- Application Service Name: ``site18.example.com``
+.. note:: BIG-IQ 7.0 will bring a User Interface to create and manage the AS3 templates.
 
-To help identify this application service when you want to use it later, in the Description field, type in a brief description for the application you are creating.
+The following examples demonstrate how these goals can be met with JSON Schema.
 
-- Description: ``My First Application Service on F5 Cloud Edition``
+1. Enforcing Changes to AS3 Classes
 
-Type  the domain of your application service (then the ASM policy will always be transparent for this domain)
+In order to trigger schema enforcement of each class in the template other than Tenant and Application, specify the class name(s) and reference(s) in the Application class additionalProperties, like this:
 
-- Domain Names: ``site18.example.com``
+.. code-block:: yaml
+   :linenos:
 
-For Device, select the name of the device you want to deploy this application service to. (if the HTTP statistics are not enabled, they can be enabled later on after the application is deployed)
+    "additionalProperties": {
+        "allOf": [
+            {
+                "if": {"properties": {"class": {"const": "Service_HTTP"}}},
+                "then": { "$ref": "#/definitions/Service_HTTP" }
+            },
+            {
+                "if": {"properties": {"class": {"const": "HTTP_Profile"}}},
+                "then": { "$ref": "#/definitions/HTTP_Profile" }
+            }
+        ]
+    }
 
-- BIG-IP: Select ``BOS-vBIGIP01.termmarc.com`` and check ``Collect HTTP Statistics``
+2. Overriding an AS3 Default Value
 
-.. image:: ../pictures/module2/img_module2_lab3_1.png
-  :align: center
-  :scale: 50%
+To override a default, specify the property name, type, and new default like this snippet for the HTTP_Profile class: 
 
-Determine the objects that you want to deploy in this application service.
-To omit any of the objects defined in this template, click the  (X) icon that corresponds to that object.
-To create additional copies of any of the objects defined in this template, click the  (+) icon that corresponds to that object.
+.. code-block:: yaml
+   :linenos:
 
-In the example, fill out the Server's IP addresses/ports (nodes) and virtual servers names, IPs and ports.
+    "xForwardedFor": {
+        "type": "boolean",
+        "default": true
+    }
 
-- Servers (Pool Member): ``10.1.20.118`` and ``10.1.20.119``
-- Service Port: ``80``
+3. Setting a Static Value
 
-.. note:: Nodes and pool members are “device specific objects”
+To force a property to a specific value and accept no other, specify the property name, type, and const.  To add the static value when the user omits the property, specify the default as well, like this snippet added to the Service_HTTP class:
 
-- Name WAF & LB (Virtual Server): ``vs_site18.example.com_https``
-- Destination Address: ``10.1.10.118``
-- Destination Network Mask: ``255.255.255.255``
-- Service Port: ``443``
+.. code-block:: yaml
+   :linenos:
 
-- Name HTTP Redirect (Virtual Server): ``vs_site18.example.com_redirect``
-- Destination Address: ``10.1.10.118``
-- Destination Network Mask: ``255.255.255.255``
-- Service Port: ``80``
+    "virtualPort": {
+        "type": "integer",
+        "const": 8080,
+        "default": 8080
+    }
 
-.. image:: ../pictures/module2/img_module2_lab3_2.png
-  :align: center
-  :scale: 50%
+4. Disallowing One or More Properties
 
-Then Click on Create (bottom right of the window).
-The Application Serviceis deployed.
+To reject a specific property whenever it appears in a declaration, specify that property within dependencies, like this snippet added to the Service_HTTP class:
 
-.. image:: ../pictures/module2/img_module2_lab3_3.png
-  :align: center
-  :scale: 50%
+.. code-block:: yaml
+   :linenos:
 
-.. note:: In case the Application fails, connect as **david** (or **marco**) and go to Applications > Application Deployments to have more details on the failure. You try retry in case of failure.
+    "dependencies": {
+        "policyIAM": { "not": {} },
+        "policyWAF": { "not": {} }
+    }
 
-.. note:: You can tail the logs: /var/log/restjavad.0.log
+5. Disallowing All Properties Except Those Specified
 
-In **Paula**'s Dashboard, she can see her Application Service.
+To act on a handful of properties and reject all others, make sure to include a stub for the "class" property and specify:
 
-.. image:: ../pictures/module2/img_module2_lab3_4.png
-  :align: center
-  :scale: 50%
+.. code-block:: yaml
+   :linenos:
 
-|
+    "additionalProperties": false
 
-Click on the Application Service and check the details (alarms, security enabled, configuration, ...)
+6. Disallowing One or More Classes
 
-.. image:: ../pictures/module2/img_module2_lab3_5.png
-  :align: center
-  :scale: 50%
+To reject an entire class, specify this not anyOf properties clause within the Application class additionalProperties object:
 
-|
+.. code-block:: yaml
 
-Click on Traffic Management > Configuration
+   :linenos:
+    "additionalProperties": {
+        "not": {
+            "anyOf": [
+                {"properties": {"class": {"const": "TCP_Profile"}}},
+                {"properties": {"class": {"const": "TLS_Client"}}}
+            ]
+        }
+    }
 
-.. image:: ../pictures/module2/img_module2_lab3_6.png
-  :align: center
-  :scale: 50%
+7. Disallowing All But 1 or 2 Classes
 
-|
+To allow just 1 or 2 classes, use an if-then construct within additionalProperties:
 
-.. note:: A traffic generator located on the *Ubuntu Lamp Server* server, is sending good traffic every minute to the virtual servers.
+.. code-block:: yaml
+   :linenos:
 
-**Paula** can update Application Service Health Alert Rules by clicking on the Health Icon on the top left of the Application Dashboard.
+    "additionalProperties": {
+        "if": {
+            "properties": {"class": {"const": "Service_L4"}}
+        },
+        "then": { "$ref": "#/definitions/Service_L4" },
+        "else": {
+                "if": { "not": {"properties": {"class": {"const": "Pool"}}}},
+                "then": false
+        }
+    }
 
-.. image:: ../pictures/module2/img_module2_lab3_7.png
-  :align: center
-  :scale: 50%
+------------
 
-|
+In this task, we will create a template which require a Service_HTTP object, force the service port to 8080, and prevent WAF (ASM) and IAM (APM) configuration.
 
-.. image:: ../pictures/module2/img_module2_lab3_8.png
-  :align: center
-  :scale: 50%
+1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+
+2. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
+It will create a new template in BIG-IQ AS3 Service Catalogue:
+
+    POST https\:\/\/10.1.1.4/mgmt/cm/global/appsvcs-templates
+
+.. code-block:: yaml
+   :linenos:
+
+    {
+        "description": "Task 6 - Create custom HTTP AS3 Template on BIG-IQ",
+        "name": "HTTPcustomTemplateTask6",
+        "published": "true",
+        "schemaOverlay": {
+            "type": "object",
+            "properties": {
+                "class": {
+                    "type": "string",
+                    "const": "Application"
+                },
+                "schemaOverlay": {},
+                "label": {},
+                "remark": {},
+                "template": {},
+                "enable": {},
+                "constants": {}
+            },
+            "additionalProperties": {
+                "allOf": [
+                    {
+                        "if": {
+                            "properties": {
+                                "class": {
+                                    "const": "Service_HTTP"
+                                }
+                            }
+                        },
+                        "then": {
+                            "$ref": "#/definitions/Service_HTTP"
+                        }
+                    }
+                ],
+                "not": {
+                    "anyOf": [
+                        {
+                            "properties": {
+                                "class": {
+                                    "const": "IAM_Policy"
+                                }
+                            }
+                        },
+                        {
+                            "properties": {
+                                "class": {
+                                    "const": "WAF_Policy"
+                                }
+                            }
+                        }
+                    ]
+                }
+            },
+            "required": [
+                "class"
+            ],
+            "definitions": {
+                "Service_HTTP": {
+                    "type": "object",
+                    "properties": {
+                        "virtualPort": {
+                            "type": "integer",
+                            "const": 8080,
+                            "default": 8080
+                        }
+                    },
+                    "dependencies": {
+                        "policyIAM": {
+                            "not": {}
+                        },
+                        "policyWAF": {
+                            "not": {}
+                        }
+                    },
+                    "additionalProperties": true
+                }
+            }
+        }
+    }
+
+
+3. Logon on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
+
+|lab-3-1|
+
+Note the AS3 Template cannot be created through BIG-IQ UI but only using the API. You can only delete a AS3 templates from the BIG-IQ UI.
+
+You can see the Template in JSON format if you click on it.
+
+|lab-3-2|
+
+.. note:: For help with JSON Schema, there are lots of resources, but one good place to start is https://json-schema.org/learn.
+
+
+Task 7 - Admin set RBAC for Olivia on BIG-IQ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Let's update now Oliva's service catalog.
+
+Logon on BIG-IQ as **david** go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Application Creator AS3** 
+and the custom role linked to the custom HTTP template previously created. Remove the **default** template from the allowed list. 
+Click **Save & Close**.
+
+|lab-3-3|
+
+
+Task 8 - Deploy the HTTP Application Service using a Custom Template
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now, let's deploy an application as Olivia using the AS3 template previously created in Task 6. Note in the below declaration, 
+the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
+
+1. Using Postman, use the **BIG-IQ Token (olivia)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (olivia)``.
+
+   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+
+2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
+
+POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+
+
+.. code-block:: yaml
+   :linenos:
+   :emphasize-lines: 29
+
+    {
+        "class": "AS3",
+        "action": "deploy",
+        "declaration": {
+            "class": "ADC",
+            "schemaVersion": "3.7.0",
+            "id": "isc-lab",
+            "label": "Task8",
+            "target": {
+                "address": "10.1.1.8"
+            },
+            "Task8": {
+                "class": "Tenant",
+                "MyWebApp8http": {
+                    "class": "Application",
+                    "schemaOverlay": "HTTPcustomTemplateTask6",
+                    "template": "http",
+                    "statsProfile": {
+                        "class": "Analytics_Profile",
+                        "collectClientSideStatistics": true,
+                        "collectOsAndBrowser": false,
+                        "collectMethod": false
+                    },
+                    "serviceMain": {
+                        "class": "Service_HTTP",
+                        "virtualAddresses": [
+                            "10.1.10.133"
+                        ],
+                        "virtualPort": 9090,
+                        "pool": "pool_8",
+                        "profileAnalytics": {
+                            "use": "statsProfile"
+                        }
+                    },
+                    "pool_8": {
+                        "class": "Pool",
+                        "monitors": [
+                            "http"
+                        ],
+                        "members": [
+                            {
+                                "servicePort": 80,
+                                "serverAddresses": [
+                                    "10.1.20.132",
+                                    "10.1.20.133"
+                                ],
+                                "shareNodes": true
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    }
+
+  
+This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
+
+3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successfull without errors: 
+
+   GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
+
+4. As expected, note the error message returned due to the static value set in the template::
+
+     "response": "declaration is invalid according to provided schema overlay: data['serviceMain'].virtualPort should be equal to constant",
+                "status": 422
+
+
+5. Update the ``virtualPort`` to **8080** and re-send the declaration.
+
+6. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
+
+7. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
+
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+
+|lab-3-4|
+
+
+.. |lab-3-1| image:: ../pictures/module2/lab-3-1.png
+   :scale: 60%
+.. |lab-3-2| image:: ../pictures/module2/lab-3-2.png
+   :scale: 60%
+.. |lab-3-3| image:: ../pictures/module2/lab-3-3.png
+   :scale: 60%
+.. |lab-3-4| image:: ../pictures/module2/lab-3-4.png
+   :scale: 60%
