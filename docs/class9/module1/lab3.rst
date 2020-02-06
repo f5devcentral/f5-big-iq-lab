@@ -70,51 +70,51 @@ onto the BIG-IP device BOS01.
 
 |image39|
 
-.. |image24| image:: module1/image24.png
+.. |image24| image:: ../pictures/module1/image24.png
    :width: 4.65572in
    :height: 1.92569in
-.. |image25| image:: module1/image25.png
+.. |image25| image:: ../pictures/module1/image25.png
    :width: 6.50000in
    :height: 2.40619in
-.. |image26| image:: module1/image26.png
+.. |image26| image:: ../pictures/module1/image26.png
    :width: 6.50000in
    :height: 2.50820in
-.. |image27| image:: module1/image27.png
+.. |image27| image:: ../pictures/module1/image27.png
    :width: 4.68368in
    :height: 1.79508in
-.. |image28| image:: module1/image28.png
+.. |image28| image:: ../pictures/module1/image28.png
    :width: 2.02459in
    :height: 1.45833in
-.. |image29| image:: module1/image29.png
+.. |image29| image:: ../pictures/module1/image29.png
    :width: 2.40984in
    :height: 2.40984in
-.. |image30| image:: module1/image30.png
+.. |image30| image:: ../pictures/module1/image30.png
    :width: 4.45082in
    :height: 2.90920in
-.. |image31| image:: module1/image31.png
+.. |image31| image:: ../pictures/module1/image31.png
    :width: 5.20370in
    :height: 2.30328in
-.. |image32| image:: module1/image32.png
+.. |image32| image:: ../pictures/module1/image32.png
    :width: 2.23084in
    :height: 1.94221in
-.. |image33| image:: module1/image33.png
+.. |image33| image:: ../pictures/module1/image33.png
    :width: 2.32787in
    :height: 2.07099in
-.. |image34| image:: module1/image34.png
+.. |image34| image:: ../pictures/module1/image34.png
    :width: 6.50000in
    :height: 3.47222in
-.. |image35| image:: module1/image35.png
+.. |image35| image:: ../pictures/module1/image35.png
    :width: 6.49097in
    :height: 3.44444in
-.. |image36| image:: module1/image36.png
+.. |image36| image:: ../pictures/module1/image36.png
    :width: 6.49097in
    :height: 1.23770in
-.. |image37| image:: module1/image37.png
+.. |image37| image:: ../pictures/module1/image37.png
    :width: 6.48125in
    :height: 2.13934in
-.. |image38| image:: module1/image38.png
+.. |image38| image:: ../pictures/module1/image38.png
    :width: 6.48125in
    :height: 2.35208in
-.. |image39| image:: module1/image39.png
+.. |image39| image:: ../pictures/module1/image39.png
    :width: 6.50000in
    :height: 2.56557in

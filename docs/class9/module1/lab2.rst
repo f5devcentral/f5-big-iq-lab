@@ -143,61 +143,61 @@ You can verify on BigIP that the access profile changes were pushed:
 
 |image23|
 
-.. |image5| image:: module1/image6.png
+.. |image5| image:: ../pictures/module1/image6.png
    :width: 5.63056in
    :height: 2.99033in
-.. |image6| image:: module1/image7.png
+.. |image6| image:: ../pictures/module1/image7.png
    :width: 2.47222in
    :height: 2.09016in
-.. |image7| image:: module1/image8.png
+.. |image7| image:: ../pictures/module1/image8.png
    :width: 3.38525in
    :height: 1.15301in
-.. |image8| image:: module1/image9.png
+.. |image8| image:: ../pictures/module1/image9.png
    :width: 6.50000in
    :height: 3.60625in
-.. |image9| image:: module1/image10.png
+.. |image9| image:: ../pictures/module1/image10.png
    :width: 6.50000in
    :height: 1.68889in
-.. |image10| image:: module1/image11.png
+.. |image10| image:: ../pictures/module1/image11.png
    :width: 5.08264in
    :height: 3.92222in
-.. |image11| image:: module1/image12.png
+.. |image11| image:: ../pictures/module1/image12.png
    :width: 4.32020in
    :height: 2.10656in
-.. |image12| image:: module1/image13.png
+.. |image12| image:: ../pictures/module1/image13.png
    :width: 6.50000in
    :height: 2.52917in
-.. |image13| image:: module1/image7.png
+.. |image13| image:: ../pictures/module1/image7.png
    :width: 2.47222in
    :height: 2.09016in
-.. |image14| image:: module1/image14.png
+.. |image14| image:: ../pictures/module1/image14.png
    :width: 4.78697in
    :height: 2.31967in
-.. |image15| image:: module1/image15.png
+.. |image15| image:: ../pictures/module1/image15.png
    :width: 3.07377in
    :height: 1.79768in
-.. |image16| image:: module1/image16.png
+.. |image16| image:: ../pictures/module1/image16.png
    :width: 4.77869in
    :height: 2.19636in
-.. |image17| image:: module1/image17.png
+.. |image17| image:: ../pictures/module1/image17.png
    :width: 3.31246in
    :height: 2.75083in
-.. |image18| image:: module1/image18.png
+.. |image18| image:: ../pictures/module1/image18.png
    :width: 4.09836in
    :height: 1.84640in
-.. |image19| image:: module1/image19.png
+.. |image19| image:: ../pictures/module1/image19.png
    :width: 6.27138in
    :height: 3.25000in
-.. |image20| image:: module1/image20.png
+.. |image20| image:: ../pictures/module1/image20.png
    :width: 6.50000in
    :height: 1.39028in
-.. |image21| image:: module1/image21.png
+.. |image21| image:: ../pictures/module1/image21.png
    :width: 5.69672in
    :height: 2.82593in
-.. |image22| image:: module1/image22.png
+.. |image22| image:: ../pictures/module1/image22.png
    :width: 3.99163in
    :height: 1.47222in
-.. |image23| image:: module1/image23.png
+.. |image23| image:: ../pictures/module1/image23.png
    :width: 6.49097in
    :height: 2.34236in
 

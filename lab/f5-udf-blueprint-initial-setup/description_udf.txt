@@ -13,7 +13,7 @@ APPLICATION SERVICES IN THE BLUEPRINT:
     # finance_apps
         AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
         AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
-        AS3 access_site17https 10.1.10.117 BOS without AS3 template (Paul)
+        AS3 taxes_site17access 10.1.10.117 BOS without AS3 template (Paul)
 
 IP ADDRESSES AVAILABLE TO USE WITH TRAFFIC:
     # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE

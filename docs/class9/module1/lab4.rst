@@ -203,54 +203,54 @@ to review this Monitoring Dashboards with live data can be helpful in
 getting familiar with Admin duties for Access Policy infrastructure
 using the BIG-IQ Centralized Manager.
 
-.. |image40| image:: module1/image40.png
+.. |image40| image:: ../pictures/module1/image40.png
    :width: 6.49097in
    :height: 3.51875in
-.. |image41| image:: module1/image41.png
+.. |image41| image:: ../pictures/module1/image41.png
    :width: 5.74642in
    :height: 3.22131in
-.. |image42| image:: module1/image42.png
+.. |image42| image:: ../pictures/module1/image42.png
    :width: 5.62564in
    :height: 3.12295in
-.. |image43| image:: module1/image43.png
+.. |image43| image:: ../pictures/module1/image43.png
    :width: 5.33095in
    :height: 2.95082in
-.. |image44| image:: module1/image44.png
+.. |image44| image:: ../pictures/module1/image44.png
    :width: 5.55220in
    :height: 3.69672in
-.. |image45| image:: module1/image45.png
+.. |image45| image:: ../pictures/module1/image45.png
    :width: 5.78628in
    :height: 3.79508in
-.. |image46| image:: module1/image46.png
+.. |image46| image:: ../pictures/module1/image46.png
    :width: 5.63562in
    :height: 2.88525in
-.. |image47| image:: module1/image47.png
+.. |image47| image:: ../pictures/module1/image47.png
    :width: 4.54079in
    :height: 2.68033in
-.. |image48| image:: module1/image48.png
+.. |image48| image:: ../pictures/module1/image48.png
    :width: 5.66751in
    :height: 2.21311in
-.. |image49| image:: module1/image49.png
+.. |image49| image:: ../pictures/module1/image49.png
    :width: 5.33607in
    :height: 2.58012in
-.. |image50| image:: module1/image50.png
+.. |image50| image:: ../pictures/module1/image50.png
    :width: 5.89531in
    :height: 7.63934in
-.. |image51| image:: module1/image51.png
+.. |image51| image:: ../pictures/module1/image51.png
    :width: 5.71040in
    :height: 3.10656in
-.. |image52| image:: module1/image52.png
+.. |image52| image:: ../pictures/module1/image52.png
    :width: 5.77749in
    :height: 3.49180in
-.. |image53| image:: module1/image53.png
+.. |image53| image:: ../pictures/module1/image53.png
    :width: 5.79029in
    :height: 3.34426in
-.. |image54| image:: module1/image54.png
+.. |image54| image:: ../pictures/module1/image54.png
    :width: 6.38622in
    :height: 1.81148in
-.. |image55| image:: module1/image55.png
+.. |image55| image:: ../pictures/module1/image55.png
    :width: 6.08771in
    :height: 3.07377in
-.. |image56| image:: module1/image56.png
+.. |image56| image:: ../pictures/module1/image56.png
    :width: 5.97027in
    :height: 3.72951in
