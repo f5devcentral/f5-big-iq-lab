@@ -10,7 +10,7 @@
         method: POST
         headers:
           Content-Type: application/json
-        body: "{{ lookup('file','auth_bigiq_paula.json') }}"
+        body: "{{ lookup('file','auth_bigiq_admin.json') }}"
         body_format: json
         timeout: 60
         status_code: 200, 202

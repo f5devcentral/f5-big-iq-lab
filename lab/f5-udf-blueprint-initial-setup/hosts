@@ -1,0 +1,8 @@
+[f5_bigiq:children]
+f5_bigiq_cm
+
+[f5_bigiq_cm]
+big-iq-cm-1.example.com ansible_host=10.1.1.4
+
+[f5_bigiq:vars]
+bigiq_onboard_new_admin_password=purple123

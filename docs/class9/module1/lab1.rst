@@ -1,7 +1,7 @@
 Lab 1.1: Simple APM Configuration via BIG-IQ (secure website with basic authentication)
 ---------------------------------------------------------------------------------------
 
-10.1.10.117, 119, 121
+10.1.10.119 will be use for this lab.
 
 1. First make sure your device has APM module discovered and imported.
 

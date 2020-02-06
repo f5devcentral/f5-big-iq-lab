@@ -28,7 +28,6 @@ IP ADDRESSES AVAILABLE TO USE WITH TRAFFIC:
 
     # SEA-vBIGIP01.termmarc.com.v14.1 (VPN, SSLO)
         10.1.10.114
-        10.1.10.118
         10.1.10.120
         10.1.10.122
         10.1.10.124

@@ -40,7 +40,7 @@ fi
 
 if [ ! -f $user_playbook ]; then
     echo -e "\n${RED}ERROR: $user_playbook user json file${NC} does not exist.\n"
-    ls -lrt auth_bigiq*
+    ls -lrt auth_bigiq* | grep -v total | awk '{print $NF}'
     exit 3;
 fi
 
