@@ -116,6 +116,10 @@ if [[  $currentuser == "root" ]]; then
     /etc/init.d/freeradius restart
     /etc/init.d/freeradius status
 
+    echo -e "\nStart noVNC"
+    su - f5student -c "vncserver :1"
+    su - f5student -c "websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
+
     # Cleanup docker
     docker kill $(docker ps -q)
     docker stop $(docker ps -q)
@@ -180,6 +184,9 @@ if [[  $currentuser == "root" ]]; then
     docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
+    # Create big files for access
+    base64 /dev/urandom | head -c 10000000 > grosfichier.html
+    docker cp grosfichier.html $docker_hackazon_id:/var/www/hackazon/web
     docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
     # Configure AWX
