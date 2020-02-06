@@ -320,6 +320,17 @@ sed -i 's/username=ask/username=f5student/g' /etc/xrdp/xrdp.ini
 sed -i 's/password=ask/password=purple123/g' /etc/xrdp/xrdp.ini
 service xrdp restart
 
+# NoVNC
+echo -e "\nInstall noVNC"
+apt -y install novnc websockify python-numpy
+apt -y install vnc4server
+openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/ssl/novnc.pem -out /etc/ssl/novnc.pem -days 1825
+chmod 644 /etc/ssl/novnc.pem
+cp -p /usr/share/novnc/vnc.html /usr/share/novnc/index.html
+su - f5student -c "printf 'purple123\npurple123\nn\n\n' | vncpasswd"
+su - f5student -c "vncserver :1"
+su - f5student -c "websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
+
 # Chrome needs to be before Deskop
 echo -e "\nInstall Chrome"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -375,6 +386,9 @@ curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcen
 /home/f5student/update_git.sh > /home/f5student/update_git.log
 chown -R f5student:f5student /home/f5student
 
+su - f5student -c "vncserver :1"
+su - f5student -c "websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
+
 exit 0' > /etc/rc.local
 chmod +x /etc/rc.local
 
@@ -393,12 +407,14 @@ su - f5student -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
 
 ## Add there things to do manually
 echo -e "\nPost-Checks:
+- Disable auto-lock screen for f5student user
+- Disable keying (https://www.fosslinux.com/2561/how-to-disable-keyring-in-ubuntu-elementary-os-and-linux-mint.htm)
 - Test Reboot (shutdown -r now) and stop/start from UDF
 - Test Connection to RDP
-- Disable keying (https://www.fosslinux.com/2561/how-to-disable-keyring-in-ubuntu-elementary-os-and-linux-mint.htm)
+- Test Connection to noVNC
 - Re-arrange Favorites in the task bar (have Chrome, Firefox, Terminal, Postman)
 - Test Launch Chrome & Firefox
-- Add bookmark of the BIG-IQ CE lab guide and Splunk
+- Add bookmark of the BIG-IQ CE lab guide and Splunk, check all bookmarks works
 - Add postman collection from f5-ansible-bigiq-as3-demo-7.0.0, disable SSL in postman\n\n"
 
 exit 0

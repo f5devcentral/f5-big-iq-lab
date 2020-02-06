@@ -12,16 +12,6 @@ if [  $already -gt 2 ]; then
     exit 1
 fi
 
-# FAKE DATA
-echo "# generate_access_reports_data.sh"
-cd $home/access
-count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_data.sh accessmock 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
-count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_data.sh access 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
-count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_data.sh accesssessions 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
-
 # do not add site17, 19 and 21 (used for access app)
 sitefqdn[1]="site17.example.com"
 sitefqdn[2]="site19.example.com"
@@ -31,7 +21,7 @@ sitefqdn[3]="site21.example.com"
 arraylength=${#sitefqdn[@]}
 
 # users available in the radius server
-users="admin paul paula david larry marco"
+users="paul paula david larry marco romain ronnie kyle"
 
 # Browser's list
 browser[1]="Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)"
@@ -79,26 +69,43 @@ do
 
         if [[  $port == 443 || $port == 80 ]]; then
                 echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen"
-
+                
                 for j in $users; do
                         #Randome IP
                         source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
+                        interface=$(ifconfig | grep -B 1 10.1.10.5 | grep -v 10.1.10.5 | awk -F':' '{ print $1 }')
+                        sudo ip addr add $source_ip_address/24 dev $interface
+                        sleep 2
 
                         # add random number for browsers
                         rb=`shuf -i 1-$arraylengthbrowser -n 1`;
 
-                        echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
+                        echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]} - user $j"
+                        
                         if [  $port == 443 ]; then
-                                curl -k -s -m 30 -o /dev/null -u $j:$j --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]} &
+                                curl -k -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]} &
                         else
-                                curl -s -m 30 -o /dev/null -u $j:$j --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]} &
+                                curl -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]} &
                         fi
+                        sleep 2
+                        sudo ip addr del $source_ip_address/24 dev $interface
                 done
+                
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
         fi
    fi
 done
+
+# FAKE DATA
+echo "# generate_access_reports_data.sh"
+cd $home/access
+count=`shuf -i 1-2 -n 1`;
+./generate_access_reports_data.sh accessmock 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
+count=`shuf -i 1-2 -n 1`;
+./generate_access_reports_data.sh access 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
+count=`shuf -i 1-2 -n 1`;
+./generate_access_reports_data.sh accesssessions 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
 
 #echo "# generate_access_reports_mock_data.sh"
 #cd $home/access

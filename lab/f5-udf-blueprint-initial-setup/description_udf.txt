@@ -19,6 +19,7 @@ IP ADDRESSES AVAILABLE TO USE WITH TRAFFIC:
     # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
         10.1.10.111
         10.1.10.113
+        10.1.10.119 (for access only)
         10.1.10.123
         10.1.10.127
         10.1.10.129
@@ -37,10 +38,8 @@ IP ADDRESSES AVAILABLE TO USE WITH TRAFFIC:
 
 DNS LISTENERS:
     # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
-        10.1.10.201
         10.1.10.203
         10.1.10.204
-
 
 DOCUMENTATIONS:
 - BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.0.0
@@ -62,7 +61,7 @@ List of instances.
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 12.1 / 1 standalone (SJC)
 - LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
-- Ansible Tower 3.4.3 
+- AWX/Ansible Tower 3.4.3 
 - SSLo Service TAP and L2
 
 If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com) or Kyle Oliver (k.oliver@f5.com)
