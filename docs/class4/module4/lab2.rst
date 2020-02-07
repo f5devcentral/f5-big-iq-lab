@@ -174,7 +174,7 @@ POST ``https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true`` and Check i
   }
 
 
-Before finishing this lab, there is one task to do. If you are done testing BIG-IQ HA, stop BIG-IQ CM Secondary to avoid additional costs. You might want to switch the active BIG-IQ before stopping the secondary… (or stop BIG-IQ primary in lab environment or Ravello and skip the next steps)
+Before finishing this lab, there is one task to do. If you are done testing BIG-IQ HA, stop BIG-IQ CM Secondary to avoid additional costs. You might want to switch the active BIG-IQ before stopping the secondary… (or stop BIG-IQ primary in lab environment and skip the next steps)
 
 16.	Go to BIG-IQ CM Secondary ``https\:\/\/10.1.1.15`` and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
 
