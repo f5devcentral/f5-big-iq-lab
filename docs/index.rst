@@ -19,7 +19,7 @@ significant portion of the BIG-IQ product. The Linux box in the
 environment has multiple cron jobs that are generating traffic that
 populates the Monitoring tab and Application dashboard.
 
-This lab environment is available in UDF for internal F5 users.
+This lab environment is available in lab environment for internal F5 users.
 
 .. toctree::
    :maxdepth: 1
@@ -47,13 +47,13 @@ This lab environment is available in UDF for internal F5 users.
 
 **Networks**:
 
-- 10.1.1.0/24 UDF Management Network
-- 10.1.10.0/24 UDF External Network
-- 10.1.20.0/24 UDF Internal Network
-- 10.1.30.0/24 UDF SSLo Inline L2 IN Network
-- 10.1.40.0/24 UDF SSLo Inline L2 OUT Network
-- 10.1.50.0/24 UDF SSLo TAP Network
-- 172.17.0.0/16 UDF Docker Internal Network
+- 10.1.1.0/24 lab environment Management Network
+- 10.1.10.0/24 lab environment External Network
+- 10.1.20.0/24 lab environment Internal Network
+- 10.1.30.0/24 lab environment SSLo Inline L2 IN Network
+- 10.1.40.0/24 lab environment SSLo Inline L2 OUT Network
+- 10.1.50.0/24 lab environment SSLo TAP Network
+- 172.17.0.0/16 lab environment Docker Internal Network
 - 172.100.0.0/16 AWS Internal Network
 - 172.200.0.0/16 Azure Internal Network
 
@@ -63,9 +63,9 @@ This lab environment is available in UDF for internal F5 users.
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 12.1 / 1 standalone (SJC)
-- LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security), Samba, AWX/Ansible Tower.
-- SSLo Service TAP and L2 (only with UDF Ravello)
-- ESXi 6.5.0 + vCenter (only with UDF Ravello)
+- LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security), Samba, AWX/Ansible Tower.
+- SSLo Service TAP and L2 (only with lab environment Ravello)
+- ESXi 6.5.0 + vCenter (only with lab environment Ravello)
 
 **Components available**:
 

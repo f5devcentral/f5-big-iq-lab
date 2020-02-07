@@ -28,7 +28,7 @@ Once this is done, we will be able to deploy our ``SSG``. We will rely on some a
 
 * Create a VNET, subnets, ...
 * Deploy an APP in ``Azure``
-* Setup an ``Azure VPN`` connection between our ``UDF`` environment and this newly deployed ``Azure VNET``
+* Setup an ``Azure VPN`` connection between our lab environment and this newly deployed ``Azure VNET``
 
 .. note:: in this lab, we consider that you have access to ``Azure``. We won't cover this topic. 
 

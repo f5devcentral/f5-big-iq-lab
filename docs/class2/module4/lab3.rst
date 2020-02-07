@@ -4,7 +4,7 @@ Lab 4.3: Review our ``SSG`` deployment in ``AWS``
 ``AWS`` configuration review
 ****************************
 
-Connect to your ``AWS Console`` to review what has been created already (the AWS console URL, login, password are in the Cloud Accounts tab if using UDF).
+Connect to your ``AWS Console`` to review what has been created already (the AWS console URL, login, password are in the Cloud Accounts tab if using lab environment).
 
 Go to **Services** > **CloudFormation**
 

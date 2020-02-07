@@ -15,7 +15,7 @@ Configuring BIG-IQ in a high availability (HA) pair means that you can still man
 
 1. Let's first add a BIG-IQ CM image in the blueprint.
 
-In UDF, on the ``F5 Products`` column, click on **ADD**
+in lab environment, on the ``F5 Products`` column, click on **ADD**
 
 .. image:: ../pictures/module4/img_module4_lab1_1a.png
   :align: center
@@ -37,7 +37,7 @@ Click on **CREATE**.
 
 |
 
-After few minutes, the VM is created in UDF. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).
+After few minutes, the VM is created in lab environment. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).
 
 .. image:: ../pictures/module4/img_module4_lab1_1c.png
   :align: center

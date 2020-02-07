@@ -8,22 +8,14 @@ The Enhanced Analytics allows you to increase the application data visibility by
 
 .. note:: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list. Enhanced Analytics might be already turn on for site42.example.com
 
-2. From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
+2. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. To do this, in your lab environment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
     :scale: 70%
-
-|
-
-You can use the copy/past feature if you are using the Console:
-
-.. image:: ../../pictures/ubuntu_console.png
-   :align: center
-   :scale: 60%
 
 |
 

@@ -1,7 +1,7 @@
 Module 4: DNS Analytics
 =======================
 
-This section of the lab is design to present an overview of the DNS statistics that are available in BIG-IQ. While not a complete customer scenario, the UDF environment is built to provide some DNS traffic in order to populate the charts and graphs.
+This section of the lab is design to present an overview of the DNS statistics that are available in BIG-IQ. While not a complete customer scenario, the lab environment is built to provide some DNS traffic in order to populate the charts and graphs.
 
 For this lab, the student is not asked to create any configuration, but rather just explore the information available.
 
@@ -36,7 +36,7 @@ The charts on the Attacks and Violations tab indicate Protocol Violations found 
   :align: center
   :scale: 50%
   
-The Top Charts tab provides summary of top source IPs, Domain names, and Wide IP stats. Because of the limited implementation in the UDF environment, there is limit information.
+The Top Charts tab provides summary of top source IPs, Domain names, and Wide IP stats. Because of the limited implementation in the lab environment, there is limit information.
 
 .. image:: ../pictures/module4/TopCharts.png
   :align: center

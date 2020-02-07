@@ -30,7 +30,7 @@ Once this is done, we will be able to deploy our ``SSG``. We will rely on some a
 
 * Create a VPC, subnets, security groups, ...
 * Deploy an APP in ``AWS``
-* Setup an ``AWS VPN`` connection between our ``UDF`` environment and this newly deployed ``AWS VPC``
+* Setup an ``AWS VPN`` connection between our lab environment and this newly deployed ``AWS VPC``
 
 .. note:: in this lab, we consider that you have access to ``AWS``. We won't cover this topic. 
 

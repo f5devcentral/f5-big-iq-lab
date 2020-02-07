@@ -31,10 +31,10 @@ we will need to edit the following files:
 Launch our ``SSG`` - Update config.yml
 ***************************************
 
-.. warning:: For UDF lab, the UDF Cloud Account is used, if you want to use your own AWS account, 
+.. warning:: For lab environment, the Cloud Account is used, if you want to use your own AWS account, 
              comment out the line ``01-configure-cloud-udf.sh`` in ``000-RUN_ALL.sh``.
 
-In the case you are **NOT** using the UDF Cloud account, use your favorite editor to update this file. 
+In the case you are **NOT** using the Cloud account, use your favorite editor to update this file. 
 
     ``vi config.yml``
 
@@ -199,7 +199,7 @@ To trigger the deployment, run the following command:
 It will ask you to press Enter to confirm that you subscribed and agreed to 
 the EULA in the marketplace. Make sure you subscribed, then press enter to start the deployment. 
 
-.. warning:: The AWS console URL, login, password are in the Cloud Accounts tab if using UDF.
+.. warning:: The AWS console URL, login, password are in the Cloud Accounts tab if using lab environment.
  
    .. image:: ../pictures/module4/img_module4_lab2_2a.png
       :scale: 50%

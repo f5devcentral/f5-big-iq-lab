@@ -87,7 +87,7 @@ This automation scenario is composed of 4 parts:
 
 The script will perform in this order:
 
-    1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in UDF).
+    1. Exchange the ssh keys between the ubuntu and the BIG-IQ CM and DCD (check Credentials under Documentation tab in lab environment).
     2. Install ansible-galaxy roles
     3. Onboarding BIG-IQ CM and DCD:
 

@@ -1,7 +1,7 @@
 Lab 6.1: Configure a new DCD and setup 2 different zones
 --------------------------------------------------------
 
-Using the UDF below, the goal is to configure the BIG-IQ management console and DCD1 in the ``default`` zone.
+Using the lab environment, the goal is to configure the BIG-IQ management console and DCD1 in the ``default`` zone.
 The DCD2 at the other location will be in zone ``westcoast``. The BIG-IPs will be assign to the approriate zone depending on their location.
 
 .. image:: ../pictures/module6/img_module6_lab1_diagram.png
@@ -12,7 +12,7 @@ The DCD2 at the other location will be in zone ``westcoast``. The BIG-IPs will b
 
 1. Let's first add a BIG-IQ DCD image in the blueprint.
 
-- In UDF:
+- in lab environment:
 
 In the ``F5 Products`` column, click on **ADD**
 
@@ -36,7 +36,7 @@ Click on **CREATE**.
 
 |
 
-After few minutes, the VM is created in UDF. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).
+After few minutes, the VM is created in lab environment. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).
 
 .. image:: ../pictures/module6/img_module6_lab1_1c.png
   :align: center

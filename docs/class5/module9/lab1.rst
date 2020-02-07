@@ -99,7 +99,7 @@ Once you've subscribed, you should see something like this:
 
 The below script takes Azure parameters and creates Azure resources. These resources are used in BIG-IQ as a place to our BIG-IP to be deployed and configured.
 
-SSH Ubuntu host in UDF:
+SSH Ubuntu host in lab environment:
 
 .. image:: pictures/image22.png
   :align: left

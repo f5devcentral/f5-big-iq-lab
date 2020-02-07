@@ -115,7 +115,7 @@ HTTPS Service using AS3 through GUI
   :align: center
 
 14.	Now, let's look on the BIG-IP and verify the Application is correctly deployed in partition ``tenant1``.
-    Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from UDF. Select the partition ``tenant1`` and look at the objects created on the BIG-IP.
+    Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant1`` and look at the objects created on the BIG-IP.
 
 .. image:: ../pictures/module3/lab-2-8.png
   :scale: 80%

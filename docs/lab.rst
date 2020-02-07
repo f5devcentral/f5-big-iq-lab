@@ -2,7 +2,7 @@
 List of Virtual Servers and Applications Servers where various type of traffic
 is being send to (check ``crontab`` config for more details).
 
-.. warning:: Make sure the IP address on the external network 10.1.10.0/24 is defined in UDF on the BIG-IP external interface
+.. warning:: Make sure the IP address on the external network 10.1.10.0/24 is defined in lab environment on the BIG-IP external interface
              where you are deploying the Application Service or VIP
 
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+

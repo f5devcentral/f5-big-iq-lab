@@ -35,10 +35,10 @@ In order to test it quickly, let's manually set in the HTTP profile attached to 
 .. note:: Other way could be to create a clone of a default template and change the parameter Request Header Erase within the template. Note we cannot modify the default built-in templates.
 
 
-From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
+From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. To do this, in your lab environment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left

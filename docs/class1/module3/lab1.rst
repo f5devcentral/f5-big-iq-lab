@@ -5,11 +5,11 @@ Official documentation about AS3 application service management via a GUI can be
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/monitoring-managing-applications-using-big-iq.html
 
-From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. 
-To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
+From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+To do this, in your lab environment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
@@ -41,7 +41,7 @@ Import AS3 BIG-IQ templates
 
 #. Use the provided instructions on the Github page to import the templates into BIG-IQ.
 
-.. note:: The F5 default AS3 BIG-IQ templates are already imported in the UDF blueprint.
+.. note:: The F5 default AS3 BIG-IQ templates are already imported in the lab environment.
 
 #. Walk through the provided templates and select them to understand the structure. If familiar with AS3 you will notice the structure. 
    Otherwise go make sure you have gone through `Module 2`_ or visit `AS3 Example declarations`_.

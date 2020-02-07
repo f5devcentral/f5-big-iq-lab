@@ -76,7 +76,7 @@ tailored to your custom needs.
   :align: center
 
 13.	Now, let's look on the BIG-IP  and verify the Application is correctly deployed in partition ``tenant2``.
-    Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from UDF. Select the partition ``tenant2`` and look at the objects created on the BIG-IP.
+    Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant2`` and look at the objects created on the BIG-IP.
 
  .. image:: ../pictures/module3/lab-4-5.png
   :align: center

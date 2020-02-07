@@ -3,7 +3,7 @@ Lab 1.3: Deploy your Service Scaling Group
 
 Before setting up our ``SSG`` and deploy it, do the following:
 
-.. note:: it is recommended to launch your ``SSH`` sessions from the UDF portal.
+.. note:: it is recommended to launch your ``SSH`` sessions from the lab environment.
 
 * Open **2** ``SSH`` sessions on your ``BIG-IQ``.
 
@@ -37,11 +37,11 @@ Before setting up our ``SSG`` and deploy it, do the following:
 
   ``sudo service isc-dhcp-server force-reload``
 
-From UDF, launch a Console/RDP session to have access to the Ubuntu Desktop. 
-To do this, in your UDF deployment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *Console* or *XRDP*.
+From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+To do this, in your lab environment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
@@ -130,7 +130,7 @@ Service Scaling Group Properties:
 
 .. warning::
 
-   In UDF, the provisioning of a SSG VE may take up to 10 min. So it may takes
+   in lab environment, the provisioning of a SSG VE may take up to 10 min. So it may takes
    up to 20 min to build those 2 devices. If you are short on time, it may be
    better to specify 1 minimum device and 1 desired device instead of 2.
 
