@@ -21,7 +21,7 @@ sitefqdn[3]="site21.example.com"
 arraylength=${#sitefqdn[@]}
 
 # users available in the radius server
-users="paul paula david larry marco romain ronnie kyle"
+users="paul paula david larry marco chris romain ronnie kyle"
 
 # Browser's list
 browser[1]="Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)"
