@@ -33,6 +33,10 @@ IP ADDRESSES AVAILABLE TO USE WITH TRAFFIC:
         10.1.10.122
         10.1.10.124
 
+    # SJC-vBIGIP01.termmarc.com.v12.1
+        10.1.10.137
+        10.1.10.139
+
     # Pool Members (on the Ubuntu 19.10 Lamp)
         10.1.20.110-123
 

@@ -83,9 +83,9 @@ do
                         echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]} - user $j"
                         
                         if [  $port == 443 ]; then
-                                curl -k -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]} &
+                                curl -k -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/grosfichier.html &
                         else
-                                curl -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]} &
+                                curl -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/grosfichier.html &
                         fi
                         sleep 2
                         sudo ip addr del $source_ip_address/24 dev $interface
