@@ -116,14 +116,15 @@ if [[  $currentuser == "root" ]]; then
     /etc/init.d/freeradius restart
     /etc/init.d/freeradius status
 
-    echo -e "\nwebsockify\n"
-    su - f5student -c "/usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
-    sleep 5
-    ps -ef | grep websockify | grep -v grep
     echo -e "\nNoVNC\n"
     su - f5student -c "/usr/bin/vncserver :1"
     sleep 5
     ps -ef | grep vnc | grep -v grep
+
+    echo -e "\nwebsockify\n"
+    su - f5student -c "/usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
+    sleep 5
+    ps -ef | grep websockify | grep -v grep
 
     # Cleanup docker
     docker kill $(docker ps -q)
