@@ -123,12 +123,13 @@ if [[  $currentuser == "root" ]]; then
     echo -e "\nNoVNC\n"
     export TERM="xterm-256color"
     export SHELL="/bin/bash"
-    su - f5student -c "/usr/bin/vncserver :1"
+    su - f5student -c "/usr/bin/vncserver :1 -verbose"
     sleep 5
     ps -ef | grep vnc | grep -v grep
     echo
     env
     echo
+    # vncserver -kill :1
 
     # Cleanup docker
     docker kill $(docker ps -q)
