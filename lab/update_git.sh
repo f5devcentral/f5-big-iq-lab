@@ -121,15 +121,9 @@ if [[  $currentuser == "root" ]]; then
     sleep 5
     ps -ef | grep websockify | grep -v grep
     echo -e "\nNoVNC\n"
-    export TERM="xterm-256color"
-    export SHELL="/bin/bash"
-    su - f5student -c "/usr/bin/vncserver :1 -verbose"
+    su - f5student -c "/usr/bin/vncserver :1"
     sleep 5
     ps -ef | grep vnc | grep -v grep
-    echo
-    env
-    echo
-    # vncserver -kill :1
 
     # Cleanup docker
     docker kill $(docker ps -q)
