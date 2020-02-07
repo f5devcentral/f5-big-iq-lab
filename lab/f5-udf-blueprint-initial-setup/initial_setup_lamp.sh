@@ -387,6 +387,9 @@ curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcen
 /home/f5student/update_git.sh > /home/f5student/update_git.log
 chown -R f5student:f5student /home/f5student
 
+su - f5student -c "/usr/bin/vncserver :1 > /tmp/vncserver.log 2>&1 &" &
+su - f5student -c "/usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
+
 exit 0' > /etc/rc.local
 chmod +x /etc/rc.local
 

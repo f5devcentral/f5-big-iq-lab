@@ -45,7 +45,7 @@
 ## Make sure BOS BIG-IP01 is always active (limiation UDF AWS)
 */5 * * * * /home/f5/scripts/forceActiveBigipBostonCluster.sh
 
-## WA reboot xrdp if dead
+## WA reboot xrdp or vnc if dead
 */5 * * * * /home/f5/scripts/xrdp_monitor.sh > /dev/null 2>&1
 
 ## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
