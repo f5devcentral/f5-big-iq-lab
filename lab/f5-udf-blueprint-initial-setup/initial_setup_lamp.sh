@@ -324,7 +324,8 @@ service xrdp restart
 # NoVNC
 echo -e "\nInstall noVNC"
 apt -y install novnc websockify python-numpy
-apt -y install vnc4server
+#apt -y install vnc4server
+apt -y install tightvncserver
 openssl req -x509 -nodes -newkey rsa:2048 -keyout /etc/ssl/novnc.pem -out /etc/ssl/novnc.pem -days 1825
 chmod 644 /etc/ssl/novnc.pem
 cp -p /usr/share/novnc/vnc.html /usr/share/novnc/index.html
@@ -386,9 +387,6 @@ echo '#!/bin/sh -e
 curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 /home/f5student/update_git.sh > /home/f5student/update_git.log
 chown -R f5student:f5student /home/f5student
-
-su - f5student -c "/usr/bin/vncserver :1 > /tmp/vncserver.log 2>&1 &" &
-su - f5student -c "/usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
 
 exit 0' > /etc/rc.local
 chmod +x /etc/rc.local
