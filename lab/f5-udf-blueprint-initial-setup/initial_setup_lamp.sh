@@ -333,10 +333,12 @@ su - f5student -c "printf 'purple123\npurple123\nn\n\n' | vncpasswd"
 su - f5student -c "vncserver :1"
 su - f5student -c "websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
 
-echo '#!/bin/bash
+echo '#! /bin/sh
 unset SESSION_MANAGER
 unset DBUS_SESSION_BUS_ADDRESS
-exec /etc/X11/xinit/xinitrc' > /home/f5student/.vnc/xstartup
+#vncconfig -iconic &
+#exec startxfce4
+dbus-launch --exit-with-session gnome-session &' > /home/f5student/.vnc/xstartup
 chmod 755 /home/f5student/.vnc/xstartup
 chown f5student:f5student /home/f5student/.vnc/xstartup
 
