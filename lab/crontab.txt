@@ -54,7 +54,3 @@
 
 ## AUTOMATIC RE-LICENSE FOR UDF BLUEPRINT AFTER 20 MIN DEPLOYMENT STARTS
 @reboot sleep 1200 && /home/f5/scripts/reactivate_licenses.sh > /home/f5/scripts/reactivate_licenses.log 2>&1
-
-## Start noVNC
-@reboot /usr/bin/vncserver :1
-@reboot /usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901
