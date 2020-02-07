@@ -117,7 +117,7 @@ if [[  $currentuser == "root" ]]; then
     /etc/init.d/freeradius status
 
     echo -e "\nNoVNC\n"
-    su - f5student -c "/usr/bin/vncserver :1 geometry 1280x800 -depth 24"
+    su - f5student -c "/usr/bin/vncserver :1 -geometry 1280x800 -depth 24"
     sleep 5
     ps -ef | grep vnc | grep -v grep
 
