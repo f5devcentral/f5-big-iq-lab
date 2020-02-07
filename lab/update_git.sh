@@ -116,10 +116,12 @@ if [[  $currentuser == "root" ]]; then
     /etc/init.d/freeradius restart
     /etc/init.d/freeradius status
 
-    echo -e "\nnoVNC"
+    echo -e "\nnoVNC 1"
     su - f5student -c "echo vncStart > /tmp/vncserver.log"
-    su - f5student -c "/usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901 >> /tmp/vncserver.log"
+    su - f5student -c "/usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901 >> /tmp/vncserver.log 2>&1"
     sleep 5
+    ps -ef | grep websockify | grep -v grep
+    echo -e "\nnoVNC 2"
     su - f5student -c "/usr/bin/vncserver :1 >> /tmp/vncserver.log 2>&1 &"
     sleep 5
     su - f5student -c "echo vncEnd >> /tmp/vncserver.log"
