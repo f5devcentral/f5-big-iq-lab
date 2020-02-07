@@ -116,13 +116,13 @@ if [[  $currentuser == "root" ]]; then
     /etc/init.d/freeradius restart
     /etc/init.d/freeradius status
 
-    echo -e "\nCheck noVNC"
+    echo -e "\nnoVNC"
     su - f5student -c "echo vncStart > /tmp/vncserver.log"
-    su - f5student -c "/usr/bin/vncserver :2 >> /tmp/vncserver.log 2>&1 &"
+    su - f5student -c "/usr/bin/vncserver :99 >> /tmp/vncserver.log 2>&1 &"
+    sleep 5
     su - f5student -c "/usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901 >> /tmp/vncserver.log"
     su - f5student -c "echo vncEnd >> /tmp/vncserver.log"
     ps -ef | grep vnc | grep -v grep
-    su - f5student -c "cat ~/.vnc/*log"
 
     # Cleanup docker
     docker kill $(docker ps -q)
