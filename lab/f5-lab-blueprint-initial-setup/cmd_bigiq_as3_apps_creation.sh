@@ -30,8 +30,6 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 echo -e "\n${GREEN}Create AS3 Applications${NC}"
 sudo docker build -t f5-big-iq-onboarding .
 sudo docker run -t f5-big-iq-onboarding ansible-playbook --version
-echo -e "\n${RED}Make sure paula and paul users are correctly created on the BIG-IQ.${NC}"
-[[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 ./ansible_helper ansible-playbook /ansible/bigiq_deploy_default_as3_app_svc_udf.yml -i /ansible/hosts $DEBUG_arg
 
@@ -39,6 +37,10 @@ echo -e "\n${RED}Make sure paula and paul users are correctly created on the BIG
 ./ansible_helper ansible-playbook -i notahost, /ansible/create_default_global_app_site16_site18_dns_bigiq.yml $DEBUG_arg
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
+
+echo -e "\n${RED}Make sure paula and paul users are correctly assigned to their roles on the BIG-IQ (look at the description_lab.txt).${NC}"
+
+
 
 # total script execution time
 echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time:${RED} $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec${NC}"

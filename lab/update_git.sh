@@ -191,7 +191,7 @@ if [[  $currentuser == "root" ]]; then
     docker cp f5-demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
     # Create big files for access
-    base64 /dev/urandom | head -c 15000000 > grosfichier.html
+    base64 /dev/urandom | head -c 300000000 > grosfichier.html
     docker cp grosfichier.html $docker_hackazon_id:/var/www/hackazon/web
     rm -f grosfichier.html
     docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"

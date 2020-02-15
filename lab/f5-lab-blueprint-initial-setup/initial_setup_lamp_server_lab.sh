@@ -5,7 +5,7 @@
 
 # Initial script install:
 # sudo su -
-# curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/f5-udf-blueprint-initial-setup/initial_setup_lamp.sh
+# curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/f5-lab-blueprint-initial-setup/initial_setup_lamp.sh
 # chmod +x /root/initial_setup_lamp.sh
 # ./initial_setup_lamp.sh
 

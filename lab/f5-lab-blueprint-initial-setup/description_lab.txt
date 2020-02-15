@@ -1,7 +1,10 @@
-Demo lab guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
-Draft version of the demo lab guide: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/
+This lab environment is designed to allow for quick and easy demos of a significant portion of the BIG-IQ product.
+The Linux box in the environment has multiple cron jobs that are generating traffic that populates the Monitoring tab and Application dashboard.
 
-APPLICATION SERVICES IN THE BLUEPRINT:
+DEMO LAB GUIDE: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
+DRAFT VERSION: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/
+
+APPLICATION SERVICES ALREADY AVAILABLE IN THE BLUEPRINT:
     # airport_security:
         AS3 security2_site18_seattle 10.1.10.118 SEA AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v1 (Paula)
         AS3 security_site16_boston 10.1.10.116 BOS AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1 (Paula)
@@ -15,7 +18,7 @@ APPLICATION SERVICES IN THE BLUEPRINT:
         AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
         AS3 taxes_site17access 10.1.10.117 BOS without AS3 template (Paul)
 
-IP ADDRESSES AVAILABLE TO USE WITH TRAFFIC:
+VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:
     # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
         10.1.10.111
         10.1.10.113
@@ -37,7 +40,7 @@ IP ADDRESSES AVAILABLE TO USE WITH TRAFFIC:
         10.1.10.137
         10.1.10.139
 
-    # Pool Members (on the Ubuntu 19.10 Lamp)
+POOL MEMBERS (on the Ubuntu 19.10 Lamp Server)
         10.1.20.110-123
 
 DNS LISTENERS:
@@ -47,11 +50,9 @@ DNS LISTENERS:
 
 DOCUMENTATIONS:
 - BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.0.0
-- Customer Deck: https://hive.f5.com/community/product/solutions/management
+- Customer Deck: https://f5.sharepoint.com/sites/SMEManagement/Shared%20Documents/Forms/AllItems.aspx
 
-This environment will allow you to demonstrate BIG-IQ Central Management and Statistic Collection leveraging a Data Collection Device.
-
-Components available: 
+COMPONENTS AVAILABLE: 
 - "System" - Manage all aspects for BIG-IQ, 
 - "Device" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
 - "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
@@ -59,19 +60,19 @@ Components available:
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
 - "Application" - Application Management (Cloud Edition, AS3) and Service Scaling Group
 
-List of instances.
+LIST OF INSTANCES:
 - BIG-IQ <> DCD 7.0.0.1
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 12.1 / 1 standalone (SJC)
-- LAMP Server - Radius, LDAP, DHCP, RDP, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
-- AWX/Ansible Tower 3.4.3 
+- LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, Docker, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
+- AWX 9.1.0 (upstream project from which the Red Hat Ansible Tower)
 - SSLo Service TAP and L2
 
 If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com) or Kyle Oliver (k.oliver@f5.com)
 
 ###################################################
-Name: Ubuntu 19.10 Lamp Server, RDP, Docker, AWX
+Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Splunk
 
 List of Virtual Servers and Applications Servers where various type of traffic is being send to (check crontab config for more details).
 - Virtual IP addresses where the traffic generator sends HTTP clean traffic	10.1.10.110 to 10.1.10.142 (except 10.1.10.117, 10.1.10.119 and 10.1.10.121 (used for access in class 9)
@@ -106,7 +107,7 @@ cat /dev/null > dhcpd.leases~
 Radius server:
 IP 10.1.1.5
 secret = default
-Users: marco, david, paula, paul, larry, olivia, dnsuser, certuser
+Users: marco, david, paula, paul, larry, olivia
 
 LDAP server:
 IP 10.1.1.5

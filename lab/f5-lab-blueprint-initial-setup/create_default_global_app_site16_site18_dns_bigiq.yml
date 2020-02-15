@@ -29,7 +29,7 @@
       register: site16
 
     - debug:
-        msg: "{{ site16.json | json_query('items[*].selfLink') | first }}"
+        msg: "{{ site16.json | json_query('items[*].selfLink') }}"
   
     - name: Get Config set site16
       uri:
@@ -43,7 +43,7 @@
       register: site18
 
     - debug:
-        msg: "{{ site18.json | json_query('items[*].selfLink') | first }}"
+        msg: "{{ site18.json | json_query('items[*].selfLink') }}"
 
     - name: Get Config set dns
       uri:
@@ -57,7 +57,7 @@
       register: dns
 
     - debug:
-        msg: "{{ dns.json | json_query('items[*].selfLink') | first }}"
+        msg: "{{ dns.json | json_query('items[*].selfLink') }}"
 
     - name: Create Application in BIG-IQ with the 3 services in it
       uri:
@@ -69,9 +69,10 @@
         body:
           # used https://www.json2yaml.com/ to convert JSON declaration to YAML
           componentAppReferencesToMove:
-          - link: "{{ site16.json | json_query('items[*].selfLink') | first }}"
-          - link: "{{ site18.json | json_query('items[*].selfLink') | first }}"
-          - link: "{{ dns.json | json_query('items[*].selfLink') | first }}"
+          - link: "{{ site16.json | json_query('items[*].selfLink') }}"
+          - link: "{{ site18.json | json_query('items[*].selfLink') }}"
+          - link: "{{ dns.json | json_query('items[*].selfLink') }}"
+          # maybe need the | first 
           targetGlobalAppName: airport_security
           deleteEmptyGlobalAppsWhenDone: false
           requireNewGlobalApp: true

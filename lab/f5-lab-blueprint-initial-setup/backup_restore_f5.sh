@@ -166,9 +166,11 @@ echo -e "\nPost-Checks:
         Allow using AS3 without Template
     Application Creator Cloud
         user: paul
+        Allow using AS3 without Template
         AS3-F5-HTTP-lb, AS3-F5-HTTPS-WAF-external-url-lb, AS3-F5-TCP-lb
     Application Creator VMware
         user: paula
+        Allow using AS3 without Template
         AS3-F5-HTTP-lb, AS3-F5-HTTP-lb-traffic-capture, AS3-F5-HTTPS-WAF-external-url-lb, AS3-F5-FastL4-TCP-lb, AS3-F5-DNS-FQDN-A-type
 - Add licenses pools examples: byol-pool, byol-pool-perAppVE, byol-pool-utility
 - Add example TMSH script: config-sync boston cluster (tmsh run cm config-sync force-full-load-push to-group datasync-global-dg)

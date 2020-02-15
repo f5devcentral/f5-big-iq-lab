@@ -19,7 +19,7 @@ significant portion of the BIG-IQ product. The Linux box in the
 environment has multiple cron jobs that are generating traffic that
 populates the Monitoring tab and Application dashboard.
 
-This lab environment is available in lab environment for internal F5 users.
+This lab environment is available for internal F5 users.
 
 .. toctree::
    :maxdepth: 1

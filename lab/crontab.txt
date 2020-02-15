@@ -31,7 +31,7 @@
 #*/13 * * * * /home/f5/scripts/generate_afm_traffic.sh > /dev/null 2>&1
 
 ## Access Traffic
-*/10 * * * * /home/f5/scripts/generate_access_traffic.sh > /dev/null 2>&1
+*/5 * * * * /home/f5/scripts/generate_access_traffic.sh > /dev/null 2>&1
 
 ## FPS Traffic
 */28 * * * * /home/f5/scripts/generate_fps_traffic_fake.sh > /dev/null 2>&1

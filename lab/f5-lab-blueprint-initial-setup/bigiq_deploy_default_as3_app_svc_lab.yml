@@ -13,7 +13,7 @@
 
     tasks:
       - name: Display paths of all .json files in dir
-        debug: msg={{ lookup('fileglob', '/ansible/default_as3_app_svc/*.json') }}
+        debug: msg={{ query('fileglob', '/ansible/default_as3_app_svc/*.json')|sort }}
 
       - name: ATC POST
         include_role:
@@ -24,7 +24,6 @@
           atc_declaration_file: "{{ item }}"
           atc_delay: 15
           atc_retries: 10
-        with_fileglob:
-          - "/ansible/default_as3_app_svc/*.json"
+        loop: "{{ query('fileglob', '/ansible/default_as3_app_svc/*.json')|sort }}"
 
       #- debug: var=atc_AS3_status

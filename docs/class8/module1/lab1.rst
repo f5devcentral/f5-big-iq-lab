@@ -17,15 +17,29 @@ Connect as **david** on BIG-IQ.
 
 1. First make sure your device has ASM module discovered and imported.
 
-2. Check if the ASM service is Active.
+Devices > BIG-IP DEVICES
+
+.. image:: ../pictures/module1/img_module1_lab1_0a.png
+  :align: center
+  :scale: 60%
+
+|
+
+2. Check if the Web Application Security service is Active.
 
 System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
+.. image:: ../pictures/module1/img_module1_lab1_0b.png
+  :align: center
+  :scale: 60%
+
+|
+
 3. Create the DCD Pool and Log Destinations. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
-- Name: bot-remote-dcd-asm-pool
-- Health Monitors: tcp
-- Pool Member/Port: 10.1.10.6:8514
+- Name: ``bot-remote-dcd-asm-pool``
+- Health Monitors: ``tcp``
+- Pool Member/Port: ``10.1.10.6:8514``
 
 .. image:: ../pictures/module1/img_module1_lab1_1.png
   :align: center
@@ -35,9 +49,9 @@ System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
-- Name Log Destination hslog: bot-remote-logging-destination-remote-hslog-8514
-- Device: SEA-vBIGIP01.termmarc.com
-- Pool: bot-remote-dcd-asm-pool previously created
+- Name Log Destination hslog: ``bot-remote-logging-destination-remote-hslog-8514``
+- Device: ``SEA-vBIGIP01.termmarc.com``
+- Pool: ``bot-remote-dcd-asm-pool`` previously created
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
@@ -47,9 +61,9 @@ Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click C
 
 Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
-- Name Log Destination Splunk: bot-remote-logging-destination-splunk-8514
-- Type: Splunk
-- Forward To: Remote High Speed Log - bot-remote-logging-destination-remote-hslog-8514 previously created
+- Name Log Destination Splunk: ``bot-remote-logging-destination-splunk-8514``
+- Type: ``Splunk``
+- Forward To: ``Remote High Speed Log`` - ``bot-remote-logging-destination-remote-hslog-8514`` previously created
 
 .. image:: ../pictures/module1/img_module1_lab1_3.png
   :align: center
@@ -61,8 +75,8 @@ Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click C
 
 4. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
 
-- Name: bot-remote-logging-publisher-8514
-- Log Destinations: bot-remote-logging-destination-splunk-8514 previously created
+- Name: ``bot-remote-logging-publisher-8514``
+- Log Destinations: ``bot-remote-logging-destination-splunk-8514`` previously created
 
 .. image:: ../pictures/module1/img_module1_lab1_4.png
   :align: center
@@ -102,9 +116,9 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 |
 
-- Name: lab-bot-defense-profile
-- Enforcement Mode: Blocking
-- Enforcement Readiness Period: 0 (**lab only**)
+- Name: ``lab-bot-defense-profile``
+- Enforcement Mode: ``Blocking``
+- Enforcement Readiness Period: ``0`` (**lab only**)
 
 .. image:: ../pictures/module1/img_module1_lab1_8.png
   :align: center
@@ -112,7 +126,7 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 |
 
-- Untrusted Bot: Block
+- Untrusted Bot: ``Block``
 
 .. image:: ../pictures/module1/img_module1_lab1_9.png
   :align: center
@@ -130,8 +144,8 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 |
 
-- Name: lab-bot-logging-profile
-- Properties: select Bot Defense
+- Name: ``lab-bot-logging-profile``
+- Properties: select ``Bot Defense``
 - Remote Publisher: select previously Remote Publisher previously created.
 - Logs Requests: select all options (Human Users, Bots, etc...)]
 
@@ -147,10 +161,10 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 .. warning:: This step could be done from BIG-IQ but in order to avoid going back and forth between BIG-IP and BIG-IQ,
              we are creating the HTTP Application Service from BIG-IP.
 
-- Name: vs_bot_defense_lab
-- Destination Address: 10.1.10.124
+- Name: ``vs_bot_defense_lab``
+- Destination Address: ``10.1.10.124``
 - Default HTTP profile
-- Source Address Translation: auto map
+- Source Address Translation: ``auto map``
 - Pool: select an exiting pool (e.g. /Common/site42.example.com/pool_0)
 
 Edit the VIP and go to Security tab. Assign the Bot Defense Profile and the Log Profile previously created.
