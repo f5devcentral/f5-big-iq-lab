@@ -204,6 +204,9 @@ shortname = bigiq
 /etc/init.d/freeradius restart
 /etc/init.d/freeradius status
 
+echo -e "\nInstall LDAP utils"
+apt install ldap-utils -y
+
 echo -e "\nInstall Apache Benchmark, Git, SNMPD, jq"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apache2-utils -y

@@ -10,56 +10,57 @@ bigiq_password="purple123"
 ############# ############# ############# 
 ############# License Pool  ############# 
 ############# ############# ############# 
-generate_post_data() {
-cat <<EOF
-{
-    "state": "RELICENSE",
-    "method": "AUTOMATIC"
-}
-EOF
-}
 
-# Specific to UDF license pools
-byolpool[1]="7686f428-3849-4450-a1a2-ea288c6bcbe0" #byol-pool
-byolpool[2]="2b161bb3-4579-44f0-8792-398f7f54512e" #byol-pool-access 
-byolpool[3]="0a2f68b5-1646-4a60-a276-8626e3e9fb8e" #byol-pool-perAppVE
-byolpool[4]="50637134-a5d1-491f-b843-7d1b4eff865e" #byol-pool
-byolpool[5]="67ce6cf0-3234-492c-81de-634c27000b23" #byol-pool-perAppVE
+purchasedPoolselfLink=( $(curl -k https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/purchased-pool/licenses | jq -r .items | jq .[].selfLink | awk -F '/' '{print $11}' | sed 's/.$//') )
+printf '%s\n' "${purchasedPoolselfLink[@]}"
+
+purchasedPoolname=( $(curl -k https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/purchased-pool/licenses | jq -r .items | jq .[].name | sed 's:^.\(.*\).$:\1:') )
+printf '%s\n' "${purchasedPoolname[@]}"
+
+purchasedPoolbaseRegKey=( $(curl -k https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/purchased-pool/licenses | jq -r .items | jq .[].baseRegKey | sed 's:^.\(.*\).$:\1:') )
+printf '%s\n' "${purchasedPoolbaseRegKey[@]}"
 
 # get length of the array
-arraylength=${#byolpool[@]}
+arraylength=${#purchasedPoolname[@]}
+echo $arraylength
 
-for (( i=1; i<${arraylength}+1; i++ ));
+for (( i=0; i<${arraylength}; i++ ));
 do
+
     echo "byol-pool $1"
+
+    # Delete Existing Licenses using self link
     curl -k -i \
     -H "Accept: application/json" \
     -H "Content-Type:application/json" \
-    -X PATCH --data "$(generate_post_data)" "https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/purchased-pool/licenses/${byolpool[$i]}"
+    -X DELETE "https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/purchased-pool/licenses/${purchasedPoolselfLink[$i]}"
+
+    # Add it back using previous name and baseRegKey
+    curl -k -i \
+    -H "Accept: application/json" \
+    -H "Content-Type:application/json" \
+    -X POST --data "{\"baseRegKey\": \"${purchasedPoolbaseRegKey[$i]}\",\"name\": \"${purchasedPoolname[$i]}\",\"method\": \"AUTOMATIC\"}" "https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/purchased-pool/licenses"
+
 done
+
 
 ############# ############# ############# 
 #############    Utility    ############# 
 ############# ############# ############# 
-generate_post_data() {
-cat <<EOF
-{
-    status: "ACTIVATING_AUTOMATIC"
-}
-EOF
-}
 
-# Specific to UDF license pools
-byolutility[1]="A2762-65666-03770-68885-8401075" #byol-pool-utility 
+utilityPoolRegKey=( $(curl -k https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/utility/licenses | jq -r .items | jq .[].regKey | sed 's:^.\(.*\).$:\1:') )
+printf '%s\n' "${utilityPoolRegKey[@]}"
 
 # get length of the array
-arraylength2=${#byolutility[@]}
+arraylength=${#utilityPoolRegKey[@]}
 
-for (( i=1; i<${arraylength2}+1; i++ ));
+for (( i=0; i<${arraylength}; i++ ));
 do
-    echo "byol-utility $1"
+
+    echo "byol-pool-utility $1"
+
     curl -k -i \
     -H "Accept: application/json" \
     -H "Content-Type:application/json" \
-    -X PATCH --data "$(generate_post_data)" "https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/utility/licenses/${byolutility[$i]}"
+    -X PATCH --data "{status: \"ACTIVATING_AUTOMATIC\"}" "https://$bigiq_user:$bigiq_password@$bigiq/mgmt/cm/device/licensing/pool/utility/licenses/${utilityPoolRegKey[$i]}"
 done

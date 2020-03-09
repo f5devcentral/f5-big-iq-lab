@@ -111,6 +111,7 @@ Users: marco, david, paula, paul, larry, olivia
 
 LDAP server:
 IP 10.1.1.5
+SSL: Disabled
 Bind User Distinguished Name: cn=admin,dc=f5demo,dc=com
 Bind User Password: ldappass
 User Bind Template: uid={username},ou=People,dc=f5demo,dc=com

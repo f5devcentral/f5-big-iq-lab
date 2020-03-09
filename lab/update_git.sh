@@ -174,7 +174,7 @@ if [[  $currentuser == "root" ]]; then
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk restart
 
     # load f5demo.ldif and expose port 389 for LDAP access
-    docker run --volume `/home/$user/ldap`/home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
+    docker run --volume /home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
             -e LDAP_ORGANISATION="F5 Networks" \
             -e LDAP_DOMAIN="f5demo.com" \
             -e LDAP_ADMIN_PASSWORD=ldappass \
