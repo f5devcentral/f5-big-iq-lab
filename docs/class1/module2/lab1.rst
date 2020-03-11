@@ -8,7 +8,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
-    :scale: 70%
+    :scale: 60%
 
 |
 
@@ -16,7 +16,7 @@ You can also directly using Postman on your laptop and use the following URL (Go
 
 .. image:: ../../pictures/udf_bigiq_api.png
     :align: center
-    :scale: 80%
+    :scale: 60%
 
 |
 
@@ -28,7 +28,7 @@ For Postman, click right and click on execute (wait ~2 minutes).
 
 .. image:: ../../pictures/postman.png
     :align: center
-    :scale: 100%
+    :scale: 60%
 
 |
 

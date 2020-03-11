@@ -275,28 +275,28 @@ Utilizing the Jump host, we can log in to the newly created BIG-IP with our newl
 .. Warning:: In case you get following error: *"Task Failed: Failed to complete onboarding task: Unexpected response from declartive onboarding: code: 404, message: Please confirm Declartive Onboarding (DO) is running on BIG-IQ. See log for details."*, restart restnoded on the BIG-IQ CM. SSH the BIG-IQ CM server and execute ``bigstart restart restnoded``.
 
 .. |image10| image:: pictures/image10.png
-   :width: 100%
+   :width: 60%
 .. |image12| image:: pictures/image12.png
-   :width: 100%
+   :width: 60%
 .. |image13| image:: pictures/image13.png
-   :width: 100%
+   :width: 60%
 .. |image14| image:: pictures/image14.png
-   :width: 100%
+   :width: 60%
 .. |image15| image:: pictures/image15.png
-   :width: 100%
+   :width: 60%
 .. |image16| image:: pictures/image16.png
-   :width: 100%
+   :width: 60%
 .. |image17| image:: pictures/image17.png
-   :width: 100%
+   :width: 60%
 .. |image18| image:: pictures/image18.png
-   :width: 100%
+   :width: 60%
 .. |image19| image:: pictures/image19.png
-   :width: 100%
+   :width: 60%
 .. |image20| image:: pictures/image20.png
-   :width: 100%
+   :width: 60%
 .. |image21| image:: pictures/image21.png
-   :width: 100%
+   :width: 60%
 .. |image22| image:: pictures/image22.png
-   :width: 100%
+   :width: 60%
 .. |image23| image:: pictures/image23.png
-   :width: 100%
+   :width: 60%

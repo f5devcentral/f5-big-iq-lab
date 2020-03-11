@@ -253,7 +253,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 .. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
 
 .. |lab-2-1| image:: ../pictures/module2/lab-2-1.png
-   :scale: 80%
+   :scale: 60%
 .. |lab-1-5| image:: ../pictures/module2/lab-1-5.png
    :scale: 40%
 

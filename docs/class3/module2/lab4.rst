@@ -23,13 +23,13 @@ The Enhanced Analytics allows you to increase the application data visibility by
 
 .. image:: ../pictures/module2/img_module2_lab4_2.png
    :align: center
-   :scale: 100%
+   :scale: 60%
 
 |
 
 .. image:: ../pictures/module2/img_module2_lab4_1.png
    :align: center
-   :scale: 80%
+   :scale: 60%
 
 |
 
@@ -41,7 +41,7 @@ It appears from the data showing on BIG-IQ the application may start having issu
 
 .. image:: ../pictures/module2/img_module2_lab4_3.png
    :align: center
-   :scale: 100%
+   :scale: 60%
 
 |
 
@@ -51,6 +51,6 @@ Looking in a longer time period:
 
 .. image:: ../pictures/module2/img_module2_lab4_4.png
    :align: center
-   :scale: 100%
+   :scale: 60%
 
 |

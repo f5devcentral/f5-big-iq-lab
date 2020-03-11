@@ -28,7 +28,7 @@ specific DNS vectors only. This allows us to layer a fine grained DNS policy whi
 
 .. image:: ../pictures/module2/dns-malformed-settings.png
   :align: center
-  :scale: 80%
+  :scale: 60%
 
 6. Click *Save & Close* to save the edits
 7. To deploy the changes, create and deploy using *Shared Security* or *Network Security* for *BOS-vBIGIP01* and *02*

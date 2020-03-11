@@ -16,7 +16,7 @@ The options are:
 
 .. image:: ../pictures/img_module4_1.png
    :align: left
-   :scale: 80%
+   :scale: 60%
 
 
 BIG-IQ creates and stores a copy of the BIG-IP device's LTM monitor or profile object(s), specific to the software version running on that BIG-IP device.
@@ -28,7 +28,7 @@ Navigate to the Configuration tab, under Local Traffic left-hand menu to see obj
 
 .. image:: ../pictures/img_module4_2.png
    :align: left
-   :scale: 80%
+   :scale: 60%
 
 
 If you select one object with different version, you can see the detail of that object for each version available.
@@ -36,4 +36,4 @@ If you select one object with different version, you can see the detail of that 
 
 .. image:: ../pictures/img_module4_3.png
    :align: left
-   :scale: 80%
+   :scale: 60%

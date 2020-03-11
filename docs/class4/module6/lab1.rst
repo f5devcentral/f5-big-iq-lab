@@ -18,7 +18,7 @@ In the ``F5 Products`` column, click on **ADD**
 
 .. image:: ../pictures/module6/img_module6_lab1_1a.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -32,7 +32,7 @@ Click on **CREATE**.
 
 .. image:: ../pictures/module6/img_module6_lab1_1b.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -40,7 +40,7 @@ After few minutes, the VM is created in lab environment. Click on the new VM, go
 
 .. image:: ../pictures/module6/img_module6_lab1_1c.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -48,7 +48,7 @@ Finally, start the new BIG-IQ.
 
 .. image:: ../pictures/module6/img_module6_lab1_1d.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -88,7 +88,7 @@ Then, start the new BIG-IQ DCD VM.
 
 .. image:: ../pictures/module6/img_module6_lab1_3.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -103,7 +103,7 @@ Then, start the new BIG-IQ DCD VM.
 
 .. image:: ../pictures/module6/img_module6_lab1_4.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -111,7 +111,7 @@ It might takes few minutes for the new zone to be set.
 
 .. image:: ../pictures/module6/img_module6_lab1_5.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -125,7 +125,7 @@ It might takes few minutes for the new zone to be set.
 
 .. image:: ../pictures/module6/img_module6_lab1_6.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -133,6 +133,6 @@ It might takes few minutes for the new zone to be set.
 
 .. image:: ../pictures/module6/img_module6_lab1_7.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |

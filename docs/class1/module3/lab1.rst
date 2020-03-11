@@ -13,7 +13,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
-    :scale: 70%
+    :scale: 60%
 
 |
 
@@ -32,7 +32,7 @@ Import AS3 BIG-IQ templates
 #. Select **Import Templates** at the right top corner.
 
 .. image:: ../pictures/module3/lab-1-2.png
-  :scale: 80%
+  :scale: 60%
   :align: center
 
 #. Make yourself familiar with the Github page and understand which AS3 templates are available.

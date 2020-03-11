@@ -84,27 +84,27 @@ Lab 2 of this module will cover Onboarding the newly created VE.
   |image10|
 
 .. |image01| image:: pictures/image1.png
-   :width: 75%
+   :width: 60%
 .. |image02| image:: pictures/image2.png
-   :width: 75%
+   :width: 60%
 .. |image03| image:: pictures/image3.png
    :width: 50%
 .. |image04| image:: pictures/image4.png
-   :width: 85%
+   :width: 60%
 .. |image05| image:: pictures/image5.png
-   :width: 75%
+   :width: 60%
 .. |image06| image:: pictures/image6.png
    :width: 50%
 .. |image07| image:: pictures/image7.png
    :width: 50%
 .. |image08| image:: pictures/image8.png
-   :width: 90%
+   :width: 60%
 .. |image09| image:: pictures/image9.png
    :width: 50%
 .. |image10| image:: pictures/image10.png
-   :width: 90%
+   :width: 60%
 .. |image21| image:: pictures/image10.png
-   :width: 80%
+   :width: 60%
 
 
 .. _Enterprise_Application: https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal

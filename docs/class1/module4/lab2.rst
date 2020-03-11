@@ -13,7 +13,7 @@ This Application is composed of 3 Application Services:
 .. note:: A wide IP maps a fully-qualified domain name (FQDN) to one or more pools of virtual servers that host the content of a domain. 
 
 .. image:: ../pictures/module4/lab-2-1.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 2. Let's deploy a 3rd Application Service serving a the same security app also located in Seattle 
@@ -50,20 +50,20 @@ This Application is composed of 3 Application Services:
 +----------------------------------------------------------------------------------------------------+
 
 .. image:: ../pictures/module4/lab-2-2.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 3. Once ``security_site14_seattle`` new Application Service has been created, you can see it on **Paula**'s application dashboard.
 
 .. image:: ../pictures/module4/lab-2-3.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 4. Click on the ``security_site14_seattle`` application services, then under Properties,
    look for the value of **DNS Virtual Server Name**.
 
 .. image:: ../pictures/module4/lab-2-4.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 5. Navigate back to the ``airport_security`` Application, under **FQND** > **CONFIGURATION** tab, scroll down and
@@ -76,13 +76,13 @@ This Application is composed of 3 Application Services:
 +----------------+---------------------------------------+
 
 .. image:: ../pictures/module4/lab-2-5.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 Notice the new Application Service have been added under *APPLICATION SERVICES*.
 
 .. image:: ../pictures/module4/lab-2-6.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 6. Now, let's look on the BIG-IP and verify the Application is correctly deployed in partition ``security``.
@@ -92,11 +92,11 @@ Notice the new Application Service have been added under *APPLICATION SERVICES*.
 Under DNS > GSLB > Servers > Service List
 
 .. image:: ../pictures/module4/lab-2-7.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 Under DNS > GSLB > Pools > Pool List > GSLB_Pool > Members
 
 .. image:: ../pictures/module4/lab-2-8.png
-  :scale: 70%
+  :scale: 60%
   :align: center

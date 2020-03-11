@@ -30,7 +30,7 @@ Use ``admin/purple123`` to authenticate.
 
 .. image:: ../pictures/module4/img_lab3_1.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -38,6 +38,6 @@ Use ``admin/purple123`` to authenticate.
 
 .. image:: ../pictures/module4/img_lab3_2.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |

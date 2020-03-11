@@ -21,55 +21,55 @@ Use ``bigiq1cm.example.com`` for hostname, ``10.1.10.4/24`` for self-ip, ``time.
 
 .. image:: ../pictures/module3/img_module3_lab1_1.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
 .. image:: ../pictures/module3/img_module3_lab1_2.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
 .. image:: ../pictures/module3/img_module3_lab1_3.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
 .. image:: ../pictures/module3/img_module3_lab1_4.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
 .. image:: ../pictures/module3/img_module3_lab1_5.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
 .. image:: ../pictures/module3/img_module3_lab1_6.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
 .. image:: ../pictures/module3/img_module3_lab1_7.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
 .. image:: ../pictures/module3/img_module3_lab1_8.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
 .. image:: ../pictures/module3/img_module3_lab1_9.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 

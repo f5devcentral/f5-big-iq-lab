@@ -6,7 +6,7 @@ Lab 4.1: Move Application Services in BIG-IQ
 3 Applications are showing on the dashboard: ``IT_apps``, ``airport_security`` and ``Unknown Applications``.
 
 .. image:: ../pictures/module4/lab-1-1.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
@@ -20,13 +20,13 @@ Lab 4.1: Move Application Services in BIG-IQ
    A windwo opens. Select *New Application*, set ``Inventory_Global`` for the Application Name, then click **OK**.
 
 .. image:: ../pictures/module4/lab-1-2.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 3. The Application Service ``inventory_site38httpsBigip121`` is now under Application ``Inventory_Global``.
 
 .. image:: ../pictures/module4/lab-1-3.png
-  :scale: 70%
+  :scale: 60%
   :align: center
 
 .. note:: This operation did not deployed or changed anything on the BIG-IP but only on the BIG-IQ.

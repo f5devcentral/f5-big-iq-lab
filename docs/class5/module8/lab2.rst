@@ -90,19 +90,19 @@ Lab 2 of this module will cover Onboarding the newly created AWS VE.
 
 
 .. |image02| image:: pictures/image2.png
-   :width: 75%
+   :width: 60%
 .. |image03| image:: pictures/image3.png
    :width: 50%
 .. |image04| image:: pictures/image4.png
-   :width: 85%
+   :width: 60%
 .. |image05| image:: pictures/image5.png
-   :width: 75%
+   :width: 60%
 .. |image06| image:: pictures/image6.png
    :width: 50%
 .. |image07| image:: pictures/image7.png
    :width: 50%
 .. |image08| image:: pictures/image8.png
-   :width: 90%
+   :width: 60%
 .. |image16| image:: pictures/image16.png
    :width: 50%
 

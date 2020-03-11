@@ -20,9 +20,9 @@ Connect on the BIG-IP and look at the **fqdn_pool**:
 
 
 .. |lab-5-1| image:: ../pictures/module2/lab-5-1.png
-   :scale: 80%
+   :scale: 60%
 
 .. |lab-5-2| image:: ../pictures/module2/lab-5-2.png
-   :scale: 80%
+   :scale: 60%
 
 .. warning:: BIG-IQ won't display the number of servers in the dashboard for FQDN nodes.

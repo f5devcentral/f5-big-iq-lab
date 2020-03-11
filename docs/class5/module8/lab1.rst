@@ -9,7 +9,7 @@ SSH Ubuntu host in lab environment:
 
 .. image:: pictures/image22.png
   :align: left
-  :scale: 80%
+  :scale: 60%
 
 Navigate to: ``cd f5-aws-vpn-ssg``
 
@@ -24,4 +24,4 @@ The console will output your ephemeral credentials for the resources created, **
  |image01|
 
 .. |image01| image:: pictures/image1.png
-   :width: 75%
+   :width: 60%

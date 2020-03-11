@@ -33,5 +33,5 @@ and look into the different users & role.
 
 .. image:: ../pictures/module1/img_module1_lab2_1.png
   :align: center
-  :scale: 80%
+  :scale: 60%
 

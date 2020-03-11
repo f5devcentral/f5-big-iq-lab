@@ -9,7 +9,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 .. image:: ../pictures/module3/img_module3_lab2_1.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -24,7 +24,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 .. image:: ../pictures/module3/img_module3_lab2_2.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -32,7 +32,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 .. image:: ../pictures/module3/img_module3_lab2_3.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -47,7 +47,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 .. image:: ../pictures/module3/img_module3_lab2_4.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -55,7 +55,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 .. image:: ../pictures/module3/img_module3_lab2_5.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -65,7 +65,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 .. image:: ../pictures/module3/img_module3_lab2_6.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -75,7 +75,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 .. image:: ../pictures/module3/img_module3_lab2_7.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 
@@ -85,7 +85,7 @@ The Stats Collection Status field will go to "Task running…" while the statist
 
 .. image:: ../pictures/module3/img_module3_lab2_8.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 

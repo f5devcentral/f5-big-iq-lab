@@ -166,7 +166,7 @@ under the application called ``LAB_Access``.
   :scale: 60%
   :align: center
 
-8. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+7. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
@@ -174,7 +174,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
-    :scale: 70%
+    :scale: 60%
 
 |
 
@@ -192,7 +192,7 @@ the Virtual Server delivering the service.
   :scale: 60%
   :align: center
 
-9. From BIG-IQ navigate to the Monitoring tab > Access > Access Summary.
+8. From BIG-IQ navigate to the Monitoring tab > Access > Access Summary.
 
 .. image:: ../pictures/module1/lab-1-21.png
   :scale: 60%
@@ -204,7 +204,7 @@ Click on the Active Session to get details about the session.
   :scale: 60%
   :align: center
 
-10. Now, let's navigate to the Access > Sessions > Active to kill the active Sessions.
+9. Now, let's navigate to the Access > Sessions > Active to kill the active Sessions.
 
 .. image:: ../pictures/module1/lab-1-23.png
   :scale: 60%

@@ -10,14 +10,14 @@ Through the GUI and when allowed, the application owner is able to make small mo
 * Click **Save & Close**.
 
 .. image:: ../pictures/module3/lab-3-1.png
-  :scale: 80%
+  :scale: 60%
   :align: center
 
 2. Check ``SEA-vBIGIP01.termmarc.com`` (partition ``tenant1``) Local Traffic > Pools and find **Pool**.
    It will have tenant1/https_app_service as the partition/path (or use search). Select Pool and go to members.
 
 .. image:: ../pictures/module3/lab-3-2.png
-  :scale: 80%
+  :scale: 60%
   :align: center   
 
 3. Now back to the BIG-IQ and ``tenant1_https_app_service`` application and select **Application Service > Configuration** and

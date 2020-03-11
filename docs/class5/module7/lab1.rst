@@ -73,22 +73,22 @@ BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the DHCP IP
 Lab 2 of this module will cover Onboarding the newly created VMWare VE.
 
 .. |image01| image:: pictures/image01.png
-   :width: 100%
+   :width: 60%
 .. |image02| image:: pictures/image02.png
-   :width: 100%
+   :width: 60%
 .. |image03| image:: pictures/image03.png
-   :width: 100%
+   :width: 60%
 .. |image04| image:: pictures/image04.png
-   :width: 100%
+   :width: 60%
 .. |image05| image:: pictures/image05.png
-   :width: 100%
+   :width: 60%
 .. |image06| image:: pictures/image06.png
-   :width: 100%
+   :width: 60%
 .. |image07| image:: pictures/image07.png
-   :width: 100%
+   :width: 60%
 .. |image08| image:: pictures/image08.png
-   :width: 100%
+   :width: 60%
 .. |image09| image:: pictures/image09.png
-   :width: 100%
+   :width: 60%
 .. |image11| image:: pictures/image11.png
-   :width: 100%
+   :width: 60%

@@ -41,7 +41,7 @@ Clicking on each of these views allow for selection/deselection of many objects 
 
 .. image:: ../pictures/module3/soa-file.png
   :align: center
-  :scale: 100%
+  :scale: 60%
 
 4. Launch a DNS attack with dnsperf, 150 QPS for 600 seconds by typing this command: *dnsperf -s 10.1.10.203 -d soa.txt -Q 150 -l 600*
 5. tail -f the *ltm* log file on the BOS BIG-IP

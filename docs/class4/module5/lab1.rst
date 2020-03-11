@@ -81,7 +81,7 @@ This automation scenario is composed of 4 parts:
 
 .. image:: ../pictures/module5/img_module5_lab1_1.png
   :align: center
-  :scale: 70%
+  :scale: 60%
 
 |
 

@@ -99,28 +99,28 @@ On the left-hand menu bar, click License Management, Assignments. This screen di
 
 
 .. |lab-5-1| image:: media/img_module5_lab1_1.png
-   :scale: 80%
+   :scale: 60%
 .. |lab-5-2| image:: media/img_module5_lab1_2.png
-   :scale: 80%
+   :scale: 60%
 .. |lab-5-3| image:: media/img_module5_lab1_3.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-4| image:: media/img_module5_lab1_4.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-5| image:: media/img_module5_lab1_5.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-6| image:: media/img_module5_lab1_6.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-7| image:: media/img_module5_lab1_7.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-8| image:: media/img_module5_lab1_8.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-9| image:: media/img_module5_lab1_9.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-10| image:: media/img_module5_lab1_10.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-11| image:: media/img_module5_lab1_11.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-12| image:: media/img_module5_lab1_12.png
-   :scale: 100%
+   :scale: 60%
 .. |lab-5-13| image:: media/img_module5_lab1_13.png
-   :scale: 80%
+   :scale: 60%

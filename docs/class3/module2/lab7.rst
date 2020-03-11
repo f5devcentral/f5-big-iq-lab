@@ -42,7 +42,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
-    :scale: 70%
+    :scale: 60%
 
 |
 
