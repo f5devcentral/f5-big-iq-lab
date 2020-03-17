@@ -5,9 +5,10 @@
 home="/home/f5/scripts"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
+alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
 if [  $already -gt 2 ]; then
     echo "The script is already running `expr $already - 2` time."
-    killall $(basename "$0") > /dev/null 2>&1
+    kill -9 $alreadypid > /dev/null 2>&1
     exit 1
 fi
 
@@ -40,8 +41,8 @@ do
 
         if [[  $port == 443 || $port == 80 ]]; then
                 echo -e "\n# site $i ${sitefqdn[$i]} nmap"
-
-                sudo nmap -sS ${sitefqdn[$i]} -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
+                nmapcmd=$(whereis nmap | awk '{ print $2 }')
+                sudo $nmapcmd -sS ${sitefqdn[$i]} -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
 
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"

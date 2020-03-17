@@ -6,14 +6,18 @@ bigip1="10.1.20.13"  #Paris BIG-IP
 bigip2="10.1.20.7"   #Seattle BIG-IP
 lamp1="10.1.1.5"    #Lamp server management IP
 lamp2="10.1.20.5"   #Lamp server internal IP
-interface2=$(ifconfig | grep -B 1 $lamp2 | grep -v $lamp2 | awk -F':' '{ print $1 }')
+ifconfigcmd=$(whereis ifconfig | awk '{ print $2 }')
+interface2=$($ifconfigcmd | grep -B 1 $lamp2 | grep -v $lamp2 | awk -F':' '{ print $1 }')
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
+alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
 if [  $already -gt 2 ]; then
     echo "The script is already running `expr $already - 2` time."
-    killall $(basename "$0") > /dev/null 2>&1
+    kill -9 $alreadypid > /dev/null 2>&1
     exit 1
 fi
+
+ipcmd=$(whereis ip | awk '{ print $2 }')
 
 # check if AWS or Ravello
 type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
@@ -30,7 +34,7 @@ then
     sitefqdn[5]="nginx.com"
     sitefqdn[6]="perdu.com"
     sitefqdn[7]="health.com"
-    sitefqdn[8]="harley-davidson.com"
+    sitefqdn[8]="www.harley-davidson.com"
     sitefqdn[9]="www.boj.or.jp"
     sitefqdn[10]="bde.es"
     sitefqdn[11]="societegenerale.bj"
@@ -43,7 +47,8 @@ then
         if [ ! -z "${sitefqdn[$i]}" ]; then
             ip=$(ping -c 1 -w 1 ${sitefqdn[$i]} | grep PING | awk '{ print $3 }')
             echo "Generate traffic through SSLo Paris for ${sitefqdn[$i]} - $ip"
-            sudo ip route add ${ip:1:-1} via $bigip1 dev $interface2
+            sudo $ipcmd route add ${ip:1:-1} via $bigip1 dev $interface2
+            $ipcmd route show | grep ${ip:1:-1}
             sleep 2s
             count=1
             while [ $count -le 30 ]
@@ -51,7 +56,7 @@ then
                 curl -o /dev/null -k https://${sitefqdn[$i]}
                 ((count++))
             done
-            sudo ip route del ${ip:1:-1} via $bigip1 dev $interface2
+            sudo $ipcmd route del ${ip:1:-1} via $bigip1 dev $interface2
         fi
     done
 
@@ -62,7 +67,7 @@ then
     sitefqdn[5]="harobikes.com/pages/bmx"
     sitefqdn[6]="suunto.com"
     sitefqdn[7]="ford.fr"
-    sitefqdn[8]="harley-davidson.com"
+    sitefqdn[8]="www.harley-davidson.com"
     sitefqdn[9]="www.boj.or.jp"
     sitefqdn[10]="bde.es"
     sitefqdn[11]="societegenerale.bj"
@@ -74,8 +79,9 @@ then
     do
         if [ ! -z "${sitefqdn[$i]}" ]; then
             ip=$(ping -c 1 -w 1 ${sitefqdn[$i]} | grep PING | awk '{ print $3 }')
-            sudo ip route add ${ip:1:-1} via $bigip2 dev $interface2
+            sudo $ipcmd route add ${ip:1:-1} via $bigip2 dev $interface2
             echo "Generate traffic through SSLo Seattle for ${sitefqdn[$i]} - $ip"
+            $ipcmd route show | grep ${ip:1:-1}
             sleep 2s
             count=1
             while [ $count -le 30 ]
@@ -83,7 +89,7 @@ then
                 curl -o /dev/null -k https://${sitefqdn[$i]}
                 ((count++))
             done
-            sudo ip route del ${ip:1:-1} via $bigip2 dev $interface2
+            sudo $ipcmd route del ${ip:1:-1} via $bigip2 dev $interface2
         fi
     done
 

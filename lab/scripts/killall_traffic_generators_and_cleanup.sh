@@ -1,5 +1,12 @@
 #!/bin/bash
 
+type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+if [[  $type == 1 ]]; then
+    echo "AWS"
+else
+    echo "Ravello"
+fi
+
 echo -e "* kill all jobs in sleep"
 sudo killall sleep > /dev/null 2>&1
 sudo killall perl > /dev/null 2>&1
@@ -16,25 +23,13 @@ done
 # Kill some extra stuff (launched by generate_dns_ddos_traffic_real.sh)
 sudo killall nping hping3
 
-# Reset default GW in case SSLO script gets kill in the middle of it
-interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
-type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
-if [[  $type == 1 ]]; then
-    echo "AWS"
-    #sudo route del default gw 10.1.20.13
-    #sudo route del default gw 10.1.20.7
-    #sudo route add default gw 10.1.1.1
-else
-    echo "Ravello"
-    sudo ip route change default via 10.1.1.2 dev $interface
-fi
-
 # Cleanup Logs:
 rm -f ~/f5-demo-bigiq-analytics-export-restapi/input.json*
 rm -f ~/f5-demo-bigiq-analytics-export-restapi/*log
 rm -f ~/f5-demo-app-troubleshooting/*log
 rm -f ~/asm-brute-force/*.log
 rm -f ~/scripts/*.log
+rm -f ~/scripts/dnstargets.txt
 rm -f ~/splunk-token
 rm -f ~/ldap/f5-ldap.log
 rm -f ~/f5-vmware-ssg/*.log

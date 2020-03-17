@@ -6,9 +6,10 @@ home="/home/f5/scripts"
 dcdip="10.1.10.6"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
+alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
 if [  $already -gt 2 ]; then
     echo "The script is already running `expr $already - 2` time."
-    killall $(basename "$0") > /dev/null 2>&1
+    kill -9 $alreadypid > /dev/null 2>&1
     exit 1
 fi
 
@@ -73,7 +74,8 @@ do
                 for j in $users; do
                         #Randome IP
                         source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-                        interface=$(/sbin/ifconfig | grep -B 1 10.1.10.5 | grep -v 10.1.10.5 | awk -F':' '{ print $1 }')
+                        ifconfigcmd=$(whereis ifconfig | awk '{ print $2 }')
+                        interface=$($ifconfigcmd | grep -B 1 10.1.10.5 | grep -v 10.1.10.5 | awk -F':' '{ print $1 }')
                         sudo ip addr add $source_ip_address/24 dev $interface
                         sleep 2
 
