@@ -35,9 +35,20 @@ json="{
     \"ipAddress\": \"198.19.0.10\"
 }"
 
-echo -e "\n\nUpdate BIG-IP $bigip1\n"
-curl -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip1/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4
-
-echo -e "\n\nUpdate BIG-IP $bigip1\n"
+#Seattle BIG-IP
+while ! ping -c 1 $bigip2 &> /dev/null
+do
+    echo -e "\nWait 5min: $bigip2 unreachable\n"
+    sleep 300
+done
+echo -e "\nUpdate BIG-IP $bigip2\n"
 curl -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip2/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4
 
+#Paris BIG-IP
+while ! ping -c 1 $bigip1 &> /dev/null
+do
+    echo -e "\nWait 5min: $bigip1 unreachable\n"
+    sleep 300
+done
+echo -e "\nUpdate BIG-IP $bigip1\n"
+curl -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip1/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4

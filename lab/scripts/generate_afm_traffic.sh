@@ -41,7 +41,7 @@ do
 
         if [[  $port == 443 || $port == 80 ]]; then
                 echo -e "\n# site $i ${sitefqdn[$i]} nmap"
-                nmapcmd=$(whereis nmap | awk '{ print $2 }')
+                nmapcmd=$(which nmap)
                 sudo $nmapcmd -sS ${sitefqdn[$i]} -D 10.1.10.7,10.1.10.8,10.1.10.9,5.188.11.1,5.188.11.2
 
         else

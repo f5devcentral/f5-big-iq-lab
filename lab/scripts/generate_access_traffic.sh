@@ -74,7 +74,7 @@ do
                 for j in $users; do
                         #Randome IP
                         source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-                        ifconfigcmd=$(whereis ifconfig | awk '{ print $2 }')
+                        ifconfigcmd=$(which ifconfig)
                         interface=$($ifconfigcmd | grep -B 1 10.1.10.5 | grep -v 10.1.10.5 | awk -F':' '{ print $1 }')
                         sudo ip addr add $source_ip_address/24 dev $interface
                         sleep 2
