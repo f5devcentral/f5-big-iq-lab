@@ -3,7 +3,7 @@
 # set -x
 
 home="/home/f5/scripts"
-#dcdip="10.1.10.6"
+dcdip="10.1.10.6"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 if [  $already -gt 2 ]; then
@@ -73,7 +73,7 @@ do
                 for j in $users; do
                         #Randome IP
                         source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-                        interface=$(ifconfig | grep -B 1 10.1.10.5 | grep -v 10.1.10.5 | awk -F':' '{ print $1 }')
+                        interface=$(/sbin/ifconfig | grep -B 1 10.1.10.5 | grep -v 10.1.10.5 | awk -F':' '{ print $1 }')
                         sudo ip addr add $source_ip_address/24 dev $interface
                         sleep 2
 

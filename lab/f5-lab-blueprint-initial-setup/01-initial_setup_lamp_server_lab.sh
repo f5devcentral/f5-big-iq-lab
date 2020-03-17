@@ -245,14 +245,7 @@ echo -e "\nInstall DNS perf"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
 apt install gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev -y
-apt --fix-broken install
-wget ftp://ftp.nominum.com/pub/nominum/dnsperf/2.0.0.0/dnsperf-src-2.0.0.0-1.tar.gz
-tar xfvz dnsperf-src-2.0.0.0-1.tar.gz
-cd dnsperf-src-2.0.0.0-1
-./configure
-make
-make install
-rm -f dnsperf-src-2.0.0.0-1.tar.gz
+snap install --devmode --beta dnsperf
 
 echo -e "\nInstall Samba"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
