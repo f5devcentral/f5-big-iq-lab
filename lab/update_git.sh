@@ -3,6 +3,7 @@
 ##### INSTALLATION
 ## Configured in /etc/rc.local
 ## curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
+## chmod +x /home/f5student/update_git.sh
 ## /home/f5student/update_git.sh > /home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
 

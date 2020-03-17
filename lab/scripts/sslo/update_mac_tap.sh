@@ -5,7 +5,8 @@
 ##### INSTALLATION
 ## Configured in /etc/rc.local
 ## curl -o /home/ubuntu/update_mac_tap.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/scripts/sslo/update_mac_tap.sh 
-## /home/ubuntu/update_mac_tap.sh > /home/ubunutu/update_mac_tap.log
+## chmod +x /home/ubuntu/update_mac_tap.sh
+## /home/ubuntu/update_mac_tap.sh > /home/ubuntu/update_mac_tap.log
 
 #################### INFORMATION #################### 
 # Prerequisists to allow change mac address on BIG-IP (due to UDF changing MAC address evertime a new BP is started)
