@@ -182,13 +182,14 @@ echo -e "\nPost-Checks:
         AS3 security_fqdn airports.example.com BOS AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1 (Paula)
     # IT_apps
         AS3 inventory_site38httpsBigip121 10.1.10.138 SJC without AS3 template (Paula)
+        AS3 backend_site20tcp 10.1.10.120 SEA AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2 (Paula)
         Service Catalog site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template (Paula)
-        Service Catalog site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template (Paul)
         Legacy App media.site34.example.com 10.1.10.134 BOS (Paula)
     # finance_apps
         AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
         AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
-        AS3 backend_site20tcp 10.1.10.120 SEA AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2 (Paula)
+        AS3 tax_site17access 10.1.10.117 BOS without AS3 template (Paul)
+        Service Catalog site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template (Paul)
 - Test HTTP traffic is showing on BIG-IQ
 - Test Access traffic is showing on BIG-IQ
 - Test DNS traffic is showing on BIG-IQ (add site36.example.com 443 to Pool and add f5_https_header monitor)

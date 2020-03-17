@@ -116,6 +116,11 @@ if [[  $currentuser == "root" ]]; then
     /etc/init.d/freeradius restart
     /etc/init.d/freeradius status
 
+    echo -e "\nRestart DHCP Server"
+    /etc/init.d/isc-dhcp-server restart
+    /etc/init.d/isc-dhcp-server status
+    dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
+
     echo -e "\nNoVNC\n"
     su - f5student -c "/usr/bin/vncserver :1 -geometry 1280x800 -depth 24"
     sleep 5

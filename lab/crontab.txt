@@ -39,9 +39,6 @@
 ## SSLO Traffic
 */14 * * * * /home/f5/scripts/generate_sslo_traffic_paris.sh > /dev/null 2>&1
 
-## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
-@reboot sleep 400 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /tmp/config-sync.log
-
 ## Make sure BOS BIG-IP01 is always active (limiation UDF AWS)
 */5 * * * * /home/f5/scripts/forceActiveBigipBostonCluster.sh
 

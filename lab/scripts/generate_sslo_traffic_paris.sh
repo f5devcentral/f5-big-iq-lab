@@ -6,6 +6,7 @@ bigip1="10.1.20.13"  #Paris BIG-IP
 bigip2="10.1.20.7"   #Seattle BIG-IP
 lamp1="10.1.1.5"    #Lamp server management IP
 lamp2="10.1.20.5"   #Lamp server internal IP
+interface2=$(ifconfig | grep -B 1 $lamp2 | grep -v $lamp2 | awk -F':' '{ print $1 }')
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 if [  $already -gt 2 ]; then
@@ -16,73 +17,76 @@ fi
 
 # check if AWS or Ravello
 type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
-if [[  $type == 1 ]]; then
-    echo "AWS"
-    exit 2
-fi
 
 # Only run the script if PARIS-vBIGIP01.termmarc.com.v14.1 is alive.
 if ping -c 1 $bigip1 &> /dev/null
 then
-    interface1=$(ifconfig | grep -B 1 $lamp2 | grep -v $lamp2 | awk -F':' '{ print $1 }')
+    echo "Add routes to SSLo Paris for all URL below"
 
-    echo "Change gateway to SSLo Paris as Default Gateway"
-    sudo ip route change default via $bigip1 dev $interface1
-    sleep 2s
-    echo "Generate traffic through SSLo Paris"
-    count=1
-    while [ $count -le 30 ]
+    sitefqdn[1]="chase.com"
+    sitefqdn[2]="f5.com"
+    sitefqdn[3]="www.youtube.com"
+    sitefqdn[4]="facebook.com"
+    sitefqdn[5]="nginx.com"
+    sitefqdn[6]="perdu.com"
+    sitefqdn[7]="health.com"
+    sitefqdn[8]="harley-davidson.com"
+    sitefqdn[9]="www.boj.or.jp"
+    sitefqdn[10]="bde.es"
+    sitefqdn[11]="societegenerale.bj"
+
+    # get length of the array
+    arraylength=${#sitefqdn[@]}
+
+    for (( i=1; i<${arraylength}+1; i++ ));
     do
-    curl -k https://www.chase.com
-    curl -k https://www.f5.com
-    curl -k https://www.youtube.com
-    curl -k https://www.facebook.com
-    curl -k https://www.nginx.com
-    curl -k https://hackazon.paris.f5se.com
-    curl -k https://www.perdu.com
-    curl -k https://www.health.com
-    curl -k https://www.harley-davidson.com/fr/fr/index.html
-    curl -k https://www.mizuhobank.co.jp/index.html
-    curl -k https://www.bde.es/bde/es/
-    curl -k https://societegenerale.bj
-    ((count++))
+        if [ ! -z "${sitefqdn[$i]}" ]; then
+            ip=$(ping -c 1 -w 1 ${sitefqdn[$i]} | grep PING | awk '{ print $3 }')
+            echo "Generate traffic through SSLo Paris for ${sitefqdn[$i]} - $ip"
+            sudo ip route add ${ip:1:-1} via $bigip1 dev $interface2
+            sleep 2s
+            count=1
+            while [ $count -le 30 ]
+            do
+                curl -o /dev/null -k https://${sitefqdn[$i]}
+                ((count++))
+            done
+            sudo ip route del ${ip:1:-1} via $bigip1 dev $interface2
+        fi
     done
 
-    echo "Change gateway to SSLo Seattle as Default Gateway"
-    sudo ip route change default via $bigip2 dev $interface1
-    sleep 2s
-    echo "Generate traffic through SSLo Paris"
-    count=1
-    while [ $count -le 30 ]
-    do
-    curl -k https://mabanque.bnpparibas
-    curl -k https://www.f5.com
-    curl -k https://www.suresnes.fr
-    curl -k https://www.youtube.com
-    curl -k https://harobikes.com/pages/bmx
-    curl -k https://www.suunto.com
-    curl -k https://www.ford.fr
-    curl -k https://www.harley-davidson.com/fr/fr/index.html
-    curl -k https://www.mizuhobank.co.jp/index.html
-    curl -k https://www.bde.es/bde/es/
-    curl -k https://societegenerale.bj
-    ((count++))
-    done
+    sitefqdn[1]="mabanque.bnpparibas"
+    sitefqdn[2]="f5.com"
+    sitefqdn[3]="suresnes.fr"
+    sitefqdn[4]="youtube.com"
+    sitefqdn[5]="harobikes.com/pages/bmx"
+    sitefqdn[6]="suunto.com"
+    sitefqdn[7]="ford.fr"
+    sitefqdn[8]="harley-davidson.com"
+    sitefqdn[9]="www.boj.or.jp"
+    sitefqdn[10]="bde.es"
+    sitefqdn[11]="societegenerale.bj"
 
-    echo "Change gateway to default gateway"
-    interface2=$(ifconfig | grep -B 1 $lamp1 | grep -v $lamp1 | awk -F':' '{ print $1 }')
-    # check if AWS or Ravello
-    type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
-    if [[  $type == 1 ]]; then
-        echo "AWS"
-        #sudo route del default gw $bigip1
-        #sudo route del default gw $bigip2
-        #sudo route add default gw 10.1.1.1
-    else
-        echo "Ravello"
-        sudo ip route change default via 10.1.1.2 dev $interface2
-    fi
+    # get length of the array
+    arraylength=${#sitefqdn[@]}
+
+    for (( i=1; i<${arraylength}+1; i++ ));
+    do
+        if [ ! -z "${sitefqdn[$i]}" ]; then
+            ip=$(ping -c 1 -w 1 ${sitefqdn[$i]} | grep PING | awk '{ print $3 }')
+            sudo ip route add ${ip:1:-1} via $bigip2 dev $interface2
+            echo "Generate traffic through SSLo Seattle for ${sitefqdn[$i]} - $ip"
+            sleep 2s
+            count=1
+            while [ $count -le 30 ]
+            do
+                curl -o /dev/null -k https://${sitefqdn[$i]}
+                ((count++))
+            done
+            sudo ip route del ${ip:1:-1} via $bigip2 dev $interface2
+        fi
+    done
 
 else
-    echo "$bigip1 not up. Please start PARIS-vBIGIP01.termmarc.com.v14.1, SSLo Service TAP and SSLo Service Inline L2 in UDF."
+    echo "$bigip1 not up. Please start PARIS-vBIGIP01.termmarc.com.v14.1, SSLo Service TAP and SSLo Service Inline in UDF."
 fi

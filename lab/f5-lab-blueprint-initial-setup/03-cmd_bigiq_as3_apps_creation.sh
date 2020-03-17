@@ -31,7 +31,7 @@ echo -e "\n${GREEN}Create AS3 Applications${NC}"
 sudo docker build -t f5-big-iq-onboarding .
 sudo docker run -t f5-big-iq-onboarding ansible-playbook --version
 
-./ansible_helper ansible-playbook /ansible/bigiq_deploy_default_as3_app_svc_udf.yml -i /ansible/hosts $DEBUG_arg
+./ansible_helper ansible-playbook /ansible/bigiq_deploy_default_as3_app_svc_lab.yml -i /ansible/hosts $DEBUG_arg
 
 # Move Security Apps + DNS into Airport Security GLobal App
 ./ansible_helper ansible-playbook -i notahost, /ansible/create_default_global_app_site16_site18_dns_bigiq.yml $DEBUG_arg

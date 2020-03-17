@@ -11,7 +11,7 @@
       "class": "Tenant",
       "site18_seattle": {
         "class": "Application",
-        "schemaOverlay": "AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v1",
+        "schemaOverlay": "AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2",
         "template": "https",
         "serviceMain": {
           "class": "Service_HTTPS",
@@ -62,7 +62,10 @@
         },
         "WAF_Policy": {
           "class": "WAF_Policy",
-          "url": "https://raw.githubusercontent.com/f5devcentral/f5-asm-policy-templates/master/owasp_ready_template/owasp-auto-tune-v1.1.xml"
+          "url": {
+            "url": "https://raw.githubusercontent.com/f5devcentral/f5-asm-policy-templates/master/owasp_ready_template/owasp-auto-tune-v1.1.xml"
+          },
+          "enforcementMode": "transparent"
         },
         "TLS_Server": {
           "class": "TLS_Server",

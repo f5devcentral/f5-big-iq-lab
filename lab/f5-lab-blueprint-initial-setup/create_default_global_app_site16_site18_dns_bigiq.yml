@@ -69,9 +69,9 @@
         body:
           # used https://www.json2yaml.com/ to convert JSON declaration to YAML
           componentAppReferencesToMove:
-          - link: "{{ site16.json | json_query('items[*].selfLink') }}"
-          - link: "{{ site18.json | json_query('items[*].selfLink') }}"
-          - link: "{{ dns.json | json_query('items[*].selfLink') }}"
+          - link: "{{ site16.json | json_query('items[0].selfLink') }}"
+          - link: "{{ site18.json | json_query('items[0].selfLink') }}"
+          - link: "{{ dns.json | json_query('items[0].selfLink') }}"
           # maybe need the | first 
           targetGlobalAppName: airport_security
           deleteEmptyGlobalAppsWhenDone: false

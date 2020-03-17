@@ -1,4 +1,4 @@
-Module 2: BIG-IQ Application Templates & Deployment with AS3 using the UI (7.0 and above)
+Module 3: BIG-IQ Application Templates & Deployment with AS3 using the UI (7.0 and above)
 =========================================================================================
 
 **[New 7.0.0]**
