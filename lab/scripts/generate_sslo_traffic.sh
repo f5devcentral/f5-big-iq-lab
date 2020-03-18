@@ -6,8 +6,7 @@ bigip1="10.1.20.13"  #Paris BIG-IP
 bigip2="10.1.20.7"   #Seattle BIG-IP
 lamp1="10.1.1.5"    #Lamp server management IP
 lamp2="10.1.20.5"   #Lamp server internal IP
-ifconfigcmd=$(which ifconfig)
-interface2=$($ifconfigcmd | grep -B 1 $lamp2 | grep -v $lamp2 | awk -F':' '{ print $1 }')
+interface2=$(/sbin/ifconfig | grep -B 1 $lamp2 | grep -v $lamp2 | awk -F':' '{ print $1 }')
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
@@ -49,15 +48,18 @@ then
         if [ ! -z "${sitefqdn[$i]}" ]; then
             ip=$(ping -c 1 -w 1 ${sitefqdn[$i]} | grep PING | awk '{ print $3 }')
             r=`shuf -i 1-15 -n 1`;
-            echo "Generate traffic through SSLo Paris for ${sitefqdn[$i]} - $ip (loop $r)"
+            echo "Generate traffic through SSLo Paris for ${sitefqdn[$i]} - ${ip:1:-1} (loop $r)"
+            echo "add route ${ip:1:-1}"
+            echo "$ipcmd route add ${ip:1:-1} via $bigip1 dev $interface2"
             sudo $ipcmd route add ${ip:1:-1} via $bigip1 dev $interface2
-            $ipcmd route show | grep ${ip:1:-1}
             count=1
             while [ $count -le $r ]
             do
                 curl -s -o /dev/null -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" -k https://${sitefqdn[$i]}
                 ((count++))
             done
+            echo "del route ${ip:1:-1}"
+            echo "$ipcmd route del ${ip:1:-1} via $bigip1 dev $interface2"
             sudo $ipcmd route del ${ip:1:-1} via $bigip1 dev $interface2
         fi
     done
@@ -84,15 +86,18 @@ then
         if [ ! -z "${sitefqdn[$i]}" ]; then
             ip=$(ping -c 1 -w 1 ${sitefqdn[$i]} | grep PING | awk '{ print $3 }')
             r=`shuf -i 1-15 -n 1`;
+            echo "Generate traffic through SSLo Seattle for ${sitefqdn[$i]} - ${ip:1:-1} (loop $r)"
+            echo "add route ${ip:1:-1}"
+            echo "$ipcmd route add ${ip:1:-1} via $bigip2 dev $interface2"
             sudo $ipcmd route add ${ip:1:-1} via $bigip2 dev $interface2
-            echo "Generate traffic through SSLo Seattle for ${sitefqdn[$i]} - $ip (loop $r)"
-            $ipcmd route show | grep ${ip:1:-1}
             count=1
             while [ $count -le $r ]
             do
                 curl -s -o /dev/null -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" -k https://${sitefqdn[$i]}
                 ((count++))
             done
+            echo "del route ${ip:1:-1}"
+            echo "$ipcmd route del ${ip:1:-1} via $bigip2 dev $interface2"
             sudo $ipcmd route del ${ip:1:-1} via $bigip2 dev $interface2
         fi
     done
