@@ -39,6 +39,7 @@ then
     sitefqdn[10]="www.bancopan.com.br"
     sitefqdn[11]="www.bde.es"
     sitefqdn[12]="societegenerale.bj"
+    sitefqdn[13]="www.bangkokpost.com"
 
     # get length of the array
     arraylength=${#sitefqdn[@]}
@@ -51,7 +52,6 @@ then
             echo "Generate traffic through SSLo Paris for ${sitefqdn[$i]} - $ip (loop $r)"
             sudo $ipcmd route add ${ip:1:-1} via $bigip1 dev $interface2
             $ipcmd route show | grep ${ip:1:-1}
-            sleep 2s
             count=1
             while [ $count -le $r ]
             do
@@ -74,6 +74,7 @@ then
     sitefqdn[10]="www.bancopan.com.br"
     sitefqdn[11]="www.bde.es"
     sitefqdn[12]="societegenerale.bj"
+    sitefqdn[13]="www.bangkokpost.com"
 
     # get length of the array
     arraylength=${#sitefqdn[@]}
@@ -86,7 +87,6 @@ then
             sudo $ipcmd route add ${ip:1:-1} via $bigip2 dev $interface2
             echo "Generate traffic through SSLo Seattle for ${sitefqdn[$i]} - $ip (loop $r)"
             $ipcmd route show | grep ${ip:1:-1}
-            sleep 2s
             count=1
             while [ $count -le $r ]
             do
