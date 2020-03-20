@@ -1,7 +1,7 @@
 # m h  dom mon dow   command
 ## Traffic Generator (HTTP)
-*/5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /dev/null 2>&1
-0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh
+*/5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /home/f5/scripts/generate_http_clean_traffic.log 2>&1
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
 @reboot perl -le 'sleep 2300' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
 
 ## Export Analytics to Splunk

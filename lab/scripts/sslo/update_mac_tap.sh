@@ -42,7 +42,15 @@ do
     sleep 300
 done
 echo -e "\nUpdate BIG-IP $bigip2\n"
-curl -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip2/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4
+res=$(curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip2/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4)
+echo $res
+while $res == *"code"* &> /dev/null
+do
+    echo -e "\nWait 1min: $bigip2 not ready to receive API call.\n"
+    sleep 60
+    res=$(curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip2/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4)
+    echo $res
+done
 
 #Paris BIG-IP
 while ! ping -c 1 $bigip1 &> /dev/null
@@ -51,4 +59,12 @@ do
     sleep 300
 done
 echo -e "\nUpdate BIG-IP $bigip1\n"
-curl -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip1/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4
+res=$(curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip1/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4)
+echo $res
+while $res == *"code"* &> /dev/null
+do
+    echo -e "\nWait 1min: $bigip1 not ready to receive API call.\n"
+    sleep 60
+    res=$(curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip1/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4)
+    echo $res
+done
