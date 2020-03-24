@@ -1,9 +1,8 @@
 Introduction class 12
 =====================
 
-This class will cover BIG-IQ SSL Orchestrator Configuration and Monitoring to BIG-IQ 7.0.
+This class will cover BIG-IQ SSL Orchestrator Configuration and Monitoring to BIG-IQ 7.x.
 
-BIG-IQ 7.0 support BIG-IP 14.1 with SSLo v5.4 (https://support.f5.com/csp/article/K34133507)
 
 .. warning:: For SSLo lab, make sure:
 
