@@ -4,13 +4,13 @@ Lab 3.4: Security workflow with BIG-IQ and AS3: WAF
 Workflow
 ^^^^^^^^
 
-    1. **Larry** create the ASM policy in transparent mode on the BIG-IQ and deploy on the BIG-IP(s).
-    2. **David** create the AS3 template and reference ASM policy created by **Larry** in the template.
-    3. **David** assign the AS3 template to Paula.
-    4. **Paula** create her application service using the template given by **david**.
-    5. After **Paula** does the necessary testing of her application, she reach to Larry.
-    6. **Larry** review the ASM learning and deploy the ASM policy changes on the BIG-IP(s) and set the policy to blocking mode.
-    7. They all go for happy hour.
+1. **Larry** create the ASM policy in transparent mode on the BIG-IQ and deploy on the BIG-IP(s).
+2. **David** create the AS3 template and reference ASM policy created by **Larry** in the template.
+3. **David** assign the AS3 template to Paula.
+4. **Paula** create her application service using the template given by **david**.
+5. After **Paula** does the necessary testing of her application, she reach to Larry.
+6. **Larry** review the ASM learning and deploy the ASM policy changes on the BIG-IP(s) and set the policy to blocking mode.
+7. They all go for happy hour.
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -54,6 +54,7 @@ and name it as ``templates-default-cloned``.
 5. Select the ``/Common/templates-default-cloned``, then click on Save & Close.
 
 .. image:: ../pictures/module3/lab-5-3.png
+  :scale: 60%
   :align: center
 
 6. Notice the policy is now atached to the ``inactive`` virtual servers.
@@ -114,8 +115,8 @@ Confirm the logging profile has been added under Logging Profiles.
   :scale: 40%
   :align: center
 
-WAF AS3 template (David)
-^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 WAF template creation (David)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Until now we used a default AS3 template out-of-the-box (available on https://github.com/f5devcentral/f5-big-iq) 
 for deploying an application service. It is a good practice to clone the default AS3 templates and use them more 
@@ -160,8 +161,8 @@ tailored to your custom needs.
 
 .. _Lab 3.2: ../lab2.html
 
-WAF AS3 Application Service (Paula)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 WAF Application Service Deployment (Paula)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now both Advance WAF policy and Security Logging Profile are available on BIG-IP and AS3 WAF template 
 available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ.
@@ -272,9 +273,8 @@ Open Chrome and navigate to the following URL: ``https\:\/\/10.1.10.122``.
   :scale: 40%
   :align: center
 
-
-ASM Policy Learning review (Larry & Paula)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM Policy Learning review and Dashboard/Events (Larry & Paula)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Logon as **larry** and go to Configuration > Security > Web Application Security > Policies.
 
