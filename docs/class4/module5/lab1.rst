@@ -17,13 +17,13 @@ This automation scenario is composed of 4 parts:
 
 * Add BIG-IPs to the BIG-IQ
 
-    - `bigiq_device_discovery`_  **ansible module**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 6.1 and above)**.
+    - `bigiq_device_discovery`_  **ansible module**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 6.1)**.
     
     - `bulkDiscovery.pl`_  **perl script**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 5.4, 6.0.x)**.
 
 * Create Application Services
 
-    - `Ansible using AS3`_ **playbook**: Use BIG-IQ Ansible and AS3 to deploy application services (see class 1, module 5, lab 7) **(BIG-IQ 6.1 and above)**.
+    - `Ansible using AS3`_ **playbook**: Use BIG-IQ Ansible and AS3 to deploy application services (see class 1, module 5, lab 7) **(BIG-IQ 6.1)**.
 
     - `Ansible using Service Catalog`_ **playbook**: Use BIG-IQ Ansible Modules to deploy application services (see class 1, module 3, lab 1) **(BIG-IQ 6.0.x)**.
 

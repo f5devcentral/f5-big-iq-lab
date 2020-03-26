@@ -1,5 +1,5 @@
-Module 2: BIG-IQ Application Templates & Deployment with AS3 using the API (6.1 and above)
-==========================================================================================
+Module 2: BIG-IQ Application Templates & Deployment with AS3 using the API
+==========================================================================
 
 **[New 6.1.0]**
 
