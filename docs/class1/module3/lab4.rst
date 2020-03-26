@@ -253,7 +253,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 |
 
-Open Chrome and navigate to the following URL: ``https\:\/\/10.1.10.122``.
+Open Chrome and navigate to the following URL: ``https://10.1.10.122``.
 
 .. image:: ../pictures/module3/lab-5-19.png
   :scale: 40%
@@ -324,4 +324,4 @@ In Application Dashboard, navigate to the Security Statistics and notice the Mal
 
 9. Stop the bad traffic script, connect on the Ubuntu Lamp Server server and CTRL+C.
 
-.. note:: Try navigating to ``https\:\/\/10.1.10.122\/cal.exe`` from Chrome on the Lamp server.
+.. note:: Try navigating to ``https://10.1.10.122/cal.exe`` from Chrome on the Lamp server.

@@ -176,7 +176,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 |
 
-Open Chrome and navigate to the following URL: ``https\:\/\/10.1.10.119`` and 
+Open Chrome and navigate to the following URL: ``https://10.1.10.119`` and 
 login with username: paula, password: paula
 
 .. image:: ../pictures/module1/lab-1-19.png
