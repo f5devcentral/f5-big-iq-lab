@@ -107,15 +107,14 @@ HTTPS Service using AS3 through GUI
 .. note:: If not visible, refesh the page.
 
 13.	Select ``LAB_module3`` Application. You will notice ``LAB_module3`` acts as a group of Application Services where underneath 
-    multiple services can be grouped. The next window will show you that a new Application Service has 
-    been created named: ``tenant1_https_app_service``.
+multiple services can be grouped. The next window will show you that a new Application Service has been created named: ``tenant1_https_app_service``.
 
 .. image:: ../pictures/module3/lab-2-7.png
   :scale: 60%
   :align: center
 
 14.	Now, let's look on the BIG-IP and verify the Application is correctly deployed in partition ``tenant1``.
-    Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant1`` and look at the objects created on the BIG-IP.
+Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant1`` and look at the objects created on the BIG-IP.
 
 .. image:: ../pictures/module3/lab-2-8.png
   :scale: 60%

@@ -229,8 +229,8 @@ You can see the Template in JSON format if you click on it.
 .. note:: For help with JSON Schema, there are lots of resources, but one good place to start is https://json-schema.org/learn.
 
 
-Task 7 - Admin set RBAC for **Oliva** on BIG-IQ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Task 7 - Admin set RBAC for Oliva on BIG-IQ
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's update now Oliva's service catalog.
 

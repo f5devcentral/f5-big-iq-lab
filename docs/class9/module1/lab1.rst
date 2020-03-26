@@ -133,11 +133,11 @@ At the top right corner, click on **Publish and Close**
 +---------------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                           |
 +---------------------------------------------------------------------------------------------------+
-| * Template Type = Select ``LAB-HTTPS-with-Authentication [AS3]``                          |
+| * Template Type = Select ``LAB-HTTPS-with-Authentication [AS3]``                                  |
 +---------------------------------------------------------------------------------------------------+
 | General Properties:                                                                               |
 +---------------------------------------------------------------------------------------------------+
-| * Application Service Name = ``https_auth_service``                                                |
+| * Application Service Name = ``https_auth_service``                                               |
 | * Target = ``BOS-vBIGIP01.termmarc.com``                                                          |
 | * Tenant = ``tenant3``                                                                            |
 +---------------------------------------------------------------------------------------------------+
@@ -150,7 +150,7 @@ At the top right corner, click on **Publish and Close**
 | Service_HTTPS                                                                                     |
 +---------------------------------------------------------------------------------------------------+
 | * Virtual addresses: ``10.1.10.119``                                                              |
-| * IAM policy: ``/Common/labSimpleHttpsAccess``                                                                 |
+| * IAM policy: ``/Common/labSimpleHttpsAccess``                                                    |
 +---------------------------------------------------------------------------------------------------+
 | Certificate. Keep default                                                                         |
 +---------------------------------------------------------------------------------------------------+

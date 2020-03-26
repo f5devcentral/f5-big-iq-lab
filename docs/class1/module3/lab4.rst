@@ -144,8 +144,7 @@ enabled by default in the AS3 schema.
    Change to the properties ``bigip`` under policyWAF to ``/Common/templates-default-cloned``.
    Make sure the properties is set to Editable.
 
-.. note:: If you want to hide the ASM policy in the template, you can set the properties to Override
-(only starting BIG-IQ 7.1, see BIG-IQ 7.0 Release note #811013).
+.. note:: If you want to hide the ASM policy in the template, you can set the properties to Override (only starting BIG-IQ 7.1, see BIG-IQ 7.0 Release note #811013).
 
 .. image:: ../pictures/module3/lab-5-13b.png
   :scale: 60%
@@ -197,7 +196,7 @@ available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ
 | Service_HTTPS                                                                                     |
 +---------------------------------------------------------------------------------------------------+
 | * Virtual addresses: ``10.1.10.122``                                                              |
-| * policyWAF: ``/Common/templates-default-cloned``                                                                 |
+| * policyWAF: ``/Common/templates-default-cloned``                                                 |
 +---------------------------------------------------------------------------------------------------+
 | Certificate. Keep default                                                                         |
 +---------------------------------------------------------------------------------------------------+
@@ -225,7 +224,7 @@ available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ
 #. Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant2`` and look at the objects created on the BIG-IP.
 
  .. image:: ../pictures/module3/lab-5-16.png
-   :scale: 60%
+  :scale: 60%
   :align: center
   
 #. Notice that new ``https_waf_app_service`` comes with a redirect. Select the HTTPS VS, Select Security and 
@@ -253,8 +252,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 |
 
-Open Chrome and navigate to the following URL: ``https\:\/\/10.1.10.120`` and 
-login with username: paula, password: paula
+Open Chrome and navigate to the following URL: ``https\:\/\/10.1.10.122``.
 
 .. image:: ../pictures/module3/lab-5-19.png
   :scale: 60%
@@ -291,7 +289,7 @@ ASM Policy Learning review (Larry & Paula)
   :scale: 60%
   :align: center
 
-.. node:: In case the app is deployed on a BIG-IP HA pair, the learning is not sync unless the failover group is set to automatic or the centrally builder feature is used.
+.. note:: In case the app is deployed on a BIG-IP HA pair, the learning is not sync unless the failover group is set to automatic or the centrally builder feature is used.
 
 #. Navigate under POLICY BUILDING > Settings, change **Enforcement Mode** to ``blocking`` then click on Save & Close.
 
@@ -322,3 +320,7 @@ In Application Dashboard, navigate to the Security Statistics and notice the Mal
 .. image:: ../pictures/module3/lab-5-26.png
   :scale: 60%
   :align: center
+
+#. Stop the bad traffic script, connect on the Ubuntu Lamp Server server and CTRL+C.
+
+.. note:: Try navigating to ``https\:\/\/10.1.10.122\/cal.exe`` from Chrome on the Lamp server.

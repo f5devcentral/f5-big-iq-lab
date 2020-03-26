@@ -3,7 +3,7 @@ Module 3: BIG-IQ Application Templates & Deployment with AS3 using the UI (new 7
 
 **[New 7.0.0]**
 
-Support of AS3 was delivered in v6.1 which got released December 2018, but only included usage via REST-API. 
+Support of AS3 was delivered in v6.1 which got released December 2018, but only included usage via REST-API.
 With the release of BIG-IQ v7.0, AS3 is now also supported via the use of a GUI. 
 
 NetOps will start driving most of the use case through the GUI via Central Management and having AS3 as a GUI 
