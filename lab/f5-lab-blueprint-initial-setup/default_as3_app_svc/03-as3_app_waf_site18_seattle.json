@@ -7,7 +7,7 @@
     "target": {
       "address": "10.1.1.7"
     },
-    "security2": {
+    "security": {
       "class": "Tenant",
       "site18_seattle": {
         "class": "Application",

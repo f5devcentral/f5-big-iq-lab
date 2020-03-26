@@ -310,18 +310,27 @@ ASM Policy Learning review and Dashboard/Events (Larry & Paula)
 
 7. Check ASM type of attacks by navigating under Monitoring > EVENTS > Web Application Security > Event Logs > Events
 
-.. image:: ../pictures/module3/lab-5-25.png
+.. image:: ../pictures/module3/lab-5-25wa.png
   :scale: 40%
   :align: center
 
 8. Login as **paula** and select previously created ``LAB_module3`` Application, then click on ``https_waf_app_service``.
 
-In Application Dashboard, navigate to the Security Statistics and notice the Malicious Transactions.
+9. In 7.x, the protection mode isn't automaticaly updated on the Application Dashboard. 
+
+Under Properties, select CONFIGURATION, then add ``upgradeProtectionMode 3/26/20`` in the Description 
+field and click Save.
+
+.. image:: ../pictures/module3/lab-5-25wa.png
+  :scale: 40%
+  :align: center
+
+10. In Application Dashboard, navigate to the Security Statistics and notice the Malicious Transactions.
 
 .. image:: ../pictures/module3/lab-5-26.png
   :scale: 40%
   :align: center
 
-9. Stop the bad traffic script, connect on the Ubuntu Lamp Server server and CTRL+C.
+11. Stop the bad traffic script, connect on the Ubuntu Lamp Server server and CTRL+C.
 
 .. note:: Try navigating to ``https://10.1.10.122/cal.exe`` from Chrome on the Lamp server.

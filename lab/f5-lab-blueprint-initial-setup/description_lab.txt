@@ -6,18 +6,19 @@ DRAFT VERSION: https://clouddocs.f5networks.net/training/community/big-iq-cloud-
 
 APPLICATION SERVICES ALREADY AVAILABLE IN THE BLUEPRINT:
     # airport_security:
-        AS3 security2_site18_seattle 10.1.10.118 SEA AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v1 (Paula)
+        AS3 security_site18_seattle 10.1.10.118 SEA AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 (Paula)
         AS3 security_site16_boston 10.1.10.116 BOS AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1 (Paula)
         AS3 security_fqdn airports.example.com BOS AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1 (Paula)
     # IT_apps
+        -- removed in 7.1 BP -- AS3 inventory_site38httpsBigip121 10.1.10.138 SJC without AS3 template (Paula)
         AS3 backend_site20tcp 10.1.10.120 SEA AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2 (Paula)
-        Service Catalog site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template (Paula)
+        Service Catalog site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template-v1 (Paula)
         Legacy App media.site34.example.com 10.1.10.134 BOS (Paula)
     # finance_apps
         AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
         AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
         AS3 tax_site17access 10.1.10.117 BOS without AS3 template (Paul)
-        Service Catalog site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template (Paul)
+        Service Catalog site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template-v1 (Paul)
 
 VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:
     # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
@@ -39,6 +40,7 @@ VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:
 
     # SJC-vBIGIP01.termmarc.com.v12.1
         10.1.10.137
+        10.1.10.138
         10.1.10.139
 
 POOL MEMBERS (on the Ubuntu 19.10 Lamp Server)
