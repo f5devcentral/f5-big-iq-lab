@@ -1,17 +1,15 @@
 Lab 1.1: Simple APM Configuration via BIG-IQ (secure website with basic authentication)
 ---------------------------------------------------------------------------------------
 
-1. First make sure your device has APM module discovered and imported.
-
-Devices > BIG-IP DEVICES
+1. First make sure your device has APM module discovered and imported 
+for **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com** under Devices > BIG-IP DEVICES.
 
 .. image:: ../pictures/module1/lab-1-1.png
   :scale: 60%
   :align: center
 
-2. Check if the Access service is Active.
-
-System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices
+2. Check if the **Access** service is Active  
+under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 .. image:: ../pictures/module1/lab-1-2.png
   :scale: 60%
@@ -185,7 +183,7 @@ login with username: paula, password: paula
   :scale: 60%
   :align: center
 
-Authentication succeed, Paula is able to authenticate to the website thanks to the Access policy attached to
+Authentication succeed, **Paula** is able to authenticate to the website thanks to the Access policy attached to
 the Virtual Server delivering the service.
 
 .. image:: ../pictures/module1/lab-1-20.png

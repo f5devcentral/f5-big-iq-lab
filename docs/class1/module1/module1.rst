@@ -11,7 +11,7 @@ We will be using 4 main personas for this lab:
 3. **Paula** & **Paul**: Application Manager
 4. **Olivia**: Super-NetOps
 
-**David** will have full access to BIG-IQ. He knows a lot about F5 products (BIG-IQ/BIG-IP).
+**david** will have full access to BIG-IQ. He knows a lot about F5 products (BIG-IQ/BIG-IP).
 He will provide the access to Larry, Olivia, Paul and Paula. He will also manage the Service Scaling Group (SSG)
 and application templates.
 
@@ -35,3 +35,4 @@ and look into the different users & role.
   :align: center
   :scale: 60%
 
+.. note:: Crendentials (login/password) available under lab's Documentation > Credentials section for each components.

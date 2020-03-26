@@ -1,5 +1,5 @@
-Module 4: Multi-Tier/Multi-Cloud Application Visibility (7.0 and above)
-=======================================================================
+Module 4: Multi-Tier/Multi-Cloud Application Visibility (new 7.0)
+=================================================================
 
 **[New 7.0.0]**
 

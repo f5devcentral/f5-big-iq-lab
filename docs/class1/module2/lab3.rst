@@ -229,7 +229,7 @@ You can see the Template in JSON format if you click on it.
 .. note:: For help with JSON Schema, there are lots of resources, but one good place to start is https://json-schema.org/learn.
 
 
-Task 7 - Admin set RBAC for Olivia on BIG-IQ
+Task 7 - Admin set RBAC for **Oliva** on BIG-IQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let's update now Oliva's service catalog.
@@ -244,7 +244,7 @@ Click **Save & Close**.
 Task 8 - Deploy the HTTP Application Service using a Custom Template
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Now, let's deploy an application as Olivia using the AS3 template previously created in Task 6. Note in the below declaration, 
+Now, let's deploy an application as **Oliva** using the AS3 template previously created in Task 6. Note in the below declaration, 
 the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
 
 1. Using Postman, use the **BIG-IQ Token (olivia)** collections to authenticate you on the BIG-IQ and save the token.

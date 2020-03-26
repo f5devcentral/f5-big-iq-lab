@@ -53,7 +53,7 @@ This Application is composed of 3 Application Services:
   :scale: 60%
   :align: center
 
-3. Once ``security_site14_seattle`` new Application Service has been created, you can see it on **Paula**'s application dashboard.
+3. Once ``security_site14_seattle`` new Application Service has been created, you can see it on **paula**'s application dashboard.
 
 .. image:: ../pictures/module4/lab-2-3.png
   :scale: 60%

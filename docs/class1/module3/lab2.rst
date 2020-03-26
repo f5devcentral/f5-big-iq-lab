@@ -4,7 +4,7 @@ Lab 3.2: Application Creation using AS3 through BIG-IQ GUI
 HTTPS Service using AS3 through GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Log in as **Paula** in BIG-IQ.
+1. Log in as **paula** in BIG-IQ.
 
 2. Select **Create Application** to **Create an Application Service**
 
@@ -17,15 +17,15 @@ HTTPS Service using AS3 through GUI
 +---------------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                           |
 +---------------------------------------------------------------------------------------------------+
-| * Template Type = Select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default- [AS3]`` |
+| * Template Type = Select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default [AS3]``  |
 +---------------------------------------------------------------------------------------------------+
 
-.. warning:: If we want Paula to deploy this template, we first need to have those templates assigned to her via an administrator. 
+.. warning:: If we want **paula** to deploy this template, we first need to have those templates assigned to her via an administrator. 
 
-3. Logout as **Paula** and login to BIG-IQ as David. (if asked: Leave site? Select: Leave)
+3. Logout as **paula** and login to BIG-IQ as **david**. (if asked: Leave site? Select: Leave)
 
 4. Select **Applications > Application Templates** and notice the ‘Published’ templates.
-   The template **Paula** wants to use is listed as a ‘Published’ template.
+   The template **paula** wants to use is listed as a ‘Published’ template.
 
 .. image:: ../pictures/module3/lab-2-1.png
   :scale: 60%
@@ -38,8 +38,8 @@ HTTPS Service using AS3 through GUI
   :scale: 60%
   :align: center
 
-6. **Paula** is assigned to the exiting ``Application Creator VMware`` custom role. Select it and scroll down to AS3 Templates.
-   As you can see, **Paula** does not have permission to deploy an AS3 application using ``AS3-F5-HTTPS-offload-lb-existing-cert-template``.
+6. **paula** is assigned to the exiting ``Application Creator VMware`` custom role. Select it and scroll down to AS3 Templates.
+   As you can see, **paula** does not have permission to deploy an AS3 application using ``AS3-F5-HTTPS-offload-lb-existing-cert-template``.
 
 .. image:: ../pictures/module3/lab-2-3.png
   :scale: 60%
@@ -48,7 +48,7 @@ HTTPS Service using AS3 through GUI
 7. Select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-<version>`` AS3 Template and 
    click the arrow to get it in the **'Selected'** section. Then, select **Save & Close**.
 
-8. Logout as David and log back in as **Paula** and click **Create** application.
+8. Logout as **david** and log back in as **paula** and click **Create** application.
 
 9. Select Create Application to Create an Application Service:
 
@@ -123,7 +123,7 @@ HTTPS Service using AS3 through GUI
 
 15.	You can testing the application sercice by open a browser in the Ubuntu Jumphost and type the Virtual Server IP address ``10.1.10.120``.
     
-16. Back on the BIG-IQ as **Paula**, select ``tenant1_https_app_service`` Application Service and look HTTP traffic analytics.
+16. Back on the BIG-IQ as **paula**, select ``tenant1_https_app_service`` Application Service and look HTTP traffic analytics.
 
 .. image:: ../pictures/module3/lab-2-9.png
   :scale: 60%

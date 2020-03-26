@@ -99,7 +99,7 @@ Execute the playbooks for each tasks.
 
 |
 
-- Task 7: Admin set RBAC for Olivia on BIG-IQ
+- Task 7: Admin set RBAC for **Oliva** on BIG-IQ
 
   Let's update now Oliva's service catalog.
 

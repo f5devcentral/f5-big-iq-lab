@@ -15,9 +15,8 @@ Official documentation about BOT Monitoring on BIG-IQ can be found on the `BIG-I
 
 Connect as **david** on BIG-IQ.
 
-1. First make sure your device has ASM module discovered and imported.
-
-Devices > BIG-IP DEVICES
+1. First make sure your device has ASM module discovered and imported 
+for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 
 .. image:: ../pictures/module1/img_module1_lab1_0a.png
   :align: center
@@ -25,9 +24,8 @@ Devices > BIG-IP DEVICES
 
 |
 
-2. Check if the Web Application Security service is Active.
-
-System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
+2. Check if the **Web Application Security** service is Active  
+under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 .. image:: ../pictures/module1/img_module1_lab1_0b.png
   :align: center

@@ -1,4 +1,6 @@
 
+.. note:: Crendentials (login/password) available under lab's Documentation > Credentials section for each components.
+
 List of Virtual Servers and Applications Servers where various type of traffic
 is being send to (check ``crontab`` config for more details).
 

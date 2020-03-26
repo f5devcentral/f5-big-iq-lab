@@ -13,7 +13,7 @@ Official documentation about BIG-IQ High Availability Auto Failover Configuratio
 
 .. _Lab 4.1: ../lab1.html
 
-1. Login to BIG-IQ 1 as user David and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. Check that the current used High Available method is Manual Failover.
+1. Login to BIG-IQ 1 as user **David**  and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. Check that the current used High Available method is Manual Failover.
 
  .. image:: ../pictures/module4/lab-2-1.png
   :align: center
@@ -30,7 +30,7 @@ BIG-IQ HA Settings does not have a quorum device configured and this a way to re
   
 This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 
-4. Once the login window returns for BIG-IQ 1 CM, login as user David and go to System > BIG-IQ HA. Will notice that only one BIG-IQ system is present, and no HA is configured.
+4. Once the login window returns for BIG-IQ 1 CM, login as user **David**  and go to System > BIG-IQ HA. Will notice that only one BIG-IQ system is present, and no HA is configured.
 
 5. Click ``Add System`` and fill in the following:
 
@@ -73,7 +73,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
   
 8. To test this, grab a browser on your jumphost and go: https\:\/\/10.1.1.15 . Which BIG-IQ took the call? 
 
-9. Login with David and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
+9. Login with **David**  and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
 
 10.	Repeat step 7.
 

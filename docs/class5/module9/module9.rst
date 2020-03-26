@@ -1,9 +1,12 @@
-Module 9: Declarative Onboarding and VE Creation on Azure (7.0 and above)
-=========================================================================
+Module 9: Declarative Onboarding and VE Creation on Azure (new 7.0)
+===================================================================
 
 **[New 7.0.0]**
 
 BIG-IQ Centralized Management makes it easy for you to create, configure, and manage BIG-IP VE devices in an Azure environment.
+
+.. Note:: All deployments are Single-NIC for Azure. If you need to create additional NICs, you will need to do it
+          through the cloud provider UI or API.
 
 To start managing a BIG-IP VE device in a cloud environment, you'll need to complete the following workflows.
   - Specify your cloud provider details

@@ -1,5 +1,5 @@
-Module 7: Declarative Onboarding and VE Creation on VMware (7.0 and above)
-==========================================================================
+Module 7: Declarative Onboarding and VE Creation on VMware (new 7.0)
+====================================================================
 
 **[New 7.0.0]**
 

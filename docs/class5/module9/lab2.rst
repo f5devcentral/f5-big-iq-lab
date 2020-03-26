@@ -77,7 +77,8 @@ From the Azure Portal, you can see the newly created instance, along with the in
 
 BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the Public IP address.
 
-.. Note:: All deployments are Single-NIC so that management will be on 8443
+.. Note:: All deployments are Single-NIC so that management will be on 8443. If you need to create additional NICs, you will need to do it
+          through the cloud provider UI or API.
 
 Lab 2 of this module will cover Onboarding the newly created VE.
 

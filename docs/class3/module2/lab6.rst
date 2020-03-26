@@ -2,7 +2,7 @@ Lab 2.6: Troubleshooting Security (massive attack)
 --------------------------------------------------
 Connect as **larry**
 
-1. Larry disable the Web Application Security for ``templates-default`` ASM Policy.
+1. **Larry** disable the Web Application Security for ``templates-default`` ASM Policy.
 
 Go to Configuration > SECURITY > Web Application Security > Policies, select ``templates-default`` ASM Policy.
 

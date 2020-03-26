@@ -160,7 +160,7 @@ if [[  $currentuser == "root" ]]; then
     docker run -d -p 8000:8000 -p 8088:8088 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=purple123" --name splunk splunk/splunk:latest
     docker_splunk_id=$(docker ps | grep splunk | awk '{print $1}')
     # wait for splunk to initalize
-    sleep 45
+    sleep 60
     # Splunk enable SSL
     docker exec $docker_splunk_id sudo -u root sed -i 's/enableSplunkWebSSL = false/enableSplunkWebSSL = true/g' /opt/splunk/etc/system/default/web.conf
     # Splunk create admin directories

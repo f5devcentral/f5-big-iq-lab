@@ -1,5 +1,5 @@
-Module 4: Analytics Reporting (7.0 and above)
-=============================================
+Module 4: Analytics Reporting (new 7.0)
+=======================================
 
 **[New 7.0.0]**
 
