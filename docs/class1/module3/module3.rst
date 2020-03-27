@@ -12,7 +12,7 @@ Security administrators a kickstart using AS3 as a declarative interface.
 
 See `Module 2`_ for more details on BIG-IQ and AS3 integration.
 
-.. _Module 2: ../module2
+.. _Module 2: ../module2/module2.html
 
 .. toctree::
    :maxdepth: 1

@@ -1,6 +1,7 @@
-Module 1: Application Delivery Controller
-=========================================
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+Module 5: LTM conflict resolution: Silo in BIG-IQ (new 7.1)
+===========================================================
+
+**[New 7.1.0]**
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 

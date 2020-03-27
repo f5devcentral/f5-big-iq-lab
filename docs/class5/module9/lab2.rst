@@ -84,6 +84,10 @@ Lab 2 of this module will cover Onboarding the newly created VE.
 
   |image10|
 
+See `Class 2 Module 5 Lab 6`_ for Troubleshooting.
+
+.. _Class 2 Module 5 Lab 6: ../../class2/module5/lab6.html
+
 .. |image01| image:: pictures/image1.png
    :width: 60%
 .. |image02| image:: pictures/image2.png

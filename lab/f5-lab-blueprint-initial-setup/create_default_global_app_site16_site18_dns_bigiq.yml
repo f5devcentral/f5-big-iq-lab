@@ -33,7 +33,7 @@
   
     - name: Get Config set site16
       uri:
-        url: https://10.1.1.4/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'security2_site18_seattle'
+        url: https://10.1.1.4/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'security_site18_seattle'
         method: GET
         headers:
           Content-Type: application/json

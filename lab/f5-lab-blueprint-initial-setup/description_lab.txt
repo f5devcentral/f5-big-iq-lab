@@ -37,6 +37,7 @@ VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:
         10.1.10.120
         10.1.10.122
         10.1.10.124
+        10.1.10.126
 
     # SJC-vBIGIP01.termmarc.com.v12.1
         10.1.10.137

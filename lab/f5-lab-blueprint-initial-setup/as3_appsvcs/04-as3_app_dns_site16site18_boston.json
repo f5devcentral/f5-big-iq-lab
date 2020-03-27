@@ -48,7 +48,7 @@
               "server": {
                 "bigip": "/Common/SEA-vBIGIP01.termmarc.com"
               },
-              "virtualServer": "/security2/site18_seattle/serviceMain"
+              "virtualServer": "/security/site18_seattle/serviceMain"
             }
           ],
           "lbModePreferred": "round-robin",

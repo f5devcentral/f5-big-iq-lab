@@ -40,7 +40,7 @@
           "collectResponseCode": true,
           "capturedTrafficInternalLogging": true,
           "captureFilter": {
-            "requestCapturedParts": "headers",
+            "requestCapturedParts": "all",
             "responseCapturedParts": "all"
           }
         },

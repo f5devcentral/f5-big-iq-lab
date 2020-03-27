@@ -1,5 +1,5 @@
-Lab 1.4: Troubleshoot a SSG
----------------------------
+Lab 1.4: Troubleshooting (VMware)
+---------------------------------
 
 In this lab, we will show you how to monitor/troubleshoot your ``SSG``.
 
@@ -15,7 +15,7 @@ delete), you can track two files on your BIG-IQ:
 Since we launched our SSG in the previous lab, you should start seeing logs in
 your two ``SSH`` sessions (opened during the previous lab)
 
-example of logs for ``tail -f /var/log/restjavad.0.log | grep vmware``
+Example of logs for ``tail -f /var/log/restjavad.0.log | grep vmware``
 
 .. code::
 
@@ -32,7 +32,7 @@ example of logs for ``tail -f /var/log/restjavad.0.log | grep vmware``
   [INFO][12 May 2018 07:17:33 PDT][/cm/cloud/tasks/vmware/scale-out/6bda7062-986c-4526-a895-374fa90f09e3/worker VmwScaleOutTaskWorker] Advancing from VALIDATE_SSG to CREATE_GUEST
   [INFO][12 May 2018 07:17:34 PDT][/cm/cloud/tasks/vmware/scale-out/6bda7062-986c-4526-a895-374fa90f09e3/worker VmwScaleOutTaskWorker] Polling: /mgmt/cm/cloud/orchestrator/vmware/tasks/create-vm/ad57d6e6-2a35-422e-8b90-f2d6108ee530
 
-example of logs for ``tail -f /var/log/orchestrator.log``
+Example of logs for ``tail -f /var/log/orchestrator.log``
 
 
 .. code::
@@ -60,6 +60,22 @@ check that a VM is getting cloned
   2 minimum/required instances. This is because we will do it in a sequential
   manner (one after the other)
 
+If the VE doesn't get an IP address, sometime, it can be the DHCP server running on the Lamp server isn't working
+properly. Login on the Ubuntu Lamp server and check DHCP server status:
+
+.. code::
+
+  /etc/init.d/isc-dhcp-server status; dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
+
+Try to clean up DHCP leases and restart the DHCP server process:
+
+.. code::
+
+  cd /var/lib/dhcp
+  cat /dev/null > dhcpd.leases
+  cat /dev/null > dhcpd.leases~
+  /etc/init.d/isc-dhcp-server restart
+  /etc/init.d/isc-dhcp-server status
 
 Once your VM is cloned and starting, you should see something like this in
 your ``orchestrator.log`` file

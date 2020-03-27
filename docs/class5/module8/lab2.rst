@@ -89,6 +89,9 @@ BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the Public 
 
 Lab 2 of this module will cover Onboarding the newly created AWS VE.
 
+See `Class 2 Module 4 Lab 6`_ for Troubleshooting.
+
+.. _Class 2 Module 4 Lab 6: ../../class2/module4/lab6.html
 
 .. |image02| image:: pictures/image2.png
    :width: 60%
