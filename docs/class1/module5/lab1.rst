@@ -1,5 +1,5 @@
-Lab 5.1: HTTP and TCP Legacy Application Creation
--------------------------------------------------
+Lab 5.1: HTTP and TCP Analytics Profile Creation for Legacy
+-----------------------------------------------------------
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 

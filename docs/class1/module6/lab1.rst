@@ -1,5 +1,5 @@
-Lab 5.2: HTTP and TCP Legacy Application Creation
--------------------------------------------------
+Lab 6.1: Limit available devices for an AS3 Application Service deployment
+--------------------------------------------------------------------------
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 

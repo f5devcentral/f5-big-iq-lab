@@ -24,7 +24,7 @@
 @reboot perl -le 'sleep 2600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.log 2>&1
 
 ## DNS DDOS data
-0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /dev/null 2>&1
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/logs/generate_dns_ddos_traffic_real.log 2>&1
 @reboot perl -le 'sleep 3000' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/logs/generate_dns_ddos_traffic_real.log 2>&1
 
 ## AFM data

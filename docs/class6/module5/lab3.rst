@@ -1,5 +1,5 @@
-Lab 5.3: Remove device from Silo and import in main stream
-----------------------------------------------------------
+Lab 5.3: Remove device from a silo and import in default silo
+-------------------------------------------------------------
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 
