@@ -110,6 +110,14 @@ getting deployed (Tile view):
 
 |
 
+.. note::
+
+  Deployment might take some time because the service scaler in the lab has lots of modules provisioned so it takes time to refresh the config.
+  It would be much faster in a none nested virtualized environment with a Service Scaler with only LTM module provisioned as it should be.
+
+You can also follow your application service deployment on the page *Applications* > Application Deployments.
+If the deployment fails, you may check if the service scaler Boston Cluster is sync correctly.
+
 As soon as the app is configured, you'll see this:
 
 .. image:: ../pictures/module2/img_module2_lab1_8.png

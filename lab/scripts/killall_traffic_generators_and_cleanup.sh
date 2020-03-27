@@ -25,14 +25,18 @@ sudo killall nping hping3
 
 # Cleanup Logs:
 rm -f ~/f5-demo-bigiq-analytics-export-restapi/input.json*
-rm -f ~/f5-demo-bigiq-analytics-export-restapi/*log
-rm -f ~/f5-demo-app-troubleshooting/*log
-rm -f ~/asm-brute-force/*.log
-rm -f ~/scripts/*.log
 rm -f ~/scripts/dnstargets.txt
 rm -f ~/splunk-token
-rm -f ~/ldap/f5-ldap.log
-rm -f ~/f5-vmware-ssg/*.log
+
 rm -f ~/update_git.log
 rm -f ~/.bash_history
 rm -f ~/.aws
+rm -rf ~/scripts/logs
+rm -f ~/f5-vmware-ssg/*.log
+## Below shouldn't be needed anymore after moving all logs under ~/scripts/logs
+rm -f ~/f5-demo-bigiq-analytics-export-restapi/*log
+rm -f ~/f5-demo-app-troubleshooting/*log
+rm -f ~/ldap/f5-ldap.log
+rm -f ~/asm-brute-force/*.log
+rm -f ~/scripts/*.log
+rm -f ~/ldap/f5-ldap.log

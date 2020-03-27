@@ -30,31 +30,32 @@ NC='\033[0m' # No Color
 
 env="udf"
 user="f5student"
+home="/home/$user"
 
 echo -e "Environement:${RED} $env ${NC}"
 
 # run only when server boots (through /etc/rc.local as root)
 currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
-    cd /home/$user
+    cd $home
     # create default BIG-IQ version file
-    if [ ! -f /home/$user/bigiq_version_aws ]; then
-        echo "6.1.0" > /home/$user/bigiq_version_aws
+    if [ ! -f $home/bigiq_version_aws ]; then
+        echo "6.1.0" > $home/bigiq_version_aws
     fi
-    if [ ! -f /home/$user/bigiq_version_azure ]; then
-        echo "7.0.0" > /home/$user/bigiq_version_azure
+    if [ ! -f $home/bigiq_version_azure ]; then
+        echo "7.0.0" > $home/bigiq_version_azure
     fi
-    if [ ! -f /home/$user/bigiq_version_vmware ]; then
-        echo "6.1.0" > /home/$user/bigiq_version_vmware
+    if [ ! -f $home/bigiq_version_vmware ]; then
+        echo "6.1.0" > $home/bigiq_version_vmware
     fi
-    if [ ! -f /home/$user/bigiq_version_as3 ]; then
-        echo "7.0.0" > /home/$user/bigiq_version_as3
+    if [ ! -f $home/bigiq_version_as3 ]; then
+        echo "7.0.0" > $home/bigiq_version_as3
     fi
 
-    bigiq_version_aws=$(cat /home/$user/bigiq_version_aws)
-    bigiq_version_azure=$(cat /home/$user/bigiq_version_azure)
-    bigiq_version_vmware=$(cat /home/$user/bigiq_version_vmware)
-    bigiq_version_as3=$(cat /home/$user/bigiq_version_as3)
+    bigiq_version_aws=$(cat $home/bigiq_version_aws)
+    bigiq_version_azure=$(cat $home/bigiq_version_azure)
+    bigiq_version_vmware=$(cat $home/bigiq_version_vmware)
+    bigiq_version_as3=$(cat $home/bigiq_version_as3)
 
     checkDNSworks=$(nslookup "github.com" | awk -F':' '/^Address: / { matched = 1 } matched { print $2 }' | xargs)
     if [[ -z "$checkDNSworks" ]]; then
@@ -68,11 +69,11 @@ if [[  $currentuser == "root" ]]; then
         echo "Install new scripts..."
         # GIT_LFS_SKIP_SMUDGE=1 will skip download files in the LFS (ucs files)
         GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
-        mv /home/$user/f5-big-iq-lab/lab/* /home/$user
+        mv $home/f5-big-iq-lab/lab/* $home
 
         if [[  $env == "udf" ]]; then
             # remove repo directory only if UDF, keep it for PME lab so people can run the ./containthedocs-cleanbuild.sh to validate lab guide
-            rm -rf /home/$user/f5-big-iq-lab
+            rm -rf $home/f5-big-iq-lab
         fi
 
         echo "AWS scripts"
@@ -88,18 +89,15 @@ if [[  $currentuser == "root" ]]; then
         rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* f5-vmware-ssg-* f5-ansible-bigiq-as3-demo-* > /dev/null 2>&1
         echo "Fixing permissions..."
         chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*py f5-*/*pl > /dev/null 2>&1
+        
+        # create log folder for scripts in cron jobs
+        mkdir $home/scripts/logs
+
         chown -R $user:$user . > /dev/null 2>&1
 
         # Cleanup Clouds credentials
-        rm -fr /home/$user/.aws/*
-        rm -fr /home/$user/.azure/*
-
-        if [[ $env != "udf" ]]; then
-            # for SCJ - DCD lab IP
-            sed -i 's/10.1.10.6/10.192.75.181/g' /home/$user/scripts/*sh
-            sed -i 's/10.1.10.4/10.192.75.180/g' /home/$user/scripts/*sh
-            sed -i '23,$d' /home/$user/crontab.txt
-        fi
+        rm -fr $home/.aws/*
+        rm -fr $home/.azure/*
 
         echo "Installing new crontab"
         if [ "$(whoami)" == "$user" ]; then
@@ -137,12 +135,12 @@ if [[  $currentuser == "root" ]]; then
     docker stop $(docker ps -q)
     docker rm $(docker ps -a -q)
     docker rmi $(docker images -q) -f
-    /home/$user/scripts/cleanup-docker.sh
+    $home/scripts/cleanup-docker.sh
 
     # Start AWX Compose
     rm -rf ~/.awx
     mkdir -p ~/.awx
-    ln -snf /home/$user/awx ~/.awx/awxcompose
+    ln -snf $home/awx ~/.awx/awxcompose
     docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
 
     # Starting docker images
@@ -153,7 +151,7 @@ if [[  $currentuser == "root" ]]; then
     # ASM Policy Validator
     docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
     # ASM Brute Force
-    docker build /home/$user/scripts/asm-brute-force -t asm-brute-force
+    docker build $home/scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
     # Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
     # ==> data stored under /opt/splunk/var/lib/splunk
@@ -175,12 +173,12 @@ if [[  $currentuser == "root" ]]; then
     # Splunk create spunlk HTTP Event Collector and enable it
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description 'demo splunk' -disabled 0 -index main -indexes main -sourcetype _json -auth admin:purple123
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123
-    docker exec $docker_splunk_id /opt/splunk/bin/splunk http-event-collector list -uri https://localhost:8089 -auth admin:purple123 | grep 'token=' | awk 'BEGIN { FS="=" } { print $2 }' | tr -dc '[:print:]' > /home/$user/splunk-token
+    docker exec $docker_splunk_id /opt/splunk/bin/splunk http-event-collector list -uri https://localhost:8089 -auth admin:purple123 | grep 'token=' | awk 'BEGIN { FS="=" } { print $2 }' | tr -dc '[:print:]' > $home/splunk-token
     sleep 5
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk restart
 
     # load f5demo.ldif and expose port 389 for LDAP access
-    docker run --volume /home/$user/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
+    docker run --volume $home/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
             -e LDAP_ORGANISATION="F5 Networks" \
             -e LDAP_DOMAIN="f5demo.com" \
             -e LDAP_ADMIN_PASSWORD=ldappass \
@@ -189,7 +187,7 @@ if [[  $currentuser == "root" ]]; then
             --detach osixia/openldap:1.2.4 \
             --copy-service
 
-    ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > /home/$user/ldap/f5-ldap.log
+    ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > $home/ldap/f5-ldap.log
 
     docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
     docker cp f5-demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
@@ -217,9 +215,9 @@ if [[  $currentuser == "root" ]]; then
     docker ps
 
     # Restart the VM if already created (SSG and VE creation)
-    #sleep 900 && /home/$user/f5-vmware-ssg/cmd_power_on_vm.sh > /home/$user/f5-vmware-ssg/cmd_power_on_vm.log 2> /dev/null &
-    #sleep 1100 && sudo chown -R $user:$user /home/$user/f5-vmware-ssg/*.log 2> /dev/null &
-    chown -R $user:$user /home/$user
+    #sleep 900 && $home/f5-vmware-ssg/cmd_power_on_vm.sh > $home/f5-vmware-ssg/cmd_power_on_vm.log 2> /dev/null &
+    #sleep 1100 && sudo chown -R $user:$user $home/f5-vmware-ssg/*.log 2> /dev/null &
+    chown -R $user:$user $home
 
     echo -e "\nStatus Radius Server"
     /etc/init.d/freeradius status

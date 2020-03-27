@@ -1,53 +1,56 @@
 # m h  dom mon dow   command
 ## Traffic Generator (HTTP)
-*/5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /home/f5/scripts/generate_http_clean_traffic.log 2>&1
-0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
-@reboot perl -le 'sleep 2300' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/generate_http_bad_traffic.log 2>&1
+*/5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /home/f5/scripts/logs/generate_http_clean_traffic.log 2>&1
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/logs/generate_http_bad_traffic.log 2>&1
+@reboot perl -le 'sleep 2300' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/logs/generate_http_bad_traffic.log 2>&1
 
 ## Export Analytics to Splunk
-* * * * * /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.sh >> /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.log 2>&1
+* * * * * /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.sh >> /home/f5/scripts/logs/export_app_http_stats_splunk.log 2>&1
 
 ## ASM Brute Force Attacks
-@reboot perl -le 'sleep 2400' && /home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh > /home/f5/scripts/asm-brute-force/asm_brute_force_attach.log 2>&1
+@reboot perl -le 'sleep 2400' && /home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh > /home/f5/scripts/logs/asm_brute_force_attach.log 2>&1
 
 ## Troubleshooting 503 Service Unavailable (class 3 module 2)
-0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/f5-demo-app-troubleshooting/503.log 2>&1
-0 0,2,5,8,11,14,17,20 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/404.sh > /home/f5/f5-demo-app-troubleshooting/404.log 2>&1
-0 0,4,7,10,13,16,19,22 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/iloveyou.sh > /home/f5/f5-demo-app-troubleshooting/iloveyou.log 2>&1
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/scripts/logs/503.log 2>&1
+0 0,2,5,8,11,14,17,20 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/404.sh > /home/f5/scripts/logs/404.log 2>&1
+0 0,4,7,10,13,16,19,22 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/iloveyou.sh > /home/f5/scripts/logs/iloveyou.log 2>&1
 
 ## DNS Traffic
-*/3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh  > /home/f5/scripts/generate_dns_traffic.log 2>&1
+*/3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /home/f5/scripts/logs/generate_dns_traffic.log 2>&1
 
 ## DOS data
-*/11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /dev/null 2>&1
-0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_L7_ddos.sh > /dev/null 2>&1
-@reboot perl -le 'sleep 2600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/generate_L7_ddos.log 2>&1
+*/11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /home/f5/scripts/logs/generate_dns_afm_dos_traffic_fake.sh 2>&1
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.sh 2>&1
+@reboot perl -le 'sleep 2600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.log 2>&1
 
 ## DNS DDOS data
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /dev/null 2>&1
-@reboot perl -le 'sleep 3000' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/generate_dns_ddos_traffic_real.log 2>&1
+@reboot perl -le 'sleep 3000' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/logs/generate_dns_ddos_traffic_real.log 2>&1
 
 ## AFM data
-#*/13 * * * * /home/f5/scripts/generate_afm_traffic.sh > /home/f5/scripts/generate_afm_traffic.log 2>&1
+#*/13 * * * * /home/f5/scripts/generate_afm_traffic.sh > /home/f5/scripts/logs/generate_afm_traffic.log 2>&1
 
 ## Access Traffic
-*/5 * * * * /home/f5/scripts/generate_access_traffic.sh > /home/f5/scripts/generate_access_traffic.log 2>&1
+*/5 * * * * /home/f5/scripts/generate_access_traffic.sh > /home/f5/scripts/logs/generate_access_traffic.log 2>&1
 
 ## FPS Traffic
-*/28 * * * * /home/f5/scripts/generate_fps_traffic_fake.sh > /home/f5/scripts/generate_fps_traffic_fake.log 2>&1
+*/28 * * * * /home/f5/scripts/generate_fps_traffic_fake.sh > /home/f5/scripts/logs/generate_fps_traffic_fake.log 2>&1
 
 ## SSLO Traffic
-*/14 * * * * /home/f5/scripts/generate_sslo_traffic.sh > /home/f5/scripts/generate_sslo_traffic.log 2>&1
+*/14 * * * * /home/f5/scripts/generate_sslo_traffic.sh > /home/f5/scripts/logs/generate_sslo_traffic.log 2>&1
 
 ## Make sure BOS BIG-IP01 is always active (limiation UDF AWS)
-*/5 * * * * /home/f5/scripts/forceActiveBigipBostonCluster.sh
+*/5 * * * * /home/f5/scripts/forceActiveBigipBostonCluster.sh > /home/f5/scripts/logs/forceActiveBigipBostonCluster.log 2>&1
 
-## WA reboot xrdp or vnc if dead
-*/5 * * * * /home/f5/scripts/xrdp_monitor.sh > /dev/null 2>&1
+## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
+@reboot sleep 480 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /home/f5/scripts/logs/configSyncAtStartBigipBostonCluster.log 2>&1
+
+## WA reboot xrdp if dead
+*/5 * * * * /home/f5/scripts/xrdp_monitor.sh > /home/f5/scripts/logs/xrdp_monitor.log 2>&1
 
 ## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
 @reboot sleep 82800 && /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.log 2>&1
 @reboot sleep 82800 && /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL. 2>&1
 
 ## AUTOMATIC RE-LICENSE FOR UDF BLUEPRINT AFTER 20 MIN DEPLOYMENT STARTS
-@reboot sleep 1200 && /home/f5/scripts/reactivate_licenses.sh > /home/f5/scripts/reactivate_licenses.log 2>&1
+@reboot sleep 1200 && /home/f5/scripts/reactivate_licenses.sh > /home/f5/scripts/logs/reactivate_licenses.log 2>&1
