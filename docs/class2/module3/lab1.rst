@@ -86,7 +86,7 @@ Update the *VM Image* field to use the new VM Template: BIGIP-14.1.0.5-0.0.5.ALL
 
 |
 
-.. warning:: **[New 7.0]** make sure the VMware tool are installed on the VM template. Look at *Create a BIG-IP VE clone template* in `BIG-IQ Knowledge Center`_ for more details.
+.. warning:: **[New 7.0]** make sure the VMware tool are installed on the VM Image. Look at *Create a BIG-IP VE clone template* in `BIG-IQ Knowledge Center`_ for more details.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/managing-apps-in-auto-scaled-vmware-environment/vmware-scaling-groups-overview.html
 
