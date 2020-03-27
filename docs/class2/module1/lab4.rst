@@ -65,7 +65,8 @@ properly. Login on the Ubuntu Lamp server and check DHCP server status:
 
 .. code::
 
-  /etc/init.d/isc-dhcp-server status; dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
+  /etc/init.d/isc-dhcp-server status
+  dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
 
 Try to clean up DHCP leases and restart the DHCP server process:
 

@@ -50,7 +50,7 @@ If we need to upgrade AND/OR scale-up our ``SSG``, we just need to do the follow
 .. note:: we could also scale down a SSG if we realized we allocated too much compute to it
 
 In this lab, we already have another VM template available to test this: 
-BIGIP-14.0.0.1-0.0.2.ALL_1SLOT_template
+BIGIP-14.1.0.5-0.0.5.ALL_1SLOT_template
 
 .. image:: ../pictures/module3/img_module3_lab1_1.png
    :align: center
@@ -72,19 +72,23 @@ We can review the configuration of this VM template:
 
 So if we switch from our previous template to this one, we will UPGRADE our environment AND SCALE-UP: 
 
-* upgrade from 13.1.0.7 to 13.1.1 or 14.0.0
+* upgrade from 13.1.1 to 14.1.0
 * add more vCPUs to the instances (2 -> 4 vCPUs)
 
 In your ``BIG-IQ`` UI, Go to *Applications* > *Environments* > *Cloud Environments*, Select 
 **SSGClass2VMWareEnvironment** to edit it. 
 
-Update the *VM Image* field to use the new VM Template: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_template or BIGIP-13.1.1-0.0.4.ALL_1SLOT_template
+Update the *VM Image* field to use the new VM Template: BIGIP-14.1.0.5-0.0.5.ALL_1SLOT_template
 
 .. image:: ../pictures/module3/img_module3_lab1_2.png
    :align: center
    :scale: 50%
 
 |
+
+.. warning:: **[New 7.0]** make sure the VMware tool are installed on the VM template. Look at *Create a BIG-IP VE clone template* in `BIG-IQ Knowledge Center`_ for more details.
+
+.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/managing-apps-in-auto-scaled-vmware-environment/vmware-scaling-groups-overview.html
 
 
 Click *Save & Close*. Now that our ``Cloud Environment`` is updated, we can upgrade our ``SSG``. 

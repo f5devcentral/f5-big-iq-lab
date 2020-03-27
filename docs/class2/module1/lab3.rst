@@ -82,7 +82,7 @@ and folder.
 |
 
 In the previous lab, in our Cloud environment, we specified a VM template called
-*BIGIP-13.1.0.5-0.0.5.ALL_1SLOT_template*. You can see that it is listed here.
+*BIGIP-13.1.1-0.0.4.ALL_1SLOT_template*. You can see that it is listed here.
 
 This template will give us the required information to deploy the VEs related to
 our ``SSG``:

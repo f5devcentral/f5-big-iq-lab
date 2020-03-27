@@ -48,7 +48,7 @@ VMWare Properties:
 * Folder: Purple
 * User: administrator@vsphere.local
 * Password: Purpl3$lab
-* VM Image: BIGIP-13.1.0.7-0.0.1.ALL_1SLOT_template or BIGIP-13.1.1-0.0.4.ALL_1SLOT_template
+* VM Image: BIGIP-13.1.1-0.0.4.ALL_1SLOT_template
 * Network Interface Mappings
 
 +------------+
@@ -62,6 +62,11 @@ VMWare Properties:
 +------------+
 
 .. note:: **[New 6.0.1]** the Network Interfaces have been removed in 6.0.1, the mapping is done in the order the interfaces are configured on the VM template.
+
+.. warning:: **[New 7.0]** make sure the VMware tool are installed on the VM template. Look at *Create a BIG-IP VE clone template* in `BIG-IQ Knowledge Center`_ for more details.
+
+.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/managing-apps-in-auto-scaled-vmware-environment/vmware-scaling-groups-overview.html
+             
 
 .. image:: ../pictures/module1/img_module1_lab2_3.png
     :align: center

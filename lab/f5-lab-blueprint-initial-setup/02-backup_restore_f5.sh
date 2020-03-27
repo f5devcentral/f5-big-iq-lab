@@ -143,12 +143,22 @@ elif [[ "$1" = "restore" ]]; then
 
     echo -e "\nApply https://support.f5.com/csp/article/K45728203 to address hostname issue in AWS."
 
-    echo -e "\nAfter the restore, check UDF SSH connectivity with all BIG-IPs/BIG-IQs."
+    echo -e "\nAfter the restore, check LAB SSH connectivity with all BIG-IPs/BIG-IQs."
 
 fi
 
 ## Add there things to do manually
 echo -e "\nPost-Checks:
+- Reach to F5 Lab team 
+  autoscaling, cloudformation, cloudwatch, logs, ec2, elasticloadbalancing, sqs, s3, secretsmanager
+- Create routes on BIG-IQ CM and DCD toward AWS and Azure Networks: https://support.f5.com/csp/article/K13833
+  172.200.0.0     10.1.10.7       255.255.0.0     UG    0      0        0 internal
+  172.100.0.0     10.1.10.7       255.255.0.0     UG    0      0        0 internal
+
+  tmsh create /net route 172.200.0.0/16 gw 10.1.10.7
+  tmsh create /net route 172.100.0.0/16 gw 10.1.10.7
+  tmsh save sys config
+  
 - Connect to each BIG-IP and check state is ONLINE and there are no problem with loading the configuration and license
 - Check GTM https://support.f5.com/csp/article/K25311653
 - Check SSH connection without password using ssh keys (chown root:webusers /etc/ssh/admin/authorized_keys)
