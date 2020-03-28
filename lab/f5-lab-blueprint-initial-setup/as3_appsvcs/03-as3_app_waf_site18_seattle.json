@@ -16,7 +16,10 @@
         "serviceMain": {
           "class": "Service_HTTPS",
           "profileAnalytics": {
-            "use": "Analytics_Profile"
+            "use": "Analytics_Profile",
+            "collectClientSideStatistics": true,
+            "collectOsAndBrowser": false,
+            "collectMethod": false
           },
           "virtualAddresses": [
             "10.1.10.118"

@@ -9,7 +9,7 @@ Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 
 .. image:: ../../pictures/under-construction-02.jpg
   :align: center
-  :scale: 25%
+  :scale: 15%
 
 .. toctree::
    :maxdepth: 1

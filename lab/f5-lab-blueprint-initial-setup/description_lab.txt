@@ -18,7 +18,7 @@ APPLICATION SERVICES ALREADY AVAILABLE IN THE BLUEPRINT:
         AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
         AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
         AS3 tax_site17access 10.1.10.117 BOS without AS3 template (Paul)
-        Service Catalog site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template-v1 (Paul)
+        -- removed in 7.1 BP -- Service Catalog site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template-v1 (Paul)
 
 VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:
     # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE

@@ -17,7 +17,7 @@
         validate_certs: false
       register: auth
 
-    - name: Get Config set site16
+    - name: Get Config set security_site16_boston
       uri:
         url: https://10.1.1.4/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'security_site16_boston'
         method: GET
@@ -31,7 +31,7 @@
     - debug:
         msg: "{{ site16.json | json_query('items[*].selfLink') }}"
   
-    - name: Get Config set site16
+    - name: Get Config set security_site18_seattle
       uri:
         url: https://10.1.1.4/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'security_site18_seattle'
         method: GET
@@ -45,7 +45,7 @@
     - debug:
         msg: "{{ site18.json | json_query('items[*].selfLink') }}"
 
-    - name: Get Config set dns
+    - name: Get Config set security_fqdn
       uri:
         url: https://10.1.1.4/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'security_fqdn'
         method: GET
@@ -59,7 +59,7 @@
     - debug:
         msg: "{{ dns.json | json_query('items[*].selfLink') }}"
 
-    - name: Create Application in BIG-IQ with the 3 services in it
+    - name: Create Application airport_security in BIG-IQ with the 3 services in it
       uri:
         url: https://10.1.1.4/mgmt/cm/global/global-apps-merge-move
         method: POST

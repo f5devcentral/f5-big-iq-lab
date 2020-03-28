@@ -33,6 +33,7 @@
           "collectUserAgent": true,
           "collectClientSideStatistics": true,
           "collectGeo": true,
+          "collectIp": true,
           "collectUrl": true,
           "collectPageLoadTime": true,
           "collectOsAndBrowser": true,

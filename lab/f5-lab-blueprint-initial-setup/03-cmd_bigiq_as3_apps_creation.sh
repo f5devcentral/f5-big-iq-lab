@@ -34,6 +34,9 @@ sudo docker run -t f5-big-iq-onboarding ansible-playbook --version
 ./ansible_helper ansible-playbook /ansible/bigiq_deploy_default_as3_app_svc_lab.yml -i /ansible/hosts $DEBUG_arg
 
 echo -e "\n${GREEN}Create Airport Security GLobal Application${NC}"
+
+echo -e "\n\n${RED}Make sure Application airport_security does not exist in BIG-IQ!!\n\n$${NC}"
+
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 # Move Security Apps + DNS into Airport Security GLobal App

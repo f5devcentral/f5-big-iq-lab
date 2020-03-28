@@ -32,7 +32,7 @@
           "members": [
             {
               "adminState": "enable",
-              "servicePort": 8080,
+              "servicePort": 8081,
               "serverAddresses": [
                 "10.1.20.116"
               ]
@@ -41,7 +41,7 @@
               "serverAddresses": [
                 "10.1.20.117"
               ],
-              "servicePort": 8080
+              "servicePort": 8081
             }
           ],
           "class": "Pool"
@@ -59,6 +59,8 @@
           "collectContinent": true,
           "collectedByClientSide": true,
           "collectedByServerSide": true,
+          "collectNexthop": true,
+          "collectRemoteHostIp": true,
           "class": "Analytics_TCP_Profile"
         }
       }

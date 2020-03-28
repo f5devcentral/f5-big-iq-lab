@@ -30,7 +30,7 @@ rm -f ~/splunk-token
 
 rm -f ~/update_git.log
 rm -f ~/.bash_history
-rm -f ~/.aws
+rm -fr ~/.aws
 rm -rf ~/scripts/logs
 rm -f ~/f5-vmware-ssg/*.log
 ## Below shouldn't be needed anymore after moving all logs under ~/scripts/logs
