@@ -18,7 +18,7 @@ BIGIP_RELEASE="$(cat config.yml | grep BIGIP_RELEASE | awk '{print $2}')"
 sed -i "s/udf-demo/demo-$((RANDOM%9999))/g" ./config.yml
 PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 
-type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
        echo "AWS"
        UDF_METADATA_URL=$UDF_METADATA_URL_AWS

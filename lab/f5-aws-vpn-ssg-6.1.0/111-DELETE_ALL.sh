@@ -49,10 +49,9 @@ echo -e "3. To make sure command will run after you close the ssh session execut
 
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
-# Force Delete the Apps
 echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"
-json="{\"configSetName\": \"$APP_NAME\"}"
-curl -k -u "admin:purple123" -H "Content-Type: application/json" -X POST -d "$json" https://$BIGIQ_MGT_HOST/mgmt/cm/global/tasks/force-delete
+json="{\"configSetName\":\"$APP_NAME\",\"deploy\":true,\"mode\":\"DELETE\"}"
+curl -k -u "admin:purple123" -H "Content-Type: application/json" -X POST -d "$json" https://$BIGIQ_MGT_HOST/mgmt/cm/global/tasks/apply-template
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"

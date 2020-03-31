@@ -19,7 +19,7 @@ fi
 ipcmd=$(which ip)
 
 # check if AWS or Ravello
-type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 
 # Only run the script if PARIS-vBIGIP01.termmarc.com.v14.1 is alive.
 if ping -c 1 $bigip1 &> /dev/null

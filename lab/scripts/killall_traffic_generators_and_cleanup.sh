@@ -1,6 +1,6 @@
 #!/bin/bash
 
-type=$(cat /sys/hypervisor/uuid | grep ec2 | wc -l)
+type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
     echo "AWS"
 else
