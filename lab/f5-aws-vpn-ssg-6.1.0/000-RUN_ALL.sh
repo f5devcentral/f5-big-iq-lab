@@ -85,7 +85,6 @@ clear
 
 echo -e "\n${GREEN1}Before moving further, subscribed and agreed to the software terms in AWS Marketplace for:"
 echo -e "- F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) ${RED}https://aws.amazon.com/marketplace/pp/B07G5MT2KT/${NC}"
-echo -e "- F5 BIG-IQ Virtual Edition - (BYOL) ${RED}https://aws.amazon.com/marketplace/pp/B00KIZG6KA/\n\n${NC}"
 
 cloudProvider=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.provider')
 cloudProvider=${cloudProvider:1:${#cloudProvider}-2}

@@ -26,6 +26,8 @@ c5=$(grep '<Tenant Id>' ./config.yml | wc -l)
 c6=$(grep '<Client Id>' ./config.yml | wc -l)
 c7=$(grep '<Service Principal Secret>' ./config.yml | wc -l)
 PREFIX="$(head -40 config.yml | grep PREFIX | awk '{ print $2}')"
+APP_NAME="$PREFIX-app-aws"
+BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
 
 USE_TOKEN=$(grep USE_TOKEN ./config.yml | grep yes | wc -l)
 AZURE_CLOUD="$(cat config.yml | grep AZURE_CLOUD | awk '{ print $2}')"
@@ -57,9 +59,12 @@ echo -e "3. To make sure command will run after you close the ssh session execut
 
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
+# Force Delete the Apps
 echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 10-delete-azure-app.yml -i inventory/hosts
+json="{\"configSetName\": \"$APP_NAME\"}"
+curl -k -u "admin:purple123" -H "Content-Type: application/json" -X POST -d "$json" https://$BIGIQ_MGT_HOST/mgmt/cm/global/tasks/force-delete
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
+
 
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"
 echo -e "IF YOU HAVE NOT, PLEASE DELETE ANY APPLICATION(S) CREATED ON YOUR AZURE SSG BEFORE PROCEEDING ${NC}\n\n"

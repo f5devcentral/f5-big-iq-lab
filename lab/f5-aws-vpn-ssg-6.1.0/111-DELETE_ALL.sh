@@ -11,6 +11,8 @@ NC='\033[0m' # No Color
 
 PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 MGT_NETWORK_UDF="$(cat config.yml | grep MGT_NETWORK_UDF | awk '{print $2}')"
+BIGIQ_MGT_HOST="$(cat config.yml | grep BIGIQ_MGT_HOST | awk '{print $2}')"
+APP_NAME="$PREFIX-app-aws"
 
 function pause(){
    read -p "$*"
@@ -47,13 +49,10 @@ echo -e "3. To make sure command will run after you close the ssh session execut
 
 echo -e "\n\nEXPECTED TIME: ~25 min\n\n"
 
+# Force Delete the Apps
 echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 10-delete-aws-app.yml -i inventory/hosts
-echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
-
-# Retry delete in case first one failed
-echo -e "${BLUE}TIME: $(date +"%H:%M")${NC}"
-ansible-playbook $DEBUG_arg 10-delete-aws-app.yml -i inventory/hosts
+json="{\"configSetName\": \"$APP_NAME\"}"
+curl -k -u "admin:purple123" -H "Content-Type: application/json" -X POST -d "$json" https://$BIGIQ_MGT_HOST/mgmt/cm/global/tasks/force-delete
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
 echo -e "\n\n${RED}/!\ HAVE YOU DELETED THE APP CREATED ON YOUR SSG FROM BIG-IQ? /!\ \n"

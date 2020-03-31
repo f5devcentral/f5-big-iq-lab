@@ -29,9 +29,11 @@ fi
 cloudProvider=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.provider')
 cloudProvider=${cloudProvider:1:${#cloudProvider}-2}
 
-if [[ $cloudProvider == "$UDF_CLOUD" ]]; then
+config_yml_already_configured="$(cat config.yml | grep "<key_id>" | wc -l)"
+# Only if Cloud Account is enable in UDF and config.yml not configured with another AWS Account
+if [[ $cloudProvider == "$UDF_CLOUD" && $config_yml_already_configured == 1 ]]; then
       echo -e "\n- UDF Cloud Provider: ${GREEN} $cloudProvider ${NC}"
-      
+
       # Get and set AWS credentials
       apiKey=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.apiKey')
       apiKey=${apiKey:1:${#apiKey}-2}
@@ -72,7 +74,7 @@ if [[ $cloudProvider == "$UDF_CLOUD" ]]; then
       echo -e "\t- consoleUsername:${GREEN} $(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq .consoleUsername) ${NC}"
       echo -e "\t- consolePassword:${GREEN} $(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq .consolePassword) ${NC} \n"
 else
-      echo -e "No UDF Cloud Provider supported in this deployment. Use your own account."
+      echo -e "No UDF Cloud Provider supported in this deployment or config.yml already setup. Use your own account."
 fi
 
 exit 0

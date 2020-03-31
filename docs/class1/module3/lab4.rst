@@ -1,5 +1,5 @@
-Lab 3.4: Security workflow with BIG-IQ and AS3: WAF
----------------------------------------------------
+Lab 3.4: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP
+-----------------------------------------------------------------------
 
 Workflow
 ^^^^^^^^
