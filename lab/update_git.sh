@@ -223,7 +223,7 @@ if [[  $currentuser == "root" ]]; then
     /etc/init.d/freeradius status
 
     # Update BIG-IQ welcome banner
-    if [ -f /usr/games/fortune ]; then
+    if [ ! -f /usr/games/fortune ]; then
         apt install fortune cowsay -y
     fi
     fortune=$(/usr/games/fortune | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' | sed 's/"/\\"/g' | sed "s/'/\\'/g")
