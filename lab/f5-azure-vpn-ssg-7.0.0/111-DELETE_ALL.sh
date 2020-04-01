@@ -117,12 +117,12 @@ ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec traffic-selector selector-vpn-a
 ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec ipsec-policy ipsec-policy-vpn-azure
 ssh admin@$MGT_NETWORK_UDF tmsh save sys config
 
+sed -i '/PREFIX/d' config.yml
 #sed -i '/SUBSCRIPTION_ID/d' config.yml
 #sed -i '/TENANT_ID/d' config.yml
 #sed -i '/CLIENT_ID/d' config.yml
 #sed -i '/SERVICE_PRINCIPAL_SECRET/d' config.yml
 sed -i '/CUSTOMER_GATEWAY_IP/d' config.yml
-sed -i '/PREFIX/d' config.yml
 
 sed -i '1s/^/PREFIX: udf-azure-demo\n/' config.yml
 #sed -i '1s/^/SUBSCRIPTION_ID: <Subscription Id>\n/' config.yml

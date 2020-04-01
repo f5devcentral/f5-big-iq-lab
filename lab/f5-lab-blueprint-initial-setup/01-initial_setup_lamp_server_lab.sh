@@ -232,6 +232,9 @@ apt install cdcat libqt5core5a libqt5network5 libqt5widgets5 -y
 #ln -s /opt/Postman/Postman /usr/bin/postman
 snap install postman
 
+echo -e "\nInstall fortune (used to add random quotes on BIG-IQ login)"
+apt install fortune -y
+
 echo -e "\nInstall Java (used for Access traffic generator)"
 add-apt-repository --yes --update ppa:linuxuprising/java
 apt update

@@ -96,6 +96,7 @@ ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec traffic-selector aws_conn_tun_2
 ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec ipsec-policy ipsec-policy-vpn-aws
 ssh admin@$MGT_NETWORK_UDF tmsh save sys config
 
+sed -i '/PREFIX/d' config.yml
 sed -i '/AWS_ACCESS_KEY_ID/d' config.yml
 sed -i '/AWS_SECRET_ACCESS_KEY/d' config.yml
 sed -i '/AWS_SSH_KEY/d' config.yml
@@ -104,7 +105,7 @@ sed -i '/AWS_AZ_1A/d' config.yml
 sed -i '/AWS_AZ_1B/d' config.yml
 sed -i '/BYOL_BIGIP_AMI/d' config.yml
 sed -i '/CUSTOMER_GATEWAY_IP/d' config.yml
-sed -i '/PREFIX/d' config.yml
+
 
 sed -i '1s/^/PREFIX: udf-demo\n/' config.yml
 sed -i '1s/^/AWS_ACCESS_KEY_ID: <key_id>\n/' config.yml

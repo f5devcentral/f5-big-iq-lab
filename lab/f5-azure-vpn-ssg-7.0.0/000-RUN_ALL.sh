@@ -24,17 +24,6 @@ SECONDS=0
 
 cd /home/f5/f5-azure-vpn-ssg
 
-# Reset default GW in case SSLO script gets kill in the middle of it
-interface=$(ifconfig | grep -B 1 10.1.1.5 | grep -v 10.1.1.5 | awk -F':' '{ print $1 }')
-type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
-if [[  $type == 1 ]]; then
-       echo "AWS"
-       sudo ip route change default via 10.1.1.1 dev $interface
-else
-       echo "Ravello"
-       sudo ip route change default via 10.1.1.2 dev $interface
-fi
-
 getPublicIP=$(dig TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 if [[ ! -z $getPublicIP ]]; then
     sed -i "s/0.0.0.0/$getPublicIP/g" ./config.yml
