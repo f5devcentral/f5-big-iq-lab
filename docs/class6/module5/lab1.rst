@@ -1,5 +1,6 @@
 Lab 5.1: Import a device into a silo
 -------------------------------------
+``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 

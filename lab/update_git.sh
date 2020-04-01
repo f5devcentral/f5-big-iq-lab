@@ -224,14 +224,16 @@ if [[  $currentuser == "root" ]]; then
 
     # Update BIG-IQ welcome banner
     if [ -f /usr/games/fortune ]; then
-        apt install fortune -y
+        apt install fortune cowsay -y
     fi
     fortune=$(/usr/games/fortune | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' | sed 's/"/\\"/g' | sed "s/'/\\'/g")
     echo -e "\n\n$fortune"
     json="{\"message\":\"Welcome to BIG-IQ Lab $(date +"%Y")! \n\n$fortune\n\n\",\"isEnabled\":true}"
     curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://10.1.1.4/mgmt/shared/login-ui-message | jq .
 
-done
+    # Customize ~/.bashrc
+    echo "/usr/games/fortune | /usr/games/cowsay -n" >> $home/.bashrc
+    echo "echo" >> $home/.bashrc
 
     echo -e "\n\nLAMP server initialisation COMPLETED"
 
