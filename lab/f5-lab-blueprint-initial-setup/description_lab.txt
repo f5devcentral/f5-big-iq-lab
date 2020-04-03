@@ -90,6 +90,11 @@ List of Virtual Servers and Applications Servers where various type of traffic i
   - Port 8081: f5-hello-world application
   - Port 8082: f5-demo-httpd application
   - Port 446: ASM Policy Validator
+  - Port 8000: Splunk
+  - Port 3389: xRDP
+  - Port 9001: AWX (Ansible Tower)
+  - Port 6080: NoVNC
+  - Port 7001: Visual Code
 
 IPs from 10.1.10.110 to 10.1.10.138 have a corresponding FQDN named from site10.example.com to site42.example.com.
 

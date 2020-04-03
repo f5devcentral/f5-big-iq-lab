@@ -17,7 +17,7 @@ echo -e "\n------ Export Transactions (Request/Response) to CSV file ------\n"
 
 # Usage
 if [[ -z $1 ]]; then
-    echo -e "Usage: ${RED} $0 <virtual> <from> <to> <duration>${NC}\n"
+    echo -e "Usage: ${RED} $0 <virtual> <from> <to> <duration in seconds>${NC}\n"
     echo -e "Example: $0 /conference/site41waf/serviceMain -1h now 60\n"
     exit 1;
 fi
