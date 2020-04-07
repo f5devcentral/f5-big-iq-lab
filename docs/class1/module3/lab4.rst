@@ -1,12 +1,12 @@
-Lab 3.4: Limit Pool Member access with AS3 Template through BIG-IQ GUI
-----------------------------------------------------------------------
+Lab 3.4: Limit Pool Member access only with AS3 Template through BIG-IQ GUI
+---------------------------------------------------------------------------
 
 Workflow
 ^^^^^^^^
 
-1. **David** create the AS3 template and allow only Pool Members server IP and Port.
-2. **David** assign the AS3 template to Paula.
-3. **Paula** create her application service using the template given by **david**.
+1. **David** creates the AS3 template and allow only Pool Members server IP and Port.
+2. **David** assigns the AS3 template to Paula.
+3. **Paula** creates her application service using the template given by **david**.
 
 
 AS3 template creation (David)
