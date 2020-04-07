@@ -1,6 +1,18 @@
 Lab 1.1: Simple APM Configuration via BIG-IQ (secure website with basic authentication)
 ---------------------------------------------------------------------------------------
 
+Workflow
+^^^^^^^^
+
+1. **Larry** creates the APM policy on the BIG-IQ and deploy on the BIG-IP(s).
+2. **David** creates the AS3 template and reference APM policy created by **Larry** in the template.
+3. **David** creates his application service using the template created previously.
+4. **Larry** review the BIG-IQ Access dahsboards showing the sessions.
+
+
+APM Policy creation (Larry)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 1. First make sure your device has APM module discovered and imported 
 for **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com** under Devices > BIG-IP DEVICES.
 
@@ -103,7 +115,10 @@ Target Device(s): select both BOS BIG-IPs
 
 Click Create.
 
-5. Navigate to the Applications tab > APPLICATION TEMPLATES.
+AS3 Access template creation (David)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Navigate to the Applications tab > APPLICATION TEMPLATES.
 
 Select the ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1`` AS3 Template and clone it.
 
@@ -122,7 +137,7 @@ Look for the attribute called ``BIG-IP IAM policy`` and set it to ``/Common/labS
 
 At the top right corner, click on **Publish and Close**
 
-6. Navigate to the APPLICATION menu, click on **Create** 
+2. Navigate to the APPLICATION menu, click on **Create** 
 
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |
@@ -164,7 +179,7 @@ under the application called ``LAB_Access``.
   :scale: 60%
   :align: center
 
-7. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+3. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
@@ -190,7 +205,10 @@ the Virtual Server delivering the service.
   :scale: 60%
   :align: center
 
-8. From BIG-IQ navigate to the Monitoring tab > Access > Access Summary.
+Access Policy Session Monitoring (Larry)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. From BIG-IQ navigate to the Monitoring tab > Access > Access Summary.
 
 .. image:: ../pictures/module1/lab-1-21.png
   :scale: 60%
@@ -202,7 +220,7 @@ Click on the Active Session to get details about the session.
   :scale: 60%
   :align: center
 
-9. Now, let's navigate to the Access > Sessions > Active to kill the active Sessions.
+2. Now, let's navigate to the Access > Sessions > Active to kill the active Sessions.
 
 .. image:: ../pictures/module1/lab-1-23.png
   :scale: 60%
