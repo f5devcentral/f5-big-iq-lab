@@ -13,7 +13,7 @@ AS3 template creation (David)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Logon as **david** and go to the Application > Application Templates and 
-   select ``AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-<version>`` and press **Clone**.
+   select ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` and press **Clone**.
 
 2. Give the cloned template a name: ``AS3-F5-HTTP-lb-template-Pool-Members-Only`` and click Clone.
 
@@ -49,16 +49,18 @@ Set the Virtual Address propertie to ``10.1.10.122`` and change to Override. Cli
   :scale: 40%
   :align: center
 
-6. Review the Pool Class but do not change anything. Notice the Server addresses, Service port and Admin State
+6. Select the Analytics_Profile class and make sure none of the properties are set to Editable.
+
+7. Review the Pool Class but do not change anything. Notice the Server addresses, Service port and Admin State
    are set to Editable.
 
-7. At the top right of the AS3 template editor, click on Publish & Close to save and publish the template.
+8. At the top right of the AS3 template editor, click on Publish & Close to save and publish the template.
 
 .. image:: ../pictures/module3/lab-4-6.png
   :scale: 40%
   :align: center
 
-8. Before **paula** can use this AS3 template, **david** needs to update her role.
+9. Before **paula** can use this AS3 template, **david** needs to update her role.
    Use the previous steps in `Lab 3.2`_ to add AS3 Template ``AS3-F5-HTTP-lb-template-Pool-Members-Only`` to ``Application Creator VMware`` custom role
    assigned to **paula**.
 
@@ -111,10 +113,14 @@ AS3 Application Service Deployment (Paula)
   :scale: 40%
   :align: center
 
-5. Select F5 Services/Traffic Management and Configuration and confirm Paula can only update the Pool Members.
-
-6. Under Server, Paula can update her Pool Members Server Addresses, Service Port and Admin state as needed.
+5. Collapse the top and middle banner. Select F5 Services and Configuration and confirm Paula can only update the Pool Members.
 
 .. image:: ../pictures/module3/lab-4-9.png
+  :scale: 40%
+  :align: center
+
+6. Under Servers, Paula can update her Pool Members Server Addresses, Service Port and Admin state as needed.
+
+.. image:: ../pictures/module3/lab-4-10.png
   :scale: 40%
   :align: center
