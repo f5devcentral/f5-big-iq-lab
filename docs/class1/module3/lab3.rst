@@ -1,5 +1,5 @@
-Lab 3.3: Application modification
----------------------------------
+Lab 3.3: AS3 Application Service modification through BIG-IQ GUI
+----------------------------------------------------------------
 
 Through the GUI and when allowed, the application owner is able to make small modifications.
 
@@ -10,7 +10,7 @@ Through the GUI and when allowed, the application owner is able to make small mo
 * Click **Save & Close**.
 
 .. image:: ../pictures/module3/lab-3-1.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 2. Check ``SEA-vBIGIP01.termmarc.com`` (partition ``tenant1``) Local Traffic > Pools and find **Pool**.
@@ -25,8 +25,11 @@ Through the GUI and when allowed, the application owner is able to make small mo
 
 .. image:: ../pictures/module3/lab-3-3.png
   :align: center
-  :scale: 70
+  :scale: 60%
 
-Through the API you can’t modify the application service once deployed. With AS3 via the GUI you can.
-Remember, that through the API you would do a redeploy to add additional services.
-From the flipside, the GUI only allows you to modify what has been permitted (made 'editable') when the template was created.
+The GUI only allows you to modify what has been permitted (made 'editable') when the template was created.
+
+Through the API, you can modify the AS3 application service once deployed by doing a PATCH or resending the full
+declaration through a POST (see `Module 2`_ for more details on BIG-IQ and AS3 using the API). 
+
+.. _Module 2: ../module2/module2.html

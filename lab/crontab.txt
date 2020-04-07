@@ -45,8 +45,8 @@
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
 @reboot sleep 480 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /home/f5/scripts/logs/configSyncAtStartBigipBostonCluster.log 2>&1
 
-## WA reboot xrdp if dead
-*/5 * * * * /home/f5/scripts/xrdp_monitor.sh > /home/f5/scripts/logs/xrdp_monitor.log 2>&1
+## WA restart services in case they die
+*/5 * * * * /home/f5/scripts/services_monitor.sh > /home/f5/scripts/logs/services_monitor.log 2>&1
 
 ## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
 @reboot sleep 82800 && /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.log 2>&1
