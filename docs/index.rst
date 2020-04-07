@@ -74,7 +74,7 @@ This lab environment is available for internal F5 users.
 - "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
 - "Deployment" - Manage evaluation task and deployment.
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-- "Applications" - Application Management (Cloud Edition, AS3) and Service Scaling Group
+- "Applications" - Application Management (Cloud Edition, Legacy, AS3) and Service Scaling Group
 
 ------------
 

@@ -1,5 +1,5 @@
-Class 1: BIG-IQ Application Management and AS3 (Cloud Edition)
-==============================================================
+Class 1: BIG-IQ Application Management and AS3
+==============================================
 
 In this class, we will review the application management feature available with BIG-IQ 6.0 and above.
 
