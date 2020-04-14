@@ -86,7 +86,7 @@ Notice the new Application Service have been added under *APPLICATION SERVICES*.
   :align: center
 
 6. Now, let's look on the BIG-IP and verify the Application is correctly deployed in partition ``security``.
-   Logon to ``BOSvBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``security`` and look at 
+   Login to ``BOSvBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``security`` and look at 
    the objects created on the BIG-IP.
 
 Under DNS > GSLB > Servers > Service List

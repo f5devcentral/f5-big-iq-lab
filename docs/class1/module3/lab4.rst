@@ -12,7 +12,7 @@ Workflow
 AS3 template creation (David)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Logon as **david** and go to the Application > Application Templates and 
+1. Login as **david** and go to the Application > Application Templates and 
    select ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` and press **Clone**.
 
 2. Give the cloned template a name: ``AS3-F5-HTTP-lb-template-Pool-Members-Only`` and click Clone.

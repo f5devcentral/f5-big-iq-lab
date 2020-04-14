@@ -9,7 +9,7 @@ Workflow
 3. **David** clone the template used by Paula and add firewall policy to it.
 4. **David** assigns the new AS3 template to Paula.
 5. **Paula** use the switch template functionality to move her app service to the new template.
-6. **Larry** look at the Firewall dashboard available on BIG-IQ.
+6. **Larry** looks at the Firewall dashboard available on BIG-IQ.
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -36,10 +36,10 @@ AFM Policy creation (Larry)
 
 Let's first create and deploy the AFM policy in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 
-1. Logon to BIG-IQ as **larry** by opening a browser and go to: ``https://10.1.1.4``
+1. Login to BIG-IQ as **larry** by opening a browser and go to: ``https://10.1.1.4``
 
 2. Go to Configuration > Security > Network Security > Network Firewall > Firewall Policies and
-   and create a new policy called ``module3lab6_fw_policy``.
+   create a new policy called ``module3lab6_fw_policy``.
 
 .. image:: ../pictures/module3/lab-6-1.png
   :scale: 40%
@@ -100,7 +100,7 @@ and select the **SEA-vBIGIP01.termmarc.com**. Then, click on Deploy.
 AS3 clone template to add firewall rules (David)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Logon as **david** and go to the Application > Application Templates and 
+1. Login as **david** and go to the Application > Application Templates and 
    select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-<version>`` and press **Clone**.
 
 2. Give the cloned template a name: ``AS3-LAB-HTTPS-custom-firewall-template`` and click Clone.
@@ -142,7 +142,8 @@ the firewall policy to Paula's existing application service.
 
 .. _Lab 3.2: ./lab2.html
 
-2. On the top right corner of the dashboard, click on **View Sample API Request** and Save API call in a text editor.
+2. In order to save the properties of the Application Service, click on the top right corner of the dashboard,
+   click on **View Sample API Request** and save the API call in a text editor.
 
 .. image:: ../pictures/module3/lab-6-12.png
   :scale: 40%
@@ -170,7 +171,7 @@ Using the information saved in step 2, fill necessary fields (Server Addresses, 
 6. Click **Save & Close**.
 
 7.	Now, let's look on the BIG-IP and verify the Firewall policy has been correctly applied to the Application Service.
-Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. 
+Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. 
 Select the partition ``tenant1`` and look at the security resources attached to the virtual server ``ServiceMain``.
 
 
@@ -234,7 +235,7 @@ the page is loading correctly and showing in the terminal. Run above commands fe
 AFM Policy Dashboard (Larry)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Logon as **larry** and go to Monitoring > Dashboards > AFM > ACL Enforced.
+1. Login as **larry** and go to Monitoring > Dashboards > AFM > ACL Enforced.
 Acknowledge the various attempts made by Paula when trying to reach her Application Services on port 444 and port 443.
 
 .. image:: ../pictures/module3/lab-6-17.png

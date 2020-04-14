@@ -216,7 +216,7 @@ It will create a new template in BIG-IQ AS3 Service Catalogue:
     }
 
 
-3. Logon on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
+3. Login on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
 
 |lab-3-1|
 
@@ -234,7 +234,7 @@ Task 7 - Admin set RBAC for Oliva on BIG-IQ
 
 Let's update now Oliva's service catalog.
 
-Logon on BIG-IQ as **david** go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Application Creator AS3** 
+Login on BIG-IQ as **david** go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Application Creator AS3** 
 and the custom role linked to the custom HTTP template previously created. Remove the **default** template from the allowed list. 
 Click **Save & Close**.
 
@@ -331,9 +331,9 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 
 5. Update the ``virtualPort`` to **8080** and re-send the declaration.
 
-6. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
+6. Login on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
 
-7. Logon on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
+7. Login on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 

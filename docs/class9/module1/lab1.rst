@@ -73,13 +73,13 @@ Save & Close
   :scale: 60%
   :align: center
 
-Click on the line between Start and Deny, and add a Logon Page.
+Click on the line between Start and Deny, and add a Login Page.
 
 .. image:: ../pictures/module1/lab-1-8.png
   :scale: 60%
   :align: center
 
-Click on the line between Logon Page and Deny, and add a RADIUS Auth.
+Click on the line between Login Page and Deny, and add a RADIUS Auth.
 
 .. image:: ../pictures/module1/lab-1-9.png
   :scale: 60%

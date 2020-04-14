@@ -80,7 +80,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
   :scale: 60%
   :align: center
 
-9. Logon on **BIG-IQ** as **paula**, go to Application tab and check the application is displayed and analytics are showing.
+9. Login on **BIG-IQ** as **paula**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 

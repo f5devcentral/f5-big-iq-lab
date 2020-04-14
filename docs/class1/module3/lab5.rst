@@ -26,7 +26,7 @@ ASM Policy creation (Larry)
 
 Let's first deploy the default Advance WAF policy and Security Logging Profile available in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 
-1. Logon to BIG-IQ as **larry** by opening a browser and go to: ``https://10.1.1.4``
+1. Login to BIG-IQ as **larry** by opening a browser and go to: ``https://10.1.1.4``
 
 2. Go to Configuration > Security > Web Application Security > Policies and clone the policy called ``templates-default``
 and name it as ``templates-default-cloned``.
@@ -122,7 +122,7 @@ Until now we used a default AS3 template out-of-the-box (available on https://gi
 for deploying an application service. It is a good practice to clone the default AS3 templates and use them more 
 tailored to your custom needs.
 
-1. Logon as **david** and go to the Application > Application Templates and 
+1. Login as **david** and go to the Application > Application Templates and 
    select ``AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-<version>`` and press **Clone**.
 
 2. Give the cloned template a name: ``AS3-LAB-HTTPS-WAF-custom-template`` and click Clone.
@@ -222,7 +222,7 @@ available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ
 
 5. Now, let's look on the BIG-IP  and verify the Application is correctly deployed in partition ``tenant2``.
     
-6. Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant2`` and look at the objects created on the BIG-IP.
+6. Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant2`` and look at the objects created on the BIG-IP.
 
  .. image:: ../pictures/module3/lab-5-16.png
   :scale: 40%
@@ -276,7 +276,7 @@ Open Chrome and navigate to the following URL: ``https://10.1.10.122``.
 ASM Policy Learning review and Dashboard/Events (Larry & Paula)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Logon as **larry** and go to Configuration > Security > Web Application Security > Policies.
+1. Login as **larry** and go to Configuration > Security > Web Application Security > Policies.
 
 2. Select ``templates-default-cloned`` and navigate under POLICY BUILDING > Suggestions and review the learning.
 

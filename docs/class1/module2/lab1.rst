@@ -143,9 +143,9 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
    
 .. note:: Notice that the app deployment may take a few minutes.
 
-6. Logon on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
+6. Login on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
 
-7. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
+7. Login on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 |lab-1-3|
 
@@ -255,7 +255,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 
    GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
+4. Login on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
@@ -376,7 +376,7 @@ Copy/Paste the above AS3 declaration into the declaration body into Postman (DON
 
    GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
+4. Login on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
@@ -466,7 +466,7 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
    GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
 
-4. Logon on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
+4. Login on **BIG-IQ** as **david**, go to Application tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 

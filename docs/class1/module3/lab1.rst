@@ -19,7 +19,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 View AS3 templates section
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-#. Logon to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
+#. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
 
 #. Go to Applications > Application Templates and review the top section which is titled **AS3 Templates**.
 

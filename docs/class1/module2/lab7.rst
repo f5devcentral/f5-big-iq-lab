@@ -84,7 +84,7 @@ Execute the playbooks for each tasks.
 
   Connect as **david** and check on BIG-IQ the AS3 template has been correctly created.
 
-  Logon on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
+  Login on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
 
   |lab-3-1|
 
@@ -103,7 +103,7 @@ Execute the playbooks for each tasks.
 
   Let's update now Oliva's service catalog.
 
-  Logon on BIG-IQ as **david** go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Applicator Creator AS3** 
+  Login on BIG-IQ as **david** go to the System tab, Role Management, Roles, CUSTOM ROLES, Application Roles, select **Applicator Creator AS3** 
   and the custom role linked to the custom HTTP template previously created. Remove the **default** template from the allowed list. 
   Click **Save & Close**.
 

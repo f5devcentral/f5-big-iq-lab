@@ -116,7 +116,7 @@ multiple services can be grouped. The next window will show you that a new Appli
   :align: center
 
 14.	Now, let's look on the BIG-IP and verify the Application is correctly deployed in partition ``tenant1``.
-Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant1`` and look at the objects created on the BIG-IP.
+Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant1`` and look at the objects created on the BIG-IP.
 
 .. image:: ../pictures/module3/lab-2-8.png
   :scale: 60%

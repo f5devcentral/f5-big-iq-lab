@@ -68,7 +68,7 @@ Click on Access Policies -> Per Session Policies:
 
 Select TestAccessProfile and add the following objects:
 
--  Logon page (accept default settings)
+-  Login page (accept default settings)
 
 -  AD Auth using FrogPolicy-Olympus-AD
 
@@ -81,7 +81,7 @@ between the Start and Ending points and clicking the Green Plus sign.
 
 |image13|
 
-Now select the “Logon Page” object on the right side of the pop up
+Now select the “Login Page” object on the right side of the pop up
 window. Then click “Save” on the next pop up window.
 
 |image14|
@@ -91,7 +91,7 @@ The result should look like the picture below.
 |image15|
 
 Now repeat the steps by hovering the mouse on the blue line between the
-Logon Page object and the Ending Deny and click the Green plus sign to
+Login Page object and the Ending Deny and click the Green plus sign to
 add the Authentication object of AD Auth.
 
 |image16|
