@@ -48,6 +48,8 @@ HTTPS Service using AS3 through GUI
 7. Select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-<version>`` AS3 Template and 
    click the arrow to get it in the **'Selected'** section. Then, select **Save & Close**.
 
+.. warning:: Manually select and remove the ``undefined [API only]`` entries from the Selected column if needed.
+
 8. Logout as **david** and log back in as **paula** and click **Create** application.
 
 9. Select Create Application to Create an Application Service:

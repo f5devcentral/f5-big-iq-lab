@@ -11,9 +11,9 @@ APPLICATION SERVICES ALREADY AVAILABLE IN THE BLUEPRINT:
         AS3 security_fqdn airports.example.com BOS AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1 (Paula)
     # IT_apps
         -- removed in 7.1 BP -- AS3 inventory_site38httpsBigip121 10.1.10.138 SJC without AS3 template (Paula)
-        AS3 backend_site20tcp 10.1.10.120 SEA AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2 (Paula)
+        AS3 backend_site24tcp 10.1.10.124 SEA AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2 (Paula)
         Service Catalog site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template-v1 (Paula)
-        Legacy App media.site34.example.com 10.1.10.134 BOS (Paula)
+        Legacy App media.site42.example.com 10.1.10.142 BOS (Paula)
     # finance_apps
         AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
         AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
@@ -36,7 +36,6 @@ VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:
         10.1.10.114
         10.1.10.120
         10.1.10.122
-        10.1.10.124
         10.1.10.126
 
     # SJC-vBIGIP01.termmarc.com.v12.1

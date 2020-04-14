@@ -16,10 +16,7 @@
         "serviceMain": {
           "class": "Service_HTTPS",
           "profileAnalytics": {
-            "use": "Analytics_Profile",
-            "collectClientSideStatistics": true,
-            "collectOsAndBrowser": false,
-            "collectMethod": false
+            "use": "Analytics_Profile"
           },
           "virtualAddresses": [
             "10.1.10.118"
@@ -38,7 +35,10 @@
           ]
         },
         "Analytics_Profile": {
-          "class": "Analytics_Profile"
+          "class": "Analytics_Profile",
+          "collectClientSideStatistics": true,
+          "collectOsAndBrowser": false,
+          "collectMethod": false
         },
         "Pool": {
           "class": "Pool",

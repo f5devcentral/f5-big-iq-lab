@@ -75,7 +75,7 @@
           # maybe need the | first 
           targetGlobalAppName: airport_security
           deleteEmptyGlobalAppsWhenDone: false
-          requireNewGlobalApp: true
+          requireNewGlobalApp: false
         body_format: json
         timeout: 60
         status_code: 200, 202

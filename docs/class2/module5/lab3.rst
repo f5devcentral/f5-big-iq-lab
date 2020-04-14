@@ -28,8 +28,8 @@ If you want to review those, connect to this system and go to :
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~$ cd f5-azure-vpn-ssg
-    f5@03a920f8b4c0410d8f:~/f5-azure-vpn-ssg$  ls -l
+    f5student@ip-10-1-1-5:~$ cd f5-azure-vpn-ssg
+    f5student@ip-10-1-1-5:~/f5-azure-vpn-ssg$  ls -l
     -rwxrwxr-x 1 f5student f5student  6736 Dec  8 11:54 000-RUN_ALL.sh
     -rwxrwxr-x 1 f5student f5student  1653 Dec  8 11:54 01-install_azure_cli.sh
     -rwxrwxr-x 1 f5student f5student  5703 Dec  8 11:54 02-create-vpn-azure_cli.sh

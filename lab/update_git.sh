@@ -211,7 +211,7 @@ if [[  $currentuser == "root" ]]; then
     tower-cli send ~/.awx/awxcompose/awx_backup.json
 
     # Visual Code https://github.com/cdr/code-server
-    docker run -d -restart always -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
+    docker run --restart=always -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
     docker_codeserver_id=$(docker ps | grep code-server | awk '{print $1}')
     docker exec $docker_codeserver_id sh -c "sudo apt-get update"
     docker exec $docker_codeserver_id sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"

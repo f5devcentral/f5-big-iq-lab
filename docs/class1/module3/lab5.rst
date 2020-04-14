@@ -39,7 +39,7 @@ and name it as ``templates-default-cloned``.
   :scale: 40%
   :align: center
 
-3. Select ``templates-default-cloned`` and change **Enforcement Mode** to ``transparent`` under POLICY BUILDING > Settings, then click on Save & Close.
+3. Select ``templates-default-cloned`` and change **Enforcement Mode** to ``transparent`` under POLICY BUILDING > Settings, then click on **Save & Close**.
   
 .. image:: ../pictures/module3/lab-5-1c.png
   :scale: 40%
@@ -51,7 +51,7 @@ and name it as ``templates-default-cloned``.
   :scale: 40%
   :align: center
 
-5. Select the ``/Common/templates-default-cloned``, then click on Save & Close.
+5. Select the ``/Common/templates-default-cloned``, then click on **Save & Close**.
 
 .. image:: ../pictures/module3/lab-5-3.png
   :scale: 60%
@@ -132,7 +132,7 @@ tailored to your custom needs.
   :align: center
 
 3. Open the template ``AS3-LAB-HTTPS-WAF-custom-template`` and select the ``Analytics_Profile`` AS3 class.
-   Change to Override the Properties ``Collect Client-Side Statistics``, 
+   Change to Override the Property ``Collect Client-Side Statistics``, 
    as well as ``Collect URL`` and ``Collect User Agent``.
 
 .. image:: ../pictures/module3/lab-5-13a.png
@@ -142,10 +142,10 @@ tailored to your custom needs.
 .. note:: ``Response Code``, ``User Method`` and ``Operating System and Brower`` are already enabled by default in the AS3 schema.
 
 4. Now, select the ``Service_HTTPS`` AS3 class.
-   Change to the properties ``bigip`` under policyWAF to ``/Common/templates-default-cloned``.
-   Make sure the properties is set to Editable.
+   Change to the property ``bigip`` under policyWAF to ``/Common/templates-default-cloned``.
+   Make sure the property is set to Editable.
 
-.. note:: If you want to hide the ASM policy in the template, you can set the properties to Override (only starting BIG-IQ 7.1, see BIG-IQ 7.0 Release note #811013).
+.. note:: If you want to hide the ASM policy in the template, you can set the property to Override (only starting BIG-IQ 7.1, see BIG-IQ 7.0 Release note #811013).
 
 .. image:: ../pictures/module3/lab-5-13b.png
   :scale: 40%
@@ -292,7 +292,7 @@ ASM Policy Learning review and Dashboard/Events (Larry & Paula)
 
 .. note:: In case the app is deployed on a BIG-IP HA pair, the learning is not sync unless the failover group is set to automatic or the centrally builder feature is used.
 
-4. Navigate under POLICY BUILDING > Settings, change **Enforcement Mode** to ``blocking`` then click on Save & Close.
+4. Navigate under POLICY BUILDING > Settings, change **Enforcement Mode** to ``blocking`` then click on **Save & Close**.
 
 .. image:: ../pictures/module3/lab-5-23.png
   :scale: 40%

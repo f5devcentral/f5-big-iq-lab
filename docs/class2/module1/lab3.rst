@@ -26,7 +26,7 @@ Before setting up our ``SSG`` and deploy it, do the following:
 
   .. code::
 
-    f5@03a920f8b4c0410d8f:~$ sudo service isc-dhcp-server status
+    f5student@ip-10-1-1-5:~$ sudo service isc-dhcp-server status
     isc-dhcp-server stop/waiting
 
   then run the command:

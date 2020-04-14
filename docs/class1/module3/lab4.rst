@@ -35,15 +35,16 @@ AS3 template creation (David)
   :scale: 40%
   :align: center
 
-5. Change to the ``Service_HTTP`` class, and change the virtual server TCP port propertie to Override.
-   Do not change from Editable to Override for any Pointers such as Analytics_Profile, HTTP_Profile and Pool pointers.
-   Those needs to stay set to Editable.
+5. Change to the ``Service_HTTP`` class, and change the virtual server TCP port property to Override.
+
+.. warning:: Do not change from Editable to Override for any Pointers (starting with **Use**) such as Analytics_Profile, HTTP_Profile and Pool pointers.
+             Those needs to always set to Editable.
 
 .. image:: ../pictures/module3/lab-4-4.png
   :scale: 40%
   :align: center
 
-Set the Virtual Address propertie to ``10.1.10.122`` and change to Override. Click on Save.
+Set the Virtual Address property to ``10.1.10.122`` and change to Override. Click on Save.
 
 .. image:: ../pictures/module3/lab-4-5.png
   :scale: 40%

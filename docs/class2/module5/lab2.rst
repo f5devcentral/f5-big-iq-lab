@@ -214,8 +214,8 @@ You should see something like this:
 
 .. code::
 
-    f5@03a920f8b4c0410d8f:~/f5-azure-vpn-ssg$ nohup ./000-RUN_ALL.sh ssg &
-    f5@03a920f8b4c0410d8f:~/f5-azure-vpn-ssg$ tail -f nohup.out
+    f5student@ip-10-1-1-5:~/f5-azure-vpn-ssg$ nohup ./000-RUN_ALL.sh ssg &
+    f5student@ip-10-1-1-5:~/f5-azure-vpn-ssg$ tail -f nohup.out
 
     Did you subscribed and agreed to the software terms for 'F5 BIG-IP Virtual Edition - BEST - BYOL' in Azure Marketplace?
 
