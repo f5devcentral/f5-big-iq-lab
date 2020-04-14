@@ -19,8 +19,8 @@
 */3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /home/f5/scripts/logs/generate_dns_traffic.log 2>&1
 
 ## DOS data
-*/11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /home/f5/scripts/logs/generate_dns_afm_dos_traffic_fake.sh 2>&1
-0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.sh 2>&1
+*/11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /home/f5/scripts/logs/generate_dns_afm_dos_traffic_fake.log 2>&1
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.log 2>&1
 @reboot perl -le 'sleep 2600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.log 2>&1
 
 ## DNS DDOS data

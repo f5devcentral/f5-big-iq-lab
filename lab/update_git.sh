@@ -241,7 +241,7 @@ if [[  $currentuser == "root" ]]; then
     fortuneInBashrc=$(cat $home/.bashrc | grep "fortune" | wc -l)
     if [[ $fortuneInBashrc == 0 ]]; then
         # Customize ~/.bashrc
-        echo "/usr/games/fortune" >> $home/.bashrc
+        echo "/usr/games/fortune -s literature" >> $home/.bashrc
         echo "echo" >> $home/.bashrc
     fi
 

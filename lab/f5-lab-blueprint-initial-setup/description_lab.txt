@@ -38,7 +38,7 @@ VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:
         10.1.10.122
         10.1.10.126
 
-    # SJC-vBIGIP01.termmarc.com.v12.1
+    # SJC-vBIGIP01.termmarc.com.v15.1
         10.1.10.137
         10.1.10.138
         10.1.10.139
@@ -61,16 +61,15 @@ COMPONENTS AVAILABLE:
 - "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
 - "Deployment" - Manage evaluation task and deployment.
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-- "Application" - Application Management (Cloud Edition, AS3) and Service Scaling Group
+- "Application" - Application Management (Cloud Edition, AS3, Legacy) and Service Scaling Group
 
 LIST OF INSTANCES:
-- BIG-IQ <> DCD 7.0.0.1
+- BIG-IQ <> DCD 7.1.0
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
-- 1x BIG-IP 12.1 / 1 standalone (SJC)
-- LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, Docker, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
-- AWX 9.1.0 (upstream project from which the Red Hat Ansible Tower)
-- SSLo Service TAP and L2
+- 1x BIG-IP 15.1 / 1 standalone (SJC)
+- LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, Docker, AWX 9.1.0, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
+- SSLo Service TAP and L3
 
 If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com) or Kyle Oliver (k.oliver@f5.com)
 
