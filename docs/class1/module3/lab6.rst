@@ -1,11 +1,11 @@
-Lab 3.6: AS3 Switch Template: add a Firewall Policy to existing Application Service
------------------------------------------------------------------------------------
+Lab 3.6: AS3 Switch Template: add a Firewall Policy to an existing Application Service
+--------------------------------------------------------------------------------------
 
 Workflow
 ^^^^^^^^
 
 1. **Paula** creates her application service using the template given by **david**.
-2. **Larry** create the AFM policy.
+2. **Larry** create the AFM policy (Advanced Firewall Manager).
 3. **David** clone the template used by Paula and add firewall policy to it.
 4. **David** assigns the new AS3 template to Paula.
 5. **Paula** use the switch template functionality to move her app service to the new template.
@@ -105,7 +105,7 @@ AS3 clone template to add firewall rules (David)
 
 2. Give the cloned template a name: ``AS3-LAB-HTTPS-custom-firewall-template`` and click Clone.
 
-3. Open the template you just cloed and select the ``Service_HTTPS`` AS3 class.
+3. Open the template you just cloned and select the ``Service_HTTPS`` AS3 class.
    Set property ``Firewall policy (enforced)`` to ``/Common/module3lab6_fw_policy`` and change it to Override.
 
 .. image:: ../pictures/module3/lab-6-10.png
@@ -207,7 +207,7 @@ Notice the port 444 shows closed and when trying to run a curl against the virtu
 Run above commands few times, then go back to the BIG-IQ Application Dashboard and 
 change the ``virtual server TCP port`` back to ``443``.
 
-Back on the Ubuntu Jumphost on the terminal, and run the following commands:
+Back on the Ubuntu Jump host on the terminal, and run the following commands:
 
 .. code::
 

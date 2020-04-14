@@ -1,5 +1,5 @@
-Lab 3.3: AS3 Application Service modification through BIG-IQ GUI
-----------------------------------------------------------------
+Lab 3.3: AS3 Application Service modification through BIG-IQ UI
+---------------------------------------------------------------
 
 Through the GUI and when allowed, the application owner is able to make small modifications.
 
@@ -29,7 +29,7 @@ Through the GUI and when allowed, the application owner is able to make small mo
 
 The GUI only allows you to modify what has been permitted (made 'editable') when the template was created.
 
-Through the API, you can modify the AS3 application service once deployed by doing a PATCH or resending the full
+Through the API, you can modify the AS3 application service once deployed by doing a PATCH or re-sending the full
 declaration through a POST (see `Module 2`_ for more details on BIG-IQ and AS3 using the API). 
 
 .. _Module 2: ../module2/module2.html

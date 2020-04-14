@@ -57,7 +57,7 @@ and name it as ``templates-default-cloned``.
   :scale: 60%
   :align: center
 
-6. Notice the policy is now atached to the ``inactive`` virtual servers.
+6. Notice the policy is now attached to the ``inactive`` virtual servers.
 
 Select the ``inactive`` virtual servers attached to **SEA-vBIGIP01.termmarc.com**, click on Deploy.
 
@@ -139,7 +139,7 @@ tailored to your custom needs.
   :scale: 40%
   :align: center
 
-.. note:: ``Response Code``, ``User Method`` and ``Operating System and Brower`` are already enabled by default in the AS3 schema.
+.. note:: ``Response Code``, ``User Method`` and ``Operating System and Browser`` are already enabled by default in the AS3 schema.
 
 4. Now, select the ``Service_HTTPS`` AS3 class.
    Change to the property ``bigip`` under policyWAF to ``/Common/templates-default-cloned``.
@@ -316,7 +316,7 @@ ASM Policy Learning review and Dashboard/Events (Larry & Paula)
 
 8. Login as **paula** and select previously created ``LAB_module3`` Application, then click on ``https_waf_app_service``.
 
-9. In 7.x, the protection mode isn't automaticaly updated on the Application Dashboard. 
+9. In 7.x, the protection mode isn't automatically updated on the Application Dashboard. 
 
 Under Properties, select CONFIGURATION, then add ``upgradeProtectionMode 3/26/20`` in the Description 
 field and click Save.

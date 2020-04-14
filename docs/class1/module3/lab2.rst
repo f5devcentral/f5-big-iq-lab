@@ -106,7 +106,7 @@ HTTPS Service using AS3 through GUI
   :scale: 60%
   :align: center
 
-.. note:: If not visible, refesh the page.
+.. note:: If not visible, refresh the page.
 
 13.	Select ``LAB_module3`` Application. You will notice ``LAB_module3`` acts as a group of Application Services where underneath 
 multiple services can be grouped. The next window will show you that a new Application Service has been created named: ``tenant1_https_app_service``.
@@ -122,7 +122,7 @@ Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the p
   :scale: 60%
   :align: center
 
-15.	You can testing the application sercice by open a browser in the Ubuntu Jumphost and type the Virtual Server IP address ``10.1.10.120``.
+15.	You can testing the application service by open a browser in the Ubuntu Jump-host and type the Virtual Server IP address ``10.1.10.120``.
     
 16. Back on the BIG-IQ as **paula**, select ``tenant1_https_app_service`` Application Service and look HTTP traffic analytics.
 
@@ -130,4 +130,4 @@ Logon to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the p
   :scale: 60%
   :align: center
   
-.. note:: An HTTP traffic generator is running on the Jumphost.
+.. note:: An HTTP traffic generator is running on the Jump host.
