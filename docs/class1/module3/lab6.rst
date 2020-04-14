@@ -29,7 +29,7 @@ AS3 Application Service Deployment (Paula)
 
 Follow `Lab 3.2`_ to deploy the application service as Paula.
 
-.. _Lab 3.2: ../lab2.html
+.. _Lab 3.2: ./lab2.html
 
 AFM Policy creation (Larry)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -122,7 +122,7 @@ AS3 clone template to add firewall rules (David)
    Use the previous steps in `Lab 3.2`_ to add AS3 Template ``AS3-LAB-HTTPS-custom-firewall-template`` to ``Application Creator VMware`` custom role
    assigned to **paula**.
 
-.. _Lab 3.2: ../lab2.html
+.. _Lab 3.2: ./lab2.html
 
 .. image:: ../pictures/module3/lab-6-11.png
   :scale: 40%
@@ -140,7 +140,7 @@ the firewall policy to Paula's existing application service.
 1. Login as **paula** and select previously created ``https_app_service`` Application Service 
    under ``LAB_module3`` (created in `Lab 3.2`_).
 
-.. _Lab 3.2: ../lab2.html
+.. _Lab 3.2: ./lab2.html
 
 2. On the top right corner of the dashboard, click on **View Sample API Request** and Save API call in a text editor.
 

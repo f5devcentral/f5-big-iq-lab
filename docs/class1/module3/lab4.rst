@@ -65,7 +65,7 @@ Set the Virtual Address property to ``10.1.10.122`` and change to Override. Clic
    Use the previous steps in `Lab 3.2`_ to add AS3 Template ``AS3-F5-HTTP-lb-template-Pool-Members-Only`` to ``Application Creator VMware`` custom role
    assigned to **paula**.
 
-.. _Lab 3.2: ../lab2.html
+.. _Lab 3.2: ./lab2.html
 
 .. image:: ../pictures/module3/lab-4-7.png
   :scale: 40%

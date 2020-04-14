@@ -159,7 +159,7 @@ tailored to your custom needs.
    Use the previous steps in `Lab 3.2`_ to add AS3 Template ``AS3-LAB-HTTPS-WAF-custom-template`` to ``Application Creator VMware`` custom role
    assigned to **paula**.
 
-.. _Lab 3.2: ../lab2.html
+.. _Lab 3.2: ./lab2.html
 
 AS3 WAF Application Service Deployment (Paula)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
