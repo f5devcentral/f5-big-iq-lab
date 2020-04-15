@@ -48,4 +48,4 @@ If you look at the details of the alarms, you will be able to see the pool membe
 
 |
 
-6. Delete the pool member previously created during step 4. to clear the alarm.
+6. Delete the wrong pool member created during step 4. to clear the alarm.
