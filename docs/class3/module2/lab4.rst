@@ -4,7 +4,7 @@ Lab 2.4: Troubleshooting 503 Service Unavailable
 
 2. Select the application service ``security_site16_boston`` located under ``airport_security`` application.
 
-3. Let's generate additonnal traffic to the application ``security_site16_boston``, connect on the *Ubuntu Lamp Server* and launch the following command:
+3. Let's generate additional traffic to the application ``security_site16_boston``, connect on the *Ubuntu Lamp Server* and launch the following command:
 
 ``# /home/f5/f5-demo-app-troubleshooting/503.sh``
 
@@ -24,7 +24,7 @@ Lab 2.4: Troubleshooting 503 Service Unavailable
 5. Finally, only select the *503* error in the filters and notice the page *f5_capacity_issue.php* shows up.
 
 It appears from the data showing on BIG-IQ the application may start having issue (error 503) when 
-there are more traffic going through it.
+more traffic is going through it.
 
 .. image:: ../pictures/module2/img_module2_lab4_2.png
    :align: center

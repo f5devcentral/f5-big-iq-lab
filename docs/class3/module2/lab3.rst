@@ -19,7 +19,7 @@ Open Chrome and Firefox and navigate on the website http\:\/\/site16.example.com
 
 .. note:: Accept the private certificates.
 
-A page f5_browser_issue.php is behaving differenty on Chrome compare to other browsers.
+A page f5_browser_issue.php is behaving differently on Chrome compare to other browsers.
 
 .. image:: ../pictures/module2/img_module2_lab3_1.png
    :align: center
