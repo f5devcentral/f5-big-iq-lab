@@ -23,7 +23,7 @@ A page f5_browser_issue.php is behaving differently on Chrome compare to other b
 
 .. image:: ../pictures/module2/img_module2_lab3_1.png
    :align: center
-   :scale: 50%
+   :scale: 40%
 
 |
 
@@ -33,7 +33,7 @@ Expand the right-edge of the analytics panel to get the URLs and Browser filters
 
 .. image:: ../pictures/module2/img_module2_lab3_2.png
    :align: center
-   :scale: 50%
+   :scale: 40%
 
 |
 
@@ -42,7 +42,7 @@ select Columns, then select Avg under the Application Response Time:
 
 .. image:: ../pictures/module2/img_module2_lab3_2a.png
    :align: center
-   :scale: 50%
+   :scale: 40%
 
 |
 
@@ -52,4 +52,4 @@ In the Browsers filter, notice the 30 sec Application Response Time for Chrome b
 
 .. image:: ../pictures/module2/img_module2_lab3_3.png
    :align: center
-   :scale: 50%
+   :scale: 40%

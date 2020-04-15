@@ -17,7 +17,7 @@ Lab 2.4: Troubleshooting 503 Service Unavailable
 
 .. image:: ../pictures/module2/img_module2_lab4_1.png
    :align: center
-   :scale: 60%
+   :scale: 40%
 
 |
 
@@ -28,7 +28,7 @@ more traffic is going through it.
 
 .. image:: ../pictures/module2/img_module2_lab4_2.png
    :align: center
-   :scale: 60%
+   :scale: 40%
 
 |
 
