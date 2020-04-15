@@ -37,7 +37,8 @@ Expand the right-edge of the analytics panel to get the URLs and Browser filters
 
 |
 
-If the Application Response Time column, click right on the blue portion of the table, select Columns, then select Avg under the Application Response Time:
+If the Application Response Time column isn't showing, click right on the blue portion of the table, 
+select Columns, then select Avg under the Application Response Time:
 
 .. image:: ../pictures/module2/img_module2_lab3_2a.png
    :align: center
@@ -45,7 +46,7 @@ If the Application Response Time column, click right on the blue portion of the 
 
 |
 
-Select the page f5_browser_issue.php, which has the highest value. Now all the values in all the other tables are about the page previously selected.
+5. Select the page f5_browser_issue.php, which has the highest value. Now all the values in all the other tables are about the page previously selected.
 
 In the Browsers filter, notice the 30 sec Application Response Time for Chrome browser.
 
