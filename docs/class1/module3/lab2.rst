@@ -4,7 +4,7 @@ Lab 3.2: Application Service creation using AS3 through BIG-IQ GUI
 HTTPS Service using AS3 through GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Log in as **paula** in BIG-IQ.
+1. Login as **paula** in BIG-IQ.
 
 2. Select **Create Application** to **Create an Application Service**
 
@@ -91,7 +91,7 @@ HTTPS Service using AS3 through GUI
   :scale: 60%
   :align: center
 
-10. Go to View Sample API Request in the right upper corner and select it. You will have a full AS3 declaration schema, 
+10. Click on **View Sample API Request** in the right upper corner and select it. You will have a full AS3 declaration schema, 
     scroll through it and hit close when done.
 	
 .. image:: ../pictures/module3/lab-2-5.png

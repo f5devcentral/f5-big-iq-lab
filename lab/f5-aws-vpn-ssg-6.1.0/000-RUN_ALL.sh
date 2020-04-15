@@ -52,10 +52,10 @@ UDF_CLOUD="$(cat config.yml | grep UDF_CLOUD | awk '{print $2}')"
 
 type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
-       echo "AWS"
+       echo "Hypervisor: AWS"
        UDF_METADATA_URL=$UDF_METADATA_URL_AWS
 else
-       echo "Ravello"
+       echo "Hypervisor: Ravello"
        UDF_METADATA_URL=$UDF_METADATA_URL_RAVELLO
 fi
 

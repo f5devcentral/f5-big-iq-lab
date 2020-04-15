@@ -62,11 +62,11 @@ BIG-IQ gathers all the needed pieces from our Provider, Environment, and Creatio
 
   |image07|
 
-To verify the creation of the BIG-IP VE, you can log in to the vCenter server
+To verify the creation of the BIG-IP VE, you can login to the vCenter server
 
  |image08|
 
-.. Note:: vCenter credentials are administrator@vsphere.local    / Purpl3$lab, and you MUST log in to the Jump host to access vCenter
+.. Note:: vCenter credentials are administrator@vsphere.local    / Purpl3$lab, and you MUST login to the Jump host to access vCenter
 
 BIG-IP VE Creation is complete from here we can see BIG-IQ harvested the DHCP IP address.
 

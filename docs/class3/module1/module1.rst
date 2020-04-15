@@ -6,6 +6,11 @@ under the **Monitoring** Tab: Device Health, DNS, Access, WAF.
 
 Starting BIG-IQ 6.x, BIG-IQ brings the Analytics per Application under the **Application** tab.
 
+.. warning:: For more details on how the Analytics are collected on the BIG-IQ, 
+             read `K96505382`_: The BIG-IP system now pushes statistics data to BIG-IQ DCD.
+
+.. _K96505382: https://support.f5.com/csp/article/K96505382
+
 General Views and Configuration Applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

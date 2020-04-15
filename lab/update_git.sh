@@ -34,6 +34,13 @@ home="/home/$user"
 
 echo -e "Environement:${RED} $env ${NC}"
 
+type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
+if [[  $type == 1 ]]; then
+    echo "Hypervisor: AWS"
+else
+    echo "Hypervisor: Ravello"
+fi
+
 # run only when server boots (through /etc/rc.local as root)
 currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
@@ -233,7 +240,7 @@ if [[  $currentuser == "root" ]]; then
     if [ ! -f /usr/games/fortune ]; then
         apt install fortune -y
     fi
-    fortune=$(/usr/games/fortune | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' | sed 's/"/\\"/g' | sed "s/'/\\'/g")
+    fortune=$(/usr/games/fortune -s literature | sed -E ':a;N;$!ba;s/\r{0,1}\n/\\n/g' | sed 's/"/\\"/g' | sed "s/'/\\'/g")
     echo -e "\n\n$fortune"
     json="{\"message\":\"Welcome to BIG-IQ Lab $(date +"%Y")! \n\n$fortune\n\n\",\"isEnabled\":true}"
     curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://10.1.1.4/mgmt/shared/login-ui-message | jq .

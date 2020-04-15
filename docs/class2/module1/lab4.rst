@@ -101,7 +101,7 @@ a Management IP address (provided through ``DHCP``)
 Once your VM has a management IP address, Ansible will enforce the information
 that have been defined in your device template.
 
-You should see this kind of log in your ``/var/log/restjavad.0.log`` file
+You should see this kind of logs in your ``/var/log/restjavad.0.log`` file
 
 .. code::
 
@@ -115,7 +115,7 @@ You should see this kind of log in your ``/var/log/restjavad.0.log`` file
   [INFO][19 Apr 2018 19:51:33 CEST][/cm/cloud/tasks/vmware/scale-out/ef16b0f9-ddfa-41d0-90a1-bc6ce747f513/worker VmwScaleOutTaskWorker] Advancing from WAIT_FOR_DEVICE_READY to APPLY_DEVICE_TEMPLATE
   [INFO][19 Apr 2018 19:51:34 CEST][/cm/cloud/tasks/vmware/scale-out/ef16b0f9-ddfa-41d0-90a1-bc6ce747f513/worker VmwScaleOutTaskWorker] Polling: /mgmt/cm/cloud/orchestrator/devicetemplate/6e39e51e-86d7-468d-8676-bf2ec4d4c999
 
-You should see this kind of log in your ``/var/log/orchestrator.log`` file
+You should see this kind of logs in your ``/var/log/orchestrator.log`` file
 
 
 .. code::

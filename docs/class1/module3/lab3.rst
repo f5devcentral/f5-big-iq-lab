@@ -20,8 +20,10 @@ Through the GUI and when allowed, the application owner is able to make small mo
   :scale: 60%
   :align: center   
 
-3. Now back to the BIG-IQ and ``tenant1_https_app_service`` application and select **Application Service > Configuration** and
-   scroll down in the AS3 declaration and find that the schema has added the second pool member.
+3. Now back to the BIG-IQ and ``tenant1_https_app_service`` application service.
+   Click on **View Sample API Request** in the right upper corner and select it. 
+   You will have a full AS3 declaration schema, scroll down in the AS3 declaration and 
+   find that the schema has added the second pool member.
 
 .. image:: ../pictures/module3/lab-3-3.png
   :align: center

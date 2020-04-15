@@ -22,7 +22,7 @@
           atc_service: AS3
           atc_method: POST
           atc_declaration_file: "{{ item }}"
-          atc_delay: 15
+          atc_delay: 30
           atc_retries: 10
         loop: "{{ query('fileglob', '/ansible/as3_appsvcs/*.json')|sort }}"
         register: atc_AS3_status

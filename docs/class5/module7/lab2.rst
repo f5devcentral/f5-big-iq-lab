@@ -266,7 +266,7 @@ Once onboarding is complete, the BIG-IP VE will be a managed BIG-IP within BIG-I
 
   |image17|
 
-Utilizing the Jump host, we can log in to the newly created BIG-IP with our newly created credentials from DO and see objects, and the BIG-IP is ready for use. 
+Utilizing the Jump host, we can login to the newly created BIG-IP with our newly created credentials from DO and see objects, and the BIG-IP is ready for use. 
 
 .. Note:: Because we used the BIG-IQ DO Class our BIG-IP was added to our BIG-IQ under a managed device
 

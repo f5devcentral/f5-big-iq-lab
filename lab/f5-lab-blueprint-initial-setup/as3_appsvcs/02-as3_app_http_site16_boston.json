@@ -47,9 +47,9 @@
         },
         "HTTP_Profile": {
           "class": "HTTP_Profile",
-          "fallbackRedirect": "https://www.example.com/404",
+          "fallbackRedirect": "https://www.example.com/403",
           "fallbackStatusCodes": [
-            404
+            403
           ]
         },
         "Pool": {

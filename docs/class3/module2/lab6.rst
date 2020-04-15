@@ -1,98 +1,95 @@
-Lab 2.6: Troubleshooting Security (massive attack)
---------------------------------------------------
-Connect as **larry**
+Lab 2.6: Page Load Time
+-----------------------
+1. Login as **paula** in BIG-IQ.
 
-1. **Larry** disable the Web Application Security for ``templates-default`` ASM Policy.
+2. Open service ``security_site16_boston`` located under ``airport_security`` application.
 
-Go to Configuration > SECURITY > Web Application Security > Policies, select ``templates-default`` ASM Policy.
+3. **Page Load Time** is dependent on CSPM (Client side Perf Monitoring javascript injection).
 
-Go to POLICY PROPERTIES > General Properties and check **Automatic** is set for the Learning Mode.
+An HTTP response is eligible for CSPM injection under the following conditions:
 
-.. image:: ../pictures/module2/img_module2_lab6_1a.png
-  :align: center
-  :scale: 50%
+- The HTTP content is not compressed.
+- The HTTP content-type is text/html.
+- The HTTP content contains an HTML <head> tag.
 
-Go to POLICY BUILDING > Settings and check **Automatic** is set for the Learning Mode, and Auto-Deploy Policy set to **Real Time**.
+Navigation Timing is currently supported by the following browsers:
 
-.. image:: ../pictures/module2/img_module2_lab6_1b.png
-  :align: center
-  :scale: 50%
+- Internet Explorer 9 and later
+- Mozilla Firefox 4 and later
+- Chrome 10 and later
 
-.. note:: The intent for the initial release 6.0 was to be able to push a basic (negative only) security policy that can provide a basic level of protection for most applications. For 6.0, it is recommended that learning shouldn’t be enabled with app templates – it should be a fundamental policy.
+For a response containing the CSPM injection to generate results, the client browser must support the Navigation Timing API (window.performance.timing).
+https://support.f5.com/csp/article/K13849
 
-.. list-table:: Default ASM Policy details ``templates-default``
-   :header-rows: 0
+In order to get the page load time, there are 2 things:
+- ``Page Load Time`` parameter in the HTTP Analytics profile attached to the virtual server needs to be enabled
+- The ``Request Header Erase`` needs to be set to ``Accept-Encoding``
 
-   * - Data Guard:
-		      * Protect credit card numbers
-		      * Protect U.S. Social Security numbers
-		      * Mask sensitive data
-   * - Brute Force Attack Prevention:
-		      * default policy
-   * - Headers:
-      		* methods allow GET/HEAD/POST
-      		* HTTP headers \*/authorization/referer check signatures, referer Perform Normalization
-      		* Cookies * allow
-      		* Redirection Protection allow
-      		* Character Set (list of allow/disallow)
-   * - URLs:
-      		* HTTP * allow
-      		* Web Sockets * allow
-      		* Character Set (list of allow/disallow)
-   * - FILE TYPES:
-      		* Allow file types *
-      		* Disallowed file types => list (e.g. bak, bat, bkp ...)
-   * - CONTENT PROFILES:
-      		* JSON (list of allow/disallow)
-      		* Plain Text (list of allow/disallow)
-      		* XML (list of allow/disallow)
-   * - PARAMETERS:
-      		* Parameters: * user inputs Attack Signatures enabled
-      		* SensitiveParameters: password
-   * - Attack Signatures Configuration: enabled
-   * - Attack Signatures: numbers enabled
-   * - Sessions and logins: disabled
+In order to test it quickly, let's manually set in the HTTP profile attached to ``serviceMain`` VIP under ``security/site16_boston`` partition/folder on the BIG-IP ``SEA-vBIGIP01.termmarc.com``
+
+.. image:: ../pictures/module2/img_module2_lab6_1.png
+   :align: center
+   :scale: 50%
 
 |
 
-2. Update the Enforcement Mode to ``Blocking``
+.. note:: Other way could be to create a clone of a default template and change the parameter Request Header Erase within the template. Note we cannot modify the default built-in templates.
 
-Go to POLICY PROPERTIES > General Properties
+
+From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. To do this, in your lab environment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
+
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
+
+.. image:: ../../pictures/udf_ubuntu.png
+    :align: left
+    :scale: 60%
+
+|
+
+Open Chrome and navigate on the website https\:\/\/site16.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
 
 .. image:: ../pictures/module2/img_module2_lab6_2.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
-Save and Close.
-
-Connect as **paula**
-
-Select ``site36.example.com``
-
-1. **Paula** enforce the policy: APPLICATION SERVICES > Security > CONFIGURATION tab > click on ``Start Blocking``
+Go back on the BIG-IQ, expand the right-edge of the analytics pane and check you can see now the Page Load Time.
 
 .. image:: ../pictures/module2/img_module2_lab6_3.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
 |
 
-.. note:: The Enforcement Mode is controlled by the Application owner, the Host Name of the application (FQDN) will be configured in the ASM Policy to enforce it (or not)
-
-.. image:: ../pictures/module2/img_module2_lab6_3a.png
-  :align: center
-  :scale: 50%
-
-2. Connect on the *Ubuntu Lamp Server* server and launch the following command:
-
-``# /home/f5/scripts/generate_http_bad_traffic.sh``
-
-3. Check the various Security Analytics: Illegal Transactions, All Transactions and Violations.
+4. Differences when Enhanced Analytics are enabled or disable on the HTTP Analytics profile
+Login to BIG-IP, go to ``SEA-vBIGIP01.termmarc.com`` BIG-IP, Local Traffic > Profiles > Analytics > HTTP Analytics.
 
 .. image:: ../pictures/module2/img_module2_lab6_4.png
-  :align: center
-  :scale: 50%
+   :align: center
+   :scale: 50%
 
-4. Stop the bad traffic script, connect on the *Ubuntu Lamp Server* server and ``CTRL+C``.
+|
+
+.. image:: ../pictures/module2/img_module2_lab6_5.png
+   :align: center
+   :scale: 50%
+
+|
+
+5. Compare two or more items in the detailed right hand panel. i.e. compare pool members and URLs.
+
+.. image:: ../pictures/module2/img_module2_lab6_6.png
+   :align: center
+   :scale: 50%
+
+|
+
+Select different metric:
+
+.. image:: ../pictures/module2/img_module2_lab6_7.png
+   :align: center
+   :scale: 50%
+
+|

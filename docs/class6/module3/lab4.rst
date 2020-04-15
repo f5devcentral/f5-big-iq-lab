@@ -67,7 +67,7 @@ Click on the name of the Deployment to review what was deployed
 
 |image44|
 
-Log in to BOS—vBIGIP01 using the TMUI link in lab environment and confirm that your deployment was successful. 
+Login to BOS—vBIGIP01 using the TMUI link in lab environment and confirm that your deployment was successful. 
 
 You should now see the **BIQAppVS** on the Network Map.
 

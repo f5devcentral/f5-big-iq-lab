@@ -2,9 +2,9 @@
 
 type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
-    echo "AWS"
+    echo "Hypervisor: AWS"
 else
-    echo "Ravello"
+    echo "Hypervisor: Ravello"
 fi
 
 echo -e "\n* Kill all jobs in sleep..."
@@ -14,9 +14,9 @@ sudo killall perl
 echo -e "\n* Kill all jobs running..."
 for filename in ./*sh; do
     filename=${filename:2:${#filename}}
-    echo -e "\t* $filename"
+    echo -e "   * $filename"
     for process in $(ps -ef | grep $filename | grep -v grep | grep -v $0 | grep -v reactivate_licenses.sh | awk '{print $2}'); do
-      echo -e "\tkill -9 $process"
+      echo -e "      kill -9 $process"
       sudo kill -9 $process
     done
 done
@@ -25,6 +25,8 @@ echo
 
 # Kill some extra stuff (launched by generate_dns_ddos_traffic_real.sh)
 sudo killall nping hping3
+
+echo
 
 if [[ "$1" = "cleanup" ]]; then
     echo -e "\n* Cleanup logs...\n"
@@ -46,4 +48,5 @@ if [[ "$1" = "cleanup" ]]; then
     rm -f ~/asm-brute-force/*.log
     rm -f ~/scripts/*.log
     rm -f ~/ldap/f5-ldap.log
+    echo -e "... done! \n"
 fi

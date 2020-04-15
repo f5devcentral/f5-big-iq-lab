@@ -30,7 +30,7 @@ Unlike ASM logging configurations, Network Firewall logging configurations refer
 
 At this point, we have created all the objects necessary for logging firewall events.  However, we do need to verify that the Data Collection Devices (DCD) being used for this lab have the Network Security Service enabled.  To do this, follow the following steps:
 
-1. We are currently logged in as Larry, the security manager, we need to log out of this role.  Then log in as the admin user.
+1. We are currently logged in as Larry, the security manager, we need to log out of this role.  Then login as the admin user.
 2. Under *System* > *BIG-IQ Data Collection*, click *BIG-IQ Data Collection Devices*
 3. Click on the device ``bigiq1dcd.example.com``, and click *Services* on left side.
 4. Scroll down to *Network Security* and verify that service status is *Active*.  If not, activate.

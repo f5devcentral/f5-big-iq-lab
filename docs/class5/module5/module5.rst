@@ -2,7 +2,7 @@ Module 5: License Management
 ============================
 A software license is specific to F5 product services (for example, BIG-IP LTM, BIG-IP APM, and so forth), and is organized in a license pool.
 From BIG-IQ Centralized Management, you can easily manage licenses in those pools for numerous devices.
-That means you don't have to log in to each individual BIG-IP VE device to activate, revoke, or reassign a license.
+That means you don't have to login to each individual BIG-IP VE device to activate, revoke, or reassign a license.
 
 After you activate your subscription or ELA registration key for a pool license from BIG-IQ, you can assign the license to a managed, 
 or unmanaged, BIG-IP VE device. If you assign a license from a license pool to a BIG-IP device and later decide you don't need that device licensed, 

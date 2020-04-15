@@ -45,7 +45,7 @@ echo -e "\nUpdate BIG-IP $bigip2\n"
 res=$(curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip2/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4)
 echo $res
 
-while [[ ${res} = *"code"* ]] &> /dev/null
+while [[ ${res} = *"code"* || ${res} = *"xml"* ]] &> /dev/null
 do
     echo -e "\nWait 1min: $bigip2 not ready to receive API call.\n"
     sleep 60
@@ -63,7 +63,7 @@ echo -e "\nUpdate BIG-IP $bigip1\n"
 res=$(curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://$bigip1/mgmt/tm/net/arp/~Common~ssloS_trend_tap.app~ssloS_trend_tap4)
 echo $res
 
-while [[ ${res} = *"code"* ]] &> /dev/null
+while [[ ${res} = *"code"* || ${res} = *"xml"* ]] &> /dev/null
 do
     echo -e "\nWait 1min: $bigip1 not ready to receive API call.\n"
     sleep 60

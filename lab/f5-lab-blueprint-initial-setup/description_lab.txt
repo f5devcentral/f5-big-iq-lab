@@ -13,7 +13,7 @@ APPLICATION SERVICES ALREADY AVAILABLE IN THE BLUEPRINT:
         -- removed in 7.1 BP -- AS3 inventory_site38httpsBigip121 10.1.10.138 SJC without AS3 template (Paula)
         AS3 backend_site24tcp 10.1.10.124 SEA AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2 (Paula)
         Service Catalog site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template-v1 (Paula)
-        Legacy App media.site42.example.com 10.1.10.142 BOS (Paula)
+        Legacy App media.site42.example.com 10.1.10.142 SEA (Paula)
     # finance_apps
         AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
         AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
@@ -52,7 +52,7 @@ DNS LISTENERS:
         10.1.10.204
 
 DOCUMENTATIONS:
-- BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.0.0
+- BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
 - Customer Deck: https://f5.sharepoint.com/sites/SMEManagement/Shared%20Documents/Forms/AllItems.aspx
 
 COMPONENTS AVAILABLE: 

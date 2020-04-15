@@ -44,7 +44,7 @@ pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\n${RED}Make sure paula and paul users are correctly assigned to their roles on the BIG-IQ (look at the description_lab.txt).${NC}"
+echo -e "\n${RED}Make sure paula and paul users are correctly assigned to their roles on the BIG-IQ (look at the description_lab.txt).${NC}\n\n"
 
 
 

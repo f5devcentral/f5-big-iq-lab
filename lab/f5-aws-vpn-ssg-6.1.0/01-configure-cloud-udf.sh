@@ -20,10 +20,10 @@ PREFIX="$(head -25 config.yml | grep PREFIX | awk '{ print $2}')"
 
 type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
-       echo "AWS"
+       echo "Hypervisor: AWS"
        UDF_METADATA_URL=$UDF_METADATA_URL_AWS
 else
-       echo "Ravello"
+       echo "Hypervisor: Ravello"
        UDF_METADATA_URL=$UDF_METADATA_URL_RAVELLO
 fi
 cloudProvider=$(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq '.provider')

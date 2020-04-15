@@ -1,20 +1,16 @@
 Lab 2.4: Troubleshooting 503 Service Unavailable
 ------------------------------------------------
-Connect as **paula**.
+1. Login as **paula** in BIG-IQ.
 
 The goal of this lab is to show how BIG-IQ can help to troubleshoot an 503 HTTP error.
 
-1. Select application ``site42.example.com`` and turn on **Enhanced Analytics**, click on the button at the top right of the screen, and click on **Start**.
+2. Select the application service ``security_site16_boston`` located under ``airport_security`` application.
 
-The Enhanced Analytics allows you to increase the application data visibility by collecting additional data for all, or specific, client IP addresses sending requests to the application.
-
-.. note:: When this option is enabled, a banner appears at the top of the screen and highlights the application health icon in the applications list. Enhanced Analytics might be already turn on for site42.example.com
-
-2. Let's generate additonnal traffic to the application ``site42.example.com``, connect on the *Ubuntu Lamp Server* and launch the following command:
+3. Let's generate additonnal traffic to the application ``security_site16_boston``, connect on the *Ubuntu Lamp Server* and launch the following command:
 
 ``# /home/f5/f5-demo-app-troubleshooting/503.sh``
 
-3. Back to BIG-IQ Application dashboard, open application ``site42.example.com`` and display the *Transaction* Analytics.
+4. Back to BIG-IQ Application dashboard, ``security_site16_boston`` and display the *Transaction* Analytics.
 
 - Click Expand the right-edge of the analytics panel to get the filters.
 - Move the *URLs* and the *Response Codes* tables next to each other and expand them both (the tables can be moved up/down).

@@ -39,6 +39,39 @@ and name it as ``templates-default-cloned``.
   :scale: 40%
   :align: center
 
+.. list-table:: Default ASM Policy details ``templates-default``
+   :header-rows: 0
+
+   * - Data Guard:
+		      * Protect credit card numbers
+		      * Protect U.S. Social Security numbers
+		      * Mask sensitive data
+   * - Brute Force Attack Prevention:
+		      * default policy
+   * - Headers:
+      		* methods allow GET/HEAD/POST
+      		* HTTP headers \*/authorization/referer check signatures, referer Perform Normalization
+      		* Cookies * allow
+      		* Redirection Protection allow
+      		* Character Set (list of allow/disallow)
+   * - URLs:
+      		* HTTP * allow
+      		* Web Sockets * allow
+      		* Character Set (list of allow/disallow)
+   * - FILE TYPES:
+      		* Allow file types *
+      		* Disallowed file types => list (e.g. bak, bat, bkp ...)
+   * - CONTENT PROFILES:
+      		* JSON (list of allow/disallow)
+      		* Plain Text (list of allow/disallow)
+      		* XML (list of allow/disallow)
+   * - PARAMETERS:
+      		* Parameters: * user inputs Attack Signatures enabled
+      		* SensitiveParameters: password
+   * - Attack Signatures Configuration: enabled
+   * - Attack Signatures: numbers enabled
+   * - Sessions and logins: disabled
+
 3. Select ``templates-default-cloned`` and change **Enforcement Mode** to ``transparent`` under POLICY BUILDING > Settings, then click on **Save & Close**.
   
 .. image:: ../pictures/module3/lab-5-1c.png
