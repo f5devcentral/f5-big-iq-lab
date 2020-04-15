@@ -47,12 +47,12 @@
               "servicePort": 80,
               "adminState": "enable",
               "serverAddresses": [
-                "10.1.20.113"
+                "10.1.20.112"
               ]
             },
             {
               "serverAddresses": [
-                "10.1.20.115"
+                "10.1.20.113"
               ],
               "servicePort": 80
             }

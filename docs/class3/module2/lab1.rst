@@ -19,11 +19,11 @@ The Enhanced Analytics allows you to increase the application data visibility by
 
 |
 
-.. note:: To turn on/off Enhanced Analytics via the API on an AS3 Application Service, see `Class 1 Module 2 BIG-IQ Application Templates & Deployment with AS3 using the API Lab 2.6`_ for more details.
-          To turn on/off Enhanced Analytics via on a Legacy Application Service, see `Class 1 Module 5 Visibility for Legacy applications in the Applications tab Lab 5.1`_ for more details.
+.. note:: To turn on/off Enhanced Analytics via the API on an AS3 Application Service, see `Class 1 Module 2 Lab 2.6`_ for more details.
+          For Legacy Application Service, see `Class 1 Module 5 Lab 5.1`_ for more details.
 
-.. _Class 1 Module 2 BIG-IQ Application Templates & Deployment with AS3 using the API Lab 2.6: ../../class1/module2/lab6.html
-.. _Class 1 Module 5 Visibility for Legacy applications in the Applications tab Lab 5.1: ../../class1/module5/lab1.html
+.. _Class 1 Module 2 Lab 2.6: ../../class1/module2/lab6.html
+.. _Class 1 Module 5 Lab 5.1: ../../class1/module5/lab1.html
 
 2. Due to the fact application service ``security_site16_boston`` has a Fallback Redirect setup on 404 error,
    let's change the Fallback Redirect setting to 403.

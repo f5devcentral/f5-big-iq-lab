@@ -1,0 +1,74 @@
+{
+    "class": "ADC",
+    "schemaVersion": "3.18.0",
+    "legacy": {
+        "class": "Tenant",
+        "app1": {
+            "class": "Application",
+            "template": "http",
+            "serviceMain": {
+                "virtualPort": 80,
+                "virtualAddresses": [
+                    "10.1.10.134"
+                ],
+                "profileAnalytics": {
+                    "use": "statsProfileHttp"
+                },
+                "profileAnalyticsTcp": {
+                    "use": "statsProfileTcp"
+                },
+                "pool": "Pool",
+                "class": "Service_HTTP"
+            },
+            "statsProfileHttp": {
+                "class": "Analytics_Profile",
+                "collectUserAgent": true,
+                "collectClientSideStatistics": true,
+                "collectGeo": true,
+                "collectUrl": true,
+                "collectPageLoadTime": true,
+                "collectOsAndBrowser": true,
+                "collectMethod": true,
+                "collectResponseCode": true,
+                "capturedTrafficInternalLogging": true,
+                "captureFilter": {
+                    "requestCapturedParts": "all",
+                    "responseCapturedParts": "all"
+                }
+            },
+            "statsProfileTcp": {
+                "class": "Analytics_TCP_Profile",
+                "collectCity": true,
+                "collectRegion": true,
+                "collectCountry": true,
+                "collectPostCode": true,
+                "collectContinent": true,
+                "collectedByClientSide": true,
+                "collectedByServerSide": true,
+                "collectNexthop": true,
+                "collectRemoteHostIp": true,
+                "collectRemoteHostSubnet": true
+            },
+            "Pool": {
+                "members": [
+                    {
+                        "serverAddresses": [
+                            "10.1.20.121",
+                            "10.1.20.122"
+                        ],
+                        "servicePort": 80,
+                        "monitors": [
+                            "http"
+                        ],
+                        "adminState": "enable",
+                        "shareNodes": true
+                    }
+                ],
+                "class": "Pool",
+                "monitors": [
+                    "http"
+                ]
+            }
+        }
+    }
+}

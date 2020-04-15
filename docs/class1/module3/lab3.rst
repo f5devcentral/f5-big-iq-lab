@@ -3,7 +3,8 @@ Lab 3.3: AS3 Application Service modification through BIG-IQ UI
 
 Through the GUI and when allowed, the application owner is able to make small modifications.
 
-1. In ``tenant1_https_app_service``, select Servers and Configuration and add a Pool Member.
+1. In ``tenant1_https_app_service``, click on the **SERVERS**, then select the **CONFIGURATION** tab 
+   and add a Pool Member.
 
 * Click the + next to Server Addresses and add: ``10.1.20.122``.
 

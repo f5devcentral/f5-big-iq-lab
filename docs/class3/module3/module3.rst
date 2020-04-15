@@ -10,8 +10,4 @@ Are you interested to see a lab on this topic? `Open an issue on GitHub`_
   :align: center
   :scale: 15%
   
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   lab*
+Traffic Capture is turned on Application ``Security``, Application Service ``security_site16_boston``.

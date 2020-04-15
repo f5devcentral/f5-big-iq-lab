@@ -10,7 +10,7 @@ Lab 2.2: Troubleshooting Pool Member
 
 |
 
-3. Click on the **SERVERS**, then select the **CONFIGURATION** tab. 1 node should be displayed.
+3. Click on the **SERVERS**, then select the **CONFIGURATION** tab. 2 nodes should be displayed.
 
 .. image:: ../pictures/module2/img_module2_lab2_2.png
   :align: center
@@ -18,7 +18,11 @@ Lab 2.2: Troubleshooting Pool Member
 
 |
 
-4. Click on **Create** and add a wrong node ``1.3.5.6``, click **Create**
+4. Add a Pool Member.
+
+* Click the + next to Server Addresses and add a wrong node ``1.3.5.6`` for ``123``.
+
+* Click **Save & Close**.
 
 .. image:: ../pictures/module2/img_module2_lab2_3.png
   :align: center
@@ -26,11 +30,9 @@ Lab 2.2: Troubleshooting Pool Member
 
 |
 
-You should see a *Deploying application changes...* yellow banner indicating the deployment is on going.
+You should see a spinner indicating the deployment is on going.
 
-5. An alarm is raised showing the wrong pool member.
-
-.. note:: The monitors for the default templates are set to 1 minute in order to reducing the probability that with a network issue
+5. An alarm is raised showing the wrong pool member. Notice couple events are showing the alarm on the analytics charts.
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
@@ -38,4 +40,12 @@ You should see a *Deploying application changes...* yellow banner indicating the
 
 |
 
-6. Delete the pool member previously created during step 3. to clear the alarm.
+If you look at the details of the alarms, you will be able to see the pool members server address down.
+
+.. image:: ../pictures/module2/img_module2_lab2_5.png
+  :align: center
+  :scale: 40%
+
+|
+
+6. Delete the pool member previously created during step 4. to clear the alarm.

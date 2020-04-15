@@ -22,22 +22,27 @@ For a response containing the CSPM injection to generate results, the client bro
 https://support.f5.com/csp/article/K13849
 
 In order to get the page load time, there are 2 things:
-- ``Page Load Time`` parameter in the HTTP Analytics profile attached to the virtual server needs to be enabled
-- The ``Request Header Erase`` needs to be set to ``Accept-Encoding``
+- ``Page Load Time`` parameter in the HTTP Analytics profile attached to the virtual server needs to be enabled.
+- The ``Request Header Erase`` needs to be set to ``Accept-Encoding`` in the HTTP profile (AS3 property in the HTTP_Profile class is ``whiteOutHeader``)
 
-In order to test it quickly, let's manually set in the HTTP profile attached to ``serviceMain`` VIP under ``security/site16_boston`` partition/folder on the BIG-IP ``SEA-vBIGIP01.termmarc.com``
+4. In order to test it quickly, let's manually set in the HTTP profile used in ``security_site16_boston``.
+
+5. Login to ``BOS-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``security``,
+then Local Traffic  ››  Profiles : Services : HTTP. Click on ``HTTP_Profile``.
 
 .. image:: ../pictures/module2/img_module2_lab6_1.png
    :align: center
-   :scale: 50%
+   :scale: 40%
 
 |
 
-.. note:: Other way could be to create a clone of a default template and change the parameter Request Header Erase within the template. Note we cannot modify the default built-in templates.
+.. note:: To enable the feature without changing the HTTP profile directly on BIG-IP.
+          Import AS3 template called ``AS3-F5-HTTP-lb-page-load-time-template-big-iq-default`` 
+          from https://github.com/f5devcentral/f5-big-iq and use switch template feature.
 
-
-From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
+6. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+   To do this, in your lab environment, click on the *Access* button of the *Ubuntu Lamp Server* system 
+   and select *noVNC* or *xRDP*.
 
 .. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
@@ -47,49 +52,19 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 |
 
-Open Chrome and navigate on the website https\:\/\/site16.example.com. If you open the developer tools in the browser (ctrl+shift+i), you can see the F5 CSPM javascript added to the page.
+7. Open Chrome and navigate on the website https\:\/\/site16.example.com. 
+   If you open the developer tools in the browser (ctrl+shift+i), 
+   you can see the F5 CSPM javascript added to the page.
 
 .. image:: ../pictures/module2/img_module2_lab6_2.png
    :align: center
-   :scale: 50%
+   :scale: 40%
 
 |
 
-Go back on the BIG-IQ, expand the right-edge of the analytics pane and check you can see now the Page Load Time.
+8. Go back on the BIG-IQ, expand the right-edge of the analytics pane and 
+   check you can see now the Page Load Time.
 
 .. image:: ../pictures/module2/img_module2_lab6_3.png
    :align: center
-   :scale: 50%
-
-|
-
-4. Differences when Enhanced Analytics are enabled or disable on the HTTP Analytics profile
-Login to BIG-IP, go to ``SEA-vBIGIP01.termmarc.com`` BIG-IP, Local Traffic > Profiles > Analytics > HTTP Analytics.
-
-.. image:: ../pictures/module2/img_module2_lab6_4.png
-   :align: center
-   :scale: 50%
-
-|
-
-.. image:: ../pictures/module2/img_module2_lab6_5.png
-   :align: center
-   :scale: 50%
-
-|
-
-5. Compare two or more items in the detailed right hand panel. i.e. compare pool members and URLs.
-
-.. image:: ../pictures/module2/img_module2_lab6_6.png
-   :align: center
-   :scale: 50%
-
-|
-
-Select different metric:
-
-.. image:: ../pictures/module2/img_module2_lab6_7.png
-   :align: center
-   :scale: 50%
-
-|
+   :scale: 40%

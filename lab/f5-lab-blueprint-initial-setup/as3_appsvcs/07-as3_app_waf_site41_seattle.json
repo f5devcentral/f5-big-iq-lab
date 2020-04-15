@@ -4,7 +4,7 @@
   "persist": true,
   "declaration": {
     "class": "ADC",
-    "schemaVersion": "3.7.0",
+    "schemaVersion": "3.12.0",
     "id": "mail-declaration-01",
     "label": "mail",
     "remark": "Mail Application Service",
@@ -60,8 +60,8 @@
             {
               "servicePort": 80,
               "serverAddresses": [
-                "10.1.20.119",
-                "10.1.20.120"
+                "10.1.20.118",
+                "10.1.20.119"
               ],
               "shareNodes": true
             }

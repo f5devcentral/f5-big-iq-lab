@@ -62,14 +62,7 @@
                           "servicePort": 80,
                           "adminState": "enable",
                           "serverAddresses": [
-                              "10.1.20.110"
-                          ],
-                          "shareNodes": true
-                      },
-                      {
-                          "servicePort": 80,
-                          "serverAddresses": [
-                              "10.1.20.111"
+                              "10.1.20.120"
                           ],
                           "shareNodes": true
                       }

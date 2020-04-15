@@ -2,8 +2,6 @@ Lab 2.4: Troubleshooting 503 Service Unavailable
 ------------------------------------------------
 1. Login as **paula** in BIG-IQ.
 
-The goal of this lab is to show how BIG-IQ can help to troubleshoot an 503 HTTP error.
-
 2. Select the application service ``security_site16_boston`` located under ``airport_security`` application.
 
 3. Let's generate additonnal traffic to the application ``security_site16_boston``, connect on the *Ubuntu Lamp Server* and launch the following command:
@@ -17,36 +15,22 @@ The goal of this lab is to show how BIG-IQ can help to troubleshoot an 503 HTTP 
 - In the *Response Codes* table, select the *200* and *503* lines.
 - Click right on the *Response Codes* and click on *Add Comparison Chart*.
 
-.. image:: ../pictures/module2/img_module2_lab4_2.png
-   :align: center
-   :scale: 60%
-
-|
-
 .. image:: ../pictures/module2/img_module2_lab4_1.png
    :align: center
    :scale: 60%
 
 |
 
+5. Finally, only select the *503* error in the filters and notice the page *f5_capacity_issue.php* shows up.
 
+It appears from the data showing on BIG-IQ the application may start having issue (error 503) when 
+there are more traffic going through it.
 
-- Finally, only select the *503* error in the filters and notice the page *f5_capacity_issue.php* shows up.
-
-It appears from the data showing on BIG-IQ the application may start having issue (error 503) when there are more traffic going through it.
-
-.. image:: ../pictures/module2/img_module2_lab4_3.png
+.. image:: ../pictures/module2/img_module2_lab4_2.png
    :align: center
    :scale: 60%
 
 |
 
-Using the data available in BIG-IQ Application dashboard, we can narrow down 503 error and troubleshoot the inability of an application to handle production data capacities.
-
-Looking in a longer time period:
-
-.. image:: ../pictures/module2/img_module2_lab4_4.png
-   :align: center
-   :scale: 60%
-
-|
+Using the data available in BIG-IQ Application dashboard, we can narrow down 503 error 
+and troubleshoot the inability of an application to handle production data capacities.
