@@ -1,8 +1,6 @@
 Module 1: BIG-IQ DNS Sync Group Administration
 ===============================================
 
-Goal:
-
 In this lab, we will demonstrate how to manage the major DNS components
 on the managed BIG-IP devices from BIG-IQ CM perspective. We will
 **not** demonstrate the management of DNS application configuration
