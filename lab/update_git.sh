@@ -144,23 +144,34 @@ if [[  $currentuser == "root" ]]; then
     docker rmi $(docker images -q) -f
     $home/scripts/cleanup-docker.sh
 
-    # Start AWX Compose
+    ### Start AWX Compose
     rm -rf ~/.awx
     mkdir -p ~/.awx
     ln -snf $home/awx ~/.awx/awxcompose
     docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
+    # Configuration at later in the script
 
-    # Starting docker images
+    ### Starting other docker web app: Hackazon, DVWA, hello world web apps
     docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
     docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
     docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
     docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
-    # ASM Policy Validator
+    docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
+    
+    ### Add delay, loss and corruption to the nginx web app
+    docker_nginx_id=$(docker ps | grep nginx | awk '{print $1}')
+    docker exec $docker_nginx_id apt-get update
+    docker exec $docker_nginx_id apt-get install iproute2 iputils-ping net-tools -y
+    docker exec $docker_nginx_id tc qdisc change dev eth0 root netem delay 300ms loss 30% corrupt 30%
+    
+    ### ASM Policy Validator
     docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
-    # ASM Brute Force
+    
+    ### ASM Brute Force
     docker build $home/scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
-    # Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
+    
+    ### Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
     # ==> data stored under /opt/splunk/var/lib/splunk
     docker run -d -p 8000:8000 -p 8088:8088 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=purple123" --name splunk splunk/splunk:latest
     docker_splunk_id=$(docker ps | grep splunk | awk '{print $1}')
@@ -184,7 +195,7 @@ if [[  $currentuser == "root" ]]; then
     sleep 5
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk restart
 
-    # load f5demo.ldif and expose port 389 for LDAP access
+    ### LDAP: load f5demo.ldif and expose port 389 for LDAP access
     docker run --volume $home/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
             -e LDAP_ORGANISATION="F5 Networks" \
             -e LDAP_DOMAIN="f5demo.com" \
@@ -196,18 +207,20 @@ if [[  $currentuser == "root" ]]; then
 
     ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > $home/ldap/f5-ldap.log
 
+    ### Copy some custom files in hackazon docker for labs
+    # App Troubleshooting
     docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
     docker cp f5-demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
-    # Create big files for access
+    # Big files for access lab
     base64 /dev/urandom | head -c 300000000 > grosfichier.html
     docker cp grosfichier.html $docker_hackazon_id:/var/www/hackazon/web
     rm -f grosfichier.html
     docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
-    # Configure AWX
+    ### Configure AWX
     tower-cli config host http://localhost:9001
     tower-cli config username admin
     tower-cli config password purple123
@@ -217,7 +230,7 @@ if [[  $currentuser == "root" ]]; then
     tower-cli send ~/.awx/awxcompose/awx_backup.json
     tower-cli send ~/.awx/awxcompose/awx_backup.json
 
-    # Visual Code https://github.com/cdr/code-server
+    ### Visual Code https://github.com/cdr/code-server
     docker run --restart=always -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
     docker_codeserver_id=$(docker ps | grep code-server | awk '{print $1}')
     docker exec $docker_codeserver_id sh -c "sudo apt-get update"
@@ -236,7 +249,7 @@ if [[  $currentuser == "root" ]]; then
     echo -e "\nStatus Radius Server"
     /etc/init.d/freeradius status
 
-    # Update BIG-IQ welcome banner
+    ### Update BIG-IQ welcome banner
     if [ ! -f /usr/games/fortune ]; then
         apt install fortune -y
     fi

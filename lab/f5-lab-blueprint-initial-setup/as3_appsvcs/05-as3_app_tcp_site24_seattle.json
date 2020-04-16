@@ -11,47 +11,42 @@
       "class": "Tenant",
       "site20tcp": {
         "class": "Application",
-        "schemaOverlay": "AS3-F5-FastL4-TCP-lb-template-default-v2",
-        "template": "l4",
+        "schemaOverlay": "AS3-F5-TCP-lb-built-in-profile-template-big-iq-default-v1",
+        "template": "tcp",
         "serviceMain": {
+          "class": "Service_TCP",
           "pool": "Pool",
           "enable": true,
-          "profileL4": {
-            "use": "L4_Profile"
-          },
+          "profileTCP": "normal",
           "virtualPort": 80,
           "virtualAddresses": [
             "10.1.10.124"
           ],
           "profileAnalyticsTcp": {
             "use": "Analytics_TCP_Profile"
-          },
-          "class": "Service_L4"
+          }
         },
         "Pool": {
+          "class": "Pool",
           "members": [
             {
               "adminState": "enable",
-              "servicePort": 8081,
+              "servicePort": 8083,
               "serverAddresses": [
                 "10.1.20.114"
               ]
             },
             {
+              "adminState": "enable",
+              "servicePort": 8081,
               "serverAddresses": [
                 "10.1.20.115"
-              ],
-              "servicePort": 8081
+              ]
             }
-          ],
-          "class": "Pool"
-        },
-        "L4_Profile": {
-          "tcpCloseTimeout": 5,
-          "tcpHandshakeTimeout": 5,
-          "class": "L4_Profile"
+          ]
         },
         "Analytics_TCP_Profile": {
+          "class": "Analytics_TCP_Profile",
           "collectCity": true,
           "collectRegion": true,
           "collectCountry": true,
@@ -60,8 +55,7 @@
           "collectedByClientSide": true,
           "collectedByServerSide": true,
           "collectNexthop": true,
-          "collectRemoteHostIp": true,
-          "class": "Analytics_TCP_Profile"
+          "collectRemoteHostIp": true
         }
       }
     }

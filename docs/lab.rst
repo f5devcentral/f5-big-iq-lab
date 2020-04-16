@@ -27,6 +27,7 @@ is being send to (check ``crontab`` config for more details).
 |                                                                                           | - Port ``8080``: web-dvwa application                                                    |
 |                                                                                           | - Port ``8081``: f5-hello-world application                                              |
 |                                                                                           | - Port ``8082``: f5-demo-httpd application                                               |
+|                                                                                           | - Port ``8083``: nginx application (delay 300ms loss 30% corrupt 30%)                    |
 |                                                                                           | - Port ``445``: ASM Policy Validator                                                     |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 

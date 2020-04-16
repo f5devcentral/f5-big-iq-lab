@@ -3,7 +3,7 @@ Module 2: Review the SSLo analytics
 
 **Goal:**
 
-In this lab, we will review the analytics available in BIG-IQ 7.0
+In this lab, we will review the analytics available in BIG-IQ.
 
 **Tasks:**
 

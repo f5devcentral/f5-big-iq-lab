@@ -54,7 +54,7 @@
                     {
                         "serverAddresses": [
                             "10.1.20.121",
-                            "10.1.20.122"
+                            "10.1.20.123"
                         ],
                         "servicePort": 80,
                         "monitors": [

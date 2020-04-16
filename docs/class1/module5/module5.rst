@@ -1,5 +1,5 @@
-Module 5: Visibility for Legacy applications in the Applications tab (new 7.1)
-==============================================================================
+Module 5: Limit available devices for AS3 Application Services (new 7.1)
+========================================================================
 
 **[New 7.1.0]**
 
@@ -11,8 +11,6 @@ Are you interested to see a lab on this topic? `Open an issue on GitHub`_
   :align: center
   :scale: 15%
 
-.. toctree::
-   :maxdepth: 1
-   :glob:
+Limit available devices for an AS3 Application Service deployment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   lab*

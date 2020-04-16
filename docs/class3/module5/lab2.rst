@@ -1,5 +1,5 @@
-Lab 5.3: Legacy Application and RBAC: Paula workflow
-----------------------------------------------------
+Lab 5.2: Troubleshooting latency and packet loss
+------------------------------------------------
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_
