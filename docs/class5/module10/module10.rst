@@ -3,13 +3,6 @@ Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
 
 **[New 7.1.0]**
 
-.. image:: ../../pictures/under-construction-01.jpg
-  :align: center
-  :scale: 15%
-
-Download GoIP file and load it on BIG-IQ
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 1. Follow the steps to Downloading the geolocation database described in the following article `K11176`_.
 
 .. _K11176: https://support.f5.com/csp/article/K11176
@@ -20,19 +13,19 @@ Download GoIP file and load it on BIG-IQ
 
 4. Go to Devices > Geo-IP Database Management > Database Files.
 
-.. image:: pictures/module10/lab-1-1.png
+.. image:: pictures/lab-1-1.png
   :scale: 40%
   :align: center
 
 5. Delete any existing Geo Database file if any.
 
-.. image:: pictures/module10/lab-1-2.png
+.. image:: pictures/lab-1-2.png
   :scale: 40%
   :align: center
 
 6. Upload the files downloaded earlier.
 
-.. image:: pictures/module10/lab-1-3.png
+.. image:: pictures/lab-1-3.png
   :scale: 40%
   :align: center
 
@@ -45,7 +38,7 @@ Go to Devices > Script Management > Script. Create a new script.
 - Name: ``geoip_lookup``
 - Script: ``geoip_lookup 192.1.0.11``
 
-.. image:: pictures/module10/lab-1-4.png
+.. image:: pictures/lab-1-4.png
   :scale: 40%
   :align: center
 
@@ -58,7 +51,7 @@ Save & Close.
 8. Select the script created and click on **Run**. Set a name, select ``SJC-vBIGIP01.termmarc.com`` BIG-IP,
    then click on **Run**.
 
-.. image:: pictures/module10/lab-1-5.png
+.. image:: pictures/lab-1-5.png
   :scale: 40%
   :align: center
 
@@ -66,25 +59,25 @@ A window will open, *Click the link to see the result: Script Log*.
 
 9. Once the script execution is completed, click on **View Output**.
 
-.. image:: pictures/module10/lab-1-6.png
+.. image:: pictures/lab-1-6.png
   :scale: 40%
   :align: center
 
 10. The ``192.1.0.11`` show location in Massachusetts in the United States.
 
-.. image:: pictures/module10/lab-1-7.png
+.. image:: pictures/lab-1-7.png
   :scale: 40%
   :align: center
 
 11. Back to the Geo-IP Database Management, under Device, select ``SJC-vBIGIP01.termmarc.com`` BIG-IP and click on **Update**.
 
-.. image:: pictures/module10/lab-1-8.png
+.. image:: pictures/lab-1-8.png
   :scale: 40%
   :align: center
 
 Verify the correct BIG-IP is selected, then click on Save & Close.
 
-.. image:: pictures/module10/lab-1-9.png
+.. image:: pictures/lab-1-9.png
   :scale: 40%
   :align: center
 
@@ -92,13 +85,13 @@ A window will open, *Click the link to see the result: Updates History*.
 
 12. Wait until the transfer is done.
 
-.. image:: pictures/module10/lab-1-10.png
+.. image:: pictures/lab-1-10.png
   :scale: 40%
   :align: center
 
 13. Back in the Script Management window, select again the script ``geoip_lookup``, run it and verify the output.
 
-.. image:: pictures/module10/lab-1-11.png
+.. image:: pictures/lab-1-11.png
   :scale: 40%
   :align: center
 
