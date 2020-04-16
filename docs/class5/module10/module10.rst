@@ -3,7 +3,7 @@ Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
 
 **[New 7.1.0]**
 
-1. Follow the steps to Downloading the geolocation database described in the following article `K11176`_.
+1. Follow the steps to download the geolocation database described in the following article `K11176`_.
 
 .. _K11176: https://support.f5.com/csp/article/K11176
 
@@ -63,7 +63,7 @@ A window will open, *Click the link to see the result: Script Log*.
   :scale: 40%
   :align: center
 
-10. The ``192.1.0.11`` show location in Massachusetts in the United States.
+10. The IP address ``192.1.0.11`` shows a location in Massachusetts in the United States.
 
 .. image:: pictures/lab-1-7.png
   :scale: 40%
