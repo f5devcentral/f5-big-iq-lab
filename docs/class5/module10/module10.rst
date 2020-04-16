@@ -17,7 +17,7 @@ Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
   :scale: 40%
   :align: center
 
-5. Delete any existing Geo Database file if any.
+5. Delete any existing Geo Database file(s) if any.
 
 .. image:: pictures/lab-1-2.png
   :scale: 40%
@@ -69,7 +69,7 @@ A window will open, *Click the link to see the result: Script Log*.
   :scale: 40%
   :align: center
 
-11. Back to the Geo-IP Database Management, under Device, select ``SJC-vBIGIP01.termmarc.com`` BIG-IP and click on **Update**.
+11. Back to the Geo-IP Database Management, under Devices, select ``SJC-vBIGIP01.termmarc.com`` BIG-IP and click on **Update**.
 
 .. image:: pictures/lab-1-8.png
   :scale: 40%
@@ -89,10 +89,11 @@ A window will open, *Click the link to see the result: Updates History*.
   :scale: 40%
   :align: center
 
-13. Back in the Script Management window, select again the script ``geoip_lookup``, run it and verify the output.
+13. Back in the Script Management window, select again the script ``geoip_lookup``, 
+    run it against ``SJC-vBIGIP01.termmarc.com`` and verify the output.
 
 .. image:: pictures/lab-1-11.png
   :scale: 40%
   :align: center
 
-Is the location of the IP address still on the east coast?
+Is the location of the IP address still on the East Coast of the Unites States?
