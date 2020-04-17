@@ -29,7 +29,7 @@ Click on **Remove**.
   :scale: 40%
   :align: center
 
-4. Click on **Add Devices(s) and fill below device information.
+4. Click on **Add Devices(s)* and fill below device information.
 
 - IP Address: ``10.1.1.11``
 - User Name: ``admin``

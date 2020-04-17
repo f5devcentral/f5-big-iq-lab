@@ -59,20 +59,19 @@ Then, start the new BIG-IQ CM VM.
 
 3. Edit the hosts file and make sure only the ``big-iq-cm-2.example.com`` is not commented with a ``#``.
 
-    .. code-block:: yaml
-    :linenos:
-    :emphasize-lines: 5
+.. code::
 
-        # cd /home/f5/f5-ansible-bigiq-onboarding 
-        # vi hosts
-    
-        [f5_bigiq_cm]
-        #big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
-        big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
+    # cd /home/f5/f5-ansible-bigiq-onboarding 
+    # vi hosts
 
-        [f5_bigiq_dcd]
-        #big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
-        #big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
+    [f5_bigiq_cm]
+    #big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
+    big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
+
+    [f5_bigiq_dcd]
+    #big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
+    #big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
+
 
 .. warning:: Double check the IP address of the new secondary BIG-IQ and update it if necessary
 

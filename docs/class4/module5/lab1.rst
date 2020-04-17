@@ -38,22 +38,20 @@ This automation scenario is composed of 4 parts:
 
 1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-2. 3. Edit the hosts file and make sure only the ``big-iq-cm-1.example.com`` and ``big-iq-dcd-1.example.com `` are not commented with a ``#``.
+2. Edit the hosts file and make sure only the ``big-iq-cm-1.example.com`` and ``big-iq-dcd-1.example.com `` are not commented with a ``#``.
 
-    .. code-block:: yaml
-    :linenos:
-    :emphasize-lines: 5,9
+.. code::
 
-        # cd /home/f5/f5-ansible-bigiq-onboarding 
-        # vi hosts
-    
-        [f5_bigiq_cm]
-        big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
-        #big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
+    # cd /home/f5/f5-ansible-bigiq-onboarding 
+    # vi hosts
 
-        [f5_bigiq_dcd]
-        big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
-        #big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
+    [f5_bigiq_cm]
+    big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
+    #big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
+
+    [f5_bigiq_dcd]
+    big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
+    #big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
 
 3. Reset both BIG-IQ CM and DCD.
 
@@ -103,7 +101,7 @@ Ignore the following errors:
     fatal: [udf-bigiq-dcd-01]: FAILED! => {"cache_control": "no-store, no-cache, must-revalidate", "changed": false, "connection": "close", "content": "{\"code\":401,\"message\":\"Authentication failed.\",\"originalRequestBody\":\"{\\\"username\\\":\\\"admin\\\",\\\"generation\\\":0,\\\"lastUpdateMicros\\\":0}\",\"restOperationId\":1067315,\"errorStack\":[],\"kind\":\":resterrorresponse\"}", "content_length": "206", "content_type": "application/json; charset=UTF-8", "date": "Mon, 15 Oct 2018 21:15:41 GMT", "expires": "-1", "json": {"code": 401, "errorStack": [], "kind": ":resterrorresponse", "message": "Authentication failed.", "originalRequestBody": "{\"username\":\"admin\",\"generation\":0,\"lastUpdateMicros\":0}", "restOperationId": 1067315}, "msg": "Status code was 401 and not [200]: HTTP Error 401: Unauthorized", "pragma": "no-cache", "redirected": false, "server": "webd", "status": 401, "url": "https://10.1.1.6:443/mgmt/shared/authn/login"}
     ...ignoring``
 
-5. At the end of the lab, the BIG-IQ CM and DCD should be configured with BIG-IP being managed and few application services deployed.
+6. At the end of the lab, the BIG-IQ CM and DCD should be configured with BIG-IP being managed and few application services deployed.
 
 .. image:: ../pictures/module5/img_module5_lab1_2.png
   :align: center
