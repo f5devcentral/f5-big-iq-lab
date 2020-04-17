@@ -21,7 +21,7 @@ Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
 
 .. image:: pictures/lab-1-2.png
   :scale: 40%
-  :align: left
+  :align: center
 
 6. Upload the files downloaded earlier.
 
@@ -29,7 +29,7 @@ Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
   :scale: 40%
   :align: center
 
-Save & Close.
+**Save & Close**.
 
 7. Now, let's check the location of the following IP address ``192.1.0.11`` before updating the GeoIP DB on the BIG-IP.
 
@@ -42,7 +42,7 @@ Go to Devices > Script Management > Script. Create a new script.
   :scale: 40%
   :align: center
 
-Save & Close.
+**Save & Close**.
 
 .. note:: `K15042`_: Looking up IP geolocation data using the geoip_lookup command
 
@@ -75,7 +75,7 @@ A window will open, *Click the link to see the result: Script Log*.
   :scale: 40%
   :align: center
 
-Verify the correct BIG-IP is selected, then click on Save & Close.
+Verify the correct BIG-IP is selected, then click on **Save & Close**.
 
 .. image:: pictures/lab-1-9.png
   :scale: 40%

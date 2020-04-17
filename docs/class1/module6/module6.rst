@@ -11,6 +11,11 @@ Are you interested to see a lab on this topic? `Open an issue on GitHub`_
   :align: center
   :scale: 15%
 
+
+ Reference article `K02142132`_.
+
+.. _K22650515: https://support.f5.com/csp/article/K02142132
+
 .. toctree::
    :maxdepth: 1
    :glob:

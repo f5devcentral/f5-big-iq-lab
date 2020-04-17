@@ -71,7 +71,7 @@ When going through the SYSTEM PERSONALITY screen, make sure you select the **BIG
 
 - For devices that were discovered before you added the DCD, you can now enable the statistics collection for those devices by going on the Devices tab and click on the “Disabled” link under Stats Collection Status.
 
-- Click the Enabled button, accept the defaults, and click the Save & Close button in the lower right.
+- Click the Enabled button, accept the defaults, and click the **Save & Close** button in the lower right.
 
 .. image:: ../pictures/module3/img_module3_lab2_7.png
   :align: center

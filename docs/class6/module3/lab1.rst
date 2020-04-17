@@ -69,7 +69,7 @@ Complete the Pool Member Properties for the first pool member
 
 |image11|
 
-Click the Save & Close button in the lower right to close the Add New Member window.
+Click the **Save & Close** button in the lower right to close the Add New Member window.
 
 Repeat the above steps for the second pool member **BIQAppNode2 port 80**.
 

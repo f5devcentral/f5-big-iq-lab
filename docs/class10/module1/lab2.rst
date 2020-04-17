@@ -32,7 +32,7 @@ These options perform the same function as they do on a BIG-IP device.
 Under DNS Features, check the **Use BIND Server on BIG-IP**, and select **Disabled**.
 
 
-When your edits are complete, click Save & Close.
+When your edits are complete, click **Save & Close**.
 
 The system creates the new profile you specified and adds it to the list of profiles.
 
@@ -62,7 +62,7 @@ Click the name of the first BOS BIG-IP.
   
 Select the DNSprofile, and click Add Selected.
 The Profile will appear in the list of Profiles pinned to this device.
-When your edits are complete, click Save & Close.
+When your edits are complete, click **Save & Close**.
 
 **Repeat for the second BOS BIG-IP device**
 

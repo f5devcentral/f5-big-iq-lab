@@ -95,7 +95,7 @@ Roles > Application Roles
   :scale: 40%
   :align: center
 
-Notice the user doesn't have access to the other BIG-IP available in the system.
+.. note:: Notice the user doesn't have access to the other BIG-IPs available in the system.
 	
 8. Click **Create**.
   

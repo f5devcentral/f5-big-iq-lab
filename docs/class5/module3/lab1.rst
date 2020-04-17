@@ -30,7 +30,7 @@ center. This makes the dynamic group the logical choice.
 
 |image21|
 
-Click the Save & Close button to save the group.
+Click the **Save & Close** button to save the group.
 
 
 

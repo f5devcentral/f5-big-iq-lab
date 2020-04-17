@@ -27,7 +27,7 @@ The screen displays the current settings for the selected listener.
 
 |image14|
 
-3. Make the changes to the settings you want to revise. Change VLAN Traffic from All VLANs to Enabled on /Common/External, and then, when your edits are complete, click Save & Close.
+3. Make the changes to the settings you want to revise. Change VLAN Traffic from All VLANs to Enabled on /Common/External, and then, when your edits are complete, click **Save & Close**.
 
 |image15|
 
@@ -79,7 +79,7 @@ The options are a list of system-supplied and user-defined DNS profiles.
 
 Name, Device, Address, and DNS Profile are the only required parameters when you create a listener. The remaining parameters on this screen are optional and perform the same function as they do when you configure a listener on a BIG-IP device.
 
-8. Click Save & Close.
+8. Click **Save & Close**.
 
 The system creates the new listener you specified and adds it to the list of listeners.
 

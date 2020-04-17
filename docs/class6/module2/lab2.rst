@@ -47,7 +47,7 @@ Click on the BIG-IQ-Test-Cert link again on the screen. Find the "Key Properties
 
 To upload the key's file, select Upload File and click the "Choose File" button to navigate to the key file.
 
-Select “Normal” for the Key Security Type: section, and then click on Save & Close button on the lower right.
+Select “Normal” for the Key Security Type: section, and then click on **Save & Close** button on the lower right.
 
 |image10|
 

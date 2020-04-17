@@ -45,7 +45,7 @@ In the Backup Archive section, enter the following:
 
 |image24|
 
-Click Save & Close to save the scheduled backup job.
+Click **Save & Close** to save the scheduled backup job.
 
 
 .. |image22| image:: media/image22.png
