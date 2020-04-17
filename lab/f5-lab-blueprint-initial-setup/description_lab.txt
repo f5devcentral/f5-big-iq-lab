@@ -138,6 +138,6 @@ AWX (Ansible Tower):
 IP 10.1.1.5 port 9001 http
 
 Samba:
-IP 10.1.1.5
-/dcdbackup
-workgroup = WORKGROUP
+User: f5student/purple123
+Domain: WORKGROUP
+Storage Path: //10.1.1.5/dcdbackup

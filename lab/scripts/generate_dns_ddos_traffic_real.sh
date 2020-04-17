@@ -21,14 +21,11 @@ widip[3]="office.example.com A"
 widip[4]="hr.example.com A"
 widip[5]="pm.example.com A"
 widip[6]="accounting.example.com A"
-widip[7]="www.example.com A"
-widip[8]="notthere.example.com A"
-widip[9]="site40.example.com A"
-widip[10]="site42.example.com A"
-widip[11]="site38.example.com A"
-widip[12]="site36.example.com A"
-widip[13]="canonical.example.com CNAME"
-widip[14]="mail.example.com MX"
+widip[7]="notthere.example.com A"
+widip[8]="site40.example.com A"
+widip[9]="site42.example.com A"
+widip[10]="canonical.example.com CNAME"
+widip[11]="mail.example.com MX"
 
 # get length of the array
 arraylength=${#sitelistener[@]}
@@ -47,8 +44,8 @@ do
                 echo ${widip[$j]} >> $home/dnstargets.txt
                 wip=$(echo ${widip[$j]} | awk '{print $1}')
                 dig @${sitelistener[$i]} $wip
-                python DoSDNS/attack_dns_nxdomain.py ${sitelistener[$i]} $wip 1000
-                python DoSDNS/attack_dns_phantomdomain.py ${sitelistener[$i]} $wip 1000
+                python $home/DoSDNS/attack_dns_nxdomain.py ${sitelistener[$i]} $wip 1000
+                python $home/DoSDNS/attack_dns_phantomdomain.py ${sitelistener[$i]} $wip 1000
             done
             echo -e "\n# site $i ${sitelistener[$i]} dnsperf"
 

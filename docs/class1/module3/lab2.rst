@@ -106,7 +106,7 @@ HTTPS Service using AS3 through GUI
   :scale: 60%
   :align: center
 
-.. note:: If not visible, refresh the page.
+.. note:: If not visible, refresh the page. It can take few seconds for the application service to appears on the dashboard.
 
 13.	Select ``LAB_module3`` Application. You will notice ``LAB_module3`` acts as a group of Application Services where underneath 
 multiple services can be grouped. The next window will show you that a new Application Service has been created named: ``tenant1_https_app_service``.
