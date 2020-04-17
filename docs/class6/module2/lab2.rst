@@ -51,7 +51,7 @@ Select “Normal” for the Key Security Type: section, and then click on **Save
 
 |image10|
 
-BigIQ now shows the cert/key being active (green status) and “Managed”.
+BIG-IQ now shows the cert/key being active (green status) and “Managed”.
 
 |image11|
 

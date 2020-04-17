@@ -11,7 +11,7 @@ SSL certificates, keys, and PKCS #12 archive files created elsewhere.
 And if you want to create a self-signed certificate on BIG-IQ for your
 managed devices, you can do that too.
 
-SSL certificates will come in two flavors, managed or un-managed. When
+SSL certificates will come in two flavors, managed or unmanaged. When
 BIG-IQ discovers a BIG-IP, it is only able to pull the metadata about a
 cert from the BIG-IP. This process completes the cert and key
 information on the BIG-IQ, so that BIG-IQ can fully manage the

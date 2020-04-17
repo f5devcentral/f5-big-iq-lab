@@ -139,7 +139,7 @@ Deployment tast to complete.
 
 |image22|
 
-You can verify on BigIP that the access profile changes were pushed:
+You can verify on BIG-IP that the access profile changes were pushed:
 
 |image23|
 

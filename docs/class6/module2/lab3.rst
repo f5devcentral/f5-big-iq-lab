@@ -29,7 +29,7 @@ At the top of the screen, click Deployment.
 
 On the left, click EVALUATE & DEPLOY > Local Traffic & Network, then click on Create button under Evaluations.
 
-Enter a task name “\ **Deploy-Renewed-Cert**\ ”, in Evaluation section, select Partial Changes next to Source Scope line item, the list of Source Objects appears. Select “Certificate” from the dropdown list on the left Available section, and move the certificate app01.termmarc.com to the right side Selected box.
+Enter a task name “\ **Deploy-Renewed-Cert**\ ”, in Evaluation section, select Partial Changes next to Source Scope line item, the list of Source Objects appears. Select “Certificate” from the drop down list on the left Available section, and move the certificate app01.termmarc.com to the right side Selected box.
 
 |image16|
 

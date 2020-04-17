@@ -1,29 +1,86 @@
 Lab 5.2: Resolve conflicts in the silo
 --------------------------------------
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
-Are you interested to see a lab on this topic? `Open an issue on GitHub`_
+1. Navigate to the BIG-IP Device Silos in the menu and clock on the ``silolab``.
 
-.. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
+.. image:: ../pictures/img_module6_lab2-1.png
+  :scale: 40%
+  :align: center
 
-HTTP Profile: ``silo-lab-http-profile``
+2. Select Target Silo: Default, then click on **Compare Silos**
 
-- BOS-vBIGIP01.termmarc.com, BOS-vBIGIP02.termmarc.com and SEA-vBIGIP01.termmarc.com
+.. image:: ../pictures/img_module6_lab2-2.png
+  :scale: 40%
+  :align: center
 
-+--------------------------+----------+
-| Allow Truncated Redirect | Enabled  |
-+--------------------------+----------+
-| Accept XFF               | Disabled |
-+--------------------------+----------+
-| Insert X-Forwarded-For   | Disabled |
-+--------------------------+----------+
+3. The comparison window opens. You can adjust the diff window with your cursor.
 
-- SJC-vBIGIP01.termmarc.com
+.. image:: ../pictures/img_module6_lab2-3.png
+  :scale: 40%
+  :align: center
 
-+--------------------------+----------+
-| Allow Truncated Redirect | Disabled |
-+--------------------------+----------+
-| Accept XFF               | Enabled  |
-+--------------------------+----------+
-| Insert X-Forwarded-For   | Enabled  |
-+--------------------------+----------+
+4. Select Profile HTTP ``silo-lab-http-profile`` and look at the differences.
+
+Ignore the following diff:
+
+.. code::
+
+    1	    "cm": {
+    2	        "silo": "silolab"
+    3	    },
+
+The values of the ``Accept XFF`` and ``Insert X-Forwarded-For`` are different.
+
+Let's rename the profile to ``silo-lab-http-profile2``.
+
+.. image:: ../pictures/img_module6_lab2-4.png
+  :scale: 40%
+  :align: center
+
+**Save & Close**.
+
+5. Wait for the renaming operation to complete.
+
+.. image:: ../pictures/img_module6_lab2-5.png
+  :scale: 40%
+  :align: center
+
+6. Let's now deploy the changes. Navigate to the Deployment tab > Evaluate & Deploy > Local Traffic & Network.
+
+.. image:: ../pictures/img_module6_lab2-6.png
+  :scale: 40%
+  :align: center
+
+7. Create a new Evaluation, select the silo ``silolab`` and set a name.
+
+.. image:: ../pictures/img_module6_lab2-7.png
+  :scale: 40%
+  :align: center
+
+Click **Create**.
+
+8. Review the differences. Notice the following:
+
+- ``silo-lab-http-profile`` is removed
+- ``silo-lab-http-profile2`` is added
+- ``silo-lab-http-profile`` is removed from the VIP ``vip-silo-lab``
+- ``silo-lab-http-profile2`` is attached to the VIP ``vip-silo-lab``
+
+.. image:: ../pictures/img_module6_lab2-8.png
+  :scale: 40%
+  :align: center
+
+9. Now deploy the changes to the BIG-IP.
+
+.. image:: ../pictures/img_module6_lab2-9.png
+  :scale: 40%
+  :align: center
+
+10. Navigate to the Configuration tab > Local Traffic > Profile and filter on ``silo-lab-http-profile``
+    to confirm the HTTP profile was rename.
+
+.. image:: ../pictures/img_module6_lab2-10.png
+  :scale: 40%
+  :align: center
+
+.. note:: You can eventually go to the **SJC-vBIGIP01.termmarc.com** to also verify.

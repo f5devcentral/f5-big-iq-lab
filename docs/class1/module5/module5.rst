@@ -3,6 +3,11 @@ Module 5: Limit available devices for AS3 Application Services (new 7.1)
 
 **[New 7.1.0]**
 
+In prior versions of BIG-IQ, there was no way to limit where application owners 
+could deploy their applications. 
+
+In BIG-IQ 7.1, we can associate devices or device groups with a role.
+
 1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
 
 2. Navigate to System > User Management > Users
