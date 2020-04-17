@@ -5,7 +5,7 @@ Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
 
 1. Follow the steps to download the geolocation database described in the following article `K22650515`_.
 
-.. _K11176: https://support.f5.com/csp/article/K22650515
+.. _K22650515: https://support.f5.com/csp/article/K22650515
 
 2. You should have now 2 ip-geolocation files, 1 zip and 1 MD5.
 
@@ -21,7 +21,7 @@ Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
 
 .. image:: pictures/lab-1-2.png
   :scale: 40%
-  :align: center
+  :align: left
 
 6. Upload the files downloaded earlier.
 

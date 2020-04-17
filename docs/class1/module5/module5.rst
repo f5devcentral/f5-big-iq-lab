@@ -13,9 +13,9 @@ Module 5: Limit available devices for AS3 Application Services (new 7.1)
 
 3. Click on **Add** to create the user.
 
-User Name: ``user-device-limit-as3``
-Full Name: ``Class 1 Lab 5``
-Password: ``password``
+- User Name: ``user-device-limit-as3``
+- Full Name: ``Class 1 Lab 5``
+- Password: ``password``
 
 .. image:: ../pictures/module5/lab-1-2.png
   :scale: 40%
@@ -33,27 +33,25 @@ Roles > Application Roles
 
 5. Click on **Add** and fill out below details to create the custom application role.
 
-Name: ``lab-device-rbac``
-Active Users and Groups: ``user-device-limit-as3``
+- Name: ``lab-device-rbac``
+- Active Users and Groups: ``user-device-limit-as3``
 
 .. image:: ../pictures/module5/lab-1-4.png
   :scale: 40%
   :align: center
 
-Devices: ``10.1.1.11 SJC-vBIGIP01.termmarc.com``
-Device Groups: *Empty*
+- Devices: ``10.1.1.11 SJC-vBIGIP01.termmarc.com``
+- Device Groups: *Empty*
 
 .. image:: ../pictures/module5/lab-1-5.png
   :scale: 40%
   :align: center
 
-AS3 Templates: ``AS3-F5-HTTP-lb-template-big-iq-default-v1``
+- AS3 Templates: ``AS3-F5-HTTP-lb-template-big-iq-default-v1``
 
 .. image:: ../pictures/module5/lab-1-6.png
   :scale: 40%
   :align: center
-
- ``LAB_module5``
 
 6. Logout as **david** and log back in as **user-device-limit-as3** and click **Create** application.
 
@@ -111,6 +109,6 @@ Notice the user doesn't have access to the other BIG-IP available in the system.
 
 10. Finally, remove the application service ``https_app_service_2`` and the application ``LAB_module5``.
 
-.. image:: ../pictures/module5/lab-1-9.png
+.. image:: ../pictures/module5/lab-1-10.png
   :scale: 40%
   :align: center
