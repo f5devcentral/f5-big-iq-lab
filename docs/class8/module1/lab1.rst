@@ -366,8 +366,8 @@ under the application called ``LAB_Access``.
 ``ADD SCREENSHOT``
 
 
-Traffic simulartion and Dashboard/Events (Larry)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Traffic simulation and Dashboard/Events
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. On Lamp server, generate HTTP traffic from a browser and CLI.
 
