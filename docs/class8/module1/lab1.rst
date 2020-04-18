@@ -33,7 +33,7 @@ for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 
 .. image:: ../pictures/module1/img_module1_lab1_0a.png
   :align: center
-  :scale: 60%
+  :scale: 40%
 
 |
 
@@ -42,7 +42,7 @@ under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 .. image:: ../pictures/module1/img_module1_lab1_0b.png
   :align: center
-  :scale: 60%
+  :scale: 40%
 
 |
 
@@ -57,7 +57,7 @@ ASM BOT Log Destinations and Publisher creation using UI (david)
 
 .. image:: ../pictures/module1/img_module1_lab1_1.png
   :align: center
-  :scale: 60%
+  :scale: 40%
 
 |
 
@@ -69,7 +69,7 @@ ASM BOT Log Destinations and Publisher creation using UI (david)
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
-  :scale: 60%
+  :scale: 40%
 
 |
 
@@ -81,7 +81,7 @@ ASM BOT Log Destinations and Publisher creation using UI (david)
 
 .. image:: ../pictures/module1/img_module1_lab1_3.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -94,7 +94,7 @@ ASM BOT Log Destinations and Publisher creation using UI (david)
 
 .. image:: ../pictures/module1/img_module1_lab1_4.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -102,7 +102,7 @@ ASM BOT Log Destinations and Publisher creation using UI (david)
 
 .. image:: ../pictures/module1/img_module1_lab1_5.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -112,7 +112,7 @@ Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 .. image:: ../pictures/module1/img_module1_lab1_6.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -128,7 +128,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
-    :scale: 60%
+    :scale: 40%
 
 |
 
@@ -136,7 +136,7 @@ You can also directly using Postman on your laptop and use the following URL (Go
 
 .. image:: ../../pictures/udf_bigiq_api.png
     :align: center
-    :scale: 60%
+    :scale: 40%
 
 |
 
@@ -148,7 +148,7 @@ For Postman, click right and click on execute (wait ~2 minutes).
 
 .. image:: ../../pictures/postman.png
     :align: center
-    :scale: 60%
+    :scale: 40%
 
 |
 
@@ -161,7 +161,7 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
 
 2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
 
-POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+  POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
 .. code-block:: yaml
    :linenos:
@@ -219,18 +219,18 @@ POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
 .. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
 .. image:: ../pictures/module1/img_module1_lab1_14.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
 
-ASM BOT Defense & Logging Profile creation from BIG-IP (BIG-IQ < 7.1)
+ASM BOT Defense & Logging Profile creation from BIG-IQ (BIG-IQ < 7.1)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
@@ -241,7 +241,7 @@ ASM BOT Defense & Logging Profile creation from BIG-IP (BIG-IQ < 7.1)
 
 .. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -251,7 +251,7 @@ ASM BOT Defense & Logging Profile creation from BIG-IP (BIG-IQ < 7.1)
 
 .. image:: ../pictures/module1/img_module1_lab1_8.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -259,7 +259,7 @@ ASM BOT Defense & Logging Profile creation from BIG-IP (BIG-IQ < 7.1)
 
 .. image:: ../pictures/module1/img_module1_lab1_9.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -269,7 +269,7 @@ ASM BOT Defense & Logging Profile creation from BIG-IP (BIG-IQ < 7.1)
 
 .. image:: ../pictures/module1/img_module1_lab1_10.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -282,7 +282,7 @@ ASM BOT Defense & Logging Profile creation from BIG-IP (BIG-IQ < 7.1)
 
 .. image:: ../pictures/module1/img_module1_lab1_11.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -290,19 +290,19 @@ ASM BOT Defense & Logging Profile creation from BIG-IP (BIG-IQ < 7.1)
 
 .. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
 .. image:: ../pictures/module1/img_module1_lab1_14.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
 
-ASM BOT Bot Defense & Logging Profile creation from BIG-IP (BIG-IQ >= 7.1)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM BOT Bot Defense & Logging Profile creation from BIG-IQ >= 7.1
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
@@ -384,7 +384,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 .. image:: ../../pictures/udf_ubuntu.png
     :align: left
-    :scale: 60%
+    :scale: 40%
 
 |
 
@@ -392,7 +392,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 .. image:: ../pictures/module1/img_module1_lab1_15.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -402,13 +402,13 @@ Notice the HTTP requests are going through when using a real browser but are blo
 
 .. image:: ../pictures/module1/img_module1_lab1_16.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
 .. image:: ../pictures/module1/img_module1_lab1_17.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
 
@@ -416,6 +416,6 @@ You can also see the details of each request logged nunder Monitoring > EVENTS >
 
 .. image:: ../pictures/module1/img_module1_lab1_18.png
   :align: center
-  :scale: 50%
+  :scale: 40%
 
 |
