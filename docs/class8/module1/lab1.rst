@@ -18,7 +18,7 @@ Workflow
 ^^^^^^^^
 
 1. **David** creates the Log Destinations and Publisher either using the UI or the API/AS3
-2. **Larry** creates the BOT Defense & Logging Profile
+2. **Larry** creates the BOT Defense & Logging Profiles
 3. **David** creates the AS3 template and reference BOT profilecreated by **Larry** in the template.
 4. **David** creates the application service using the template created previously.
 5. **Larry** review the BIG-IQ BOT dahsboards
@@ -46,10 +46,10 @@ under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 |
 
-ASM BOT Log Destinations and Publisher creation using UI (david)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM BOT Log Destinations and Publisher creation using UI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Create the DCD Pool and Log Destinations. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
+1. Create the DCD Pool and Log Destination. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
 - Name: ``bot-remote-dcd-asm-pool``
 - Health Monitors: ``tcp``
@@ -229,9 +229,8 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
 
 |
 
-
-ASM BOT Defense & Logging Profile creation from BIG-IQ (BIG-IQ < 7.1)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM BOT Defense & Logging Profiles creation from BIG-IP (BIG-IQ < 7.1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
@@ -301,14 +300,14 @@ ASM BOT Defense & Logging Profile creation from BIG-IQ (BIG-IQ < 7.1)
 |
 
 
-ASM BOT Bot Defense & Logging Profile creation from BIG-IQ >= 7.1
+ASM BOT Bot Defense & Logging Profiles creation from BIG-IQ >= 7.1
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 
-AS3 BOT template creation and application service deployement (David)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 BOT template creation and application service deployement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Navigate to the Applications tab > APPLICATION TEMPLATES.
 
