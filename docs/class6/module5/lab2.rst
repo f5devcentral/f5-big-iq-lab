@@ -59,7 +59,8 @@ Let's rename the profile to ``silo-lab-http-profile2``.
 
 Click **Create**.
 
-8. Review the differences. Notice the following:
+8. Review the differences. BIG-IQ is going to deploy the new renamed profile and re-deploy
+   the VIP with the new profile attached. Then, remove the old profile with the old name.
 
 - ``silo-lab-http-profile`` is removed
 - ``silo-lab-http-profile2`` is added
@@ -77,10 +78,11 @@ Click **Create**.
   :align: center
 
 10. Navigate to the Configuration tab > Local Traffic > Profile and filter on ``silo-lab-http-profile``
-    to confirm the HTTP profile was rename.
+    to confirm the HTTP profile was renamed.
 
 .. image:: ../pictures/img_module6_lab2-10.png
   :scale: 40%
   :align: center
 
-.. note:: You can eventually go to the **SJC-vBIGIP01.termmarc.com** to also verify.
+You can eventually go to the BIG-IP **SJC-vBIGIP01.termmarc.com** to verify the profile
+has been renamed correctly.

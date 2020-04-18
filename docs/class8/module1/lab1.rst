@@ -1,17 +1,30 @@
 Lab 1.1: Proactive Bot Defense Configuration and Monitoring
 -----------------------------------------------------------
-Protects apps from automated attacks by bots and other malicious tools.
+BIG-IP BOT protection protects apps from automated attacks by bots and other malicious tools.
 
-The goal of this lab is to show how to use BIG-IQ to configure the BOT protection to an HTTP Application Service 
-and how to use BIG-IQ BOT Dashboards to monitors the BOT traffic.
+The goal of this lab is to show how to use BIG-IQ to configure the BOT protection to 
+an HTTP Application Service and how to use BIG-IQ BOT Dashboards to monitors the BOT traffic.
 
-.. note:: This lab requires BIG-IP 14.1 and BIG-IQ 7.0 minimum. AVR also needs to be provisioned on the device. See more details `K12121934`_.
+.. note:: This lab requires BIG-IP 14.1 and BIG-IQ 7.0 minimum. 
+          AVR also needs to be provisioned on the device. See more details `K12121934`_.
 
 .. _`K12121934`: https://support.f5.com/csp/article/K12121934
 
 Official documentation about BOT Monitoring on BIG-IQ can be found on the `BIG-IQ Knowledge Center`_.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/mitigating-managing-bot-defense-using-big-iq/monitoring-bot-defense-activity.html
+
+Workflow
+^^^^^^^^
+
+1. **David** creates the Log Destinations and Publisher either using the UI or the API/AS3
+2. **Larry** creates the BOT Defense & Logging Profile
+3. **David** creates the AS3 template and reference BOT profilecreated by **Larry** in the template.
+4. **David** creates the application service using the template created previously.
+5. **Larry** review the BIG-IQ BOT dahsboards
+
+Prerequists
+^^^^^^^^^^^
 
 Connect as **david** on BIG-IQ.
 
@@ -25,7 +38,7 @@ for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 |
 
 2. Check if the **Web Application Security** service is Active  
-under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
+under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 .. image:: ../pictures/module1/img_module1_lab1_0b.png
   :align: center
@@ -33,7 +46,10 @@ under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 |
 
-3. Create the DCD Pool and Log Destinations. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
+ASM BOT Log Destinations and Publisher creation using UI (david)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Create the DCD Pool and Log Destinations. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
 - Name: ``bot-remote-dcd-asm-pool``
 - Health Monitors: ``tcp``
@@ -45,7 +61,7 @@ under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 |
 
-Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
+2. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
 - Name Log Destination hslog: ``bot-remote-logging-destination-remote-hslog-8514``
 - Device: ``SEA-vBIGIP01.termmarc.com``
@@ -57,7 +73,7 @@ Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click C
 
 |
 
-Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
+3. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
 - Name Log Destination Splunk: ``bot-remote-logging-destination-splunk-8514``
 - Type: ``Splunk``
@@ -102,9 +118,124 @@ Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 Make sure the deployment is successfull.
 
-Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
+ASM BOT Log Destinations and Publisher creation using API/AS3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-7. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
+1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. To do this, in your lab environment, click on the *Access* button
+of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
+
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
+
+.. image:: ../../pictures/udf_ubuntu.png
+    :align: left
+    :scale: 60%
+
+|
+
+You can also directly using Postman on your laptop and use the following URL (Go to **BIGIQ CM (Config Mgt)** > **Access Methods** > **API**):
+
+.. image:: ../../pictures/udf_bigiq_api.png
+    :align: center
+    :scale: 60%
+
+|
+
+Open Chrome and Postman.
+
+For Postman, click right and click on execute (wait ~2 minutes).
+
+.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
+
+.. image:: ../../pictures/postman.png
+    :align: center
+    :scale: 60%
+
+|
+
+Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
+
+Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
+Press Send. This, will save the token value as _f5_token. If your token expires, obtain a new token by resending the ``BIG-IQ Token``
+
+.. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+
+2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
+
+POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+
+.. code-block:: yaml
+   :linenos:
+   :emphasize-lines: 5,16,18
+
+    {
+        "class": "ADC",
+        "schemaVersion": "3.12.0",
+        "target": {
+            "address": "10.1.1.7"
+        },
+        "bot": {
+            "class": "Tenant",
+            "security-log-profile": {
+                "class": "Application",
+                "template": "generic",
+                "bot-remote-dcd-asm-pool": {
+                    "class": "Pool",
+                    "members": [
+                        {
+                            "servicePort": 8514,
+                            "serverAddresses": [
+                                "10.1.10.6"
+                            ]
+                        }
+                    ]
+                },
+                "bot-remote-logging-destination-remote-hslog-8514": {
+                    "class": "Log_Destination",
+                    "type": "remote-high-speed-log",
+                    "pool": {
+                        "use": "bot-remote-dcd-asm-pool"
+                    }
+                },
+                "bot-remote-logging-destination-splunk-8514": {
+                    "class": "Log_Destination",
+                    "type": "splunk",
+                    "forwardTo": {
+                        "use": "bot-remote-logging-destination-remote-hslog-8514"
+                    }
+                },
+                "bot-remote-logging-publisher-8514": {
+                    "class": "Log_Publisher",
+                    "destinations": [
+                        {
+                            "use": "bot-remote-logging-destination-splunk-8514"
+                        }
+                    ]
+                }
+            }
+        }
+    }
+
+3. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
+
+.. image:: ../pictures/module1/img_module1_lab1_13.png
+  :align: center
+  :scale: 50%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab1_14.png
+  :align: center
+  :scale: 50%
+
+|
+
+
+ASM BOT Defense & Logging Profile creation from BIG-IP (BIG-IQ < 7.1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
+
+2. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
 
 .. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
 
@@ -132,7 +263,7 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 |
 
-8. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+3. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
 
 .. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
 
@@ -144,8 +275,10 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 - Name: ``lab-bot-logging-profile``
 - Properties: select ``Bot Defense``
-- Remote Publisher: select previously Remote Publisher previously created.
+- Remote Publisher: select previously Remote Publisher previously created either using the UI or API.
 - Logs Requests: select all options (Human Users, Bots, etc...)]
+
+
 
 .. image:: ../pictures/module1/img_module1_lab1_11.png
   :align: center
@@ -153,29 +286,7 @@ Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 |
 
-
-9. Create an HTTP Virtual Server with the following parameters:
-
-.. warning:: This step could be done from BIG-IQ but in order to avoid going back and forth between BIG-IP and BIG-IQ,
-             we are creating the HTTP Application Service from BIG-IP.
-
-- Name: ``vs_bot_defense_lab``
-- Destination Address: ``10.1.10.124``
-- Default HTTP profile
-- Source Address Translation: ``auto map``
-- Pool: select an exiting pool (e.g. /Common/site42.example.com/pool_0)
-
-Edit the VIP and go to Security tab. Assign the Bot Defense Profile and the Log Profile previously created.
-
-.. image:: ../pictures/module1/img_module1_lab1_12.png
-  :align: center
-  :scale: 50%
-
-|
-
-Connect as **david** on BIG-IQ.
-
-10. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
+4. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
@@ -189,11 +300,81 @@ Connect as **david** on BIG-IQ.
 
 |
 
-11. On Lamp server, generate HTTP traffic from a browser and CLI.
+
+ASM BOT Bot Defense & Logging Profile creation from BIG-IP (BIG-IQ >= 7.1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+
+
+AS3 BOT template creation and application service deployement (David)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Navigate to the Applications tab > APPLICATION TEMPLATES.
+
+Select the ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` AS3 Template and clone it.
+
+Rename it ``LAB-HTTP-bot-defense``. 
+
+``ADD SCREENSHOT``
+
+Edit the new cloned template and select the Service_HTTP class.
+
+- Look for the attribute called ``profileBotDefense`` and set it to ``/Common/lab-bot-defense-profile``.
+- Look for the attribute called ``securityLogProfiles`` and set it to ``/Common/lab-bot-logging-profile``.
+
+``ADD SCREENSHOT``
+
+At the top right corner, click on **Publish and Close**
+
+2. Navigate to the APPLICATION menu, click on **Create** 
+
+Assign the Bot Defense Profile and the Log Profile previously created.
+
++---------------------------------------------------------------------------------------------------+
+| Application properties:                                                                           |
++---------------------------------------------------------------------------------------------------+
+| * Grouping = New Application                                                                      |
+| * Application Name = ``LAB_Bot``                                                                  |
+| * Description = ``BOT defense protection``                                                        |
++---------------------------------------------------------------------------------------------------+
+| Select an Application Service Template:                                                           |
++---------------------------------------------------------------------------------------------------+
+| * Template Type = Select ``LAB-HTTP-bot-defense [AS3]``                                           |
++---------------------------------------------------------------------------------------------------+
+| General Properties:                                                                               |
++---------------------------------------------------------------------------------------------------+
+| * Application Service Name = ``bot_defense_service``                                               |
+| * Target = ``BOS-vBIGIP01.termmarc.com``                                                          |
+| * Tenant = ``tenant3``                                                                            |
++---------------------------------------------------------------------------------------------------+
+| Analytics_Profile. Keep default                                                                   |
++---------------------------------------------------------------------------------------------------+
+| Pool                                                                                              |
++---------------------------------------------------------------------------------------------------+
+| * Members: ``10.1.20.123``                                                                        |
++---------------------------------------------------------------------------------------------------+
+| Service_HTTP                                                                                      |
++---------------------------------------------------------------------------------------------------+
+| * Virtual addresses: ``10.1.10.126``                                                              |
+| * profileBotDefense: ``/Common/lab-bot-defense-profile``                                          |
+| * securityLogProfiles: ``/Common/lab-bot-logging-profile``
++---------------------------------------------------------------------------------------------------+
+
+The application service called ``tenant3_https_auth_service`` is now created on the BIG-IQ dashboard
+under the application called ``LAB_Access``.
+
+``ADD SCREENSHOT``
+
+
+Traffic simulartion and Dashboard/Events (Larry)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. On Lamp server, generate HTTP traffic from a browser and CLI.
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
-``while true; do curl http://10.1.10.124; sleep 1; done``
+``while true; do curl http://10.1.10.126; sleep 1; done``
 
 From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
@@ -207,7 +388,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 |
 
-Open Chrome and Navigate to the URL http\:\/\/10.1.10.124.
+2. Open Chrome and Navigate to the URL http\:\/\/10.1.10.126.
 
 .. image:: ../pictures/module1/img_module1_lab1_15.png
   :align: center
@@ -217,7 +398,7 @@ Open Chrome and Navigate to the URL http\:\/\/10.1.10.124.
 
 Notice the HTTP requests are going through when using a real browser but are blocked when using curl.
 
-12. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under Monitoring > DASHBOARDS > Bot Traffic.
+3. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under Monitoring > DASHBOARDS > Bot Traffic.
 
 .. image:: ../pictures/module1/img_module1_lab1_16.png
   :align: center

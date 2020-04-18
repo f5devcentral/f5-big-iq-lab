@@ -8,7 +8,7 @@ Workflow
 2. **David** creates the AS3 template and reference ASM policy created by **Larry** in the template.
 3. **David** assigns the AS3 template to Paula.
 4. **Paula** creates her application service using the template given by **david**.
-5. After **Paula** does the necessary testing of her application, she reach to Larry.
+5. After **Paula** does the necessary testing of her application, she reaches to Larry.
 6. **Larry** reviews the ASM learning and deploy the ASM policy changes on the BIG-IP(s) and set the policy to blocking mode.
 7. They all go for happy hour.
 

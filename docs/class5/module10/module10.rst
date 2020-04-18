@@ -3,11 +3,18 @@ Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
 
 **[New 7.1.0]**
 
-1. Follow the steps to download the geolocation database described in the following article `K22650515`_.
+The BIG-IP system uses geolocation software to identify the geographic location of a client
+or web application user. The default IP geolocation database provides IPv4 addresses at 
+the continent, country, state, ISP, and organization levels, and IPv6 addresses at the 
+continent and country levels. 
+
+F5 regularly releases database updates in the GeoLocationUpdates container on the F5 Downloads site.
+
+1. Follow the steps to download the geolocation database and MD5 described in the following article `K22650515`_.
 
 .. _K22650515: https://support.f5.com/csp/article/K22650515
 
-2. You should have now 2 ip-geolocation files, 1 zip and 1 MD5.
+2. You should have now 2 ip-geolocation files (1 zip and 1 MD5).
 
 3. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
 

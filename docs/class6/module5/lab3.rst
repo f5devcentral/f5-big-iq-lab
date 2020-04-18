@@ -1,8 +1,8 @@
-Lab 5.3: Remove device from a silo and import in default silo
+Lab 5.3: Remove device from a silo and re-import it in BIG-IQ
 -------------------------------------------------------------
 
 Now the necessary objects have been renamed on the BIG-IP, let's remove the device 
-from its silo and re-discover and re-import it into the default silo (main stream).
+from its silo and re-discover and re-import it into BIG-IQ.
 
 1. From the Device tab > BIG-IP Devices, select **SJC-vBIGIP01.termmarc.com** and click on
    **Remove All Services**
@@ -29,7 +29,7 @@ Click on **Remove**.
   :scale: 40%
   :align: center
 
-4. Click on **Add Devices(s)* and fill below device information.
+4. Click on **Add Devices(s)** and fill below device information.
 
 - IP Address: ``10.1.1.11``
 - User Name: ``admin``
@@ -60,7 +60,7 @@ Click on **Continue**.
   :align: center
 
 8. The conflict resolution window opens. Notice the profile HTTP ``silo-lab-http-profile`` is not showing anymore.
-   Select for all default profile Create Version.
+   Select **Create Version** option for all the default profiles.
 
 .. image:: ../pictures/img_module6_lab3-9.png
   :scale: 40%
@@ -73,7 +73,7 @@ Click on **Continue**.
   :align: center
 
 10. You can navigate to the Configuration tab > Local Traffic > Profile and filter on ``silo-lab-http-profile``
-    to confirm the HTTP profile was imported.
+    to confirm both HTTP profiles ``silo-lab-http-profile`` and ``silo-lab-http-profile2`` were imported.
 
 11. Finally, the silo ``silolab`` can be removed from BIG-IQ.
 

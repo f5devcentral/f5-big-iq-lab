@@ -1,4 +1,3 @@
-Lab 6.2: HTTP and TCP Legacy Application Creation
--------------------------------------------------
+Lab 6.2: HTTP Analytics Profile Creation for Legacy
+---------------------------------------------------
 
-We will be using 10.1.10.142 on **SEA-vBIGIP01.termmarc.com**.

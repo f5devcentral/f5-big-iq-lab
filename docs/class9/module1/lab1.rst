@@ -6,7 +6,7 @@ Workflow
 
 1. **Larry** creates the APM policy on the BIG-IQ and deploy on the BIG-IP(s).
 2. **David** creates the AS3 template and reference APM policy created by **Larry** in the template.
-3. **David** creates his application service using the template created previously.
+3. **David** creates the application service using the template created previously.
 4. **Larry** review the BIG-IQ Access dahsboards showing the sessions.
 
 
@@ -115,12 +115,12 @@ Target Device(s): select both BOS BIG-IPs
 
 Click Create.
 
-AS3 Access template creation (David)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 Access template creation and application service deployement (David)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Navigate to the Applications tab > APPLICATION TEMPLATES.
 
-Select the ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1`` AS3 Template and clone it.
+Select the ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-<version>`` AS3 Template and clone it.
 
 Rename it ``LAB-HTTPS-with-Authentication``. 
 

@@ -1,3 +1,2 @@
-Lab 6.1: HTTP and TCP Analytics Profile Creation for Legacy
------------------------------------------------------------
-
+Lab 6.1: HTTP Legacy Application Creation
+-----------------------------------------

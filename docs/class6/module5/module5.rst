@@ -17,6 +17,12 @@ you to rename the configuration objects on BIG-IP using BIG-IQ.
 Once all of the conflicting objects that need to remain unique have been renamed, 
 the device can be imported fully into BIG-IQ.
 
+``ADD DIAGRAMS``
+
+Official documentation about Silo feature can be found on the `BIG-IQ Knowledge Center`_.
+
+.. _`BIG-IQ Knowledge Center`: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
+
 .. toctree::
    :maxdepth: 1
    :glob:

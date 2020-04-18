@@ -3,7 +3,7 @@ Lab 5.1: Import a device into a silo
 
 1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
 
-2. Navigate to Devices > BIG-IP Devices. You can hide some column you won't need 
+2. Navigate to Devices > BIG-IP Devices. You can hide some columns you won't need 
    for this lab such as Stats Collection, Data Collection, Stats Last Collection.
 
 .. image:: ../pictures/img_module6_lab1-1.png
@@ -73,8 +73,8 @@ The device is added into the ``silolab``.
   :scale: 40%
   :align: center
 
-.. note:: It is possible to add multiple devices having same name conflicts into the same silo.
-          Then using BIG-IQ to name those objects and resolve the conflicts.
+.. note:: If you know all the devices from 1 data center have the same conflicts, 
+          you can put all of those devices in the same silo and fix the conflict once.
 
 8. Once the device is added to the silo, import the device configuration.
 
