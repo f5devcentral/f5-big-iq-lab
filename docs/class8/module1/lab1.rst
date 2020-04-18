@@ -229,8 +229,8 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
 
 |
 
-ASM BOT Defense & Logging Profiles creation from BIG-IP (BIG-IQ < 7.1)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM BOT Defense & Logging Profiles creation from BIG-IP (BIG-IQ <= 7.0)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
