@@ -248,7 +248,7 @@ ASM BOT Bot Defense & Logging Profiles creation (BIG-IQ >= 7.1)
 
 .. note:: As per `K42323285`_: Overview of the unified Bot Defense profile the available options for the configuration elements.
 
-.. _`K12121934`: https://support.f5.com/csp/article/K42323285
+.. _`K42323285`: https://support.f5.com/csp/article/K42323285
 
 ``ADD SCREENSHOT``
 
