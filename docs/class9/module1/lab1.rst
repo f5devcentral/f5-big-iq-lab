@@ -10,8 +10,8 @@ Workflow
 4. **Larry** review the BIG-IQ Access dahsboards showing the sessions.
 
 
-APM Policy creation (Larry)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+APM Policy creation
+^^^^^^^^^^^^^^^^^^^
 
 1. First make sure your device has APM module discovered and imported 
 for **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com** under Devices > BIG-IP DEVICES.
@@ -115,8 +115,8 @@ Target Device(s): select both BOS BIG-IPs
 
 Click Create.
 
-AS3 Access template creation and application service deployement (David)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 Access template creation and application service deployement
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Navigate to the Applications tab > APPLICATION TEMPLATES.
 
@@ -205,8 +205,8 @@ the Virtual Server delivering the service.
   :scale: 60%
   :align: center
 
-Access Policy Session Monitoring (Larry)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Access Policy Session Monitoring
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. From BIG-IQ navigate to the Monitoring tab > Access > Access Summary.
 
