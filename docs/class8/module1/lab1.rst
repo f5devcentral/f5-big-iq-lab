@@ -10,9 +10,12 @@ an HTTP Application Service and how to use BIG-IQ BOT Dashboards to monitors the
 
 .. _`K12121934`: https://support.f5.com/csp/article/K12121934
 
-Official documentation about BOT Monitoring on BIG-IQ can be found on the `BIG-IQ Knowledge Center`_.
+Official documentation about BOT Monitoring on BIG-IQ can be found on the `BIG-IQ Knowledge Center`_
+and the `DevCentral`_ article.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/mitigating-managing-bot-defense-using-big-iq/monitoring-bot-defense-activity.html
+
+.. _`DevCentral`: https://devcentral.f5.com/s/articles/Configuring-Unified-Bot-Defense-with-BIG-IQ-Centralized-Management
 
 Workflow
 ^^^^^^^^
@@ -229,6 +232,28 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
 
 |
 
+ASM BOT Bot Defense & Logging Profiles creation (BIG-IQ >= 7.1)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Go to Configuration > SECURITY > Shared Security > Bot Defense > Bot Profiles, click Create and fill in the settings:
+
+- Name: ``lab-bot-defense-profile``
+- Enforcement Mode: ``Blocking``
+- Enforcement Mode: Blocking
+- Enforcement Readiness Period: ``0`` (**lab only**)
+- Profile Template: ``Strict``
+- Browser Verification:
+- Browser Access: ``Allowed``
+- Browser Verification: ``Verify After Access (Blocking)``
+
+.. note:: As per `K42323285`_: Overview of the unified Bot Defense profile the available options for the configuration elements.
+
+.. _`K12121934`: https://support.f5.com/csp/article/K42323285
+
+``ADD SCREENSHOT``
+
+``ADD SCREENSHOT``
+
 ASM BOT Defense & Logging Profiles creation from BIG-IP (BIG-IQ <= 7.0)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -299,13 +324,6 @@ ASM BOT Defense & Logging Profiles creation from BIG-IP (BIG-IQ <= 7.0)
 
 |
 
-
-ASM BOT Bot Defense & Logging Profiles creation from BIG-IQ >= 7.1
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
-
-
 AS3 BOT template creation and application service deployement
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -343,7 +361,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 +---------------------------------------------------------------------------------------------------+
 | General Properties:                                                                               |
 +---------------------------------------------------------------------------------------------------+
-| * Application Service Name = ``bot_defense_service``                                               |
+| * Application Service Name = ``bot_defense_service``                                              |
 | * Target = ``BOS-vBIGIP01.termmarc.com``                                                          |
 | * Tenant = ``tenant3``                                                                            |
 +---------------------------------------------------------------------------------------------------+
@@ -357,8 +375,10 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 +---------------------------------------------------------------------------------------------------+
 | * Virtual addresses: ``10.1.10.126``                                                              |
 | * profileBotDefense: ``/Common/lab-bot-defense-profile``                                          |
-| * securityLogProfiles: ``/Common/lab-bot-logging-profile``
+| * securityLogProfiles: ``/Common/lab-bot-logging-profile``                                        |
 +---------------------------------------------------------------------------------------------------+
+
+.. note:: You are attaching the bot defense and logging profiles to the VIP using AS3.
 
 The application service called ``tenant3_https_auth_service`` is now created on the BIG-IQ dashboard
 under the application called ``LAB_Access``.
