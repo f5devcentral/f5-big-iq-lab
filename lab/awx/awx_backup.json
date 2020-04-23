@@ -151,7 +151,7 @@
     "inventory": "F5Env", 
     "asset_type": "job_template", 
     "survey_enabled": true, 
-    "playbook": "lab/f5-ansible-bigiq-as3-demo-7.0.0/tower/app_delete.yml"
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_delete.yml"
   }, 
   {
     "name": "New_AS3_App", 
@@ -257,7 +257,7 @@
     "inventory": "F5Env", 
     "asset_type": "job_template", 
     "survey_enabled": true, 
-    "playbook": "lab/f5-ansible-bigiq-as3-demo-7.0.0/tower/app_create.yml"
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml"
   }, 
   {
     "scm_branch": "develop", 

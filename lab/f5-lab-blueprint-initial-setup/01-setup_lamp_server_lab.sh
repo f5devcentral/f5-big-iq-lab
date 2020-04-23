@@ -422,6 +422,6 @@ echo -e "\nPost-Checks:
 - Re-arrange Favorites in the task bar (have Chrome, Firefox, Terminal, Postman)
 - Test Launch Chrome & Firefox
 - Add bookmark of the BIG-IQ CE lab guide and Splunk, check all bookmarks works
-- Add postman collection from f5-ansible-bigiq-as3-demo-7.0.0, disable SSL in postman\n\n"
+- Add postman collection from f5-ansible-bigiq-as3-demo, disable SSL in postman\n\n"
 
 exit 0

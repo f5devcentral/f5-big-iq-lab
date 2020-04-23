@@ -20,7 +20,7 @@ Use ``admin/purple123`` to authenticate.
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo-7.0.0/tower/app_create.yml`` is selected.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml`` is selected.
 
 .. image:: ../pictures/module2/lab-8-4.png
   :scale: 60%
@@ -28,7 +28,7 @@ Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo-7.0.0/tower/app_creat
 
 You can go on the `GitHub repository`_ and check review the playbooks and Jinja2 templates.
 
-.. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo-7.0.0/tower
+.. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower
 
 3. Back on the **Templates** page, next to the *New_AS3_App* template, click on the *Start a job using this template*.
 
