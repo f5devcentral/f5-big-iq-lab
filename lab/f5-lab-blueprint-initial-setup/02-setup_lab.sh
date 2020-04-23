@@ -164,10 +164,10 @@ echo -e "\nPost-Checks:
 - Import ASM policies
 - Configure Radius Server on BIG-IQ: RadiusServer
 - Configure LDAP Server on BIG-IQ: serverLdap
-- Create Paula, Paul, Marco, David, Larry (radius) and Olivia (local) users
+- Create Paula, Paul, Marco, David, Larry, Olivia (radius) users
 - Create Cutom Application Roles
     Application Creator AS3
-        user: olivia2
+        user: olivia
         Allow using AS3 without Template
     Application Creator Cloud
         user: paul

@@ -10,8 +10,8 @@ RUN pip3 install ansible
 
 COPY ansible.cfg /etc/ansible/ansible.cfg
 
-RUN ansible-galaxy install f5devcentral.bigiq_onboard,master
-RUN ansible-galaxy install f5devcentral.register_dcd,master
-RUN ansible-galaxy install f5devcentral.atc_deploy
+RUN ansible-galaxy install f5devcentral.bigiq_onboard,master --force
+RUN ansible-galaxy install f5devcentral.register_dcd,master --force
+RUN ansible-galaxy install f5devcentral.atc_deploy --force
 
 RUN ansible-galaxy collection install f5networks.f5_modules

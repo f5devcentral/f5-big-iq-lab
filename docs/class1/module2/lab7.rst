@@ -89,9 +89,9 @@ Execute the playbooks for each tasks.
   |lab-3-1|
 
   .. warning:: AS3 Templates cannot be created through BIG-IQ UI but only using the API in 6.1.
-               Go to `Module 2`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
+               Go to `Module 3`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
 
-  .. _Module 2: ../module2/module2.html
+  .. _Module 3: ../module3/module3.html
 
   You can see the Template in JSON format if you click on it.
 
@@ -114,9 +114,9 @@ Execute the playbooks for each tasks.
 - Task 8: Deploy the HTTP Application Service using a Custom Template::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task08_create_http_app.yml olivia2
+    # ./cmd_playbook.sh as3_bigiq_task08_create_http_app.yml olivia
 
-  Connect as **olivia2** and check on BIG-IQ the application has been correctly created.
+  Connect as **olivia** and check on BIG-IQ the application has been correctly created.
 
   |lab-3-4|
 

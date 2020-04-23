@@ -17,22 +17,16 @@ This automation scenario is composed of 4 parts:
 
 * Add BIG-IPs to the BIG-IQ
 
-    - `bigiq_device_discovery`_  **ansible module**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 6.1)**.
+    - `bigiq_device_discovery`_  **ansible module**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ.
     
-    - `bulkDiscovery.pl`_  **perl script**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ **(BIG-IQ 5.4, 6.0.x)**.
-
 * Create Application Services
 
-    - `Ansible using AS3`_ **playbook**: Use BIG-IQ Ansible and AS3 to deploy application services (see class 1, module 5, lab 7) **(BIG-IQ 6.1)**.
-
-    - `Ansible using Service Catalog`_ **playbook**: Use BIG-IQ Ansible Modules to deploy application services (see class 1, module 3, lab 1) **(BIG-IQ 6.0.x)**.
+    - `Ansible using AS3`_ **playbook**: Use BIG-IQ Ansible and AS3 to deploy application services (see class 1, module 2).
 
 .. _bigiq_onboard: https://galaxy.ansible.com/f5devcentral/bigiq_onboard
 .. _register_dcd: https://galaxy.ansible.com/f5devcentral/register_dcd
-.. _bulkDiscovery.pl: https://downloads.f5.com/esd/eula.sv?sw=BIG-IQ&pro=big-iq_CM&ver=6.0.1&container=v6.0.1.1&path=&file=&B1=I+Accept
 .. _bigiq_device_discovery: https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigiq_device_discovery_module.html
-.. _Ansible using Service Catalog: ../../class01/module3/module3.html
-.. _Ansible using AS3: ../../class01/module5/module5.html
+.. _Ansible using AS3: ../../class01/module2/module2.html
 
 **Lab:**
 

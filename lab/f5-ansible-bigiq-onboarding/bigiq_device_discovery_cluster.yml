@@ -23,6 +23,8 @@
         device_password: "{{ device_password }}"
         modules: "{{ modules | list }}"
         conflict_policy: "{{ conflict_policy }}"
+        access_group_name: "{{ access_group_name }}"
+        access_conflict_policy: "{{ access_conflict_policy }}"
         device_conflict_policy: "{{ device_conflict_policy }}"
         versioned_conflict_policy: "{{ versioned_conflict_policy }}"
         statistics:

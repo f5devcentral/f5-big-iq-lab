@@ -1,0 +1,10 @@
+## Upgrade ESXi
+# upload VMware-ESXi-7.0.0-15843807-depot.zip in the datastore on the ESXi
+# esxcli software vib update -d /vmfs/volumes/DATASTORE/VMware-ESXi-7.0.0-15843807-depot.zip
+# reboot
+
+## Install vCenter
+# 1. sudo mount -o loop /tmp/VMware-VCSA-all-7.0.0-15934039.iso /mnt/
+# 2. verify config file embedded_vCSA_on_ESXi.json
+# 3. /mnt/vcsa-cli-installer/lin64/vcsa-deploy install embedded_vCSA_on_ESXi.json --accept-eula --acknowledge-ceip
+

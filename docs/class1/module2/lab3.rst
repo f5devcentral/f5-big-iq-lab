@@ -5,9 +5,9 @@ Task 6 - Create custom HTTP AS3 Template on BIG-IQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. warning:: AS3 Templates cannot be created through BIG-IQ UI but only using the API in 6.1.
-             Go to `Module 2`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
+             Go to `Module 3`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
 
-.. _Module 2: ../module2/module2.html
+.. _Module 3: ../module3/module3.html
 
 Administrators will employ the BIG-IQ Service Catalog to construct and manage a set of JSON Schema templates.  Non-administrative users may be selectively allowed to deploy configurations using these templates according to BIG-IQ RBAC policies.  The purpose of the templates is to filter the information being supplied to AS3 in 3 ways:
 
@@ -247,8 +247,8 @@ Task 8 - Deploy the HTTP Application Service using a Custom Template
 Now, let's deploy an application as **Oliva** using the AS3 template previously created in Task 6. Note in the below declaration, 
 the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
 
-1. Using Postman, use the **BIG-IQ Token (olivia2)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (olivia2)``.
+1. Using Postman, use the **BIG-IQ Token (olivia)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (olivia)``.
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 

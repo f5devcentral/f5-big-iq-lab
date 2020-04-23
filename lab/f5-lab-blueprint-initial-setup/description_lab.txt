@@ -55,13 +55,13 @@ DOCUMENTATIONS:
 - BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
 - Customer Deck: https://f5.sharepoint.com/sites/SMEManagement/Shared%20Documents/Forms/AllItems.aspx
 
-COMPONENTS AVAILABLE: 
+COMPONENTS AVAILABLE:
+- "Application" - Application Management (Cloud Edition, AS3, Legacy) and Service Scaling Group
 - "System" - Manage all aspects for BIG-IQ, 
 - "Device" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
-- "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
 - "Deployment" - Manage evaluation task and deployment.
+- "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-- "Application" - Application Management (Cloud Edition, AS3, Legacy) and Service Scaling Group
 
 LIST OF INSTANCES:
 - BIG-IQ <> DCD 7.1.0
@@ -115,7 +115,7 @@ cat /dev/null > dhcpd.leases~
 Radius server:
 IP 10.1.1.5
 secret = default
-Users: marco, david, paula, paul, larry, olivia2
+Users: marco, david, paula, paul, larry, olivia
 
 LDAP server:
 IP 10.1.1.5

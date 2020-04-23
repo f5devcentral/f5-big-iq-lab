@@ -7,22 +7,6 @@
 ## /home/f5student/update_git.sh > /home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
 
-#################### INFORMATION #################### 
-
-# In order to be able to use the same repo with different BIG-IQ version, I used flat file which are saved in the blueprint.
-# bigiq_version_aws
-# bigiq_version_azure
-# bigiq_version_vmware
-# bigiq_version_as3
-# those files are save with the proper versions in the blueprint if needed. They will be use to keep the folder according to the release if any
-# e.g. if bigiq_version_as3 set to 7.0.0, folder f5-ansible-bigiq-as3-demo-7.0.0 will be renamed to f5-ansible-bigiq-as3-demo
-# and f5-ansible-bigiq-as3-demo-6.1.0 will be deleted
-# 
-# If you need to force a folder to be a specific version different than the default one set in the flat file in the blueprint, edit the file.
-# e.g. echo "6.1.0" > ~/bigiq_version_aws
-
-#####################################################
-
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -45,24 +29,6 @@ fi
 currentuser=$(whoami)
 if [[  $currentuser == "root" ]]; then
     cd $home
-    # create default BIG-IQ version file
-    if [ ! -f $home/bigiq_version_aws ]; then
-        echo "6.1.0" > $home/bigiq_version_aws
-    fi
-    if [ ! -f $home/bigiq_version_azure ]; then
-        echo "7.0.0" > $home/bigiq_version_azure
-    fi
-    if [ ! -f $home/bigiq_version_vmware ]; then
-        echo "6.1.0" > $home/bigiq_version_vmware
-    fi
-    if [ ! -f $home/bigiq_version_as3 ]; then
-        echo "7.0.0" > $home/bigiq_version_as3
-    fi
-
-    bigiq_version_aws=$(cat $home/bigiq_version_aws)
-    bigiq_version_azure=$(cat $home/bigiq_version_azure)
-    bigiq_version_vmware=$(cat $home/bigiq_version_vmware)
-    bigiq_version_as3=$(cat $home/bigiq_version_as3)
 
     checkDNSworks=$(nslookup "github.com" | awk -F':' '/^Address: / { matched = 1 } matched { print $2 }' | xargs)
     if [[ -z "$checkDNSworks" ]]; then
@@ -83,17 +49,6 @@ if [[  $currentuser == "root" ]]; then
             rm -rf $home/f5-big-iq-lab
         fi
 
-        echo "AWS scripts"
-        mv f5-aws-vpn-ssg-$bigiq_version_aws f5-aws-vpn-ssg > /dev/null 2>&1
-        echo "Azure scripts"
-        mv f5-azure-vpn-ssg-$bigiq_version_azure f5-azure-vpn-ssg > /dev/null 2>&1
-        echo "Vmware scripts"
-        mv f5-vmware-ssg-$bigiq_version_vmware f5-vmware-ssg > /dev/null 2>&1
-        echo "AS3 playbooks"
-        mv f5-ansible-bigiq-as3-demo-$bigiq_version_as3 f5-ansible-bigiq-as3-demo > /dev/null 2>&1
-
-        # cleanup other versions
-        rm -rf f5-aws-vpn-ssg-* f5-azure-vpn-ssg-* f5-vmware-ssg-* f5-ansible-bigiq-as3-demo-* > /dev/null 2>&1
         echo "Fixing permissions..."
         chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*py f5-*/*pl > /dev/null 2>&1
         

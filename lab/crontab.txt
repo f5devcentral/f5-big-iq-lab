@@ -36,7 +36,7 @@
 ## FPS Traffic
 */28 * * * * /home/f5/scripts/generate_fps_traffic_fake.sh > /home/f5/scripts/logs/generate_fps_traffic_fake.log 2>&1
 
-## SSLO Traffic
+## SSLo Traffic
 */14 * * * * /home/f5/scripts/generate_sslo_traffic.sh > /home/f5/scripts/logs/generate_sslo_traffic.log 2>&1
 
 ## Make sure BOS BIG-IP01 is always active (limiation UDF AWS)
@@ -47,10 +47,6 @@
 
 ## WA restart services in case they die
 */5 * * * * /home/f5/scripts/services_monitor.sh > /home/f5/scripts/logs/services_monitor.log 2>&1
-
-## AUTOMATIC TEAR DOWN AWS and AZURE OBJECT AND SSG AFTER 23 HOURS
-@reboot sleep 82800 && /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-aws-vpn-ssg/111-DELETE_ALL.log 2>&1
-@reboot sleep 82800 && /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL.sh > /home/f5/f5-azure-vpn-ssg/111-DELETE_ALL. 2>&1
 
 ## AUTOMATIC RE-LICENSE FOR UDF BLUEPRINT AFTER 20 MIN DEPLOYMENT STARTS
 @reboot sleep 1200 && /home/f5/scripts/reactivate_licenses.sh > /home/f5/scripts/logs/reactivate_licenses.log 2>&1

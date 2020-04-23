@@ -1,2 +1,0 @@
-[f5_bigiq]
-udf-bigiq-cm-01 ansible_host=root@10.1.1.4 ansible_ssh_pass=purple123

@@ -1,6 +1,0 @@
-[defaults]
-library = /home/f5/f5-ansible/library/modules
-module_utils = /home/f5/f5-ansible/library/module_utils
-action_plugins = /home/f5/f5-ansible/library/plugins/action
-terminal_plugins = /home/f5/f5-ansible/library/plugins/terminal
-network_group_modules = bigip, bigiq
