@@ -56,7 +56,7 @@
 			"response": []
 		},
 		{
-			"name": "BIG-IQ Token (olivia)",
+			"name": "BIG-IQ Token (olivia2)",
 			"event": [
 				{
 					"listen": "test",
@@ -83,7 +83,7 @@
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"username\": \"olivia\",\r\n  \"password\": \"olivia\",\r\n  \"loginProviderName\": \"tmos\"\r\n}"
+					"raw": "{\r\n  \"username\": \"olivia2\",\r\n  \"password\": \"olivia2\",\r\n  \"loginProviderName\": \"tmos\"\r\n}"
 				},
 				"url": {
 					"raw": "https://10.1.1.4/mgmt/shared/authn/login",

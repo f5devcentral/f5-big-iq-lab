@@ -114,9 +114,9 @@ Execute the playbooks for each tasks.
 - Task 8: Deploy the HTTP Application Service using a Custom Template::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task08_create_http_app.yml olivia
+    # ./cmd_playbook.sh as3_bigiq_task08_create_http_app.yml olivia2
 
-  Connect as **olivia** and check on BIG-IQ the application has been correctly created.
+  Connect as **olivia2** and check on BIG-IQ the application has been correctly created.
 
   |lab-3-4|
 

@@ -247,8 +247,8 @@ Task 8 - Deploy the HTTP Application Service using a Custom Template
 Now, let's deploy an application as **Oliva** using the AS3 template previously created in Task 6. Note in the below declaration, 
 the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
 
-1. Using Postman, use the **BIG-IQ Token (olivia)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (olivia)``.
+1. Using Postman, use the **BIG-IQ Token (olivia2)** collections to authenticate you on the BIG-IQ and save the token.
+   If your token expires, obtain a new token by resending the ``BIG-IQ Token (olivia2)``.
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 

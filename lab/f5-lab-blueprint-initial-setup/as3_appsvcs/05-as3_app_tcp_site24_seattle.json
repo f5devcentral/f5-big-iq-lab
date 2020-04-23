@@ -11,7 +11,7 @@
       "class": "Tenant",
       "site20tcp": {
         "class": "Application",
-        "schemaOverlay": "AS3-F5-TCP-lb-built-in-profile-template-big-iq-default-v1",
+        "schemaOverlay": "AS3-F5-TCP-lb-built-in-profile-template-big-iq-v1",
         "template": "tcp",
         "serviceMain": {
           "class": "Service_TCP",

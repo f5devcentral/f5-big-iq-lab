@@ -115,7 +115,7 @@ cat /dev/null > dhcpd.leases~
 Radius server:
 IP 10.1.1.5
 secret = default
-Users: marco, david, paula, paul, larry, olivia
+Users: marco, david, paula, paul, larry, olivia2
 
 LDAP server:
 IP 10.1.1.5

@@ -16,7 +16,7 @@ echo -e "\nEnvironement:${RED} $env ${NC}\n"
 
 # Usage
 if [[ -z $1 || -z $2 ]]; then
-    echo -e "\nUsage: ${RED} $0 <playbook.yml> <admin/david/paula/paul/olivia>${NC}\n"
+    echo -e "\nUsage: ${RED} $0 <playbook.yml> <admin/david/paula/paul/olivia2>${NC}\n"
     ls -l *.yml
     exit 1;
 fi
