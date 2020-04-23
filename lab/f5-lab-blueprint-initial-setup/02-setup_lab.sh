@@ -119,7 +119,7 @@ elif [[ "$1" = "setup" ]]; then
     ssh -o StrictHostKeyChecking=no root@${ip[5]} tmsh save sys config
 
     # BOS-vBIGIP01.termmarc.com (standby BOS-vBIGIP02.termmarc.com)
-    # Restore initial config bigip_config/BOS-vBIGIP01_config.tar.gz
+    # Restore initial config
     # Create legacy app directly on BIG-IP legacy_apps/01-as3_legacy_app1_site34_boston_direct_bigip.json
 
     # SEA-vBIGIP01.termmarc.com

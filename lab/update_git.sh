@@ -37,7 +37,7 @@ if [[  $currentuser == "root" ]]; then
     else
         # DNS and internet connectivity working
         echo "Cleanup previous files..."
-        rm -rf f5-* scripts* crontab* ldap build* splunk awx > /dev/null 2>&1
+        rm -rf f5-* scripts* crontab* ldap build* splunk awx bigiq_version* > /dev/null 2>&1
 
         echo "Install new scripts..."
         # GIT_LFS_SKIP_SMUDGE=1 will skip download files in the LFS (ucs files)
