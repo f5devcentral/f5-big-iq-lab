@@ -46,7 +46,5 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${RED}Make sure paula and paul users are correctly assigned to their roles on the BIG-IQ (look at the description_lab.txt).${NC}\n\n"
 
-
-
 # total script execution time
 echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time:${RED} $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec${NC}"
