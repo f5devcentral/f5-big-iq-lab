@@ -197,8 +197,8 @@ if [[  $currentuser == "root" ]]; then
     docker ps
 
     # Restart the VM if already created (SSG and VE creation)
-    #sleep 900 && $home/f5-vmware-ssg/cmd_power_on_vm.sh > $home/f5-vmware-ssg/cmd_power_on_vm.log 2> /dev/null &
-    #sleep 1100 && sudo chown -R $user:$user $home/f5-vmware-ssg/*.log 2> /dev/null &
+    #sleep 900 && $home/f5-vmware/cmd_power_on_vm.sh > $home/f5-vmware/cmd_power_on_vm.log 2> /dev/null &
+    #sleep 1100 && sudo chown -R $user:$user $home/f5-vmware/*.log 2> /dev/null &
     chown -R $user:$user $home
 
     echo -e "\nStatus Radius Server"

@@ -4,7 +4,7 @@
 
 echo -e "\nTIME: $(date +"%H:%M")"
 
-cd /home/f5/f5-vmware-ssg
+cd /home/f5/f5-vmware
 
 # Get list of VMs in the vCenter
 ansible-playbook -i notahost, get_status_vm.yaml

@@ -43,7 +43,7 @@ if [[ "$1" = "cleanup" ]]; then
     rm -fr ~/.aws
 
     rm -rf ~/scripts/logs/*.log
-    rm -f ~/f5-vmware-ssg/*.log
+    rm -f ~/f5-vmware/*.log
     ## Below shouldn't be needed anymore after moving all logs under ~/scripts/logs
     rm -f ~/f5-demo-bigiq-analytics-export-restapi/*log
     rm -f ~/f5-demo-app-troubleshooting/*log

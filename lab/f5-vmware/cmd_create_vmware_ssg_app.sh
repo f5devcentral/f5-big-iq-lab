@@ -9,7 +9,7 @@ ip="10.1.1.90"
 
 echo -e "\nTIME: $(date +"%H:%M")"
 
-cd /home/f5/f5-vmware-ssg
+cd /home/f5/f5-vmware
 
 if [ -f /home/f5/ssg_created ]; then
     echo -e "SSG already created.\n"
