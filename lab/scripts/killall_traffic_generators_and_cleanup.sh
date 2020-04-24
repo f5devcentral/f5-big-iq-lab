@@ -8,7 +8,9 @@ else
 fi
 
 echo -e "\n* Kill all jobs in sleep..."
+ps -ef | grep sleep | grep -v grep
 sudo killall sleep
+ps -ef | grep perl | grep -v grep
 sudo killall perl
 
 echo -e "\n* Kill all jobs running..."
@@ -24,6 +26,7 @@ done
 echo 
 
 # Kill some extra stuff (launched by generate_dns_ddos_traffic_real.sh)
+ps -ef | grep ping | grep -v grep
 sudo killall nping hping3
 
 echo

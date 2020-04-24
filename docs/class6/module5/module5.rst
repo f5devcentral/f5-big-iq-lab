@@ -17,7 +17,15 @@ you to rename the configuration objects on BIG-IP using BIG-IQ.
 Once all of the conflicting objects that need to remain unique have been renamed, 
 the device can be imported fully into BIG-IQ.
 
-``ADD DIAGRAMS``
+In this lab, Seattle and Boston devices were imported first, ``silo-lab-http-profile`` profile 
+goes into default silo.
+
+San Jose device fails imported due to collision with ``silo-lab-http-profile``, device can
+be imported into its own Silo to avoid conflict.
+
+.. image:: ../pictures/img_module5_diagram.png
+  :scale: 40%
+  :align: center
 
 Official documentation about Silo feature can be found on the `BIG-IQ Knowledge Center`_.
 

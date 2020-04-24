@@ -6,19 +6,19 @@ Lab 5.1: Import a device into a silo
 2. Navigate to Devices > BIG-IP Devices. You can hide some columns you won't need 
    for this lab such as Stats Collection, Data Collection, Stats Last Collection.
 
-.. image:: ../pictures/img_module6_lab1-1.png
+.. image:: ../pictures/img_module5_lab1-1.png
   :scale: 40%
   :align: center
 
 3. Click on *Complete import tasks* under **SJC-vBIGIP01.termmarc.com** Services.
 
-.. image:: ../pictures/img_module6_lab1-2.png
+.. image:: ../pictures/img_module5_lab1-2.png
   :scale: 40%
   :align: center
 
 4. Click on Import to start the device configuration import in BIG-IQ.
 
-.. image:: ../pictures/img_module6_lab1-3.png
+.. image:: ../pictures/img_module5_lab1-3.png
   :scale: 40%
   :align: center
 
@@ -29,7 +29,7 @@ Lab 5.1: Import a device into a silo
 The HTTP profile ``silo-lab-http-profile`` already exist in BIG-IQ and belongs to one of the BIG-IP discovered & imported
 in BIG-IQ such as the Boston BIG-IP Cluster or the Seattle BIG-IP.
 
-.. image:: ../pictures/img_module6_lab1-4.png
+.. image:: ../pictures/img_module5_lab1-4.png
   :scale: 40%
   :align: center
 
@@ -55,7 +55,7 @@ in BIG-IQ such as the Boston BIG-IP Cluster or the Seattle BIG-IP.
 | Insert X-Forwarded-For   | Disabled |
 +--------------------------+----------+
 
-.. image:: ../pictures/img_module6_lab1-5.png
+.. image:: ../pictures/img_module5_lab1-5.png
   :scale: 40%
   :align: center
 
@@ -63,13 +63,13 @@ Because we want to preserve both profile HTTP, click on **Resolve Conflicts Late
 
 7. Select **Create a New Silo** and name it ``silolab``
 
-.. image:: ../pictures/img_module6_lab1-6.png
+.. image:: ../pictures/img_module5_lab1-6.png
   :scale: 40%
   :align: center
 
 The device is added into the ``silolab``.
 
-.. image:: ../pictures/img_module6_lab1-7.png
+.. image:: ../pictures/img_module5_lab1-7.png
   :scale: 40%
   :align: center
 
@@ -78,13 +78,13 @@ The device is added into the ``silolab``.
 
 8. Once the device is added to the silo, import the device configuration.
 
-.. image:: ../pictures/img_module6_lab1-8.png
+.. image:: ../pictures/img_module5_lab1-8.png
   :scale: 40%
   :align: center
 
 9. On the devices grid, you can see now **SJC-vBIGIP01.termmarc.com** belongs to ``silolab``.
 
-.. image:: ../pictures/img_module6_lab1-9.png
+.. image:: ../pictures/img_module5_lab1-9.png
   :scale: 40%
   :align: center
 
@@ -92,6 +92,6 @@ The device is added into the ``silolab``.
     you will see the HTTP profile which is part of the default silo (main stream) and the New
     profile from the SJC BIG-IP device into the ``silolab``.
 
-.. image:: ../pictures/img_module6_lab1-10.png
+.. image:: ../pictures/img_module5_lab1-10.png
   :scale: 40%
   :align: center

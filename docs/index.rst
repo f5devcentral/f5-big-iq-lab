@@ -1,5 +1,5 @@
-F5 BIG-IQ Centralized Management
-================================
+F5 BIG-IQ Centralized Management Lab
+====================================
 
 Welcome
 -------
