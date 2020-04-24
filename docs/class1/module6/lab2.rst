@@ -1,7 +1,7 @@
 Lab 6.2: HTTP Analytics Profile Creation for Legacy
 ---------------------------------------------------
 
-In this lab, Davis is going to create the HTTP analytics profile missing to allow the BIG-IP
+In this lab, David is going to create the HTTP analytics profile missing to allow the BIG-IP
 to send HTTP analytics data to the BIG-IQ, which will be then showing on the Application Dashboard.
 
 
