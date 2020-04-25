@@ -2,7 +2,7 @@
 ## Traffic Generator (HTTP)
 */5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /home/f5/scripts/logs/generate_http_clean_traffic.log 2>&1
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/logs/generate_http_bad_traffic.log 2>&1
-@reboot perl -le 'sleep 2300' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/logs/generate_http_bad_traffic.log 2>&1
+@reboot perl -le 'sleep 1800' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/logs/generate_http_bad_traffic.log 2>&1
 
 ## App Troubleshooting (class 3 module 2)
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/scripts/logs/503.log 2>&1
@@ -21,14 +21,12 @@
 ## DOS data
 */11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /home/f5/scripts/logs/generate_dns_afm_dos_traffic_fake.log 2>&1
 #0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.log 2>&1
-@reboot perl -le 'sleep 2600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.log 2>&1
 
 ## DNS DDOS data
-#0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/logs/generate_dns_ddos_traffic_real.log 2>&1
 @reboot perl -le 'sleep 3000' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/logs/generate_dns_ddos_traffic_real.log 2>&1
 
 ## AFM data
-#*/13 * * * * /home/f5/scripts/generate_afm_traffic.sh > /home/f5/scripts/logs/generate_afm_traffic.log 2>&1
+*/13 * * * * /home/f5/scripts/generate_afm_traffic.sh > /home/f5/scripts/logs/generate_afm_traffic.log 2>&1
 
 ## Access Traffic
 */5 * * * * /home/f5/scripts/generate_access_traffic.sh > /home/f5/scripts/logs/generate_access_traffic.log 2>&1
@@ -43,10 +41,13 @@
 */5 * * * * /home/f5/scripts/forceActiveBigipBostonCluster.sh > /home/f5/scripts/logs/forceActiveBigipBostonCluster.log 2>&1
 
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
-@reboot sleep 480 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /home/f5/scripts/logs/configSyncAtStartBigipBostonCluster.log 2>&1
+#@reboot sleep 480 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /home/f5/scripts/logs/configSyncAtStartBigipBostonCluster.log 2>&1
 
-## WA restart services in case they die
+## WA restart services on ubuntu in case they die
 */5 * * * * /home/f5/scripts/services_monitor.sh > /home/f5/scripts/logs/services_monitor.log 2>&1
 
-## AUTOMATIC RE-LICENSE FOR UDF BLUEPRINT AFTER 20 MIN DEPLOYMENT STARTS
-@reboot sleep 1200 && /home/f5/scripts/reactivate_licenses.sh > /home/f5/scripts/logs/reactivate_licenses.log 2>&1
+## AUTOMATIC RE-LICENSE FOR UDF BLUEPRINT AFTER 15 MIN DEPLOYMENT STARTS
+@reboot sleep 900 && /home/f5/scripts/reactivate_licenses.sh > /home/f5/scripts/logs/reactivate_licenses.log 2>&1
+
+## WA UDF BIQPROJ-17471 Failed to get cm-bigip-allBigIpDevices device
+@reboot sleep 600 && sshpass -p purple123 ssh-copy-id -o StrictHostKeyChecking=no root@10.1.1.4; ssh root@10.1.1.4 bigstart restart restjavad > /home/f5/scripts/logs/restartRestjavad_bigiq.log 2>&1
