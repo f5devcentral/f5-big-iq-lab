@@ -3,7 +3,7 @@ Module 5: Analytics for TCP based Applications (new 7.1)
 
 **[New 7.1.0]**
 
-BIG-IQ 7.1 provide TCP analytics, both in the monitoring tab and in the application tab.
+BIG-IQ 7.1 provide TCP analytics, both in the monitoring tab and in the Applications tab.
 
 These TCP analytics leverage AVR, just as the HTTP analytics do for TMOS 13.1.0.5+.
 

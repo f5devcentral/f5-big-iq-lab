@@ -1,22 +1,34 @@
 Lab 6.2: HTTP Analytics Profile Creation for Legacy
 ---------------------------------------------------
 
-In this lab, David is going to create the HTTP analytics profile missing to allow the BIG-IP
-to send HTTP analytics data to the BIG-IQ, which will be then showing on the Application Dashboard.
+In this lab, David is going to create the HTTP analytics profile and attach it to
+the VIP. This will enable the BIG-IP to send HTTP analytics to the BIG-IQ and populate
+the dashboard.
 
-
-1. Go to **Configuration > Local Traffic > Profiles and filter all profile with **analytics** in their names.
+1. Go to **Configuration > Local Traffic > Profiles** and look at all existing analytics profiles
+   available in this BIG-IQ. You can use the filter to look for a specific profile.
 
 .. image:: ../pictures/module6/lab-2-1.png
   :scale: 40%
   :align: center
 
-2. Click on **Create**. User ``module6_analytics_profile`` as profile name, 
-   Profile HTTP Analytics as Type, along with the option showing below.
+2. Let's create a new HTTP analytics profile. Click **Create**. 
+   
+- Name: ``module6_analytics_profile``
+- Type: ``Profile HTTP Analytics``
+- Collected Statistics Internal Logging: ``Enabled``
 
 .. image:: ../pictures/module6/lab-2-2.png
   :scale: 40%
   :align: center
+
+- Max TPS and Throughput: ``Enabled``
+- HTTP Timing (RTT, TTFB, Duration): ``Enabled``
+- URLs: ``Enabled``
+- Client IP Addresses: ``Enabled``
+- Response Codes: ``Enabled``
+- User Agents: ``Enabled``
+- Methods: ``Enabled``
 
 .. image:: ../pictures/module6/lab-2-3.png
   :scale: 40%
@@ -24,7 +36,7 @@ to send HTTP analytics data to the BIG-IQ, which will be then showing on the App
 
 **Save & Close**.
 
-3. Go to **Configuration > Local Traffic > Virtual Servers and filter on ``vip134``.
+3. Go to **Configuration > Local Traffic > Virtual Servers** and filter on ``vip134``.
 
 .. image:: ../pictures/module6/lab-2-4.png
   :scale: 40%
@@ -33,7 +45,8 @@ to send HTTP analytics data to the BIG-IQ, which will be then showing on the App
 
 4. Edit one of the VIP and attached the ``module6_analytics_profile``.
 
-.. note:: You only need to do vip134 on BOS-vBIGIP01.termmarc.com.
+.. note:: You only need to update one of the 2 VIPs as the VIP is located on a BIG-IP cluster.
+          BIG-IQ will update the other VIPs automatically.
 
 .. image:: ../pictures/module6/lab-2-5.png
   :scale: 40%
@@ -45,11 +58,14 @@ Select the 2 VIPS and click on **Deploy**.
   :scale: 40%
   :align: center
 
-
 The deployment window opens. Type a name, select ``Deploy immediately`` for the Method.
 
 Under the Target Device(s) section, click on ``Find Relevant Devices``
-and select the **SEA-vBIGIP01.termmarc.com**. Then, click on Deploy.
+and select the **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com**. Then, click on Deploy.
+
+.. note:: Notice you do not need to select the HTTP analytics profile but only the VIP.
+          By having *Supporting Objects* option enabled, the deployment will include all objects that 
+          selected object depends on.
 
 .. image:: ../pictures/module6/lab-2-7.png
   :scale: 40%
@@ -61,7 +77,7 @@ Wait for the deployment to complete.
   :scale: 40%
   :align: center
 
-5. Back on the Application tab > Application, go back to the ``legacy-app-service``.
+5. Back on the Applications tab > Applications, go back to the ``legacy-app-service``.
    Under Traffic Management > Configuration, notice the warning disappeared.
 
 .. image:: ../pictures/module6/lab-2-9.png
@@ -83,14 +99,13 @@ Open Chrome and Firefox and navigate on the website http\:\/\/site34.example.com
   :align: center
 
 
-7. Back on BIG-IQ dashboard, notice the HTTP traffic starts to appear.
-
+7. Back on BIG-IQ application dashboard, notice the HTTP traffic starts to appear.
 
 .. image:: ../pictures/module6/lab-2-11.png
   :scale: 40%
   :align: center
 
-8. By the way, notice the new **Feedback* link to the top right?
+8. By the way, did you see the new **Feedback** link on the top right?
 
 .. image:: ../pictures/module6/lab-2-12.png
   :scale: 40%

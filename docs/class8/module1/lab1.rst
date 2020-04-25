@@ -20,9 +20,9 @@ and the `DevCentral`_ article.
 Workflow
 ^^^^^^^^
 
-1. **David** creates the Log Destinations and Publisher either using the UI or the API/AS3
-2. **Larry** creates the BOT Defense & Logging Profiles
-3. **David** creates the AS3 template and reference BOT profilecreated by **Larry** in the template.
+1. **David** creates the Log Destinations, Publisher and Logging Profile either using the UI or the API/AS3
+2. **Larry** creates the BOT Defense Profile
+3. **David** creates the AS3 template and reference BOT profile created by **Larry** in the template.
 4. **David** creates the application service using the template created previously.
 5. **Larry** review the BIG-IQ BOT dahsboards
 
@@ -49,8 +49,8 @@ under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 |
 
-ASM BOT Log Destinations and Publisher creation using UI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM BOT Log Destinations, Publisher and Logging Profiles creation using UI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Create the DCD Pool and Log Destination. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
@@ -109,7 +109,18 @@ ASM BOT Log Destinations and Publisher creation using UI
 
 |
 
-6. Deploy the Pool, Log Destinations and Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
+6. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+
+.. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
+
+- Name: ``lab-bot-logging-profile``
+- Properties: select ``Bot Defense``
+- Remote Publisher: ``bot-remote-logging-publisher-8514``
+- Logs Requests: select all options (Human Users, Bots, etc...)]
+
+``ADD SCREENSHOT``
+
+7. Deploy the Pool, Log Destinations, Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
 
 Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
@@ -121,8 +132,17 @@ Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 Make sure the deployment is successfull.
 
-ASM BOT Log Destinations and Publisher creation using API/AS3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+8. Deploy the BOT Logging profile. Go to Deployment tab > EVALUATE & DEPLOY > Web Application Security.
+
+Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
+
+``ADD SCREENSHOT``
+
+Make sure the deployment is successfull.
+
+
+ASM BOT Log Destinations, Publisher and Logging Profiles creation using API/AS3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. To do this, in your lab environment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
@@ -213,6 +233,17 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
                             "use": "bot-remote-logging-destination-splunk-8514"
                         }
                     ]
+                },
+                "lab-bot-defense-profile": {
+                    "class": "Security_Log_Profile",
+                    "botDefense": {
+                        "remotePublisher": {
+                            "use": "bot-remote-logging-publisher-8514"
+                        },
+                        "logChallengedRequests": false,
+                        "logCaptchaChallengedRequests": false,
+                        "logBotSignatureMatchedRequests": false
+                    }
                 }
             }
         }
@@ -232,8 +263,10 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
 
 |
 
-ASM BOT Bot Defense & Logging Profiles creation (BIG-IQ >= 7.1)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM BOT Bot Defense Profiles creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
 
 1. Go to Configuration > SECURITY > Shared Security > Bot Defense > Bot Profiles, click Create and fill in the settings:
 
@@ -252,77 +285,8 @@ ASM BOT Bot Defense & Logging Profiles creation (BIG-IQ >= 7.1)
 
 ``ADD SCREENSHOT``
 
-``ADD SCREENSHOT``
-
-ASM BOT Defense & Logging Profiles creation from BIG-IP (BIG-IQ <= 7.0)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
-
-2. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
-
-.. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
-
-.. image:: ../pictures/module1/img_module1_lab1_7.png
-  :align: center
-  :scale: 40%
-
-|
-
-- Name: ``lab-bot-defense-profile``
-- Enforcement Mode: ``Blocking``
-- Enforcement Readiness Period: ``0`` (**lab only**)
-
-.. image:: ../pictures/module1/img_module1_lab1_8.png
-  :align: center
-  :scale: 40%
-
-|
-
-- Untrusted Bot: ``Block``
-
-.. image:: ../pictures/module1/img_module1_lab1_9.png
-  :align: center
-  :scale: 40%
-
-|
-
-3. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
-
-.. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
-
-.. image:: ../pictures/module1/img_module1_lab1_10.png
-  :align: center
-  :scale: 40%
-
-|
-
-- Name: ``lab-bot-logging-profile``
-- Properties: select ``Bot Defense``
-- Remote Publisher: select previously Remote Publisher previously created either using the UI or API.
-- Logs Requests: select all options (Human Users, Bots, etc...)]
 
 
-
-.. image:: ../pictures/module1/img_module1_lab1_11.png
-  :align: center
-  :scale: 40%
-
-|
-
-4. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
-
-.. image:: ../pictures/module1/img_module1_lab1_13.png
-  :align: center
-  :scale: 40%
-
-|
-
-.. image:: ../pictures/module1/img_module1_lab1_14.png
-  :align: center
-  :scale: 40%
-
-|
 
 AS3 BOT template creation and application service deployement
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -434,6 +398,79 @@ Notice the HTTP requests are going through when using a real browser but are blo
 You can also see the details of each request logged nunder Monitoring > EVENTS > Bot > Bot Requests.
 
 .. image:: ../pictures/module1/img_module1_lab1_18.png
+  :align: center
+  :scale: 40%
+
+|
+
+
+Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning:: This part is only for BIG-IQ <= 7.0
+
+1. Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
+
+2. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
+
+.. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
+
+.. image:: ../pictures/module1/img_module1_lab1_7.png
+  :align: center
+  :scale: 40%
+
+|
+
+- Name: ``lab-bot-defense-profile``
+- Enforcement Mode: ``Blocking``
+- Enforcement Readiness Period: ``0`` (**lab only**)
+
+.. image:: ../pictures/module1/img_module1_lab1_8.png
+  :align: center
+  :scale: 40%
+
+|
+
+- Untrusted Bot: ``Block``
+
+.. image:: ../pictures/module1/img_module1_lab1_9.png
+  :align: center
+  :scale: 40%
+
+|
+
+3. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+
+.. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
+
+.. image:: ../pictures/module1/img_module1_lab1_10.png
+  :align: center
+  :scale: 40%
+
+|
+
+- Name: ``lab-bot-logging-profile``
+- Properties: select ``Bot Defense``
+- Remote Publisher: select previously Remote Publisher previously created either using the UI or API.
+- Logs Requests: select all options (Human Users, Bots, etc...)]
+
+
+
+.. image:: ../pictures/module1/img_module1_lab1_11.png
+  :align: center
+  :scale: 40%
+
+|
+
+4. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
+
+.. image:: ../pictures/module1/img_module1_lab1_13.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab1_14.png
   :align: center
   :scale: 40%
 

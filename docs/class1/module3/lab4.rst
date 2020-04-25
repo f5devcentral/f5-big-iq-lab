@@ -77,7 +77,7 @@ AS3 Application Service Deployment (Paula)
 
 1. Login as **paula** and select previously created ``LAB_module3`` Application and click **Create**.
   
-2. Select Create Application to Create an Application Service:
+2. Click **Create** to create an Application Service:
 
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |

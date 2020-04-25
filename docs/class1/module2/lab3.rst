@@ -216,7 +216,7 @@ It will create a new template in BIG-IQ AS3 Service Catalogue:
     }
 
 
-3. Login on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
+3. Login on BIG-IQ, go to Applications tab, then Application Templates. Look at the custom template created previous through the API.
 
 |lab-3-1|
 
@@ -333,7 +333,7 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
 
 6. Login on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
 
-7. Login on **BIG-IQ** as Olivia, go to Application tab and check the application is displayed and analytics are showing.
+7. Login on **BIG-IQ** as Olivia, go to Applications tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 

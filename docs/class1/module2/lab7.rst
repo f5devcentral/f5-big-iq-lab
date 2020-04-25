@@ -84,7 +84,7 @@ Execute the playbooks for each tasks.
 
   Connect as **david** and check on BIG-IQ the AS3 template has been correctly created.
 
-  Login on BIG-IQ, go to Application tab, then Application Templates. Look at the custom template created previous through the API.
+  Login on BIG-IQ, go to Applications tab, then Application Templates. Look at the custom template created previous through the API.
 
   |lab-3-1|
 

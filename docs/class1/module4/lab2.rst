@@ -17,7 +17,7 @@ This Application is composed of 3 Application Services:
   :align: center
 
 2. Let's deploy a 3rd Application Service serving a the same security app also located in Seattle 
-   as there is more demand in traffic in this part of the world. Select Create Application to Create an Application Service:
+   as there is more demand in traffic in this part of the world. Click **Create** to create an Application Service:
 
 +----------------------------------------------------------------------------------------------------+
 | Application properties:                                                                            |

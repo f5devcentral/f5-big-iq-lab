@@ -6,7 +6,7 @@ HTTPS Service using AS3 through GUI
 
 1. Login as **paula** in BIG-IQ.
 
-2. Select **Create Application** to **Create an Application Service**
+2. Click **Create** to create an Application Service
 
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |
@@ -52,7 +52,7 @@ HTTPS Service using AS3 through GUI
 
 8. Logout as **david** and log back in as **paula** and click **Create** application.
 
-9. Select Create Application to Create an Application Service:
+9. Click **Create** to create an Application Service:
 
 +----------------------------------------------------------------------------------------------------+
 | Application properties:                                                                            |

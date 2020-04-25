@@ -64,7 +64,7 @@ Roles > Application Roles
   :scale: 40%
   :align: center
 
-7. Select Create Application to Create an Application Service:
+7. Click **Create** to create an Application Service:
 
 +----------------------------------------------------------------------------------------------------+
 | Application properties:                                                                            |

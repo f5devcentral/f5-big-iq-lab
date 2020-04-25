@@ -161,7 +161,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
    GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-6. Login on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
+6. Login on BIG-IQ as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
@@ -243,7 +243,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
    GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
 
-6. Login on BIG-IQ as **david**, go to Application tab and check the application is displayed and analytics are showing.
+6. Login on BIG-IQ as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
