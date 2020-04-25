@@ -25,9 +25,10 @@ do
         state="n/a"
     fi
     if [[ $state == "Active" ]]; then
-        echo -e "\n\nBIG-IQ Application is $state on $bigiq"
+        echo -e "\n\nBIG-IQ Application is $state on $bigiq ... sleep for 1 min ..."
         sleep 60
         ssh $bigiq_user@$bigiq bigstart restart restjavad
+        echo -e "\nbigstart restart restjavad completed."
         exit 0;
     else
         echo -e "\n\nBIG-IQ Application is $state on $bigiq"
