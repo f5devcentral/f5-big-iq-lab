@@ -28,9 +28,7 @@ In BIG-IQ 7.1, we can associate devices or device groups with a role.
 
 Save & Close
 
-4. Navigate to System > Role Management > Roles Custom
-
-Roles > Application Roles
+4. Navigate to System > Role Management > Roles > Custom Roles > Application Roles
 
 .. image:: ../pictures/module5/lab-1-3.png
   :scale: 40%
@@ -57,6 +55,8 @@ Roles > Application Roles
 .. image:: ../pictures/module5/lab-1-6.png
   :scale: 40%
   :align: center
+
+  Save & Close
 
 6. Logout as **david** and log back in as **user-device-limit-as3** and click **Create** application.
 
