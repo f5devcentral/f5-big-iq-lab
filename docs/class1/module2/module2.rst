@@ -1,15 +1,13 @@
 Module 2: BIG-IQ Application Templates & Deployment with AS3 using the API
 ==========================================================================
 
-**[New 6.1.0]**
-
 |diagram_as3_bigiq|
 
 Overview
 --------
 
 In this module we will explore how to use F5's **AS3** extension
-with **BIG-IQ 6.1**.
+with **BIG-IQ**.
 
 **Application Services 3 Extension** (referred to as AS3 Extension or more often simply AS3) is a flexible, 
 low-overhead mechanism for managing application-specific configurations on a BIG-IP system.
@@ -35,8 +33,8 @@ Layer 4-7 Application Service Delivery
 
 L4-7 Application Service Delivery is accomplished by:
 
--  Providing **templates** within **BIG-IQ 6.1** as a Service Catalog. With **BIG-IQ 6.1**, you will have access to 
-   the traditional templates provided with **BIG-IQ 6.0** but you'll be able to create new kind of templates to consume 
+-  Providing **templates** within **BIG-IQ** as a Service Catalog. With **BIG-IQ**, you will have access to 
+   the traditional templates provided with **BIG-IQ** but you'll be able to create new kind of templates to consume 
    **AS3**. 
 
 .. note:: Moving forward, BIG-IQ will invest on AS3 Templates more than on existing BIG-IQ templates.
@@ -47,11 +45,11 @@ L4-7 Application Service Delivery is accomplished by:
 The labs in the module will focus on the high level features in place to
 achieve full L4-7 automation.
 
-In this Module, we will provision **BIG-IQ 6.1** to deploy and modify the AS3
+In this Module, we will provision **BIG-IQ** to deploy and modify the AS3
 declarations.
 
 The focus of Module 2 was to demonstrate application deployment directly to the BIG-IP. 
-**BIG-IQ 6.1** will allow the administrator to restrict access an interface and API for users based 
+**BIG-IQ** will allow the administrator to restrict access an interface and API for users based 
 on their current role within the organization.
 
 For example, in Module 2, we pushed AS3 declarations, updated pool members, and
@@ -59,7 +57,7 @@ provided the user access to modify the full AS3 declaration. This approach would
 provide each user the same administrative priviledges and may not scale within
 organizations with separate user functions.
 
-To solve this problem, **BIG-IQ 6.1** allows the administrator to create
+To solve this problem, **BIG-IQ** allows the administrator to create
 **Templates** which can provide further **Abstraction** of the AS3 declarations.
 The administrator can enforce specific Tenants or parameters to be used based on
 the user running the template. This abstraction allows the templates to be
