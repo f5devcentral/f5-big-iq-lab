@@ -12,7 +12,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 |
 
-You can also directly using Postman on your laptop and use the following URL (Go to **BIGIQ CM (Config Mgt)** > **Access Methods** > **API**):
+You can also use Postman on your laptop by using the following URL (Go to **BIGIQ CM (Config Mgt)** > **Access Methods** > **API**):
 
 .. image:: ../../pictures/udf_bigiq_api.png
     :align: center
@@ -149,7 +149,7 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
 
 |lab-1-3|
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
@@ -257,7 +257,7 @@ Copy/Paste the below AS3 declaration into the body (Postman):
 
 4. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
@@ -266,8 +266,9 @@ Task 3a - HTTPS Application with Web Application Firewall
 
 This declaration will create an HTTPS application on BIG-IQ using an HTTPS template, a WAF policy and a security Log Profile.
 
-.. note:: The ASM policy & Log Profiles need to be deployed first in BIG-IP if it exists only on BIG-IQ.
-             Attached the policy to the ``inactive`` virtual server under the Web Application Security Configuration menu, then deploy it.
+.. note:: If the WAF polcy and logging profiles exist in BIG-IQ, but have **not** yet been deployed to the BIG-IP, you must 
+             deploy the policy and profile before this declaration can reference them.
+             Attach the policy to the ``inactive`` virtual server under the Web Application Security Configuration menu, and then deploy it.
 
 Update the WAF policy section below with the policy available on BIG-IP::
 
@@ -378,7 +379,7 @@ Copy/Paste the above AS3 declaration into the declaration body into Postman (DON
 
 4. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
@@ -468,7 +469,7 @@ Copy/Paste the above AS3 declaration into the declaration body of Postman:
 
 4. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
