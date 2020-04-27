@@ -151,7 +151,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
+4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Paste the declaration into Postman:
 
    POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
@@ -163,15 +163,15 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
 6. Login on BIG-IQ as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Task 5b - Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. warning:: This isn't the recommended way of adding an application to an existing Tenant. Method described in Task 5a is preferred.
-             The PATCH operation will be fully supported started BIG-IQ 7.0/AS3.12 and above (not supported in BIG-IQ 6.1/AS3.7)
+.. warning:: This isn't the recommended way of adding an application to an existing Tenant. The method described in Task 5a is preferred.
+             The PATCH operation will be fully supported starting with BIG-IQ 7.0/AS3.12 and above (not supported in BIG-IQ 6.1/AS3.7)
 
 This declaration will create add a HTTP application to a existing Tenant. In this task, we will submit only the new application using the PATCH.
 
@@ -233,7 +233,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Past the declaration into Postman:
+4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Paste the declaration into Postman:
 
    POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
    
@@ -245,7 +245,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
 6. Login on BIG-IQ as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
