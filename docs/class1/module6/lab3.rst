@@ -25,7 +25,7 @@ Follow `Lab 1`_  to re-create the legacy application service. This time select *
 choose **LAB_module6**. Then select **Using existing device configuration**. For name use **legacy-app-service** then 
 select **BOS-vBIGIP01.termmarc.com**. Choose **HTTP+TCP** for the Application Service, and then move **vip134** to the **Selected** column.
 
-Scroll down and notice there is no warning for the **Profile HTTP Analytics** as we did not changge the virtual server configuration
+Scroll down and notice there is no warning for the **Profile HTTP Analytics** as we did not change the virtual server configuration
 from the previous steps. Click **Create**.
 
 .. _Lab 1: ./lab1.html

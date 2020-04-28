@@ -64,7 +64,7 @@ The deployment window opens. Type a name, select ``Deploy immediately`` for the 
 
 Under the Target Device(s) section, click on ``Find Relevant Devices``
 and select the **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com** and move them over to the 
-section markered **Selected**. Then, click on Deploy.
+section marked **Selected**. Then, click on Deploy.
 
 .. note:: Notice you do not need to select the HTTP analytics profile but only the VIP.
           By having *Supporting Objects* option enabled, the deployment will include all objects that 
@@ -106,7 +106,7 @@ Open Chrome and Firefox and navigate on the website http\:\/\/site34.example.com
 
 7. Back on the BIG-IQ Application dashboard, notice the HTTP traffic starts to appear. This means you have successfully 
 attached the HTTP profile to the virtual server. In real-world environments F5 recommends that customers experiment with 
-a samll number of legacy applications. BIG-IP resource consumption of memory and CPU should be be monitored both before and after 
+a small number of legacy applications. BIG-IP resource consumption of memory and CPU should be be monitored both before and after 
 analytics have been enabled. We do not recommend bulk enabling too many applications at once as it may put added burden on BIG-IP or BIG-IQ.
 Proper sizing should be done ahead of time, and new applications should be enabled carefully.
 

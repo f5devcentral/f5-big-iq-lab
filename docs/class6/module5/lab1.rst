@@ -31,7 +31,7 @@ The HTTP profile ``silo-lab-http-profile`` already exists in BIG-IQ and is tied 
 into BIG-IQ. In this case the Boston BIG-IP Cluster or the Seattle BIG-IP. 
 
 If you choose ``BIG-IQ``, the the contents of this profile on the SJC-vBIGIP01 BIG-IP will get overwritten by what is already on BIG-IQ. 
-This is likely not a prefered behavior becuase this is a working configuration and changing the content of the profile will likely break something. 
+This is likely not a preferred behavior because this is a working configuration and changing the content of the profile will likely break something. 
 
 Choosing ``BIG-IP`` will overwrite the contents of this profile on BIG-IQ with what is being imported from this BIG-IP. This would then overwrite 
 the configuration of the other BIG-IP's that use this same shared object with the contents of the SJC-vBIGIP01 BIG-IP profile on the next deployment. 

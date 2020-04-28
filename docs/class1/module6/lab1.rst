@@ -71,7 +71,7 @@ Move *vip134* over to the **Selected** column and then scroll down.
   
 6. Check the Application ``LAB_module6`` has been created. Click on it to see the application.
    You should see an application called ``legacy-app-service``. Notice the label *LEGACY* is showing on the applications grid/tile.
-   This is an indication that this application was not created with a template, and will be trated as a **legacy** 
+   This is an indication that this application was not created with a template, and will be treated as a **legacy** 
    application.
 
 .. image:: ../pictures/module6/lab-1-6.png

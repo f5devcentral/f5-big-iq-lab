@@ -61,8 +61,8 @@ Click on **Continue**.
 
 8. The conflict resolution window opens. Notice the profile HTTP ``silo-lab-http-profile`` is not showing anymore.
    Select **Create Version** option for all the remaining default profiles. The remaining conflicts are due to default changes
-   in profiles across different TMOS versions. The **Version Sepcific Defaults** feature was added in a previous BIG-IQ 
-   release to deal with these sorts of conflicts. BIG-IQ will store different defualt values for each version of SW starting
+   in profiles across different TMOS versions. The **Version Specific Defaults** feature was added in a previous BIG-IQ 
+   release to deal with these sorts of conflicts. BIG-IQ will store different default values for each version of SW starting
    with whats been imported originally as the default. Next click **Continue** and if prompted click **Resolve** to 
    address the version specific default conflicts.
 

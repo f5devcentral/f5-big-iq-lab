@@ -24,10 +24,10 @@ Workflow
 2. **Larry** creates the BOT Defense & Logging Profile
 3. **David** creates the AS3 template and reference BOT & Logging profile created by **Larry** in the template.
 4. **David** creates the application service using the template created previously.
-5. **Larry** review the BIG-IQ BOT dahsboards
+5. **Larry** review the BIG-IQ BOT dashboards
 
-Prerequists
-^^^^^^^^^^^
+Prerequisites
+^^^^^^^^^^^^^
 
 Connect as **david** on BIG-IQ.
 
@@ -90,7 +90,7 @@ ASM BOT Log Destinations and Publisher creation using UI
 
 |
 
-.. note:: This is to add the formating supported by BIG-IQ
+.. note:: This is to add the formatting supported by BIG-IQ
 
 4. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
 
@@ -114,7 +114,7 @@ ASM BOT Log Destinations and Publisher creation using UI
 
 6. Deploy the Pool, Log Destinations, Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
 
-Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
+Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 .. image:: ../pictures/module1/img_module1_lab1_6.png
   :align: center
@@ -122,7 +122,7 @@ Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 |
 
-Make sure the deployment is successfull.
+Make sure the deployment is successful.
 
 
 ASM BOT Log Destinations and Publisher creation using API/AS3
@@ -164,7 +164,7 @@ Using the declarative AS3 API, let's send the following BIG-IP configuration thr
 
 Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
 Press Send. This, will save the token value as _f5_token. If your token expires, 
-obtain a new token by resending the ``BIG-IQ Token``
+obtain a new token by re-sending the ``BIG-IQ Token``
 
 .. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
@@ -175,7 +175,7 @@ obtain a new token by resending the ``BIG-IQ Token``
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 5,16,18
+   :emphasize-lines: 9,20,22
 
       {
           "class": "AS3",
@@ -317,10 +317,10 @@ ASM BOT Defense Profile creation
 
 |
 
-3. Deploy the BOT Defense profile alon with the BOT Logging Profile. 
+3. Deploy the BOT Defense profile along with the BOT Logging Profile. 
    Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
 
-Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
+Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 .. image:: ../pictures/module1/img_module1_lab1_15.png
   :align: center
@@ -328,11 +328,11 @@ Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 |
 
-Make sure the deployment is successfull.
+Make sure the deployment is successful.
 
 
-AS3 BOT template creation and application service deployement
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 BOT template creation and application service deployment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Navigate to the Applications tab > APPLICATION TEMPLATES.
 
@@ -459,7 +459,7 @@ Notice the HTTP requests are going through when using a real browser but are blo
 
 |
 
-You can also see the details of each request logged nunder Monitoring > EVENTS > Bot > Bot Requests.
+You can also see the details of each request logged under Monitoring > EVENTS > Bot > Bot Requests.
 
 .. image:: ../pictures/module1/img_module1_lab1_23.png
   :align: center

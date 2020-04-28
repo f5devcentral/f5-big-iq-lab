@@ -13,12 +13,12 @@ that already exist.
 
 While many customers are eager to move towards templated configurations to simplify their environments, they 
 may not have been in a position to re-deploy their current applications just to gain the per-application views
-provided in the new dashboards. They are still alble to get Analytics under the **Monitoring** tab, but the Analytics
-are presented in a more aggrgated fashion vs. the per-application views in the **Application** dashboard.
+provided in the new dashboards. They are still able to get Analytics under the **Monitoring** tab, but the Analytics
+are presented in a more aggregated fashion vs. the per-application views in the **Application** dashboard.
 
 In BIG-IQ v7.1, an admin can now add “legacy” (or “brownfield”) applications into the Application dashboard 
 without having to re-deploy the application using a template. The Legacy applications will provide the same
-analytic views as those applications deployed via a template, however the confiuguration sections are read-only, 
+analytic views as those applications deployed via a template, however the configuration sections are read-only, 
 except for enable, disable, force-offline operations for Pools and Virtual Servers.
 
 For more information about requirements and recommendations for creating a BIG-IQ Application Service with existing device configurations, please consult `K02142132`_.
