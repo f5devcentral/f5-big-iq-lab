@@ -15,7 +15,7 @@ Notice the alerts raised. The server side RTT exceeded the critical threshold of
 
 .. note:: If there are no active alerts, look in the alert history.
 
-2. Look for the details of the alert. There is a delay of ~300ms between the F5 BIG-IP and the application server.
+2. Look for the details of the alert. A delay of ~300ms between the F5 BIG-IP and the application server can be observed.
 
 .. image:: ../pictures/module5/img_module5_lab2_2.png
   :align: center
