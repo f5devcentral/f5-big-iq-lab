@@ -5,7 +5,7 @@
 # ------------
 #
 # REQUIRED: Your class/lab name
-classname = "F5 BIG-IQ & Cloud Edition Lab"
+classname = "F5 BIG-IQ Centralized Management Lab"
 
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/f5devcentral/f5-big-iq-lab"
