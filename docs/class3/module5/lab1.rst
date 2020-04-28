@@ -40,14 +40,14 @@ both attached to the Virtual IP address. More details on `TCP analytics`_.
 +---------------------------------------------------------------------------------------------------+
 | iRule. Keep default                                                                               |
 +---------------------------------------------------------------------------------------------------+
-| when HTTP_REQUEST {                                                                               |
-|   # must check subnet again to avoid starting for all                                             |
-|   # connections                                                                                   |
-|   if [IP::addr [IP::client_addr]/24 equals 10.1.10.0]{                                            |
-|     # make stats queryable by URI                                                                 |
+| when HTTP_REQUEST \{                                                                              |
+|   \# must check subnet again to avoid starting for all                                            |
+|   \# connections                                                                                  |
+|   if [IP::addr [IP::client_addr]/24 equals 10.1.10.0]\{                                           |
+|     \# make stats queryable by URI                                                                |
 |     TCP::analytics key "[HTTP::uri]"                                                              |
-|   }                                                                                               |
-| }                                                                                                 |
+|   \}                                                                                              |
+| \}                                                                                                |
 +---------------------------------------------------------------------------------------------------+
 | Service_HTTP                                                                                      |
 +---------------------------------------------------------------------------------------------------+
@@ -60,7 +60,7 @@ both attached to the Virtual IP address. More details on `TCP analytics`_.
 
 .. note:: The template used is available on the `BIG-IQ AS3 Templates submitted by the Community`_.
 
-.. BIG-IQ AS3 Templates submitted by the Community_: https://github.com/f5devcentral/f5-big-iq/tree/7.1.0/f5-appsvcs-templates-big-iq/community
+.. _BIG-IQ AS3 Templates submitted by the Community: https://github.com/f5devcentral/f5-big-iq/tree/7.1.0/f5-appsvcs-templates-big-iq/community
 
 The application service called ``tenant3_tcp-lab1-user-key`` is now created on the BIG-IQ dashboard
 under the application called ``LAB_TCP``.

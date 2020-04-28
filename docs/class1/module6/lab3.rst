@@ -6,8 +6,7 @@ we need to first re-create the Legacy Application Service ``legacy-app-service``
 
 This is not needed on Standalone BIG-IP, but only on cluster. Because of this limitation, it is
 recommended to create and attach the analytics profile to the VIP before the creation
-of the legacy application service on the BIG-IQ dashboard. This would be the recommended
- production workflow for customers.
+of the legacy application service on the BIG-IQ dashboard. This would be the recommended production workflow for customers.
 
 .. _known issue: https://techdocs.f5.com/kb/en-us/products/big-iq-centralized-mgmt/releasenotes/related/relnote-supplement-big-iq-central-mgmt-7-1-0.html#A899789
 

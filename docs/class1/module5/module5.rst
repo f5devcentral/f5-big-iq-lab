@@ -56,7 +56,7 @@ Save & Close
   :scale: 40%
   :align: center
 
-  Save & Close
+**Save & Close**
 
 6. Logout as **david** and log back in as **user-device-limit-as3** and click **Create** application.
 
