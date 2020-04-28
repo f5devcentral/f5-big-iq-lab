@@ -9,7 +9,7 @@ if "%SPHINXBUILD%" == "" (
 )
 set SOURCEDIR=/docs
 set BUILDDIR=/docs/_build
-set SPHINXPROJ=F5 BIG-IQ & Cloud Edition Lab
+set SPHINXPROJ=F5 BIG-IQ Centralized Management Lab
 
 if "%1" == "" goto help
 

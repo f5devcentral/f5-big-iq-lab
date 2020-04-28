@@ -5,7 +5,7 @@
 # You can set these variables from the command line.
 SPHINXOPTS    =
 SPHINXBUILD   = sphinx-build
-SPHINXPROJ    = F5 BIG-IQ & Cloud Edition Lab
+SPHINXPROJ    = F5 BIG-IQ Centralized Management Lab
 SOURCEDIR     = docs
 BUILDDIR      = docs/_build
 
