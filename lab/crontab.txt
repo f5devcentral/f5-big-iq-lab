@@ -16,7 +16,7 @@
 * * * * * /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.sh >> /home/f5/scripts/logs/export_app_http_stats_splunk.log 2>&1
 
 ## ASM Brute Force Attacks
-@reboot perl -le 'sleep 2400' && /home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh > /home/f5/scripts/logs/asm_brute_force_attach.log 2>&1
+@reboot perl -le 'sleep 2400' && /home/f5/scripts/asm-brute-force/asm_brute_force_attack.sh > /home/f5/scripts/logs/asm_brute_force_attack.log 2>&1
 
 ## DOS data
 */11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /home/f5/scripts/logs/generate_dns_afm_dos_traffic_fake.log 2>&1
