@@ -1,5 +1,5 @@
-Class 3:  BIG-IQ Analytics
-==========================
+Class 3: BIG-IQ Analytics
+=========================
 
 In this class, we will review the various analytics available for the applications in BIG-IQ.
 

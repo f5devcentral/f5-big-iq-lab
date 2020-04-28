@@ -49,8 +49,10 @@ under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 |
 
-ASM BOT Log Destinations, Publisher and Logging Profiles creation using UI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM BOT Log Destinations and Publisher creation using UI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning:: If you want to use API to create the log destinations & publisher, skip this part and go to the next one.
 
 1. Create the DCD Pool and Log Destination. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
@@ -101,7 +103,8 @@ ASM BOT Log Destinations, Publisher and Logging Profiles creation using UI
 
 |
 
-5. Pin the new Log Publisher to the SEA-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
+5. Pin the new Log Publisher to the SEA-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and 
+   add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_5.png
   :align: center
@@ -109,18 +112,7 @@ ASM BOT Log Destinations, Publisher and Logging Profiles creation using UI
 
 |
 
-6. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
-
-.. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
-
-- Name: ``lab-bot-logging-profile``
-- Properties: select ``Bot Defense``
-- Remote Publisher: ``bot-remote-logging-publisher-8514``
-- Logs Requests: select all options (Human Users, Bots, etc...)]
-
-``ADD SCREENSHOT``
-
-7. Deploy the Pool, Log Destinations, Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
+6. Deploy the Pool, Log Destinations, Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
 
 Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
@@ -132,20 +124,13 @@ Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 Make sure the deployment is successfull.
 
-8. Deploy the BOT Logging profile. Go to Deployment tab > EVALUATE & DEPLOY > Web Application Security.
 
-Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
+ASM BOT Log Destinations and Publisher creation using API/AS3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``ADD SCREENSHOT``
-
-Make sure the deployment is successfull.
-
-
-ASM BOT Log Destinations, Publisher and Logging Profiles creation using API/AS3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
+1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+To do this, in your lab environment, click on the *Access* button of the *Ubuntu Lamp Server* 
+system and select *noVNC* or *xRDP*.
 
 .. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
@@ -178,11 +163,13 @@ For Postman, click right and click on execute (wait ~2 minutes).
 Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
 
 Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
-Press Send. This, will save the token value as _f5_token. If your token expires, obtain a new token by resending the ``BIG-IQ Token``
+Press Send. This, will save the token value as _f5_token. If your token expires, 
+obtain a new token by resending the ``BIG-IQ Token``
 
 .. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
+2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
+   the service on the BIG-IP through BIG-IQ:
 
   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
@@ -190,81 +177,108 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
    :linenos:
    :emphasize-lines: 5,16,18
 
-    {
-        "class": "ADC",
-        "schemaVersion": "3.12.0",
-        "target": {
-            "address": "10.1.1.7"
-        },
-        "bot": {
-            "class": "Tenant",
-            "security-log-profile": {
-                "class": "Application",
-                "template": "generic",
-                "bot-remote-dcd-asm-pool": {
-                    "class": "Pool",
-                    "members": [
-                        {
-                            "servicePort": 8514,
-                            "serverAddresses": [
-                                "10.1.10.6"
-                            ]
-                        }
-                    ]
-                },
-                "bot-remote-logging-destination-remote-hslog-8514": {
-                    "class": "Log_Destination",
-                    "type": "remote-high-speed-log",
-                    "pool": {
-                        "use": "bot-remote-dcd-asm-pool"
-                    }
-                },
-                "bot-remote-logging-destination-splunk-8514": {
-                    "class": "Log_Destination",
-                    "type": "splunk",
-                    "forwardTo": {
-                        "use": "bot-remote-logging-destination-remote-hslog-8514"
-                    }
-                },
-                "bot-remote-logging-publisher-8514": {
-                    "class": "Log_Publisher",
-                    "destinations": [
-                        {
-                            "use": "bot-remote-logging-destination-splunk-8514"
-                        }
-                    ]
-                },
-                "lab-bot-defense-profile": {
-                    "class": "Security_Log_Profile",
-                    "botDefense": {
-                        "remotePublisher": {
-                            "use": "bot-remote-logging-publisher-8514"
-                        },
-                        "logChallengedRequests": false,
-                        "logCaptchaChallengedRequests": false,
-                        "logBotSignatureMatchedRequests": false
-                    }
-                }
-            }
-        }
-    }
+      {
+          "class": "AS3",
+          "action": "deploy",
+          "persist": true,
+          "declaration": {
+              "class": "ADC",
+              "schemaVersion": "3.12.0",
+              "target": {
+                  "address": "10.1.1.7"
+              },
+              "bot": {
+                  "class": "Tenant",
+                  "security-log-profile": {
+                      "class": "Application",
+                      "template": "generic",
+                      "bot-remote-dcd-asm-pool": {
+                          "class": "Pool",
+                          "members": [
+                              {
+                                  "servicePort": 8514,
+                                  "serverAddresses": [
+                                      "10.1.10.6"
+                                  ]
+                              }
+                          ]
+                      },
+                      "bot-remote-logging-destination-remote-hslog-8514": {
+                          "class": "Log_Destination",
+                          "type": "remote-high-speed-log",
+                          "pool": {
+                              "use": "bot-remote-dcd-asm-pool"
+                          }
+                      },
+                      "bot-remote-logging-destination-splunk-8514": {
+                          "class": "Log_Destination",
+                          "type": "splunk",
+                          "forwardTo": {
+                              "use": "bot-remote-logging-destination-remote-hslog-8514"
+                          }
+                      },
+                      "bot-remote-logging-publisher-8514": {
+                          "class": "Log_Publisher",
+                          "destinations": [
+                              {
+                                  "use": "bot-remote-logging-destination-splunk-8514"
+                              }
+                          ]
+                      }
+                  }
+              }
+          }
+      }
 
 3. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
 
-.. image:: ../pictures/module1/img_module1_lab1_13.png
+.. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center
   :scale: 40%
 
 |
 
-.. image:: ../pictures/module1/img_module1_lab1_14.png
+.. image:: ../pictures/module1/img_module1_lab1_8.png
   :align: center
   :scale: 40%
 
 |
 
-ASM BOT Bot Defense Profiles creation
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM BOT Logging Profile creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
+
+1. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+
+- Name: ``lab-bot-logging-profile``
+- Properties: select ``Bot Defense``
+- Remote Publisher: ``bot-remote-logging-publisher-8514``
+- Logs Requests: select all options (Human Users, Bots, etc...)]
+
+.. image:: ../pictures/module1/img_module1_lab1_9.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab1_10.png
+  :align: center
+  :scale: 40%
+
+|
+
+2. Pin the new BOT Logging profile to the SEA-vBIGIP01.termmarc.com device.
+   Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
+
+.. image:: ../pictures/module1/img_module1_lab1_11.png
+  :align: center
+  :scale: 40%
+
+|
+
+ASM BOT Defense Profile creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
 
@@ -272,20 +286,49 @@ ASM BOT Bot Defense Profiles creation
 
 - Name: ``lab-bot-defense-profile``
 - Enforcement Mode: ``Blocking``
-- Enforcement Mode: Blocking
 - Enforcement Readiness Period: ``0`` (**lab only**)
-- Profile Template: ``Strict``
+
+.. image:: ../pictures/module1/img_module1_lab1_12.png
+  :align: center
+  :scale: 40%
+
+|
+
 - Browser Verification:
 - Browser Access: ``Allowed``
 - Browser Verification: ``Verify After Access (Blocking)``
+
+.. image:: ../pictures/module1/img_module1_lab1_13.png
+  :align: center
+  :scale: 40%
+
+|
 
 .. note:: As per `K42323285`_: Overview of the unified Bot Defense profile the available options for the configuration elements.
 
 .. _`K42323285`: https://support.f5.com/csp/article/K42323285
 
-``ADD SCREENSHOT``
+2. Pin the new BOT Defense Profile to the SEA-vBIGIP01.termmarc.com device.
+   Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
 
+.. image:: ../pictures/module1/img_module1_lab1_14.png
+  :align: center
+  :scale: 40%
 
+|
+
+3. Deploy the BOT Defense profile alon with the BOT Logging Profile. 
+   Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
+
+Create a Deploments to deploy the Remote Logging Changes on the SEA BIG-IP.
+
+.. image:: ../pictures/module1/img_module1_lab1_15.png
+  :align: center
+  :scale: 40%
+
+|
+
+Make sure the deployment is successfull.
 
 
 AS3 BOT template creation and application service deployement
@@ -297,14 +340,29 @@ Select the ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` AS3 Template and
 
 Rename it ``LAB-HTTP-bot-defense``. 
 
-``ADD SCREENSHOT``
+.. image:: ../pictures/module1/img_module1_lab1_16.png
+  :align: center
+  :scale: 40%
+
+|
 
 Edit the new cloned template and select the Service_HTTP class.
 
 - Look for the attribute called ``profileBotDefense`` and set it to ``/Common/lab-bot-defense-profile``.
-- Look for the attribute called ``securityLogProfiles`` and set it to ``/Common/lab-bot-logging-profile``.
 
-``ADD SCREENSHOT``
+.. image:: ../pictures/module1/img_module1_lab1_17.png
+  :align: center
+  :scale: 40%
+
+|
+
+- Look for the attribute called ``Security Log Profiles`` and set it to ``/Common/lab-bot-logging-profile``.
+
+.. image:: ../pictures/module1/img_module1_lab1_18.png
+  :align: center
+  :scale: 40%
+
+|
 
 At the top right corner, click on **Publish and Close**
 
@@ -326,14 +384,14 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 | General Properties:                                                                               |
 +---------------------------------------------------------------------------------------------------+
 | * Application Service Name = ``bot_defense_service``                                              |
-| * Target = ``BOS-vBIGIP01.termmarc.com``                                                          |
+| * Target = ``SEA-vBIGIP01.termmarc.com``                                                          |
 | * Tenant = ``tenant3``                                                                            |
-+---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default                                                                   |
 +---------------------------------------------------------------------------------------------------+
 | Pool                                                                                              |
 +---------------------------------------------------------------------------------------------------+
 | * Members: ``10.1.20.123``                                                                        |
++---------------------------------------------------------------------------------------------------+
+| HTTP_Profile. Keep default                                                                        |
 +---------------------------------------------------------------------------------------------------+
 | Service_HTTP                                                                                      |
 +---------------------------------------------------------------------------------------------------+
@@ -341,13 +399,26 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 | * profileBotDefense: ``/Common/lab-bot-defense-profile``                                          |
 | * securityLogProfiles: ``/Common/lab-bot-logging-profile``                                        |
 +---------------------------------------------------------------------------------------------------+
+| Analytics_Profile. Keep default                                                                   |
++---------------------------------------------------------------------------------------------------+
 
 .. note:: You are attaching the bot defense and logging profiles to the VIP using AS3.
 
-The application service called ``tenant3_https_auth_service`` is now created on the BIG-IQ dashboard
+The application service called ``tenant3_bot_defense_service`` is now created on the BIG-IQ dashboard
 under the application called ``LAB_Access``.
 
-``ADD SCREENSHOT``
+.. image:: ../pictures/module1/img_module1_lab1_19.png
+  :align: center
+  :scale: 40%
+
+|
+
+
+.. image:: ../pictures/module1/img_module1_lab1_20.png
+  :align: center
+  :scale: 40%
+
+|
 
 
 Traffic simulation and Dashboard/Events
@@ -373,7 +444,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 2. Open Chrome and Navigate to the URL http\:\/\/10.1.10.126.
 
-.. image:: ../pictures/module1/img_module1_lab1_15.png
+.. image:: ../pictures/module1/img_module1_lab1_21.png
   :align: center
   :scale: 40%
 
@@ -383,13 +454,13 @@ Notice the HTTP requests are going through when using a real browser but are blo
 
 3. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under Monitoring > DASHBOARDS > Bot Traffic.
 
-.. image:: ../pictures/module1/img_module1_lab1_16.png
+.. image:: ../pictures/module1/img_module1_lab1_22.png
   :align: center
   :scale: 40%
 
 |
 
-.. image:: ../pictures/module1/img_module1_lab1_17.png
+.. image:: ../pictures/module1/img_module1_lab1_23.png
   :align: center
   :scale: 40%
 
@@ -397,7 +468,7 @@ Notice the HTTP requests are going through when using a real browser but are blo
 
 You can also see the details of each request logged nunder Monitoring > EVENTS > Bot > Bot Requests.
 
-.. image:: ../pictures/module1/img_module1_lab1_18.png
+.. image:: ../pictures/module1/img_module1_lab1_24.png
   :align: center
   :scale: 40%
 
@@ -407,15 +478,13 @@ You can also see the details of each request logged nunder Monitoring > EVENTS >
 Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. warning:: This part is only for BIG-IQ <= 7.0
+.. warning:: This part is only for BIG-IQ <= 7.0. It can be done from BIG-IQ UI starting BIG-IQ 7.1.
 
 1. Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 2. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
 
-.. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
-
-.. image:: ../pictures/module1/img_module1_lab1_7.png
+.. image:: ../pictures/module1/img_module1_lab1_annex1.png
   :align: center
   :scale: 40%
 
@@ -425,7 +494,7 @@ Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
 - Enforcement Mode: ``Blocking``
 - Enforcement Readiness Period: ``0`` (**lab only**)
 
-.. image:: ../pictures/module1/img_module1_lab1_8.png
+.. image:: ../pictures/module1/img_module1_lab1_annex2.png
   :align: center
   :scale: 40%
 
@@ -433,7 +502,7 @@ Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
 
 - Untrusted Bot: ``Block``
 
-.. image:: ../pictures/module1/img_module1_lab1_9.png
+.. image:: ../pictures/module1/img_module1_lab1_annex3.png
   :align: center
   :scale: 40%
 
@@ -441,9 +510,7 @@ Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
 
 3. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
 
-.. warning:: This step can be done from BIG-IQ UI starting BIG-IQ 7.1 version.
-
-.. image:: ../pictures/module1/img_module1_lab1_10.png
+.. image:: ../pictures/module1/img_module1_lab1_annex4.png
   :align: center
   :scale: 40%
 
@@ -456,7 +523,7 @@ Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
 
 
 
-.. image:: ../pictures/module1/img_module1_lab1_11.png
+.. image:: ../pictures/module1/img_module1_lab1_annex5.png
   :align: center
   :scale: 40%
 
@@ -464,13 +531,13 @@ Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
 
 4. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
 
-.. image:: ../pictures/module1/img_module1_lab1_13.png
+.. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center
   :scale: 40%
 
 |
 
-.. image:: ../pictures/module1/img_module1_lab1_14.png
+.. image:: ../pictures/module1/img_module1_lab1_8.png
   :align: center
   :scale: 40%
 

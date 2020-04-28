@@ -7,7 +7,7 @@ Lab 5.2: Resolve conflicts in the silo
   :scale: 40%
   :align: center
 
-2. Select **Target Silo: Default**, then click on **Compare Silos**
+2. Select Target Silo: **Default**, then click on **Compare Silos**.
 
 .. image:: ../pictures/img_module5_lab2-2.png
   :scale: 40%

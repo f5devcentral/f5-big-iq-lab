@@ -220,6 +220,11 @@ if [[  $currentuser == "root" ]]; then
         echo "echo" >> $home/.bashrc
     fi
 
+    echo "If postman does not open using the link on the desktop, open a terminal and launch it from there.
+
+    # bash
+    # postman %U" > $home/Desktop/Postman_README
+
     echo -e "\n\nLAMP server initialisation COMPLETED"
 
 else
