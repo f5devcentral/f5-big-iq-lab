@@ -1,19 +1,18 @@
 Lab 5.2: Troubleshooting latency and packet loss
 ------------------------------------------------
 
-In this lab, we are going to identify latency and packet loss issues happening on an application behind F5.
+In this lab, we are going to identify latency and packet loss issues happening on an application sitting behind the BIG-IP.
 
 1. Select the application service ``backend_site20tcp`` located under ``IT_apps`` application.
 
-Notice the alerts raised. The server side RTT exceeded the critical threshold of 100ms.
+Notice the alerts raised. The server side RTT exceeded the critical threshold of 100ms. Since the traffic is sent in bursts
+you may not see an **Active Alert**. You can view the **Alert History** to see the last time the application exceeded the threshold.
 
 .. image:: ../pictures/module5/img_module5_lab2_1.png
   :align: center
   :scale: 40%
 
-|
 
-.. note:: If there are no active alerts, look in the alert history.
 
 2. Look for the details of the alert. A delay of ~300ms between the F5 BIG-IP and the application server can be observed.
 
@@ -25,7 +24,7 @@ Notice the alerts raised. The server side RTT exceeded the critical threshold of
 
 3. Now, let's look at the Server Side Goodput, especially at the *Connection Duration* under **Remote Host IP Addresses** dimension.
 
-The connection duration metric isn't showing by default in the dimension, you will need to click right and add it. 
+The connection duration metric isn't showing by default in the dimension, you will need to right click, select **Columns** and add it. 
 Notice one of the pool member is almost double the duration of the other.
 
 .. image:: ../pictures/module5/img_module5_lab2_3.png
@@ -34,10 +33,10 @@ Notice one of the pool member is almost double the duration of the other.
 
 |
 
-.. note:: We have added 300ms delay to an nginx running in a docker acting as an application server in this lab.
+.. note:: We have added 300ms delay to an NGINX instance running in a docker container acting as an application server in this lab.
 
-4. We are now going to remove the healty node and only keep the nginx node. Navigate to the Configuration tab in the application dashboard
-   and remove the node ``10.1.20.115:8081``.
+4. We are now going to remove the healty node and only keep the NGINX node. Navigate to the Configuration tab in the application dashboard
+   and delete the node ``10.1.20.115:8081``. Then click **Save**.
 
 .. image:: ../pictures/module5/img_module5_lab2_4.png
   :align: center
@@ -45,7 +44,6 @@ Notice one of the pool member is almost double the duration of the other.
 
 |
 
-**Save & Close**.
 
 5. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
@@ -64,7 +62,8 @@ Open a terminal and run the following commands:
 
 You may run the curl command multiple times. Here we removed the delay and add a packet loss of 70%.
 
-6. Back to BIG-IQ Application dashboard, navigate to the **Service Site Packets** and look a the packets loss showing on the dashboard.
+6. Back to BIG-IQ Application dashboard, navigate to the **Server Side Packets** and look a the packets loss showing on the dashboard.
+This completes the TCP analytics lab.
 
 
 .. image:: ../pictures/module5/img_module5_lab2_5.png
