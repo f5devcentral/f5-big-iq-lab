@@ -1,5 +1,5 @@
-Lab 6.2: HTTP Analytics Profile Creation for Legacy
----------------------------------------------------
+Lab 6.2: HTTP Analytics Profile Creation for Legacy Applications
+----------------------------------------------------------------
 
 In this lab, David is going to create an HTTP analytics profile and attach it to
 the VIP for the legacy application you just created. This will enable the BIG-IP to send HTTP analytics to the BIG-IQ and populate
@@ -73,6 +73,8 @@ section markered **Selected**. Then, click on Deploy.
 .. image:: ../pictures/module6/lab-2-7.png
   :scale: 40%
   :align: center
+
+Click **Deploy**, and then click **Deploy** in the Deploy Immediately warning. 
 
 Wait for the deployment to complete.
 
