@@ -40,16 +40,7 @@ both attached to the Virtual IP address. More details on `TCP analytics`_.
 +---------------------------------------------------------------------------------------------------+
 | * Members: ``10.1.20.123``                                                                        |
 +---------------------------------------------------------------------------------------------------+
-| iRule. Keep default                                                                               |
-+---------------------------------------------------------------------------------------------------+
-| `when HTTP_REQUEST {`                                                                             |
-| `  # must check subnet again to avoid starting for all`                                           |
-| `  # connections`                                                                                 |
-| `  if [IP::addr [IP::client_addr]/24 equals 10.1.10.0]{`                                          |
-| `    # make stats queryable by URI`                                                               |
-| `    TCP::analytics key "[HTTP::uri]"`                                                            |
-| `  }`                                                                                             |
-| `}`                                                                                               |
+| iRule. Keep default. (see below table)                                                            |
 +---------------------------------------------------------------------------------------------------+
 | Service_HTTP                                                                                      |
 +---------------------------------------------------------------------------------------------------+
@@ -59,6 +50,19 @@ both attached to the Virtual IP address. More details on `TCP analytics`_.
 +---------------------------------------------------------------------------------------------------+
 | Analytics_TCP_Profile                                                                             |
 +---------------------------------------------------------------------------------------------------+
+
+.. code-block:: yaml
+   :linenos:
+   :emphasize-lines: 4,6
+
+      when HTTP_REQUEST {
+        # must check subnet again to avoid starting for all
+        # connections
+        if [IP::addr [IP::client_addr]/24 equals 10.1.10.0]{
+          # make stats queryable by URI
+          TCP::analytics key "[HTTP::uri]"
+        }
+      }
 
 .. note:: The template used is available on the `BIG-IQ AS3 Templates submitted by the Community`_.
 
