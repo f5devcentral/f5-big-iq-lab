@@ -17,11 +17,20 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 |
 
+
 View AS3 templates section
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
 
 2. Go to Applications > Application Templates and review the top section which is titled **AS3 Templates**.
+
+Notice there are two different types of Templates (AS3 Templates and Service Catalog Templates). 
+AS3 Templates are the recommended templates for deploying new application services. 
+Service Catalog Templates while still supported, are not recommended for new environments.
+
+In this lab you will utilize some of the new templates that have the TCP analytics profiles built in. Note the
+**Import Templates** hyperlink in the top right hand corener of the page. 
+This link will take you to the **f5devcentral/f5-big-iq** repository on Github, where F5 will push new templates.  
 
 A new BIG-IQ v7.0 deployment will NOT include AS3 templates out of the box.
 If you want to start using AS3 templates which are provided by F5, then those AS3 templates can be found 

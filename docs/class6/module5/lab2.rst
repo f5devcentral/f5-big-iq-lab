@@ -7,7 +7,7 @@ Lab 5.2: Resolve conflicts in the silo
   :scale: 40%
   :align: center
 
-2. Select **Target Silo: Default**, then click on **Compare Silos**
+2. Select Target Silo: **Default**, then click on **Compare Silos**.
 
 .. image:: ../pictures/img_module5_lab2-2.png
   :scale: 40%
@@ -33,7 +33,7 @@ The values of the ``Accept XFF`` and ``Insert X-Forwarded-For`` are different. T
 to a Silo failed.
 
 Silos are meant to be temporary so that an Admin can view and then resolve conflicts,. The ultimate goal is to be able to resolve any
-conflicts from BIG-IQ and then remove this device from its Silo, and eventually reimport back into the default Silo. 
+conflicts from BIG-IQ and then remove this device from its Silo, and eventually re-import back into the default Silo. 
 
 Let's resolve the conflict by renaming the offending profile from ``silo-lab-http-profile`` to ``silo-lab-http-profile2``.
 
@@ -85,7 +85,7 @@ Click **Create**.
 10. Navigate to the Configuration tab > Local Traffic > Profile and filter on ``silo-lab-http-profile``
     to confirm the HTTP profile was renamed. The original conflict that prevented import into the default
     Silo has now been fixed, however the SJC BIG-IP device is still in it's own Silo. The Next steps will
-    remove the device form its own Silo and reimport into the default Silo. 
+    remove the device form its own Silo and re-import into the default Silo. 
 
 .. image:: ../pictures/img_module5_lab2-10.png
   :scale: 40%

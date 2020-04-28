@@ -1,6 +1,6 @@
 Module 1: Personas (users with roles)
 =====================================
-In this module, we will learn about the different personas used in the Cloud Edition workflows.
+In this module, we will learn about the different personas used in the BIG-IQ workflows.
 
 We will use these personas through out the lab. We are not trying to demonstrate full RBAC feature, as this is not the focus.
 

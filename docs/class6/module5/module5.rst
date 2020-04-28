@@ -39,7 +39,7 @@ profile named ``silo-lab-http-profile`` (same name) but has different configurat
 items within the profile.  If you want to keep the different configuration items 
 for this device, you can now import it into its own temporary silo to avoid conflict. 
 You may then review the configuration differences from BIG-IQ, and push out naming changes 
-to resolve the conflict. The device can then be reimported into BIG-IQ's default silo because 
+to resolve the conflict. The device can then be re-imported into BIG-IQ's default silo because 
 the naming conflict will have been removed.
 
 

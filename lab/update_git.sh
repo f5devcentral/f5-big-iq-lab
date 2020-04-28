@@ -117,7 +117,7 @@ if [[  $currentuser == "root" ]]; then
     docker_nginx_id=$(docker ps | grep nginx | awk '{print $1}')
     docker exec $docker_nginx_id apt-get update
     docker exec $docker_nginx_id apt-get install iproute2 iputils-ping net-tools -y
-    docker exec $docker_nginx_id tc qdisc change dev eth0 root netem delay 300ms loss 30% corrupt 30%
+    docker exec $docker_nginx_id tc qdisc add dev eth0 root netem delay 300ms loss 30% corrupt 30%
     
     ### ASM Policy Validator
     docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
@@ -219,6 +219,11 @@ if [[  $currentuser == "root" ]]; then
         echo "/usr/games/fortune -s literature" >> $home/.bashrc
         echo "echo" >> $home/.bashrc
     fi
+
+    echo "If postman does not open using the link on the desktop, open a terminal and launch it from there.
+
+    # bash
+    # postman %U" > $home/Desktop/Postman_README
 
     echo -e "\n\nLAMP server initialisation COMPLETED"
 
