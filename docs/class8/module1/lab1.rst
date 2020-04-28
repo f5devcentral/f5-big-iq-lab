@@ -1,5 +1,5 @@
-Lab 1.1: Proactive Bot Defense Configuration and Monitoring
------------------------------------------------------------
+Lab 1.1: Proactive Bot Defense Configuration and Monitoring (new 7.1)
+---------------------------------------------------------------------
 BIG-IP BOT protection protects apps from automated attacks by bots and other malicious tools.
 
 The goal of this lab is to show how to use BIG-IQ to configure the BOT protection to 
@@ -331,7 +331,7 @@ Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 Make sure the deployment is successful.
 
 
-AS3 BOT template creation and application service deployment
+AS3 BOT Template creation and application service deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Navigate to the Applications tab > APPLICATION TEMPLATES.
