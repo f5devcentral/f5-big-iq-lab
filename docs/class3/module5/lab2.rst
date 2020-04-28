@@ -35,7 +35,7 @@ Notice one of the pool member is almost double the duration of the other.
 
 .. note:: We have added 300ms delay to an NGINX instance running in a docker container acting as an application server in this lab.
 
-4. We are now going to remove the healty node and only keep the NGINX node. Navigate to the Configuration tab in the application dashboard
+4. We are now going to remove the healthy node and only keep the NGINX node. Navigate to the Configuration tab in the application dashboard
    and delete the node ``10.1.20.115:8081``. Then click **Save**.
 
 .. image:: ../pictures/module5/img_module5_lab2_4.png

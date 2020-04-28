@@ -10,15 +10,13 @@ In this lab you will utilize some of the new templates that have the TCP analyti
 This link will take you to the **f5devcentral/f5-big-iq** repository on Github, where F5 will push new templates.  
 
 In this lab, we are going to enable AVR TCP stats reporting (“analytics”) for an application service deployed using AS3. 
-Rather than enble TCP stats for the whole application it will only be collected for specific criteria using user-defined 
+Rather than enable TCP stats for the whole application it will only be collected for specific criteria using user-defined 
 keys within an iRule. Both the iRule with the user-defined keys and the TCP Analytics profile are  
 attached to the Virtual IP address. For more details on `TCP analytics`_ within the iRule.
 
 .. _TCP analytics: https://clouddocs.f5.com/api/irules/TCP__analytics.html
 
 1. Navigate to the Applications tab > APPLICATION, click on **Create**.
-
-.. |_| unicode:: 0xA0 
 
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |
