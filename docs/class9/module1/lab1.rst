@@ -156,7 +156,7 @@ At the top right corner, click on **Publish and Close**
 | * Target = ``BOS-vBIGIP01.termmarc.com``                                                          |
 | * Tenant = ``tenant3``                                                                            |
 +---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default                                                                   |
+| Analytics_Profile. Keep default.                                                                  |
 +---------------------------------------------------------------------------------------------------+
 | Pool                                                                                              |
 +---------------------------------------------------------------------------------------------------+
@@ -167,9 +167,9 @@ At the top right corner, click on **Publish and Close**
 | * Virtual addresses: ``10.1.10.119``                                                              |
 | * IAM policy: ``/Common/labSimpleHttpsAccess``                                                    |
 +---------------------------------------------------------------------------------------------------+
-| Certificate. Keep default                                                                         |
+| Certificate. Keep default.                                                                        |
 +---------------------------------------------------------------------------------------------------+
-| TLS_Server. Keep default                                                                          |
+| TLS_Server. Keep default.                                                                         |
 +---------------------------------------------------------------------------------------------------+
 
 The application service called ``tenant3_https_auth_service`` is now created on the BIG-IQ dashboard

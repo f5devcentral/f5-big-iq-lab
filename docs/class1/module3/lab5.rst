@@ -188,7 +188,7 @@ available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ
 | * Target = ``SEA-vBIGIP01.termmarc.com``                                                          |
 | * Tenant = ``tenant2``                                                                            |
 +---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default                                                                   |
+| Analytics_Profile. Keep default.                                                                  |
 +---------------------------------------------------------------------------------------------------+
 | Pool                                                                                              |
 +---------------------------------------------------------------------------------------------------+
@@ -199,9 +199,9 @@ available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ
 | * Virtual addresses: ``10.1.10.122``                                                              |
 | * policyWAF: ``/Common/templates-default-cloned``                                                 |
 +---------------------------------------------------------------------------------------------------+
-| Certificate. Keep default                                                                         |
+| Certificate. Keep default.                                                                        |
 +---------------------------------------------------------------------------------------------------+
-| TLS_Server. Keep default                                                                          |
+| TLS_Server. Keep default.                                                                         |
 +---------------------------------------------------------------------------------------------------+
 
 .. image:: ../pictures/module3/lab-5-14a.png

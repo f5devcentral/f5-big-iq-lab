@@ -16,7 +16,7 @@ attached to the Virtual IP address. For more details on `TCP analytics`_ within 
 
 .. _TCP analytics: https://clouddocs.f5.com/api/irules/TCP__analytics.html
 
-1. Navigate to the Applications tab > APPLICATION, click on **Create**.
+1. Connect as **david** on BIG-IQ. Navigate to the Applications tab > APPLICATION, click on **Create**.
 
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |
@@ -45,9 +45,9 @@ attached to the Virtual IP address. For more details on `TCP analytics`_ within 
 +---------------------------------------------------------------------------------------------------+
 | * Virtual addresses: ``10.1.10.126``                                                              |
 +---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default                                                                   |
+| Analytics_Profile. Keep default.                                                                  |
 +---------------------------------------------------------------------------------------------------+
-| Analytics_TCP_Profile                                                                             |
+| Analytics_TCP_Profile. Keep default.                                                              |
 +---------------------------------------------------------------------------------------------------+
 
 Click **Create**.
