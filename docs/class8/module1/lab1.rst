@@ -21,8 +21,8 @@ Workflow
 ^^^^^^^^
 
 1. **David** creates the Log Destinations, Publisher and Logging Profile either using the UI or the API/AS3
-2. **Larry** creates the BOT Defense Profile
-3. **David** creates the AS3 template and reference BOT profile created by **Larry** in the template.
+2. **Larry** creates the BOT Defense & Logging Profile
+3. **David** creates the AS3 template and reference BOT & Logging profile created by **Larry** in the template.
 4. **David** creates the application service using the template created previously.
 5. **Larry** review the BIG-IQ BOT dahsboards
 
@@ -405,21 +405,14 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 .. note:: You are attaching the bot defense and logging profiles to the VIP using AS3.
 
 The application service called ``tenant3_bot_defense_service`` is now created on the BIG-IQ dashboard
-under the application called ``LAB_Access``.
+under the application called ``LAB_Bot``.
+
 
 .. image:: ../pictures/module1/img_module1_lab1_19.png
   :align: center
   :scale: 40%
 
 |
-
-
-.. image:: ../pictures/module1/img_module1_lab1_20.png
-  :align: center
-  :scale: 40%
-
-|
-
 
 Traffic simulation and Dashboard/Events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -444,7 +437,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 2. Open Chrome and Navigate to the URL http\:\/\/10.1.10.126.
 
-.. image:: ../pictures/module1/img_module1_lab1_21.png
+.. image:: ../pictures/module1/img_module1_lab1_20.png
   :align: center
   :scale: 40%
 
@@ -454,13 +447,13 @@ Notice the HTTP requests are going through when using a real browser but are blo
 
 3. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under Monitoring > DASHBOARDS > Bot Traffic.
 
-.. image:: ../pictures/module1/img_module1_lab1_22.png
+.. image:: ../pictures/module1/img_module1_lab1_21.png
   :align: center
   :scale: 40%
 
 |
 
-.. image:: ../pictures/module1/img_module1_lab1_23.png
+.. image:: ../pictures/module1/img_module1_lab1_22.png
   :align: center
   :scale: 40%
 
@@ -468,7 +461,7 @@ Notice the HTTP requests are going through when using a real browser but are blo
 
 You can also see the details of each request logged nunder Monitoring > EVENTS > Bot > Bot Requests.
 
-.. image:: ../pictures/module1/img_module1_lab1_24.png
+.. image:: ../pictures/module1/img_module1_lab1_23.png
   :align: center
   :scale: 40%
 
