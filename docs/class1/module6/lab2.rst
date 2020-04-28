@@ -61,7 +61,7 @@ Select the 2 VIPS and click on **Deploy**.
 The deployment window opens. Type a name, select ``Deploy immediately`` for the Method.
 
 Under the Target Device(s) section, click on ``Find Relevant Devices``
-and select the **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com**. Then, click on Deploy.
+and select the **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com**.
 
 .. note:: Notice you do not need to select the HTTP analytics profile but only the VIP.
           By having *Supporting Objects* option enabled, the deployment will include all objects that 
