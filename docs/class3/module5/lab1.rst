@@ -42,14 +42,14 @@ both attached to the Virtual IP address. More details on `TCP analytics`_.
 +---------------------------------------------------------------------------------------------------+
 | iRule. Keep default                                                                               |
 +---------------------------------------------------------------------------------------------------+
-| |_| ``when HTTP_REQUEST {``                                                                       |
-| |_| |_| ``# must check subnet again to avoid starting for all``                                   |
-| |_| |_| ``# connections``                                                                         |
-| |_| |_| ``if [IP::addr [IP::client_addr]/24 equals 10.1.10.0]{``                                  |
-| |_| |_| |_| ``# make stats queryable by URI``                                                     |
-| |_| |_| |_| ``TCP::analytics key "[HTTP::uri]"``                                                  |
-| |_| |_| ``}``                                                                                     |
-| |_| ``}``                                                                                         |
+| `when HTTP_REQUEST {`                                                                             |
+| `  # must check subnet again to avoid starting for all`                                           |
+| `  # connections`                                                                                 |
+| `  if [IP::addr [IP::client_addr]/24 equals 10.1.10.0]{`                                          |
+| `    # make stats queryable by URI`                                                               |
+| `    TCP::analytics key "[HTTP::uri]"`                                                            |
+| `  }`                                                                                             |
+| `}`                                                                                               |
 +---------------------------------------------------------------------------------------------------+
 | Service_HTTP                                                                                      |
 +---------------------------------------------------------------------------------------------------+
