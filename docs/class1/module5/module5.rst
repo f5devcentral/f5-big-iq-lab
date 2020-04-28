@@ -82,7 +82,7 @@ Save & Close
 | * Target = ``SJC-vBIGIP01.termmarc.com``                                                           |
 | * Tenant = ``tenant2``                                                                             |
 +----------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default                                                                    |
+| HTTP_Profile. Keep default                                                                         |
 +----------------------------------------------------------------------------------------------------+
 | Pool                                                                                               |
 +----------------------------------------------------------------------------------------------------+
@@ -93,7 +93,7 @@ Save & Close
 +----------------------------------------------------------------------------------------------------+
 | * Virtual addresses: ``10.1.10.120``                                                               |
 +----------------------------------------------------------------------------------------------------+
-| HTTP_Profile. Keep default                                                                         |
+| Analytics_Profile. Keep default                                                                    |
 +----------------------------------------------------------------------------------------------------+
 
 .. image:: ../pictures/module5/lab-1-8.png
@@ -110,7 +110,7 @@ Save & Close
   :scale: 40%
   :align: center
 
-.. note:: If not visible, refresh the page. It can take few seconds for the application service to appears on the dashboard.
+.. note:: If not visible, refresh the page. It can take few seconds for the application service to appear on the dashboard.
 
 10. Finally, remove the application service ``https_app_service_2`` and the application ``LAB_module5``.
 
