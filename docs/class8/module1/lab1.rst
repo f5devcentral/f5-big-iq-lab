@@ -260,7 +260,7 @@ ASM BOT Logging Profile creation
 
 |
 
-2. Pin the new BOT Logging profile to the SEA-vBIGIP01.termmarc.com device.
+2. Pin the new BOT logging profile to the SEA-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add it to SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_11.png

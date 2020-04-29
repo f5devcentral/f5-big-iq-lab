@@ -190,20 +190,19 @@ L7 BaDOS Profile creation
 - Enable Signature Detection
 - Enabling Bad Actor Detection
 
-2. Pin the new DoS Profile to the SJC-vBIGIP01.termmarc.com device.
+2. Pin the new DoS profile to the SJC-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
 
 
-3. Deploy the BOT Defense profile. 
+3. Deploy the DoS profile. 
    Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
 
 Create a Deployment to deploy the Remote Logging Changes on the SJC BIG-IP.
 
 Make sure the deployment is successful.
 
-
-AS3 BOT Template creation and application service deployment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 BaDoS Template creation and application service deployment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Navigate to the Applications tab > APPLICATION TEMPLATES.
 
