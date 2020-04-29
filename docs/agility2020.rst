@@ -1,5 +1,5 @@
-F5 Agility 2020 BIG-IQ Automation 101 --- DRAFT
-===============================================
+F5 Agility 2020 BIG-IQ Automation 101
+=====================================
 
 Welcome
 -------

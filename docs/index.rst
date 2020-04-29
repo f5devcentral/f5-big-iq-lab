@@ -21,6 +21,10 @@ populates the Monitoring tab and Application dashboard.
 
 This lab environment is available for internal F5 users.
 
+Looking for Agility 2020 labs? click `here`_.
+
+.. _here: ./agility2020.html
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents/Lab:

@@ -24,7 +24,6 @@ Official documentation can be found on the `BIG-IQ Knowledge Center`_ and there 
 
 .. _`DevCentral`: https://devcentral.f5.com/s/articles/Configuring-L7-Behavioral-DoS-Protection-with-BIG-IQ-Centralized-Management
 
-
 Workflow
 ^^^^^^^^
 
