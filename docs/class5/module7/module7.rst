@@ -1,8 +1,6 @@
 Module 7: Declarative Onboarding and VE Creation on VMware (new 7.0)
 ====================================================================
 
-**[New 7.0.0]**
-
 BIG-IQ Centralized Management makes it easy for you to create, configure, and manage BIG-IP VE devices in a VMWare environment.
 
 To start managing a BIG-IP VE device in a cloud environment, you'll need to complete the following workflows.

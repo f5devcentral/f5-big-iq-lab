@@ -61,9 +61,9 @@ VMWare Properties:
 |  internal  |
 +------------+
 
-.. note:: **[New 6.0.1]** the Network Interfaces have been removed in 6.0.1, the mapping is done in the order the interfaces are configured on the VM template.
+.. note:: the Network Interfaces have been removed in 6.0.1, the mapping is done in the order the interfaces are configured on the VM template.
 
-.. warning:: **[New 7.0]** make sure the VMware tool are installed on the VM Image. Look at *Create a BIG-IP VE clone template* in `BIG-IQ Knowledge Center`_ for more details.
+.. warning:: make sure the VMware tool are installed on the VM Image. Look at *Create a BIG-IP VE clone template* in `BIG-IQ Knowledge Center`_ for more details.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/managing-apps-in-auto-scaled-vmware-environment/vmware-scaling-groups-overview.html
              

@@ -1,6 +1,5 @@
 Lab 1.2: Configuring L7 Behavioral DoS Protection (new 7.1)
 -----------------------------------------------------------
-
 A denial-of-service attack (DoS attack) or distributed denial-of-service attack (DDoS attack) makes 
 a victim's resource unavailable to its intended users, or obstructs the communication media between 
 the intended users and the victimized site so that they can no longer communicate adequately. 
@@ -44,8 +43,7 @@ Prerequisites
 2. Once LTM module import is completed, Discover & Import **Shared Security (SSM)** and **Web Application Security (ASM)** modules.
    Choose *Set all BIG-IP* when conflict resolution open.
 
-3. Check if the **DoS Protection** and **Web Application Security** services are Active
-   under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
+3. Check if the **DoS Protection** service is Active under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 
 DoS Log Destinations and Publisher creation using UI

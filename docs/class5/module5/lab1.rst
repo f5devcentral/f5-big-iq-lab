@@ -69,7 +69,7 @@ Once the keys have been activated, they will show in the Licenses list.
 
 |lab-5-7|
 
-.. note:: **[New 6.1.0]** If you want to associate this new pool with an optional identifier, type it in the Description field.
+.. note:: If you want to associate this new pool with an optional identifier, type it in the Description field.
 
 |lab-5-8|
 

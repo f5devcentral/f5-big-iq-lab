@@ -1,8 +1,6 @@
 Module 8: Declarative Onboarding and VE Creation on AWS (new 7.0)
 =================================================================
 
-**[New 7.0.0]**
-
 BIG-IQ Centralized Management makes it easy for you to create, configure, and manage BIG-IP VE devices in an AWS environment.
 
 .. Note:: All deployments are Single-NIC for AWS. If you need to create additional NICs, you will need to do it

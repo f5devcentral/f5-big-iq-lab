@@ -1,8 +1,6 @@
 Module 5: LTM conflict resolution: silo in BIG-IQ (new 7.1)
 ===========================================================
 
-**[New 7.1.0]**
-
 BIG-IP configuration naming conventions are not consistent within many customer 
 environments. It is common to find similar names reused across different BIG-IP's 
 for shared configuration objects such as Profiles, Monitors etc….

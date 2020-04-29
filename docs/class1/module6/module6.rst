@@ -1,8 +1,6 @@
 Module 6: Visibility for Legacy applications in the Applications tab (new 7.1)
 ==============================================================================
 
-**[New 7.1.0]**
-
 In BIG-IQ v6.0 F5 introduced the Application dashboards which provided customers deep insights into their
 application health and performance. The dashboards have been well received by F5 customers as they provide
 an easy way to drill into a specific application to see how it's performing or to troubleshoot an issue 
@@ -24,6 +22,10 @@ except for enable, disable, force-offline operations for Pools and Virtual Serve
 For more information about requirements and recommendations for creating a BIG-IQ Application Service with existing device configurations, please consult `K02142132`_.
 
 .. _K02142132: https://support.f5.com/csp/article/K02142132
+
+.. warning:: `BIG-IQ Application Service Sizing Guidelines`_
+
+.. _BIG-IQ Application Service Sizing Guidelines: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-sizing-guidelines/big-iq-sizing-guidelines.html#big-iq-sizing-guidelines
 
 .. toctree::
    :maxdepth: 1

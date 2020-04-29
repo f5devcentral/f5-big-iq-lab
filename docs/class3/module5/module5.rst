@@ -1,8 +1,6 @@
 Module 5: Analytics for TCP based Applications (new 7.1)
 ========================================================
 
-**[New 7.1.0]**
-
 Prior releases of BIG-IQ supported detailed HTTP analytics which help admin's understand the health and 
 performance of their HTTP based applications. Customers may have other types of applications within their
 environment that utilize other protocols beyond HTTP or they may want additional TCP analytics for HTTP applications. A common request was to add analytics support for 

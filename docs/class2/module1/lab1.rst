@@ -77,7 +77,7 @@ Here, for the *Provider Type*, select *VMWare*. It will automatically select
 all the required information related to a VMWare environment (in regards to Using
 ``Service Scaling Group``)
 
-.. note:: **[New 6.0.1]** The Provider selection has been moved to Template Properties section in the device template.
+.. note:: The Provider selection has been moved to Template Properties section in the device template.
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
@@ -157,7 +157,7 @@ Click on the *DNS & NTP* tab and setup the following:
 
 |
 
-.. note:: **[New 6.0.1]** IP Pool can be used for the management IP. See BIG-IQ documentation for more information (the VM template need some pre-work).
+.. note:: IP Pool can be used for the management IP. See BIG-IQ documentation for more information (the VM template need some pre-work).
 
 Click on the *Management IP* tab and setup the following:
 

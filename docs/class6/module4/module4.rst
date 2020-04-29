@@ -1,8 +1,6 @@
 Module 4: Version Specific Objects
 ==================================
 
-**[New 6.1.0]** 
-
 Conflict resolution when discovering and importing services for BIG-IP devices
 
 When adding multiple BIG-IP devices and discovering and importing their services at the same time,

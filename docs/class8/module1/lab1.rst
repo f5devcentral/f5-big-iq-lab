@@ -25,7 +25,6 @@ Workflow
 4. **David** creates the application service using the template created previously
 5. **Larry** looks at the BIG-IQ Bot dahsboards
 
-
 Prerequisites
 ^^^^^^^^^^^^^
 

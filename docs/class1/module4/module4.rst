@@ -1,8 +1,6 @@
 Module 4: Multi-Tier/Multi-Cloud Application Visibility (new 7.0)
 =================================================================
 
-**[New 7.0.0]**
-
 BIG-IQ applications are now collections of application services. By combining these individual services into a single application, 
 you can visualize and manage the aggregation of these services to get a full application view across multiple cloud environments, 
 tiers, or geographies. You can also drill down into the individual services that make up the application to get more specific views 
