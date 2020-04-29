@@ -12,14 +12,6 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 |
 
-You can also use Postman on your laptop by using the following URL (Go to **BIGIQ CM (Config Mgt)** > **Access Methods** > **API**):
-
-.. image:: ../../pictures/udf_bigiq_api.png
-    :align: center
-    :scale: 60%
-
-|
-
 Open Chrome and Postman.
 
 For Postman, click right and click on execute (wait ~2 minutes).

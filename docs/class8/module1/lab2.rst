@@ -77,13 +77,6 @@ system and select *noVNC* or *xRDP*.
 
 |
 
-You can also directly using Postman on your laptop and use the following URL (Go to **BIGIQ CM (Config Mgt)** > **Access Methods** > **API**):
-
-.. image:: ../../pictures/udf_bigiq_api.png
-    :align: center
-    :scale: 40%
-
-|
 
 Open Chrome and Postman.
 
@@ -170,18 +163,6 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 
 3. Navigate to Device tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
 
-.. image:: ../pictures/module1/img_module1_lab1_7.png
-  :align: center
-  :scale: 40%
-
-|
-
-.. image:: ../pictures/module1/img_module1_lab1_8.png
-  :align: center
-  :scale: 40%
-
-|
-
 
 DoS Logging Profile creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -230,17 +211,15 @@ Select the ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` AS3 Template and
 
 Rename it ``LAB-HTTP-BaDOS``. 
 
-.. image:: ../pictures/module1/img_module1_lab1_16.png
-  :align: center
-  :scale: 40%
-
-|
-
 Edit the new cloned template and select the Service_HTTP class.
 
 - Look for the attribute called ``profileDOS`` and set it to ``/Common/lab-bados-profile``.
 
 - Look for the attribute called ``Security Log Profiles`` and set it to ``/Common/lab-dos-logging-profile``.
+
+Then, select the HTTP_Profile class.
+
+- Look for the attributes called ``xForwardedFor`` and ``trustXFF`` and set it to ``true``.
 
 At the top right corner, click on **Publish and Close**
 
@@ -285,28 +264,11 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 The application service called ``tenant5_BaDOS_service`` is now created on the BIG-IQ dashboard
 under the application called ``LAB_BaDOS``.
 
-
-Both legitimate and attack traffic will have XFF header inserted by the BIG-IP to simulate geografically 
-distributed clients by XFF_mixed_Attacker_Good iRule:
-
-.. code-block:: yaml
-
-        when HTTP_REQUEST {
-            # Good traffic
-            if { [IP::addr [IP::client_addr] equals 10.1.10.100] } {
-                set xff [expr int(rand()*250)].[expr int(rand()*250)].[expr int(rand()*250)].[expr int(rand()*250)]
-                HTTP::header insert X-Forwarded-For $xff
-            }
-            # Attack traffic (AB)
-            if { [IP::addr [IP::client_addr] equals 10.1.10.200] } {
-                set xff 201.173.99.[expr int(rand()*250)]
-                HTTP::header insert X-Forwarded-For $xff
-            }
-        }  
-
-
 Traffic simulation and Dashboard/Events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: Both legitimate and attack traffic will have XFF header inserted in the request to simulate geografically 
+          distributed clients.
 
 1. Generate baseline legitimate traffic. On Lamp server, generate HTTP traffic from a browser and CLI.
 
@@ -340,3 +302,199 @@ Choose ``1) Attack start - similarity``.
 
 Choose ``2) Attack start - score``.
 
+
+Annex | Entire lab configuration with 1 single API call: AS3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+To do this, in your lab environment, click on the *Access* button of the *Ubuntu Lamp Server* 
+system and select *noVNC* or *xRDP*.
+
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
+
+.. image:: ../../pictures/udf_ubuntu.png
+    :align: left
+    :scale: 40%
+
+|
+
+Open Chrome and Postman.
+
+For Postman, click right and click on execute (wait ~2 minutes).
+
+.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
+
+.. image:: ../../pictures/postman.png
+    :align: center
+    :scale: 40%
+
+|
+
+Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
+
+Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
+Press Send. This, will save the token value as _f5_token. If your token expires, 
+obtain a new token by re-sending the ``BIG-IQ Token``
+
+.. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+
+2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
+   the service on the BIG-IP through BIG-IQ:
+
+  POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+
+.. code-block:: yaml
+   :linenos:
+   :emphasize-lines: 9,20,27,34
+
+        {
+            "class": "AS3",
+            "action": "deploy",
+            "persist": true,
+            "declaration": {
+                "class": "ADC",
+                "schemaVersion": "3.12.0",
+                "target": {
+                    "address": "10.1.1.11"
+                },
+                "tenant5": {
+                    "class": "Tenant",
+                    "BaDOS_service": {
+                        "class": "Application",
+                        "template": "http",
+                        "serviceMain": {
+                            "class": "Service_HTTP",
+                            "virtualPort": 80,
+                            "virtualAddresses": [
+                                "10.1.10.138"
+                            ],
+                            "profileAnalytics": {
+                                "use": "Analytics_Profile"
+                            },
+                            "pool": "Pool",
+                            "profileDOS": {
+                                "use": "lab-bados-profile"
+                            },
+                            "profileHTTP": {
+                                "use": "HTTP_Profile"
+                            },
+                            "securityLogProfiles": [
+                                {
+                                    "use": "lab-dos-logging-profile"
+                                }
+                            ]
+                        },
+                        "HTTP_Profile": {
+                            "class": "HTTP_Profile",
+                            "xForwardedFor": true,
+                            "trustXFF": true
+                        },
+                        "Analytics_Profile": {
+                            "class": "Analytics_Profile",
+                            "collectClientSideStatistics": true,
+                            "collectOsAndBrowser": false,
+                            "collectMethod": false,
+                            "collectResponseCode": true,
+                            "collectIp": true,
+                            "collectGeo": true,
+                            "collectUrl": true
+                        },
+                        "Pool": {
+                            "members": [
+                                {
+                                    "serverAddresses": [
+                                        "10.1.20.123"
+                                    ],
+                                    "servicePort": 80,
+                                    "monitors": [
+                                        "http"
+                                    ],
+                                    "adminState": "enable",
+                                    "shareNodes": true
+                                }
+                            ],
+                            "class": "Pool",
+                            "monitors": [
+                                "http"
+                            ]
+                        },
+                        "dos-remote-dcd-pool": {
+                            "class": "Pool",
+                            "members": [
+                                {
+                                    "servicePort": 8520,
+                                    "serverAddresses": [
+                                        "10.1.10.6"
+                                    ],
+                                    "shareNodes": true
+                                }
+                            ]
+                        },
+                        "dos-remote-logging-destination-remote-hslog-8520": {
+                            "class": "Log_Destination",
+                            "type": "remote-high-speed-log",
+                            "pool": {
+                                "use": "dos-remote-dcd-pool"
+                            }
+                        },
+                        "dos-remote-logging-destination-splunk-8520": {
+                            "class": "Log_Destination",
+                            "type": "splunk",
+                            "forwardTo": {
+                                "use": "dos-remote-logging-destination-remote-hslog-8520"
+                            }
+                        },
+                        "dos-remote-logging-publisher-8520": {
+                            "class": "Log_Publisher",
+                            "destinations": [
+                                {
+                                    "use": "dos-remote-logging-destination-splunk-8520"
+                                }
+                            ]
+                        },
+                        "lab-dos-logging-profile": {
+                            "class": "Security_Log_Profile",
+                            "dosApplication": {
+                                "remotePublisher": {
+                                    "use": "dos-remote-logging-publisher-8520"
+                                }
+                            }
+                        },
+                        "lab-bados-profile": {
+                            "class": "DOS_Profile",
+                            "application": {
+                                "stressBasedDetection": {
+                                    "badActor": {
+                                        "detectionEnabled": true,
+                                        "mitigationMode": "standard",
+                                        "signatureDetectionEnabled": true
+                                    },
+                                    "operationMode": "blocking",
+                                    "thresholdsMode": "automatic",
+                                    "sourceIP": {
+                                        "rateLimitingEnabled": true,
+                                        "rateLimitingMode": "rate-limit"
+                                    },
+                                    "url": {
+                                        "rateLimitingEnabled": true
+                                    }
+                                },
+                                "rateBasedDetection": {
+                                    "operationMode": "blocking",
+                                    "thresholdsMode": "manual",
+                                    "sourceIP": {
+                                        "rateLimitingEnabled": true,
+                                        "rateLimitingMode": "rate-limit"
+                                    },
+                                    "url": {
+                                        "rateLimitingEnabled": true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+3. Navigate to Device tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.

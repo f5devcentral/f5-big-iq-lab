@@ -4,10 +4,8 @@
 echo "Traffic Baselining"
 
 VS_ADDR="10.1.10.138"
-SRC_ADDR1="10.1.10.100"
 
-# Add source IP address
-sudo ip addr add $SRC_ADDR1/24 dev ens4:1
+home="/home/f5/scripts/behavioral-DoS"
 
 BASELINE='Please enter your type of baslining: '
 options=("increasing" "alternate" "Quit")
@@ -20,12 +18,14 @@ do
                                 echo "Hourly increasing traffic: $VS_ADDR"   
                                 echo
 				for i in $(eval echo "{0..`date +%M`}")
-                                        do
-                                                curl -0 --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-                                                curl -0 --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-                                                curl -0 --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-                                                #curl -0 -s -o /dev/null -A "`sort -R ./source/useragents_with_bots.txt | head -1`" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://$VS_ADDR`sort -R ./source/urls.txt | head -1`
-                                        done
+                                do
+                                        #Randome IP
+                                        rip=`shuf -i 1-254 -n 1`;
+                                        source_ip_address="10.1.10.$rip"
+                                        curl -0 -s -o /dev/null --header "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} ip: $source_ip_address\n" http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                        curl -0 -s -o /dev/null --header "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                        curl -0 -s -o /dev/null --header "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                done
                                 #sleep 0.1
                         done    
                 ;;
@@ -34,23 +34,26 @@ do
                                 clear
                                 echo "Hourly alternate traffic: $VS_ADDR"
                                 echo
-                                #if (( {`date +%k` % 2} )); then
                                 if (( `date +%k` % 2 )); then
                                         for i in {1..100};
-                                                do
-                                                        curl -0 --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`" -w "High:\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-                                                        curl -0 --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-                                                        curl -0 --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-#                                                	curl -0 -s -o /dev/null -A "`sort -R ./source/useragents_with_bots.txt | head -1`" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://$VS_ADDR`sort -R ./source/urls.txt | head -1`
-                                                done
+                                        do
+                                                #Randome IP
+                                                rip=`shuf -i 1-254 -n 1`;
+                                                source_ip_address="10.1.10.$rip"
+                                                curl -0 -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`" -w "High:\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} ip: $source_ip_address\n" http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                                curl -0 -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                                curl -0 -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                        done
                                 else
                                         for i in {1..50};
-                                                do
-                                                        curl --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`" -w "High:\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-                                                        curl --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-                                                        curl --interface $SRC_ADDR1 -s -o /dev/null -A "`shuf -n 1 ./source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 ./source/urls.txt`
-                                                #curl -0 -s -o /dev/null -A "`sort -R ./source/useragents_with_bots.txt | head -1`" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total}\n" http://$VS_ADDR`sort -R ./source/urls.txt | head -1`
-                                                done
+                                        do
+                                                #Randome IP
+                                                rip=`shuf -i 1-254 -n 1`;
+                                                source_ip_address="10.1.10.$rip"
+                                                curl -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`" -w "High:\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} ip: $source_ip_address\n" http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                                curl -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                                curl -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
+                                        done
                                 fi
                                 #sleep 0.1
                                 clear

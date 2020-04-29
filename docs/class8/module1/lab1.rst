@@ -139,14 +139,6 @@ system and select *noVNC* or *xRDP*.
 
 |
 
-You can also directly using Postman on your laptop and use the following URL (Go to **BIGIQ CM (Config Mgt)** > **Access Methods** > **API**):
-
-.. image:: ../../pictures/udf_bigiq_api.png
-    :align: center
-    :scale: 40%
-
-|
-
 Open Chrome and Postman.
 
 For Postman, click right and click on execute (wait ~2 minutes).
