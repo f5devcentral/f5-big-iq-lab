@@ -54,7 +54,7 @@ if [ -f $home/ssg-apps ]; then
 fi
 
 # for hackazon app on port 80 in a docker
-sitepages="index.php f5_browser_issue.php f5_capacity_issue.php faq contact wishlist user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=72 product/view?id=81 product/view?id=101 product/view?id=130 product/view?id=141 product/view?id=169 product/view?id=191"
+sitepages="index.php f5_browser_issue.php f5_capacity_issue.php faq contact wishlist /images/Hackazon.png user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=72 product/view?id=130"
 
 # get length of the array
 arraylength=${#sitefqdn[@]}
@@ -131,17 +131,7 @@ do
                                 sleep $r
                         done
                 done
-
-                #echo -e "\n# site $i ab traffic gen"
-                #if [  $port == 443 ]; then
-                #       count=`shuf -i 11-30 -n 1`;
-                #       conc=`shuf -i 1-10 -n 1`;
-                #       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc https://${sitefqdn[$i]}/$j
-                #else
-                #       count=`shuf -i 11-30 -n 1`;
-                #       conc=`shuf -i 1-10 -n 1`;
-                #       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc http://${sitefqdn[$i]}:$port/$j
-                #fi
+                
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
         fi

@@ -6,4 +6,6 @@ Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 
 .. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
 
-/home/f5/scripts/asm-brute-force/asm_brute_force_attach.sh
+Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
+
+``/home/f5/scripts/asm-brute-force/asm_brute_force_attack.sh``

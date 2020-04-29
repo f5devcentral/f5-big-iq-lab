@@ -20,10 +20,10 @@ and the `DevCentral`_ article.
 Workflow
 ^^^^^^^^
 
-1. **David** creates the Log Destinations, Publisher and Logging Profile either using the UI or the API/AS3
+1. **David** creates the Log Destinations and Publisher either using the UI or the API/AS3
 2. **Larry** creates the BOT Defense & Logging Profile
-3. **David** creates the AS3 template and reference BOT & Logging profile created by **Larry** in the template.
-4. **David** creates the application service using the template created previously.
+3. **David** creates the AS3 template and reference BOT & Logging profile created by **Larry**
+4. **David** creates the application service using the template created previously
 5. **Larry** review the BIG-IQ BOT dashboards
 
 Prerequisites
@@ -52,7 +52,7 @@ under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 ASM BOT Log Destinations and Publisher creation using UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. warning:: If you want to use API to create the log destinations & publisher, skip this part and go to the next one.
+.. warning:: If you want to use API to create those objects, skip this part and go to the next one.
 
 1. Create the DCD Pool and Log Destination. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
@@ -123,7 +123,6 @@ Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 |
 
 Make sure the deployment is successful.
-
 
 ASM BOT Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -199,7 +198,8 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                                   "servicePort": 8514,
                                   "serverAddresses": [
                                       "10.1.10.6"
-                                  ]
+                                  ],
+                                  "shareNodes": true
                               }
                           ]
                       },
@@ -269,7 +269,7 @@ ASM BOT Logging Profile creation
 |
 
 2. Pin the new BOT Logging profile to the SEA-vBIGIP01.termmarc.com device.
-   Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
+   Navigate to Pinning Policies and add it to SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_11.png
   :align: center
@@ -391,7 +391,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 +---------------------------------------------------------------------------------------------------+
 | * Members: ``10.1.20.123``                                                                        |
 +---------------------------------------------------------------------------------------------------+
-| HTTP_Profile. Keep default                                                                        |
+| HTTP_Profile. Keep default.                                                                       |
 +---------------------------------------------------------------------------------------------------+
 | Service_HTTP                                                                                      |
 +---------------------------------------------------------------------------------------------------+
@@ -399,7 +399,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 | * profileBotDefense: ``/Common/lab-bot-defense-profile``                                          |
 | * securityLogProfiles: ``/Common/lab-bot-logging-profile``                                        |
 +---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default                                                                   |
+| Analytics_Profile. Keep default.                                                                  |
 +---------------------------------------------------------------------------------------------------+
 
 .. note:: You are attaching the bot defense and logging profiles to the VIP using AS3.
@@ -445,7 +445,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 Notice the HTTP requests are going through when using a real browser but are blocked when using curl.
 
-3. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under Monitoring > DASHBOARDS > Bot Traffic.
+3. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > Bot Traffic**.
 
 .. image:: ../pictures/module1/img_module1_lab1_21.png
   :align: center
@@ -459,7 +459,7 @@ Notice the HTTP requests are going through when using a real browser but are blo
 
 |
 
-You can also see the details of each request logged under Monitoring > EVENTS > Bot > Bot Requests.
+You can also see the details of each request logged under **Monitoring > EVENTS > Bot > Bot Requests**.
 
 .. image:: ../pictures/module1/img_module1_lab1_23.png
   :align: center

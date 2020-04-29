@@ -80,6 +80,25 @@ browser[17]="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7
 browser[18]="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
 browser[19]="Mozilla/5.0 (BlackBerry; U; BlackBerry 9320; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.714 Mobile Safari/534.11+"
 browser[20]="Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0; NOKIA; Lumia 520) like iPhone OS 7_0_3 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537"
+# BOTs
+browser[21]="Evil-sVen"
+browser[22]="CatchBot"
+browser[23]="2search"
+browser[24]="Adidx"
+browser[25]="BlueCoat"
+browser[26]="Gigabot"
+browser[27]="Elasticsearch"
+browser[28]="Evri"
+browser[29]="Jakespider"
+browser[30]="NerdyBot"
+browser[31]="AboutUsBot"
+browser[32]="Alexa"
+browser[33]="Amiga-AWeb"
+browser[34]="AppScan"
+browser[35]="CasperJS"
+browser[36]="CopyGuard"
+browser[37]="PhantomJS"
+browser[38]="SlimerJS"
 
 arraylengthbrowser=${#browser[@]}
 
@@ -141,6 +160,17 @@ do
                 nmap --system-dns -p $port -script http-waf-detect -T4 -Pn ${sitefqdn[$i]} &
                 nmap --system-dns -p $port -script http-enum -T5 -Pn ${sitefqdn[$i]} &
                 nmap --system-dns -p $port -script http-generator -T4 -Pn ${sitefqdn[$i]} &
+
+                echo -e "\n# site $i ab traffic gen"
+                if [  $port == 443 ]; then
+                       count=`shuf -i 11-30 -n 1`;
+                       conc=`shuf -i 1-10 -n 1`;
+                       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc https://${sitefqdn[$i]}/$j
+                else
+                       count=`shuf -i 11-30 -n 1`;
+                       conc=`shuf -i 1-10 -n 1`;
+                       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc http://${sitefqdn[$i]}:$port/$j
+                fi
 
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"

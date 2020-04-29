@@ -30,6 +30,7 @@
                 "collectOsAndBrowser": true,
                 "collectMethod": true,
                 "collectResponseCode": true,
+                "collectIp": true,
                 "capturedTrafficInternalLogging": true,
                 "captureFilter": {
                     "requestCapturedParts": "all",
