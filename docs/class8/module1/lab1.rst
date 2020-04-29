@@ -1,17 +1,16 @@
 Lab 1.1: Proactive Bot Defense Configuration and Monitoring (new 7.1)
 ---------------------------------------------------------------------
-BIG-IP BOT protection protects apps from automated attacks by bots and other malicious tools.
+BIG-IP Bot protection protects apps from automated attacks by bots and other malicious tools.
 
-The goal of this lab is to show how to use BIG-IQ to configure the BOT protection to 
-an HTTP Application Service and how to use BIG-IQ BOT Dashboards to monitors the BOT traffic.
+The goal of this lab is to show how to use BIG-IQ to configure the Bot protection to 
+an HTTP Application Service and how to use BIG-IQ Bot Dashboards to monitors the Bot traffic.
 
 .. note:: This lab requires BIG-IP 14.1 and BIG-IQ 7.0 minimum. 
           AVR also needs to be provisioned on the device. See more details `K12121934`_.
 
 .. _`K12121934`: https://support.f5.com/csp/article/K12121934
 
-Official documentation about BOT Monitoring on BIG-IQ can be found on the `BIG-IQ Knowledge Center`_
-and the `DevCentral`_ article.
+Official documentation can be found on the `BIG-IQ Knowledge Center`_ and there is a `DevCentral`_ article on this subject.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/mitigating-managing-bot-defense-using-big-iq/monitoring-bot-defense-activity.html
 
@@ -20,11 +19,12 @@ and the `DevCentral`_ article.
 Workflow
 ^^^^^^^^
 
-1. **David** creates the Log Destinations and Publisher either using the UI or the API/AS3
-2. **Larry** creates the BOT Defense & Logging Profile
-3. **David** creates the AS3 template and reference BOT & Logging profile created by **Larry**
+1. **David** creates the Bot Log Destinations and Publisher either using the UI or the API/AS3
+2. **Larry** creates the Bot Defense & Logging Profile
+3. **David** creates the AS3 template and reference Bot & Logging profile created by **Larry**
 4. **David** creates the application service using the template created previously
-5. **Larry** review the BIG-IQ BOT dashboards
+5. **Larry** looks at the BIG-IQ Bot dahsboards
+
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -49,7 +49,7 @@ under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 |
 
-ASM BOT Log Destinations and Publisher creation using UI
+ASM Bot Log Destinations and Publisher creation using UI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: If you want to use API to create those objects, skip this part and go to the next one.
@@ -124,7 +124,7 @@ Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 Make sure the deployment is successful.
 
-ASM BOT Log Destinations and Publisher creation using API/AS3
+ASM Bot Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
@@ -236,12 +236,12 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 
 |
 
-ASM BOT Logging Profile creation
+ASM Bot Logging Profile creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
 
-1. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+1. Create a new Bot Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
 
 - Name: ``lab-bot-logging-profile``
 - Properties: select ``Bot Defense``
@@ -260,7 +260,7 @@ ASM BOT Logging Profile creation
 
 |
 
-2. Pin the new BOT logging profile to the SEA-vBIGIP01.termmarc.com device.
+2. Pin the new Bot logging profile to the SEA-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add it to SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_11.png
@@ -269,7 +269,7 @@ ASM BOT Logging Profile creation
 
 |
 
-ASM BOT Defense Profile creation
+ASM Bot Defense Profile creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
@@ -300,7 +300,7 @@ ASM BOT Defense Profile creation
 
 .. _`K42323285`: https://support.f5.com/csp/article/K42323285
 
-2. Pin the new BOT Defense Profile to the SEA-vBIGIP01.termmarc.com device.
+2. Pin the new Bot Defense Profile to the SEA-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_14.png
@@ -309,7 +309,7 @@ ASM BOT Defense Profile creation
 
 |
 
-3. Deploy the BOT Defense profile along with the BOT Logging Profile. 
+3. Deploy the Bot Defense profile along with the Bot Logging Profile. 
    Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
 
 Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
@@ -323,7 +323,7 @@ Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 Make sure the deployment is successful.
 
 
-AS3 BOT Template creation and application service deployment
+AS3 Bot Template creation and application service deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Navigate to the Applications tab > APPLICATION TEMPLATES.
@@ -367,7 +367,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 +---------------------------------------------------------------------------------------------------+
 | * Grouping = New Application                                                                      |
 | * Application Name = ``LAB_Bot``                                                                  |
-| * Description = ``BOT defense protection``                                                        |
+| * Description = ``Bot defense protection``                                                        |
 +---------------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                           |
 +---------------------------------------------------------------------------------------------------+
@@ -437,7 +437,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 Notice the HTTP requests are going through when using a real browser but are blocked when using curl.
 
-3. Now, have a look at the BIG-IQ BOT Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > Bot Traffic**.
+3. Now, have a look at the BIG-IQ Bot Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > Bot Traffic**.
 
 .. image:: ../pictures/module1/img_module1_lab1_21.png
   :align: center
@@ -460,7 +460,7 @@ You can also see the details of each request logged under **Monitoring > EVENTS 
 |
 
 
-Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
+Annex | ASM Bot Defense & Logging Profiles creation from BIG-IP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: This part is only for BIG-IQ <= 7.0. It can be done from BIG-IQ UI starting BIG-IQ 7.1.
@@ -493,7 +493,7 @@ Annex | ASM BOT Defense & Logging Profiles creation from BIG-IP
 
 |
 
-3. Create a new BOT Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+3. Create a new Bot Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
 
 .. image:: ../pictures/module1/img_module1_lab1_annex4.png
   :align: center

@@ -1,14 +1,38 @@
 Lab 1.2: Configuring L7 Behavioral DoS Protection (new 7.1)
 -----------------------------------------------------------
 
+A denial-of-service attack (DoS attack) or distributed denial-of-service attack (DDoS attack) makes 
+a victim's resource unavailable to its intended users, or obstructs the communication media between 
+the intended users and the victimized site so that they can no longer communicate adequately. 
+
+Perpetrators of DoS attacks typically target sites or services, such as banks, credit card payment gateways,
+and e-commerce web sites.
+
+L7 Behavioral DoS (BaDOS) provides automatic protection against DDoS attacks by analyzing traffic behavior 
+using machine learning and data analysis. Behavioral DoS examines traffic flowing between clients and 
+application servers in data centers, automatically establishes the baseline traffic/flow, then 
+dynamically builds signatures and implements various protections as needed based on the behavior 
+of the application and the attackers, reducing false positives and providing quicker time to mitigation. 
+
+BIG-IQ Centralized Management allows the centralized management of BaDOS profiles, providing enhanced reporting and event correlation. 
+
+This lab will guide you through the configuration of BaDOS profiles using BIG-IQ CM User Interface.
+
+Official documentation can be found on the `BIG-IQ Knowledge Center`_ and there is a `DevCentral`_ article on this subject.
+
+.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-security/managing-dos-profiles-in-shared-security.html
+
+.. _`DevCentral`: https://devcentral.f5.com/s/articles/Configuring-L7-Behavioral-DoS-Protection-with-BIG-IQ-Centralized-Management
+
+
 Workflow
 ^^^^^^^^
 
-1. **David** creates the Log Destinations and Publisher either using the UI or the API/AS3
-2. **Larry** creates the L7 DoS & Logging Profiles
+1. **David** creates the DoS Log Destinations and Publisher either using the UI or the API/AS3
+2. **Larry** creates the L7 Behavioral DoS & Logging Profiles
 3. **David** creates the AS3 template and reference L7 Behavioral DoS & Logging profile created by **Larry**
 4. **David** creates the application service using the template created previously
-5. **Larry** review the BIG-IQ L7 DoS dashboards
+5. **Larry** looks at the BIG-IQ dahsboards and monitor the DoS attacks
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -16,10 +40,12 @@ Prerequisites
 1. Navigate to the Device tab and complete Discovery & Import on **SJC-vBIGIP01.termmarc.com**. 
    Choose *Create Version* for default LTM profiles and *Set all BIG-IP* for other objects.
 
+..note:: It is recommended to use latest version of BIG-IP. In this lab SJC BIG-IP has 15.1 and will be used.
+
 2. Once LTM module import is completed, Discover & Import **Shared Security (SSM)** and **Web Application Security (ASM)** modules.
    Choose *Set all BIG-IP* when conflict resolution open.
 
-3. Check if the **DoS Protection** service is Active  
+3. Check if the **DoS Protection** and **Web Application Security** services are Active
    under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 
@@ -177,8 +203,8 @@ DoS Logging Profile creation
    Navigate to Pinning Policies and add it to SJC-vBIGIP01.termmarc.com.
 
 
-L7 BaDOS Profile creation
-^^^^^^^^^^^^^^^^^^^^^^^^^
+L7 Behavioral DoS Profile creation with Signature Detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles, click Create, configure Behavioral & Stress-based Detection
    and fill in the settings:
@@ -186,13 +212,17 @@ L7 BaDOS Profile creation
 - Name: ``lab-bados-profile``
 - Operation Mode: ``Blocking``
 - Thresholds Mode: ``Automatic``
+- Signature Detection: ``Enable``
 - Mitigation: ``Standard protection``
-- Enable Signature Detection
-- Enabling Bad Actor Detection
+- By Source IP Request Blocking: ``rate-limit``
+- By URL Request Blocking: ``Enable``
+
+.. note:: More details in `BIG-IP ASM - Preventing DoS Attacks on Applications v15.1`_ ,          
+
+.. _`BIG-IP ASM - Preventing DoS Attacks on Applications v15.1`: https://techdocs.f5.com/en-us/bigip-15-0-0/big-ip-asm-implementations/preventing-dos-attacks-on-applications.html
 
 2. Pin the new DoS profile to the SJC-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
-
 
 3. Deploy the DoS profile. 
    Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
@@ -263,8 +293,8 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 The application service called ``tenant5_BaDOS_service`` is now created on the BIG-IQ dashboard
 under the application called ``LAB_BaDOS``.
 
-Traffic simulation and Dashboard/Events
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Monitoring DoS attacks
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Both legitimate and attack traffic will have XFF header inserted in the request to simulate geografically 
           distributed clients.
@@ -273,34 +303,62 @@ Traffic simulation and Dashboard/Events
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
-``/home/f5student/scripts/behavioral-DoS/baseline_menu.sh``
+``/home/f5student/scripts/behavioral-DoS/baseline_baddos.sh``
 
 Choose ``1) increasing``.
 
 2. Open a different SSH session on the lamp server and run:
 
-``/home/f5student/scripts/behavioral-DoS/baseline_menu.sh``
+``/home/f5student/scripts/behavioral-DoS/baseline_baddos.sh``
 
 Choose ``2) alternate``.
 
 3. Wait for the machine learning algorithm to learn traffic behavior for at least 15min.
 
+``admd -s vs./tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile.info.learning``
+
 4. Start the attack traffic, open a different SSH session on the lamp server and run:
 
-``/home/f5student/scripts/behavioral-DoS/AB_DOS.sh``
+``/home/f5student/scripts/behavioral-DoS/attack_baddos.sh``
 
-Choose ``1) Attack start - similarity``.
+5. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
 
-5. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > Protection Summary**.
+Open the **Monitoring > EVENTS > DoS > Application Events** and look at the event logs.
 
-6. Go look also at the **HTTP Analysis** and **Attack History**.
+The behavior observed in this example is that at the beginning of a DoS attack, BaDoS first protects by blocking all DoS traffic, 
+incrementing "DoS Blocked" counter.
 
-7. Stop previous attack and start a different one.
+Once the BaDoS dynamic signatures have been computed, BaDoS blocks only the traffic matching the dynamic signatures, 
+incrementing the "Blocked Bad request" counter.
 
-``/home/f5student/scripts/behavioral-DoS/AB_DOS.sh``
+L7 Behavioral DoS Profile update with Bad Actor Detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Choose ``2) Attack start - score``.
+To observe the change in BaDoS profile behavior when individual bad actors are detected,
+let's modify the BaDoS profile by enabling Bad Actor Detection under the Behavioral Detection and Mitigation.
 
+1. Go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles and open ``lab-bados-profile``.
+
+- Mitigation: ``Bad Actor Detection``
+
+2. Pin the new DoS profile to the SJC-vBIGIP01.termmarc.com device.
+   Navigate to Pinning Policies and add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
+
+3. Deploy the DoS profile. 
+   Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
+
+Create a Deployment to deploy the Remote Logging Changes on the SJC BIG-IP.
+
+Make sure the deployment is successful.
+
+4. Back on the BIG-IQ DoS Dashboard under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
+
+On the HTTP Analysis DDoS Dashboard, you can observe the Blocked Bad Actor counter being incremented while Blocked 
+Bad Requests stop incrementing as a result of bad actors being identified and being added to the grey list.
+
+6. Stop the attack traffic by stoping the ``attack_baddos.sh`` script with CTRL+C
+
+7. After some time, look under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis > Attack History**.
 
 Annex | Entire lab configuration with 1 single API call: AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -344,7 +402,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 9,20,27,34
+   :emphasize-lines: 9,20,27,34,57,78,119,121
 
         {
             "class": "AS3",
@@ -464,23 +522,12 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                             "application": {
                                 "stressBasedDetection": {
                                     "badActor": {
-                                        "detectionEnabled": true,
+                                        "detectionEnabled": false,
                                         "mitigationMode": "standard",
                                         "signatureDetectionEnabled": true
                                     },
                                     "operationMode": "blocking",
                                     "thresholdsMode": "automatic",
-                                    "sourceIP": {
-                                        "rateLimitingEnabled": true,
-                                        "rateLimitingMode": "rate-limit"
-                                    },
-                                    "url": {
-                                        "rateLimitingEnabled": true
-                                    }
-                                },
-                                "rateBasedDetection": {
-                                    "operationMode": "blocking",
-                                    "thresholdsMode": "manual",
                                     "sourceIP": {
                                         "rateLimitingEnabled": true,
                                         "rateLimitingMode": "rate-limit"
@@ -497,3 +544,13 @@ obtain a new token by re-sending the ``BIG-IQ Token``
         }
 
 3. Navigate to Device tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
+
+4. Run section *Traffic simulation and Dashboard/Events*
+
+Use following admd command to monitor the learning:
+
+``admd -s vs./tenant5/BaDOS_service/serviceMain+/tenant5/BaDOS_serviclab-bados-profile.info.learning``
+
+5. Run section *L7 Behavioral DoS Profile update with Bad Actor Detection*
+
+Update AS3 declaration with ``"detectionEnabled": true``.
