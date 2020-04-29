@@ -22,7 +22,9 @@ Fill out the necessary fields.
 | * Grouping = New Application                                                     |
 | * Application Name = ``LAB_module6``                                             |
 +----------------------------------------------------------------------------------+
-| Select Using Existing Device Configuration                                       |
+| Application Service Method properties:                                           |
++----------------------------------------------------------------------------------+
+| Select: Using Existing Device Configuration                                      |
 +----------------------------------------------------------------------------------+
 | General Properties:                                                              |
 +----------------------------------------------------------------------------------+
@@ -79,7 +81,7 @@ Move *vip134* over to the **Selected** column and then scroll down.
   :align: center
 
 Drill down into the application dashboard and notice no analytics are showing on the dashboard.
-This is normal, the VIP does not have any analytics profiles attached to it! Hover over the **Traffic Management**
+This is normal, the VIP does not have any analytics profiles attached to it! Hover over the warning icon in the **Traffic Management**
 box under **F5 Services** to see the error.
 
 .. image:: ../pictures/module6/lab-1-7.png
