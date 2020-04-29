@@ -1,5 +1,5 @@
-F5 Agility 2020 BIG-IQ Automation 101
-=====================================
+F5 Agility 2020 BIG-IQ Automation 101 --- DRAFT
+===============================================
 
 Welcome
 -------
@@ -9,8 +9,8 @@ Welcome to the BIG-IQ Lab 101 - |year|
 - `Lab 1 – Manage AS3 Templates on BIG-IQ`_
 - `Lab 2 – Working with custom AS3 Templates in BIG-IQ`_
 - `Lab 3 - AS3 Application creation and deletion using AWX/Ansible`_ 
-- `Lab 4 – Configuring an Application with TCP Analytics`
-- `Lab 5 – Importing a BIG-IP into a Silo`
+- `Lab 4 – Configuring an Application with TCP Analytics`_
+- `Lab 5 – Importing a BIG-IP into a Silo`_
 
 .. _Lab 1 – Manage AS3 Templates on BIG-IQ: ./class1/module3/lab2.html
 .. _Lab 2 – Working with custom AS3 Templates in BIG-IQ: ./class1/module3/lab4.html
