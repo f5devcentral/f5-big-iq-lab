@@ -55,26 +55,26 @@ DoS Log Destinations and Publisher creation using UI
 
 - Name: ``dos-remote-dcd-pool``
 - Health Monitors: ``tcp``
-- Pool Member/Port: ``10.1.10.6:8520``
+- Pool Member/Port: ``10.1.10.6:8020``
 
 2. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
-- Name Log Destination hslog: ``dos-remote-logging-destination-remote-hslog-8520``
+- Name Log Destination hslog: ``dos-remote-logging-destination-remote-hslog-8020``
 - Device: ``SJC-vBIGIP01.termmarc.com``
 - Pool: ``dos-remote-dcd-pool`` previously created
 
 3. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
-- Name Log Destination Splunk: ``dos-remote-logging-destination-splunk-8520``
+- Name Log Destination Splunk: ``dos-remote-logging-destination-splunk-8020``
 - Type: ``Splunk``
-- Forward To: ``Remote High Speed Log`` - ``dos-remote-logging-destination-remote-hslog-8520`` previously created
+- Forward To: ``Remote High Speed Log`` - ``dos-remote-logging-destination-remote-hslog-8020`` previously created
 
 .. note:: This is to add the formatting supported by BIG-IQ
 
 4. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
 
-- Name: ``dos-remote-logging-publisher-8520``
-- Log Destinations: ``dos-remote-logging-destination-splunk-8520`` previously created
+- Name: ``dos-remote-logging-publisher-8020``
+- Log Destinations: ``dos-remote-logging-destination-splunk-8020`` previously created
 
 5. Pin the new Log Publisher to the SJC-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and 
    add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
@@ -149,7 +149,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                           "class": "Pool",
                           "members": [
                               {
-                                  "servicePort": 8520,
+                                  "servicePort": 8020,
                                   "serverAddresses": [
                                       "10.1.10.6"
                                   ],
@@ -157,25 +157,25 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                               }
                           ]
                       },
-                      "dos-remote-logging-destination-remote-hslog-8520": {
+                      "dos-remote-logging-destination-remote-hslog-8020": {
                           "class": "Log_Destination",
                           "type": "remote-high-speed-log",
                           "pool": {
                               "use": "dos-remote-dcd-pool"
                           }
                       },
-                      "dos-remote-logging-destination-splunk-8520": {
+                      "dos-remote-logging-destination-splunk-8020": {
                           "class": "Log_Destination",
                           "type": "splunk",
                           "forwardTo": {
-                              "use": "dos-remote-logging-destination-remote-hslog-8520"
+                              "use": "dos-remote-logging-destination-remote-hslog-8020"
                           }
                       },
-                      "dos-remote-logging-publisher-8520": {
+                      "dos-remote-logging-publisher-8020": {
                           "class": "Log_Publisher",
                           "destinations": [
                               {
-                                  "use": "dos-remote-logging-destination-splunk-8520"
+                                  "use": "dos-remote-logging-destination-splunk-8020"
                               }
                           ]
                       }
@@ -194,7 +194,7 @@ DoS Logging Profile creation
 
 - Name: ``lab-dos-logging-profile``
 - Properties: ``Dos Protection``
-- Remote Publisher: ``dos-remote-logging-publisher-8520``
+- Remote Publisher: ``dos-remote-logging-publisher-8020``
 
 .. image:: ../pictures/module1/img_module1_lab2_1.png
   :align: center
@@ -417,13 +417,19 @@ The output looks like that:
 
 5. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
 
-.. image:: ../pictures/module1/img_module1_lab2_16.png
+.. image:: ../pictures/module1/img_module1_lab2_15.png
   :align: center
   :scale: 40%
 
 |
 
 Open the **Monitoring > EVENTS > DoS > Application Events** and look at the event logs.
+
+.. image:: ../pictures/module1/img_module1_lab2_16.png
+  :align: center
+  :scale: 40%
+
+|
 
 The behavior observed in this example is that at the beginning of a DoS attack, BaDoS first protects by blocking all DoS traffic, 
 incrementing "DoS Blocked" counter.
@@ -601,7 +607,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                             "class": "Pool",
                             "members": [
                                 {
-                                    "servicePort": 8520,
+                                    "servicePort": 8020,
                                     "serverAddresses": [
                                         "10.1.10.6"
                                     ],
@@ -609,25 +615,25 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                                 }
                             ]
                         },
-                        "dos-remote-logging-destination-remote-hslog-8520": {
+                        "dos-remote-logging-destination-remote-hslog-8020": {
                             "class": "Log_Destination",
                             "type": "remote-high-speed-log",
                             "pool": {
                                 "use": "dos-remote-dcd-pool"
                             }
                         },
-                        "dos-remote-logging-destination-splunk-8520": {
+                        "dos-remote-logging-destination-splunk-8020": {
                             "class": "Log_Destination",
                             "type": "splunk",
                             "forwardTo": {
-                                "use": "dos-remote-logging-destination-remote-hslog-8520"
+                                "use": "dos-remote-logging-destination-remote-hslog-8020"
                             }
                         },
-                        "dos-remote-logging-publisher-8520": {
+                        "dos-remote-logging-publisher-8020": {
                             "class": "Log_Publisher",
                             "destinations": [
                                 {
-                                    "use": "dos-remote-logging-destination-splunk-8520"
+                                    "use": "dos-remote-logging-destination-splunk-8020"
                                 }
                             ]
                         },
@@ -635,7 +641,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                             "class": "Security_Log_Profile",
                             "dosApplication": {
                                 "remotePublisher": {
-                                    "use": "dos-remote-logging-publisher-8520"
+                                    "use": "dos-remote-logging-publisher-8020"
                                 }
                             }
                         },
