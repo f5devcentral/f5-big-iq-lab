@@ -3,7 +3,7 @@ Lab 5.2: Troubleshooting latency and packet loss
 
 In this lab, we are going to identify latency and packet loss issues happening on an application sitting behind the BIG-IP.
 
-1. Select the application service ``backend_site20tcp`` located under ``IT_apps`` application.
+1. Connect as **paula** on BIG-IQ. Select the application service ``backend_site20tcp`` located under ``IT_apps`` application.
 
 Notice the alerts raised. The server side RTT exceeded the critical threshold of 100ms. Since the traffic is sent in bursts
 you may not see an **Active Alert**. You can view the **Alert History** to see the last time the application exceeded the threshold.

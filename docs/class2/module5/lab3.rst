@@ -64,7 +64,7 @@ only **NTP** and **User Accounts** have been setup.
 
 .. note:: the admin password used here is <it's in your config.yml file, BIGIP_PWD ATTRIBUTE>
 
-.. note:: **[New 6.0.1]** DNS server shouldn't be set in the device template
+.. note:: DNS server shouldn't be set in the device template
 
 .. image:: ../pictures/module5/img_module5_lab3_3.png
   :align: center

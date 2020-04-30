@@ -1,14 +1,36 @@
 Lab 1.2: Configuring L7 Behavioral DoS Protection (new 7.1)
 -----------------------------------------------------------
+A denial-of-service attack (DoS attack) or distributed denial-of-service attack (DDoS attack) makes 
+a victim's resource unavailable to its intended users, or obstructs the communication media between 
+the intended users and the victimized site so that they can no longer communicate adequately. 
+
+Perpetrators of DoS attacks typically target sites or services, such as banks, credit card payment gateways,
+and e-commerce web sites.
+
+L7 Behavioral DoS (BaDOS) provides automatic protection against DDoS attacks by analyzing traffic behavior 
+using machine learning and data analysis. Behavioral DoS examines traffic flowing between clients and 
+application servers in data centers, automatically establishes the baseline traffic/flow, then 
+dynamically builds signatures and implements various protections as needed based on the behavior 
+of the application and the attackers, reducing false positives and providing quicker time to mitigation. 
+
+BIG-IQ Centralized Management allows the centralized management of BaDOS profiles, providing enhanced reporting and event correlation. 
+
+This lab will guide you through the configuration of BaDOS profiles using BIG-IQ CM User Interface.
+
+Official documentation can be found on the `BIG-IQ Knowledge Center`_ and there is a `DevCentral`_ article on this subject.
+
+.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-security/managing-dos-profiles-in-shared-security.html
+
+.. _`DevCentral`: https://devcentral.f5.com/s/articles/Configuring-L7-Behavioral-DoS-Protection-with-BIG-IQ-Centralized-Management
 
 Workflow
 ^^^^^^^^
 
-1. **David** creates the Log Destinations and Publisher either using the UI or the API/AS3
-2. **Larry** creates the L7 DoS & Logging Profiles
+1. **David** creates the DoS Log Destinations and Publisher either using the UI or the API/AS3
+2. **Larry** creates the L7 Behavioral DoS & Logging Profiles
 3. **David** creates the AS3 template and reference L7 Behavioral DoS & Logging profile created by **Larry**
 4. **David** creates the application service using the template created previously
-5. **Larry** review the BIG-IQ L7 DoS dashboards
+5. **Larry** looks at the BIG-IQ dahsboards and monitor the DoS attacks
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -16,11 +38,12 @@ Prerequisites
 1. Navigate to the Device tab and complete Discovery & Import on **SJC-vBIGIP01.termmarc.com**. 
    Choose *Create Version* for default LTM profiles and *Set all BIG-IP* for other objects.
 
+..note:: It is recommended to use latest version of BIG-IP. In this lab SJC BIG-IP has 15.1 and will be used.
+
 2. Once LTM module import is completed, Discover & Import **Shared Security (SSM)** and **Web Application Security (ASM)** modules.
    Choose *Set all BIG-IP* when conflict resolution open.
 
-3. Check if the **DoS Protection** service is Active  
-   under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
+3. Check if the **DoS Protection** service is Active under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 
 DoS Log Destinations and Publisher creation using UI
@@ -32,26 +55,26 @@ DoS Log Destinations and Publisher creation using UI
 
 - Name: ``dos-remote-dcd-pool``
 - Health Monitors: ``tcp``
-- Pool Member/Port: ``10.1.10.6:8520``
+- Pool Member/Port: ``10.1.10.6:8020``
 
 2. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
-- Name Log Destination hslog: ``dos-remote-logging-destination-remote-hslog-8520``
+- Name Log Destination hslog: ``dos-remote-logging-destination-remote-hslog-8020``
 - Device: ``SJC-vBIGIP01.termmarc.com``
 - Pool: ``dos-remote-dcd-pool`` previously created
 
 3. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
-- Name Log Destination Splunk: ``dos-remote-logging-destination-splunk-8520``
+- Name Log Destination Splunk: ``dos-remote-logging-destination-splunk-8020``
 - Type: ``Splunk``
-- Forward To: ``Remote High Speed Log`` - ``dos-remote-logging-destination-remote-hslog-8520`` previously created
+- Forward To: ``Remote High Speed Log`` - ``dos-remote-logging-destination-remote-hslog-8020`` previously created
 
 .. note:: This is to add the formatting supported by BIG-IQ
 
 4. Create the Log Publisher. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Publisher. click Create.
 
-- Name: ``dos-remote-logging-publisher-8520``
-- Log Destinations: ``dos-remote-logging-destination-splunk-8520`` previously created
+- Name: ``dos-remote-logging-publisher-8020``
+- Log Destinations: ``dos-remote-logging-destination-splunk-8020`` previously created
 
 5. Pin the new Log Publisher to the SJC-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and 
    add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
@@ -126,7 +149,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                           "class": "Pool",
                           "members": [
                               {
-                                  "servicePort": 8520,
+                                  "servicePort": 8020,
                                   "serverAddresses": [
                                       "10.1.10.6"
                                   ],
@@ -134,25 +157,25 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                               }
                           ]
                       },
-                      "dos-remote-logging-destination-remote-hslog-8520": {
+                      "dos-remote-logging-destination-remote-hslog-8020": {
                           "class": "Log_Destination",
                           "type": "remote-high-speed-log",
                           "pool": {
                               "use": "dos-remote-dcd-pool"
                           }
                       },
-                      "dos-remote-logging-destination-splunk-8520": {
+                      "dos-remote-logging-destination-splunk-8020": {
                           "class": "Log_Destination",
                           "type": "splunk",
                           "forwardTo": {
-                              "use": "dos-remote-logging-destination-remote-hslog-8520"
+                              "use": "dos-remote-logging-destination-remote-hslog-8020"
                           }
                       },
-                      "dos-remote-logging-publisher-8520": {
+                      "dos-remote-logging-publisher-8020": {
                           "class": "Log_Publisher",
                           "destinations": [
                               {
-                                  "use": "dos-remote-logging-destination-splunk-8520"
+                                  "use": "dos-remote-logging-destination-splunk-8020"
                               }
                           ]
                       }
@@ -170,34 +193,96 @@ DoS Logging Profile creation
 1. Create a new DoS Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
 
 - Name: ``lab-dos-logging-profile``
-- Properties: select ``Dos Protection``
-- Remote Publisher: ``dos-remote-logging-publisher-8520``
+- Properties: ``Dos Protection``
+- Remote Publisher: ``dos-remote-logging-publisher-8020``
+
+.. image:: ../pictures/module1/img_module1_lab2_1.png
+  :align: center
+  :scale: 40%
+
+|
 
 2. Pin the new DoS Logging profile to the SJC-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add it to SJC-vBIGIP01.termmarc.com.
 
+.. image:: ../pictures/module1/img_module1_lab2_2.png
+  :align: center
+  :scale: 40%
 
-L7 BaDOS Profile creation
-^^^^^^^^^^^^^^^^^^^^^^^^^
+|
 
-1. Go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles, click Create, configure Behavioral & Stress-based Detection
-   and fill in the settings:
+.. image:: ../pictures/module1/img_module1_lab2_3.png
+  :align: center
+  :scale: 40%
+
+|
+
+L7 Behavioral DoS Profile creation with Signature Detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles, click **Create** and configure Behavioral & Stress-based Detection:
 
 - Name: ``lab-bados-profile``
 - Operation Mode: ``Blocking``
 - Thresholds Mode: ``Automatic``
+- Signature Detection: ``Enable``
 - Mitigation: ``Standard protection``
-- Enable Signature Detection
-- Enabling Bad Actor Detection
+
+.. image:: ../pictures/module1/img_module1_lab2_4.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_5.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_6.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_7.png
+  :align: center
+  :scale: 40%
+
+|
+
+Make sure you disable **TPS-based Detection** in the DoS profile by setting Operation Mode: ``Off``.
+
+.. image:: ../pictures/module1/img_module1_lab2_7b.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. note:: More details in `BIG-IP ASM - Preventing DoS Attacks on Applications v15.1`_ ,          
+
+.. _`BIG-IP ASM - Preventing DoS Attacks on Applications v15.1`: https://techdocs.f5.com/en-us/bigip-15-0-0/big-ip-asm-implementations/preventing-dos-attacks-on-applications.html
 
 2. Pin the new DoS profile to the SJC-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
 
+.. image:: ../pictures/module1/img_module1_lab2_8.png
+  :align: center
+  :scale: 40%
+
+|
 
 3. Deploy the DoS profile. 
    Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
 
 Create a Deployment to deploy the Remote Logging Changes on the SJC BIG-IP.
+
+.. image:: ../pictures/module1/img_module1_lab2_9.png
+  :align: center
+  :scale: 40%
+
+|
 
 Make sure the deployment is successful.
 
@@ -210,15 +295,39 @@ Select the ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` AS3 Template and
 
 Rename it ``LAB-HTTP-BaDOS``. 
 
+.. image:: ../pictures/module1/img_module1_lab2_10.png
+  :align: center
+  :scale: 40%
+
+|
+
 Edit the new cloned template and select the Service_HTTP class.
 
 - Look for the attribute called ``profileDOS`` and set it to ``/Common/lab-bados-profile``.
 
+.. image:: ../pictures/module1/img_module1_lab2_11.png
+  :align: center
+  :scale: 40%
+
+|
+
 - Look for the attribute called ``Security Log Profiles`` and set it to ``/Common/lab-dos-logging-profile``.
+
+.. image:: ../pictures/module1/img_module1_lab2_12.png
+  :align: center
+  :scale: 40%
+
+|
 
 Then, select the HTTP_Profile class.
 
-- Look for the attributes called ``xForwardedFor`` and ``trustXFF`` and set it to ``true``.
+- Look for the attributes called ``Trust X-Forwarded-For`` and set it to ``Enabled``.
+
+.. image:: ../pictures/module1/img_module1_lab2_13.png
+  :align: center
+  :scale: 40%
+
+|
 
 At the top right corner, click on **Publish and Close**
 
@@ -231,7 +340,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 +---------------------------------------------------------------------------------------------------+
 | * Grouping = New Application                                                                      |
 | * Application Name = ``LAB_BaDOS``                                                                |
-| * Description = ``BaDOS``                                                                         |
+| * Description = ``L7 Behavioral DoS Protection``                                                  |
 +---------------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                           |
 +---------------------------------------------------------------------------------------------------+
@@ -255,7 +364,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 | * profileDOS: ``/Common/lab-bados-profile``                                                       |
 | * securityLogProfiles: ``/Common/lab-dos-logging-profile``                                        |
 +---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default.                                                                  |
+| Analytics_Profile. Enable all options.                                                            |
 +---------------------------------------------------------------------------------------------------+
 
 .. note:: You are attaching the DoS and logging profiles to the VIP using AS3.
@@ -263,8 +372,14 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 The application service called ``tenant5_BaDOS_service`` is now created on the BIG-IQ dashboard
 under the application called ``LAB_BaDOS``.
 
-Traffic simulation and Dashboard/Events
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.. image:: ../pictures/module1/img_module1_lab2_14.png
+  :align: center
+  :scale: 40%
+
+|
+
+Monitoring DoS attacks
+^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Both legitimate and attack traffic will have XFF header inserted in the request to simulate geografically 
           distributed clients.
@@ -273,34 +388,105 @@ Traffic simulation and Dashboard/Events
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
-``/home/f5student/scripts/behavioral-DoS/baseline_menu.sh``
+``/home/f5/traffic-scripts/behavioral-DoS/baseline_baddos.sh``
 
 Choose ``1) increasing``.
 
 2. Open a different SSH session on the lamp server and run:
 
-``/home/f5student/scripts/behavioral-DoS/baseline_menu.sh``
+``/home/f5/traffic-scripts/behavioral-DoS/baseline_baddos.sh``
 
 Choose ``2) alternate``.
 
-3. Wait for the machine learning algorithm to learn traffic behavior for at least 15min.
+3. Wait for the machine learning algorithm to learn traffic behavior. SSH to the **SJC-vBIGIP01.termmarc.com** device and run:
+
+``admd -s vs./tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile.info.learning``
+
+The output looks like that:
+
+``vs./tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile.info.learning:[80.5464, 697, 26450, 100]``
+
+- 80.5464 is the average approximation to the learned baselines (confidence in the machine learning algorithm, wait until this number reaches 95% before starting the attack traffic)
+- 667 is the number of bins to be measured
+- 26450 is the number if learned unique suggestions
+- 100 is the number of good signatures dataset which are ready
 
 4. Start the attack traffic, open a different SSH session on the lamp server and run:
 
-``/home/f5student/scripts/behavioral-DoS/AB_DOS.sh``
+``/home/f5/traffic-scripts/behavioral-DoS/attack_baddos.sh``
 
-Choose ``1) Attack start - similarity``.
+5. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
 
-5. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > Protection Summary**.
+.. image:: ../pictures/module1/img_module1_lab2_15.png
+  :align: center
+  :scale: 40%
 
-6. Go look also at the **HTTP Analysis** and **Attack History**.
+|
 
-7. Stop previous attack and start a different one.
+Open the **Monitoring > EVENTS > DoS > Application Events** and look at the event logs.
 
-``/home/f5student/scripts/behavioral-DoS/AB_DOS.sh``
+.. image:: ../pictures/module1/img_module1_lab2_16.png
+  :align: center
+  :scale: 40%
 
-Choose ``2) Attack start - score``.
+|
 
+The behavior observed in this example is that at the beginning of a DoS attack, BaDoS first protects by blocking all DoS traffic, 
+incrementing "DoS Blocked" counter.
+
+Once the BaDoS dynamic signatures have been computed, BaDoS blocks only the traffic matching the dynamic signatures, 
+incrementing the "Blocked Bad request" counter.
+
+L7 Behavioral DoS Profile update with Bad Actor Detection
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To observe the change in BaDoS profile behavior when individual bad actors are detected,
+let's modify the BaDoS profile by enabling Bad Actor Detection under the Behavioral Detection and Mitigation.
+
+1. Go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles and open ``lab-bados-profile``.
+
+- Mitigation: ``Bad Actor Detection``
+
+.. image:: ../pictures/module1/img_module1_lab2_17.png
+  :align: center
+  :scale: 40%
+
+|
+
+2. Deploy the updated DoS profile. Select the profile and click **Deploy**.
+
+Create a Deployment to deploy the Remote Logging Changes on the SJC BIG-IP.
+
+Make sure the deployment is successful.
+
+3. Back on the BIG-IQ DoS Dashboard under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
+
+On the HTTP Analysis DDoS Dashboard, you can observe the Blocked Bad Actor counter being incremented while Blocked 
+Bad Requests stop incrementing as a result of bad actors being identified and being added to the grey list.
+
+.. image:: ../pictures/module1/img_module1_lab2_18.png
+  :align: center
+  :scale: 40%
+
+|
+
+4. Stop the attack traffic by stoping the ``attack_baddos.sh`` script with CTRL+C
+
+5. BIG-IQ also offer other ook under **Monitoring > DASHBOARDS > DDoS > Protection Summary**.
+
+.. image:: ../pictures/module1/img_module1_lab2_19.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_20.png
+  :align: center
+  :scale: 40%
+
+|
+
+6. After some time, look under **Monitoring > DASHBOARDS > DDoS > Attack History**.
 
 Annex | Entire lab configuration with 1 single API call: AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -344,7 +530,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 9,20,27,34
+   :emphasize-lines: 9,20,27,34,57,78,119,121
 
         {
             "class": "AS3",
@@ -421,7 +607,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                             "class": "Pool",
                             "members": [
                                 {
-                                    "servicePort": 8520,
+                                    "servicePort": 8020,
                                     "serverAddresses": [
                                         "10.1.10.6"
                                     ],
@@ -429,25 +615,25 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                                 }
                             ]
                         },
-                        "dos-remote-logging-destination-remote-hslog-8520": {
+                        "dos-remote-logging-destination-remote-hslog-8020": {
                             "class": "Log_Destination",
                             "type": "remote-high-speed-log",
                             "pool": {
                                 "use": "dos-remote-dcd-pool"
                             }
                         },
-                        "dos-remote-logging-destination-splunk-8520": {
+                        "dos-remote-logging-destination-splunk-8020": {
                             "class": "Log_Destination",
                             "type": "splunk",
                             "forwardTo": {
-                                "use": "dos-remote-logging-destination-remote-hslog-8520"
+                                "use": "dos-remote-logging-destination-remote-hslog-8020"
                             }
                         },
-                        "dos-remote-logging-publisher-8520": {
+                        "dos-remote-logging-publisher-8020": {
                             "class": "Log_Publisher",
                             "destinations": [
                                 {
-                                    "use": "dos-remote-logging-destination-splunk-8520"
+                                    "use": "dos-remote-logging-destination-splunk-8020"
                                 }
                             ]
                         },
@@ -455,7 +641,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                             "class": "Security_Log_Profile",
                             "dosApplication": {
                                 "remotePublisher": {
-                                    "use": "dos-remote-logging-publisher-8520"
+                                    "use": "dos-remote-logging-publisher-8020"
                                 }
                             }
                         },
@@ -464,23 +650,12 @@ obtain a new token by re-sending the ``BIG-IQ Token``
                             "application": {
                                 "stressBasedDetection": {
                                     "badActor": {
-                                        "detectionEnabled": true,
+                                        "detectionEnabled": false,
                                         "mitigationMode": "standard",
                                         "signatureDetectionEnabled": true
                                     },
                                     "operationMode": "blocking",
                                     "thresholdsMode": "automatic",
-                                    "sourceIP": {
-                                        "rateLimitingEnabled": true,
-                                        "rateLimitingMode": "rate-limit"
-                                    },
-                                    "url": {
-                                        "rateLimitingEnabled": true
-                                    }
-                                },
-                                "rateBasedDetection": {
-                                    "operationMode": "blocking",
-                                    "thresholdsMode": "manual",
                                     "sourceIP": {
                                         "rateLimitingEnabled": true,
                                         "rateLimitingMode": "rate-limit"
@@ -497,3 +672,13 @@ obtain a new token by re-sending the ``BIG-IQ Token``
         }
 
 3. Navigate to Device tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
+
+4. Run section *Traffic simulation and Dashboard/Events*
+
+Use following admd command to monitor the learning:
+
+``admd -s vs./tenant5/BaDOS_service/serviceMain+/tenant5/BaDOS_service/lab-bados-profile.info.learning``
+
+5. Run section *L7 Behavioral DoS Profile update with Bad Actor Detection*
+
+Update AS3 declaration with ``"detectionEnabled": true``.

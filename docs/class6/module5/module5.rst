@@ -1,8 +1,6 @@
 Module 5: LTM conflict resolution: silo in BIG-IQ (new 7.1)
 ===========================================================
 
-**[New 7.1.0]**
-
 BIG-IP configuration naming conventions are not consistent within many customer 
 environments. It is common to find similar names reused across different BIG-IP's 
 for shared configuration objects such as Profiles, Monitors etc….
@@ -42,6 +40,9 @@ You may then review the configuration differences from BIG-IQ, and push out nami
 to resolve the conflict. The device can then be re-imported into BIG-IQ's default silo because 
 the naming conflict will have been removed.
 
+.. warning: The design of the silo feature is an interim location, not a long term storage.
+            The intent is that devices are in silos for a short amount of time, 
+            while conflicts are addressed and then the devices are moved to the main part of BIG-IQ.
 
 .. image:: ../pictures/img_module5_diagram.png
   :scale: 40%

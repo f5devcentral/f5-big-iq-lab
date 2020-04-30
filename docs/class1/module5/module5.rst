@@ -1,8 +1,6 @@
 Module 5: Limit available devices for AS3 Application Services (new 7.1)
 ========================================================================
 
-**[New 7.1.0]**
-
 In prior versions of BIG-IQ, there was no way to limit where application owners 
 could deploy their applications. 
 

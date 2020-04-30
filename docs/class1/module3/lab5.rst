@@ -306,7 +306,7 @@ ASM Policy Learning review and Dashboard/Events (Larry & Paula)
 
 6. Let's generate some bad traffic, connect on the Ubuntu Lamp Server server and launch the following script::
 
-    /home/f5/scripts/generate_http_bad_traffic.sh
+    /home/f5/traffic-scripts/generate_http_bad_traffic.sh
 
 7. Check ASM type of attacks by navigating under Monitoring > EVENTS > Web Application Security > Event Logs > Events
 

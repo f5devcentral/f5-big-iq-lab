@@ -1,8 +1,6 @@
 Class 11: BIG-IQ DDoS Monitoring and Dashboard
 ==============================================
 
-**[New 6.1.0]** 
-
 In this class, we will review new DDoS Dashboard view, protection summary, and DDoS Event logging and correlation. 
 
 .. toctree::

@@ -1,8 +1,6 @@
 Module 5: Setup a Service scaling group (SSG) in Azure
 ======================================================
 
-**[New 6.1.0]** 
-
 In this module, we will learn about the ``Service Scaling Group`` (SSG) feature
 provided with BIG-IQ 6.1 in a the ``Azure`` environment.
 
