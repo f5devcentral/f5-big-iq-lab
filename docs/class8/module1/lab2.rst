@@ -677,7 +677,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 
 Use following admd command to monitor the learning:
 
-``admd -s vs./tenant5/BaDOS_service/serviceMain+/tenant5/BaDOS_serviclab-bados-profile.info.learning``
+``admd -s vs./tenant5/BaDOS_service/serviceMain+/tenant5/BaDOS_service/lab-bados-profile.info.learning``
 
 5. Run section *L7 Behavioral DoS Profile update with Bad Actor Detection*
 
