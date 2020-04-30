@@ -68,6 +68,7 @@ ASM Bot Log Destinations and Publisher creation using UI
 2. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
 - Name Log Destination hslog: ``bot-remote-logging-destination-remote-hslog-8514``
+- Type: ``Remote High-Speed Log``
 - Device: ``SEA-vBIGIP01.termmarc.com``
 - Pool: ``bot-remote-dcd-asm-pool`` previously created
 
@@ -240,7 +241,7 @@ ASM Bot Logging Profile creation
 
 .. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
 
-1. Create a new Bot Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+1. While logged in as **larry**, create a new BOT Logging profile. Navigate to Configuration tab > SECURITY > Shared Security > Logging Profiles. Click Create.
 
 - Name: ``lab-bot-logging-profile``
 - Properties: select ``Bot Defense``
@@ -273,7 +274,7 @@ ASM Bot Defense Profile creation
 
 .. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
 
-1. Go to Configuration > SECURITY > Shared Security > Bot Defense > Bot Profiles, click Create and fill in the settings:
+1. While logged in as **larry**, go to Configuration > SECURITY > Shared Security > Bot Defense > Bot Profiles, click Create and fill in the settings:
 
 - Name: ``lab-bot-defense-profile``
 - Enforcement Mode: ``Blocking``
@@ -285,9 +286,14 @@ ASM Bot Defense Profile creation
 
 |
 
-- Browser Verification:
+BROWSER VERIFICATION:
+
 - Browser Access: ``Allowed``
 - Browser Verification: ``Verify After Access (Blocking)``
+
+MITIGATION SETTINGS:
+
+- Untrusted bot: ``Block``
 
 .. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
@@ -299,8 +305,8 @@ ASM Bot Defense Profile creation
 
 .. _`K42323285`: https://support.f5.com/csp/article/K42323285
 
-2. Pin the new Bot Defense Profile to the SEA-vBIGIP01.termmarc.com device.
-   Navigate to Pinning Policies and add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
+2. Pin the new BOT Defense Profile to the SEA-vBIGIP01.termmarc.com device.
+   Navigate to Pinning Policies and add the Bot Defense Profile previously created to SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_14.png
   :align: center
@@ -325,7 +331,7 @@ Make sure the deployment is successful.
 AS3 Bot Template creation and application service deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Navigate to the Applications tab > APPLICATION TEMPLATES.
+1. While logged in as **david**, navigate to the Applications tab > APPLICATION TEMPLATES.
 
 Select the ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` AS3 Template and clone it.
 
@@ -340,6 +346,7 @@ Rename it ``LAB-HTTP-bot-defense``.
 Edit the new cloned template and select the Service_HTTP class.
 
 - Look for the attribute called ``profileBotDefense`` and set it to ``/Common/lab-bot-defense-profile``.
+- Check the ``Editable`` tick box
 
 .. image:: ../pictures/module1/img_module1_lab1_17.png
   :align: center
@@ -348,6 +355,7 @@ Edit the new cloned template and select the Service_HTTP class.
 |
 
 - Look for the attribute called ``Security Log Profiles`` and set it to ``/Common/lab-bot-logging-profile``.
+- Check the ``Editable`` tick box
 
 .. image:: ../pictures/module1/img_module1_lab1_18.png
   :align: center
