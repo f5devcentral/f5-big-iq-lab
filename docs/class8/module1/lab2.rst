@@ -432,7 +432,6 @@ Once the BaDoS dynamic signatures have been computed, BaDoS blocks only the traf
 incrementing the "Blocked Bad request" counter.
 
 .. note:: In this lab, BaDoS is slowing down legitimate traffic, this is due to the fact we are using the same system to generate both good and bad traffic.
-          There is a feature where TCP sessions slow down affecting the entire system.
 
 L7 Behavioral DoS Profile update with Bad Actor Detection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
