@@ -112,7 +112,7 @@ Paula.
 +=======================================================================+
 | -  Grouping = New Application                                         |
 |                                                                       |
-| -  Application Name = **LAB 1.2**                                   |
+| -  Application Name = **LAB 1.2**                                     |
 |                                                                       |
 | -  Description = My first AS3 template deployment with BIG-IQ         |
 +-----------------------------------------------------------------------+
@@ -227,7 +227,7 @@ Paula.
    If not visible, refresh the page.
 
 13. Select **LAB 1.2** Application. You will
-    notice **LAB 1.2 **acts as a group of Application Services where
+    notice **LAB 1.2 ** acts as a group of Application Services where
     underneath multiple services can be grouped. The next window will
     show you that a new Application Service has been created
     named: tenant1_https_app_service.
