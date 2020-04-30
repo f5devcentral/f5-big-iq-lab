@@ -398,7 +398,7 @@ Choose ``1) increasing``.
 
 Choose ``2) alternate``.
 
-3. Wait for the machine learning algorithm to learn traffic behavior.
+3. Wait for the machine learning algorithm to learn traffic behavior. SSH to the **SJC-vBIGIP01.termmarc.com** device and run:
 
 ``admd -s vs./tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile.info.learning``
 
