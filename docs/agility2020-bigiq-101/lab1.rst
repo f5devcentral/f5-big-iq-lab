@@ -90,11 +90,8 @@ Import AS3 BIG-IQ templates
 
 ..
 
-   **Exercise 1.2 – Deploy application via BIG-IQ using a default AS3
-   template**
-
-Create HTTPS Service using AS3 via BIG-IQ GUI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Exercise 1.2 – Deploy application via BIG-IQ using a default AS3 template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this exercise we will create an application service using an AS3
 template. The service will include a pool with two pool members (server
