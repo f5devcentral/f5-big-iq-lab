@@ -10,7 +10,7 @@ an HTTP Application Service and how to use BIG-IQ Bot Dashboards to monitors the
 
 .. _`K12121934`: https://support.f5.com/csp/article/K12121934
 
-Official documentation can be found on the `BIG-IQ Knowledge Center`_ and there is a `DevCentral`_ article on this subject.
+Official documentation can be found on the `BIG-IQ Knowledge Center`_ and see `DevCentral`_ article on this subject.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/mitigating-managing-bot-defense-using-big-iq/monitoring-bot-defense-activity.html
 

@@ -17,7 +17,7 @@ BIG-IQ Centralized Management allows the centralized management of BaDOS profile
 
 This lab will guide you through the configuration of BaDOS profiles using BIG-IQ CM User Interface.
 
-Official documentation can be found on the `BIG-IQ Knowledge Center`_ and there is a `DevCentral`_ article on this subject.
+Official documentation can be found on the `BIG-IQ Knowledge Center`_ and see `DevCentral`_ article on this subject.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-security/managing-dos-profiles-in-shared-security.html
 
