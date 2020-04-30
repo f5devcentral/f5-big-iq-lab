@@ -196,23 +196,69 @@ DoS Logging Profile creation
 - Properties: ``Dos Protection``
 - Remote Publisher: ``dos-remote-logging-publisher-8520``
 
+.. image:: ../pictures/module1/img_module1_lab2_1.png
+  :align: center
+  :scale: 40%
+
+|
+
 2. Pin the new DoS Logging profile to the SJC-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add it to SJC-vBIGIP01.termmarc.com.
 
+.. image:: ../pictures/module1/img_module1_lab2_2.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_3.png
+  :align: center
+  :scale: 40%
+
+|
 
 L7 Behavioral DoS Profile creation with Signature Detection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles, click Create, configure Behavioral & Stress-based Detection
-   and fill in the settings:
+1. Go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles, click **Create** and configure Behavioral & Stress-based Detection:
 
 - Name: ``lab-bados-profile``
 - Operation Mode: ``Blocking``
 - Thresholds Mode: ``Automatic``
 - Signature Detection: ``Enable``
 - Mitigation: ``Standard protection``
-- By Source IP Request Blocking: ``rate-limit``
-- By URL Request Blocking: ``Enable``
+
+.. image:: ../pictures/module1/img_module1_lab2_4.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_5.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_6.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_7.png
+  :align: center
+  :scale: 40%
+
+|
+
+Make sure you disable **TPS-based Detection** in the DoS profile by setting Operation Mode: ``Off``.
+
+.. image:: ../pictures/module1/img_module1_lab2_7b.png
+  :align: center
+  :scale: 40%
+
+|
 
 .. note:: More details in `BIG-IP ASM - Preventing DoS Attacks on Applications v15.1`_ ,          
 
@@ -221,10 +267,22 @@ L7 Behavioral DoS Profile creation with Signature Detection
 2. Pin the new DoS profile to the SJC-vBIGIP01.termmarc.com device.
    Navigate to Pinning Policies and add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
 
+.. image:: ../pictures/module1/img_module1_lab2_8.png
+  :align: center
+  :scale: 40%
+
+|
+
 3. Deploy the DoS profile. 
    Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
 
 Create a Deployment to deploy the Remote Logging Changes on the SJC BIG-IP.
+
+.. image:: ../pictures/module1/img_module1_lab2_9.png
+  :align: center
+  :scale: 40%
+
+|
 
 Make sure the deployment is successful.
 
@@ -237,15 +295,39 @@ Select the ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` AS3 Template and
 
 Rename it ``LAB-HTTP-BaDOS``. 
 
+.. image:: ../pictures/module1/img_module1_lab2_10.png
+  :align: center
+  :scale: 40%
+
+|
+
 Edit the new cloned template and select the Service_HTTP class.
 
 - Look for the attribute called ``profileDOS`` and set it to ``/Common/lab-bados-profile``.
 
+.. image:: ../pictures/module1/img_module1_lab2_11.png
+  :align: center
+  :scale: 40%
+
+|
+
 - Look for the attribute called ``Security Log Profiles`` and set it to ``/Common/lab-dos-logging-profile``.
+
+.. image:: ../pictures/module1/img_module1_lab2_12.png
+  :align: center
+  :scale: 40%
+
+|
 
 Then, select the HTTP_Profile class.
 
-- Look for the attributes called ``xForwardedFor`` and ``trustXFF`` and set it to ``true``.
+- Look for the attributes called ``Trust X-Forwarded-For`` and set it to ``Enabled``.
+
+.. image:: ../pictures/module1/img_module1_lab2_13.png
+  :align: center
+  :scale: 40%
+
+|
 
 At the top right corner, click on **Publish and Close**
 
@@ -258,7 +340,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 +---------------------------------------------------------------------------------------------------+
 | * Grouping = New Application                                                                      |
 | * Application Name = ``LAB_BaDOS``                                                                |
-| * Description = ``BaDOS``                                                                         |
+| * Description = ``L7 Behavioral DoS Protection``                                                  |
 +---------------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                           |
 +---------------------------------------------------------------------------------------------------+
@@ -282,13 +364,19 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 | * profileDOS: ``/Common/lab-bados-profile``                                                       |
 | * securityLogProfiles: ``/Common/lab-dos-logging-profile``                                        |
 +---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default.                                                                  |
+| Analytics_Profile. Enable all options.                                                            |
 +---------------------------------------------------------------------------------------------------+
 
 .. note:: You are attaching the DoS and logging profiles to the VIP using AS3.
 
 The application service called ``tenant5_BaDOS_service`` is now created on the BIG-IQ dashboard
 under the application called ``LAB_BaDOS``.
+
+.. image:: ../pictures/module1/img_module1_lab2_14.png
+  :align: center
+  :scale: 40%
+
+|
 
 Monitoring DoS attacks
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -310,15 +398,30 @@ Choose ``1) increasing``.
 
 Choose ``2) alternate``.
 
-3. Wait for the machine learning algorithm to learn traffic behavior for at least 15min.
+3. Wait for the machine learning algorithm to learn traffic behavior.
 
 ``admd -s vs./tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile.info.learning``
+
+The output looks like that:
+
+``vs./tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile.info.learning:[80.5464, 697, 26450, 100]``
+
+- 80.5464 is the average approximation to the learned baselines (confidence in the machine learning algorithm, wait until this number reaches 95% before starting the attack traffic)
+- 667 is the number of bins to be measured
+- 26450 is the number if learned unique suggestions
+- 100 is the number of good signatures dataset which are ready
 
 4. Start the attack traffic, open a different SSH session on the lamp server and run:
 
 ``/home/f5/traffic-scripts/behavioral-DoS/attack_baddos.sh``
 
 5. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
+
+.. image:: ../pictures/module1/img_module1_lab2_16.png
+  :align: center
+  :scale: 40%
+
+|
 
 Open the **Monitoring > EVENTS > DoS > Application Events** and look at the event logs.
 
@@ -338,24 +441,46 @@ let's modify the BaDoS profile by enabling Bad Actor Detection under the Behavio
 
 - Mitigation: ``Bad Actor Detection``
 
-2. Pin the new DoS profile to the SJC-vBIGIP01.termmarc.com device.
-   Navigate to Pinning Policies and add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
+.. image:: ../pictures/module1/img_module1_lab2_17.png
+  :align: center
+  :scale: 40%
 
-3. Deploy the DoS profile. 
-   Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
+|
+
+2. Deploy the updated DoS profile. Select the profile and click **Deploy**.
 
 Create a Deployment to deploy the Remote Logging Changes on the SJC BIG-IP.
 
 Make sure the deployment is successful.
 
-4. Back on the BIG-IQ DoS Dashboard under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
+3. Back on the BIG-IQ DoS Dashboard under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
 
 On the HTTP Analysis DDoS Dashboard, you can observe the Blocked Bad Actor counter being incremented while Blocked 
 Bad Requests stop incrementing as a result of bad actors being identified and being added to the grey list.
 
-6. Stop the attack traffic by stoping the ``attack_baddos.sh`` script with CTRL+C
+.. image:: ../pictures/module1/img_module1_lab2_18.png
+  :align: center
+  :scale: 40%
 
-7. After some time, look under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis > Attack History**.
+|
+
+4. Stop the attack traffic by stoping the ``attack_baddos.sh`` script with CTRL+C
+
+5. BIG-IQ also offer other ook under **Monitoring > DASHBOARDS > DDoS > Protection Summary**.
+
+.. image:: ../pictures/module1/img_module1_lab2_19.png
+  :align: center
+  :scale: 40%
+
+|
+
+.. image:: ../pictures/module1/img_module1_lab2_20.png
+  :align: center
+  :scale: 40%
+
+|
+
+6. After some time, look under **Monitoring > DASHBOARDS > DDoS > Attack History**.
 
 Annex | Entire lab configuration with 1 single API call: AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

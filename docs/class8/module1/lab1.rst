@@ -390,7 +390,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 | * profileBotDefense: ``/Common/lab-bot-defense-profile``                                          |
 | * securityLogProfiles: ``/Common/lab-bot-logging-profile``                                        |
 +---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default.                                                                  |
+| Analytics_Profile. Enable all options.                                                            |
 +---------------------------------------------------------------------------------------------------+
 
 .. note:: You are attaching the bot defense and logging profiles to the VIP using AS3.
