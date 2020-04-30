@@ -1,53 +1,46 @@
 # m h  dom mon dow   command
 ## Traffic Generator (HTTP)
-*/5 * * * * /home/f5/scripts/generate_http_clean_traffic.sh > /home/f5/scripts/logs/generate_http_clean_traffic.log 2>&1
-0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/logs/generate_http_bad_traffic.log 2>&1
-@reboot perl -le 'sleep 1800' && /home/f5/scripts/generate_http_bad_traffic.sh > /home/f5/scripts/logs/generate_http_bad_traffic.log 2>&1
+*/5 * * * * /home/f5/traffic-scripts/generate_http_clean_traffic.sh > /home/f5/traffic-scripts/logs/generate_http_clean_traffic.log 2>&1
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/traffic-scripts/generate_http_bad_traffic.sh > /home/f5/traffic-scripts/logs/generate_http_bad_traffic.log 2>&1
+@reboot perl -le 'sleep 1800' && /home/f5/traffic-scripts/generate_http_bad_traffic.sh > /home/f5/traffic-scripts/logs/generate_http_bad_traffic.log 2>&1
 
 ## App Troubleshooting (class 3 module 2)
-0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/scripts/logs/503.log 2>&1
-0 0,2,5,8,11,14,17,20 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/404.sh > /home/f5/scripts/logs/404.log 2>&1
-0 0,4,7,10,13,16,19,22 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/iloveyou.sh > /home/f5/scripts/logs/iloveyou.log 2>&1
-
-## DNS Traffic
-*/3 * * * * perl -le 'sleep rand 60' && /home/f5/scripts/generate_dns_traffic.sh > /home/f5/scripts/logs/generate_dns_traffic.log 2>&1
+0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/traffic-scripts/logs/503.log 2>&1
+0 0,2,5,8,11,14,17,20 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/404.sh > /home/f5/traffic-scripts/logs/404.log 2>&1
+0 0,4,7,10,13,16,19,22 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/iloveyou.sh > /home/f5/traffic-scripts/logs/iloveyou.log 2>&1
 
 ## Export Analytics to Splunk
-* * * * * /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.sh >> /home/f5/scripts/logs/export_app_http_stats_splunk.log 2>&1
+* * * * * /home/f5/f5-demo-bigiq-analytics-export-restapi/export_app_http_stats_splunk.sh >> /home/f5/traffic-scripts/logs/export_app_http_stats_splunk.log 2>&1
+
+## DNS Traffic
+*/5 * * * * perl -le 'sleep rand 120' && /home/f5/traffic-scripts/generate_dns_traffic.sh > /home/f5/traffic-scripts/logs/generate_dns_traffic.log 2>&1
 
 ## ASM Brute Force Attacks
-@reboot perl -le 'sleep 2400' && /home/f5/scripts/asm-brute-force/asm_brute_force_attack.sh > /home/f5/scripts/logs/asm_brute_force_attack.log 2>&1
-
-## DOS data
-*/11 * * * * /home/f5/scripts/generate_dns_afm_dos_traffic_fake.sh > /home/f5/scripts/logs/generate_dns_afm_dos_traffic_fake.log 2>&1
-#0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/scripts/generate_L7_ddos.sh > /home/f5/scripts/logs/generate_L7_ddos.log 2>&1
-
-## DNS DDOS data
-@reboot perl -le 'sleep 3000' && /home/f5/scripts/generate_dns_ddos_traffic_real.sh > /home/f5/scripts/logs/generate_dns_ddos_traffic_real.log 2>&1
-
-## AFM data
-*/13 * * * * /home/f5/scripts/generate_afm_traffic.sh > /home/f5/scripts/logs/generate_afm_traffic.log 2>&1
+@reboot perl -le 'sleep 2400' && /home/f5/traffic-scripts/asm-brute-force/asm_brute_force_attack.sh > /home/f5/traffic-scripts/logs/asm_brute_force_attack.log 2>&1
 
 ## Access Traffic
-*/5 * * * * /home/f5/scripts/generate_access_traffic.sh > /home/f5/scripts/logs/generate_access_traffic.log 2>&1
-
-## FPS Traffic
-*/28 * * * * /home/f5/scripts/generate_fps_traffic_fake.sh > /home/f5/scripts/logs/generate_fps_traffic_fake.log 2>&1
+*/5 * * * * /home/f5/traffic-scripts/generate_access_traffic.sh > /home/f5/traffic-scripts/logs/generate_access_traffic.log 2>&1
 
 ## SSLo Traffic
-*/14 * * * * /home/f5/scripts/generate_sslo_traffic.sh > /home/f5/scripts/logs/generate_sslo_traffic.log 2>&1
+*/14 * * * * /home/f5/traffic-scripts/generate_sslo_traffic.sh > /home/f5/traffic-scripts/logs/generate_sslo_traffic.log 2>&1
+
+## DoS AFM Playback
+*/11 * * * * /home/f5/traffic-scripts/generate_playback_afm_dos_traffic.sh > /home/f5/traffic-scripts/logs/generate_playback_afm_dos_traffic.log 2>&1
+
+## FPS Traffic Playback
+*/28 * * * * /home/f5/traffic-scripts/generate_playback_fps_traffic.sh > /home/f5/traffic-scripts/logs/generate_playback_fps_traffic.log 2>&1
 
 ## Make sure BOS BIG-IP01 is always active (limiation UDF AWS)
-*/5 * * * * /home/f5/scripts/forceActiveBigipBostonCluster.sh > /home/f5/scripts/logs/forceActiveBigipBostonCluster.log 2>&1
+*/5 * * * * /home/f5/tools/forceActiveBigipBostonCluster.sh > /home/f5/tools/logs/forceActiveBigipBostonCluster.log 2>&1
 
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
-#@reboot sleep 480 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /home/f5/scripts/logs/configSyncAtStartBigipBostonCluster.log 2>&1
+#@reboot sleep 480 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /home/f5/tools/logs/configSyncAtStartBigipBostonCluster.log 2>&1
 
 ## WA restart services on ubuntu in case they die
-*/5 * * * * /home/f5/scripts/services_monitor.sh > /home/f5/scripts/logs/services_monitor.log 2>&1
+*/5 * * * * /home/f5/tools/services_monitor.sh > /home/f5/tools/logs/services_monitor.log 2>&1
 
 ## AUTOMATIC RE-LICENSE FOR UDF BLUEPRINT AFTER 15 MIN DEPLOYMENT STARTS
-@reboot sleep 900 && /home/f5/scripts/reactivate_licenses.sh > /home/f5/scripts/logs/reactivate_licenses.log 2>&1
+@reboot sleep 900 && /home/f5/tools/reactivate_licenses.sh > /home/f5/tools/logs/reactivate_licenses.log 2>&1
 
 ## WA UDF BIQPROJ-17471 Failed to get cm-bigip-allBigIpDevices device
-#@reboot /home/f5/scripts/wa_restat_restjavad_bigiq.sh > /home/f5/scripts/logs/wa_restat_restjavad_bigiq.log 2>&1
+#@reboot /home/f5/tools/wa_restat_restjavad_bigiq.sh > /home/f5/tools/logs/wa_restat_restjavad_bigiq.log 2>&1

@@ -13,11 +13,12 @@ sudo killall sleep
 ps -ef | grep perl | grep -v grep
 sudo killall perl
 
-echo -e "\n* Kill all jobs running..."
+echo -e "\n* Kill all traffic generators jobs running..."
+cd ../traffic-scripts
 for filename in ./*sh; do
     filename=${filename:2:${#filename}}
     echo -e "   * $filename"
-    for process in $(ps -ef | grep $filename | grep -v grep | grep -v $0 | grep -v reactivate_licenses.sh | awk '{print $2}'); do
+    for process in $(ps -ef | grep $filename | grep -v grep | grep -v $0 | awk '{print $2}'); do
       echo -e "      kill -9 $process"
       sudo kill -9 $process
     done
@@ -35,21 +36,17 @@ if [[ "$1" = "cleanup" ]]; then
     echo -e "\n* Cleanup logs...\n"
     # Cleanup Logs:
     rm -f ~/f5-demo-bigiq-analytics-export-restapi/input.json*
-    rm -f ~/scripts/dnstargets.txt
     rm -f ~/splunk-token
 
     rm -f ~/update_git.log
     rm -f ~/.bash_history
-    rm -fr ~/.aws
+    rm -rf ~/.aws
 
-    rm -rf ~/scripts/logs/*.log
+    rm -f ~/traffic-scripts/logs/*.log
+    rm -f ~/traffic-scripts/dnstargets.txt
+    rm -f ~/tools/logs/*.log
+    rm -f ~/ldap/f5-ldap.log
+
     rm -f ~/f5-vmware/*.log
-    ## Below shouldn't be needed anymore after moving all logs under ~/scripts/logs
-    rm -f ~/f5-demo-bigiq-analytics-export-restapi/*log
-    rm -f ~/f5-demo-app-troubleshooting/*log
-    rm -f ~/ldap/f5-ldap.log
-    rm -f ~/asm-brute-force/*.log
-    rm -f ~/scripts/*.log
-    rm -f ~/ldap/f5-ldap.log
     echo -e "... done! \n"
 fi

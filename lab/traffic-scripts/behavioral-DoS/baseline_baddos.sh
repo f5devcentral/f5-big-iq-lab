@@ -5,7 +5,7 @@ echo "Traffic Baselining"
 
 VS_ADDR="10.1.10.138"
 
-home="/home/f5/scripts/behavioral-DoS"
+home="/home/f5/traffic-scripts/behavioral-DoS"
 
 BASELINE='Please enter your type of baslining: '
 options=("increasing" "alternate" "Quit")

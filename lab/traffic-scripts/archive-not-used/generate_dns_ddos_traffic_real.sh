@@ -2,7 +2,7 @@
 # Uncomment set command below for code debuging bash
 # set -x
 
-home="/home/f5/scripts"
+home="/home/f5/traffic-scripts"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')

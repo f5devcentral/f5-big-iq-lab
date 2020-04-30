@@ -2,7 +2,7 @@
 # Uncomment set command below for code debuging bash
 # set -x
 
-home="/home/f5/scripts"
+home="/home/f5/traffic-scripts"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
@@ -14,10 +14,10 @@ fi
 
 sitefqdn[1]="site36.example.com"
 
-# add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/scripts/ssg-apps
-if [ -f /home/f5/scripts/ssg-apps ]; then
+# add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/traffic-scripts/ssg-apps
+if [ -f /home/f5/traffic-scripts/ssg-apps ]; then
         i=${#sitefqdn[@]}
-        SSGAPPS=$(cat /home/f5/scripts/ssg-apps)
+        SSGAPPS=$(cat /home/f5/traffic-scripts/ssg-apps)
         for fqdn in ${SSGAPPS[@]}; do
                 i=$(($i+1))
                 sitefqdn[$i]="$fqdn"

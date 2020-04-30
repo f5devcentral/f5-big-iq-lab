@@ -193,7 +193,7 @@ DoS Logging Profile creation
 1. Create a new DoS Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
 
 - Name: ``lab-dos-logging-profile``
-- Properties: select ``Dos Protection``
+- Properties: ``Dos Protection``
 - Remote Publisher: ``dos-remote-logging-publisher-8520``
 
 2. Pin the new DoS Logging profile to the SJC-vBIGIP01.termmarc.com device.
@@ -300,13 +300,13 @@ Monitoring DoS attacks
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
-``/home/f5student/scripts/behavioral-DoS/baseline_baddos.sh``
+``/home/f5/traffic-scripts/behavioral-DoS/baseline_baddos.sh``
 
 Choose ``1) increasing``.
 
 2. Open a different SSH session on the lamp server and run:
 
-``/home/f5student/scripts/behavioral-DoS/baseline_baddos.sh``
+``/home/f5/traffic-scripts/behavioral-DoS/baseline_baddos.sh``
 
 Choose ``2) alternate``.
 
@@ -316,7 +316,7 @@ Choose ``2) alternate``.
 
 4. Start the attack traffic, open a different SSH session on the lamp server and run:
 
-``/home/f5student/scripts/behavioral-DoS/attack_baddos.sh``
+``/home/f5/traffic-scripts/behavioral-DoS/attack_baddos.sh``
 
 5. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
 

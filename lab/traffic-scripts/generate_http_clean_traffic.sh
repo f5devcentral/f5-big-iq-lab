@@ -2,11 +2,11 @@
 # Uncomment set command below for code debuging bash
 # set -x
 
-home="/home/f5/scripts"
+home="/home/f5/traffic-scripts"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
-if [  $already -gt 2 ]; then
+if [  $already -gt 3 ]; then
     echo "The script is already running `expr $already - 2` time."
     exit 1
 fi
@@ -43,7 +43,7 @@ sitefqdn[28]="site40.example.com"
 sitefqdn[29]="site41.example.com"
 sitefqdn[30]="site42.example.com"
 
-# add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/scripts/ssg-apps
+# add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/traffic-scripts/ssg-apps
 if [ -f $home/ssg-apps ]; then
         i=${#sitefqdn[@]}
         SSGAPPS=$(cat $home/ssg-apps)
@@ -53,11 +53,11 @@ if [ -f $home/ssg-apps ]; then
         done
 fi
 
-sitepages="privatedata.html badlinks.html calc.exe %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme %windir% %APPDATA% fake_login_page.html?textRedirect=google.com fake_login_page.html?username=rob&?password=testme"
+# for hackazon app on port 80 in a docker
+sitepages="index.php f5_browser_issue.php f5_capacity_issue.php faq contact wishlist /images/Hackazon.png user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=72 product/view?id=130"
 
 # get length of the array
 arraylength=${#sitefqdn[@]}
-
 
 # Browser's list
 browser[1]="Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)"
@@ -80,25 +80,6 @@ browser[17]="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_6) AppleWebKit/601.7.7
 browser[18]="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36"
 browser[19]="Mozilla/5.0 (BlackBerry; U; BlackBerry 9320; en) AppleWebKit/534.11+ (KHTML, like Gecko) Version/7.1.0.714 Mobile Safari/534.11+"
 browser[20]="Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7.0; Touch; rv:11.0; IEMobile/11.0; NOKIA; Lumia 520) like iPhone OS 7_0_3 Mac OS X AppleWebKit/537 (KHTML, like Gecko) Mobile Safari/537"
-# BOTs
-browser[21]="Evil-sVen"
-browser[22]="CatchBot"
-browser[23]="2search"
-browser[24]="Adidx"
-browser[25]="BlueCoat"
-browser[26]="Gigabot"
-browser[27]="Elasticsearch"
-browser[28]="Evri"
-browser[29]="Jakespider"
-browser[30]="NerdyBot"
-browser[31]="AboutUsBot"
-browser[32]="Alexa"
-browser[33]="Amiga-AWeb"
-browser[34]="AppScan"
-browser[35]="CasperJS"
-browser[36]="CopyGuard"
-browser[37]="PhantomJS"
-browser[38]="SlimerJS"
 
 arraylengthbrowser=${#browser[@]}
 
@@ -122,56 +103,35 @@ do
                       port=0
                 fi
         fi
-
         if [[  $port == 443 || $port == 80 ]]; then
+        
                 echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
-
                 # add random number for loop
-                r=`shuf -i 2-6 -n 1`;
+                r=`shuf -i 1-3 -n 1`;
                 for k in `seq 1 $r`; do
                         for j in $sitepages; do
                                 echo "Loop $k"
                                 #Randome IP
-                                source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
+                                #source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
+                                rip=`shuf -i 1-254 -n 1`;
+                                source_ip_address="10.1.10.$rip"
+                                echo $source_ip_address
 
                                 # add random number for browsers
                                 rb=`shuf -i 1-$arraylengthbrowser -n 1`;
 
                                 echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
+                                http_header="-H 'X-Forwarded-For: $source_ip_address' -H 'authority: ${sitefqdn[$i]}' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'upgrade-insecure-requests: 1' -H 'dnt: 1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7' --compressed"
+                                
                                 if [  $port == 443 ]; then
-                                        curl -k -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j &
+                                        curl -k -s -m 35 -o /dev/null $http_header -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j &
                                 else
-                                        curl -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j &
+                                        curl -s -m 35 -o /dev/null $http_header  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j &
                                 fi
-                                echo "-X GET \"http://${sitefqdn[$i]}:$port/$j\"" >> $home/curl$i.txt
-                                echo "-X FETCH \"http://${sitefqdn[$i]}:$port/$j\"" >> $home/curl$i.txt
-                                echo "-X PATCH \"http://${sitefqdn[$i]}:$port/$j\"" >> $home/curl$i.txt
-                                echo "-X POST \"http://${sitefqdn[$i]}:$port/$j\"" >> $home/curl$i.txt
+                                sleep $r
                         done
                 done
-
-                # cpbNorEaster.py script
-                $home/cpbNorEaster.py -v ${sitefqdn[$i]}:$port -f $home/curl$i.txt
-                rm -f $home/curl*.txt
-
-                echo -e "\n# site $i ${sitefqdn[$i]} nmap"
-
-                nmap --system-dns -p $port -script http-sql-injection -T5 -Pn ${sitefqdn[$i]} &
-                nmap --system-dns -p $port -script http-waf-detect -T4 -Pn ${sitefqdn[$i]} &
-                nmap --system-dns -p $port -script http-enum -T5 -Pn ${sitefqdn[$i]} &
-                nmap --system-dns -p $port -script http-generator -T4 -Pn ${sitefqdn[$i]} &
-
-                echo -e "\n# site $i ab traffic gen"
-                if [  $port == 443 ]; then
-                       count=`shuf -i 11-30 -n 1`;
-                       conc=`shuf -i 1-10 -n 1`;
-                       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc https://${sitefqdn[$i]}/$j
-                else
-                       count=`shuf -i 11-30 -n 1`;
-                       conc=`shuf -i 1-10 -n 1`;
-                       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc http://${sitefqdn[$i]}:$port/$j
-                fi
-
+                
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
         fi

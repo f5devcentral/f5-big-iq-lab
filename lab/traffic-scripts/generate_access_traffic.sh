@@ -2,62 +2,25 @@
 # Uncomment set command below for code debuging bash
 # set -x
 
-home="/home/f5/scripts"
+home="/home/f5/traffic-scripts"
+dcdip="10.1.10.6"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
-if [  $already -gt 3 ]; then
+if [  $already -gt 2 ]; then
     echo "The script is already running `expr $already - 2` time."
     exit 1
 fi
 
-# do not add site17, 19 and 21 (used for access app)
-sitefqdn[1]="site10.example.com"
-sitefqdn[2]="site11.example.com"
-sitefqdn[3]="site12.example.com"
-sitefqdn[4]="site13.example.com"
-sitefqdn[5]="site14.example.com"
-sitefqdn[6]="site15.example.com"
-sitefqdn[7]="site16.example.com"
-sitefqdn[8]="site18.example.com"
-sitefqdn[9]="site20.example.com"
-sitefqdn[10]="site22.example.com"
-sitefqdn[11]="site23.example.com"
-sitefqdn[12]="site24.example.com"
-sitefqdn[13]="site25.example.com"
-sitefqdn[14]="site26.example.com"
-sitefqdn[15]="site27.example.com"
-sitefqdn[16]="site28.example.com"
-sitefqdn[17]="site29.example.com"
-sitefqdn[18]="site30.example.com"
-sitefqdn[19]="site31.example.com"
-sitefqdn[20]="site32.example.com"
-sitefqdn[21]="site33.example.com"
-sitefqdn[22]="site34.example.com"
-sitefqdn[23]="site35.example.com"
-sitefqdn[24]="site36.example.com"
-sitefqdn[25]="site37.example.com"
-sitefqdn[26]="site38.example.com"
-sitefqdn[27]="site39.example.com"
-sitefqdn[28]="site40.example.com"
-sitefqdn[29]="site41.example.com"
-sitefqdn[30]="site42.example.com"
-
-# add FQDN from Apps deployed with the SSG Azure and AWS scripts from /home/f5/scripts/ssg-apps
-if [ -f $home/ssg-apps ]; then
-        i=${#sitefqdn[@]}
-        SSGAPPS=$(cat $home/ssg-apps)
-        for fqdn in ${SSGAPPS[@]}; do
-                i=$(($i+1))
-                sitefqdn[$i]="$fqdn"
-        done
-fi
-
-# for hackazon app on port 80 in a docker
-sitepages="index.php f5_browser_issue.php f5_capacity_issue.php faq contact wishlist /images/Hackazon.png user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=72 product/view?id=130"
+sitefqdn[1]="site17.example.com"
+sitefqdn[2]="site19.example.com"
+sitefqdn[3]="site21.example.com"
 
 # get length of the array
 arraylength=${#sitefqdn[@]}
+
+# users available in the radius server
+users="paul paula david larry marco chris romain ronnie kyle"
 
 # Browser's list
 browser[1]="Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)"
@@ -83,7 +46,6 @@ browser[20]="Mozilla/5.0 (Mobile; Windows Phone 8.1; Android 4.0; ARM; Trident/7
 
 arraylengthbrowser=${#browser[@]}
 
-
 for (( i=1; i<${arraylength}+1; i++ ));
 do
     if [ ! -z "${sitefqdn[$i]}" ]; then
@@ -103,33 +65,29 @@ do
                       port=0
                 fi
         fi
+
         if [[  $port == 443 || $port == 80 ]]; then
-        
-                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
-                # add random number for loop
-                r=`shuf -i 1-3 -n 1`;
-                for k in `seq 1 $r`; do
-                        for j in $sitepages; do
-                                echo "Loop $k"
-                                #Randome IP
-                                #source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-                                rip=`shuf -i 1-254 -n 1`;
-                                source_ip_address="10.1.10.$rip"
-                                echo $source_ip_address
+                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen"
+                
+                for j in $users; do
+                        #Randome IP
+                        source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
+                        interface=$(/sbin/ifconfig | grep -B 1 10.1.10.5 | grep -v 10.1.10.5 | awk -F':' '{ print $1 }')
+                        sudo ip addr add $source_ip_address/24 dev $interface
+                        sleep 2
 
-                                # add random number for browsers
-                                rb=`shuf -i 1-$arraylengthbrowser -n 1`;
+                        # add random number for browsers
+                        rb=`shuf -i 1-$arraylengthbrowser -n 1`;
 
-                                echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
-                                http_header="-H 'X-Forwarded-For: $source_ip_address' -H 'authority: ${sitefqdn[$i]}' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'upgrade-insecure-requests: 1' -H 'dnt: 1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7' --compressed"
-                                
-                                if [  $port == 443 ]; then
-                                        curl -k -s -m 35 -o /dev/null $http_header -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j &
-                                else
-                                        curl -s -m 35 -o /dev/null $http_header  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j &
-                                fi
-                                sleep $r
-                        done
+                        echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]} - user $j"
+                        
+                        if [  $port == 443 ]; then
+                                curl -k -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/grosfichier.html &
+                        else
+                                curl -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/grosfichier.html &
+                        fi
+                        sleep 2
+                        sudo ip addr del $source_ip_address/24 dev $interface
                 done
                 
         else
@@ -137,3 +95,32 @@ do
         fi
    fi
 done
+
+# For SAML analytics
+echo "# generate_access_reports_data.sh"
+cd $home/access
+count=`shuf -i 1-2 -n 1`;
+./generate_access_reports_data.sh accessmock 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
+count=`shuf -i 1-2 -n 1`;
+./generate_access_reports_data.sh access 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
+count=`shuf -i 1-2 -n 1`;
+./generate_access_reports_data.sh accesssessions 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
+
+#echo "# generate_access_reports_mock_data.sh"
+#cd $home/access
+#count=`shuf -i 1-2 -n 1`;
+#./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP01.termmarc.com $count
+#count=`shuf -i 1-2 -n 1`;
+#./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP02.termmarc.com $count
+
+#echo "# rate-ht-sender.py"
+#cd $home/access
+#./rate-ht-sender.py --log-iq $dcdip
+
+#echo "# generate_data.sh"
+#cd $home/access
+#count=`shuf -i 1-4 -n 1`;
+#./generate_data.sh 10.1.10.222 access $count
+#count=`shuf -i 1-4 -n 1`;
+#./generate_data.sh 10.1.10.222 all $count
+

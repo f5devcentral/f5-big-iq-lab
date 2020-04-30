@@ -2,6 +2,8 @@
 # Uncomment set command below for code debuging bash
 # set -x
 
+# Prerequist: install tools/update_mac_sslo_tap.sh on TAP ubuntu server
+
 bigip1="10.1.20.13"  #Paris BIG-IP
 bigip2="10.1.20.7"   #Seattle BIG-IP
 lamp1="10.1.1.5"    #Lamp server management IP

@@ -130,7 +130,7 @@ elif [[ $1 == "ssg" ]]; then
        appfqdn=$(az network public-ip show --resource-group $PREFIX-azure-ssg --name $APP_FQDN | jq '.dnsSettings.fqdn')
        appfqdn=${appfqdn:1:${#appfqdn}-2}
        # write in a file to use generate_http_bad_traffic.sh and generate_http_clean_traffic.sh
-       echo $appfqdn >> /home/f5/scripts/ssg-apps
+       echo $appfqdn >> /home/f5/traffic-scripts/ssg-apps
 
        #(crontab -l ; echo "* * * * * /usr/bin/ab -n 100 -c 5 https://$appfqdn/" ) | crontab -
        echo -e "\nAplication URL:${RED} https://$appfqdn"

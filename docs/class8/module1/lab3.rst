@@ -8,4 +8,4 @@ Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
-``/home/f5/scripts/asm-brute-force/asm_brute_force_attack.sh``
+``/home/f5/traffic-scripts/asm-brute-force/asm_brute_force_attack.sh``

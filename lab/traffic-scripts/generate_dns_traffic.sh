@@ -2,7 +2,7 @@
 # Uncomment set command below for code debuging bash
 # set -x
 
-home="/home/f5/scripts"
+home="/home/f5/traffic-scripts"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
@@ -43,12 +43,16 @@ do
         dig @${sitelistener[$i]}
         if [  $? == 0 ]; then
              # Build dns target file and do dig
-            for (( j=1; j<${arraylength2}+1; j++ ));
-            do
-                echo -e "\n# site $i ${sitelistener[$i]} ${widip[$j]} dnstargets.txt"
-                echo ${widip[$j]} >> $home/dnstargets.txt
-                wip=$(echo ${widip[$j]} | awk '{print $1}')
-                dig @${sitelistener[$i]} $wip
+            # add random number for loop
+            r=`shuf -i 1-5 -n 1`;
+            for k in `seq 1 $r`; do
+                for (( j=1; j<${arraylength2}+1; j++ ));
+                do
+                    echo -e "\n# site $i ${sitelistener[$i]} ${widip[$j]} dnstargets.txt"
+                    echo ${widip[$j]} >> $home/dnstargets.txt
+                    wip=$(echo ${widip[$j]} | awk '{print $1}')
+                    dig @${sitelistener[$i]} $wip
+                done
             done
             echo -e "\n# site $i ${sitelistener[$i]} dnsperf"
             count=`shuf -i 100-300 -n 1`;

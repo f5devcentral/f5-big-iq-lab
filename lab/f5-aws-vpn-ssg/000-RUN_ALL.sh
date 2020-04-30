@@ -187,7 +187,7 @@ elif [[ $1 == "ssg" ]]; then
        if [ -f ./cache/$PREFIX/1-vpc.yml ]; then
               ELB_DNS="$(head -10 ./cache/$PREFIX/1-vpc.yml | grep ELB_DNS | awk '{ print $2}' | cut -d '"' -f 2)"
               # write in a file to use generate_http_bad_traffic.sh and generate_http_clean_traffic.sh
-              echo $ELB_DNS >> /home/f5/scripts/ssg-apps
+              echo $ELB_DNS >> /home/f5/traffic-scripts/ssg-apps
               echo -e "\nAplication URL:${RED} https://$ELB_DNS"
        else
               echo "${RED}Something wrong happen, no ./cache/$PREFIX/1-vpc.yml${NC}"

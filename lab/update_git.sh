@@ -37,7 +37,7 @@ if [[  $currentuser == "root" ]]; then
     else
         # DNS and internet connectivity working
         echo "Cleanup previous files..."
-        rm -rf f5-* scripts* crontab* ldap build* splunk awx bigiq_version* > /dev/null 2>&1
+        rm -rf f5-* awx ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* > /dev/null 2>&1
 
         echo "Install new scripts..."
         # GIT_LFS_SKIP_SMUDGE=1 will skip download files in the LFS (ucs files)
@@ -50,10 +50,11 @@ if [[  $currentuser == "root" ]]; then
         fi
 
         echo "Fixing permissions..."
-        chmod +x *py *sh scripts/*sh scripts/*/*sh scripts/*py scripts/*/*py f5-*/*sh f5-*/*py f5-*/*pl > /dev/null 2>&1
+        chmod +x *sh tools/*sh traffic-scripts/*sh traffic-scripts/*/*sh traffic-scripts/*/*py traffic-scripts/*/*/*py f5-*/*sh f5-*/*py
         
         # create log folder for scripts in cron jobs
-        mkdir $home/scripts/logs
+        mkdir $home/traffic-scripts/logs
+        mkdir $home/tools/logs
 
         chown -R $user:$user . > /dev/null 2>&1
 
@@ -97,7 +98,7 @@ if [[  $currentuser == "root" ]]; then
     docker stop $(docker ps -q)
     docker rm $(docker ps -a -q)
     docker rmi $(docker images -q) -f
-    $home/scripts/cleanup-docker.sh
+    $home/tools/cleanup-docker.sh
 
     ### Start AWX Compose
     rm -rf ~/.awx
@@ -123,7 +124,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
     
     ### ASM Brute Force
-    docker build $home/scripts/asm-brute-force -t asm-brute-force
+    docker build $home/traffic-scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
     
     ### Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
