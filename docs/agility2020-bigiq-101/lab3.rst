@@ -1,5 +1,5 @@
 Lab 3: AS3 Application creation and deletion using AWX/Ansible Tower and BIG-IQ
----------------------------------------------------
+-------------------------------------------------------------------------------
 
 Paula has been tasked with the creation of a new application on the BIG-IP  that has been requested by the application owner. Paula will use AS3 declaration and BIG-IQ to build the application on the appropriate BIG-IPs using an Ansible Playbook that is stored in their GitHub repository. 
 
