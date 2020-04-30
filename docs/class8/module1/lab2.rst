@@ -378,11 +378,11 @@ under the application called ``LAB_BaDOS``.
 
 |
 
-Monitoring DoS attacks
-^^^^^^^^^^^^^^^^^^^^^^
+Generate baseline legitimate traffic and trigger the DoS attacks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Both legitimate and attack traffic will have XFF header inserted in the request to simulate geografically 
-          distributed clients.
+          distributed clients. The source IP is also updated on the Lamp server used to generate the traffic.
 
 1. Generate baseline legitimate traffic. On Lamp server, generate HTTP traffic from a browser and CLI.
 
@@ -490,8 +490,8 @@ Expand the dimmensions to show *Transaction Outcomes* and *Client IPs*.
 
 7. Navigate to the Applications tab > APPLICATION > LAB_BaDOS > tenant5_BaDOS_service. Can you see the Behavioral DoS attack?
 
-Annex | Entire lab configuration with 1 single API call: AS3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Annex | Run the entire lab configuration part with 1 single API call using AS3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button of the *Ubuntu Lamp Server* 
@@ -675,7 +675,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 
 3. Navigate to Device tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
 
-4. Run section *Traffic simulation and Dashboard/Events*
+4. Run section *Generate baseline legitimate traffic and trigger the DoS attacks*
 
 Use following admd command to monitor the learning:
 
