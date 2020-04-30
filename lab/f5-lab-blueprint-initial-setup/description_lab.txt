@@ -74,7 +74,7 @@ LIST OF INSTANCES:
 If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com) or Kyle Oliver (k.oliver@f5.com)
 
 ###################################################
-Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Splunk
+Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Splunk, Gitlab
 
 List of Virtual Servers and Applications Servers where various type of traffic is being send to (check crontab config for more details).
 - Virtual IP addresses where the traffic generator sends HTTP clean traffic	10.1.10.110 to 10.1.10.142 (except 10.1.10.117, 10.1.10.119 and 10.1.10.121 (used for access in class 9)
@@ -94,6 +94,7 @@ List of Virtual Servers and Applications Servers where various type of traffic i
   - Port 9001: AWX (Ansible Tower)
   - Port 6080: NoVNC
   - Port 7001: Visual Code
+  - Port 7002/7022: Gitlab
 
 IPs from 10.1.10.110 to 10.1.10.138 have a corresponding FQDN named from site10.example.com to site42.example.com.
 
@@ -141,3 +142,34 @@ Samba:
 User: f5student/purple123
 Domain: WORKGROUP
 Storage Path: //10.1.1.5/dcdbackup
+
+###################################################
+XRDP
+Protocol: RDP
+Local:
+10.1.1.5 port 3389
+
+noVNC
+Protocol: HTTPS(Authenticated)
+Local:
+10.1.1.5port 6080
+
+AWX (Ansible Tower)
+Protocol: HTTPS(Unauthenticated)
+Local:
+10.1.1.5 port 9001
+
+Splunk
+Protocol: HTTPS(SSL, Unauthenticated)
+Local:
+10.1.1.5 port 8000
+
+Visual Studio Code
+Protocol: HTTPS(Authenticated)
+Local:
+10.1.1.5 port 7001
+
+Gitlab
+Protocol: HTTPS(Unauthenticated)
+Local:
+10.1.1.5 port 7002

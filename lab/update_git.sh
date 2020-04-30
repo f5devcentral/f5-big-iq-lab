@@ -37,7 +37,7 @@ if [[  $currentuser == "root" ]]; then
     else
         # DNS and internet connectivity working
         echo "Cleanup previous files..."
-        rm -rf f5-* awx ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* > /dev/null 2>&1
+        rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* > /dev/null 2>&1
 
         echo "Install new scripts..."
         # GIT_LFS_SKIP_SMUDGE=1 will skip download files in the LFS (ucs files)
@@ -105,7 +105,11 @@ if [[  $currentuser == "root" ]]; then
     mkdir -p ~/.awx
     ln -snf $home/awx ~/.awx/awxcompose
     docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
-    # Configuration at later in the script
+    # Configuration done later in the script
+
+    ### Start Gitlab Container
+    export GITLAB_HOME="$home/gitlab/"
+    docker-compose -f $home/gitlab/docker-compose.yml up -d
 
     ### Starting other docker web app: Hackazon, DVWA, hello world web apps
     docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n

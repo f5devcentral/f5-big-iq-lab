@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+  web:
+    image: 'gitlab/gitlab-ce:latest'
+    restart: always
+    hostname: 'gitlab.example.com'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://gitlab.example.com:7002'
+        gitlab_rails['gitlab_shell_ssh_port'] = 7022
+        gitlab_rails['initial_root_password'] = 'purple123'
+    ports:
+      - '7002:7002'
+      - '7022:22'
+    volumes:
+      - '$GITLAB_HOME/gitlab/config:/etc/gitlab'
+      - '$GITLAB_HOME/gitlab/logs:/var/log/gitlab'
+      - '$GITLAB_HOME/gitlab/data:/var/opt/gitlab'
