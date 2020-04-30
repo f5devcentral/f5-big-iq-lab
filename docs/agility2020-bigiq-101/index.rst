@@ -12,11 +12,11 @@ Welcome to the BIG-IQ Lab 101 - |year|
 - `Lab 4 – Configuring an Application with TCP Analytics`_
 - `Lab 5 – Importing a BIG-IP into a Silo`_
 
-.. _Lab 1 – Manage AS3 Templates on BIG-IQ: ./class1/module3/lab2.html
-.. _Lab 2 – Working with custom AS3 Templates in BIG-IQ: ./class1/module3/lab4.html
-.. _Lab 3 – AS3 Application creation and deletion using AWX/Ansible: ./class1/module2/lab8.html
-.. _Lab 4 – Configuring an Application with TCP Analytics: ./class3/module5/module5.html
-.. _Lab 5 – Importing a BIG-IP into a Silo: ./class6/module5/module5.html
+.. _Lab 1 – Manage AS3 Templates on BIG-IQ: ./lab1.html
+.. _Lab 2 – Working with custom AS3 Templates in BIG-IQ: ./lab2.html
+.. _Lab 3 – AS3 Application creation and deletion using AWX/Ansible: ./lab3.html
+.. _Lab 4 – Configuring an Application with TCP Analytics: ../class3/module5/module5.html
+.. _Lab 5 – Importing a BIG-IP into a Silo: ../class6/module5/module5.html
 
 **List of instances**:
 
