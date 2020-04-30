@@ -14,17 +14,9 @@
 
    larry larry radius
 
-   marco marco radius
-
-   olivia olivia local
-
-   dnsuser dnsuser radius
-
-   certuser certuser radius
-
 From the lab environment, launch an RDP session to access the Ubuntu
 Desktop. To do this, in your lab deployment, click on the
-*DETAILS* button of the \ *Ubuntu Lamp Server* system and from the
+*DETAILS* button of the *Ubuntu Lamp Server* system and from the
 *XRDP,* click on the drop-down and select the resolution that works for
 your laptop.
 
@@ -48,16 +40,16 @@ and select TMUI
 View AS3 templates section
 
 1. From within the LAMP server RDP session, logon to BIG-IQ as **admin**
-      by opening a browser and go to: \ https://10.1.1.4 or directly via
+      by opening a browser and go to: ``https://10.1.1.4`` or directly via
       the TMUI as shown above.
 
 2. Go to Applications > Application Templates and review the top section
-      which is titled \ **AS3 Templates**.
+      which is titled **AS3 Templates**.
 
 A new BIG-IQ v7.0 deployment will NOT include AS3 templates out of the
 box. If you want to start using AS3 templates which are provided by F5,
 then those AS3 templates can be found through the following
-link: \ https://github.com/f5devcentral/f5-big-iq
+link: https://github.com/f5devcentral/f5-big-iq
 
 **Note**
 
@@ -66,7 +58,7 @@ link: \ https://github.com/f5devcentral/f5-big-iq
 
 Import AS3 BIG-IQ templates
 
-1. Select \ **Import Templates** at the right top corner. You will be
+1. Select **Import Templates** at the right top corner. You will be
    taken to the BIG-IQ AS3 Template Library on Github.
 
 ..
@@ -91,7 +83,7 @@ Import AS3 BIG-IQ templates
 
 5. Walk through the provided templates and select them to understand the
    structure. If familiar with AS3 you will notice the structure.
-   Otherwise, visit \ `AS3 Example
+   Otherwise, visit `AS3 Example
    declarations <https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/examples.html.>`__.
 
 ..
@@ -110,9 +102,9 @@ and various profiles to offload SSL to the pool members.
 First we attempt to create an application service as application owner
 Paula.
 
-1. Log in as \ **paula** in BIG-IQ.
+1. Log in as **paula** in BIG-IQ.
 
-2. In the \ **Applications** page click on **Create** to create an
+2. In the **Applications** page click on **Create** to create an
    Application Service
 
 +-----------------------------------------------------------------------+
@@ -120,7 +112,7 @@ Paula.
 +=======================================================================+
 | -  Grouping = New Application                                         |
 |                                                                       |
-| -  Application Name = \ **LAB 1.2**                                   |
+| -  Application Name = **LAB 1.2**                                   |
 |                                                                       |
 | -  Description = My first AS3 template deployment with BIG-IQ         |
 +-----------------------------------------------------------------------+
@@ -137,24 +129,23 @@ Paula.
    to deploy this template, we first need to have those templates
    assigned to her via an administrator.
 
-3. Logout as \ **paula** and login to BIG-IQ as **david**. (if asked:
-   Leave site? Select: Leave)
+3. Logout as **paula** and login to BIG-IQ as **david**. (if asked: Leave site? Select: Leave)
 
-4. Select \ **Applications > Application Templates** and notice the
-   ‘Published’ templates. The template \ **Paula** wants to use is
+4. Select **Applications > Application Templates** and notice the
+   ‘Published’ templates. The template **Paula** wants to use is
    listed as a ‘Published’ template.
 
 |image4|
 
-5. Go to \ **System > Role Management > Roles** and
-   select \ **Application Roles** under the \ **CUSTOM ROLES** section.
+5. Go to **System > Role Management > Roles** and
+   select **Application Roles** under the **CUSTOM ROLES** section.
    Here you will see the collection of the Custom Application Roles.
 
 |image5|
 
 6. **Paula** is assigned to the
    exiting Application Creator VMware custom role. Select it and scroll
-   down to AS3 Templates. As you can see, \ **Paula** does not have
+   down to AS3 Templates. As you can see, **Paula** does not have
    permission to deploy an AS3 application
    using AS3-F5-HTTPS-offload-lb-existing-cert-template.
 
@@ -162,10 +153,10 @@ Paula.
 
 7. Select AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1 AS3
    Template and click the arrow to get it in
-   the \ **‘Selected’** section. Then, select \ **Save & Close**.
+   the **‘Selected’** section. Then, select **Save & Close**.
 
-8. Logout as David and log back in as \ **Paula** and
-   click \ **Create** to create an application.
+8. Logout as David and log back in as **Paula** and
+   click **Create** to create an application.
 
 9. Select Create Application to Create an Application Service:
 
@@ -176,7 +167,7 @@ Paula.
 +=======================================================================+
 | -  Grouping = New Application                                         |
 |                                                                       |
-| -  Application Name = \ **LAB­­ 1.2**                                 |
+| -  Application Name = **LAB­­ 1.2**                                     |
 |                                                                       |
 | -  Description = My first AS3 template deployment with BIG-IQ         |
 +-----------------------------------------------------------------------+
@@ -225,7 +216,7 @@ Paula.
 
 |image9|
 
-11. Click \ **Create**.
+11. Click **Create**.
 
 12. Check that the Application LAB 1.2 has been created.
 
@@ -235,8 +226,8 @@ Paula.
 
    If not visible, refresh the page.
 
-13. Select \ **LAB 1.2** Application. You will
-    notice \ **LAB1.2 **\ acts as a group of Application Services where
+13. Select **LAB 1.2** Application. You will
+    notice **LAB 1.2 **acts as a group of Application Services where
     underneath multiple services can be grouped. The next window will
     show you that a new Application Service has been created
     named: tenant1_https_app_service.
@@ -256,7 +247,7 @@ created on the BIG-IP.
        Jumphost and type the Virtual Server IP address 10.1.10.120. You
        should see the Hackazon website.
 
-16. Back on the BIG-IQ as \ **paula**,
+16. Back on the BIG-IQ as **paula**,
        select tenant1_https_app_service Application Service and look
        for HTTP traffic analytics.
 
@@ -276,19 +267,19 @@ modifications.
 
 -  Click the + next to the second Server Address and add: 10.1.20.122.
 
--  Click \ **Save & Close**.
+-  Click **Save & Close**.
 
 |image14|
 
 2. Once the configuration change has completed in BIG-IQ,
    check SEA-vBIGIP01.termmarc.com (partition tenant1) Local Traffic >
-   Pools and find \ **Pool**. It will have tenant1/https_app_service as
+   Pools and find **Pool**. It will have tenant1/https_app_service as
    the partition/path (or use search). Select Pool and go to members.
 
 |image15|
 
 3. Now back to the BIG-IQ and tenant1_https_app_service application and
-   select \ **Application Service > Configuration.** Scroll down in the
+   select **Application Service > Configuration.** Scroll down in the
    AS3 declaration and find that the schema has added the third pool
    member.
 

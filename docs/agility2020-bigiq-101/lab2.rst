@@ -5,14 +5,14 @@
    **Exercise 2.1 – Create Custom AS3 template via BIG-IQ GUI**
 
 We imported the default “out-of-the-box” AS3 templates (available
-on \ https://github.com/f5devcentral/f5-big-iq) that can be used for
+on https://github.com/f5devcentral/f5-big-iq) that can be used for
 deploying an application service. However, it is a good practice to
 clone the default AS3 templates and use them for your custom needs.
 
 1. Logon as **david** and go to the Applications > Application Templates
    and
    select AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-v1 and
-   click on \ **Clone**.
+   click on **Clone**.
 
 2. Name the cloned template: AS3-LAB-HTTPS-WAF-custom-template and click
    Clone.
@@ -34,9 +34,9 @@ clone the default AS3 templates and use them for your custom needs.
    Collect Response Code, Collect Method, and Collect Operating System and 
    Browser are already enabled by default in the AS3 schema.
 
-4. Click \ **Save & Close**.
+4. Click **Save & Close**.
 
-5. Select AS3-LAB-HTTPS-WAF-custom-template and click \ **Publish**.
+5. Select AS3-LAB-HTTPS-WAF-custom-template and click **Publish**.
 
 **Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3
 template**

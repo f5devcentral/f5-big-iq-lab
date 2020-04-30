@@ -5,35 +5,35 @@ Paula has been tasked with the creation of a new application on the BIG-IP  that
 
 **Exercise 3.1 – Application Creation**
 
-1. Click on the \ *AWX (Ansible Tower)* button on the system \ *Ubuntu
+1. Click on the *AWX (Ansible Tower)* button on the system *Ubuntu
    Lamp Server* in the Lab Environment. Use admin/purple123 to
    authenticate.
 
 |image26|
 
-2. Navigate to the \ **Projects** page and click on the refresh button
+2. Navigate to the **Projects** page and click on the refresh button
    to get the latest version of the templates.
 
 |image27|
 
-3. Navigate to the \ **Templates** page and click on *job Template* beside **New_AS3_App** to review the template
+3. Navigate to the **Templates** page and click on *job Template* beside **New_AS3_App** to review the template
 
 |image28|
 
-4. Make sure the \ **PLAYBOOK** *lab/f5-ansible-bigiq-as3-demo 7.0.0/tower/app_create.yml* is selected. Click on *LAUNCH*
+4. Make sure the **PLAYBOOK** *lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml* is selected. Click on *LAUNCH*
 
 |image29|
 
 **Note**
 
-You can go on the \ `GitHub
-repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo-7.0.0/tower>`__ and
+You can go on the `GitHub
+repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower>`__ and
 check review the playbooks and Jinja2 templates.
 
 
 |image30|
 
-5. **CREDENTIAL**: Select *BIG-IQ Creds* as \ **Credential Type**. Then
+5. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
    select *paula-iq*. Click on *NEXT*
 
    |image31|
@@ -64,7 +64,7 @@ check review the playbooks and Jinja2 templates.
 
 **Note**
 
-The \ *FAILED - RETRYING* messages are expected as the playbook runs
+The *FAILED - RETRYING* messages are expected as the playbook runs
 into a LOOP to check the AS3 task completion and will show failed until
 loop is completed.
 
@@ -72,7 +72,7 @@ loop is completed.
 
     |image35|
 
-10. Logon on \ **BIG-IQ** as **paula** *(paula\paula)*, go to
+10. Logon on **BIG-IQ** as **paula** *(paula\paula)*, go to
     Application tab and check the application is displayed and analytics
     are showing.
 
@@ -88,10 +88,10 @@ loop is completed.
 
 *Starting 7.0, BIG-IQ displays AS3 application services created using
 the AS3 Declare API as Unknown Applications. You can move those
-application services using the GUI, the \ *\ `Move/Merge
-API <https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html>`__\ * or
-create it directly into Application in BIG-IQ using the \ *\ `Deploy
-API <https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html>`__\ * to
+application services using the GUI, the *`Move/Merge
+API <https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html>`__* or
+create it directly into Application in BIG-IQ using the *`Deploy
+API <https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html>`__* to
 define the BIG-IQ Application name.*
 
 13. Review the HTTP traffic analytics.
@@ -102,24 +102,24 @@ define the BIG-IQ Application name.*
 
 The application owner has informed Paula that the application is no longer needed and needs to be deleted from. Paula will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
 
-1. Navigate to the \ **Templates** page and review *Delete_AS3_App*
+1. Navigate to the **Templates** page and review *Delete_AS3_App*
 
 |image39|
 
 2. Make sure
-   the \ **PLAYBOOK** *lab/f5-ansible-bigiq-as3-demo-7.0.0/tower/app_delete.yml* is
-   selected. Click on the \ *Launch* button to start a job using this
+   the **PLAYBOOK** *lab/f5-ansible-bigiq-as3-demo/tower/app_delete.yml* is
+   selected. Click on the *Launch* button to start a job using this
    template*. 
 
 |image40|
 
 **Note**
 
-You can go on the \ `GitHub
-repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo-7.0.0/tower>`__ and
+You can go on the `GitHub
+repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower>`__ and
 check review the playbooks and Jinja2 templates.
 
-3. **CREDENTIAL**: Select *BIG-IQ Creds* as \ **Credential Type**. Then
+3. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
    select *paula-iq*. Click on *NEXT*
 
 
@@ -145,7 +145,7 @@ check review the playbooks and Jinja2 templates.
 
 **Note**
 
-The \ *FAILED - RETRYING* messages are expected as the playbook runs
+The *FAILED - RETRYING* messages are expected as the playbook runs
 into a LOOP to check the AS3 task completion and will show failed until
 loop is completed.
 
@@ -153,7 +153,7 @@ loop is completed.
 
    |image45|
 
-8. Logon on \ **BIG-IQ** as **paula** *(paula\paula)*, go to
+8. Logon on **BIG-IQ** as **paula** *(paula\paula)*, go to
     Application tab and check the application is displayed and analytics
     are showing.
 9. Select *Unknown Applications* Application tile
