@@ -18,6 +18,7 @@ In BIG-IQ 7.1, we can associate devices or device groups with a role.
 
 3. Click on **Add** to create the user.
 
+- Auth Provider: ``local``
 - User Name: ``user-device-limit-as3``
 - Full Name: ``Class 1 Lab 5``
 - Password: ``password``
@@ -58,7 +59,7 @@ Save & Close
 
 **Save & Close**
 
-6. Logout as **david** and log back in as **user-device-limit-as3** and click **Create** application.
+6. Logout as **david** and log back in as **user-device-limit-as3** using the **local** Auth Provider and click **Create** application.
 
 .. image:: ../pictures/module5/lab-1-7.png
   :scale: 40%
