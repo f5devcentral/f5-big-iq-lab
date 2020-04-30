@@ -20,8 +20,10 @@ do
 				for i in $(eval echo "{0..`date +%M`}")
                                 do
                                         #Randome IP
-                                        rip=`shuf -i 1-254 -n 1`;
-                                        source_ip_address="10.1.10.$rip"
+                                        rip1=`shuf -i 1-254 -n 1`;
+                                        rip2=`shuf -i 1-254 -n 1`;
+                                        rip3=`shuf -i 1-254 -n 1`;
+                                        source_ip_address="10.$rip1.$rip2.$rip3"
                                         curl -0 -s -o /dev/null --header "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} ip: $source_ip_address\n" http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
                                         curl -0 -s -o /dev/null --header "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
                                         curl -0 -s -o /dev/null --header "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
@@ -38,8 +40,10 @@ do
                                         for i in {1..100};
                                         do
                                                 #Randome IP
-                                                rip=`shuf -i 1-254 -n 1`;
-                                                source_ip_address="10.1.10.$rip"
+                                                rip1=`shuf -i 1-254 -n 1`;
+                                                rip2=`shuf -i 1-254 -n 1`;
+                                                rip3=`shuf -i 1-254 -n 1`;
+                                                source_ip_address="10.$rip1.$rip2.$rip3"
                                                 curl -0 -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`" -w "High:\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} ip: $source_ip_address\n" http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
                                                 curl -0 -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
                                                 curl -0 -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
@@ -48,8 +52,10 @@ do
                                         for i in {1..50};
                                         do
                                                 #Randome IP
-                                                rip=`shuf -i 1-254 -n 1`;
-                                                source_ip_address="10.1.10.$rip"
+                                                rip1=`shuf -i 1-254 -n 1`;
+                                                rip2=`shuf -i 1-254 -n 1`;
+                                                rip3=`shuf -i 1-254 -n 1`;
+                                                source_ip_address="10.$rip1.$rip2.$rip3"
                                                 curl -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`" -w "High:\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} ip: $source_ip_address\n" http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
                                                 curl -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
                                                 curl -s -o /dev/null -H "X-Forwarded-For: $source_ip_address" -A "`shuf -n 1 $home/source/useragents_with_bots.txt`"  http://$VS_ADDR`shuf -n 1 $home/source/urls.txt`
