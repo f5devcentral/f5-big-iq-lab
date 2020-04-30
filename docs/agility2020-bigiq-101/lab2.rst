@@ -1,8 +1,8 @@
+Lab 2: Working with custom AS3 Templates in BIG-IQ
+---------------------------------------------------
 
-
-**Exercise 2 – Working with custom AS3 Templates in BIG-IQ**
-
-   **Exercise 2.1 – Create Custom AS3 template via BIG-IQ GUI**
+Exercise 2.1 – Create Custom AS3 template via BIG-IQ GUI
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We imported the default “out-of-the-box” AS3 templates (available
 on https://github.com/f5devcentral/f5-big-iq) that can be used for
@@ -38,8 +38,8 @@ clone the default AS3 templates and use them for your custom needs.
 
 5. Select AS3-LAB-HTTPS-WAF-custom-template and click **Publish**.
 
-**Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3
-template**
+Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3 template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. In this exercise Paula is going to create an application service that
    includes a Web Application Firewall (WAF) profile to secure the

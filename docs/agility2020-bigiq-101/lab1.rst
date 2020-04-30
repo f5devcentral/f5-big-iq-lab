@@ -1,6 +1,8 @@
-**Exercise 1 – Manage AS3 Templates on BIG-IQ**
+Lab 1: Manage AS3 Templates on BIG-IQ
+-------------------------------------
 
-   **Exercise 1.1 – Import AS3 templates**
+Import AS3 templates
+^^^^^^^^^^^^^^^^^^^^
 
    **Credentials**
 
@@ -92,7 +94,7 @@ Import AS3 BIG-IQ templates
    template**
 
 Create HTTPS Service using AS3 via BIG-IQ GUI
----------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In this exercise we will create an application service using an AS3
 template. The service will include a pool with two pool members (server
@@ -224,7 +226,7 @@ Paula.
    If not visible, refresh the page.
 
 13. Select **LAB 1.2** Application. You will
-    notice **LAB 1.2 ** acts as a group of Application Services where
+    notice **LAB 1.2** acts as a group of Application Services where
     underneath multiple services can be grouped. The next window will
     show you that a new Application Service has been created
     named: tenant1_https_app_service.

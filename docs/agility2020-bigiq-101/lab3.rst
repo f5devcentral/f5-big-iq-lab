@@ -1,9 +1,10 @@
-**Exercise 3 – AS3 Application creation and deletion using AWX/Ansible
-Tower and BIG-IQ**
+Lab 3: AS3 Application creation and deletion using AWX/Ansible Tower and BIG-IQ
+---------------------------------------------------
 
 Paula has been tasked with the creation of a new application on the BIG-IP  that has been requested by the application owner. Paula will use AS3 declaration and BIG-IQ to build the application on the appropriate BIG-IPs using an Ansible Playbook that is stored in their GitHub repository. 
 
-**Exercise 3.1 – Application Creation**
+Exercise 3.1 – Application Creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Click on the *AWX (Ansible Tower)* button on the system *Ubuntu
    Lamp Server* in the Lab Environment. Use admin/purple123 to
@@ -98,7 +99,8 @@ define the BIG-IQ Application name.*
 
     |image38|
 
-**Exercise 3.2 – Application Deletion**
+Exercise 3.2 – Application Deletion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The application owner has informed Paula that the application is no longer needed and needs to be deleted from. Paula will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
 
@@ -115,9 +117,8 @@ The application owner has informed Paula that the application is no longer neede
 
 **Note**
 
-You can go on the `GitHub
-repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower>`__ and
-check review the playbooks and Jinja2 templates.
+.. note:: You can go on the `GitHub repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower>`_
+          and check review the playbooks and Jinja2 templates.
 
 3. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
    select *paula-iq*. Click on *NEXT*
