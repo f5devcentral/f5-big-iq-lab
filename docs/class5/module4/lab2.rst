@@ -87,8 +87,7 @@ Close the complete window and click on View to see the restored configuration. Y
 
 Select Configuration Tab on the top and click on Local Traffic >> Pools on the left. Locate pool app2pool and verify that the previously deployed mon-https monitor has been removed from the pool by the partial restore/rollback action.
 
-..NOTE::
-     This restore (remove the monitor association to the pool) rolled back the change made to BIG-IQ configuration comparing to the snapshot made before the first change was made in this lab. However, the restore of BIG-IQ running configuration does not get merged onto managed BIG-IP. You will need to deploy another change in order make it happen on managed BIG-IP.
+.. note:: This restore (remove the monitor association to the pool) rolled back the change made to BIG-IQ configuration comparing to the snapshot made before the first change was made in this lab. However, the restore of BIG-IQ running configuration does not get merged onto managed BIG-IP. You will need to deploy another change in order make it happen on managed BIG-IP.
 
 Now that we have partially restored BIG-IQ’s running configuration based on a previously taken snapshot, we will merge the change to the managed BIG-IP devices by deploying the changes.
 

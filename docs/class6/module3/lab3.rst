@@ -13,8 +13,7 @@ To save time the **VS\_maintenance\_irule** has already been created on the BIG-
 
 To save time the **VS\_maintenance\_irule** has already been created on the BIG-IQ.
 
-..NOTE::
-     Skip to step 6 to apply the already configured iRule, or you may create your own iRule for this lab.
+.. note:: Skip to step 6 to apply the already configured iRule, or you may create your own iRule for this lab.
 
 
 2. Navigate to the **Configuration** tab on the top menu bar.

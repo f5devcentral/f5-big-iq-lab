@@ -38,7 +38,7 @@ Prerequisites
 1. Navigate to the Device tab and complete Discovery & Import on **SJC-vBIGIP01.termmarc.com**. 
    Choose *Create Version* for default LTM profiles and *Set all BIG-IP* for other objects.
 
-..note:: It is recommended to use latest version of BIG-IP. In this lab SJC BIG-IP has 15.1 and will be used.
+.. note:: It is recommended to use latest version of BIG-IP. In this lab SJC BIG-IP has 15.1 and will be used.
 
 2. Once LTM module import is completed, Discover & Import **Shared Security (SSM)** and **Web Application Security (ASM)** modules.
    Choose *Set all BIG-IP* when conflict resolution open.
@@ -485,7 +485,7 @@ Expand the dimmensions to show *Transaction Outcomes* and *Client IPs*.
 
 |
 
-..note:: Examine the list of detected bad actor IP addresses on the BIG-IP: ``ipidr -l /tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile``
+.. note:: Examine the list of detected bad actor IP addresses on the BIG-IP: ``ipidr -l /tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile``
 
 4. Stop the attack traffic by stoping the ``attack_baddos.sh`` script with CTRL+C
 

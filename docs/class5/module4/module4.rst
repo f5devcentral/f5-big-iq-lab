@@ -20,8 +20,7 @@ next time you deploy changes to that device, the unused objects are deleted.
 
 You have the option to choose whether you want to evaluate all of the changes, or specify which changes to evaluate. Select either \ **All Changes** or **Partial Changes** from the selected source.
 
-..NOTE::
-     When BIG-IQ® Centralized Management evaluates configuration changes, it first re-discovers the configuration from the managed device to ensure that there are no unexpected differences. If there are issues, the default behavior is to discard any changes made on the managed device, and then deploy the configuration changes.
+.. note:: When BIG-IQ® Centralized Management evaluates configuration changes, it first re-discovers the configuration from the managed device to ensure that there are no unexpected differences. If there are issues, the default behavior is to discard any changes made on the managed device, and then deploy the configuration changes.
 
 - To accept the default, proceed with the evaluation. The settings from the managing BIG-IQ overwrite the settings on the managed BIG-IP® device.
 - To override the default, re-discover the device and re-import the service. The settings from the managed BIG-IP device overwrite any changes that have been made using the BIG-IQ.
