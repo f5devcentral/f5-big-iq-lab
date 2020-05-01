@@ -107,10 +107,6 @@ if [[  $currentuser == "root" ]]; then
     docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
     # Configuration done later in the script
 
-    ### Start Gitlab Container
-    export GITLAB_HOME="$home/gitlab/"
-    docker-compose -f $home/gitlab/docker-compose.yml up -d
-
     ### Starting other docker web app: Hackazon, DVWA, hello world web apps
     docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
     docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
@@ -196,6 +192,10 @@ if [[  $currentuser == "root" ]]; then
     docker exec $docker_codeserver_id sh -c "sudo apt-get update"
     docker exec $docker_codeserver_id sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
     docker exec $docker_codeserver_id sh -c "pip3 install ansible"
+
+    ### Start Gitlab Container
+    export GITLAB_HOME="$home/gitlab/"
+    docker-compose -f $home/gitlab/docker-compose.yml up -d
 
     docker images
     docker ps -a

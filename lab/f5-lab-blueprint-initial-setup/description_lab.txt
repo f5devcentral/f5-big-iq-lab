@@ -94,7 +94,7 @@ List of Virtual Servers and Applications Servers where various type of traffic i
   - Port 9001: AWX (Ansible Tower)
   - Port 6080: NoVNC
   - Port 7001: Visual Code
-  - Port 7002/7022: Gitlab
+  - Port 7002: Gitlab (7022 SSH)
 
 IPs from 10.1.10.110 to 10.1.10.138 have a corresponding FQDN named from site10.example.com to site42.example.com.
 
@@ -170,6 +170,6 @@ Local:
 10.1.1.5 port 7001
 
 Gitlab
-Protocol: HTTPS(Unauthenticated)
+Protocol: HTTPS(Authenticated)
 Local:
 10.1.1.5 port 7002
