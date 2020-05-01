@@ -51,15 +51,17 @@ DoS Log Destinations and Publisher creation using UI
 
 .. warning:: If you want to use API to create those objects, skip this part and go to the next one.
 
-1. Create the DCD Pool and Log Destination. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
+1. As **David**, create the DCD Pool and Log Destination. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
 - Name: ``dos-remote-dcd-pool``
+- Device: ``SJC-vBIGIP01.termmarc.com``
 - Health Monitors: ``tcp``
 - Pool Member/Port: ``10.1.10.6:8020``
 
 2. Navigate to Configuration Tab > LOCAL TRAFFIC > Logs > Log Destinations, click Create.
 
 - Name Log Destination hslog: ``dos-remote-logging-destination-remote-hslog-8020``
+- Type: ``Remote High-Speed Log``
 - Device: ``SJC-vBIGIP01.termmarc.com``
 - Pool: ``dos-remote-dcd-pool`` previously created
 
@@ -190,11 +192,14 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 DoS Logging Profile creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Create a new DoS Logging profile. Navigate to Security > Event Logs > Logging Profiles. Click Create.
+1. As **Larry**, create a new DoS Logging profile. Navigate to Configuration > SECURITY > Shared Security > Logging Profiles. Click Create.
 
 - Name: ``lab-dos-logging-profile``
-- Properties: ``Dos Protection``
-- Remote Publisher: ``dos-remote-logging-publisher-8020``
+
+DOS PROTECTION:
+
+- Dos Protection > Status: ``Enabled``
+- DoS Application Protection > Remote Publisher: ``dos-remote-logging-publisher-8020``
 
 .. image:: ../pictures/module1/img_module1_lab2_1.png
   :align: center
@@ -220,13 +225,24 @@ DoS Logging Profile creation
 L7 Behavioral DoS Profile creation with Signature Detection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles, click **Create** and configure Behavioral & Stress-based Detection:
+1. As **David**, go to Configuration > SECURITY > Shared Security > DoS Protection > DoS Profiles, click **Create** and configure Behavioral & Stress-based Detection:
 
 - Name: ``lab-bados-profile``
+
+Application Security:
+
+- Application Security: ``Enabled``
+
+Behavioral & Stress-based Detection:
+
 - Operation Mode: ``Blocking``
 - Thresholds Mode: ``Automatic``
 - Signature Detection: ``Enable``
 - Mitigation: ``Standard protection``
+
+TPS-based Detection
+
+- Operation Mode: ``Off``
 
 .. image:: ../pictures/module1/img_module1_lab2_4.png
   :align: center
@@ -265,7 +281,7 @@ Make sure you disable **TPS-based Detection** in the DoS profile by setting Oper
 .. _`BIG-IP ASM - Preventing DoS Attacks on Applications v15.1`: https://techdocs.f5.com/en-us/bigip-15-0-0/big-ip-asm-implementations/preventing-dos-attacks-on-applications.html
 
 2. Pin the new DoS profile to the SJC-vBIGIP01.termmarc.com device.
-   Navigate to Pinning Policies and add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
+   Navigate to Pinning Policies and add the DoS Profile previously created to SJC-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab2_8.png
   :align: center
@@ -276,7 +292,7 @@ Make sure you disable **TPS-based Detection** in the DoS profile by setting Oper
 3. Deploy the DoS profile. 
    Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
 
-Create a Deployment to deploy the Remote Logging Changes on the SJC BIG-IP.
+Create a Deployment to deploy the DoS Profile & Remote Logging changes on the SJC BIG-IP.
 
 .. image:: ../pictures/module1/img_module1_lab2_9.png
   :align: center
@@ -303,7 +319,7 @@ Rename it ``LAB-HTTP-BaDOS``.
 
 Edit the new cloned template and select the Service_HTTP class.
 
-- Look for the attribute called ``profileDOS`` and set it to ``/Common/lab-bados-profile``.
+- Look for the attribute called ``profileDOS``, set it to ``/Common/lab-bados-profile``, and mark it as ``Editable``.
 
 .. image:: ../pictures/module1/img_module1_lab2_11.png
   :align: center
@@ -311,7 +327,7 @@ Edit the new cloned template and select the Service_HTTP class.
 
 |
 
-- Look for the attribute called ``Security Log Profiles`` and set it to ``/Common/lab-dos-logging-profile``.
+- Look for the attribute called ``Security Log Profiles``, set it to ``/Common/lab-dos-logging-profile``, and mark it as ``Editable``.
 
 .. image:: ../pictures/module1/img_module1_lab2_12.png
   :align: center
@@ -321,7 +337,7 @@ Edit the new cloned template and select the Service_HTTP class.
 
 Then, select the HTTP_Profile class.
 
-- Look for the attributes called ``Trust X-Forwarded-For`` and set it to ``Enabled``.
+- Look for the attributes called ``Trust X-Forwarded-For``, set it to ``Enabled``, and mark it as ``Editable``.
 
 .. image:: ../pictures/module1/img_module1_lab2_13.png
   :align: center
@@ -341,6 +357,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 | * Grouping = New Application                                                                      |
 | * Application Name = ``LAB_BaDOS``                                                                |
 | * Description = ``L7 Behavioral DoS Protection``                                                  |
+| * Application Service Method = ``Using Templates``                                                |
 +---------------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                           |
 +---------------------------------------------------------------------------------------------------+
