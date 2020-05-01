@@ -17,7 +17,7 @@ BIG-IQ Centralized Management allows the centralized management of BaDOS profile
 
 This lab will guide you through the configuration of BaDOS profiles using BIG-IQ CM User Interface.
 
-Official documentation can be found on the `BIG-IQ Knowledge Center`_ and there is a `DevCentral`_ article on this subject.
+Official documentation can be found on the `BIG-IQ Knowledge Center`_ and see `DevCentral`_ article on this subject.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-security/managing-dos-profiles-in-shared-security.html
 
@@ -378,11 +378,11 @@ under the application called ``LAB_BaDOS``.
 
 |
 
-Monitoring DoS attacks
-^^^^^^^^^^^^^^^^^^^^^^
+Generate baseline legitimate traffic and trigger the DoS attacks
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Both legitimate and attack traffic will have XFF header inserted in the request to simulate geografically 
-          distributed clients.
+          distributed clients. The source IP is also updated on the Lamp server used to generate the traffic.
 
 1. Generate baseline legitimate traffic. On Lamp server, generate HTTP traffic from a browser and CLI.
 
@@ -392,13 +392,7 @@ Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
 Choose ``1) increasing``.
 
-2. Open a different SSH session on the lamp server and run:
-
-``/home/f5/traffic-scripts/behavioral-DoS/baseline_baddos.sh``
-
-Choose ``2) alternate``.
-
-3. Wait for the machine learning algorithm to learn traffic behavior. SSH to the **SJC-vBIGIP01.termmarc.com** device and run:
+2. Wait for the machine learning algorithm to learn traffic behavior. SSH to the **SJC-vBIGIP01.termmarc.com** device and run:
 
 ``admd -s vs./tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile.info.learning``
 
@@ -411,11 +405,11 @@ The output looks like that:
 - 26450 is the number if learned unique suggestions
 - 100 is the number of good signatures dataset which are ready
 
-4. Start the attack traffic, open a different SSH session on the lamp server and run:
+3. Start the attack traffic, open a different SSH session on the lamp server and run:
 
 ``/home/f5/traffic-scripts/behavioral-DoS/attack_baddos.sh``
 
-5. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
+4. Now, have a look at the BIG-IQ DoS Dashboard available on BIG-IQ under **Monitoring > DASHBOARDS > DDoS > HTTP Analysis**.
 
 .. image:: ../pictures/module1/img_module1_lab2_15.png
   :align: center
@@ -436,6 +430,8 @@ incrementing "DoS Blocked" counter.
 
 Once the BaDoS dynamic signatures have been computed, BaDoS blocks only the traffic matching the dynamic signatures, 
 incrementing the "Blocked Bad request" counter.
+
+.. note:: In this lab, BaDoS is slowing down legitimate traffic, this is due to the fact we are using the same system to generate both good and bad traffic.
 
 L7 Behavioral DoS Profile update with Bad Actor Detection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -464,11 +460,15 @@ Make sure the deployment is successful.
 On the HTTP Analysis DDoS Dashboard, you can observe the Blocked Bad Actor counter being incremented while Blocked 
 Bad Requests stop incrementing as a result of bad actors being identified and being added to the grey list.
 
+Expand the dimmensions to show *Transaction Outcomes* and *Client IPs*.
+
 .. image:: ../pictures/module1/img_module1_lab2_18.png
   :align: center
   :scale: 40%
 
 |
+
+..note:: Examine the list of detected bad actor IP addresses on the BIG-IP: ``ipidr -l /tenant5/BaDOS_service/serviceMain+/Common/lab-bados-profile``
 
 4. Stop the attack traffic by stoping the ``attack_baddos.sh`` script with CTRL+C
 
@@ -488,8 +488,10 @@ Bad Requests stop incrementing as a result of bad actors being identified and be
 
 6. After some time, look under **Monitoring > DASHBOARDS > DDoS > Attack History**.
 
-Annex | Entire lab configuration with 1 single API call: AS3
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+7. Navigate to the Applications tab > APPLICATION > LAB_BaDOS > tenant5_BaDOS_service. Can you see the Behavioral DoS attack?
+
+Annex | Run the entire lab configuration part with 1 single API call using AS3
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button of the *Ubuntu Lamp Server* 
@@ -673,7 +675,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 
 3. Navigate to Device tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
 
-4. Run section *Traffic simulation and Dashboard/Events*
+4. Run section *Generate baseline legitimate traffic and trigger the DoS attacks*
 
 Use following admd command to monitor the learning:
 
