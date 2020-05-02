@@ -99,5 +99,5 @@ This completes the BIG-IP offboarding lab.
 
 .. |gcpcreds| replace:: GCP Credentials
 .. _gcpcreds: https://cloud.google.com/iam/docs/creating-managing-service-account-keys
-.. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo-7.0.0/tower
+.. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower
 
