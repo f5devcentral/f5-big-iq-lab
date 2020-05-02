@@ -1,5 +1,5 @@
 Lab 11.6: Offboard BIG-IP from BIG-IQ
------------------------------------
+-------------------------------------
 
 In this lab, we will revoke the license, remove BIG-IP from the application custom role, remove the device from BIG-IQ, then finally delete the instance on GCP. 
 

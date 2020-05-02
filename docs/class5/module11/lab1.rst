@@ -1,5 +1,5 @@
 Lab 11.1: Prepare GCP account credentials
------------------------------------
+-----------------------------------------
 
 `Google service accounts`_ are used for authentication to Google, and are associated with service account keys (public/private RSA key pairs). 
 
@@ -8,7 +8,7 @@ Lab 11.1: Prepare GCP account credentials
 .. Note:: If you already have a service account and credentials file, you can skip to the step below. 
 
 
-1. Login or federate to the GCP console. Click the Navigation menu in the top left corner > select **IAM & Admin** > **Service Accounts** > click **CREATE SERVICE ACCOUNT*.
+1. Login or federate to the GCP console. Click the Navigation menu in the top left corner > select **IAM & Admin** > **Service Accounts** > click **CREATE SERVICE ACCOUNT**.
 
 Enter a service account name (friendly display name), an optional description, select a role you wish to grant to the service account, and then click **CREATE**.
 

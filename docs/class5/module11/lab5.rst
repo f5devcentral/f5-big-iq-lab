@@ -1,5 +1,5 @@
 Lab 11.5: Discover, License, and Register BIG-IP on BIG-IQ using Declarative Onboarding
------------------------------------
+---------------------------------------------------------------------------------------
 
 In this lab, we will create a BIG-IP on GCP and discover and register it on BIG-IQ. 
 
@@ -52,7 +52,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 
 .. note:: Your values may differ from the example above
 
-.. image:: pictures/lab-53-4.png
+.. image:: pictures/lab-5-4.png
   :scale: 60%
   :align: center
 
