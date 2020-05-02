@@ -1,0 +1,39 @@
+{
+    "class": "DO",
+    "declaration": {
+            "schemaVersion": "1.5.0",
+            "class": "Device",
+            "async": true,
+            "Common": {
+                    "class": "Tenant",
+                    "myLicense": {
+                        "class": "License",
+                        "licenseType": "licensePool",
+                        "bigIqHost": "{{ hostvars[inventory_hostname]['mgmt_ip'] }}",
+                        "bigIqUsername": "{{ bigiq_user }}",
+                        "bigIqPassword": "{{ bigiq_pass }}",
+                        "revokeFrom": "{{ regkey_pool_name }}",
+                        "reachable": true
+                    },
+                    "myProvision": {
+                            "class": "Provision",
+                            "ltm": "nominal",
+                            "gtm": "nominal"
+                    }
+            }
+    },
+    "targetHost": "{{ bigip_mgmt }}",
+    "targetUsername": "{{ bigip_user }}",
+    "targetPassphrase": "{{ bigip_password }}",
+    "bigIqSettings": {
+            "failImportOnConflict": false,
+            "conflictPolicy": "USE_BIGIQ",
+            "deviceConflictPolicy": "USE_BIGIP",
+            "versionedConflictPolicy": "KEEP_VERSION",
+            "statsConfig": {
+                    "enabled": true,
+                    "zone": "default"
+            },
+            "snapshotWorkingConfig": false
+    }
+}

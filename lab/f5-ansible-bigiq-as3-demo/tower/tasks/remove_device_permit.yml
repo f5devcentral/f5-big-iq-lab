@@ -1,0 +1,46 @@
+---
+
+# Get json of the application creator role 
+- name: Get Application Creator Role
+  uri:
+    headers:
+      X-F5-Auth-Token: "{{ f5_auth_token }}"
+    method: GET
+    status_code: 200,202
+    url: "{{ custom_role_selflinks }}"
+    validate_certs: false
+    timeout: 60
+  register: custom_role_json
+  delegate_to: localhost
+
+# We want to modify just the devicePermitReferences list
+# Get existing devicePermitReferences list of the application creator role
+- name: Get existing devicePermitReferences list
+  set_fact:
+    existing_device_permit_ref: "{{ custom_role_json.json.devicePermitReferences }}"
+
+# Remove the BIG-IP devicePermit selfLink from existing devicePermitReferences list of the application creator role
+- name: Append new BIG-IP devicePermit selfLink to devicePermitReferences list 
+  set_fact:
+    new_device_permit_ref: "{{ existing_device_permit_ref | difference(bigip_device_permit_ref) }}"
+
+# Replace existing devicePermitReferences list with modified one excluding the BIG-IP
+# Also remove the keys "generation" and "lastUpdateMicros" to prepare the body for PUT (these will be automatically generated)
+- name: Replace existing devicePermitReferences with new one
+  set_fact:
+    new_custom_role_json: "{{ custom_role_json.json | dict2items | rejectattr('key', 'search', 'generation') | rejectattr('key', 'search', 'lastUpdateMicros') | list | items2dict | combine({'devicePermitReferences': new_device_permit_ref }, recursive=True) }}"
+
+#Update configuration of application creator role using the new config
+- name: Update existing role with new configuration that excludes the BIG-IP
+  uri:
+    body: "{{ new_custom_role_json }}"
+    body_format: json
+    headers:
+      X-F5-Auth-Token: "{{ f5_auth_token }}"
+    method: PUT
+    status_code: 200,202
+    url: "{{ custom_role_selflinks }}"
+    validate_certs: false
+    timeout: 60
+  register: new_custom_role_json_result
+  delegate_to: localhost
