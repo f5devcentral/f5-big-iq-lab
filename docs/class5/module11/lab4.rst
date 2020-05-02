@@ -8,13 +8,13 @@ In this lab, we will add a new user to an existing custom role on BIG-IQ.
 
 1. Navigate to the **Templates** page and review ``(Mod11-Lab4) Create_BIGIQ_User``.
 
-.. image:: /pictures/lab-4-1.png
+.. image:: pictures/lab-4-1.png
   :scale: 60%
   :align: center
 
 Make sure the **PLAYBOOK** ``onboard_tenant.yml`` is selected. Ensure that the admin_iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
 
-.. image:: /pictures/lab-4-2.png
+.. image:: pictures/lab-4-2.png
   :scale: 60%
   :align: center
 
@@ -24,7 +24,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 
 2. Back on the **Templates** page, next to the *Add_BIGIQ_Regkey* template, click on the *Start a job using this template*.
 
-.. image:: /pictures/lab-4-3.png
+.. image:: pictures/lab-4-3.png
   :scale: 60%
   :align: center
 
@@ -36,31 +36,31 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 | REGISTRATION KEY            | XXXX-XXXX-XXXX-XXXX-XXXX |
 +-----------------------------+--------------------------+
 
-.. image:: /pictures/lab-4-4.png
+.. image:: pictures/lab-4-4.png
   :scale: 60%
   :align: center
 
 4. **PREVIEW**: Review the summary of the template deployment, then click on **LAUNCH**.
 
-.. image:: /pictures/lab-4-5.png
+.. image:: pictures/lab-4-5.png
   :scale: 60%
   :align: center
 
 5. Follow the JOB deployment of the Ansible playbook.
 
-.. image:: /pictures/lab-4-6.png
+.. image:: pictures/lab-4-6.png
   :scale: 60%
   :align: center
 
 6. When the job is completed, check the PLAY RECAP and make sure there nothing failed.
 
-.. image:: /pictures/lab-4-7.png
+.. image:: pictures/lab-4-7.png
   :scale: 60%
   :align: center
 
 7. Login on **BIG-IQ** as **admin**, go to System tab > USER MANAGEMENT > Users. Confirm the new user exists.
 
-.. image:: /pictures/lab-4-8.png
+.. image:: pictures/lab-4-8.png
   :scale: 60%
   :align: center
 

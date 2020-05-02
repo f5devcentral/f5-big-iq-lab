@@ -12,13 +12,13 @@ In this lab, we will create a BIG-IP on GCP and discover and register it on BIG-
 
 1. Navigate to the **Templates** page and review ``ONBOARD_NEW_BIGIP``.
 
-.. image:: /pictures/lab-5-1.png
+.. image:: pictures/lab-5-1.png
   :scale: 60%
   :align: center
 
 Make sure the **PLAYBOOK** ``create_onboard_bigip_gcp_managed_do.yml`` is selected. Ensure that the admin_iq (BIG-IQ) and gcp_creds (GCP) credentials appear in the **CREDENTIALS** field.
 
-.. image:: /pictures/lab-5-2.png
+.. image:: pictures/lab-5-2.png
   :scale: 60%
   :align: center
 
@@ -26,7 +26,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 
 2. Back on the **Templates** page, next to the *(Mod11-Lab5) NEW_BIGIP_GCP_ONBOARD* template, click on the *Start a job using this template*.
 
-.. image:: /pictures/lab-5-3.png
+.. image:: pictures/lab-5-3.png
   :scale: 60%
   :align: center
 
@@ -52,55 +52,55 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 
 .. note:: Your values may differ from the example above
 
-.. image:: /pictures/lab-53-4.png
+.. image:: pictures/lab-53-4.png
   :scale: 60%
   :align: center
 
 4. **PREVIEW**: Review the summary of the template deployment, then click on **LAUNCH**.
 
-.. image:: /pictures/lab-5-5.png
+.. image:: pictures/lab-5-5.png
   :scale: 60%
   :align: center
 
 5. Follow the JOB deployment of the Ansible playbook.
 
-.. image:: /pictures/lab-5-6.png
+.. image:: pictures/lab-5-6.png
   :scale: 60%
   :align: center
 
 6. When the job is completed, check the PLAY RECAP and make sure there nothing failed.
 
-.. image:: /pictures/lab-5-7.png
+.. image:: pictures/lab-5-7.png
   :scale: 60%
   :align: center
 
 7. Login on **BIG-IQ** as **admin**, go to Devices tab > BIG-IP ONBOARDING and confirm that the onboarding task status. 
 
-.. image:: /pictures/lab-5-8.png
+.. image:: pictures/lab-5-8.png
   :scale: 60%
   :align: center
 
 8. Click on BIG-IP DEVICES and confirm the discovered BIG-IP device. 
 
-.. image:: /pictures/lab-5-9.png
+.. image:: pictures/lab-5-9.png
   :scale: 60%
   :align: center
 
 9. Click on Devices Tab > LICENSE MANAGEMENT > licenses > click the new regkey pool created earlier and confirm that the license you added earlier has been assigned to the new BIG-IP. 
 
-.. image:: /pictures/lab-5-10.png
+.. image:: pictures/lab-5-10.png
   :scale: 60%
   :align: center
 
 10. Log into GCP Console and confirm the instance. 
 
-.. image:: /pictures/lab-5-11.png
+.. image:: pictures/lab-5-11.png
   :scale: 60%
   :align: center
 
 11. On BIG-IQ, log out of admin, and log back in as the user you created earlier. The BIG-IP has been added to the same role assigned to this user so you should see the new BIG-IP device in the target list when creating an AS3 application deployment.
 
-.. image:: /pictures/lab-5-12.png
+.. image:: pictures/lab-5-12.png
   :scale: 60%
   :align: center
 
