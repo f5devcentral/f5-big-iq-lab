@@ -1,0 +1,19 @@
+---
+- name: TOWER-AS3-BIG-IQ - REGKEY ADD
+  hosts: bigiq
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: Add a registration key license to a pool
+      bigiq_regkey_license:
+        regkey_pool: "{{ regkey_pool_name }}"
+        license_key: "{{ regkey }}"
+        accept_eula: yes
+        provider: 
+          user: "{{ bigiq_user }}"
+          password: "{{ bigiq_pass }}"
+          server: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
+          validate_certs: no
+      delegate_to: localhost

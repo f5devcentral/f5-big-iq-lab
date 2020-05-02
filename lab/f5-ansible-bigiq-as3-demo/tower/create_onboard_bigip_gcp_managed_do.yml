@@ -1,0 +1,325 @@
+---
+- name: TOWER-AS3-BIG-IQ - CREATE AND ONBOARD BIG-IP on BIG-IQ
+  hosts: bigiq
+  connection: local
+  gather_facts: false
+  vars:
+    GCE_PROJECT: "{{ lookup('env', 'GCE_PROJECT') }}"
+    GCE_CREDENTIALS_FILE_PATH: "{{ lookup('env', 'GCE_CREDENTIALS_FILE_PATH') }}"
+    GCE_EMAIL: "{{ lookup('env', 'GCE_EMAIL') }}"
+    onboard_log: "/var/log/startup-script.log"
+    libs_dir: "/config/cloud/google"
+    AS3_URL: "https://github.com/F5Networks/f5-appsvcs-extension/releases/download/v3.16.0/f5-appsvcs-3.16.0-6.noarch.rpm"
+    DO_URL: "https://github.com/F5Networks/f5-declarative-onboarding/releases/download/v1.9.0/f5-declarative-onboarding-1.9.0-1.noarch.rpm"
+    TS_URL: "https://github.com/F5Networks/f5-telemetry-streaming/releases/download/v1.8.0/f5-telemetry-1.8.0-1.noarch.rpm"
+    BIGIP_PASS: "{{ bigip_password }}"
+    # Below vars for galaxy role testing
+    atc_service: Device
+    atc_method: POST
+    atc_delay: 15
+    atc_retries: 40
+    atc_timeout: 120
+
+  tasks:
+    # # First download galaxy roles for F5 ATC
+    # - name: Install roles from Ansible Galaxy
+    #   command: ansible-galaxy install f5devcentral.atc_deploy -p ./roles/ 
+
+    # - name: show downloaded roles
+    #   command: ls ./roles/
+
+    ####################################################
+    # Below tasks are for creating a new BIG-IP in GCP #
+    ####################################################
+
+
+    - name: Create a network
+      gcp_compute_network:
+        name: "{{ resource_prefix }}-network"
+        project: "{{ GCE_PROJECT }}"
+        auth_kind: serviceaccount
+        service_account_file:  "{{ GCE_CREDENTIALS_FILE_PATH }}"
+        auto_create_subnetworks: true
+        routing_config:
+          routing_mode: REGIONAL
+        state: present
+      register: gce_network
+
+    - name: create a firewall
+      gcp_compute_firewall:
+        name: "{{ resource_prefix }}-network-fw"
+        allowed:
+          - ip_protocol: tcp
+            ports:
+              - '22'
+              - '443'
+              - '8443'
+          - ip_protocol: icmp
+        network: "{{ gce_network }}"
+        direction: INGRESS
+        target_tags:
+        - bigiq-lab
+        project: "{{ GCE_PROJECT }}"
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
+        state: present
+
+    - name: create an address
+      gcp_compute_address:
+        name: '{{ resource_prefix }}-address-instance'
+        region: "{{ gcp_region }}"
+        project: "{{ GCE_PROJECT }}"
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
+        scopes:
+          - https://www.googleapis.com/auth/compute
+        state: present
+      register: address
+
+    - name: Set address as var
+      set_fact:
+        bigip_mgmt: "{{ address.address }}"
+
+    - name: create a disk
+      gcp_compute_disk:
+        name: '{{ resource_prefix }}-disk-instance'
+        size_gb: 80
+        source_image: 'projects/f5-7626-networks-public/global/images/f5-bigip-14-1-2-3-0-0-5-byol-all-modules-1boot-loc-19121814223'
+        zone: "{{ gcp_zone }}"
+        project: "{{ GCE_PROJECT }}"
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
+        scopes:
+          - https://www.googleapis.com/auth/compute
+        state: present
+      register: disk
+
+    - name: create an instance
+      gcp_compute_instance:
+          state: present
+          name: '{{ resource_prefix }}-bigip-instance'
+          machine_type: n1-standard-4
+          disks:
+            - auto_delete: true
+              boot: true
+              source: "{{ disk }}"
+          network_interfaces:
+              - network: "{{ gce_network }}"
+                access_configs:
+                  - name: 'External NAT'
+                    nat_ip: "{{ address }}"
+                    type: 'ONE_TO_ONE_NAT'
+          zone: "{{ gcp_zone }}"
+          project: "{{ GCE_PROJECT }}"
+          auth_kind: serviceaccount
+          service_account_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
+          scopes:
+            - https://www.googleapis.com/auth/compute
+          metadata:
+            enable-oslogin: "FALSE"
+            startup-script: "{{ lookup('template', 'templates/f5_onboard.j2') }}"
+          tags:
+            items:
+              - bigiq-lab
+      register: instance
+
+    - name: Wait for SSH to come up
+      wait_for: host={{ bigip_mgmt }} port=22 delay=10 timeout=60
+
+    ####################################################################
+    # Below tasks are for onboarding the newly created BIG-IP on BIG-IQ#
+    ####################################################################
+    - set_fact:
+        mgmt: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}:{{ hostvars[inventory_hostname]['mgmt_port'] }}"
+
+    # provider var for atc_deploy role, using BIG-IQ
+    - name: Set connection provider for BIG-IQ tasks
+      set_fact:
+        provider_atc: 
+          server: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
+          server_port: 443
+          user: "{{ bigiq_user }}"
+          password: "{{ bigiq_pass }}"
+          validate_certs: false
+
+    - name: prepare the DO declarations
+      template: 
+        src: "templates/onboard_bigip_do_{{ item.src }}.j2"
+        dest: "files/onboard_bigip_do_{{ item.dest }}.json"
+      delegate_to: localhost
+      when: "{{ requested_modules == item.when }}"
+      loop:
+        - { src: "ltm", dest: "ltm", when: "ltm" }
+        - { src: "asm", dest: "asm", when: "asm" }
+    
+
+    # Using the tasks from the galaxy role to test
+    - name: Setup provider and varables
+      set_fact:
+        provider: "{{ provider_atc }}"
+        atc_declaration_file: "files/onboard_bigip_do_{{ item.atc_declaration_file }}.json"
+      when: "{{ requested_modules == item.when }}"
+      loop:
+        - { atc_declaration_file: "ltm", when: "ltm" }
+        - { atc_declaration_file: "asm", when: "asm" }
+
+    - name: Set Automated Tool Chain service type from file
+      set_fact:
+        atc_service: "{{ (lookup('file', atc_declaration_file, errors='strict')| from_json).get('class') }}"
+      when: atc_declaration_file is defined and atc_service is undefined
+
+    - name: Set Automated Tool Chain metadata
+      set_fact:
+        toolchain_metadata: "{{ lookup('file', 'files/toolchain_metadata.json', errors='strict') }}"
+
+    - name: Setup service "{{ atc_service }}" endpoints
+      set_fact:
+        atc_url: "{{ toolchain_metadata['components'][atc_service]['endpoints']['configure']['uri'] }}"
+        atc_check_url: "{{ toolchain_metadata['components'][atc_service]['endpoints']['info']['uri'] }}"
+    
+    - name: include authentication.yml
+      include_tasks: tasks/authentication.yml
+
+    - name: Verify "{{ atc_service }}" service is available, and collect service info
+      uri:
+        url: "https://{{ provider.server }}:{{ provider.server_port }}{{ atc_check_url }}"
+        timeout: "{{ atc_timeout }}"
+        validate_certs: "{{ provider.validate_certs }}"
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+      register: atc_response
+      until:
+        - atc_response is success
+        - atc_response.json is defined
+      retries: "{{ atc_retries }}"
+      delay: "{{ atc_delay }}"
+
+    - name: include declare.yml
+      include_tasks: tasks/declare.yml
+
+    - name: include atc_task_check.yml
+      include_tasks: tasks/atc_task_check.yml
+      when:
+        - atc_service == "AS3" or atc_service == "Device"
+
+    # # Use DO to license, provision, and discover new BIG-IP on BIG-IQ
+    # # Official galaxy role for F5 automation tool chain (https://galaxy.ansible.com/f5devcentral/atc_deploy)
+    # - name: ATC POST
+    #   include_role:
+    #     name: f5devcentral.atc_deploy
+    #   vars: 
+    #     provider: "{{ provider_atc }}"
+    #     atc_service: Device
+    #     atc_method: POST
+    #     atc_declaration_file: "files/onboard_bigip_do_{{ item.atc_declaration_file }}.json"
+    #     atc_delay: 15
+    #     atc_retries: 40
+    #   when: "{{ requested_modules == item.when }}"
+    #   loop:
+    #     - { atc_declaration_file: "ltm", when: "ltm" }
+    #     - { atc_declaration_file: "asm", when: "asm" }
+
+
+    ######################################################################################
+    # Below tasks are for adding the BIG-IP to an existing role resource group on BIG-IQ #
+    ######################################################################################
+
+    - name: include authentication.yml
+      include_tasks: tasks/authentication.yml
+
+    # Get BIG-IP's machineid which is used to build the devicePermit selfLink 
+    # that's then used to append to the list of devices in an existing role's resource group
+    - name: Get BIG-IP machineId
+      uri:
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: GET
+        status_code: 200,202
+        url: "https://{{ mgmt }}/mgmt/shared/resolver/device-groups/cm-bigip-allBigIpDevices/devices"
+        validate_certs: false
+        timeout: 60
+      register: device_ref_query
+      delegate_to: localhost
+
+    # Get the machineID of the user specified BIG-IP
+    - name: Get the machineID of the user specified BIG-IP
+      set_fact:
+        machine_id: "{{ device_ref_query | json_query(query) | join(' ') }}"
+      vars: 
+        query: "json.items[?address=='{{ bigip_mgmt }}'].machineId"
+
+    # Use the machineId to create the new BIG-IP devicePermit selfLink with key set as "link". 
+    # This is the format used in the role's devicePermitReferences list
+    - name: Create new devicePermit selfLink 
+      set_fact:
+        new_device_permit: 
+          - link: "https://localhost/mgmt/cm/shared/device-permits/{{ machine_id }}"
+
+    # Query for all application-creator-roles
+    - name: Get all application-creator-roles
+      uri:
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: GET
+        status_code: 200,202
+        url: "https://{{ mgmt }}/mgmt/shared/authorization/application-creator-roles"
+        validate_certs: false
+        timeout: 60
+      register: app_creator_role_list
+      delegate_to: localhost
+
+    # Get Role selfLink based on name provided by user, which is the value in a key called displayName
+    - name: Get BIG-IQ Application Creator Role selfLink
+      set_fact:
+        custom_role: "{{ app_creator_role_list | json_query(query) | join(' ') }}"
+      vars: 
+        query: "json.items[?displayName == '{{ role_name }}'].selfLink"
+
+    - name: Add IP address to BIG-IQ Application Creator Role selfLink
+      set_fact:
+        custom_role_selflink: "{{ custom_role | regex_replace('localhost', mgmt) }}"
+
+    # Get json of the application creator role and write the result to file
+    - name: Get Application Creator Role
+      uri:
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: GET
+        status_code: 200,202
+        url: "{{ custom_role_selflink }}"
+        validate_certs: false
+        timeout: 60
+      register: custom_role_json
+      delegate_to: localhost
+
+    # Use below 4 tasks to modify just the devicePermitReferences list
+    # Get existing devicePermitReferences list of the application creator role
+    - name: Get existing devicePermitReferences list
+      set_fact:
+        existing_device_permit_ref: "{{ custom_role_json.json.devicePermitReferences }}"
+
+    # Append new BIG-IP devicePermit selfLink to devicePermitReferences list of the application creator role
+    - name: Append new BIG-IP devicePermit selfLink to devicePermitReferences list 
+      set_fact:
+        new_device_permit_ref: "{{ existing_device_permit_ref + new_device_permit }}"
+
+    # Replace existing devicePermitReferences list with new one including new BIG-IP
+    # Also remove the keys "generation" and "lastUpdateMicros" to prepare the body for PUT (these will be automatically generated)
+    - name: Replace existing devicePermitReferences with new one
+      set_fact:
+        new_custom_role_json: "{{ custom_role_json.json | dict2items | rejectattr('key', 'search', 'generation') | rejectattr('key', 'search', 'lastUpdateMicros') | list | items2dict | combine({'devicePermitReferences': new_device_permit_ref }, recursive=True) }}"
+
+    #Update configuration of application creator role using the new config
+    - name: Update existing role with new configuration that includes new BIG-IP
+      uri:
+        body: "{{ new_custom_role_json }}"
+        body_format: json
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: PUT
+        status_code: 200,202
+        url: "{{ custom_role_selflink }}"
+        validate_certs: false
+        timeout: 60
+      register: new_custom_role_json_result
+      delegate_to: localhost

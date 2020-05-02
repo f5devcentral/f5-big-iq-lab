@@ -18,6 +18,7 @@ In this class, we will focus on the BIG-IQ Device Management. Let's have a look 
    module8/module8
    module9/module9
    module10/module10
+   module11/module11
 
 ------------
 

@@ -1,0 +1,117 @@
+---
+- name: TOWER-AS3-BIG-IQ - Onboard Tenant
+  hosts: bigiq
+  connection: local
+  gather_facts: false
+  vars:
+    atc_timeout: 120
+
+  tasks:
+
+    - set_fact:
+        mgmt: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}:{{ hostvars[inventory_hostname]['mgmt_port'] }}"
+
+    # - name: Authenticate to BIG-IQ
+    #   uri:
+    #     url: "https://{{ mgmt }}/mgmt/shared/authn/login"
+    #     method: POST
+    #     headers:
+    #       Content-Type: application/json
+    #     body:
+    #       username: "{{ bigiq_user }}"
+    #       password: "{{ bigiq_pass }}"
+    #       loginProviderName: local
+    #     body_format: json
+    #     timeout: 60
+    #     status_code: 200, 202
+    #     validate_certs: false
+    #   register: auth
+
+    # provider var for authentication task, using BIG-IQ
+    - name: Set connection provider for BIG-IQ tasks
+      set_fact:
+        provider_atc: 
+          server: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
+          server_port: 443
+          user: "{{ bigiq_user }}"
+          password: "{{ bigiq_pass }}"
+          validate_certs: false
+
+    - name: Setup provider and varables
+      set_fact:
+        provider: "{{ provider_atc }}"
+
+    - name: include authentication.yml
+      include_tasks: tasks/authentication.yml
+
+    # Confirm existing list of BIG-IQ users
+    - name: Confirm existing BIG-IQ users 
+      uri:
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: GET
+        status_code: 200,202
+        url: "https://{{ mgmt }}/mgmt/shared/authz/users"
+        validate_certs: false
+        timeout: 60
+      register: user_list
+      delegate_to: localhost
+
+    - name: Get BIG-IQ user
+      set_fact:
+        new_user_exists: "{{ user_list | json_query(query) | join(' ') }}"
+      vars: 
+        query: "json.items[?name=='{{ user_name }}'].name"
+
+    - name: Create a new user 
+      uri:
+        body: "{{ lookup('template', 'templates/user_create.j2') }}"
+        body_format: json
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: POST
+        status_code: 200,202
+        url: "https://{{ mgmt }}/mgmt/shared/authz/users"
+        validate_certs: false
+        timeout: 60
+      register: user_status
+      delegate_to: localhost
+      when: new_user_exists == ""
+
+    # Get All Roles
+    - name: Get all BIG-IQ roles
+      uri:
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: GET
+        status_code: 200,202
+        url: "https://{{ mgmt }}/mgmt/shared/authorization/roles"
+        validate_certs: false
+        timeout: 60
+      register: role_list
+      delegate_to: localhost
+
+    # Get Role selfLink based on name provided by user
+    - name: Get BIG-IQ role selfLink
+      set_fact:
+        custom_role: "{{ role_list | json_query(query) | join(' ') }}"
+      vars: 
+        query: "json.items[?displayName=='{{ role_name }}'].selfLink"
+
+    - name: Add new user to existing role
+      uri:
+        body: "{{ lookup('template', 'templates/role_associate.j2') }}"
+        body_format: json
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: PATCH
+        status_code: 200,202
+        url: "{{ custom_role | regex_replace('localhost', mgmt) }}"
+        validate_certs: false
+        timeout: 60
+      register: user_status
+      delegate_to: localhost
+
+    # This variable will be used later on to add to list of users that can use the Tower Templates
+    - set_fact:
+        new_user: "{{ user_name }}"

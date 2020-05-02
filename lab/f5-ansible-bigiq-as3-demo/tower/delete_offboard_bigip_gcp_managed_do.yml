@@ -1,0 +1,237 @@
+---
+- name: TOWER-AS3-BIG-IQ - OFFBOARD AND DELETE BIG-IP from BIG-IQ
+  hosts: bigiq
+  connection: local
+  gather_facts: false
+  vars:
+    GCE_PROJECT: "{{ lookup('env', 'GCE_PROJECT') }}"
+    GCE_CREDENTIALS_FILE_PATH: "{{ lookup('env', 'GCE_CREDENTIALS_FILE_PATH') }}"
+    GCE_EMAIL: "{{ lookup('env', 'GCE_EMAIL') }}"
+    # Below vars for galaxy role testing
+    atc_service: Device
+    atc_method: POST
+    atc_delay: 15
+    atc_retries: 40
+    atc_timeout: 120
+
+  tasks:
+
+    # # First download galaxy roles for F5 ATC
+    # - name: Install roles from Ansible Galaxy
+    #   command: ansible-galaxy install f5devcentral.atc_deploy -p ./roles/ 
+
+    # - name: show downloaded roles
+    #   command: ls ./roles/
+
+    # Get the IP address of the Previously created BIG-IP instance
+    - name: get IP Address of BIG-IP instance
+      gcp_compute_instance_facts:
+        zone: "{{ gcp_zone }}"
+        filters:
+        - name = "{{ resource_prefix }}-bigip-instance"
+        project: "{{ GCE_PROJECT }}"
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
+      register: bigip_facts
+
+    - set_fact:
+        bigip_mgmt:  "{{ bigip_facts['items'][0]['networkInterfaces'][0]['accessConfigs'][0]['natIP'] }}"
+
+    ############################################
+    # Below tasks are for offboarding a BIG-IP #
+    ############################################
+    - set_fact:
+        mgmt: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}:{{ hostvars[inventory_hostname]['mgmt_port'] }}"
+
+    # provider var for atc_deploy role, using BIG-IQ
+    - name: Set connection provider for BIG-IQ tasks
+      set_fact:
+        provider_atc: 
+          server: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
+          server_port: 443
+          user: "{{ bigiq_user }}"
+          password: "{{ bigiq_pass }}"
+          validate_certs: false
+
+    - name: prepare the DO declarations
+      template: 
+        src: "templates/revoke_bigip_do.j2"
+        dest: "files/revoke_bigip_do.json"
+      delegate_to: localhost
+    
+    # Using the tasks from the galaxy role to test
+    - name: Setup provider and varables
+      set_fact:
+        provider: "{{ provider_atc }}"
+        atc_declaration_file: "files/revoke_bigip_do.json"
+
+    - name: Set Automated Tool Chain service type from file
+      set_fact:
+        atc_service: "{{ (lookup('file', atc_declaration_file, errors='strict')| from_json).get('class') }}"
+      when: atc_declaration_file is defined and atc_service is undefined
+
+    - name: Set Automated Tool Chain metadata
+      set_fact:
+        toolchain_metadata: "{{ lookup('file', 'files/toolchain_metadata.json', errors='strict') }}"
+
+    - name: Setup service "{{ atc_service }}" endpoints
+      set_fact:
+        atc_url: "{{ toolchain_metadata['components'][atc_service]['endpoints']['configure']['uri'] }}"
+        atc_check_url: "{{ toolchain_metadata['components'][atc_service]['endpoints']['info']['uri'] }}"
+    
+    - name: include authentication.yml
+      include_tasks: tasks/authentication.yml
+
+    - name: Verify "{{ atc_service }}" service is available, and collect service info
+      uri:
+        url: "https://{{ provider.server }}:{{ provider.server_port }}{{ atc_check_url }}"
+        timeout: "{{ atc_timeout }}"
+        validate_certs: "{{ provider.validate_certs }}"
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+      register: atc_response
+      until:
+        - atc_response is success
+        - atc_response.json is defined
+      retries: "{{ atc_retries }}"
+      delay: "{{ atc_delay }}"
+
+    - name: include declare.yml
+      include_tasks: tasks/declare.yml
+
+    - name: include atc_task_check.yml
+      include_tasks: tasks/atc_task_check.yml
+      when:
+        - atc_service == "AS3" or atc_service == "Device"
+
+    #################################################################################
+    # Below tasks are for removing the BIG-IP from BIG-IQ application creator roles #
+    #################################################################################
+
+    - name: include authentication.yml
+      include_tasks: tasks/authentication.yml
+
+    # Get BIG-IP's machineid which is used to build the devicePermit selfLink 
+    - name: Get BIG-IP machineId
+      uri:
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: GET
+        status_code: 200,202
+        url: "https://{{ mgmt }}/mgmt/shared/resolver/device-groups/cm-bigip-allBigIpDevices/devices"
+        validate_certs: false
+        timeout: 60
+      register: device_ref_query
+      delegate_to: localhost
+
+    # Get the machineID of the user specified BIG-IP
+    - name: Get the machineID of the user specified BIG-IP
+      set_fact:
+        machine_id: "{{ device_ref_query | json_query(query) | join(' ') }}"
+      vars: 
+        query: "json.items[?address=='{{ bigip_mgmt }}'].machineId"
+
+    # Use the machineId to create the BIG-IP devicePermit selfLink with key set as "link". 
+    # This is the format used in the role's devicePermitReferences list
+    - name: Create BIG-IP devicePermit selfLink 
+      set_fact:
+        bigip_device_permit_ref: 
+          - link: "https://localhost/mgmt/cm/shared/device-permits/{{ machine_id }}"
+
+    # Query for all application-creator-roles
+    - name: Get all application-creator-roles
+      uri:
+        headers:
+          X-F5-Auth-Token: "{{ f5_auth_token }}"
+        method: GET
+        status_code: 200,202
+        url: "https://{{ mgmt }}/mgmt/shared/authorization/application-creator-roles"
+        validate_certs: false
+        timeout: 60
+      register: app_creator_role_list
+      delegate_to: localhost
+
+    # Get list of all App Creator Role selfLinks that contain the BIG-IP
+    # Also handle cases where the devicePermitReferences list is null
+    - name: Get all BIG-IQ Application Creator Role selfLink whose devicePermitReferences are not null
+      set_fact:
+        debug_app_creator_role_selflinks: "{{ app_creator_role_list | json_query(query) }}"
+      vars: 
+        query: "json.items[?devicePermitReferences[0] != null]"
+
+    # Get list of all App Creator Role selfLinks that contain the BIG-IP
+    # Also handle cases where the devicePermitReferences list is null
+    - name: Get all BIG-IQ Application Creator Role selfLink that contain the BIG-IP
+      set_fact:
+        app_creator_role_selflinks: "{{ app_creator_role_list | json_query(query) }}"
+      vars: 
+        query: "json.items[?devicePermitReferences[0] != null] | [?devicePermitReferences[?link == '{{ bigip_device_permit_ref[0].link }}']].selfLink"
+
+    # Add the BIG-IP mgmt IP to all the Application Creator Role selfLink (loop)
+    - name: Add IP address to BIG-IQ Application Creator Role selfLink
+      set_fact:
+        custom_role_selflinks: "{{ item | regex_replace('localhost', mgmt) }}"
+      loop: "{{ app_creator_role_selflinks }}"
+
+    # Must remove the BIG-IP reference from the role to prevent ghost objects remaining
+    - name: Remove BIG-IP devicePermit reference for every application creator role that has it
+      include_tasks: tasks/remove_device_permit.yml
+      # Remove loop for now, as it will not work with one element list, likely will only be one element for this use case
+      #loop: "{{ custom_role_selflinks | list | join }}"
+
+    #######################################################
+    # Below tasks are for removing the BIG-IP from BIG-IQ #
+    #######################################################
+
+    # Completely removes BIG-IP from BIG-IQ
+    - name: Remove discovered device and its config
+      bigiq_device_discovery:
+        device_address: "{{ bigip_mgmt }}"
+        state: absent
+        provider:
+          user: "{{ bigiq_user }}"
+          password: "{{ bigiq_pass }}"
+          server: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
+          validate_certs: no
+      delegate_to: localhost
+
+    ################################################
+    # Below tasks are for deleting a BIG-IP in GCP #
+    ################################################
+    
+    # Delete instance
+    - name: Delete an instance
+      gcp_compute_instance:
+          state: absent
+          name: '{{ resource_prefix }}-bigip-instance'
+          zone: "{{ gcp_zone }}"
+          project: "{{ GCE_PROJECT }}"
+          auth_kind: serviceaccount
+          service_account_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
+
+    - name: Delete address
+      gcp_compute_address:
+        name: '{{ resource_prefix }}-address-instance'
+        region: "{{ gcp_region }}"
+        project: "{{ GCE_PROJECT }}"
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
+        state: absent
+
+    - name: Delete firewall
+      gcp_compute_firewall:
+        name: "{{ resource_prefix }}-network-fw"
+        project: "{{ GCE_PROJECT }}"
+        auth_kind: serviceaccount
+        service_account_file: "{{ GCE_CREDENTIALS_FILE_PATH }}"
+        state: absent
+
+    - name: Delete network
+      gcp_compute_network:
+        name: "{{ resource_prefix }}-network"
+        project: "{{ GCE_PROJECT }}"
+        auth_kind: serviceaccount
+        service_account_file:  "{{ GCE_CREDENTIALS_FILE_PATH }}"
+        state: absent
+
+
