@@ -1,5 +1,5 @@
-Class 8: BIG-IQ Application Security Manager (ASM)
-==================================================
+Class 8: BIG-IQ Application Security Manager
+============================================
 
 BIG-IQ ASM enables enterprise-wide management and configuration of multiple BIG-IP devices from a central 
 management platform. 

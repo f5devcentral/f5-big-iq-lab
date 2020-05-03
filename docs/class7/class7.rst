@@ -1,5 +1,5 @@
-Class 7: BIG-IQ Application Firewall Manager (AFM)
-==================================================
+Class 7: BIG-IQ Application Firewall Manager
+============================================
 
 In this class, we will review the managing F5 Advanced Firewall Manager deployments in BIG-IQ.
 

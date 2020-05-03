@@ -1,11 +1,11 @@
-Class 6: BIG-IQ ADC Management
-==============================
+Class 6: BIG-IQ LTM Configuration Management
+============================================
 
-In this class, we will focus on Application Delivery Controller (ADC).
+In this class, we will focus on LTM Configuration Management.
 
-To learn more on application delivery controllers, - `DevCentral`_.
+To learn more on `Application Delivery Controllers`_.
 
-.. _DevCentral: https://devcentral.f5.com/articles/what-is-an-application-delivery-controller-part-1-24742
+.. _Application Delivery Controllers: https://devcentral.f5.com/articles/what-is-an-application-delivery-controller-part-1-24742
 
 .. toctree::
    :maxdepth: 1

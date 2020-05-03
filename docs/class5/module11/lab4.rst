@@ -1,5 +1,5 @@
 Lab 11.4: Create User
------------------------------------
+---------------------
 
 In this lab, we will add a new user to an existing custom role on BIG-IQ. 
 

@@ -1,5 +1,5 @@
 Lab 11.2: Create Regkey Pool
------------------------------------
+----------------------------
 
 In this lab, we will create a new Regkey pool on BIG-IQ. BIG-IQ admin credentials are needed so we will create new Tower credentials.
 
