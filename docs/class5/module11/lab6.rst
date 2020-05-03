@@ -4,6 +4,7 @@ Lab 11.6: Offboard BIG-IP from BIG-IQ
 In this lab, we will revoke the license, remove BIG-IP from the application custom role, remove the device from BIG-IQ, then finally delete the instance on GCP. 
 
 **Prerequisites**
+
 - |gcpcreds|_  
 - BIG-IP Management IP
 - BIG-IP Username/Password
@@ -15,7 +16,7 @@ In this lab, we will revoke the license, remove BIG-IP from the application cust
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``delete_offboard_bigip_gcp_managed_do.yml`` is selected. Ensure that the admin_iq (BIG-IQ) and gcp_creds (GCP) credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/delete_offboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the admin_iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
 
 .. image:: pictures/lab-6-2.png
   :scale: 60%

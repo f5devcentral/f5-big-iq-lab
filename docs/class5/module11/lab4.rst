@@ -4,6 +4,7 @@ Lab 11.4: Create User
 In this lab, we will add a new user to an existing custom role on BIG-IQ. 
 
 **Prerequisites**
+
 - BIG-IQ Custom Application Role Name
 
 1. Navigate to the **Templates** page and review ``(Mod11-Lab4) Create_BIGIQ_User``.
@@ -12,7 +13,7 @@ In this lab, we will add a new user to an existing custom role on BIG-IQ.
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``onboard_tenant.yml`` is selected. Ensure that the admin_iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/onboard_tenant.yml`` is selected. Also confirm that the admin_iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
 
 .. image:: pictures/lab-4-2.png
   :scale: 60%

@@ -11,19 +11,19 @@ Use ``admin/purple123`` to authenticate.
   :scale: 60%
   :align: center
 
-1. Navigate to the **Credentials** page and click + to create a new credential. Type in a name and then click the magnifying glass to search for the **BIG-IQ_Creds** credential type. Type in the username and password for the admin user on BIG-IQ then click **SAVE**. 
+1. Navigate to the **Credentials** page and notice the credentials of type **BIG-IQ_Creds**. The labs in these modules will use the **admin-iq** credential for creating resources on BIG-IQ. 
 
 .. image:: pictures/lab-2-2.png
   :scale: 60%
   :align: center
 
-3. Navigate to the **Templates** page and review ``(Mod11-Lab2) Create_BIGIQ_Regkey_Pool``. Ensure that the admin_iq credentials appear in the **CREDENTIALS** field.
+3. Navigate to the **Templates** page and review ``(Mod11-Lab2) Create_BIGIQ_Regkey_Pool``.
 
 .. image:: pictures/lab-2-3.png
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``regkey_pool_create.yml`` is selected. Ensure that the admin_iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/regkey_pool_create.yml`` is selected. Also confirm that the admin_iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
 
 You can go on the `GitHub repository`_ and check review the playbooks and Jinja2 templates.
 
