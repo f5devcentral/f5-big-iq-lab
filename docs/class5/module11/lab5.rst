@@ -4,19 +4,20 @@ Lab 11.5: Discover, License, and Register BIG-IP on BIG-IQ using Declarative Onb
 In this lab, we will create a BIG-IP on GCP and discover and register it on BIG-IQ. 
 
 **Prerequisites**
+
 - |gcpcreds|_  
 - BIG-IP Management IP
 - BIG-IP Username/Password
 - BIG-IQ Regkey Pool Name
 
 
-1. Navigate to the **Templates** page and review ``ONBOARD_NEW_BIGIP``.
+1. Navigate to the **Templates** page and review ``(Mod11-Lab5) NEW_BIGIP_GCP_ONBOARD``.
 
 .. image:: pictures/lab-5-1.png
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``create_onboard_bigip_gcp_managed_do.yml`` is selected. Ensure that the admin_iq (BIG-IQ) and gcp_creds (GCP) credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/create_onboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the admin_iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
 
 .. image:: pictures/lab-5-2.png
   :scale: 60%

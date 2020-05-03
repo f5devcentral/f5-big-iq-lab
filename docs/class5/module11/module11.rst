@@ -6,6 +6,7 @@ This module demonstrates how Ansible can be used to automate the provisioning of
 .. Note:: You need a Google Cloud Platform (GCP) service account and credentials to complete these labs. 
 
 The labs in this module will cover below tasks:
+
 - Prepare GCP account credentials
 - Create Regkey Pool on BIG-IQ
 - Add keys to the Regkey Pool
