@@ -18,7 +18,7 @@
         body:
           username: "{{ bigiq_user }}"
           password: "{{ bigiq_pass }}"
-          loginProviderName: RadiusServer
+          loginProviderName: "{{ bigiq_provider }}"
         body_format: json
         timeout: 60
         status_code: 200, 202

@@ -8,13 +8,13 @@ In this lab, we will add a new key to the previously created regkey pool on BIG-
 - BIG-IQ Regkey Pool name
 - BIG-IP registration key(s)
 
-1. Navigate to the **Templates** page and review ``(Mod11-Lab3) Add_BIGIQ_Regkey``.
+1. Navigate to the **Templates** page and review ``(Class5-Mod11-Lab3) Add_BIGIQ_Regkey``.
 
 .. image:: pictures/lab-3-1.png
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/regkey_license_add.yml`` is selected. Also confirm that the admin_iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/regkey_license_add.yml`` is selected. Also confirm that the david-iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
 
 .. image:: pictures/lab-3-2.png
   :scale: 60%
@@ -24,7 +24,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 
 .. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower
 
-2. Back on the **Templates** page, next to the *(Mod11-Lab3) Add_BIGIQ_Regkey* template, click on the *Start a job using this template*.
+2. Back on the **Templates** page, next to the *(Class5-Mod11-Lab3) Add_BIGIQ_Regkey* template, click on the *Start a job using this template*.
 
 .. image:: pictures/lab-3-3.png
   :scale: 60%

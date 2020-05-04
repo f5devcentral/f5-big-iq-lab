@@ -18,9 +18,14 @@
       when: bigiq_user == 'paula'
 
     - set_fact:
-        user_cred: 4
+        user_cred: 2
         userid: 2
       when: bigiq_user == 'paul'
+
+    - set_fact:
+        user_cred: 4
+        userid: 4
+      when: bigiq_user == 'admin'
 
     - name: Create Tower Template
       tower_job_template:
