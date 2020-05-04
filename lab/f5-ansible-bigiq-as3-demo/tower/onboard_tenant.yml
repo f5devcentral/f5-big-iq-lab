@@ -11,22 +11,6 @@
     - set_fact:
         mgmt: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}:{{ hostvars[inventory_hostname]['mgmt_port'] }}"
 
-    # - name: Authenticate to BIG-IQ
-    #   uri:
-    #     url: "https://{{ mgmt }}/mgmt/shared/authn/login"
-    #     method: POST
-    #     headers:
-    #       Content-Type: application/json
-    #     body:
-    #       username: "{{ bigiq_user }}"
-    #       password: "{{ bigiq_pass }}"
-    #       loginProviderName: local
-    #     body_format: json
-    #     timeout: 60
-    #     status_code: 200, 202
-    #     validate_certs: false
-    #   register: auth
-
     # provider var for authentication task, using BIG-IQ
     - name: Set connection provider for BIG-IQ tasks
       set_fact:
