@@ -123,7 +123,7 @@ Paula.
 **Warning**
 
    You will notice that the template is not available. If we want Paula
-   to deploy this template, we first need to have those templates
+   to deploy services using this template, we first need to have those templates
    assigned to her via an administrator.
 
 3. Logout as **paula** and login to BIG-IQ as **david**. (if asked: Leave site? Select: Leave)
