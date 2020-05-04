@@ -19,7 +19,7 @@
           server_port: 443
           user: "{{ bigiq_user }}"
           password: "{{ bigiq_pass }}"
-          loginProviderName: "{{ bigiq_provider }}"
+          auth_provider: "{{ bigiq_provider }}"
           validate_certs: false
 
     - name: Setup provider and varables

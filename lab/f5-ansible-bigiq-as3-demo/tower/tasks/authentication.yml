@@ -9,7 +9,7 @@
     body:
       username: "{{ provider.user }}"
       password: "{{ provider.password }}"
-      loginProviderName: "{{ provider.loginProviderName }}"
+      loginProviderName: "{{ provider.auth_provider }}"
     body_format: json
   register: authtoken
   delegate_to: localhost
