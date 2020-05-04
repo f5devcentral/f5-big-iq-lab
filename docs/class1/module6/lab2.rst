@@ -74,9 +74,9 @@ section marked **Selected**. Then, click on Deploy.
   :scale: 40%
   :align: center
 
-.. warning:: If the deployment fails, you may check if the Boston Cluster is sync correctly.
-
 Click **Deploy**, and then click **Deploy** in the Deploy Immediately warning. 
+
+.. warning:: If the deployment fails, you may check if the Boston Cluster is sync correctly.
 
 Wait for the deployment to complete.
 
