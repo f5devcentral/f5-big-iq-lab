@@ -74,23 +74,13 @@ if [[  $currentuser == "root" ]]; then
         touch last_update_$(date +%Y-%m-%d_%H-%M)
     fi
 
-    echo -e "\nRestart Radius Server"
-    /etc/init.d/freeradius restart
+    echo "Check/Restart sevices: Radius, DHCP, NoVNC, Websockify"
+    su - f5student -c "$home/tools/services_monitor.sh"
+    sleep 5
     /etc/init.d/freeradius status
-
-    echo -e "\nRestart DHCP Server"
-    /etc/init.d/isc-dhcp-server restart
     /etc/init.d/isc-dhcp-server status
     dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
-
-    echo -e "\nNoVNC\n"
-    su - f5student -c "/usr/bin/vncserver :1 -geometry 1280x800 -depth 24"
-    sleep 5
     ps -ef | grep vnc | grep -v grep
-
-    echo -e "\nwebsockify\n"
-    su - f5student -c "/usr/bin/websockify -D --web=/usr/share/novnc/ --cert=/etc/ssl/novnc.pem 6080 localhost:5901"
-    sleep 5
     ps -ef | grep websockify | grep -v grep
 
     # Cleanup docker
@@ -161,8 +151,6 @@ if [[  $currentuser == "root" ]]; then
             --detach osixia/openldap:1.2.4 \
             --copy-service
 
-    ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > $home/ldap/f5-ldap.log
-
     ### Copy some custom files in hackazon docker for labs
     # App Troubleshooting
     docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
@@ -192,6 +180,9 @@ if [[  $currentuser == "root" ]]; then
     docker exec $docker_codeserver_id sh -c "sudo apt-get update"
     docker exec $docker_codeserver_id sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
     docker exec $docker_codeserver_id sh -c "pip3 install ansible"
+
+    ### Ldap connectivity check
+    ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > $home/ldap/f5-ldap.log
 
     ### Start Gitlab Container
     export GITLAB_HOME="$home/gitlab/"
