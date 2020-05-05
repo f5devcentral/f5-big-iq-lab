@@ -10,7 +10,7 @@ Lab 11.1: Prepare GCP account credentials
 
 1. Login or federate to the GCP console. Click the Navigation menu in the top left corner > select **IAM & Admin** > **Service Accounts** > click **CREATE SERVICE ACCOUNT**.
 
-Enter a service account name (friendly display name), an optional description, select a role you wish to grant to the service account, and then click **CREATE**.
+Enter a service account name (friendly display name), an optional description and then click **CREATE**.
 
 .. image:: pictures/lab-1-1.png
   :scale: 60%
