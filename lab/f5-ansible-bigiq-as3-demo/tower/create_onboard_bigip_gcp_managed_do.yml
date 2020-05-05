@@ -155,7 +155,7 @@
     
 
     # Using the tasks from the galaxy role to test
-    - name: Setup provider and varables
+    - name: Setup provider and variables
       set_fact:
         provider: "{{ provider_atc }}"
         atc_declaration_file: "files/onboard_bigip_do_{{ item.atc_declaration_file }}.json"
