@@ -117,7 +117,7 @@
             - https://www.googleapis.com/auth/compute
           metadata:
             enable-oslogin: "FALSE"
-            startup-script: "{{ lookup('template', 'templates/f5_onboard.j2') }}"
+            startup-script: "{{ lookup('template', 'j2/f5_onboard.j2') }}"
           tags:
             items:
               - bigiq-lab
@@ -145,7 +145,7 @@
 
     - name: prepare the DO declarations
       template: 
-        src: "templates/onboard_bigip_do_{{ item.src }}.j2"
+        src: "j2/onboard_bigip_do_{{ item.src }}.j2"
         dest: "files/onboard_bigip_do_{{ item.dest }}.json"
       delegate_to: localhost
       when: "{{ requested_modules == item.when }}"

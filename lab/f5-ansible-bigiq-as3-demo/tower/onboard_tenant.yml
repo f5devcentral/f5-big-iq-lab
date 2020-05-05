@@ -50,7 +50,7 @@
 
     - name: Create a new user 
       uri:
-        body: "{{ lookup('template', 'templates/user_create.j2') }}"
+        body: "{{ lookup('template', 'j2/user_create.j2') }}"
         body_format: json
         headers:
           X-F5-Auth-Token: "{{ f5_auth_token }}"
@@ -85,7 +85,7 @@
 
     - name: Add new user to existing role
       uri:
-        body: "{{ lookup('template', 'templates/role_associate.j2') }}"
+        body: "{{ lookup('template', 'j2/role_associate.j2') }}"
         body_format: json
         headers:
           X-F5-Auth-Token: "{{ f5_auth_token }}"

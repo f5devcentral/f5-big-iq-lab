@@ -16,7 +16,7 @@ In this lab, we will revoke the license, remove BIG-IP from the application cust
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/delete_offboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the admin-iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/delete_offboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the admin-iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field. Don't forget to click **SAVE** to save changes to the credentials. 
 
 .. image:: pictures/lab-6-2.png
   :scale: 60%
@@ -24,7 +24,7 @@ Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/delete_offboard
 
 You can go on the `GitHub repository`_ and check review the playbooks and Jinja2 templates.
 
-2. Back on the **Templates** page, next to the *ONBOARD_NEW_BIGIP* template, click on the *Start a job using this template*.
+2. Back on the **Templates** page, next to the *(Class5-Mod11-Lab6) DELETE_BIGIP_GCP_OFFBOARD* template, click on the *Start a job using this template*.
 
 .. image:: pictures/lab-6-3.png
   :scale: 60%
@@ -71,7 +71,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
   :scale: 60%
   :align: center
 
-7. Login on **BIG-IQ** as **admin**, go to Devices tab > BIG-IP ONBOARDING and confirm that the device is no longer displayed. 
+7. Login on **BIG-IQ** as **admin**, go to Devices tab > BIG-IP DEVICES and confirm that the device is no longer displayed. 
 
 .. image:: pictures/lab-6-8.png
   :scale: 60%

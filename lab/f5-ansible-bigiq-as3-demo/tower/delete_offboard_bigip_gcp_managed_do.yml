@@ -56,7 +56,7 @@
 
     - name: prepare the DO declarations
       template: 
-        src: "templates/revoke_bigip_do.j2"
+        src: "j2/revoke_bigip_do.j2"
         dest: "files/revoke_bigip_do.json"
       delegate_to: localhost
     
