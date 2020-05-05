@@ -5,12 +5,12 @@
 
   tasks: 
     - name: Get BIG-IQ ALL facts
-      bigiq_device_facts:
+      bigiq_device_info:
         provider:
           server: 10.1.1.4
           user: david
           password: david
-          auth_provider: RadiusServer
+          auth_provider: RadiusServer #local
           validate_certs: no
         gather_subset: all
       delegate_to: localhost
