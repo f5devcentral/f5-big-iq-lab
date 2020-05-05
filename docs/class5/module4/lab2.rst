@@ -61,9 +61,9 @@ User can “Create Evaluation” or if urgent “Restore Immediately”.
 
 |image14|
 
--  Select “Add” for Source Objects.s
+-  Select “Add” for Source Objects.
 
--  Select “/Common/app1pool” and click on “Add” to add the object to Selected tab.
+-  Select “/Common/app2pool” and click on “Add” to add the object to Selected tab.
 
 -  Verify difference between BIG-IQ and Snapshot.
 
