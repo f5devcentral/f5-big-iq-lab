@@ -19,5 +19,5 @@
           password: "{{ bigiq_pass }}"
           auth_provider: "{{ bigiq_provider }}"
           server: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
-          validate_certs: false
+          validate_certs: no
       delegate_to: localhost
