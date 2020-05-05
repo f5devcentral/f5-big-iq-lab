@@ -185,8 +185,8 @@ if [[  $currentuser == "root" ]]; then
     ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > $home/ldap/f5-ldap.log
 
     ### Start Gitlab Container
-    export GITLAB_HOME="$home/gitlab/"
-    docker-compose -f $home/gitlab/docker-compose.yml up -d
+    #export GITLAB_HOME="$home/gitlab/"
+    #docker-compose -f $home/gitlab/docker-compose.yml up -d
 
     docker images
     docker ps -a
