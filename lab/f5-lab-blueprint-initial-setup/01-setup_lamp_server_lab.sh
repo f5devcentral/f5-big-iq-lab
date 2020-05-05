@@ -172,6 +172,8 @@ echo -e "\nInstall DHCP service"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install isc-dhcp-server -y
 echo 'INTERFACES="ens3"' > /etc/default/isc-dhcp-server
+
+cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.orig
 echo 'default-lease-time 600;
 max-lease-time 7200;
 
