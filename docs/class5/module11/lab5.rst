@@ -17,7 +17,7 @@ In this lab, we will create a BIG-IP on GCP and discover and register it on BIG-
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/create_onboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the david-iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/create_onboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the admin-iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
 
 .. image:: pictures/lab-5-2.png
   :scale: 60%

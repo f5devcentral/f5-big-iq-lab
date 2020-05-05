@@ -16,7 +16,7 @@ In this lab, we will revoke the license, remove BIG-IP from the application cust
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/delete_offboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the david-iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/delete_offboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the admin-iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
 
 .. image:: pictures/lab-6-2.png
   :scale: 60%

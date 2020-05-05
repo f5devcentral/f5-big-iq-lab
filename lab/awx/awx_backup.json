@@ -34,6 +34,37 @@
   {
     "credential_type": "BIG-IQ_Creds", 
     "inputs": {
+      "iq_pass": "purple123", 
+      "iq_user": "admin",
+      "iq_provider": "tmos"
+    }, 
+    "asset_relation": {
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Use", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ]
+    }, 
+    "asset_type": "credential", 
+    "name": "admin-iq"
+  },
+  {
+    "credential_type": "BIG-IQ_Creds", 
+    "inputs": {
       "iq_pass": "paula", 
       "iq_user": "paula",
       "iq_provider": "RadiusServer"
@@ -276,7 +307,7 @@
       "labels": [], 
       "schedules": [], 
       "credentials": [
-        "david-iq"
+        "admin-iq"
       ], 
       "survey_spec": {
         "name": "", 
@@ -331,7 +362,7 @@
       "labels": [], 
       "schedules": [], 
       "credentials": [
-        "david-iq"
+        "admin-iq"
       ], 
       "survey_spec": {
         "name": "", 
@@ -398,7 +429,7 @@
       "labels": [], 
       "schedules": [], 
       "credentials": [
-        "david-iq"
+        "admin-iq"
       ], 
       "survey_spec": {
         "name": "", 
@@ -488,7 +519,7 @@
       "labels": [], 
       "schedules": [], 
       "credentials": [
-        "david-iq"
+        "admin-iq"
       ], 
       "survey_spec": {
         "name": "", 
@@ -626,7 +657,7 @@
       "labels": [], 
       "schedules": [], 
       "credentials": [
-        "david-iq"
+        "admin-iq"
       ], 
       "survey_spec": {
         "name": "", 
