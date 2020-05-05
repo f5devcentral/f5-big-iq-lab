@@ -56,6 +56,8 @@ ASM Bot Log Destinations and Publisher creation using UI
 1. Create the DCD Pool and Log Destination. Navigate to Configuration Tab > LOCAL TRAFFIC > Pools, click Create.
 
 - Name: ``bot-remote-dcd-asm-pool``
+- Silo: ``Default``
+- Device ``SEA-vBIGIP01.termmarc.com``
 - Health Monitors: ``tcp``
 - Pool Member/Port: ``10.1.10.6:8514``
 
