@@ -76,6 +76,8 @@ section marked **Selected**. Then, click on Deploy.
 
 Click **Deploy**, and then click **Deploy** in the Deploy Immediately warning. 
 
+.. warning:: If the deployment fails, you may check if the Boston Cluster is sync correctly.
+
 Wait for the deployment to complete.
 
 .. image:: ../pictures/module6/lab-2-8.png

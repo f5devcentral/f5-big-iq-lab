@@ -2,8 +2,72 @@
   {
     "credential_type": "BIG-IQ_Creds", 
     "inputs": {
+      "iq_pass": "david", 
+      "iq_user": "david",
+      "iq_provider": "RadiusServer"
+    }, 
+    "asset_relation": {
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin",
+            "david"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Use", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ]
+    }, 
+    "asset_type": "credential", 
+    "name": "david-iq"
+  }, 
+  {
+    "credential_type": "BIG-IQ_Creds", 
+    "inputs": {
+      "iq_pass": "purple123", 
+      "iq_user": "admin",
+      "iq_provider": "tmos"
+    }, 
+    "asset_relation": {
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Use", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ]
+    }, 
+    "asset_type": "credential", 
+    "name": "admin-iq"
+  },
+  {
+    "credential_type": "BIG-IQ_Creds", 
+    "inputs": {
       "iq_pass": "paula", 
-      "iq_user": "paula"
+      "iq_user": "paula",
+      "iq_provider": "RadiusServer"
     }, 
     "asset_relation": {
       "roles": [
@@ -34,7 +98,8 @@
     "credential_type": "BIG-IQ_Creds", 
     "inputs": {
       "iq_pass": "paul", 
-      "iq_user": "paul"
+      "iq_user": "paul",
+      "iq_provider": "RadiusServer"
     }, 
     "asset_relation": {
       "roles": [
@@ -82,7 +147,8 @@
           "name": "Use", 
           "user": [
             "paul", 
-            "paula"
+            "paula",
+            "david"
           ]
         }, 
         {
@@ -96,7 +162,7 @@
     "name": "Tower_Creds"
   }, 
   {
-    "name": "Delete_AS3_App", 
+    "name": "(Agility 2020) Delete_AS3_App", 
     "ask_credential_on_launch": true, 
     "asset_relation": {
       "notification_templates_error": [], 
@@ -114,7 +180,8 @@
           "name": "Execute", 
           "user": [
             "paul", 
-            "paula"
+            "paula",
+            "david"
           ]
         }, 
         {
@@ -129,21 +196,21 @@
         "Tower_Creds"
       ], 
       "survey_spec": {
-        "description": "", 
         "spec": [
           {
-            "question_name": "App Name", 
+            "required": true, 
             "min": 0, 
             "default": "", 
             "max": 1024, 
-            "question_description": "", 
-            "required": true, 
-            "new_question": true, 
-            "variable": "app_name", 
+            "question_name": "App Name", 
             "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "app_name", 
             "type": "text"
           }
         ], 
+        "description": "", 
         "name": ""
       }
     }, 
@@ -154,7 +221,7 @@
     "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_delete.yml"
   }, 
   {
-    "name": "New_AS3_App", 
+    "name": "(Class1-Mod2-Lab8) Delete_AS3_App", 
     "ask_credential_on_launch": true, 
     "asset_relation": {
       "notification_templates_error": [], 
@@ -172,7 +239,8 @@
           "name": "Execute", 
           "user": [
             "paul", 
-            "paula"
+            "paula",
+            "david"
           ]
         }, 
         {
@@ -187,69 +255,699 @@
         "Tower_Creds"
       ], 
       "survey_spec": {
-        "description": "", 
         "spec": [
           {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
             "question_name": "App Name", 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_description": "", 
-            "required": true, 
+            "choices": "", 
             "new_question": true, 
+            "question_description": "", 
             "variable": "app_name", 
-            "choices": "", 
-            "type": "text"
-          }, 
-          {
-            "question_name": "App Type", 
-            "min": null, 
-            "default": "http_app", 
-            "max": null, 
-            "question_description": "", 
-            "required": true, 
-            "new_question": true, 
-            "variable": "app_type", 
-            "choices": "http_app\nwaf_app", 
-            "type": "multiplechoice"
-          }, 
-          {
-            "question_name": "Service IP", 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_description": "", 
-            "required": true, 
-            "new_question": true, 
-            "variable": "vsip", 
-            "choices": "", 
-            "type": "text"
-          }, 
-          {
-            "question_name": "Node 1", 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_description": "", 
-            "required": true, 
-            "new_question": true, 
-            "variable": "node1", 
-            "choices": "", 
-            "type": "text"
-          }, 
-          {
-            "question_name": "Node 2", 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_description": "", 
-            "required": true, 
-            "new_question": true, 
-            "variable": "node2", 
-            "choices": "", 
             "type": "text"
           }
         ], 
+        "description": "", 
+        "name": ""
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_delete.yml"
+  }, 
+  {
+    "name": "(Class5-Mod11-Lab2) Create_BIGIQ_Regkey_Pool", 
+    "verbosity": 3, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "admin-iq"
+      ], 
+      "survey_spec": {
+        "name": "", 
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "Registration Key Pool Name", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "regkey_pool_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "", 
+            "choices": "", 
+            "new_question": true
+          }
+        ]
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/regkey_pool_create.yml"
+  }, 
+  {
+    "name": "(Class5-Mod11-Lab3) Add_BIGIQ_Regkey", 
+    "verbosity": 3, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "admin-iq"
+      ], 
+      "survey_spec": {
+        "name": "", 
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "Registration Key Pool Name", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "regkey_pool_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Registration Key", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "regkey", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "XXXX-XXXX-XXXX-XXXX-XXXX", 
+            "choices": "", 
+            "new_question": true
+          }
+        ]
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/regkey_license_add.yml"
+  }, 
+  {
+    "name": "(Class5-Mod11-Lab4) Create_BIGIQ_User", 
+    "verbosity": 3, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "admin-iq"
+      ], 
+      "survey_spec": {
+        "name": "", 
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "User Name", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "user_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "username", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Display Name: (First Last)", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "display_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "First Last", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Password", 
+            "question_description": "", 
+            "required": true, 
+            "type": "password", 
+            "variable": "user_password", 
+            "min": 0, 
+            "max": 32,
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Existing Role Name", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "role_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "testrole1", 
+            "choices": "", 
+            "new_question": true
+          }
+        ]
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/onboard_tenant.yml"
+  }, 
+  {
+    "name": "(Class5-Mod11-Lab5) NEW_BIGIP_GCP_ONBOARD", 
+    "verbosity": 3, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "admin-iq"
+      ], 
+      "survey_spec": {
+        "name": "", 
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "Name prefix used for creating all GCP resources", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "resource_prefix", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "bigiq-lab-mod11", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "GCP Region to create BIG-IP", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "gcp_region", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "asia-northeast1", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Zone for BIG-IP instance", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "gcp_zone", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "asia-northeast1-b", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "BIG-IP username", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "bigip_user", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "admin", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "BIG-IP Password", 
+            "question_description": "", 
+            "required": true, 
+            "type": "password", 
+            "variable": "bigip_password", 
+            "min": 0, 
+            "max": 32,
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Registration Key Pool Name", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "regkey_pool_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Type \"asm\" to provision F5 WAF, leave \"null\" if not needed", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "requested_modules", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "null", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Existing Role Name", 
+            "question_description": "BIG-IP will be added to this role's resource group", 
+            "required": true, 
+            "type": "text", 
+            "variable": "role_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "testrole1", 
+            "choices": "", 
+            "new_question": true
+          }
+        ]
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/create_onboard_bigip_gcp_managed_do.yml"
+  }, 
+  {
+    "name": "(Class5-Mod11-Lab6) DELETE_BIGIP_GCP_OFFBOARD", 
+    "verbosity": 3, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "admin-iq"
+      ], 
+      "survey_spec": {
+        "name": "", 
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "Name prefix used when creating all GCP resources", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "resource_prefix", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "bigiq-lab-mod11", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "GCP Region used to create BIG-IP", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "gcp_region", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "asia-northeast1", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Zone used for BIG-IP instance", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "gcp_zone", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "asia-northeast1-b", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "BIG-IP username", 
+            "question_description": "", 
+            "required": true, 
+            "type": "text", 
+            "variable": "bigip_user", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "admin", 
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "BIG-IP Password", 
+            "question_description": "", 
+            "required": true, 
+            "type": "password", 
+            "variable": "bigip_password", 
+            "min": 0, 
+            "max": 32,
+            "choices": "", 
+            "new_question": true
+          }, 
+          {
+            "question_name": "Registration Key Pool Name", 
+            "question_description": "Regkey pool used to license BIG-IP", 
+            "required": true, 
+            "type": "text", 
+            "variable": "regkey_pool_name", 
+            "min": 0, 
+            "max": 1024, 
+            "default": "", 
+            "choices": "", 
+            "new_question": true
+          }
+        ]
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/delete_offboard_bigip_gcp_managed_do.yml"
+  }, 
+  {
+    "name": "(Agility 2020) New_AS3_App", 
+    "ask_credential_on_launch": true, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": [
+            "paul", 
+            "paula",
+            "david"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "Tower_Creds"
+      ], 
+      "survey_spec": {
+        "spec": [
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "App Name", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "app_name", 
+            "type": "text"
+          }, 
+          {
+            "required": true, 
+            "min": null, 
+            "default": "http_app", 
+            "max": null, 
+            "question_name": "App Type", 
+            "choices": "http_app\nwaf_app", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "app_type", 
+            "type": "multiplechoice"
+          }, 
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "Service IP", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "vsip", 
+            "type": "text"
+          }, 
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "Node 1", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "node1", 
+            "type": "text"
+          }, 
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "Node 2", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "node2", 
+            "type": "text"
+          }
+        ], 
+        "description": "", 
+        "name": ""
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml"
+  }, 
+  {
+    "name": "(Class1-Mod2-Lab8) New_AS3_App", 
+    "ask_credential_on_launch": true, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": [
+            "paul", 
+            "paula",
+            "david"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "Tower_Creds"
+      ], 
+      "survey_spec": {
+        "spec": [
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "App Name", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "app_name", 
+            "type": "text"
+          }, 
+          {
+            "required": true, 
+            "min": null, 
+            "default": "http_app", 
+            "max": null, 
+            "question_name": "App Type", 
+            "choices": "http_app\nwaf_app", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "app_type", 
+            "type": "multiplechoice"
+          }, 
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "Service IP", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "vsip", 
+            "type": "text"
+          }, 
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "Node 1", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "node1", 
+            "type": "text"
+          }, 
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "Node 2", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "node2", 
+            "type": "text"
+          }
+        ], 
+        "description": "", 
         "name": ""
       }
     }, 
@@ -299,7 +997,8 @@
     "injectors": {
       "extra_vars": {
         "bigiq_pass": "{{ iq_pass }}", 
-        "bigiq_user": "{{ iq_user }}"
+        "bigiq_user": "{{ iq_user }}",
+        "bigiq_provider": "{{ iq_provider }}"
       }
     }, 
     "inputs": {
@@ -312,13 +1011,19 @@
         {
           "id": "iq_pass", 
           "type": "string", 
-          "label": "BIG-IQ Password", 
+          "label": "BIG-IQ Auth Password", 
           "secret": true
+        }, 
+        {
+          "id": "iq_provider", 
+          "type": "string", 
+          "label": "BIG-IQ Auth Provider", 
         }
       ], 
       "required": [
         "iq_user", 
-        "iq_pass"
+        "iq_pass",
+        "iq_provider"
       ]
     }, 
     "kind": "cloud", 
@@ -326,12 +1031,12 @@
     "name": "BIG-IQ_Creds"
   }, 
   {
-    "username": "admin", 
+    "username": "admin",
     "first_name": "", 
     "last_name": "", 
     "email": "root@localhost", 
-    "is_superuser": true, 
-    "last_login": "2020-01-07T22:21:32.042393Z", 
+    "is_superuser": true,
+    "last_login": "2020-03-07T22:21:32.042393Z", 
     "asset_type": "user"
   }, 
   {
@@ -339,7 +1044,7 @@
     "first_name": "", 
     "last_name": "", 
     "email": "paul@localhost.com", 
-    "last_login": "2020-01-07T22:21:13.509551Z", 
+    "last_login": "2020-03-08T22:21:13.509551Z", 
     "asset_type": "user",
     "password": "paul"
   }, 
@@ -347,10 +1052,19 @@
     "username": "paula", 
     "first_name": "", 
     "last_name": "", 
-    "email": "p.local@localhost.com", 
-    "last_login": "2020-01-07T22:16:47.616773Z", 
+    "email": "paula@localhost.com", 
+    "last_login": "2020-03-09T22:21:12.042323Z", 
     "asset_type": "user",
     "password": "paula"
+  }, 
+  {
+    "username": "david", 
+    "first_name": "", 
+    "last_name": "", 
+    "email": "david@localhost.com",
+    "last_login": "2020-03-10T22:21:42.042354Z", 
+    "asset_type": "user",
+    "password": "david"
   }, 
   {
     "asset_relation": {

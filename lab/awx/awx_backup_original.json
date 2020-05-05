@@ -1,0 +1,473 @@
+[
+  {
+    "credential_type": "BIG-IQ_Creds", 
+    "inputs": {
+      "iq_pass": "paula", 
+      "iq_user": "paula"
+    }, 
+    "asset_relation": {
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin", 
+            "paula"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Use", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ]
+    }, 
+    "asset_type": "credential", 
+    "name": "paula-iq"
+  }, 
+  {
+    "credential_type": "BIG-IQ_Creds", 
+    "inputs": {
+      "iq_pass": "paul", 
+      "iq_user": "paul"
+    }, 
+    "asset_relation": {
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin", 
+            "paul"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Use", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ]
+    }, 
+    "asset_type": "credential", 
+    "name": "paul-iq"
+  }, 
+  {
+    "credential_type": "Ansible Tower", 
+    "inputs": {
+      "host": "10.1.1.5", 
+      "password": "purple123", 
+      "username": "admin"
+    }, 
+    "asset_relation": {
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Use", 
+          "user": [
+            "paul", 
+            "paula"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ]
+    }, 
+    "asset_type": "credential", 
+    "name": "Tower_Creds"
+  }, 
+  {
+    "name": "Delete_AS3_App", 
+    "ask_credential_on_launch": true, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": [
+            "paul", 
+            "paula"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "Tower_Creds"
+      ], 
+      "survey_spec": {
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "App Name", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_description": "", 
+            "required": true, 
+            "new_question": true, 
+            "variable": "app_name", 
+            "choices": "", 
+            "type": "text"
+          }
+        ], 
+        "name": ""
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_delete.yml"
+  }, 
+  {
+    "name": "New_AS3_App", 
+    "ask_credential_on_launch": true, 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": [
+            "admin"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": [
+            "paul", 
+            "paula"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "labels": [], 
+      "schedules": [], 
+      "credentials": [
+        "Tower_Creds"
+      ], 
+      "survey_spec": {
+        "description": "", 
+        "spec": [
+          {
+            "question_name": "App Name", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_description": "", 
+            "required": true, 
+            "new_question": true, 
+            "variable": "app_name", 
+            "choices": "", 
+            "type": "text"
+          }, 
+          {
+            "question_name": "App Type", 
+            "min": null, 
+            "default": "http_app", 
+            "max": null, 
+            "question_description": "", 
+            "required": true, 
+            "new_question": true, 
+            "variable": "app_type", 
+            "choices": "http_app\nwaf_app", 
+            "type": "multiplechoice"
+          }, 
+          {
+            "question_name": "Service IP", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_description": "", 
+            "required": true, 
+            "new_question": true, 
+            "variable": "vsip", 
+            "choices": "", 
+            "type": "text"
+          }, 
+          {
+            "question_name": "Node 1", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_description": "", 
+            "required": true, 
+            "new_question": true, 
+            "variable": "node1", 
+            "choices": "", 
+            "type": "text"
+          }, 
+          {
+            "question_name": "Node 2", 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_description": "", 
+            "required": true, 
+            "new_question": true, 
+            "variable": "node2", 
+            "choices": "", 
+            "type": "text"
+          }
+        ], 
+        "name": ""
+      }
+    }, 
+    "project": "BIG-IQ-LAB", 
+    "inventory": "F5Env", 
+    "asset_type": "job_template", 
+    "survey_enabled": true, 
+    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml"
+  }, 
+  {
+    "scm_branch": "develop", 
+    "name": "BIG-IQ-LAB", 
+    "scm_url": "https://github.com/f5devcentral/f5-big-iq-lab.git", 
+    "asset_relation": {
+      "notification_templates_error": [], 
+      "notification_templates_success": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Use", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Update", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ], 
+      "schedules": []
+    }, 
+    "scm_type": "git", 
+    "scm_update_on_launch": true, 
+    "organization": "Default", 
+    "asset_type": "project"
+  }, 
+  {
+    "injectors": {
+      "extra_vars": {
+        "bigiq_pass": "{{ iq_pass }}", 
+        "bigiq_user": "{{ iq_user }}"
+      }
+    }, 
+    "inputs": {
+      "fields": [
+        {
+          "id": "iq_user", 
+          "type": "string", 
+          "label": "BIG-IQ User"
+        }, 
+        {
+          "id": "iq_pass", 
+          "type": "string", 
+          "label": "BIG-IQ Password", 
+          "secret": true
+        }
+      ], 
+      "required": [
+        "iq_user", 
+        "iq_pass"
+      ]
+    }, 
+    "kind": "cloud", 
+    "asset_type": "credential_type", 
+    "name": "BIG-IQ_Creds"
+  }, 
+  {
+    "username": "admin", 
+    "first_name": "", 
+    "last_name": "", 
+    "email": "root@localhost", 
+    "is_superuser": true, 
+    "last_login": "2020-01-07T22:21:32.042393Z", 
+    "asset_type": "user"
+  }, 
+  {
+    "username": "paul", 
+    "first_name": "", 
+    "last_name": "", 
+    "email": "paul@localhost.com", 
+    "last_login": "2020-01-07T22:21:13.509551Z", 
+    "asset_type": "user",
+    "password": "paul"
+  }, 
+  {
+    "username": "paula", 
+    "first_name": "", 
+    "last_name": "", 
+    "email": "p.local@localhost.com", 
+    "last_login": "2020-01-07T22:16:47.616773Z", 
+    "asset_type": "user",
+    "password": "paula"
+  }, 
+  {
+    "asset_relation": {
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Execute", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Project Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Inventory Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Credential Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Workflow Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Notification Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Job Template Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Auditor", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Member", 
+          "user": [
+            "paul", 
+            "paula"
+          ]
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Approve", 
+          "user": []
+        }
+      ]
+    }, 
+    "asset_type": "organization", 
+    "name": "Default"
+  }, 
+  {
+    "organization": "Default", 
+    "variables": "---", 
+    "asset_relation": {
+      "inventory_source": [], 
+      "host": [
+        {
+          "variables": "mgmt_port: 443\nmgmt_ip: 10.1.1.4", 
+          "name": "bigiq"
+        }, 
+        {
+          "variables": "mgmt_port: 9001\nmgmt_ip: 10.1.1.5", 
+          "name": "tower"
+        }
+      ], 
+      "group": [], 
+      "roles": [
+        {
+          "team": [], 
+          "name": "Admin", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Update", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Ad Hoc", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Use", 
+          "user": []
+        }, 
+        {
+          "team": [], 
+          "name": "Read", 
+          "user": []
+        }
+      ]
+    }, 
+    "asset_type": "inventory", 
+    "name": "F5Env"
+  }
+]

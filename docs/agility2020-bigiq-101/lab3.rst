@@ -17,7 +17,7 @@ Exercise 3.1 – Application Creation
 
 |image27|
 
-3. Navigate to the **Templates** page and click on *job Template* beside **New_AS3_App** to review the template
+3. Navigate to the **Templates** page and click on *job Template* beside **(Agility 2020) New_AS3_App** to review the template
 
 |image28|
 
@@ -104,7 +104,7 @@ Exercise 3.2 – Application Deletion
 
 The application owner has informed Paula that the application is no longer needed and needs to be deleted from. Paula will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
 
-1. Navigate to the **Templates** page and review *Delete_AS3_App*
+1. Navigate to the **Templates** page and review *(Agility 2020) Delete_AS3_App*
 
 |image39|
 

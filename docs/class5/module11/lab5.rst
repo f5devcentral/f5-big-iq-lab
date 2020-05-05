@@ -11,13 +11,13 @@ In this lab, we will create a BIG-IP on GCP and discover and register it on BIG-
 - BIG-IQ Regkey Pool Name
 
 
-1. Navigate to the **Templates** page and review ``(Mod11-Lab5) NEW_BIGIP_GCP_ONBOARD``.
+1. Navigate to the **Templates** page and review ``(Class5-Mod11-Lab5) NEW_BIGIP_GCP_ONBOARD``.
 
 .. image:: pictures/lab-5-1.png
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/create_onboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the admin_iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/create_onboard_bigip_gcp_managed_do.yml`` is selected. Also confirm that the admin-iq (BIG-IQ) and your GCP credentials appear in the **CREDENTIALS** field.
 
 .. image:: pictures/lab-5-2.png
   :scale: 60%
@@ -25,7 +25,7 @@ Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/create_onboard_
 
 You can go on the `GitHub repository`_ and check review the playbooks and Jinja2 templates.
 
-2. Back on the **Templates** page, next to the *(Mod11-Lab5) NEW_BIGIP_GCP_ONBOARD* template, click on the *Start a job using this template*.
+2. Back on the **Templates** page, next to the *(Class5-Mod11-Lab5) NEW_BIGIP_GCP_ONBOARD* template, click on the *Start a job using this template*.
 
 .. image:: pictures/lab-5-3.png
   :scale: 60%

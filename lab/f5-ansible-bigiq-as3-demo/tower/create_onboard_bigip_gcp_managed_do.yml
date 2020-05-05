@@ -140,6 +140,7 @@
           server_port: 443
           user: "{{ bigiq_user }}"
           password: "{{ bigiq_pass }}"
+          auth_provider: "{{ bigiq_provider }}"
           validate_certs: false
 
     - name: prepare the DO declarations

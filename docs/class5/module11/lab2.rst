@@ -17,13 +17,13 @@ Use ``admin/purple123`` to authenticate.
   :scale: 60%
   :align: center
 
-3. Navigate to the **Templates** page and review ``(Mod11-Lab2) Create_BIGIQ_Regkey_Pool``.
+3. Navigate to the **Templates** page and review ``(Class5-Mod11-Lab2) Create_BIGIQ_Regkey_Pool``.
 
 .. image:: pictures/lab-2-3.png
   :scale: 60%
   :align: center
 
-Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/regkey_pool_create.yml`` is selected. Also confirm that the admin_iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
+Make sure the **PLAYBOOK** ``lab/f5-ansible-bigiq-as3-demo/tower/regkey_pool_create.yml`` is selected. Also confirm that the admin-iq (BIG-IQ) credentials appear in the **CREDENTIALS** field.
 
 You can go on the `GitHub repository`_ and check review the playbooks and Jinja2 templates.
 
