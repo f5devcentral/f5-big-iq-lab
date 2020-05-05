@@ -1,7 +1,7 @@
 Lab 4.1: Create multiple changes. Deploy single change
 ------------------------------------------------------
 
-The user has the ability to select a specific change out of many made for deploy. We will try to add an additional node to the existing pool in this task.
+The user has the ability to select a specific change out of many made for deployment. We will try to add an additional node to the existing pool in this task.
 
 
 **Take a snapshot**
@@ -52,7 +52,7 @@ New Monitor
 
    -  username: **admin**
 
-   -  password: **admin** and confirm password.
+   -  password: **Purple1234!**
 
 Click “Save and Close”
 
