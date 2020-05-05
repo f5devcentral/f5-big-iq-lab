@@ -34,7 +34,7 @@ e. Leave everything else default.
    * - ``username``
      - admin
    * - ``password``
-     - admin
+     - purple123
    * - ``Cluster Display Name``
      - Use Existing
    * - ``Select A Cluster``
