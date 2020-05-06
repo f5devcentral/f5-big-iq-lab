@@ -150,7 +150,7 @@
       delegate_to: localhost
       when: "{{ requested_modules == item.when }}"
       loop:
-        - { src: "ltm", dest: "ltm", when: "ltm" }
+        - { src: "ltm", dest: "ltm", when: "null" }
         - { src: "asm", dest: "asm", when: "asm" }
     
 
@@ -161,7 +161,7 @@
         atc_declaration_file: "files/onboard_bigip_do_{{ item.atc_declaration_file }}.json"
       when: "{{ requested_modules == item.when }}"
       loop:
-        - { atc_declaration_file: "ltm", when: "ltm" }
+        - { atc_declaration_file: "ltm", when: "null" }
         - { atc_declaration_file: "asm", when: "asm" }
 
     - name: Set Automated Tool Chain service type from file
@@ -217,7 +217,7 @@
     #     atc_retries: 40
     #   when: "{{ requested_modules == item.when }}"
     #   loop:
-    #     - { atc_declaration_file: "ltm", when: "ltm" }
+    #     - { atc_declaration_file: "ltm", when: "null" }
     #     - { atc_declaration_file: "asm", when: "asm" }
 
 
