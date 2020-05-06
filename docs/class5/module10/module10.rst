@@ -8,9 +8,11 @@ continent and country levels.
 
 F5 regularly releases database updates in the GeoLocationUpdates container on the F5 Downloads site.
 
-1. Follow the steps to download the geolocation database and MD5 described in the following article `K22650515`_.
+1. Follow the steps to download the geolocation database and MD5 described in the following article `K22650515`_ (choose `BIG-IP v15.x`_).
 
 .. _K22650515: https://support.f5.com/csp/article/K22650515
+
+.. _BIG-IP v15.x: https://downloads.f5.com/esd/product.jsp?sw=BIG-IP&pro=big-ip_v15.x
 
 2. You should have now 2 ip-geolocation files (1 zip and 1 MD5).
 
