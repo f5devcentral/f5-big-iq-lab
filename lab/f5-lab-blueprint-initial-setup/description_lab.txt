@@ -155,12 +155,12 @@ Local:
 10.1.1.5port 6080
 
 AWX (Ansible Tower)
-Protocol: HTTPS(Unauthenticated)
+Protocol: HTTPS(Authenticated)
 Local:
 10.1.1.5 port 9001
 
 Splunk
-Protocol: HTTPS(SSL, Unauthenticated)
+Protocol: HTTPS(SSL, Authenticated)
 Local:
 10.1.1.5 port 8000
 
