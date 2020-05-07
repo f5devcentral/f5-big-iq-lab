@@ -95,7 +95,7 @@ HTTPS Service using AS3 through GUI
     scroll through it and hit close when done.
 	
 .. image:: ../pictures/module3/lab-2-5.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 	
 11. Click **Create**.
@@ -106,7 +106,7 @@ HTTPS Service using AS3 through GUI
 12. Check the Application ``LAB_module3`` has been created.
 
 .. image:: ../pictures/module3/lab-2-6.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 .. note:: If not visible, refresh the page. It can take few seconds for the application service to appears on the dashboard.
@@ -115,14 +115,14 @@ HTTPS Service using AS3 through GUI
 multiple services can be grouped. The next window will show you that a new Application Service has been created named: ``tenant1_https_app_service``.
 
 .. image:: ../pictures/module3/lab-2-7.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 14.	Now, let's look on the BIG-IP and verify the Application is correctly deployed in partition ``tenant1``.
 Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant1`` and look at the objects created on the BIG-IP.
 
 .. image:: ../pictures/module3/lab-2-8.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 15.	You can testing the application service by open a browser in the Ubuntu Jump-host and type the Virtual Server IP address ``10.1.10.120``.
@@ -130,7 +130,7 @@ Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the p
 16. Back on the BIG-IQ as **paula**, select ``tenant1_https_app_service`` Application Service and look HTTP traffic analytics.
 
 .. image:: ../pictures/module3/lab-2-9.png
-  :scale: 60%
+  :scale: 40%
   :align: center
   
 .. note:: An HTTP traffic generator is running on the Jump host.
