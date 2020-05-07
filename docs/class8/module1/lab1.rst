@@ -12,7 +12,7 @@ an HTTP Application Service and how to use BIG-IQ Bot Dashboards to monitors the
 
 Official documentation can be found on the `BIG-IQ Knowledge Center`_ and see `DevCentral`_ article on this subject.
 
-.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/mitigating-managing-bot-defense-using-big-iq/monitoring-bot-defense-activity.html
+.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/managing-bot-defense-using-big-iq.html
 
 .. _`DevCentral`: https://devcentral.f5.com/s/articles/Configuring-Unified-Bot-Defense-with-BIG-IQ-Centralized-Management
 
