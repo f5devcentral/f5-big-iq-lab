@@ -129,6 +129,9 @@ Copy/Paste the AS3 declaration from the validator to the declaration body into P
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
 
+.. warning: If you encounter ``status: 422: /declare failed with status of 422, Failed to get cm-bigip-allBigipDevices device for address ... 
+            Device not found in device group``, ssh the BIG-IQ CM and execute: ``bigstart restart restjavad``, when the service to come back and retry.
+
 5. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
 
    GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
