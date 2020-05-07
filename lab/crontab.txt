@@ -34,7 +34,7 @@
 */5 * * * * /home/f5/tools/forceActiveBigipBostonCluster.sh > /home/f5/tools/logs/forceActiveBigipBostonCluster.log 2>&1
 
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED
-#@reboot sleep 480 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /home/f5/tools/logs/configSyncAtStartBigipBostonCluster.log 2>&1
+#@reboot sleep 600 && ssh admin@10.1.1.8 tmsh run cm config-sync force-full-load-push to-group datasync-global-dg > /home/f5/tools/logs/configSyncAtStartBigipBostonCluster.log 2>&1
 
 ## WA restart services on ubuntu in case they die
 */5 * * * * /home/f5/tools/services_monitor.sh > /home/f5/tools/logs/services_monitor.log 2>&1

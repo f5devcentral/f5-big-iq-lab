@@ -41,7 +41,9 @@ This is also not a desired outcome as it will change working configurations on t
   :scale: 40%
   :align: center
 
-.. note:: More details on Version Specific Objects in `Module 4`_.
+.. note:: When adding multiple BIG-IP devices and discovering and importing their services at the same time,
+          you can specify a conflict resolution policy if BIG-IQ finds any default monitors or 
+          LTM profiles with different parameters. More details on Version Specific Objects in `Module 4`_.
 
 .. _Module 4: ../module4/module4.html
 

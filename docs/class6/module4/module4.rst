@@ -1,7 +1,13 @@
 Module 4: Version Specific Objects
 ==================================
 
-Conflict resolution when discovering and importing services for BIG-IP devices
+The Version Specific feature added in 6.1 is meant to address issues with changes to default profiles and 
+monitors across versions. This feature is still there, and should continue to be used for that use case.
+ 
+The new `v7.1 Silo feature`_ is intended to solve a different problem of shared object collisions that are not 
+related to Version Specific defaults.
+
+.. _`v7.1 Silo feature`: ../module5/module5.html
 
 When adding multiple BIG-IP devices and discovering and importing their services at the same time,
 you can specify a conflict resolution policy if BIG-IQ finds any default monitors or LTM profiles with different parameters.

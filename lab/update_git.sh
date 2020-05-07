@@ -209,12 +209,8 @@ if [[  $currentuser == "root" ]]; then
     json="{\"message\":\"Welcome to BIG-IQ Lab $(date +"%Y")! \n\n$fortune\n\n\",\"isEnabled\":true}"
     curl -s -k -u "admin:purple123" -H "Content-Type: application/json" -X PUT -d "$json" https://10.1.1.4/mgmt/shared/login-ui-message | jq .
 
-    fortuneInBashrc=$(cat $home/.bashrc | grep "fortune" | wc -l)
-    if [[ $fortuneInBashrc == 0 ]]; then
-        # Customize ~/.bashrc
-        echo "/usr/games/fortune -s literature" >> $home/.bashrc
-        echo "echo" >> $home/.bashrc
-    fi
+    sed -i '/fortune/d' $home/.bashrc
+    echo "/usr/games/fortune -s literature;echo" >> $home/.bashrc
 
     echo "If postman does not open using the link on the desktop, open a terminal and launch it from there.
 

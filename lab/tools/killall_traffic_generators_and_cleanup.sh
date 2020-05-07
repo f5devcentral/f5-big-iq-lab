@@ -11,6 +11,7 @@ echo -e "\n* Kill all jobs in sleep..."
 ps -ef | grep sleep | grep -v grep
 sudo killall sleep
 ps -ef | grep perl | grep -v grep
+sudo killall sh
 sudo killall perl
 
 echo -e "\n* Kill all traffic generators jobs running..."
@@ -48,5 +49,6 @@ if [[ "$1" = "cleanup" ]]; then
     rm -f ~/ldap/f5-ldap.log
 
     rm -f ~/f5-vmware/*.log
+    
     echo -e "... done! \n"
 fi
