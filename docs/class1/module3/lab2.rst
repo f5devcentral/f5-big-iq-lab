@@ -101,7 +101,7 @@ HTTPS Service using AS3 through GUI
 11. Click **Create**.
 
 .. warning:: If you encounter ``status: 422: /declare failed with status of 422, Failed to get cm-bigip-allBigipDevices device for address ... 
-             Device not found in device group``, ssh the BIG-IQ CM and execute: ``bigstart restart restjavad``, when the service to come back and retry.
+             Device not found in device group``, ssh the BIG-IQ CM and execute: ``bigstart restart restjavad``, when the services come back and retry.
   
 12. Check the Application ``LAB_module3`` has been created.
 
