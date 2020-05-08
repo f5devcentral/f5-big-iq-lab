@@ -64,7 +64,7 @@ COMPONENTS AVAILABLE:
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
 
 LIST OF INSTANCES:
-- BIG-IQ <> DCD 7.1.0
+- BIG-IQ <> DCD 7.1.0 + DO1.5 + AS3.19.1 with burst feature enabled
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 15.1 / 1 standalone (SJC)

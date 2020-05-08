@@ -196,9 +196,9 @@ echo 'paula   Cleartext-Password := "paula"
 paul    Cleartext-Password := "paul"
 marco   Cleartext-Password := "marco"
 larry   Cleartext-Password := "larry"
+david   Cleartext-Password := "david"
 chris   Cleartext-Password := "chris"
-olivia  Cleartext-Password := "olivia"
-david   Cleartext-Password := "david"' >> /etc/freeradius/3.0/users
+olivia  Cleartext-Password := "olivia"' >> /etc/freeradius/3.0/users
 
 echo 'client 0.0.0.0/0 {
 secret = default

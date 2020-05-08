@@ -29,5 +29,5 @@ task8_vs: 10.1.10.133
 task8_node1: 10.1.20.132
 task8_node2: 10.1.20.133
 task8_bigiq_custom_template: HTTPcustomTemplateTask6
-task10_vs: 10.1.10.134
+task10_vs: 10.1.10.135
 task10_hostname: httpd.apache.org

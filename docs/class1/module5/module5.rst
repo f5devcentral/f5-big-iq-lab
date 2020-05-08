@@ -45,6 +45,8 @@ Save & Close
 - Devices: ``10.1.1.11 SJC-vBIGIP01.termmarc.com``
 - Device Groups: *Empty*
 
+.. warning:: Do not forget to remove the ``cm-bigip-allBigIpDevices`` from the Device Groups list.
+
 .. image:: ../pictures/module5/lab-1-5.png
   :scale: 40%
   :align: center
