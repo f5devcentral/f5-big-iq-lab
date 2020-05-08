@@ -40,12 +40,12 @@ echo
 if [[ "$1" = "save" ]]; then
 
     echo -e "First step clean the logs on the Lamp server, then shut down BIG-IP/IQ gracefully."
-    [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
     
     ready=$(grep COMPLETED ../update_git.log | wc -l)
     if [[  $ready == 1 ]]; then
 
         echo -e "\n* Cleanup logs on the Lamp server...\n"
+        [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         rm -f ~/f5-demo-bigiq-analytics-export-restapi/input.json*
         rm -f ~/splunk-token
 
@@ -61,6 +61,7 @@ if [[ "$1" = "save" ]]; then
         rm -f ~/f5-vmware/*.log
 
         echo -e "\n* Shutdown BIG-IP and BIG-IQ gracefully...\n"
+        [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         ssh -o StrictHostKeyChecking=no admin@10.1.1.4 shutdown -H now &
         sleep 1
         ssh -o StrictHostKeyChecking=no admin@10.1.1.6 shutdown -H now &
