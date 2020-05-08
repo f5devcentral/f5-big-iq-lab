@@ -10,6 +10,7 @@ ssh -o StrictHostKeyChecking=no admin@$ip tmsh show /cm failover-status | grep A
 if [  $? == 0 ]; then
     echo -e "BOS-vBIGIP02.termmarc.com is ACTIVE: trigger failover so BOS-vBIGIP01 is ACTIVE."
     ssh -o StrictHostKeyChecking=no admin@$ip tmsh run /sys failover standby
+    sleep 60
     ssh -o StrictHostKeyChecking=no admin@$ip tmsh show /cm failover-status
 else
     echo -e "BOS-vBIGIP01.termmarc.com is ACTIVE, nothing to do."
@@ -24,6 +25,7 @@ then
     if [  $? == 1 ]; then
         echo -e "BOS cluster is not in Sync: trigger sync ($minutes)."
         ssh -o StrictHostKeyChecking=no admin@$ip tmsh run cm config-sync force-full-load-push to-group datasync-global-dg
+        sleep 60
         ssh -o StrictHostKeyChecking=no admin@$ip tmsh show /cm sync-status
     else
         echo -e "BOS cluster in sync, nothing to do ($minutes)."
