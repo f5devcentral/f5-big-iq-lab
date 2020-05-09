@@ -15,7 +15,7 @@ Click the Add Device button in the main pane.
 
 a. In the IP Address field, type the IP address of the device: **10.1.10.10**
 
-b. In the User Name and Password fields, type the user name (david) and password (david) for the device.
+b. In the User Name and Password fields, type the user name (admin) and password (purple123) for the device.
 
 c. Cluster Display Name: **Use Existing**.
 
