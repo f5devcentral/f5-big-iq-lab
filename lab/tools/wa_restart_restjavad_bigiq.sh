@@ -7,8 +7,9 @@ bigiq="10.1.1.4"
 bigiq_user="root"
 bigiq_password="purple123"
 
-echo -e "\nWaiting 5min to give time to the BIG-IQ CM to start up."
-sleep 300
+echo -e "\nTIME:: $(date +"%H:%M")"
+
+echo -e "start"
 
 sshpass -p $bigiq_password ssh-copy-id -o StrictHostKeyChecking=no $bigiq_user@$bigiq
 ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 $bigiq_user@$bigiq cat /var/prompt/ps1 > /tmp/state 2>/dev/null
@@ -39,5 +40,7 @@ do
     fi
     sleep 15
 done
+
+echo -e "end"
 
 echo -e "\nTIME:: $(date +"%H:%M")"
