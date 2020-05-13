@@ -15,7 +15,6 @@ Welcome to the BIG-IQ Lab 101 - |year|
 **List of instances**:
 
 - BIG-IQ <> DCD 7.1.0
-- 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 1x BIG-IP 14.1 / 1 standalone (SEA)
 - 1x BIG-IP 15.1 / 1 standalone (SJC)
 - LAMP Server - Radius, xRDP, noVNC, Application Servers, Traffic Generator, AWX/Ansible Tower, Visual Studio Code.

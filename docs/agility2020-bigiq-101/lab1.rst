@@ -1,8 +1,8 @@
 Lab 1: Manage AS3 Templates on BIG-IQ
 -------------------------------------
 
-Import AS3 templates
-^^^^^^^^^^^^^^^^^^^^
+Exercise 1.1 – Import AS3 templates
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    **Credentials**
 
