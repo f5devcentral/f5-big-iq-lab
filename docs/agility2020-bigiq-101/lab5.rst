@@ -11,10 +11,6 @@ configurations, please consult `K02142132`_.
 
 .. _K02142132: https://support.f5.com/csp/article/K02142132
 
-.. warning:: `BIG-IQ Application Service Sizing Guidelines`_
-
-.. _BIG-IQ Application Service Sizing Guidelines: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-sizing-guidelines/big-iq-sizing-guidelines.html#big-iq-sizing-guidelines
-
 Exercise 5.1 – TCP Legacy Application Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -174,7 +170,7 @@ Then click on ``legacy-app-service`` Application Service.
 7. Now, look at the changes in the analytics and then re-enable the pool member.
 
 
-.. note:: If you don't see traffic, launch a xRDP/noVNC session to have access to the Ubuntu Desktop, 
+.. note:: You don't see traffic? Launch a xRDP/noVNC session to have access to the Ubuntu Desktop, 
           open a browser and navigate to ``http://10.1.10.142`` or open a terminal and run the following 
           command ``curl http://10.1.10.142``.
 
