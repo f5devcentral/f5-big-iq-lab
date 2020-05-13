@@ -27,11 +27,8 @@ Exercise 3.1 – Application Creation
 
 |image29|
 
-**Note**
-
-You can go on the `GitHub
-repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower>`__ and
-check review the playbooks and Jinja2 templates.
+.. note:: You can go on the `GitHub repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower>`__
+          and check review the playbooks and Jinja2 templates.
 
 
 |image30|
@@ -65,11 +62,8 @@ check review the playbooks and Jinja2 templates.
 
    |image34|
 
-**Note**
-
-The *FAILED - RETRYING* messages are expected as the playbook runs
-into a LOOP to check the AS3 task completion and will show failed until
-loop is completed.
+.. note:: The *FAILED - RETRYING* messages are expected as the playbook runs into a LOOP to check 
+          the AS3 task completion and will show failed until loop is completed.
 
 9. When the job is completed, check the **PLAY RECAP** and make sure that *failed=* status is **0**.
 
@@ -117,8 +111,6 @@ The application owner has informed Paula that the application is no longer neede
 
 |image40|
 
-**Note**
-
 .. note:: You can go on the `GitHub repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower>`_
           and check review the playbooks and Jinja2 templates.
 
@@ -146,11 +138,8 @@ The application owner has informed Paula that the application is no longer neede
 
    |image44|
 
-**Note**
-
-The *FAILED - RETRYING* messages are expected as the playbook runs
-into a LOOP to check the AS3 task completion and will show failed until
-loop is completed.
+.. note:: The *FAILED - RETRYING* messages are expected as the playbook runs into a LOOP to check the AS3 task 
+          completion and will show failed until loop is completed.
 
 7.  When the job is completed, check the **PLAY RECAP** and make sure that *failed=* status is **0**.
 

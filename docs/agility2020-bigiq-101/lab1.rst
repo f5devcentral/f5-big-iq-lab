@@ -10,10 +10,7 @@ Desktop. To do this, in your lab deployment, click on the
 *XRDP,* click on the drop-down and select the resolution that works for
 your laptop.
 
-**Note**
-
-Modern laptops with higher resolutions you might want to use 1440x900
-and once XRDP is launched Zoom to 200%)
+.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
 
 If the RDP session does not render correctly or the resolution poor, you
 can complete the labs by going directly to the BIG-IP and BIG-IQ CM XUI.
@@ -41,10 +38,7 @@ box. If you want to start using AS3 templates which are provided by F5,
 then those AS3 templates can be found through the following
 link: https://github.com/f5devcentral/f5-big-iq
 
-**Note**
-
-   *The F5 default AS3 BIG-IQ templates are already imported in the lab
-   environment blueprint.*
+.. note:: The F5 default AS3 BIG-IQ templates are already imported in the lab environment blueprint.
 
 Import AS3 BIG-IQ templates
 
@@ -64,12 +58,7 @@ Import AS3 BIG-IQ templates
 4. Use the provided instructions on the Github page to import the
    templates into BIG-IQ.
 
-..
-
-   **Note**
-
-   The F5 default AS3 BIG-IQ templates are already imported in the lab
-   environment blueprint.
+.. note:: The F5 default AS3 BIG-IQ templates are already imported in the lab environment blueprint.
 
 5. Walk through the provided templates and select them to understand the
    structure. If familiar with AS3 you will notice the structure.
@@ -194,9 +183,7 @@ Paula.
 
 |image10|
 
-**Note**
-
-   If not visible, refresh the page.
+.. note:: If not visible, refresh the page.
 
 13. Select **LAB 1.2** Application. You will
     notice **LAB 1.2** acts as a group of Application Services where
@@ -225,9 +212,7 @@ created on the BIG-IP.
 
 |image13|
 
-**Note**
-
-   An HTTP traffic generator is running on the Jumphost.
+.. note:: An HTTP traffic generator is running on the Jumphost.
 
 **Exercise 1.3 - Modify template**
 
@@ -259,12 +244,11 @@ modifications.
 
 |image17|
 
-**Note**
-
 Using **BIG-IQ** to modify application services deployed via AS3 is only 
 possible if the application was initially deployed via BIG-IQ.  Services 
 deployed via AS3 directly to the **BIG-IP**, whether via Postman, Ansible, or 
 other toolchains, must continue to use that toolchain to modify the service. 
+
 The BIG-IQ GUI only allows you to modify what has been permitted (made
 ‘editable’) when the template was created. With a configuration deployed
 through the API directly to the BIG-IP and not via BIG-IQ, you would
