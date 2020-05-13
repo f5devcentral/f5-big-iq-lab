@@ -4,18 +4,6 @@ Lab 1: Manage AS3 Templates on BIG-IQ
 Exercise 1.1 – Import AS3 templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   **Credentials**
-
-   **Username Password Notes**
-
-   admin purple123 local
-
-   paula paula radius
-
-   david david radius
-
-   larry larry radius
-
 From the lab environment, launch an RDP session to access the Ubuntu
 Desktop. To do this, in your lab deployment, click on the
 *DETAILS* button of the *Ubuntu Lamp Server* system and from the

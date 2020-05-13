@@ -173,6 +173,12 @@ Then click on ``legacy-app-service`` Application Service.
 
 7. Now, look at the changes in the analytics and then re-enable the pool member.
 
+
+.. note:: If you don't see traffic, launch a xRDP/noVNC session to have access to the Ubuntu Desktop, 
+          open a browser and navigate to ``http://10.1.10.142`` or open a terminal and run the following 
+          command ``curl http://10.1.10.142``.
+
+
 Exercise 5.3 – Troubleshooting latency and packet loss
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -220,7 +226,6 @@ Notice one of the pool member is almost double the duration of the other.
   :scale: 40%
 
 |
-
 
 5. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
