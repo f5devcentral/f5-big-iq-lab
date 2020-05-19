@@ -1,6 +1,8 @@
 Lab 5: Visibility for Legacy applications in the Applications tab
 -----------------------------------------------------------------
 
+**New BIG-IQ v7.1 Features**
+
 In BIG-IQ v7.1, an admin can now add “legacy” (or “brownfield”) applications into the Application dashboard 
 without having to re-deploy the application using a template. The Legacy applications will provide the same
 analytic views as those applications deployed via a template, however the configuration sections are read-only, 
@@ -23,7 +25,7 @@ within the Application dashboard of BIG-IQ.
 
 2. Navigate to Applications > Applications. Click on **Create** to Create an Application Service:
 
-.. image:: images/lab5a-1.png
+.. image:: images/lab5/lab5a-1.png
   :scale: 40%
   :align: center
 
@@ -50,7 +52,7 @@ Fill out the necessary fields.
 
 Move *vip142* over to the **Selected** column and then scroll down.
 
-.. image:: images/lab5a-2.png
+.. image:: images/lab5/lab5a-2.png
   :scale: 40%
   :align: center
 
@@ -60,14 +62,14 @@ Move *vip142* over to the **Selected** column and then scroll down.
 3. Click on **View Sample API Request** in the right upper corner to see the API call
    which could be used to create this legacy application service on BIG-IQ using automation.
 
-.. image:: images/lab5a-3.png
+.. image:: images/lab5/lab5a-3.png
   :scale: 40%
   :align: center
 
 4. Go back to the list of objects and click on *Profile HTTP Analytics*.
    Notice the the Analytics profile is attached to the VIP.
 
-.. image:: images/lab5a-4.png
+.. image:: images/lab5/lab5a-4.png
   :scale: 40%
   :align: center
 
@@ -82,13 +84,13 @@ Move *vip142* over to the **Selected** column and then scroll down.
    This is an indication that this application was not created with a template, and will be treated as a **legacy** 
    application.
 
-.. image:: images/lab5a-5.png
+.. image:: images/lab5/lab5a-5.png
   :scale: 40%
   :align: center
 
 Drill down into the application dashboard and wait for the analytics to show on the dashboard. 
 
-.. image:: images/lab5a-6.png
+.. image:: images/lab5/lab5a-6.png
   :scale: 40%
   :align: center
 
@@ -97,18 +99,18 @@ Drill down into the application dashboard and wait for the analytics to show on 
 
 8. Go to **Configuration > Local Traffic > Virtual Servers** and filter on ``vip142`` and look for the name of the TCP analytics profile.
 
-.. image:: images/lab5a-7.png
+.. image:: images/lab5/lab5a-7.png
   :scale: 40%
   :align: center
 
 9. Go to **Configuration > Local Traffic > Profiles** and look for ``app2`` TCP analytics profiles.
    You can use the filter to look for the profile.
 
-.. image:: images/lab5a-8.png
+.. image:: images/lab5/lab5a-8.png
   :scale: 40%
   :align: center
 
-.. image:: images/lab5a-9.png
+.. image:: images/lab5/lab5a-9.png
   :scale: 40%
   :align: center
 
@@ -120,50 +122,50 @@ Exercise 5.2 – Legacy Application and RBAC
 
 Add ``Lab5 Manager`` Role as seen below.
 
-.. image:: images/lab5a-10.png
+.. image:: images/lab5/lab5a-10.png
   :scale: 40%
   :align: center
 
 Next add the ``legacy-app-service`` and ``backend_site20tcp`` Roles and then Click **Save & Close**.
 
-.. image:: images/lab5a-11.png
+.. image:: images/lab5/lab5a-11.png
   :scale: 40%
   :align: center
 
 
 2. Now logout from the david session and Login to BIG-IQ as **paula**.
 
-.. image:: images/lab5a-12.png
+.. image:: images/lab5/lab5a-12.png
   :scale: 40%
   :align: center
 
 3. Select ``LAB5`` Application.
 
-.. image:: images/lab5a-13.png
+.. image:: images/lab5/lab5a-13.png
   :scale: 40%
   :align: center
 
 Then click on ``legacy-app-service`` Application Service.
 
-.. image:: images/lab5a-14.png
+.. image:: images/lab5/lab5a-14.png
   :scale: 40%
   :align: center
 
 4. You are now on the Paula's Application Services dashboard. 
 
-.. image:: images/lab5a-15.png
+.. image:: images/lab5/lab5a-15.png
   :scale: 40%
   :align: center
 
 5. Click on Server on the right side of the screen. Select Configuration and try to disable one of the Pool Member.
 
-.. image:: images/lab5a-16.png
+.. image:: images/lab5/lab5a-16.png
   :scale: 40%
   :align: center
 
 6. Confirm the pool member is disabled.
 
-.. image:: images/lab5a-17.png
+.. image:: images/lab5/lab5a-17.png
   :scale: 40%
   :align: center
 
@@ -187,7 +189,7 @@ We are going to identify latency and packet loss issues happening on an applicat
 Notice the alerts raised. The server side RTT exceeded the critical threshold of 100ms. Since the traffic is sent in bursts
 you may not see an **Active Alert**. You can view the **Alert History** to see the last time the application exceeded the threshold.
 
-.. image:: images/lab5b-1.png
+.. image:: images/lab5/lab5b-1.png
   :align: center
   :scale: 40%
 
@@ -195,7 +197,7 @@ you may not see an **Active Alert**. You can view the **Alert History** to see t
 
 2. Look for the details of the alert. A delay of ~300ms between the F5 BIG-IP and the application server can be observed.
 
-.. image:: images/lab5b-2.png
+.. image:: images/lab5/lab5b-2.png
   :align: center
   :scale: 40%
 
@@ -206,7 +208,7 @@ you may not see an **Active Alert**. You can view the **Alert History** to see t
 The connection duration metric isn't showing by default in the dimension, you will need to right click, select **Columns** and add it. 
 Notice one of the pool member is almost double the duration of the other.
 
-.. image:: images/lab5b-3.png
+.. image:: images/lab5/lab5b-3.png
   :align: center
   :scale: 40%
 
@@ -217,7 +219,7 @@ Notice one of the pool member is almost double the duration of the other.
 4. We are now going to remove the healthy node and only keep the NGINX node. Navigate to the Configuration tab in the application dashboard
    and delete the node ``10.1.20.115:8081``. Then click **Save**.
 
-.. image:: images/lab5b-4.png
+.. image:: images/lab5/lab5b-4.png
   :align: center
   :scale: 40%
 
@@ -244,7 +246,7 @@ You may run the curl command multiple times. Here we removed the delay and add a
 This completes the TCP analytics lab.
 
 
-.. image:: images/lab5b-5.png
+.. image:: images/lab5/lab5b-5.png
   :align: center
   :scale: 40%
 

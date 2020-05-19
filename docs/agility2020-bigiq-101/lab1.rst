@@ -254,57 +254,57 @@ The BIG-IQ GUI only allows you to modify what has been permitted (made
 through the API directly to the BIG-IP and not via BIG-IQ, you would
 need to redeploy to add additional services.
 
-.. |image0| image:: images/image1.png
+.. |image0| image:: images/lab1/image1.png
    :width: 6.5in
    :height: 2.48542in
-.. |image1| image:: images/image2.png
+.. |image1| image:: images/lab1/image2.png
    :width: 6.5in
    :height: 3.49167in
-.. |image2| image:: images/image3.png
+.. |image2| image:: images/lab1/image3.png
    :width: 6.5in
    :height: 5.18194in
-.. |image3| image:: images/image4.png
+.. |image3| image:: images/lab1/image4.png
    :width: 6.5in
    :height: 2.07361in
-.. |image4| image:: images/image5.png
+.. |image4| image:: images/lab1/image5.png
    :width: 6.5in
    :height: 2.22778in
-.. |image5| image:: images/image6.png
+.. |image5| image:: images/lab1/image6.png
    :width: 6.5in
    :height: 3.23889in
-.. |image6| image:: images/image7.png
+.. |image6| image:: images/lab1/image7.png
    :width: 6.5in
    :height: 3.26806in
-.. |image7| image:: images/image8.png
+.. |image7| image:: images/lab1/image8.png
    :width: 6.5in
    :height: 2.95764in
-.. |image8| image:: images/image9.png
+.. |image8| image:: images/lab1/image9.png
    :width: 5.84306in
    :height: 9in
-.. |image9| image:: images/image10.png
+.. |image9| image:: images/lab1/image10.png
    :width: 6.5in
    :height: 6.73056in
-.. |image10| image:: images/image11.png
+.. |image10| image:: images/lab1/image11.png
    :width: 6.5in
    :height: 3.12014in
-.. |image11| image:: images/image12.png
+.. |image11| image:: images/lab1/image12.png
    :width: 6.5in
    :height: 2.49306in
-.. |image12| image:: images/image13.png
+.. |image12| image:: images/lab1/image13.png
    :width: 6.5in
    :height: 2.41389in
-.. |image13| image:: images/image14.png
+.. |image13| image:: images/lab1/image14.png
    :width: 6.5in
    :height: 3.8875in
-.. |image14| image:: images/image15.png
+.. |image14| image:: images/lab1/image15.png
    :width: 6.5in
    :height: 3.18403in
-.. |image15| image:: images/image16.png
+.. |image15| image:: images/lab1/image16.png
    :width: 6.5in
    :height: 3.20347in
-.. |image16| image:: images/image17.png
+.. |image16| image:: images/lab1/image17.png
    :width: 6.5in
    :height: 3.88611in
-.. |image17| image:: images/image18.png
+.. |image17| image:: images/lab1/image18.png
    :width: 5.48in
    :height: 6.22647in

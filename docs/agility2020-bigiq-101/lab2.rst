@@ -5,36 +5,36 @@ Exercise 2.1 – Create Custom AS3 template via BIG-IQ GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 We imported the default “out-of-the-box” AS3 templates (available
-on https://github.com/f5devcentral/f5-big-iq) that can be used for
+on https://github.com/f5devcentral/f5-big-iq) that can be used for
 deploying an application service. However, it is a good practice to
 clone the default AS3 templates and use them for your custom needs.
 
 1. Logon as **david** and go to the Applications > Application Templates
    and
-   select AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-v1 and
-   click on **Clone**.
+   select AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-v1 and
+   click on **Clone**.
 
-2. Name the cloned template: AS3-LAB-HTTPS-WAF-custom-template and click
+2. Name the cloned template: AS3-LAB-HTTPS-WAF-custom-template and click
    Clone.
 
 ..
 
    |image18|
 
-3. Open the template called AS3-LAB-HTTPS-WAF-custom-template and select
-   the Analytics_Profile. Change to Override the Properties for
-   Collect Client-Side Statistics, as well
-   as Collect URL and Collect User Agent. Ensure the Enable checkbox is
+3. Open the template called AS3-LAB-HTTPS-WAF-custom-template and select
+   the Analytics_Profile. Change to Override the Properties for
+   Collect Client-Side Statistics, as well
+   as Collect URL and Collect User Agent. Ensure the Enable checkbox is
    selected for these.
 
 |image19|
 
-.. note:: Collect Response Code, Collect Method, and Collect Operating System and Browser 
+.. note:: Collect Response Code, Collect Method, and Collect Operating System and Browser 
           are already enabled by default in the AS3 schema.
 
-4. Click **Save & Close**.
+4. Click **Save & Close**.
 
-5. Select AS3-LAB-HTTPS-WAF-custom-template and click **Publish**.
+5. Select AS3-LAB-HTTPS-WAF-custom-template and click **Publish**.
 
 Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3 template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -139,27 +139,27 @@ BIG-IP.
 6. Back to the BIG-IQ and logged in as **Paula**, select
    tenant2_https_waf_app_service. What is the enforced Protection Mode?
 
-.. |image18| image:: images/image19.png
+.. |image18| image:: images/lab2/image19.png
    :width: 6.5in
    :height: 3.08403in
-.. |image19| image:: images/image20.png
+.. |image19| image:: images/lab2/image20.png
    :width: 6.5in
    :height: 3.10556in
-.. |image20| image:: images/image21.png
+.. |image20| image:: images/lab2/image21.png
    :width: 6.5in
    :height: 2.38264in
-.. |image21| image:: images/image22.png
+.. |image21| image:: images/lab2/image22.png
    :width: 6.5in
    :height: 2.9in
-.. |image22| image:: images/image23.png
+.. |image22| image:: images/lab2/image23.png
    :width: 6.5in
    :height: 7.00417in
-.. |image23| image:: images/image24.png
+.. |image23| image:: images/lab2/image24.png
    :width: 6.5in
    :height: 2.34792in
-.. |image24| image:: images/image25.png
+.. |image24| image:: images/lab2/image25.png
    :width: 6.5in
    :height: 2.45417in
-.. |image25| image:: images/image26.png
+.. |image25| image:: images/lab2/image26.png
    :width: 6.5in
    :height: 2.99444in
