@@ -3,7 +3,9 @@ Lab 3: AS3 Application creation and deletion using AWX/Ansible Tower and BIG-IQ
 
 Paula has been tasked with the creation of a new application on the BIG-IP  that has been requested by the application owner. 
 Paula will use AS3 declaration and BIG-IQ to build the application on the appropriate BIG-IPs using an 
-Ansible Playbook that is stored in their GitHub repository. 
+Ansible Playbook that is stored in their GitHub repository.
+
+.. include:: ../labaccess.rst
 
 Exercise 3.1 – Application Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -69,8 +71,10 @@ Exercise 3.1 – Application Creation
 
     |image35|
 
-10. Logon on **BIG-IQ** as **paula** *(paula\paula)*, go to
-    Application tab and check the application is displayed and analytics
+10. From within the LAMP server RDP session, logon on **BIG-IQ** as **paula** *(paula\paula)*
+    by opening a browser and go to: ``https://10.1.1.4`` or directly via
+    the TMUI as shown above.
+    Go to Application tab and check the application is displayed and analytics
     are showing.
 
 11. Select *Unknown Applications* Application tile

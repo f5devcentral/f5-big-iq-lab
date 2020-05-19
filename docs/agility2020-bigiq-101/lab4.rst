@@ -38,11 +38,14 @@ default Silo because the naming conflict will have been removed.
 
 |image0|
 
+.. include:: ../labaccess.rst
+
 Exercise 4.1 – Import a device into a Silo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Login to BIG-IQ as david by opening a browser and go to:
-   ``https://10.1.1.4``.
+1. From within the LAMP server RDP session, logon to BIG-IQ as **david** *(david\david)*
+   by opening a browser and go to: ``https://10.1.1.4`` or directly via
+      the TMUI.
 
 2. Navigate to Devices > BIG-IP Devices. You can hide some columns you
    don’t need for this lab such as Stats Collection, Data Collection,
@@ -347,18 +350,6 @@ Click on \ **Continue**.
 .. |image0| image:: images/lab4/image1.png
    :width: 5.58945in
    :height: 3.28261in
-.. |image1| image:: images/lab4/image2.png
-   :width: 6.05446in
-   :height: 2.22126in
-.. |image2| image:: images/lab4/image3.png
-   :width: 6.26641in
-   :height: 3.18609in
-.. |image3| image:: images/lab4/image4.png
-   :width: 5.10891in
-   :height: 4.14444in
-.. |image4| image:: images/lab4/image5.png
-   :width: 6.35521in
-   :height: 3.46413in
 .. |image5| image:: images/lab4/image6.png
    :width: 6.5in
    :height: 2.86042in

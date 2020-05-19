@@ -13,6 +13,8 @@ configurations, please consult `K02142132`_.
 
 .. _K02142132: https://support.f5.com/csp/article/K02142132
 
+.. include:: ../labaccess.rst
+
 Exercise 5.1 – TCP Legacy Application Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -21,7 +23,9 @@ to the Application dashboard. Note this will not "re-deploy" the application or 
 Rather this will take the virtual server and all its child objects and group them together as an Application 
 within the Application dashboard of BIG-IQ.
 
-1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
+1. From within the LAMP server RDP session, logon to BIG-IQ as **david** *(david\david)*
+   by opening a browser and go to: ``https://10.1.1.4`` or directly via
+   the TMUI as shown above.
 
 2. Navigate to Applications > Applications. Click on **Create** to Create an Application Service:
 

@@ -1,34 +1,16 @@
 Lab 1: Manage AS3 Templates on BIG-IQ
 -------------------------------------
 
+.. include:: ../labaccess.rst
+
 Exercise 1.1 – Import AS3 templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-From the lab environment, launch an RDP session to access the Ubuntu
-Desktop. To do this, in your lab deployment, click on the
-*DETAILS* button of the *Ubuntu Lamp Server* system and from the
-*XRDP,* click on the drop-down and select the resolution that works for
-your laptop.
+**View AS3 templates section**
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
-
-If the RDP session does not render correctly or the resolution poor, you
-can complete the labs by going directly to the BIG-IP and BIG-IQ CM XUI.
-
-|image0|
-
-|image1|
-
-To access the BIG-IQ directly, click on the ACCESS button under BIGIQ CM
-and select TMUI
-
-|image2|
-
-View AS3 templates section
-
-1. From within the LAMP server RDP session, logon to BIG-IQ as **admin**
+1. From within the LAMP server RDP session, logon to BIG-IQ as **david** *(david\david)*
       by opening a browser and go to: ``https://10.1.1.4`` or directly via
-      the TMUI as shown above.
+      the TMUI.
 
 2. Go to Applications > Application Templates and review the top section
       which is titled **AS3 Templates**.
@@ -40,7 +22,7 @@ link: https://github.com/f5devcentral/f5-big-iq
 
 .. note:: The F5 default AS3 BIG-IQ templates are already imported in the lab environment blueprint.
 
-Import AS3 BIG-IQ templates
+**Import AS3 BIG-IQ templates**
 
 1. Select **Import Templates** at the right top corner. You will be
    taken to the BIG-IQ AS3 Template Library on Github.
@@ -78,7 +60,9 @@ and various profiles to offload SSL to the pool members.
 First we attempt to create an application service as application owner
 Paula.
 
-1. Log in as **paula** in BIG-IQ.
+1. From within the LAMP server RDP session, logon on **BIG-IQ** as **paula** *(paula\paula)*
+    by opening a browser and go to: ``https://10.1.1.4`` or directly via
+    the TMUI as shown above.
 
 2. In the **Applications** page click on **Create** to create an
    Application Service
@@ -254,15 +238,7 @@ The BIG-IQ GUI only allows you to modify what has been permitted (made
 through the API directly to the BIG-IP and not via BIG-IQ, you would
 need to redeploy to add additional services.
 
-.. |image0| image:: images/lab1/image1.png
-   :width: 6.5in
-   :height: 2.48542in
-.. |image1| image:: images/lab1/image2.png
-   :width: 6.5in
-   :height: 3.49167in
-.. |image2| image:: images/lab1/image3.png
-   :width: 6.5in
-   :height: 5.18194in
+
 .. |image3| image:: images/lab1/image4.png
    :width: 6.5in
    :height: 2.07361in
