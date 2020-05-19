@@ -165,69 +165,69 @@ Notice that the application is now deleted.
 
 |image47|
 
-.. |image26| image:: images/image27.png
+.. |image26| image:: images/lab3/image27.png
    :width: 3.79545in
    :height: 2.69677in
-.. |image27| image:: images/image28.png
+.. |image27| image:: images/lab3/image28.png
    :width: 7.49167in
    :height: 3.6933in
-.. |image28| image:: images/image29.png
+.. |image28| image:: images/lab3/image29.png
    :width: 7.52216in
    :height: 3.70833in
-.. |image29| image:: images/image30.png
+.. |image29| image:: images/lab3/image30.png
    :width: 7.54167in
    :height: 3.71795in
-.. |image30| image:: images/image31.png
+.. |image30| image:: images/lab3/image31.png
    :width: 7.48835in
    :height: 3.69167in
-.. |image31| image:: images/image32.png
+.. |image31| image:: images/lab3/image32.png
    :width: 5.31061in
    :height: 4.02172in
-.. |image32| image:: images/image33.png
+.. |image32| image:: images/lab3/image33.png
    :width: 5.75833in
    :height: 4.58679in
-.. |image33| image:: images/image34.png
+.. |image33| image:: images/lab3/image34.png
    :width: 4.68333in
    :height: 3.48193in
-.. |image34| image:: images/image35.png
+.. |image34| image:: images/lab3/image35.png
    :width: 7.57287in
    :height: 3.73333in
-.. |image35| image:: images/image36.png
+.. |image35| image:: images/lab3/image36.png
    :width: 7.52216in
    :height: 3.70833in
-.. |image36| image:: images/image37.png
+.. |image36| image:: images/lab3/image37.png
    :width: 7.55in
    :height: 3.68215in
-.. |image37| image:: images/image38.png
+.. |image37| image:: images/lab3/image38.png
    :width: 6.69697in
    :height: 3.80723in
-.. |image38| image:: images/image39.png
+.. |image38| image:: images/lab3/image39.png
    :width: 7.56167in
    :height: 3.125in
-.. |image39| image:: images/image40.png
+.. |image39| image:: images/lab3/image40.png
    :width: 7.28788in
    :height: 3.59284in
-.. |image40| image:: images/image41.png
+.. |image40| image:: images/lab3/image41.png
    :width: 7.31818in
    :height: 3.60778in
-.. |image41| image:: images/image42.png
+.. |image41| image:: images/lab3/image42.png
    :width: 5.20833in
    :height: 3.92957in
-.. |image42| image:: images/image43.png
+.. |image42| image:: images/lab3/image43.png
    :width: 5.80303in
    :height: 2.12465in
-.. |image43| image:: images/image44.png
+.. |image43| image:: images/lab3/image44.png
    :width: 4.95455in
    :height: 3.67876in
-.. |image44| image:: images/image45.png
+.. |image44| image:: images/lab3/image45.png
    :width: 7.31818in
    :height: 3.60778in
-.. |image45| image:: images/image46.png
+.. |image45| image:: images/lab3/image46.png
    :width: 7.54167in
    :height: 3.71795in
-.. |image46| image:: images/image47.png
+.. |image46| image:: images/lab3/image47.png
    :width: 7.48333in
    :height: 3.47171in
-.. |image47| image:: images/image48.png
+.. |image47| image:: images/lab3/image48.png
    :width: 7.55in
    :height: 3.72206in
