@@ -11,24 +11,20 @@ on https://github.com/f5devcentral/f5-big-iq) that can be used for
 deploying an application service. However, it is a good practice to
 clone the default AS3 templates and use them for your custom needs.
 
-1. From within the LAMP server RDP session, logon to BIG-IQ as **admin**
-      by opening a browser and go to: ``https://10.1.1.4`` or directly via
-      the TMUI.
-
-10. From within the LAMP server RDP session, logon on **BIG-IQ** as **david** *(david\david)*
+1. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **david** *(david\david)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
     the TMUI as shown above.
     Go to the Applications > Application Templates and select AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-v1 and
     click on **Clone**.
 
-3. Name the cloned template: AS3-LAB-HTTPS-WAF-custom-template and click
+2. Name the cloned template: AS3-LAB-HTTPS-WAF-custom-template and click
    Clone.
 
 ..
 
    |image0|
 
-4. Open the template called AS3-LAB-HTTPS-WAF-custom-template and select
+3. Open the template called AS3-LAB-HTTPS-WAF-custom-template and select
    the Analytics_Profile. Change to Override the Properties for
    Collect Client-Side Statistics, as well
    as Collect URL and Collect User Agent. Ensure the Enable checkbox is
@@ -39,9 +35,9 @@ clone the default AS3 templates and use them for your custom needs.
 .. note:: Collect Response Code, Collect Method, and Collect Operating System and Browser 
           are already enabled by default in the AS3 schema.
 
-5. Click **Save & Close**.
+4. Click **Save & Close**.
 
-6. Select AS3-LAB-HTTPS-WAF-custom-template and click **Publish**.
+5. Select AS3-LAB-HTTPS-WAF-custom-template and click **Publish**.
 
 Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3 template
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

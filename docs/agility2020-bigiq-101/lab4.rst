@@ -43,7 +43,7 @@ default Silo because the naming conflict will have been removed.
 Exercise 4.1 – Import a device into a Silo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. From within the LAMP server RDP session, logon to BIG-IQ as **david** *(david\david)*
+1. From within the LAMP server RDP/noVNC session, logon to BIG-IQ as **david** *(david\david)*
    by opening a browser and go to: ``https://10.1.1.4`` or directly via
       the TMUI.
 

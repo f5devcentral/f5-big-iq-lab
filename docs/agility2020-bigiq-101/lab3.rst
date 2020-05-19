@@ -71,7 +71,7 @@ Exercise 3.1 – Application Creation
 
     |image35|
 
-10. From within the LAMP server RDP session, logon on **BIG-IQ** as **paula** *(paula\paula)*
+10. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paula** *(paula\paula)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
     the TMUI as shown above.
     Go to Application tab and check the application is displayed and analytics
