@@ -67,6 +67,8 @@ Paula.
 2. In the **Applications** page click on **Create** to create an
    Application Service
 
+|image5|
+
 +--------------------------------------------------------------------------------------------------+
 | Application properties:                                                                          |
 +==================================================================================================+
@@ -93,13 +95,13 @@ Paula.
    ‘Published’ templates. The template **Paula** wants to use is
    listed as a ‘Published’ template.
 
-|image5|
+|image6|
 
 5. Go to **System > Role Management > Roles** and
    select **Application Roles** under the **CUSTOM ROLES** section.
    Here you will see the collection of the Custom Application Roles.
 
-|image6|
+|image7|
 
 6. **Paula** is assigned to the
    exiting Application Creator VMware custom role. Select it and scroll
@@ -107,7 +109,7 @@ Paula.
    permission to deploy an AS3 application
    using AS3-F5-HTTPS-offload-lb-existing-cert-template.
 
-|image7|
+|image8|
 
 7. Select AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1 AS3
    Template and click the arrow to get it in
@@ -118,7 +120,7 @@ Paula.
 
 9. Select Create Application to Create an Application Service:
 
-|image8|
+|image9|
 
 +----------------------------------------------------------------------------------------------------+
 | Application properties:                                                                            |
@@ -153,19 +155,19 @@ Paula.
 | TLS_Server. Keep default.                                                                          |
 +----------------------------------------------------------------------------------------------------+
 
-|image9|
+|image10|
 
 10. Go to View Sample API Request in the right upper corner and select
     it. You will have a full AS3 declaration schema, scroll through it
     and hit close when done.
 
-|image10|
+|image11|
 
 11. Click **Create**.
 
 12. Check that the Application LAB 1.2 has been created.
 
-|image11|
+|image12|
 
 .. note:: If not visible, refresh the page.
 
@@ -175,7 +177,7 @@ Paula.
     show you that a new Application Service has been created
     named: tenant1_https_app_service.
 
-|image12|
+|image13|
 
 14. Now, let’s look on the BIG-IP and verify the Application is
     correctly deployed in partition tenant1.
@@ -184,7 +186,7 @@ Logon to SEA-vBIGIP01.termmarc.com BIG-IP as **admin** from the lab
 environment. Select the partition tenant1 and look at the objects
 created on the BIG-IP.
 
-|image13|
+|image14|
 
 15. You can test the application service by open a browser in the Ubuntu
        Jumphost and type the Virtual Server IP address 10.1.10.120. You
@@ -194,7 +196,7 @@ created on the BIG-IP.
        select tenant1_https_app_service Application Service and look
        for HTTP traffic analytics.
 
-|image14|
+|image15|
 
 .. note:: An HTTP traffic generator is running on the Jumphost.
 
@@ -210,23 +212,23 @@ modifications.
 
 -  Click **Save & Close**.
 
-|image15|
+|image16|
 
 2. Once the configuration change has completed in BIG-IQ,
    check SEA-vBIGIP01.termmarc.com (partition tenant1) Local Traffic >
    Pools and find **Pool**. It will have tenant1/https_app_service as
    the partition/path (or use search). Select Pool and go to members.
 
-|image16|
+|image17|
 
 3. Now back to the BIG-IQ and tenant1_https_app_service application and
    select **Application Service > Configuration.** Scroll down in the
    AS3 declaration and find that the schema has added the third pool
    member.
 
-|image17|
-
 |image18|
+
+|image19|
 
 Using **BIG-IQ** to modify application services deployed via AS3 is only 
 possible if the application was initially deployed via BIG-IQ.  Services 
@@ -279,5 +281,11 @@ need to redeploy to add additional services.
    :width: 6.5in
    :height: 3.88611in
 .. |image17| image:: images/lab1/image18.png
+   :width: 5.48in
+   :height: 6.22647in
+.. |image18| image:: images/lab1/image19.png
+   :width: 5.48in
+   :height: 6.22647in
+.. |image19| image:: images/lab1/image20.png
    :width: 5.48in
    :height: 6.22647in
