@@ -36,7 +36,7 @@ configuration differences from BIG-IQ and push out naming changes to
 resolve the conflict. The device can then be re-imported into BIG-IQ’s
 default Silo because the naming conflict will have been removed.
 
-|image0|
+|image50|
 
 .. include:: ./accesslab.rst
 
@@ -44,22 +44,21 @@ Exercise 4.1 – Import a device into a Silo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. From within the LAMP server RDP/noVNC session, logon to BIG-IQ as **david** *(david\david)*
-   by opening a browser and go to: ``https://10.1.1.4`` or directly via
-      the TMUI.
+   by opening a browser and go to: ``https://10.1.1.4`` or directly via the TMUI.
 
 2. Navigate to Devices > BIG-IP Devices. You can hide some columns you
    don’t need for this lab such as Stats Collection, Data Collection,
    Stats Last Collection by clicking on the wheel to the right of the
    *Filter…* field.
 
-|image5|
+|image51|
 
 3. Click on \ *Complete import
    tasks* under **SJC-vBIGIP01.termmarc.com** Services.
 
 ..
 
-   |image6|
+   |image52|
 
 4. Click on Import to start the device configuration import into BIG-IQ.
    If prompted to re-discover the device before importing, go ahead and
@@ -67,7 +66,7 @@ Exercise 4.1 – Import a device into a Silo
 
 ..
 
-   |image7|
+   |image53|
 
 5. The conflict resolution window opens. All the objects are given one
    of the following options, Set all BIG-IQ, Set all BIG-IP or Create
@@ -93,7 +92,7 @@ Exercise 4.1 – Import a device into a Silo
    profile on the next deployment. This is also not a desired outcome as
    it will change working configurations on those devices.
 
-   |image8|
+   |image54|
 
 6. Select the silo-lab-http-profile profile HTTP and note the difference
    between **BIG-IQ** and the **BIG-IP** device profile.
@@ -116,7 +115,7 @@ Exercise 4.1 – Import a device into a Silo
 
 ..
 
-   |image9|
+   |image55|
 
    What you are noticing is a conflict between what BIG-IQ has stored
    for a profile named silo-lab-http-profile and what a profile of the
@@ -131,12 +130,12 @@ Exercise 4.1 – Import a device into a Silo
 
 ..
 
-   |image10|
+   |image56|
 
    The device is now imported into its own Silo named silolab. Note the
    object naming collision has not been resolved yet. Click \ **Close**.
 
-   |image11|
+   |image57|
 
    **Note**
 
@@ -149,7 +148,7 @@ Exercise 4.1 – Import a device into a Silo
 
 ..
 
-   |image12|
+   |image58|
 
 9. After the Import has completed, go back to the BIG-IP Devices grid,
    you can see now \ **SJC-vBIGIP01.termmarc.com** has been imported
@@ -157,7 +156,7 @@ Exercise 4.1 – Import a device into a Silo
 
 ..
 
-   |image13|
+   |image59|
 
 10. If you navigate to the Configuration tab > Local Traffic > Profile
     and filter on silo-lab-http-profile you will see the 2 different
@@ -167,7 +166,7 @@ Exercise 4.1 – Import a device into a Silo
 
 ..
 
-   |image14|
+   |image60|
 
 Exercise 4.2 – Resolve conflicts in the Silo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -175,11 +174,11 @@ Exercise 4.2 – Resolve conflicts in the Silo
 1. Navigate to \ **BIG-IP Device Silos** under the \ **Devices** menu
    and click on the silolab.
 
-|image15|
+|image61|
 
 2. Select Target Silo: \ **Default**, then click on \ **Compare Silos**.
 
-|image16|
+|image62|
 
 3. The comparison window opens. You can adjust the diff window with your
    cursor.
@@ -187,7 +186,7 @@ Exercise 4.2 – Resolve conflicts in the Silo
 4. Scroll down and select Profile HTTP silo-lab-http-profile and look at
    the differences.
 
-|image17|
+|image63|
 
 Ignore the following diff:
 
@@ -208,25 +207,25 @@ eventually re-import back into the default Silo.
 Let’s resolve the conflict by renaming the offending profile
 from silo-lab-http-profile to silo-lab-http-profile2.
 
-|image18|
+|image64|
 
 Click \ **Save & Close**.
 
 5. Wait for the renaming operation to complete. Then click \ **Close**.
 
-|image19|
+|image65|
 
 6. The previous step only made changes on BIG-IQ. You must now deploy
    the changes to the BIG-IP device. Navigate to the Deployment tab >
    Evaluate & Deploy > Local Traffic & Network.
 
-|image20|
+|image66|
 
 7. Create a new Evaluation, select the Silo silolab and set a name. Next
    move the **SJC-vBIGIP01** device from the \ **Available** box to
    the \ **Selected** box.
 
-|image21|
+|image67|
 
 Click \ **Create**.
 
@@ -243,11 +242,11 @@ Click \ **Create**.
 
 -  silo-lab-http-profile2 is attached to the VIP vip-silo-lab
 
-|image22|
+|image68|
 
 9. Now \ **Deploy** the changes to the BIG-IP.
 
-|image23|
+|image69|
 
 10. Navigate to the Configuration tab > Local Traffic > Profile and
     filter on silo-lab-http-profile to confirm the HTTP profile was
@@ -256,7 +255,7 @@ Click \ **Create**.
     still in its own Silo. The Next steps will remove the device from
     its own Silo and re-import into the default Silo.
 
-|image24|
+|image70|
 
 You can eventually go to the BIG-IP \ **SJC-vBIGIP01.termmarc.com** to
 verify the profile has been renamed correctly.
@@ -272,20 +271,20 @@ BIG-IQ.
    select \ **SJC-vBIGIP01.termmarc.com** and click on \ **Remove All
    Services**
 
-|image25|
+|image71|
 
 Click on \ **Continue**.
 
-|image26|
+|image72|
 
 2. Once the services are removed, click on \ **Remove Device**.
 
-|image27|
+|image73|
 
 Click on \ **Remove**. You may need to refresh the page to see that it
 has been deleted.
 
-|image28|
+|image74|
 
 3. Click on \ **Add Devices(s)** and fill below device information.
 
@@ -295,23 +294,23 @@ has been deleted.
 
 -  Password: purple123
 
-|image29|
+|image75|
 
 4. The Service configuration & Statistic monitoring window will open.
    Select LTM and deselect DNS and AFM stats.
 
-|image30|
+|image76|
 
 Click on \ **Continue**.
 
 5. Back on the Devices grid, click on \ *Complete import
    tasks* under **SJC-vBIGIP01.termmarc.com** Services.
 
-|image31|
+|image77|
 
 6. Click on Import to start the device configuration import in BIG-IQ.
 
-|image32|
+|image78|
 
 7. The conflict resolution window opens. Notice the profile
    HTTP silo-lab-http-profile is not showing anymore. Select \ **Create
@@ -325,12 +324,12 @@ Click on \ **Continue**.
    click \ **Resolve** to address the version specific default
    conflicts.
 
-|image33|
+|image79|
 
 8. Once the import is completed, the device no longer shows silolab
    under Silo and \ *Management, LTM* in the device grid.
 
-|image34|
+|image80|
 
 9.  You can navigate to the Configuration tab > Local Traffic > Profile
     and filter on silo-lab-http-profile to confirm both HTTP
@@ -345,101 +344,101 @@ Click on \ **Continue**.
     click \ **Delete**. You may need to refresh the page to see that it
     is gone. That completes this lab.
 
-|image35|
+|image81|
 
-.. |image0| image:: images/lab4/image1.png
+.. |image50| image:: images/lab4/image1.png
    :width: 5.58945in
    :height: 3.28261in
-.. |image5| image:: images/lab4/image6.png
+.. |image51| image:: images/lab4/image6.png
    :width: 6.5in
    :height: 2.86042in
-.. |image6| image:: images/lab4/image7.png
+.. |image52| image:: images/lab4/image7.png
    :width: 6.5in
    :height: 1.97292in
-.. |image7| image:: images/lab4/image8.png
+.. |image53| image:: images/lab4/image8.png
    :width: 6.5in
    :height: 2.57014in
-.. |image8| image:: images/lab4/image9.png
+.. |image54| image:: images/lab4/image9.png
    :width: 6.5in
    :height: 3.30764in
-.. |image9| image:: images/lab4/image10.png
+.. |image55| image:: images/lab4/image10.png
    :width: 6.5in
    :height: 3.30903in
-.. |image10| image:: images/lab4/image11.png
+.. |image56| image:: images/lab4/image11.png
    :width: 6.5in
    :height: 3.41875in
-.. |image11| image:: images/lab4/image12.png
+.. |image57| image:: images/lab4/image12.png
    :width: 6.25869in
    :height: 3.3032in
-.. |image12| image:: images/lab4/image13.png
+.. |image58| image:: images/lab4/image13.png
    :width: 6.5in
    :height: 1.98403in
-.. |image13| image:: images/lab4/image14.png
+.. |image59| image:: images/lab4/image14.png
    :width: 6.5in
    :height: 1.67222in
-.. |image14| image:: images/lab4/image15.png
+.. |image60| image:: images/lab4/image15.png
    :width: 6.5in
    :height: 2.31806in
-.. |image15| image:: images/lab4/image16.png
+.. |image61| image:: images/lab4/image16.png
    :width: 6.5in
    :height: 2.22153in
-.. |image16| image:: images/lab4/image17.png
+.. |image62| image:: images/lab4/image17.png
    :width: 6.5in
    :height: 3.64097in
-.. |image17| image:: images/lab4/image18.png
+.. |image63| image:: images/lab4/image18.png
    :width: 6.5in
    :height: 3.40417in
-.. |image18| image:: images/lab4/image19.png
+.. |image64| image:: images/lab4/image19.png
    :width: 6.5in
    :height: 3.44514in
-.. |image19| image:: images/lab4/image20.png
+.. |image65| image:: images/lab4/image20.png
    :width: 6.48677in
    :height: 3.50505in
-.. |image20| image:: images/lab4/image21.png
+.. |image66| image:: images/lab4/image21.png
    :width: 6.5in
    :height: 2.67986in
-.. |image21| image:: images/lab4/image22.png
+.. |image67| image:: images/lab4/image22.png
    :width: 6.5in
    :height: 3.36319in
-.. |image22| image:: images/lab4/image23.png
+.. |image68| image:: images/lab4/image23.png
    :width: 6.5in
    :height: 3.31944in
-.. |image23| image:: images/lab4/image24.png
+.. |image69| image:: images/lab4/image24.png
    :width: 6.49548in
    :height: 2.63359in
-.. |image24| image:: images/lab4/image25.png
+.. |image70| image:: images/lab4/image25.png
    :width: 6.5in
    :height: 2.8875in
-.. |image25| image:: images/lab4/image26.png
+.. |image71| image:: images/lab4/image26.png
    :width: 6.5in
    :height: 3.08472in
-.. |image26| image:: images/lab4/image27.png
+.. |image72| image:: images/lab4/image27.png
    :width: 6.5in
    :height: 3.01528in
-.. |image27| image:: images/lab4/image28.png
+.. |image73| image:: images/lab4/image28.png
    :width: 6.5in
    :height: 2.90764in
-.. |image28| image:: images/lab4/image29.png
+.. |image74| image:: images/lab4/image29.png
    :width: 6.5in
    :height: 3.02847in
-.. |image29| image:: images/lab4/image30.png
+.. |image75| image:: images/lab4/image30.png
    :width: 6.5in
    :height: 4.68264in
-.. |image30| image:: images/lab4/image31.png
+.. |image76| image:: images/lab4/image31.png
    :width: 6.5in
    :height: 6.88194in
-.. |image31| image:: images/lab4/image32.png
+.. |image77| image:: images/lab4/image32.png
    :width: 6.5in
    :height: 1.52708in
-.. |image32| image:: images/lab4/image33.png
+.. |image78| image:: images/lab4/image33.png
    :width: 6.5in
    :height: 2.57847in
-.. |image33| image:: images/lab4/image34.png
+.. |image79| image:: images/lab4/image34.png
    :width: 6.5in
    :height: 3.28056in
-.. |image34| image:: images/lab4/image35.png
+.. |image80| image:: images/lab4/image35.png
    :width: 6.5in
    :height: 1.23125in
-.. |image35| image:: images/lab4/image36.png
+.. |image81| image:: images/lab4/image36.png
    :width: 6.5in
    :height: 3.80208in

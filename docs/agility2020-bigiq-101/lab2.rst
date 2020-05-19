@@ -22,7 +22,7 @@ clone the default AS3 templates and use them for your custom needs.
 
 ..
 
-   |image0|
+   |image18|
 
 3. Open the template called AS3-LAB-HTTPS-WAF-custom-template and select
    the Analytics_Profile. Change to Override the Properties for
@@ -30,7 +30,7 @@ clone the default AS3 templates and use them for your custom needs.
    as Collect URL and Collect User Agent. Ensure the Enable checkbox is
    selected for these.
 
-|image1|
+|image19|
 
 .. note:: Collect Response Code, Collect Method, and Collect Operating System and Browser 
           are already enabled by default in the AS3 schema.
@@ -55,11 +55,11 @@ Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3 template
 3. Login as Paula and select previously created **LAB 1.2** Application
    and click **Create**.
 
-|image2|
+|image20|
 
 4. Select Create to create an Application Service:
 
-|image3|
+|image21|
 
 +-------------------------------------------------------------------+
 | Application properties:                                           |
@@ -103,14 +103,14 @@ Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3 template
 | TLS_Server: Keep defaults                                         |
 +-------------------------------------------------------------------+
 
-|image4|
+|image22|
 
 4. Click **Create**.
 
 5. Check the Application Service https_waf_app_service has been created
    under Application LAB 1.2.
 
-|image5|
+|image23|
 
 6. Now, let’s look on the BIG-IP and verify the Application is correctly
    deployed in partition tenant2.
@@ -119,7 +119,7 @@ Logon to SEA-vBIGIP01.termmarc.com BIG-IP from the lab environment.
 Select the partition tenant2 and look at the objects created on the
 BIG-IP.
 
-|image6|
+|image24|
 
 -  Notice that new https_waf_app_service comes with a redirect.
 
@@ -137,32 +137,32 @@ BIG-IP.
    the URL to get yourself familiar with other available WAF ready
    templates.
 
-|image7|
+|image25|
 
 6. Back to the BIG-IQ and logged in as **Paula**, select
    tenant2_https_waf_app_service. What is the enforced Protection Mode?
 
-.. |image0| image:: images/lab2/image1.png
+.. |image18| image:: images/lab2/image1.png
    :width: 6.5in
    :height: 2.78611in
-.. |image1| image:: images/lab2/image2.png
+.. |image19| image:: images/lab2/image2.png
    :width: 6.5in
    :height: 3.05208in
-.. |image2| image:: images/lab2/image3.png
+.. |image20| image:: images/lab2/image3.png
    :width: 6.5in
    :height: 2.9875in
-.. |image3| image:: images/lab2/image4.png
+.. |image21| image:: images/lab2/image4.png
    :width: 6.5in
    :height: 2.96111in
-.. |image4| image:: images/lab2/image5.png
+.. |image22| image:: images/lab2/image5.png
    :width: 6.5in
    :height: 7.00417in
-.. |image5| image:: images/lab2/image6.png
+.. |image23| image:: images/lab2/image6.png
    :width: 6.5in
    :height: 2.68611in
-.. |image6| image:: images/lab2/image7.png
+.. |image24| image:: images/lab2/image7.png
    :width: 6.5in
    :height: 2.17014in
-.. |image7| image:: images/lab2/image8.png
+.. |image25| image:: images/lab2/image8.png
    :width: 6.5in
    :height: 2.85625in
