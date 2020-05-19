@@ -1,7 +1,7 @@
 Lab 2: Working with custom AS3 Templates in BIG-IQ
 ---------------------------------------------------
 
-.. include:: ../labaccess.rst
+.. include:: ./accesslab.rst
 
 Exercise 2.1 – Create Custom AS3 template via BIG-IQ GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

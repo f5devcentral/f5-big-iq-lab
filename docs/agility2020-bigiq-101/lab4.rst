@@ -38,7 +38,7 @@ default Silo because the naming conflict will have been removed.
 
 |image0|
 
-.. include:: ../labaccess.rst
+.. include:: ./accesslab.rst
 
 Exercise 4.1 – Import a device into a Silo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

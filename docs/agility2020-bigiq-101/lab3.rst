@@ -5,7 +5,7 @@ Paula has been tasked with the creation of a new application on the BIG-IP  that
 Paula will use AS3 declaration and BIG-IQ to build the application on the appropriate BIG-IPs using an 
 Ansible Playbook that is stored in their GitHub repository.
 
-.. include:: ../labaccess.rst
+.. include:: ./accesslab.rst
 
 Exercise 3.1 – Application Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

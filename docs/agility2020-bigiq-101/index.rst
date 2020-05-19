@@ -24,15 +24,3 @@ Welcome to the BIG-IQ Lab 101 - |year|
 - `BIG-IQ Knowledge Center`_
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
-
-**Credentials**
-
-+----------+-----------+----------+
-| Username | Password  | Provider |
-+==========+===========+==========+
-| admin    | purple123 | local    |
-+----------+-----------+----------+
-| david    | david     | radius   |
-+----------+-----------+----------+
-| paula    | paula     | radius   |
-+----------+-----------+----------+

@@ -13,7 +13,7 @@ configurations, please consult `K02142132`_.
 
 .. _K02142132: https://support.f5.com/csp/article/K02142132
 
-.. include:: ../labaccess.rst
+.. include:: ./accesslab.rst
 
 Exercise 5.1 – TCP Legacy Application Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
