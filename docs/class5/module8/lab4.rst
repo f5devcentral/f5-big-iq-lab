@@ -47,7 +47,7 @@ Open Postman. Click right and click on execute (wait ~2 minutes).
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 4
+   :emphasize-lines: 5
 
    {
       "name": "bigipvm-cluster01",
@@ -68,7 +68,7 @@ Keep a note of it as we will need it later.
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 4
+   :emphasize-lines: 5
 
    {
       "name": "bigipvm-cluster02",
@@ -225,7 +225,7 @@ Note the Private DNS and IPs which will be used later. This information could be
 10. You can use GET to the URI ``https://10.1.1.4/mgmt/shared/declarative-onboarding/task/e1f88fa7-47c9-4860-95f9-132ca6dbaa28`` to track whether a 
 declaration is successful or get information on why it failed. Note the ``id`` will be return when doing the initial POST during previous step.
 
-.. code-block:: yaml
+.. code::
 
    "result": {
          "class": "Result",
@@ -246,7 +246,7 @@ When onboarding is completed, you will see the task completed successfully:
 
 The GET on the URI monitoring the task will also show a success message.
 
-.. code-block:: yaml
+.. code::
 
     "result": {
         "class": "Result",
@@ -278,6 +278,13 @@ The GET on the URI monitoring the task will also show a success message.
                "myDbVariables": {
                   "class": "DbVariables",
                   "configsync.allowmanagement": "enable"
+               },
+               "myLicense": {
+                  "class": "License",
+                  "licenseType": "licensePool",
+                  "licensePool": "byol-pool",
+                  "bigIpUsername": "admin",
+                  "bigIpPassword": "u7BnD@4f5"
                },
                "myProvision": {
                   "class": "Provision",

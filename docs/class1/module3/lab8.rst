@@ -16,7 +16,6 @@ Workflow
 5. After **Paula** does the necessary testing of her application, she reaches to Larry.
 6. **Larry** reviews the ASM learning and deploy the ASM policy changes on the BIG-IP(s).
 7. **Paula** change the policy to blocking mode from her application dashboard.
-7. They all go for happy hour.
 
 Prerequisites
 ^^^^^^^^^^^^^
