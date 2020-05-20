@@ -44,6 +44,7 @@ Move *vip134* over to the **Selected** column and then scroll down.
 .. note:: The warning you see below in the **Application Objects** section is informing you that you don't have an Analytics profile attached to the VIP, 
           this is required to collect HTTP analytics on BIG-IQ. You will create the application without the analytics
           profile, and then you will go back and add it later in the lab.
+          The warning will show if there is no analytics profile attached to at least one of the VIP selected.
 
 .. note:: You can add up to 5 Virtual IP addresses to a single Legacy Application Service.
 

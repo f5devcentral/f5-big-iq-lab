@@ -83,7 +83,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 
 13.	Select ``POST BIG-IQ AS3 Declaration`` and change the management IP address to **10.1.1.15**.
 
-14.	Copy below example of an AS3 Declaration and paste as the Body of your declaration.
+14.	Copy below example of an AS3 Declaration and paste as the body of your declaration.
 
   POST ``https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true``
 

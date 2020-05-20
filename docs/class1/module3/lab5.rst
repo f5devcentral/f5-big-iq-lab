@@ -115,6 +115,11 @@ Confirm the logging profile has been added under Logging Profiles.
   :scale: 40%
   :align: center
 
+.. note:: More information `Managing Logging Profiles in Shared Security`_.
+
+.. _Managing Logging Profiles in Shared Security: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-security/managing-logging-profiles-in-shared-security.html
+
+
 AS3 WAF template creation (David)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -241,7 +246,7 @@ hit Policies. Application Security Policy is Enabled and the Log Profile has a t
   :scale: 40%
   :align: center
 
-9. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+9. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 

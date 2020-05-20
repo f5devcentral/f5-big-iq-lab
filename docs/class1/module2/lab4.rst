@@ -14,9 +14,9 @@ should also disappear from BIG-IQ.
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
-
-POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``.
+   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   
 
 .. code-block:: yaml
    :linenos:
@@ -47,5 +47,5 @@ POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
-.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
-.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html

@@ -126,10 +126,14 @@ Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 
 Make sure the deployment is successful.
 
+.. note:: More information `Managing Logging Profiles in Shared Security`_.
+
+.. _Managing Logging Profiles in Shared Security: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-security/managing-logging-profiles-in-shared-security.html
+
 ASM Bot Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+1. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button of the *Ubuntu Lamp Server* 
 system and select *noVNC* or *xRDP*.
 
@@ -424,7 +428,7 @@ Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
 
 ``while true; do curl http://10.1.10.126; sleep 1; done``
 
-From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 

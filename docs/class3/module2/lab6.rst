@@ -40,7 +40,7 @@ then Local Traffic  ››  Profiles : Services : HTTP. Click on ``HTTP_Profile`
           Import AS3 template called ``AS3-F5-HTTP-lb-page-load-time-template-big-iq-default`` 
           from https://github.com/f5devcentral/f5-big-iq and use switch template feature.
 
-6. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+6. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
    To do this, in your lab environment, click on the *Access* button of the *Ubuntu Lamp Server* system 
    and select *noVNC* or *xRDP*.
 

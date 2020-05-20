@@ -91,7 +91,7 @@ Wait for the deployment to complete.
   :scale: 40%
   :align: center
 
-6. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+6. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 

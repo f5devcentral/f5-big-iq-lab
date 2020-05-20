@@ -17,7 +17,8 @@ IAM role/rolePolicy/InstanceProfile containing
   - Create
   - Delete 
 
-.. Note:: VE Creation may not require the BIG-IQ and created BIG-IP's to communicate (Utility Licensing or Declarative Onboarding). The BIG-IQ targets the public AWS API for VE Creation and the BIG-IP VE public IP for Onboarding.
+.. Note:: VE Creation may not require the BIG-IQ and created BIG-IP's to communicate (Utility Licensing or Declarative Onboarding). 
+          The BIG-IQ targets the public AWS API for VE Creation and the BIG-IP VE public IP for Onboarding.
 
 1. Verify your BIG-IQ "Cloud Provider" for AWS
 

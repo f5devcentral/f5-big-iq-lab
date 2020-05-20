@@ -29,7 +29,8 @@ The Cloud Environment is where our BIG-IP will be deployed. If your credentials 
 Several parts of the Cloud Environment you may not want to be configured because you are planning on using F5 Declarative Onboarding. 
   - Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.
   - You must accept Programmatic Deployments for any BIG-IP you wish to deploy from the BIG-IQ interface, not doing this will result in a failure to launch.
-  - Two types of Licensing, Utility will utilize the instance billing directly to the consumer, BYOL billing would be handled from a BIG-IQ License Pool. Alternatively, if you are planning to have F5 Declarative Onboarding specify a license, you will not define anything
+  - Two types of Licensing, Utility will utilize the instance billing directly to the consumer, 
+    BYOL billing would be handled from a BIG-IQ License Pool. Alternatively, if you are planning to have F5 Declarative Onboarding specify a license, you will not define anything
 
 3. Creating your BIG-IP in Azure
 

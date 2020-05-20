@@ -109,7 +109,7 @@ Looking for F5 Agility 2020 BIG-IQ Automation 101 labs? click `here`_.
 
 - `Look for the BIG-IQ videos on the YouTube DevCentral Channel`_
 
-.. _Look for the BIG-IQ videos on the YouTube DevCentral Channel: https://www.youtube.com/user/devcentral/search?query=BIG-IQ
+.. _Look for the BIG-IQ videos on the YouTube DevCentral Channel: https://www.youtube.com/playlist?list=PLyqga7AXMtPMw9ob6u73-anE6BWRsPhLr
 
 ------------
 

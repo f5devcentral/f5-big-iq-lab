@@ -19,7 +19,16 @@ The two main differences between DO native and BIG-IQ with DO are the **BIG-IQ S
   - The BIG-IQ settings class is used to replace the Discovery and Import process of traditional BIG-IPs into the BIG-IQ platform.
   - The License class can be used to license the BIG-IP VE with a regKey directly or utilizing a licensePool from either the Current BIG-IQ or a different BIG-IQ
 
-Our VE created in the previous lab was a single instance with 1-NIC and a BYOL license. From our perspective, DO doesn't need many options, BIG-IQ management, ASM / AVR provisioned, User, and a License. Then it will be ready for AS3 or Application Templates.
+Our VE created in the previous lab was a single instance with 1-NIC and a BYOL license. 
+From our perspective, DO doesn't need many options, BIG-IQ management, ASM / AVR provisioned, User, and a License. 
+Then it will be ready for AS3 or Application Templates.
+
+Check the BIG-IQ Settings and Provision options to add the class to our configuration, 
+our newly created BIG-IP VE has never been configured with any configuration so we can leave the default 
+options for the BIG-IQ Settings class. Add in our demo hostname, under-provisioning make sure that AVR and AWAF are configured with nominal.
+
+.. warning:: In the License class, you must supply the same BIG-IP admin username and password as the ones entered for the **User class**. 
+             Also the Hypervisor needs to be selected only if reachable = false.
 
   |image10|
   |image11|

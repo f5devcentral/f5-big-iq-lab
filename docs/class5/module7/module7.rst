@@ -12,9 +12,9 @@ To start managing a BIG-IP VE device in a cloud environment, you'll need to comp
 
 .. Note:: The VMWare environment has already been set up for you, the above steps are for reference.
 
-BIG-IQ supports these VMware cloud environments for auto-scaling:  
+BIG-IQ supports these VMware cloud environments:  
   - VMware vCenter version 6.0 (ESXi version 5.5 and 6.0)
-  - VMware vCenter version 6.5 (ESXi version  6.0 and 6.5)
+  - VMware vCenter version 6.5 (ESXi version 6.0 and 6.5)
 
 .. Warning:: If you identify the VE installation destination using a VMWare cluster name, the VMware host must have DRS enabled before you try to deploy the SSG, or the deployment will fail. If you use the ESXi hostname, the DRS setting is optional.
 

@@ -74,16 +74,21 @@ This declaration will add a HTTPS application to a existing HTTP application. In
        }
    }
 
-2. Add the below application service to the existing AS3 declaration in the JSON validator. The validator is your IDE (Integrated development environment) or you can use an `online tool`_.
+2. Add the below application service to the existing AS3 declaration in the JSON validator. The validator is your IDE (Integrated development environment).
+   
+   Use the IDE available within the lab environment, click on the *Access* button
+   of the *Ubuntu Lamp Server* system and select *Visual Studio*.
+
+   You can also use an online tool such as `www.jsonschemavalidator.net`_.
 
    .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
    .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
-   .. _online tool: https://www.jsonschemavalidator.net/
+   .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
 
 .. note:: Add a **","** at the end of the MyWebApp1 statement.
-    If you want to "minimize" MyWebApp1 statement (like in the screenshot below), click on the tiny down arrow on the left of this line
+          If you want to "minimize" MyWebApp1 statement (like in the screenshot below), click on the tiny down arrow on the left of this line
 
 
 |lab-2-1|
@@ -151,15 +156,15 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Paste the declaration into Postman:
-
-   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ.    
+   The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
+   Copy/Paste the AS3 declaration from the validator to the body in Postman.
    
-   This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
+   This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
 5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
 6. Login on BIG-IQ as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
@@ -177,11 +182,18 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
 .. note:: The target from the previous declaration is preserved when building the new declaration with the patch.
 
-1. Add the below application service to the existing AS3 declaration in the validator. The validator is your IDE.
+1. Add the below application service to the existing AS3 declaration in the validator. The validator is your IDE (Integrated development environment).
+   
+   Use the IDE available within the lab environment, click on the *Access* button
+   of the *Ubuntu Lamp Server* system and select *Visual Studio*.
 
-.. note:: It is recommended `validate an AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+   You can also use an online tool such as `www.jsonschemavalidator.net`_.
 
-.. _validate an AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
+   .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
+
+   .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
+
+   .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
 
 .. code-block:: yaml
    :linenos:
@@ -190,7 +202,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
     {
         "class": "AS3",
         "action": "patch",
-        "patchBody": [
+        "patchbody": [
             {
                "target": {
                     "address": "10.1.1.8"
@@ -233,15 +245,15 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ. Copy/Paste the declaration into Postman:
-
-   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ.    
+   The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
+   Copy/Paste the AS3 declaration from the validator to the body in Postman.
    
-   This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**
+   This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
 5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
 6. Login on BIG-IQ as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
@@ -249,8 +261,8 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
-.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
-.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
 
 .. |lab-2-1| image:: ../pictures/module2/lab-2-1.png
    :scale: 60%

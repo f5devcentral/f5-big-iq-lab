@@ -103,7 +103,7 @@ Configure Declarative Onboarding for our VMWare BIG-IP VE
 +-------------------------------+---------------------------+
 | BIG-IP Username               | admin                     |
 +-------------------------------+---------------------------+
-| BIG-IP Password               | admin                     |
+| BIG-IP Password               | u7BnD@4f5                 |
 +-------------------------------+---------------------------+
 | BIG-IQ Host                   |                           |
 +-------------------------------+---------------------------+
@@ -117,6 +117,9 @@ Configure Declarative Onboarding for our VMWare BIG-IP VE
 +-------------------------------+---------------------------+
 | Revoke From                   | Current BIG-IQ byol-pool  |
 +-------------------------------+---------------------------+
+
+.. warning:: In the License class, you must supply the same BIG-IP admin username and password as the ones entered for the **User class**. 
+             Also the Hypervisor needs to be selected only if reachable = false.
 
 +-------------------------------+---------------------------+
 | Provision                     |                           |

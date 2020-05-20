@@ -179,7 +179,7 @@ Select the partition ``tenant1`` and look at the security resources attached to 
   :scale: 40%
   :align: center
 
-8. From the lab environment, launch a xRDP/noVNC session to have access to the Ubuntu Desktop. 
+8. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 To do this, in your lab environment, click on the *Access* button
 of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 

@@ -129,9 +129,9 @@ In this task, we will create a template which require a Service_HTTP object, for
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
-It will create a new template in BIG-IQ AS3 Service Catalogue:
+   It will create a new template in BIG-IQ AS3 Service Catalogue:
 
-    POST https\:\/\/10.1.1.4/mgmt/cm/global/appsvcs-templates
+    ``POST https://10.1.1.4/mgmt/cm/global/appsvcs-templates``
 
 .. code-block:: yaml
    :linenos:
@@ -252,10 +252,11 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-2. Copy below example of an AS3 Declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ:
-
-POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
-
+2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
+   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   
+   
+   This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
 .. code-block:: yaml
    :linenos:
@@ -316,12 +317,9 @@ POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
         }
     }
 
-  
-This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
-
 3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successfull without errors: 
 
-   GET https\:\/\/10.1.1.4/mgmt/shared/appsvcs/task/<id>
+   ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
 4. As expected, note the error message returned due to the static value set in the template::
 
@@ -339,8 +337,8 @@ This will give you an ID which you can query using the **BIG-IQ Check AS3 Deploy
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
-.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
-.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
 
 |lab-3-4|
 

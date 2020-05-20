@@ -29,7 +29,7 @@ To save time the **VS\_maintenance\_irule** has already been created on the BIG-
 5. Fill out the iRule Properties page
    | Name: **VS\_maintenance\_irule**
    | Partition: **Common**
-   | Body: as below:
+   | body: as below:
 
 when RULE\_INIT {
 # sets the timer to return client to host URL

@@ -31,9 +31,15 @@ The two main differences between DO native, and BIG-IQ with DO, are the **BIG-IQ
 
 2. Build our Declarative Onboarding configuration
 
-Our VE created in the previous lab was a single instance with 1-NIC and a BYOL license. From our perspective, DO doesn't need many options, BIG-IQ management, ASM / AVR provisioned, and a License. Then it will be ready for AS3 or Application Templates.
+Our VE created in the previous lab was a single instance with 1-NIC and a BYOL license. 
+From our perspective, DO doesn't need many options, BIG-IQ management, ASM / AVR provisioned, and a License. 
+Then it will be ready for AS3 or Application Templates.
 
-Check the BIG-IQ Settings and Provision options to add the class to our configuration, our newly created BIG-IP VE has never been configured with any configuration so we can leave the default options for the BIG-IQ Settings class. Add in our demo hostname, under-provisioning make sure that AVR and AWAF are configured with nominal.
+Check the BIG-IQ Settings and Provision options to add the class to our configuration, 
+our newly created BIG-IP VE has never been configured with any configuration so we can leave the default 
+options for the BIG-IQ Settings class. Add in our demo hostname, under-provisioning make sure that AVR and AWAF are configured with nominal.
+
+.. warning:: In the License class, the Hypervisor needs to be selected only if reachable = false.
 
   |image16|
   |image23|
