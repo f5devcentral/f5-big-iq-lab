@@ -4,7 +4,7 @@ Lab 8.4: AWS BIG-IP HA VE Creation and Onboarding using the API
 In this lab, we are going to create and onboard from scratch a cluster of BIG-IPs in AWS using BIG-IQ.
 
 Using what you learned in previous labs, you can run the same below steps using the BIG-IQ UI 
-to create and post the DO declaration used to 
+to create and onboard the VE.
 
 From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
 To do this, in your lab environment, click on the *Access* button
@@ -224,8 +224,8 @@ Note the Private DNS and IPs which will be used later. This information could be
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 10. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
-   Copy/Paste the DO declaration from the validator to the body in Postman.
-   Replace the method and URL with ``POST https://10.1.1.4/mgmt/shared/declarative-onboarding``.
+    Copy/Paste the DO declaration from the validator to the body in Postman.
+    Replace the method and URL with ``POST https://10.1.1.4/mgmt/shared/declarative-onboarding``.
 
 11. You can use GET to the URI ``https://10.1.1.4/mgmt/shared/declarative-onboarding/task/e1f88fa7-47c9-4860-95f9-132ca6dbaa28`` to track whether a 
 declaration is successful or get information on why it failed. Note the ``id`` will be return when doing the initial POST during previous step.
