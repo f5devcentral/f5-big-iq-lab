@@ -46,7 +46,7 @@ then Local Traffic  ››  Profiles : Services : HTTP. Click on ``HTTP_Profile`
 
 .. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
-.. image:: ../../pictures/udf_ubuntu.png
+.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
     :align: left
     :scale: 60%
 

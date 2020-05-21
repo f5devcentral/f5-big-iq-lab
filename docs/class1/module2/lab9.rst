@@ -1,56 +1,138 @@
-Lab 2.9: Moving existing AS3 Application Services from BIG-IP to BIG-IQ
------------------------------------------------------------------------
+Lab 2.9: AS3 Application Service deployment from Visual Studio Code using BIG-IQ
+--------------------------------------------------------------------------------
 
-In this lab, we are going to see the process to move AS3 Application Services already 
-deployed directly on BIG-IP using the API on BIG-IQ.
+In this lab, we are going to use the `FAST engine extension`_ in Visual Studio code and
+use it to deploy an AS3 Application Service on a BIG-IP through BIG-IQ.
 
-The process consist simply to add the target property under the ADC class in the 
-AS3 declaration and re-send the full declaration to the BIG-IQ declare or deploy-to-application APIs.
+.. note:: FAST: (F)5 Networks (A)pplication (S)ervices (T)emplate
 
-From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
+.. _FAST engine extension: https://marketplace.visualstudio.com/items?itemName=DumpySquare.vscode-f5-fast
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
+1. Click on the *Visual Studio Code* button on the system *Ubuntu Lamp Server* in lab environment.
+Use ``purple123`` to authenticate.
 
-.. image:: ../../pictures/udf_ubuntu.png
-    :align: left
-    :scale: 60%
+2. Click on the **F5** logo on the left menu in the Visual Code Studio window.
 
-|
+.. image:: ../pictures/module2/lab-9-1.png
+  :scale: 60%
+  :align: center
 
-Open Chrome and Postman.
+3. Edit the host and set BIG-IQ IP address: ``10.1.1.4``. Press enter.
 
-For Postman, click right and click on execute (wait ~2 minutes).
+.. image:: ../pictures/module2/lab-9-2.png
+  :scale: 60%
+  :align: center
 
-.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
+4. Click on the host and enter the admin's password ``purple123``.
 
-.. image:: ../../pictures/postman.png
-    :align: center
-    :scale: 60%
+.. image:: ../pictures/module2/lab-9-3.png
+  :scale: 60%
+  :align: center
 
-|
+5. Once connected to the BIG-IQ, you can see the DO and AS3 version at the bottom of the window.
 
-Deploy AS3 Application Service directly to the BIG-IP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. image:: ../pictures/module2/lab-9-4.png
+  :scale: 60%
+  :align: center
 
-Using the declarative AS3 API, let's send the following BIG-IP configuration to BIG-IP:
+6. Under AS3 Tenant, click on **Get-All-Tenant**. 
+   This will show you all the devices and the AS3 Application Services in each tenant (partition on BIG-IP).
 
-Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
+.. image:: ../pictures/module2/lab-9-5.png
+  :scale: 60%
+  :align: center
 
-Click right and duplicate the tab.
+7. Let's now deploy a new AS3 Spplication Service. Open a new tab and copy/past below AS3 declaration:
 
-Replace IP address in the URL with **SEA-vBIGIP01.termmarc.com** IP address: ``10.1.1.7`` instead of BIG-IQ IP address (``10.1.1.4``).
+.. code-block:: yaml
+   :linenos:
 
-Replace in the **body** username and password with:
+   {
+       "class": "AS3",
+       "action": "deploy",
+       "persist": true,
+       "declaration": {
+           "class": "ADC",
+           "schemaVersion": "3.7.0",
+           "id": "example-declaration-01",
+           "label": "Task1",
+           "remark": "Task 1 - HTTP Application Service",
+           "target": {
+               "address": "10.1.1.8"
+           },
+           "vscode": {
+               "class": "Tenant",
+               "MyWebAppHttp": {
+                   "class": "Application",
+                   "template": "http",
+                   "statsProfile": {
+                       "class": "Analytics_Profile",
+                        "collectedStatsInternalLogging": true,
+                        "collectPageLoadTime": true,
+                        "collectClientSideStatistics": true,
+                        "collectResponseCode": true
+                   },
+                   "serviceMain": {
+                       "class": "Service_HTTP",
+                       "virtualAddresses": [
+                           "10.1.10.126"
+                       ],
+                       "pool": "web_pool",
+                       "profileAnalytics": {
+                           "use": "statsProfile"
+                       }
+                   },
+                   "web_pool": {
+                       "class": "Pool",
+                       "monitors": [
+                           "http"
+                       ],
+                       "members": [
+                           {
+                               "servicePort": 80,
+                               "serverAddresses": [
+                                   "10.1.20.110",
+                                   "10.1.20.111"
+                               ],
+                               "shareNodes": true
+                           }
+                       ]
+                   }
+               }
+           }
+       }
+   }
 
-  "username": "admin",
-  "password": "purple123",
+.. image:: ../pictures/module2/lab-9-6.png
+  :scale: 60%
+  :align: center
+  
+8. Then, press F1 or cntrl+shift+p to open the extension command line. Type ``F5-AS3`` and select ``F5-AS3: Post Declaration``.
 
-Press Send. This, will save the token value as _f5_token.
 
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+.. image:: ../pictures/module2/lab-9-7.png
+  :scale: 80%
+  :align: center
 
-Are you interested to see a lab on this topic? `Open an issue on GitHub`_
+9. Wait few seconds, and refresh the AS3 Tenants Tree 
 
-.. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
+.. image:: ../pictures/module2/lab-9-8.png
+  :scale: 80%
+  :align: center
+
+9. The task restult opens in a new tab when the AS3 Application Service creation is completed.
+   The tenant used ``vscode`` is also now showing in the AS3 Tenants Tree.
+
+.. image:: ../pictures/module2/lab-9-9.png
+  :scale: 60%
+  :align: center
+
+10. Now, login on BIG-IQ as **david**, go to Applications tab and check the application is displayed and analytics are showing.
+
+.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+
+.. image:: ../pictures/module2/lab-9-10.png
+:scale: 60%
+:align: center

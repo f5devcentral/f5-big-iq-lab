@@ -101,7 +101,7 @@ system and select *noVNC* or *xRDP*.
 
 .. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
-.. image:: ../../pictures/udf_ubuntu.png
+.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
     :align: left
     :scale: 40%
 
@@ -521,7 +521,7 @@ system and select *noVNC* or *xRDP*.
 
 .. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
-.. image:: ../../pictures/udf_ubuntu.png
+.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
     :align: left
     :scale: 40%
 
