@@ -13,11 +13,11 @@ SSH Ubuntu host in lab environment:
 
 Navigate to: ``cd f5-aws-vpn-ssg``
 
-Execute the Ansible scripts to create the VPN 
+Execute the Ansible scripts to create the AWS resources (including VPN between AWS and the lab), cloud provider and cloud environment.
 
 ``./000-RUN_ALL.sh ve``
 
-.. note:: VPN object and servers can take up to 45 minutes to complete.
+.. note:: VPN object and servers can take up to 15 minutes to complete.
 
 The console will output your ephemeral credentials for the resources created, **yours will be different**. Save these for later use.
 

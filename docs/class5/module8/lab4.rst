@@ -28,9 +28,9 @@ Open Postman. Click right and click on execute (wait ~2 minutes).
 
 |
 
-1. If not already done, run through Lab 8.1: `Prepare your AWS Account`_.
+1. If not already done, run through `Lab 8.1 Prepare your AWS Account`_.
 
-.. _Prepare your AWS Account: ./lab1.html
+.. _Lab 8.1 Prepare your AWS Account: ./lab1.html
 
 
 2. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
