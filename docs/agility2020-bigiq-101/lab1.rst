@@ -182,8 +182,8 @@ Paula.
 14. Now, let’s look on the BIG-IP and verify the Application is
     correctly deployed in partition tenant1.
 
-Logon to SEA-vBIGIP01.termmarc.com BIG-IP as **admin** from the lab
-environment. Select the partition tenant1 and look at the objects
+Logon to SEA-vBIGIP01.termmarc.com BIG-IP as **admin** *(admin\\purple123)* 
+from the lab environment. Select the partition tenant1 and look at the objects
 created on the BIG-IP.
 
 |image14|
