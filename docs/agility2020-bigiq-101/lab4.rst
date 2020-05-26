@@ -43,7 +43,7 @@ default Silo because the naming conflict will have been removed.
 Exercise 4.1 – Import a device into a Silo
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. From within the LAMP server RDP/noVNC session, logon to BIG-IQ as **david** *(david\david)*
+1. From within the LAMP server RDP/noVNC session, logon to BIG-IQ as **david** *(david\\david)*
    by opening a browser and go to: ``https://10.1.1.4`` or directly via the TMUI.
 
 2. Navigate to Devices > BIG-IP Devices. You can hide some columns you
@@ -267,7 +267,7 @@ Now the necessary objects have been renamed on the BIG-IP, let’s remove
 the device from its own Silo and re-discover and re-import it into
 BIG-IQ.
 
-1. From the Device tab > BIG-IP Devices,
+1. From the Devices tab > BIG-IP Devices,
    select \ **SJC-vBIGIP01.termmarc.com** and click on \ **Remove All
    Services**
 
@@ -339,7 +339,7 @@ Click on \ **Continue**.
     can be deleted.
 
 10. Finally, the silo silolab can be removed from BIG-IQ. Go to Devices
-    > BIG-IP Device Silos. You will notice that there zero devices
+    > BIG-IP Device Silos. You will notice that there are zero devices
     associated with that Silo. Select the silolab Silo, then
     click \ **Delete**. You may need to refresh the page to see that it
     is gone. That completes this lab.
