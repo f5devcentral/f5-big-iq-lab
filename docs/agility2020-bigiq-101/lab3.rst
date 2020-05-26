@@ -71,7 +71,7 @@ Exercise 3.1 – Application Creation
 
     |image35|
 
-10. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paula** *(paula\paula)*
+10. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paula** *(paula\\paula)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
     the TMUI as shown above.
     Go to Application tab and check the application is displayed and analytics
@@ -149,7 +149,7 @@ The application owner has informed Paula that the application is no longer neede
 
    |image45|
 
-8. Logon on **BIG-IQ** as **paula** *(paula\paula)*, go to
+8. Logon on **BIG-IQ** as **paula** *(paula\\paula)*, go to
     Application tab and check the application is displayed and analytics
     are showing.
 9. Select *Unknown Applications* Application tile

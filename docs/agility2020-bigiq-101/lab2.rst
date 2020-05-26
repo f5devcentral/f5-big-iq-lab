@@ -11,7 +11,7 @@ on https://github.com/f5devcentral/f5-big-iq) that can be used for
 deploying an application service. However, it is a good practice to
 clone the default AS3 templates and use them for your custom needs.
 
-1. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **david** *(david\david)*
+1. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **david** *(david\\david)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
     the TMUI as shown above.
     Go to the Applications > Application Templates and select AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-v1 and
@@ -82,13 +82,15 @@ Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3 template
 |                                                                   |
 | -  Tenant = tenant2                                               |
 +-------------------------------------------------------------------+
-| Analytics_Profile. Keep default                                   |
-+-------------------------------------------------------------------+
 | Pool                                                              |
 +-------------------------------------------------------------------+
 | -  Members:                                                       |
 |                                                                   |
 | -  Service Address = 10.1.20.123                                  |
++-------------------------------------------------------------------+
+| TLS_Server: Keep defaults                                         |
++-------------------------------------------------------------------+
+| Certificate: Keep defaults                                        |
 +-------------------------------------------------------------------+
 | Service_HTTPS                                                     |
 +-------------------------------------------------------------------+
@@ -98,9 +100,7 @@ Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3 template
 |                                                                   |
 | -  Keep other defaults                                            |
 +-------------------------------------------------------------------+
-| Certificate: Keep defaults                                        |
-+-------------------------------------------------------------------+
-| TLS_Server: Keep defaults                                         |
+| Analytics_Profile. Keep default                                   |
 +-------------------------------------------------------------------+
 
 |image22|
