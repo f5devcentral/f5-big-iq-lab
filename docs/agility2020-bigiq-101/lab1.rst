@@ -8,7 +8,7 @@ Exercise 1.1 – Import AS3 templates
 
 **View AS3 templates section**
 
-1. From within the LAMP server RDP/noVNC session, logon to BIG-IQ as **david** *(david\david)*
+1. From within the LAMP server RDP/noVNC session, logon to BIG-IQ as **david** *(david\\david)*
       by opening a browser and go to: ``https://10.1.1.4`` or directly via
       the TMUI.
 
@@ -60,7 +60,7 @@ and various profiles to offload SSL to the pool members.
 First we attempt to create an application service as application owner
 Paula.
 
-1. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paula** *(paula\paula)*
+1. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paula** *(paula\\paula)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
     the TMUI as shown above.
 
@@ -139,20 +139,20 @@ Paula.
 | * Target = ``SEA-vBIGIP01.termmarc.com``                                                           |
 | * Tenant = ``tenant1``                                                                             |
 +----------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default.                                                                   |
-+----------------------------------------------------------------------------------------------------+
 | Pool                                                                                               |
 +----------------------------------------------------------------------------------------------------+
 | * Members: ``10.1.20.120``, port ``80``                                                            |
 | * Members: ``10.1.20.121``, port ``80``                                                            |
 +----------------------------------------------------------------------------------------------------+
+| TLS_Server. Keep default.                                                                          |
++----------------------------------------------------------------------------------------------------+
+| Certificate. Keep default.                                                                         |
++----------------------------------------------------------------------------------------------------+
 | Service_HTTPS                                                                                      |
 +----------------------------------------------------------------------------------------------------+
 | * Virtual addresses: ``10.1.10.120``                                                               |
 +----------------------------------------------------------------------------------------------------+
-| Certificate. Keep default.                                                                         |
-+----------------------------------------------------------------------------------------------------+
-| TLS_Server. Keep default.                                                                          |
+| Analytics_Profile. Keep default.                                                                   |
 +----------------------------------------------------------------------------------------------------+
 
 |image10|
