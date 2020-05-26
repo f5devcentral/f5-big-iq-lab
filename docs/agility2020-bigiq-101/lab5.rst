@@ -23,7 +23,7 @@ to the Application dashboard. Note this will not "re-deploy" the application or 
 Rather this will take the virtual server and all its child objects and group them together as an Application 
 within the Application dashboard of BIG-IQ.
 
-1. From within the LAMP server RDP/noVNC session, logon to BIG-IQ as **david** *(david\david)*
+1. From within the LAMP server RDP/noVNC session, logon to BIG-IQ as **david** *(david\\david)*
    by opening a browser and go to: ``https://10.1.1.4`` or directly via
    the TMUI as shown above.
 
@@ -70,7 +70,7 @@ Move *vip142* over to the **Selected** column and then scroll down.
   :scale: 40%
   :align: center
 
-4. Go back to the list of objects and click on *Profile HTTP Analytics*.
+4. Go back to the list of objects and click on *Profile TCP Analytics*.
    Notice the the Analytics profile is attached to the VIP.
 
 .. image:: images/lab5/lab5a-4.png
@@ -98,7 +98,7 @@ Drill down into the application dashboard and wait for the analytics to show on 
   :scale: 40%
   :align: center
 
-7. Let now review the TCP analytics profile attached to the VIP. 
+7. Let's review the TCP analytics profile attached to the VIP. 
    This TCP analytics profile will define the analytics being sent by AVR to the BIG-IQ DCD(s).
 
 8. Go to **Configuration > Local Traffic > Virtual Servers** and filter on ``vip142`` and look for the name of the TCP analytics profile.
@@ -161,7 +161,7 @@ Then click on ``legacy-app-service`` Application Service.
   :scale: 40%
   :align: center
 
-5. Click on Server on the right side of the screen. Select Configuration and try to disable one of the Pool Member.
+5. Click on Servers on the right side of the screen. Select Configuration and try to disable one of the Pool Member.
 
 .. image:: images/lab5/lab5a-16.png
   :scale: 40%
@@ -220,7 +220,7 @@ Notice one of the pool member is almost double the duration of the other.
 .. note:: We have added 300ms delay to an NGINX instance running in a docker container acting as an application server in this lab.
 
 4. We are now going to remove the healthy node and only keep the NGINX node. Navigate to the Configuration tab in the application dashboard
-   and delete the node ``10.1.20.115:8081``. Then click **Save**.
+   and delete the node ``10.1.20.115:8081``. Then click **Save & Close**.
 
 .. image:: images/lab5/lab5b-4.png
   :align: center
@@ -243,7 +243,7 @@ Open a terminal and run the following commands:
     f5student@ip-10-1-1-5:~$ curl http://10.1.10.124
     curl: (56) Recv failure: Connection reset by peer
 
-You may run the curl command multiple times. Here we removed the delay and add a packet loss of 70%.
+You may need to run the curl command multiple times. Here we removed the delay and add a packet loss of 70%.
 
 6. Back to BIG-IQ Application dashboard, navigate to the **Server Side Packets** and look a the packets loss showing on the dashboard.
 This completes the TCP analytics lab.
