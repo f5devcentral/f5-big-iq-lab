@@ -9,6 +9,7 @@ before_install:
 
 install: 
 - pip install awscli --upgrade
+- pip install sphinx-copybutton
 
 script:
 - ./scripts/docker-docs.sh ./scripts/test-docs.sh

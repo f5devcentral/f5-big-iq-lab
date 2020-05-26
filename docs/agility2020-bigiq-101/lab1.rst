@@ -188,8 +188,8 @@ created on the BIG-IP.
 
 |image14|
 
-15. You can test the application service by open a browser in the Ubuntu
-       Jumphost and type the Virtual Server IP address 10.1.10.120. You
+15. You can test the application service by opening a browser in the Ubuntu
+       Jumphost and typing the Virtual Server IP address 10.1.10.120. You
        should see the Hackazon website.
 
 16. Back on the BIG-IQ as **paula**,

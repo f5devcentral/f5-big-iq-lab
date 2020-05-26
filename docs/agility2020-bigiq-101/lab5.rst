@@ -175,7 +175,6 @@ Then click on ``legacy-app-service`` Application Service.
 
 7. Now, look at the changes in the analytics and then re-enable the pool member.
 
-
 .. note:: You don't see traffic? Launch a xRDP/noVNC session to have access to the Ubuntu Desktop, 
           open a browser and navigate to ``http://10.1.10.142`` or open a terminal and run the following 
           command ``curl http://10.1.10.142``.

@@ -45,7 +45,7 @@ automatically be associated/linked to the support case.
    | Name: **QKViewUpload5346** (append the last 4 digits of your cell
      number to make this request unique)
    | Credentials: **<Select the credentials you just stored in step 5>**
-   | Devices: Select **ip-10-1-1-7.us-west-2.compute.internal**
+   | Devices: Select **SEA-vBIGIP01.termmarc.com**
 
    |image98|
 
@@ -72,20 +72,6 @@ automatically be associated/linked to the support case.
    under the Report Column
 
    |image101|
-
-6. You can also run the Upgrade Advisor from the BIG-IQ if you are
-   running an older version of code. Select **Upgrade Advisor Reports**
-   from the left-hand menu bar and then click the **Create** button in
-   the main window pane.
-
-7. Give your Upgrade Advisor Task a name and select the **ip-10-1-1-7**
-   device. Choose your Target Version and then **Save & Close**
-
-8. Click on the **Upgrade Advisor Reports** on the left-hand menu bar
-   and your new report should show up shortly. You can see the status of
-   the report generation by clicking **Tasks** on the left-hand
-   menu-bar. Click on the **Target Software Version** column to view
-   your results.
 
 
    .. |image93| image:: media/image91.png
