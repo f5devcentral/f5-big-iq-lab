@@ -228,7 +228,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
           }
       }
 
-3. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
+3. Navigate to Devices tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center
@@ -527,7 +527,7 @@ Annex | ASM Bot Defense & Logging Profiles creation from BIG-IP
 
 |
 
-4. Navigate to Device tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
+4. Navigate to Devices tab and re-discover/re-import SEA-vBIGIP01.termmarc.com.
 
 .. image:: ../pictures/module1/img_module1_lab1_7.png
   :align: center

@@ -35,7 +35,7 @@ Workflow
 Prerequisites
 ^^^^^^^^^^^^^
 
-1. Navigate to the Device tab and complete Discovery & Import on **SJC-vBIGIP01.termmarc.com**. 
+1. Navigate to the Devices tab and complete Discovery & Import on **SJC-vBIGIP01.termmarc.com**. 
    Choose *Create Version* for default LTM profiles and *Set all BIG-IP* for other objects.
 
 .. note:: It is recommended to use latest version of BIG-IP. In this lab SJC BIG-IP has 15.1 and will be used.
@@ -191,7 +191,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
           }
       }
 
-3. Navigate to Device tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
+3. Navigate to Devices tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
 
 
 DoS Logging Profile creation
@@ -695,7 +695,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
             }
         }
 
-3. Navigate to Device tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
+3. Navigate to Devices tab and re-discover/re-import SJC-vBIGIP01.termmarc.com.
 
 4. Run section *Generate baseline legitimate traffic and trigger the DoS attacks*
 

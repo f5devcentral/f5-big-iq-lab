@@ -56,7 +56,7 @@ Next add the ``legacy-app-service`` Role and then Click **Save & Close**.
   :scale: 40%
   :align: center
 
-6. You are now on the Paula's Application Services dashboard. Click on Server on the right side of the screen.
+6. You are now on the Paula's Application Services dashboard. Click on Servers on the right side of the screen.
 
 .. image:: ../pictures/module6/lab-3-6.png
   :scale: 40%

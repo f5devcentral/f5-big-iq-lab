@@ -140,7 +140,7 @@ It might takes few minutes for the new zone to be set.
 
 |
 
-9. Check on the Device tab the statistic collection is happening as expected.
+9. Check on the Devices tab the statistic collection is happening as expected.
 
 .. image:: ../pictures/module6/img_module6_lab1_7.png
   :align: center

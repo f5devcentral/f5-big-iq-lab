@@ -4,7 +4,7 @@ Lab 5.3: Remove device from a silo and re-import it in BIG-IQ
 Now the necessary objects have been renamed on the BIG-IP, let's remove the device 
 from its own Silo and re-discover and re-import it into BIG-IQ.
 
-1. From the Device tab > BIG-IP Devices, select **SJC-vBIGIP01.termmarc.com** and click on
+1. From the Devices tab > BIG-IP Devices, select **SJC-vBIGIP01.termmarc.com** and click on
    **Remove All Services**
 
 .. image:: ../pictures/img_module5_lab3-1.png

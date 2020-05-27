@@ -381,7 +381,7 @@ The GET on the URI monitoring the task will also show a success message.
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 11,38
+   :emphasize-lines: 11,25
 
    {
       "applicationDescription": "This is an HTTP AS3 Application service",
