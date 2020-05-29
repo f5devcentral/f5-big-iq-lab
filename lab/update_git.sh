@@ -82,6 +82,9 @@ if [[  $currentuser == "root" ]]; then
     ps -ef | grep vnc | grep -v grep
     ps -ef | grep websockify | grep -v grep
 
+    ## WA UDF BIQPROJ-17471 Failed to get cm-bigip-allBigIpDevices device
+    sleep 600 && $home/tools/wa_restart_restjavad_bigiq.sh > $home/tools/logs/wa_restart_restjavad_bigiq.log 2>&1
+
     # Cleanup docker
     docker kill $(docker ps -q)
     docker stop $(docker ps -q)

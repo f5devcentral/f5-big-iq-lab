@@ -204,8 +204,21 @@ fi
 
 echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh &${NC}\n"
 
-pubIP=$(aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress" --output=text)
-echo -e "\nDemo Web Server Public IP running in AWS:${BLUE} $pubIP ${NC}"
+while [ -z $pubIP ]
+do
+       pubIP=$(aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress" --output=text)
+       if [ ! -z $pubIP ]; then
+              echo -e "\nDemo Web Server Public IP running in AWS:${BLUE} $pubIP ${NC}"
+       else
+              echo "Waiting for Demo Web Server Public IP to be assigned."
+              secs=15
+              while [ $secs -gt 0 ]; do
+                     echo -ne "$secs\033[0K\r"
+                     sleep 1
+                     : $((secs--))
+              done
+       fi
+done
 
 echo -e "\nNotes:\n1. If the UDF Cloud Account is used, the UDF AWS account will be deleted with\neverything in it when the deployment stops or deleted."
 

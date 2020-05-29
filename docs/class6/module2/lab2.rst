@@ -37,7 +37,7 @@ Switch back to the BIG-IQ CM 6.0 TMUI, at the top of the screen, click Configura
 
 On the left, click LOCAL TRAFFIC > Certificate Management > Certificates & Keys.  
 
-Click on Import button on the top, select Certificate from the Import Type dropdown menu, and choose the BIG-IQ-Test-Cert.crt file from the location where you saved the Cert and Key files.
+Click on Import button on the top, select Certificate from the Import Type drop down menu, and choose the BIG-IQ-Test-Cert.crt file from the location where you saved the Cert and Key files.
 
 |image11-2|
 

@@ -11,7 +11,6 @@ More information in `BIG-IQ Knowledge Center`_ and `Let’s Encrypt website`_.
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/integrating-third-party-certificate-management.html
 .. _Let’s Encrypt website: https://letsencrypt.org/how-it-works/
 
-
 Demo web server and Domain name setup in AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -117,6 +116,10 @@ Click **Create**.
 
 Validate the server and accept the Terms and Conditions.
 
+.. note:: We are using the Let's encrypt stage server for this lab which won't generate a validate certificate.
+          If you want to generate a valid certificate, use Let's encrypt production server https://acme-v02.api.letsencrypt.org/
+          to sign the certificate request in BIG-IQ.
+
 .. image:: ./media/img_module2_lab5-3.png
   :scale: 60%
   :align: center
@@ -145,12 +148,15 @@ Notice a new HTTP challenge file has been added automatically.
   :scale: 60%
   :align: center
 
-
 4. Download the HTTP challenge file and compare with previous value showing in the previous step.
 
 .. image:: ./media/img_module2_lab5-6.png
   :scale: 60%
   :align: center
+
+.. note:: For security reason, it is not recommended to keep the HTTP challenge file for long.
+          The API example used on the demo web app server is deleting challenge file on the web server automatically
+          after validation is done.
 
 5. Wait until the Connection Status icon turns green and show Valid.
 
@@ -158,24 +164,68 @@ Notice a new HTTP challenge file has been added automatically.
   :scale: 60%
   :align: center
 
+.. note:: Challenge content is getting expired in below conditions:
+            - 7 days if validation is not done (status: pending)
+            - 30 days if validation is done with Let's Encrypt server (status: valid)
+            - If any wrong validations request has been sent, Let's Encrypt invalided the challenge immediately.
+          The use of the custom API on the web server will allow to automate the renewal of the HTTP challenge file.
+
 SSL Certificate & Key creation on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Navigate to Configuration tab > Local Traffic > Certificate Management > Certificates & Keys.
+
+Fill all necessary information and click **Create**. This will generate a certificate request or CSR along with a Private Key.
+This CSR will be send to Let's encrypt server which will sign it and send it back to BIG-IQ.
+
+- Name: ``lab.webapp.34.219.3.233.nip.io``
+- Issuer: ``demolab``
+- Common Name: ``lab.webapp.34.219.3.233.nip.io``
+- Division: ``module2``
+- Organization: ``class6``
+- Locality: ``Seattle``
+- State/Province: ``WA``
+- Country: ``USA``
+- Key Security Type: ``Normal``
 
 .. image:: ./media/img_module2_lab5-8.png
   :scale: 60%
   :align: center
 
+2. After the Certificate Request is signed, it will show Managed on the BIG-IQ and ready to be deploy on the BIG-IP.
+
 .. image:: ./media/img_module2_lab5-9.png
   :scale: 60%
   :align: center
+
+3. Now, let's pin both certificate and key to a device. Navigate to Pinning Policies under Local Traffic.
+
+Click on **SEA-vBIGIP01.termmarc.com** device.
+
+Look for the SSL certificate and add it to the device.
 
 .. image:: ./media/img_module2_lab5-10.png
   :scale: 60%
   :align: center
 
+Repeat the same with the SSL Key:
+
 .. image:: ./media/img_module2_lab5-11.png
-  :scale: 60%
+  :scale: 80%
   :align: center
+
+4. Deploy the SSL objects to the BIG-IQ.
+
+Navigate Deployment tab > Evaluate & Deploy > Local Traffic & Networks.
+
+Create a new deployment:
+
+- Source Scope: ``Partial Change``
+- Method: ``Deploy Immediately``
+- Source Objects: select both SSL certificate & Key
+- Target Device(s): ``SEA-vBIGIP01.termmarc.com``
+
+Click **Deploy**.
 
 .. image:: ./media/img_module2_lab5-12.png
   :scale: 60%
@@ -216,14 +266,15 @@ AS3 HTTPS offload application service deployment
 +---------------------------------------------------------------------------------------------------+
 | * Virtual addresses: ``10.1.20.114``                                                              |
 +---------------------------------------------------------------------------------------------------+
-| Certificate. Keep default.                                                                        |
+| Certificate.                                                                                      |
++---------------------------------------------------------------------------------------------------+
 | * privateKey: ``/Common/lab.webapp.34.219.3.233.nip.io.key``                                      |
 | * certificate: ``/Common/lab.webapp.34.219.3.233.nip.io.crt``                                     |
 +---------------------------------------------------------------------------------------------------+
 | TLS_Server. Keep default.                                                                         |
 +---------------------------------------------------------------------------------------------------+
 
-.. note:: We are using the demo web server public IP in the pool members for the lab/demo but we would likly use 
+.. note:: We are using the demo web server public IP in the pool members for the lab/demo but we would likely use 
           the demo web server private IP as pool member and a public IP/private IP behind a NAT for the VIP.
 
 2. Check the application ``LAB_module2`` has been created along with the application service https_app_service
@@ -255,6 +306,16 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 You can test the application service by opening a browser in the Ubuntu Jump-host and type the URL ``https://lab.webapp.34.219.3.233.nip.io``.
 
+.. note:: We are using the Let's encrypt stage server for this lab which won't generate a validate certificate.
+          If you want to generate a valid certificate, use Let's encrypt production server https://acme-v02.api.letsencrypt.org/
+          to sign the certificate request in BIG-IQ.
+
 .. image:: ./media/img_module2_lab5-14.png
+  :scale: 60%
+  :align: center
+
+Example of the same workflow using the Let's encrypt production server using a different web server:
+
+.. image:: ./media/img_module2_lab5-15.png
   :scale: 60%
   :align: center
