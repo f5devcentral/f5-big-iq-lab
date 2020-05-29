@@ -36,7 +36,7 @@ Exercise 3.1 – Application Creation
 |image30|
 
 5. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
-   select *paula-iq*. Click on *NEXT*
+   select *admin-iq*. Click on *NEXT*
 
    |image31|
 
