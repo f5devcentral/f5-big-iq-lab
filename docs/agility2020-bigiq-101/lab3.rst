@@ -21,6 +21,10 @@ Exercise 3.1 – Application Creation
 
 |image27|
 
+2a. Log out of AWX as Admin and log back in as Paula (paula\paula) 
+
+|image28|
+
 3. Navigate to the **Templates** page and click on *job Template* beside **(Agility 2020) New_AS3_App** to review the template
 
 |image28|
