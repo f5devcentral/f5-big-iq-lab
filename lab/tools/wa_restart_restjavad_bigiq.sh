@@ -13,6 +13,7 @@ echo -e "start"
 
 sshpass -p $bigiq_password ssh-copy-id -i /home/f5/.ssh/id_rsa.pub -o StrictHostKeyChecking=no $bigiq_user@$bigiq
 ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 $bigiq_user@$bigiq cat /var/prompt/ps1 > /tmp/state 2>/dev/null
+sudo rm -f /tmp/state
 state=$(cat /tmp/state)
 
 while [[ $state = "Active" ]]
@@ -32,7 +33,7 @@ do
             sleep 1
             : $((secs--))
         done
-        ssh $bigiq_user@$bigiq bigstart restart restjavad
+        ssh -o StrictHostKeyChecking=no $bigiq_user@$bigiq bigstart restart restjavad
         echo -e "\nbigstart restart restjavad completed."
         exit 0;
     else

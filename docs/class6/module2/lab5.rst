@@ -11,7 +11,7 @@ More information in `BIG-IQ Knowledge Center`_ and `Let’s Encrypt website`_.
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/integrating-third-party-certificate-management.html
 .. _Let’s Encrypt website: https://letsencrypt.org/how-it-works/
 
-Demo web server and Domain name setup in AWS
+Demo web server and domain name setup in AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To do this lab, we will need a real domain name and a web server accessible from the Let's Encrypt servers.
