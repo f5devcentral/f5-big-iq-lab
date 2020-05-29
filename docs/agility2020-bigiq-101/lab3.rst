@@ -25,6 +25,8 @@ Exercise 3.1 – Application Creation
 
 |image48|
 
+Click on *Sign In*
+
 |image49|
 
 3. Navigate to the **Templates** page and click on *job Template* beside **(Agility 2020) New_AS3_App** to review the template
