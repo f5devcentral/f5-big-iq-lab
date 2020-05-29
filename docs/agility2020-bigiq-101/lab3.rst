@@ -21,9 +21,9 @@ Exercise 3.1 – Application Creation
 
 |image27|
 
-2a. Log out of AWX as Admin and log back in as Paula (paula\paula) 
+2a. Log out of AWX as Admin and logon on *AWX (Ansible Tower)* as **paula** *(paula\\paula)*
 
-|image28|
+|image48|
 
 3. Navigate to the **Templates** page and click on *job Template* beside **(Agility 2020) New_AS3_App** to review the template
 
@@ -170,6 +170,9 @@ Notice that the application is now deleted.
 .. |image27| image:: images/lab3/image28.png
    :width: 7.49167in
    :height: 3.6933in
+.. |image48| image:: images/lab3/image27.png
+   :width: 3.79545in
+   :height: 2.69677in
 .. |image28| image:: images/lab3/image29a.png
    :width: 7.52216in
    :height: 3.70833in
