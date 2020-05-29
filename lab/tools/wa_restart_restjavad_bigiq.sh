@@ -11,14 +11,14 @@ echo -e "\nTIME:: $(date +"%H:%M")"
 
 echo -e "start"
 
-sshpass -p $bigiq_password ssh-copy-id -o StrictHostKeyChecking=no $bigiq_user@$bigiq
+sshpass -p $bigiq_password ssh-copy-id -i /home/f5/.ssh/id_rsa.pub -o StrictHostKeyChecking=no $bigiq_user@$bigiq
 ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 $bigiq_user@$bigiq cat /var/prompt/ps1 > /tmp/state 2>/dev/null
 state=$(cat /tmp/state)
 
 while [[ $state = "Active" ]]
 do
     echo -e "\nTIME:: $(date +"%H:%M")"
-    sshpass -p $bigiq_password ssh-copy-id -o StrictHostKeyChecking=no $bigiq_user@$bigiq
+    sshpass -p $bigiq_password ssh-copy-id -i /home/f5/.ssh/id_rsa.pub -o StrictHostKeyChecking=no $bigiq_user@$bigiq
     ssh -o StrictHostKeyChecking=no -o ConnectTimeout=2 $bigiq_user@$bigiq cat /var/prompt/ps1 > /tmp/state 2>/dev/null
     state=$(cat /tmp/state)
     if [[ -z $state ]]; then
