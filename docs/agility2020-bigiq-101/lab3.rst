@@ -23,7 +23,7 @@ Exercise 3.1 – Application Creation
 
 3. Navigate to the **Templates** page and click on *job Template* beside **(Agility 2020) New_AS3_App** to review the template
 
-<img src="images/image29a.png" >
+|image28|
 
 4. Make sure the **PLAYBOOK** *lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml* is selected. Click on *LAUNCH*
 
