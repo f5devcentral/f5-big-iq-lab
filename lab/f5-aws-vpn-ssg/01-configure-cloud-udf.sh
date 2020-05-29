@@ -56,7 +56,7 @@ if [[ $cloudProvider == "$UDF_CLOUD" && $config_yml_already_configured == 1 ]]; 
       ansible-playbook $DEBUG_arg 01b-install-aws-creds.yml
 
       # Create a pair of SSH key
-      aws ec2 create-key-pair --key-name $PREFIX-ssh-key
+      aws ec2 create-key-pair --key-name $PREFIX-ssh-key | jq .KeyMaterial > $PREFIX-ssh-key.pem
       echo -e "- UDF EC2 SSH Key: ${GREEN} $PREFIX-ssh-key ${NC}"
       sed -i "s/<name_of_the_aws_key>/$PREFIX-ssh-key/g" ./config.yml
 

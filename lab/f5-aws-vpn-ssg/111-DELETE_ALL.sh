@@ -129,8 +129,8 @@ sed -i '1s/^/LTM_RESOURCE_NAME:      "{{PREFIX}}-aws-resource-name"\n/' config.y
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
-echo -e "Clear cache directory and *retry"
-rm -rf cache *.retry nohup.out
+echo -e "Clear cache directory, *retry and private key"
+rm -rf cache *.retry nohup.out $PREFIX-ssh-key.pem
 
 echo -e "\n${RED}/!\ DOUBLE CHECK IN YOUR AWS ACCOUNT ALL THE RESOURCES CREATED FOR YOUR DEMO HAVE BEEN DELETED  /!\ ${NC}\n"
 

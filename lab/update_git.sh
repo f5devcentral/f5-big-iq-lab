@@ -40,8 +40,7 @@ if [[  $currentuser == "root" ]]; then
         rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* > /dev/null 2>&1
 
         echo "Install new scripts..."
-        # GIT_LFS_SKIP_SMUDGE=1 will skip download files in the LFS (ucs files)
-        GIT_LFS_SKIP_SMUDGE=1 git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
+        git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
         mv $home/f5-big-iq-lab/lab/* $home
 
         if [[  $env == "udf" ]]; then
@@ -103,7 +102,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
     docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
-    
+
     ### Add delay, loss and corruption to the nginx web app
     docker_nginx_id=$(docker ps | grep nginx | awk '{print $1}')
     docker exec $docker_nginx_id apt-get update
@@ -162,6 +161,7 @@ if [[  $currentuser == "root" ]]; then
     base64 /dev/urandom | head -c 300000000 > grosfichier.html
     docker cp grosfichier.html $docker_hackazon_id:/var/www/hackazon/web
     rm -f grosfichier.html
+    # fix permissions
     docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
 
     ### Configure AWX
