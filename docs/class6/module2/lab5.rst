@@ -4,7 +4,7 @@ Lab 2.5: Integrating Let's Encrypt with BIG-IQ for Certificate Management (new 7
 In this lab, we are going to do the initial authentication/validation with the Let's Encrypt servers.
 Then create a certificate request and key using BIG-IQ and sign it with Let's Encrypt stage server.
 Finally, the last step will be to deploy the new certificate and key to a BIG-IP and create an 
-HTTPS Application Service using AS3 to serve the Web Application and do HTTPS offload.
+HTTPS Application Service using AS3 to serve the web application and do HTTPS offload.
 
 More information in `BIG-IQ Knowledge Center`_ and `Let’s Encrypt website`_.
 
@@ -15,18 +15,18 @@ Demo web server and Domain name setup in AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To do this lab, we will need a real domain name and a web server accessible from the Let's Encrypt servers.
-We will start by deploying the web server (simple Hello World Java Web App) on a EC2 instance in AWS.
+We will start by deploying the web server (simple Hello World Java web app) on a EC2 instance in AWS.
 
 1. Create the AWS environment and VPN
 
-.. warning:: If you already created an AWS Application in Class 2 Module 4 (AWS SSG) or Class 5 Module 8 (VE creation),
+.. warning:: If you already created an AWS environment and VPN in Class 2 Module 4 (AWS SSG) or Class 5 Module 8 (VE creation),
              you do not need to recreate this item.
 
 SSH Ubuntu host in lab environment:
 
 .. image:: ../../pictures/udf_ubuntu_ssh.png
     :align: left
-    :scale: 60%
+    :scale: 40%
 
 Navigate to: ``cd f5-aws-vpn-ssg``
 
@@ -63,10 +63,10 @@ We are going to use a domain name like lab.webapp.34.219.3.233.nip.io resolves t
 Open a browser and navigate to ``http://lab.webapp.34.219.3.233.nip.io``
 
 .. image:: ./media/img_module2_lab5-1.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
-This is our demo web server is available on port 80 (HTTP).
+This is our demo web server which is available on port 80 (HTTP).
 
 4. This demo web server is hosting an API call to automatically deploy challenge resources to it.
 
@@ -78,11 +78,11 @@ Note the challenge file must be located under ``.well-known/acme-challenge`` at 
 The location is defined by IETF and used to demonstrate ownership of a domain.
 
 .. image:: ./media/img_module2_lab5-2.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 
-Here is the API call the BIG-IQ does to the Web App API to deploy the HTTP challenge file.
+Here is the API call the BIG-IQ does to the web app API to deploy the HTTP challenge file.
 
 .. code-block:: yaml
 
@@ -121,7 +121,7 @@ Validate the server and accept the Terms and Conditions.
           to sign the certificate request in BIG-IQ.
 
 .. image:: ./media/img_module2_lab5-3.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 2. Under Domain Configuration, click **Create**.
@@ -137,7 +137,7 @@ Validate the server and accept the Terms and Conditions.
 Click **Deploy & Test**.
 
 .. image:: ./media/img_module2_lab5-4.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 3. While previous step is in progress, in your browser open ``http://lab.webapp.34.219.3.233.nip.io/hello``.
@@ -145,13 +145,13 @@ Click **Deploy & Test**.
 Notice a new HTTP challenge file has been added automatically.
 
 .. image:: ./media/img_module2_lab5-5.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 4. Download the HTTP challenge file and compare with previous value showing in the previous step.
 
 .. image:: ./media/img_module2_lab5-6.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 .. note:: For security reason, it is not recommended to keep the HTTP challenge file for long.
@@ -161,13 +161,14 @@ Notice a new HTTP challenge file has been added automatically.
 5. Wait until the Connection Status icon turns green and show Valid.
 
 .. image:: ./media/img_module2_lab5-7.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 .. note:: Challenge content is getting expired in below conditions:
             - 7 days if validation is not done (status: pending)
             - 30 days if validation is done with Let's Encrypt server (status: valid)
             - If any wrong validations request has been sent, Let's Encrypt invalided the challenge immediately.
+
           The use of the custom API on the web server will allow to automate the renewal of the HTTP challenge file.
 
 SSL Certificate & Key creation on BIG-IQ
@@ -189,13 +190,13 @@ This CSR will be send to Let's encrypt server which will sign it and send it bac
 - Key Security Type: ``Normal``
 
 .. image:: ./media/img_module2_lab5-8.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 2. After the Certificate Request is signed, it will show Managed on the BIG-IQ and ready to be deploy on the BIG-IP.
 
 .. image:: ./media/img_module2_lab5-9.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 3. Now, let's pin both certificate and key to a device. Navigate to Pinning Policies under Local Traffic.
@@ -205,7 +206,7 @@ Click on **SEA-vBIGIP01.termmarc.com** device.
 Look for the SSL certificate and add it to the device.
 
 .. image:: ./media/img_module2_lab5-10.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 Repeat the same with the SSL Key:
@@ -228,7 +229,7 @@ Create a new deployment:
 Click **Deploy**.
 
 .. image:: ./media/img_module2_lab5-12.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 
@@ -280,7 +281,7 @@ AS3 HTTPS offload application service deployment
 2. Check the application ``LAB_module2`` has been created along with the application service https_app_service
 
 .. image:: ./media/img_module2_lab5-13.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 .. note:: If not visible, refresh the page. It can take few seconds for the application service to appears on the dashboard.
@@ -311,11 +312,11 @@ You can test the application service by opening a browser in the Ubuntu Jump-hos
           to sign the certificate request in BIG-IQ.
 
 .. image:: ./media/img_module2_lab5-14.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 Example of the same workflow using the Let's encrypt production server using a different web server:
 
 .. image:: ./media/img_module2_lab5-15.png
-  :scale: 60%
+  :scale: 40%
   :align: center

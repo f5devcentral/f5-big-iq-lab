@@ -1,7 +1,7 @@
 Lab 8.1: Prepare your AWS Account 
 ---------------------------------
 
-.. warning:: If you already created an AWS Application in Class 2 Module 4 (AWS SSG) you do not need to recreate this item.
+.. warning:: If you already created an AWS environment and VPN in Class 2 Module 4 (AWS SSG) you do not need to recreate this item.
 
 1. Create the AWS environment and VPN
 
@@ -9,7 +9,7 @@ SSH Ubuntu host in lab environment:
 
 .. image:: ../../pictures/udf_ubuntu_ssh.png
     :align: left
-    :scale: 60%
+    :scale: 40%
 
 Navigate to: ``cd f5-aws-vpn-ssg``
 

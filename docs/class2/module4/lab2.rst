@@ -11,7 +11,7 @@ To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the 
 
 .. image:: ../../pictures/udf_ubuntu_ssh.png
     :align: left
-    :scale: 60%
+    :scale: 40%
 
 |
 

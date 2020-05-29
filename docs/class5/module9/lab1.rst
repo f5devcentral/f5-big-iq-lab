@@ -103,7 +103,7 @@ SSH Ubuntu host in lab environment:
 
 .. image:: ../../pictures/udf_ubuntu_ssh.png
     :align: left
-    :scale: 60%
+    :scale: 40%
 
 Navigate to: ``cd f5-azure-vpn-ssg``
 
