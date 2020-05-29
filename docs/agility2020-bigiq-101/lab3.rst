@@ -21,7 +21,7 @@ Exercise 3.1 – Application Creation
 
 |image27|
 
-2a. Log out of AWX as Admin and logon on *AWX (Ansible Tower)* as **paula** *(paula\\paula)*
+2a. Log out of AWX as Admin and logon on *AWX (Ansible Tower)* as **paul** *(paul\\paul)*
 
 |image48|
 
@@ -44,7 +44,7 @@ Click on *Sign In*
 |image30|
 
 5. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
-   select *admin-iq*. Click on *NEXT*
+   select *paul-iq*. Click on *NEXT*
 
    |image31|
 
@@ -79,7 +79,7 @@ Click on *Sign In*
 
     |image35|
 
-10. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paula** *(paula\\paula)*
+10. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paul** *(paul\\paul)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
     the TMUI as shown above.
     Go to Application tab and check the application is displayed and analytics
@@ -110,7 +110,7 @@ define the BIG-IQ Application name.*
 Exercise 3.2 – Application Deletion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The application owner has informed Paula that the application is no longer needed and needs to be deleted from. Paula will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
+The application owner has informed Paul that the application is no longer needed and needs to be deleted from. Paul will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
 
 1. Navigate to the **Templates** page and review *(Agility 2020) Delete_AS3_App*
 
@@ -127,7 +127,7 @@ The application owner has informed Paula that the application is no longer neede
           and check review the playbooks and Jinja2 templates.
 
 3. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
-   select *paula-iq*. Click on *NEXT*
+   select *paul-iq*. Click on *NEXT*
 
 
    |image41|
@@ -157,7 +157,7 @@ The application owner has informed Paula that the application is no longer neede
 
    |image45|
 
-8. Logon on **BIG-IQ** as **paula** *(paula\\paula)*, go to
+8. Logon on **BIG-IQ** as **paul** *(paula\\paula)*, go to
     Application tab and check the application is displayed and analytics
     are showing.
 9. Select *Unknown Applications* Application tile
