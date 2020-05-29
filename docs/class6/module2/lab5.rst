@@ -1,14 +1,10 @@
-Lab 2.5: Integrating Let's Enrypt with BIG-IQ for Certificate Management
-------------------------------------------------------------------------
-
-.. warning:: If you already created an AWS Application in Class 2 Module 4 (AWS SSG) or Class 5 Module 8 (VE creation),\
-             you do not need to recreate this item.
+Lab 2.5: Integrating Let's Encrypt with BIG-IQ for Certificate Management (new 7.1)
+-----------------------------------------------------------------------------------
 
 In this lab, we are going to do the initial authentication/validation with the Let's Encrypt servers.
 Then create a certificate request and key using BIG-IQ and sign it with Let's Encrypt stage server.
 Finally, the last step will be to deploy the new certificate and key to a BIG-IP and create an 
 HTTPS Application Service using AS3 to serve the Web Application and do HTTPS offload.
-
 
 More information in `BIG-IQ Knowledge Center`_ and `Let’s Encrypt website`_.
 
@@ -23,6 +19,9 @@ To do this lab, we will need a real domain name and a web server accessible from
 We will start by deploying the web server (simple Hello World Java Web App) on a EC2 instance in AWS.
 
 1. Create the AWS environment and VPN
+
+.. warning:: If you already created an AWS Application in Class 2 Module 4 (AWS SSG) or Class 5 Module 8 (VE creation),
+             you do not need to recreate this item.
 
 SSH Ubuntu host in lab environment:
 
@@ -130,7 +129,7 @@ Validate the server and accept the Terms and Conditions.
 - Domain Name: ``lab.webapp.34.219.3.233.nip.io``
 - API End Point: ``http://lab.webapp.34.219.3.233.nip.io/hello``
 - User Name: ``username``
-- Password: ``password
+- Password: ``password``
 
 Click **Deploy & Test**.
 
@@ -223,6 +222,9 @@ AS3 HTTPS offload application service deployment
 +---------------------------------------------------------------------------------------------------+
 | TLS_Server. Keep default.                                                                         |
 +---------------------------------------------------------------------------------------------------+
+
+.. note:: We are using the demo web server public IP in the pool members for the lab/demo but we would likly use 
+          the demo web server private IP as pool member and a public IP/private IP behind a NAT for the VIP.
 
 2. Check the application ``LAB_module2`` has been created along with the application service https_app_service
 

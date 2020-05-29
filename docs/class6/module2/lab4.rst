@@ -1,5 +1,5 @@
-Lab 2.4: Integrating Venafi with BIG-IQ for Certificate Management
-------------------------------------------------------------------
+Lab 2.4: Integrating Venafi with BIG-IQ for Certificate Management (new 7.0)
+----------------------------------------------------------------------------
 F5 Networks and Venafi have partnered to provide a tightly-integrated solution for certificate and key management.
 Managing Venafi certificate requests through BIG-IQ automates laborious processes and reduces the amount of time you 
 have to spend requesting and distributing certificates and keys to your managed devices. 
