@@ -25,6 +25,8 @@ Exercise 3.1 – Application Creation
 
 |image48|
 
+|image49|
+
 3. Navigate to the **Templates** page and click on *job Template* beside **(Agility 2020) New_AS3_App** to review the template
 
 |image28|
@@ -171,6 +173,9 @@ Notice that the application is now deleted.
    :width: 7.49167in
    :height: 3.6933in
 .. |image48| image:: images/lab3/image49.png
+   :width: 3.79545in
+   :height: 2.69677in
+.. |image49| image:: images/lab3/image50.png
    :width: 3.79545in
    :height: 2.69677in
 .. |image28| image:: images/lab3/image29a.png
