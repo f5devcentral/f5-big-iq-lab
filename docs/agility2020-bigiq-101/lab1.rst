@@ -179,7 +179,7 @@ Paula.
 
 |image13|
 
-14. Now, let’s look on the BIG-IP and verify the Application is
+14. Now, let’s look on the BIG-IP and verify the application is
     correctly deployed in partition tenant1.
 
 Logon to SEA-vBIGIP01.termmarc.com BIG-IP as **admin** *(admin\\purple123)* 

@@ -96,7 +96,7 @@ Looking for F5 Agility 2020 BIG-IQ Automation 101 labs? click `here`_.
 
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
 .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
-.. _Light Product Demo: http://engage.f5.com/BIG-IP-demo
+.. _Light Product Demo: https://www.f5.com/products/automation-and-orchestration/big-iq/app-visibility-demo
 .. _Troubleshoot Your Application Health and Performance with F5: https://interact.f5.com/troubleshooting-your-application-health-webinar.html
 .. _AS3 Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/
 .. _DO Documentation: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/

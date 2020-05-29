@@ -107,7 +107,7 @@ Exercise 2.2 – Deploy application via BIG-IQ using a customized AS3 template
 
 4. Click **Create**.
 
-5. Check the Application Service https_waf_app_service has been created
+5. Check the application service https_waf_app_service has been created
    under Application LAB 1.2.
 
 |image23|

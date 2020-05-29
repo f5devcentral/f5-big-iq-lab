@@ -127,7 +127,7 @@ Until now we used a default AS3 template out-of-the-box (available on https://gi
 for deploying an application service. It is a good practice to clone the default AS3 templates and use them more 
 tailored to your custom needs.
 
-1. Login as **david** and go to the Application > Application Templates and 
+1. Login as **david** and Go to the Applications tab > Applications Templates and 
    select ``AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-<version>`` and press **Clone**.
 
 2. Give the cloned template a name: ``AS3-LAB-HTTPS-WAF-custom-template`` and click Clone.
@@ -166,7 +166,7 @@ tailored to your custom needs.
 
 .. _Lab 3.2: ./lab2.html
 
-AS3 WAF Application Service Deployment (Paula)
+AS3 WAF application service deployment (Paula)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now both Advance WAF policy and Security Logging Profile are available on BIG-IP and AS3 WAF template 
@@ -219,13 +219,13 @@ available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ
 
 3. Click **Create**.
 
-4. Check the Application Service ``https_waf_app_service`` has been created under Application ``LAB_module3``.
+4. Check the application service ``https_waf_app_service`` has been created under Application ``LAB_module3``.
 
 .. image:: ../pictures/module3/lab-5-15.png
   :scale: 40%
   :align: center
 
-5. Now, let's look on the BIG-IP  and verify the Application is correctly deployed in partition ``tenant2``.
+5. Now, let's look on the BIG-IP  and verify the application is correctly deployed in partition ``tenant2``.
     
 6. Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant2`` and look at the objects created on the BIG-IP.
 
@@ -268,7 +268,7 @@ Open Chrome and navigate to the following URL: ``https://10.1.10.122``.
 
 .. note:: There are traffic generator sending good and bad traffic from the Lamp server in the lab.
 
-11. Paula can update Application Service Health Alert Rules by clicking on the Health Icon on the top left of the Application Dashboard.
+11. Paula can update application service health alert rules by clicking on the Health Icon on the top left of the Application Dashboard.
 
 .. image:: ../pictures/module3/lab-5-20a.png
   :scale: 60%

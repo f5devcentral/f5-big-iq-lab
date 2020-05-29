@@ -12,7 +12,7 @@ Workflow
 AS3 template creation (David)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Login as **david** and go to the Application > Application Templates and 
+1. Login as **david** and Go to the Applications tab > Applications Templates and 
    select ``AS3-F5-HTTP-lb-template-big-iq-default-<version>`` and press **Clone**.
 
 2. Give the cloned template a name: ``AS3-F5-HTTP-lb-template-Pool-Members-Only`` and click Clone.
@@ -72,7 +72,7 @@ Set the Virtual Address property to ``10.1.10.122`` and change to Override. Clic
   :align: center
 
 
-AS3 Application Service Deployment (Paula)
+AS3 application service deployment (Paula)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Login as **paula** and select previously created ``LAB_module3`` Application and click **Create**.
@@ -108,7 +108,7 @@ AS3 Application Service Deployment (Paula)
 
 3. Click **Create**.
 
-4. Check the Application Service ``http_pool_only_app_service`` has been created under Application ``LAB_module3``.
+4. Check the application service ``http_pool_only_app_service`` has been created under Application ``LAB_module3``.
 
 .. image:: ../pictures/module3/lab-4-8.png
   :scale: 40%

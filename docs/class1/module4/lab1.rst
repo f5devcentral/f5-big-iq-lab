@@ -19,11 +19,13 @@ Lab 4.1: Move Application Services in BIG-IQ
 2. Navigate into the ``IT_apps`` Application, select ``inventory_site38httpsBigip121`` Application Service and click on **Move**.
    A windwo opens. Select *New Application*, set ``Inventory_Global`` for the Application Name, then click **OK**.
 
+.. note:: If ``inventory_site38httpsBigip121`` does not exist, pick a different application service.
+
 .. image:: ../pictures/module4/lab-1-2.png
   :scale: 60%
   :align: center
 
-3. The Application Service ``inventory_site38httpsBigip121`` is now under Application ``Inventory_Global``.
+3. The application service ``inventory_site38httpsBigip121`` is now under Application ``Inventory_Global``.
 
 .. image:: ../pictures/module4/lab-1-3.png
   :scale: 60%

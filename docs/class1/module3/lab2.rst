@@ -103,7 +103,7 @@ HTTPS Service using AS3 through GUI
 .. warning:: If you encounter ``status: 422: /declare failed with status of 422, Failed to get cm-bigip-allBigipDevices device for address ... 
              Device not found in device group``, ssh the BIG-IQ CM and execute: ``bigstart restart restjavad``, when the services come back and retry.
   
-12. Check the Application ``LAB_module3`` has been created.
+12. Check the application ``LAB_module3`` has been created.
 
 .. image:: ../pictures/module3/lab-2-6.png
   :scale: 40%
@@ -118,14 +118,14 @@ multiple services can be grouped. The next window will show you that a new Appli
   :scale: 40%
   :align: center
 
-14.	Now, let's look on the BIG-IP and verify the Application is correctly deployed in partition ``tenant1``.
+14.	Now, let's look on the BIG-IP and verify the application is correctly deployed in partition ``tenant1``.
 Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant1`` and look at the objects created on the BIG-IP.
 
 .. image:: ../pictures/module3/lab-2-8.png
   :scale: 40%
   :align: center
 
-15.	You can testing the application service by open a browser in the Ubuntu Jump-host and type the Virtual Server IP address ``10.1.10.120``.
+15.	You can test the application service by opening a browser in the Ubuntu Jump-host and type the Virtual Server IP address ``10.1.10.120``.
     
 16. Back on the BIG-IQ as **paula**, select ``tenant1_https_app_service`` Application Service and look HTTP traffic analytics.
 

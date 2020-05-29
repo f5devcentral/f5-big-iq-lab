@@ -24,7 +24,7 @@ for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 
-AS3 Application Service Deployment (Paula)
+AS3 application service deployment (Paula)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Follow `Lab 3.2`_ to deploy the application service as Paula.
@@ -100,7 +100,7 @@ and select the **SEA-vBIGIP01.termmarc.com**. Then, click on Deploy.
 AS3 clone template to add firewall rules (David)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Login as **david** and go to the Application > Application Templates and 
+1. Login as **david** and Go to the Applications tab > Applications Templates and 
    select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-<version>`` and press **Clone**.
 
 2. Give the cloned template a name: ``AS3-LAB-HTTPS-custom-firewall-template`` and click Clone.
@@ -142,7 +142,7 @@ the firewall policy to Paula's existing application service.
 
 .. _Lab 3.2: ./lab2.html
 
-2. In order to save the properties of the Application Service, click on the top right corner of the dashboard,
+2. In order to save the properties of the application service, click on the top right corner of the dashboard,
    click on **View Sample API Request** and save the API call in a text editor.
 
 .. image:: ../pictures/module3/lab-6-12.png
@@ -170,7 +170,7 @@ Using the information saved in step 2, fill necessary fields (Server Addresses, 
 
 6. Click **Save & Close**.
 
-7.	Now, let's look on the BIG-IP and verify the Firewall policy has been correctly applied to the Application Service.
+7.	Now, let's look on the BIG-IP and verify the Firewall policy has been correctly applied to the application service.
 Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. 
 Select the partition ``tenant1`` and look at the security resources attached to the virtual server ``ServiceMain``.
 

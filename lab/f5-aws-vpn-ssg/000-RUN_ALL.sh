@@ -15,7 +15,7 @@ function pause(){
 
 # Usage
 if [[ "$1" != "ssg" && "$1" != "ve" && "$1" != "vpn" ]]; then
-    echo -e "\nUsage: ${RED} $0 <ssg/ve/vpn>${NC}\n(ssg and ve include creation of the vpn. If vpn specified, no ssg/ve will be created)\n"
+    echo -e "\nUsage: ${RED} $0 <ssg/ve/vpn>${NC}\n(ssg and ve options include creation of the vpn. If vpn specified, no ssg/ve related objects will be created)\n"
     exit 1;
 fi
 
@@ -202,10 +202,14 @@ else
        echo -e "\nVPN only - no SSG or cloud provider/environement will be created."
 fi
 
-echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh &${NC}\n\n"
-echo -e "\n/!\ If the UDF Cloud Account is used, the UDF AWS account will be deleted with everything in it when the deployment stops or deleted. /!\ "
+echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh &${NC}\n"
 
-echo -e "\n/!\ If you stop your deployment, the Customer Gateway public IP address will change (SEA-vBIGIP01.termmarc.com's public IP).\nRun the ./111-DELETE_ALL.sh script to clean things up (reset CUSTOMER_GATEWAY_IP, PREFIX, AWS CREDS, REGION, AMI) and re-start the script.${NC} \n\n"
+pubIP=$(aws ec2 describe-instances --query "Reservations[*].Instances[*].PublicIpAddress" --output=text)
+echo -e "\nDemo Web Server Public IP running in AWS:${BLUE} $pubIP ${NC}"
+
+echo -e "\nNotes:\n1. If the UDF Cloud Account is used, the UDF AWS account will be deleted with\neverything in it when the deployment stops or deleted."
+
+echo -e "\n2. If you stop your deployment, the Customer Gateway public IP address will change\n(SEA-vBIGIP01.termmarc.com's public IP).\nRun the ./111-DELETE_ALL.sh script to clean things up (reset CUSTOMER_GATEWAY_IP,\nPREFIX, AWS CREDS, REGION, AMI) and re-start the script if needed.${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

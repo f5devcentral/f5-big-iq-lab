@@ -9,9 +9,9 @@ Launch our ``SSG`` - Access our orchestrator
 
 To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the system called: **Ubuntu Lamp Server**
 
-.. image:: ../pictures/module4/img_module4_lab2_1.png
-  :align: center
-  :scale: 50%
+.. image:: ../../pictures/udf_ubuntu_ssh.png
+    :align: left
+    :scale: 60%
 
 |
 

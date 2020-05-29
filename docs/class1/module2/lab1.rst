@@ -143,7 +143,7 @@ Modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110
    
 .. note:: Notice that the app deployment may take a few minutes.
 
-6. Login on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task1.
+6. Login on **BOS-vBIGIP01.termmarc.com** and verify the application is correctly deployed in partition Task1.
 
 7. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 

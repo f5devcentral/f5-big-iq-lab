@@ -21,7 +21,7 @@ The following examples demonstrate how these goals can be met with JSON Schema.
 
 1. Enforcing Changes to AS3 Classes
 
-In order to trigger schema enforcement of each class in the template other than Tenant and Application, specify the class name(s) and reference(s) in the Application class additionalProperties, like this:
+In order to trigger schema enforcement of each class in the template other than Tenant and Application, specify the class name(s) and reference(s) in the application class additionalProperties, like this:
 
 .. code-block:: yaml
    :linenos:
@@ -87,7 +87,7 @@ To act on a handful of properties and reject all others, make sure to include a 
 
 6. Disallowing One or More Classes
 
-To reject an entire class, specify this not anyOf properties clause within the Application class additionalProperties object:
+To reject an entire class, specify this not anyOf properties clause within the application class additionalProperties object:
 
 .. code-block:: yaml
 
@@ -329,7 +329,7 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
 
 5. Update the ``virtualPort`` to **8080** and re-send the declaration.
 
-6. Login on **BOS-vBIGIP01.termmarc.com** and verify the Application is correctly deployed in partition Task8.
+6. Login on **BOS-vBIGIP01.termmarc.com** and verify the application is correctly deployed in partition Task8.
 
 7. Login on **BIG-IQ** as Olivia, go to Applications tab and check the application is displayed and analytics are showing.
 

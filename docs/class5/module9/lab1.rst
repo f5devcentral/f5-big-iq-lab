@@ -101,9 +101,9 @@ The below script takes Azure parameters and creates Azure resources. These resou
 
 SSH Ubuntu host in lab environment:
 
-.. image:: pictures/image22.png
-  :align: left
-  :scale: 60%
+.. image:: ../../pictures/udf_ubuntu_ssh.png
+    :align: left
+    :scale: 60%
 
 Navigate to: ``cd f5-azure-vpn-ssg``
 
