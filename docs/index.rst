@@ -21,16 +21,11 @@ populates the Monitoring tab and Application dashboard.
 
 This lab environment is available for internal F5 users.
 
-Looking for F5 Agility 2020 BIG-IQ Automation 101 labs? click `here`_.
-
-.. _here: ./agility2020-bigiq-101/
-
 .. toctree::
    :maxdepth: 1
    :caption: Contents/Lab:
    :glob:
 
-   agility2020-bigiq-101/index
    class1/class1
    class2/class2
    class3/class3
