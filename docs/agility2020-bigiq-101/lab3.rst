@@ -33,14 +33,16 @@ Click on *Sign In*
 
 |image28|
 
+4. Click on *Launch*
+
 |image30|
 
-4. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
+5. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
    select *paul-iq*. Click on *NEXT*
 
    |image31|
 
-5. **SURVEY**: Enter below information regarding your application
+6. **SURVEY**: Enter below information regarding your application
    service definition. Click on *NEXT*
 
 +-----------------+-------------------------------+
@@ -55,33 +57,33 @@ Click on *Sign In*
 
 |image32|
 
-6. **PREVIEW**: Review the summary of the template deployment. 
+7. **PREVIEW**: Review the summary of the template deployment. 
    Click on *LAUNCH*
 
    |image33|
 
-7. Follow the Job deployment of the Ansible playbook.
+8. Follow the Job deployment of the Ansible playbook.
 
    |image34|
 
 .. note:: The *FAILED - RETRYING* messages are expected as the playbook runs into a LOOP to check 
           the AS3 task completion and will show failed until loop is completed.
 
-8. When the job is completed, check the **PLAY RECAP** and make sure that *failed=* status is **0**.
+9. When the job is completed, check the **PLAY RECAP** and make sure that *failed=* status is **0**.
 
     |image35|
 
-9. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paul** *(paul\\paul)*
+10. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paul** *(paul\\paul)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
     the TMUI as shown above.
     Go to Application tab and check the application is displayed and analytics
     are showing.
 
-10. Select *Unknown Applications* Application tile
+11. Select *Unknown Applications* Application tile
 
 |image36|
 
-11. Select *MyAppDeployedWithAnsibleTower_M...* Application Service. 
+12. Select *MyAppDeployedWithAnsibleTower_M...* Application Service. 
 
     |image37|
 
@@ -95,7 +97,7 @@ create it directly into Application in BIG-IQ using the *`Deploy
 API <https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html>`__* to
 define the BIG-IQ Application name.*
 
-12. Review the HTTP traffic analytics.
+13. Review the HTTP traffic analytics.
 
     |image38|
 
