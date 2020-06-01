@@ -207,7 +207,7 @@ Notice that the application is now deleted.
 .. |image42| image:: images/lab3/image43.png
    :width: 5.80303in
    :height: 2.12465in
-.. |image43| image:: images/lab3/image44.png
+.. |image43| image:: images/lab3/image44a.png
    :width: 4.95455in
    :height: 3.67876in
 .. |image44| image:: images/lab3/image45.png
