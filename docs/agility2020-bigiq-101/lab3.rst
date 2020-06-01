@@ -72,9 +72,11 @@ Click on *Sign In*
 
 11. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paul** *(paul\\paul)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
-    the TMUI as shown above.
+    the TMUI as shown below.
     Go to Application tab and check the application is displayed and analytics
     are showing.
+   
+    |image52|
 
 12. Select *Unknown Applications* Application tile
 
@@ -233,5 +235,8 @@ Notice that the application is now deleted.
    :width: 7.55in
    :height: 3.72206in
 .. |image51| image:: images/lab3/image52.png
+   :width: 7.55in
+   :height: 3.72206in
+.. |image52| image:: images/lab3/image53.png
    :width: 7.55in
    :height: 3.72206in
