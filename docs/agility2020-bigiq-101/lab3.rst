@@ -210,10 +210,10 @@ Notice that the application is now deleted.
 .. |image43| image:: images/lab3/image44a.png
    :width: 4.95455in
    :height: 3.67876in
-.. |image44| image:: images/lab3/image45.png
+.. |image44| image:: images/lab3/image45a.png
    :width: 7.31818in
    :height: 3.60778in
-.. |image45| image:: images/lab3/image46.png
+.. |image45| image:: images/lab3/image46a.png
    :width: 7.54167in
    :height: 3.71795in
 .. |image46| image:: images/lab3/image47.png
