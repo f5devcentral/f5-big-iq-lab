@@ -28,7 +28,7 @@ Exercise 3.1 – Application Creation
 
 |image51|
 
-2a. Log out of *AWX (Ansible Tower)* as Admin and logon on as **paul** *(paul\\paul)*
+3. Log out of *AWX (Ansible Tower)* as Admin and logon on as **paul** *(paul\\paul)* to create the new application
 
 |image48|
 
@@ -36,51 +36,51 @@ Click on *Sign In*
 
 |image49|
 
-3. Navigate to the **Templates** page and click on *job Template* beside **(Agility 2020) New_AS3_App** to review the template
+4. Navigate to the **Templates** page and click on *job Template* beside **(Agility 2020) New_AS3_App** to review the template
 
 |image28|
 
-4. Click on *Launch*
+5. Click on *Launch*
 
 |image30|
 
-5. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
+6. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
    select *paul-iq*. Click on *NEXT*
 
    |image31|
 
-6. **SURVEY**: Enter below information regarding your application
+7. **SURVEY**: Enter below information regarding your application
    service definition. Click on *NEXT*
 
 |image32|
 
-7. **PREVIEW**: Review the summary of the template deployment. 
+8. **PREVIEW**: Review the summary of the template deployment. 
    Click on *LAUNCH*
 
    |image33|
 
-8. Follow the Job deployment of the Ansible playbook.
+9. Follow the Job deployment of the Ansible playbook.
 
    |image34|
 
 .. note:: The *FAILED - RETRYING* messages are expected as the playbook runs into a LOOP to check 
           the AS3 task completion and will show failed until loop is completed.
 
-9. When the job is completed, check the **PLAY RECAP** and make sure that *failed=* status is **0**.
+10. When the job is completed, check the **PLAY RECAP** and make sure that *failed=* status is **0**.
 
     |image35|
 
-10. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paul** *(paul\\paul)*
+11. From within the LAMP server RDP/noVNC session, logon on **BIG-IQ** as **paul** *(paul\\paul)*
     by opening a browser and go to: ``https://10.1.1.4`` or directly via
     the TMUI as shown above.
     Go to Application tab and check the application is displayed and analytics
     are showing.
 
-11. Select *Unknown Applications* Application tile
+12. Select *Unknown Applications* Application tile
 
 |image36|
 
-12. Select *MyAppDeployedWithAnsibleTower_M...* Application Service. 
+13. Select *MyAppDeployedWithAnsibleTower_M...* Application Service. 
 
     |image37|
 
@@ -94,7 +94,7 @@ create it directly into Application in BIG-IQ using the *`Deploy
 API <https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_public_api_references.html>`__* to
 define the BIG-IQ Application name.*
 
-13. Review the HTTP traffic analytics.
+14. Review the HTTP traffic analytics.
 
     |image38|
 
