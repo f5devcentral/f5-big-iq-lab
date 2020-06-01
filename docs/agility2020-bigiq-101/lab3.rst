@@ -182,16 +182,16 @@ Notice that the application is now deleted.
 .. |image33| image:: images/lab3/image34.png
    :width: 4.68333in
    :height: 3.48193in
-.. |image34| image:: images/lab3/image35.png
+.. |image34| image:: images/lab3/image35a.png
    :width: 7.57287in
    :height: 3.73333in
-.. |image35| image:: images/lab3/image36.png
+.. |image35| image:: images/lab3/image36a.png
    :width: 7.52216in
    :height: 3.70833in
-.. |image36| image:: images/lab3/image37.png
+.. |image36| image:: images/lab3/image37a.png
    :width: 7.55in
    :height: 3.68215in
-.. |image37| image:: images/lab3/image38.png
+.. |image37| image:: images/lab3/image38a.png
    :width: 6.69697in
    :height: 3.80723in
 .. |image38| image:: images/lab3/image39.png
