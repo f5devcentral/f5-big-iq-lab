@@ -21,7 +21,7 @@ Exercise 3.1 – Application Creation
 
 |image27|
 
-2a. Log out of AWX as Admin and logon on *AWX (Ansible Tower)* as **paul** *(paul\\paul)*
+2a. Log out of *AWX (Ansible Tower)* as Admin and logon on as **paul** *(paul\\paul)*
 
 |image48|
 
