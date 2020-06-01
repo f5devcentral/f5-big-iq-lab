@@ -1,9 +1,9 @@
 Lab 3: AS3 Application creation and deletion using AWX/Ansible Tower and BIG-IQ
 -------------------------------------------------------------------------------
 
-Paula has been tasked with the creation of a new application on the BIG-IP  that has been requested by the application owner. 
-Paula will use AS3 declaration and BIG-IQ to build the application on the appropriate BIG-IPs using an 
-Ansible Playbook that is stored in their GitHub repository.
+Paul has been tasked with the creation of a new application on the BIG-IP  that has been requested by the application owner. 
+Paul will use AS3 declaration and BIG-IQ to build the application on the appropriate BIG-IPs using an 
+Ansible Playbook that is stored in their GitHub repository. First the Admin will need to login to Ansible Tower to ensure that the latest templates have the pulled from Github
 
 .. include:: ./accesslab.rst
 
@@ -17,9 +17,14 @@ Exercise 3.1 – Application Creation
 |image26|
 
 2. Navigate to the **Projects** page and click on the refresh button
-   to get the latest version of the templates.
+   for the BIG-IQ-LAB project to get the latest version of the templates.
 
 |image27|
+
+2. Navigate to the **Jobs** page and click on the *BIG-IQ-LAB* job to 
+   to verify it was successful.
+   
+|image50|
 
 2a. Log out of *AWX (Ansible Tower)* as Admin and logon on as **paul** *(paul\\paul)*
 
@@ -220,5 +225,8 @@ Notice that the application is now deleted.
    :width: 7.48333in
    :height: 3.47171in
 .. |image47| image:: images/lab3/image48a.png
+   :width: 7.55in
+   :height: 3.72206in
+.. |image50| image:: images/lab3/image51.png
    :width: 7.55in
    :height: 3.72206in
