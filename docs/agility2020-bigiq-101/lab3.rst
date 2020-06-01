@@ -139,7 +139,7 @@ The application owner has informed Paul that the application is no longer needed
 
    |image45|
 
-8. Logon on **BIG-IQ** as **paul** *(paula\\paula)*, go to
+8. Logon on **BIG-IQ** as **paul** *(paul\\paul)*, go to
     Application tab and check the application is displayed and analytics
     are showing.
 9. Select *Unknown Applications* Application tile
@@ -216,7 +216,7 @@ Notice that the application is now deleted.
 .. |image45| image:: images/lab3/image46a.png
    :width: 7.54167in
    :height: 3.71795in
-.. |image46| image:: images/lab3/image47.png
+.. |image46| image:: images/lab3/image37a.png
    :width: 7.48333in
    :height: 3.47171in
 .. |image47| image:: images/lab3/image48.png
