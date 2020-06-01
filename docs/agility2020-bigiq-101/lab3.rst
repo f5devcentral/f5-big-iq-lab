@@ -26,6 +26,8 @@ Exercise 3.1 – Application Creation
    
 |image50|
 
+|image51|
+
 2a. Log out of *AWX (Ansible Tower)* as Admin and logon on as **paul** *(paul\\paul)*
 
 |image48|
@@ -228,5 +230,8 @@ Notice that the application is now deleted.
    :width: 7.55in
    :height: 3.72206in
 .. |image50| image:: images/lab3/image51.png
+   :width: 7.55in
+   :height: 3.72206in
+.. |image51| image:: images/lab3/image52.png
    :width: 7.55in
    :height: 3.72206in
