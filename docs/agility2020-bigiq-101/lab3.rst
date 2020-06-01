@@ -44,16 +44,12 @@ Click on *Sign In*
 
 6. **SURVEY**: Enter below information regarding your application
    service definition. Click on *NEXT*
+   
 
-+-----------------+-------------------------------+
-| **APP NAME:**   | MyAppDeployedWithAnsibleTower |
-+=================+===============================+
-| **APP TYPE:**   | http_app or waf_app           |
-+-----------------+-------------------------------+
-| **SERVICE IP:** | 10.1.10.122                  |
-+-----------------+-------------------------------+
-| **NODES:**      | 10.1.20.120 and 10.1.20.121   |
-+-----------------+-------------------------------+
+APP NAME:	MyAppDeployedWithAnsibleTower
+APP TYPE:	http_app or waf_app
+SERVICE IP:	10.1.10.122
+NODES:	10.1.20.120 and 10.1.20.121
 
 |image32|
 
