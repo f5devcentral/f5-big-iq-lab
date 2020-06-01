@@ -100,9 +100,7 @@ The application owner has informed Paul that the application is no longer needed
 
 |image39|
 
-2. Make sure
-   the **PLAYBOOK** *lab/f5-ansible-bigiq-as3-demo/tower/app_delete.yml* is
-   selected. Click on the *Launch* button to start a job using this
+2. Click on the *Launch* button to start a job using this
    template*. 
 
 |image40|
@@ -200,7 +198,7 @@ Notice that the application is now deleted.
 .. |image39| image:: images/lab3/image40.png
    :width: 7.28788in
    :height: 3.59284in
-.. |image40| image:: images/lab3/image41.png
+.. |image40| image:: images/lab3/image31a.png
    :width: 7.31818in
    :height: 3.60778in
 .. |image41| image:: images/lab3/image42.png
