@@ -103,9 +103,10 @@ define the BIG-IQ Application name.*
 Exercise 3.2 – Application Deletion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The application owner has informed Paul that the application is no longer needed and needs to be deleted from. Paul will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
+The application owner has informed Paul that the application is no longer needed and needs to be deleted. Paul will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
 
-1. Navigate to the **Templates** page and review *(Agility 2020) Delete_AS3_App*
+1. Return to *AWX (Ansible Tower)* and if needed log back in as **paul** *(paul\\paul)*  
+   Navigate to the **Templates** page and click on *(Agility 2020) Delete_AS3_App*
 
 |image39|
 
@@ -113,9 +114,6 @@ The application owner has informed Paul that the application is no longer needed
    template*. 
 
 |image40|
-
-.. note:: You can go on the `GitHub repository <https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower>`_
-          and check review the playbooks and Jinja2 templates.
 
 3. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
    select *paul-iq*. Click on *NEXT*
@@ -149,15 +147,15 @@ The application owner has informed Paul that the application is no longer needed
    |image45|
 
 8. Logon on **BIG-IQ** as **paul** *(paul\\paul)*, go to
-    Application tab and check the application is displayed and analytics
-    are showing.
+    main Application page 
+    
 9. Select *Unknown Applications* Application tile
 
-|image46|
+   |image46|
 
 Notice that the application is now deleted.
 
-|image47|
+   |image47|
 
 .. |image26| image:: images/lab3/image27.png
    :width: 3.79545in
