@@ -77,7 +77,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 2. Add the below application service to the existing AS3 declaration in the JSON validator. The validator is your IDE (Integrated development environment).
    
    Use the IDE available within the lab environment, click on the *Access* button
-   of the *Ubuntu Lamp Server* system and select *Visual Studio*.
+   of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
    You can also use an online tool such as `www.jsonschemavalidator.net`_.
 
@@ -185,7 +185,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 1. Add the below application service to the existing AS3 declaration in the validator. The validator is your IDE (Integrated development environment).
    
    Use the IDE available within the lab environment, click on the *Access* button
-   of the *Ubuntu Lamp Server* system and select *Visual Studio*.
+   of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
    You can also use an online tool such as `www.jsonschemavalidator.net`_.
 

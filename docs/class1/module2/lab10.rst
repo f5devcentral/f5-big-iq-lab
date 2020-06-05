@@ -40,7 +40,7 @@ This declaration abstracts the complexity of having to configure all the HTTP de
 1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE (Integrated development environment).
    
    Use the IDE available within the lab environment, click on the *Access* button
-   of the *Ubuntu Lamp Server* system and select *Visual Studio*.
+   of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
    You can also use an online tool such as `www.jsonschemavalidator.net`_.
 
@@ -159,3 +159,6 @@ Deploy AS3 Application Service through BIG-IQ
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Click on your Application, Properties > CONFIGURATION, look at AS3 Declaration.
+
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html

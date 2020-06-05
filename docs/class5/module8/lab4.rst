@@ -110,7 +110,7 @@ Note the Private DNS and IPs which will be used later. This information could be
    The validator is your IDE (Integrated development environment).
    
    Use the IDE available within the lab environment, click on the *Access* button
-   of the *Ubuntu Lamp Server* system and select *Visual Studio*.
+   of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
    You can also use an online tool such as `www.jsonschemavalidator.net`_.
 

@@ -42,7 +42,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE (Integrated development environment).
    
    Use the IDE available within the lab environment, click on the *Access* button
-   of the *Ubuntu Lamp Server* system and select *Visual Studio*.
+   of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
    You can also use an online tool such as `www.jsonschemavalidator.net`_.
 
