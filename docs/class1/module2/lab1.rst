@@ -111,24 +111,20 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
        }
    }
 
-2. Now that the AS3 declation is validated, let's add the target (BIG-IP device)::
+2. Now that the AS3 declation is validated, modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
+
+3. Let's now add the target (BIG-IP device)::
 
     "target": {
         "address": "10.1.1.8"
     },
 
-.. note:: The target BIG-IP is standalone but it could be configured as an HA pair.
-          If you want, configure the HA in auto-sync mode. Configure the BIG-IP cluster in BIG-IQ.
-          The target in this case can be either device.
-
-Modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
-
-3. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
+4. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
    If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-4. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
+5. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.
    
@@ -137,15 +133,15 @@ Modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110
 .. warning:: If you encounter ``status: 422: /declare failed with status of 422, Failed to get cm-bigip-allBigipDevices device for address ... 
              Device not found in device group``, ssh the BIG-IQ CM and execute: ``bigstart restart restjavad``, when the services come back and retry.
 
-5. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
+6. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
    
 .. note:: Notice that the app deployment may take a few minutes.
 
-6. Login on **BOS-vBIGIP01.termmarc.com** and verify the application is correctly deployed in partition Task1.
+7. Login on **BOS-vBIGIP01.termmarc.com** and verify the application is correctly deployed in partition Task1.
 
-7. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
+8. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
 |lab-1-3|
 
@@ -168,7 +164,6 @@ Now we are going to create another service but this time, we will do some SSL of
    Copy/Paste the AS3 declaration from the validator to the body in Postman.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
-
 
 .. code-block:: yaml
    :linenos:

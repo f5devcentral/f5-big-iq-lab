@@ -144,9 +144,9 @@ else
        echo -e "\nVPN only - no SSG or cloud provider/environement will be created."
 fi
 
-echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh &\n\n"
+echo -e "\nPLAYBOOK COMPLETED, DO NOT FORGET TO TEAR DOWN EVERYTHING AT THE END OF YOUR DEMO\n\n${RED}# nohup ./111-DELETE_ALL.sh &"
 
-echo -e "\nNotes:\nIf you stop your deployment, the Customer Gateway public IP address will change\n(SEA-vBIGIP01.termmarc.com's public IP).\nRun the ./111-DELETE_ALL.sh script to clean things up (reset CUSTOMER_GATEWAY_IP,\nPREFIX, AWS CREDS, REGION, AMI) and re-start the script if needed.${NC}"
+echo -e "\nNotes:\nIf you stop your deployment, the Customer Gateway public IP address will change\n(SEA-vBIGIP01.termmarc.com's public IP).\nRun the ./111-DELETE_ALL.sh script to clean things up (reset CUSTOMER_GATEWAY_IP) and re-start the script if needed.${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

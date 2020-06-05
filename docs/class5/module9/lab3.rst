@@ -41,10 +41,10 @@ options for the BIG-IQ Settings class. Add in our demo hostname, under-provision
 
 .. warning:: In the License class, the Hypervisor needs to be selected only if reachable = false.
 
-  |image16|
-  |image23|
-  |image17|
-  |image26|
+|image16|
+|image23|
+|image17|
+|image26|
 
 .. Note:: Azure does not require the use of an SSH key to log into the instance to be configured.
 

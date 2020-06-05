@@ -35,4 +35,4 @@ and look into the different users & role.
   :align: center
   :scale: 60%
 
-.. note:: Crendentials (login/password) available under lab's Documentation > Credentials section for each components.
+.. note:: Credentials (login/password) available under lab's Documentation > Credentials section for each components.

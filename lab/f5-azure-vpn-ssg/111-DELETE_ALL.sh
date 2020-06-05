@@ -117,29 +117,8 @@ ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec traffic-selector selector-vpn-a
 ssh admin@$MGT_NETWORK_UDF tmsh delete net ipsec ipsec-policy ipsec-policy-vpn-azure
 ssh admin@$MGT_NETWORK_UDF tmsh save sys config
 
-sed -i '/PREFIX/d' config.yml
-#sed -i '/SUBSCRIPTION_ID/d' config.yml
-#sed -i '/TENANT_ID/d' config.yml
-#sed -i '/CLIENT_ID/d' config.yml
-#sed -i '/SERVICE_PRINCIPAL_SECRET/d' config.yml
 sed -i '/CUSTOMER_GATEWAY_IP/d' config.yml
-
-sed -i '1s/^/PREFIX: udf-azure-demo\n/' config.yml
-#sed -i '1s/^/SUBSCRIPTION_ID: <Subscription Id>\n/' config.yml
-#sed -i '1s/^/TENANT_ID: <Tenant Id>\n/' config.yml
-#sed -i '1s/^/CLIENT_ID: <Client Id>\n/' config.yml
-#sed -i '1s/^/SERVICE_PRINCIPAL_SECRET: <Service Principal Secret>\n/' config.yml
 sed -i '1s/^/CUSTOMER_GATEWAY_IP: 0.0.0.0\n/' config.yml
-sed -i '1s/^/### Config file reset to defaut\n\n/' config.yml
-
-sed -i '1s/^/SSG_NAME:               "{{PREFIX}}-azure-ssg"\n/' config.yml
-sed -i '1s/^/CLOUD_ENVIRONMENT_NAME: "{{PREFIX}}-azure-environment"\n/' config.yml
-sed -i '1s/^/CLOUD_PROVIDER_NAME:    "{{PREFIX}}-azure-provider"\n/' config.yml
-sed -i '1s/^/DEVICE_TEMPLATE_NAME:   "{{PREFIX}}-azure-device-template"\n/' config.yml
-sed -i '1s/^/TEMPLATE_NODE_NAME:     "{{PREFIX}}-azure-service-node"\n/' config.yml
-sed -i '1s/^/TEMPLATE_POOL_NAME:     "{{PREFIX}}-azure-pool"\n/' config.yml
-sed -i '1s/^/SERVICE_CATALOG_NAME:   "{{PREFIX}}-azure-service-catalog"\n/' config.yml
-sed -i '1s/^/LTM_RESOURCE_NAME:      "{{PREFIX}}-azure-resource-name"\n/' config.yml
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 

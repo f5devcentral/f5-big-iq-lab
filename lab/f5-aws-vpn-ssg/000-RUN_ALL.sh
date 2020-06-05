@@ -222,7 +222,7 @@ done
 
 echo -e "\nNotes:\n1. If the UDF Cloud Account is used, the UDF AWS account will be deleted with\neverything in it when the deployment stops or deleted."
 
-echo -e "\n2. If you stop your deployment, the Customer Gateway public IP address will change\n(SEA-vBIGIP01.termmarc.com's public IP).\nRun the ./111-DELETE_ALL.sh script to clean things up (reset CUSTOMER_GATEWAY_IP,\nPREFIX, AWS CREDS, REGION, AMI) and re-start the script if needed.${NC}"
+echo -e "\n2. If you stop your deployment, the Customer Gateway public IP address will change\n(SEA-vBIGIP01.termmarc.com's public IP).\nRun the ./111-DELETE_ALL.sh script to clean things up (reset CUSTOMER_GATEWAY_IP,\nAWS Credentials, Region, BIG-IP AMI) and re-start the script if needed.${NC}"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

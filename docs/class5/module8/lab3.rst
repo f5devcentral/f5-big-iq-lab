@@ -30,10 +30,10 @@ options for the BIG-IQ Settings class. Add in our demo hostname, under-provision
 .. warning:: In the License class, you must supply the same BIG-IP admin username and password as the ones entered for the **User class**. 
              Also the Hypervisor needs to be selected only if reachable = false.
 
-  |image10|
-  |image11|
-  |image12|
-  |image13|
+|image10|
+|image11|
+|image12|
+|image13|
 
 .. Note:: You do not need to have created the BIG-IP VE from BIG-IQ to send Declarative Onboarding payloads. If you did create the VE from BIG-IQ, it would show up in the BIG-IP VE drop-down list; if you did not create it, you would need to specify the Target information.
 

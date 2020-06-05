@@ -106,7 +106,6 @@ sed -i '/AWS_AZ_1B/d' config.yml
 sed -i '/BYOL_BIGIP_AMI/d' config.yml
 sed -i '/CUSTOMER_GATEWAY_IP/d' config.yml
 
-
 sed -i '1s/^/PREFIX: udf-demo\n/' config.yml
 sed -i '1s/^/AWS_ACCESS_KEY_ID: <key_id>\n/' config.yml
 sed -i '1s/^/AWS_SECRET_ACCESS_KEY: <key_secret>\n/' config.yml
@@ -118,14 +117,14 @@ sed -i '1s/^/BYOL_BIGIP_AMI: "ami-58c3d327"\n/' config.yml
 sed -i '1s/^/CUSTOMER_GATEWAY_IP: 0.0.0.0\n/' config.yml
 sed -i '1s/^/### Config file reset to defaut\n\n/' config.yml
 
-sed -i '1s/^/SSG_NAME:               "{{PREFIX}}-aws-ssg"\n/' config.yml
-sed -i '1s/^/CLOUD_ENVIRONMENT_NAME: "{{PREFIX}}-aws-environment"\n/' config.yml
-sed -i '1s/^/CLOUD_PROVIDER_NAME:    "{{PREFIX}}-aws-provider"\n/' config.yml
-sed -i '1s/^/DEVICE_TEMPLATE_NAME:   "{{PREFIX}}-aws-device-template"\n/' config.yml
-sed -i '1s/^/TEMPLATE_NODE_NAME:     "{{PREFIX}}-aws-service-node"\n/' config.yml
-sed -i '1s/^/TEMPLATE_POOL_NAME:     "{{PREFIX}}-aws-pool"\n/' config.yml
-sed -i '1s/^/SERVICE_CATALOG_NAME:   "{{PREFIX}}-aws-service-catalog"\n/' config.yml
-sed -i '1s/^/LTM_RESOURCE_NAME:      "{{PREFIX}}-aws-resource-name"\n/' config.yml
+sed -i '$s/^/SSG_NAME:               "{{PREFIX}}-aws-ssg"\n/' config.yml
+sed -i '$s/^/CLOUD_ENVIRONMENT_NAME: "{{PREFIX}}-aws-environment"\n/' config.yml
+sed -i '$s/^/CLOUD_PROVIDER_NAME:    "{{PREFIX}}-aws-provider"\n/' config.yml
+sed -i '$s/^/DEVICE_TEMPLATE_NAME:   "{{PREFIX}}-aws-device-template"\n/' config.yml
+sed -i '$s/^/TEMPLATE_NODE_NAME:     "{{PREFIX}}-aws-service-node"\n/' config.yml
+sed -i '$s/^/TEMPLATE_POOL_NAME:     "{{PREFIX}}-aws-pool"\n/' config.yml
+sed -i '$s/^/SERVICE_CATALOG_NAME:   "{{PREFIX}}-aws-service-catalog"\n/' config.yml
+sed -i '$s/^/LTM_RESOURCE_NAME:      "{{PREFIX}}-aws-resource-name"\n/' config.yml
 
 echo -e "\n${BLUE}TIME: $(date +"%H:%M")${NC}"
 
