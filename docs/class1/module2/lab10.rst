@@ -35,7 +35,7 @@ Deploy AS3 Application Service directly to the BIG-IP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template. 
-This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistance, etc...
+This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistence, etc...
 
 1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE (Integrated development environment).
    
@@ -109,7 +109,7 @@ This declaration abstracts the complexity of having to configure all the HTTP de
        }
    }
 
-2. Now that the AS3 declation is validated, modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
+2. Now that the AS3 declaration is validated, modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
 
 3. Using Postman, open the **BIG-IQ Token (david)** collections and replace IP address in the URL with ``10.1.1.8`` instead of ``10.1.1.4`` 
    (**BOS-vBIGIP01.termmarc.com** instead of BIG-IQ). 

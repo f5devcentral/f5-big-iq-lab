@@ -37,7 +37,7 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
 Task 1 - HTTP Application Service
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This declaration will create an HTTP application on BIG-IQ using an HTTP template. This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistance, etc...
+This declaration will create an HTTP application on BIG-IQ using an HTTP template. This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistence, etc...
 
 1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE (Integrated development environment).
    
@@ -111,7 +111,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
        }
    }
 
-2. Now that the AS3 declation is validated, modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
+2. Now that the AS3 declaration is validated, modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
 
 3. Let's now add the target (BIG-IP device)::
 
