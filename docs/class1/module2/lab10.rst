@@ -113,7 +113,7 @@ This declaration abstracts the complexity of having to configure all the HTTP de
 
 3. Using Postman, open the **BIG-IQ Token (david)** collections and replace IP address in the URL with ``10.1.1.8`` instead of ``10.1.1.4`` 
    (**BOS-vBIGIP01.termmarc.com** instead of BIG-IQ). 
-   Replace in the **body** username and password with:
+   Replace in the **body** username and password with::
 
     "username": "admin",
     "password": "purple123",

@@ -67,7 +67,16 @@ integrated directly into the relevant CI/CD toolchains and workflows.
    :maxdepth: 1
    :glob:
 
-   lab*
+   lab1
+   lab2
+   lab3
+   lab4
+   lab5
+   lab6
+   lab7
+   lab8
+   lab9
+   lab10
 
 
 .. |diagram_as3_bigiq| image:: ../pictures/module2/diagram_as3_bigiq.png
