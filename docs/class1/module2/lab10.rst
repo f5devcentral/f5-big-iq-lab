@@ -118,7 +118,7 @@ This declaration abstracts the complexity of having to configure all the HTTP de
     "username": "admin",
     "password": "purple123",
 
-  Then authenticate on the BIG-IP and save the token.
+   Then, authenticate on the BIG-IP and save the token.
 
 4. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP.
    Replace IP address in the URL with ``10.1.1.8`` instead of ``10.1.1.4``.
@@ -157,8 +157,6 @@ Deploy AS3 Application Service through BIG-IQ
 .. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
-
-Click on your Application, Properties > CONFIGURATION, look at AS3 Declaration.
 
 .. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
 .. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html

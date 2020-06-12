@@ -85,7 +85,7 @@ Wait for the deployment to complete.
   :align: center
 
 5. Back on the Applications tab > Applications, go back to the ``legacy-app-service``.
-   Under Traffic Management > Configuration > Profile HTTP Analytics, notice the warning disappeared.
+   Under **F5 Services**, Traffic Management > Configuration > Profile HTTP Analytics, notice the warning disappeared.
 
 .. image:: ../pictures/module6/lab-2-9.png
   :scale: 40%
