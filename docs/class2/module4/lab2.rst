@@ -1,10 +1,10 @@
-Lab 4.2: Deploy our ``SSG`` in ``AWS``
---------------------------------------
+Lab 4.2: Deploy your ``SSG`` in ``AWS``
+---------------------------------------
 
 Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
 we will automatically deploy it and review its configuration. 
 
-Launch our ``SSG`` - Access our orchestrator
+Access lab orchestrator (using ansible/bash)
 ********************************************
 
 To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the system called: **Ubuntu Lamp Server**
@@ -19,22 +19,27 @@ Once connected via ``SSH``, go into the folder: **f5-aws-vpn-ssg**:
 
     ``cd f5-aws-vpn-ssg/``
 
-we will need to edit the following files: 
+We will need to edit the following files: 
 
 * **config.yml**: This file will contains all the information needed to 
     deploy the ``AWS`` environment successfully. 
 * **08a-create-aws-auto-scaling.yml**: we will change the setup of the default ``SSG`` 
     that gets deployed. we want to deploy 2 instances to review how it is setup as 
-    part of a ``SSG`` group. 
+    part of a ``SSG`` group (**OPTIONAL**).
 
 
-Launch our ``SSG`` - Update config.yml
-***************************************
+Update config.yml
+*****************
 
-.. warning:: For lab environment, the Cloud Account is used, if you want to use your own AWS account, 
-             comment out the line ``01-configure-cloud-udf.sh`` in ``000-RUN_ALL.sh``.
+.. warning:: if you are using the UDF Cloud Account, skip this step.
+             
+In the case you are **NOT** using the UDF Cloud account and using your own AWS account:
 
-In the case you are **NOT** using the Cloud account, use your favorite editor to update this file. 
+* Edit ``000-RUN_ALL.sh`` and comment out the line ``./01-configure-cloud-udf.sh`` with a ``#``
+
+    ``vi 000-RUN_ALL.shl``
+
+* Edit ``config.yml``
 
     ``vi config.yml``
 
@@ -103,8 +108,10 @@ Here is an example of the updated **config.yml** file:
 
 In case want to use your own AWS account, comment out the line ``01-configure-cloud-udf.sh`` in ``000-RUN_ALL.sh``.
 
-Launch our ``SSG`` - Update our SSG configuration
-*************************************************
+Update our SSG configuration (**OPTIONAL**)
+*******************************************
+
+.. warning:: this step is optional, if skipped, the SSG created will have 1 BIG-IP device to start with.
 
 To update configuration pushed by the orchestrator, we will update the file called 
 **08a-create-aws-auto-scaling.yml**. Use your favorite editor to update it.
@@ -187,19 +194,19 @@ Change the **minSize** and **desiredSize** from 1 to 2 :
             }
 
 
-Launch our ``SSG`` - Trigger the deployment 
-*******************************************
+Trigger the deployment 
+**********************
 
 Now that the relevant files have been updated, we can trigger the deployment. 
 
-To trigger the deployment, run the following command: 
+To trigger the deployment, run the following command from the Ubuntu lamp server: 
 
  ``./000-RUN_ALL.sh ssg``
 
 It will ask you to press Enter to confirm that you subscribed and agreed to 
-the EULA in the marketplace. Make sure you subscribed, then press enter to start the deployment. 
+the EULA in the marketplace. Make sure you subscribed to the F5 BIG-IP VE - ALL BYOL, then press enter to start the deployment. 
 
-.. warning:: The AWS console URL, login, password are in the Cloud Accounts tab if using lab environment.
+.. warning:: If you are using UDF Cloud Accounts, you can also find the AWS console URL, login, password in the lab environment.
  
    .. image:: ../pictures/module4/img_module4_lab2_2a.png
       :scale: 50%
@@ -213,7 +220,6 @@ You should see something like this:
 
     Before moving further, subscribed and agreed to the software terms in AWS Marketplace for:
     - F5 BIG-IP VE - ALL (BYOL, 1 Boot Location) https://aws.amazon.com/marketplace/pp/B07G5MT2KT/
-    - F5 BIG-IQ Virtual Edition - (BYOL) https://aws.amazon.com/marketplace/pp/B00KIZG6KA/
 
     AWS console Credentials: https://console.aws.amazon.com/
             - accountId: "12345678908"

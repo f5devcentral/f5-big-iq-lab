@@ -153,6 +153,9 @@ if [[  $currentuser == "root" ]]; then
             --detach osixia/openldap:1.2.4 \
             --copy-service
 
+    # TACAC+ https://hub.docker.com/r/dchidell/docker-tacacs
+    docker run --restart=always --name=tacacs -dit -p 49:49 dchidell/docker-tacacs
+
     ### Copy some custom files in hackazon docker for labs
     # App Troubleshooting
     docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')

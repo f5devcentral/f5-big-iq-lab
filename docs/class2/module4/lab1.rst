@@ -1,9 +1,7 @@
 Lab 4.1: Prepare your ``AWS`` deployment 
 ----------------------------------------
 
-.. warning:: The SSG will be automatically delete 23h after the deployment was started.
-
-.. warning:: Skip Lab 1 and go directly to Lab 2 if you are using the Lab Cloud Account.
+.. warning:: Skip **lab 1** and go directly to **lab 2** if you are using the UDF Cloud Account.
 
 In module1/Lab 1.1, we saw the different components to setup a SSG: 
 

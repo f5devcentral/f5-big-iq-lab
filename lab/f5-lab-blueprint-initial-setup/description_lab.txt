@@ -116,7 +116,7 @@ cat /dev/null > dhcpd.leases~
 Radius server:
 IP 10.1.1.5
 secret = default
-Users: marco, david, paula, paul, larry, olivia
+Users: david/david, paula/paula, paul/paul, larry/larry, olivia/olivia, marco/marco
 
 LDAP server:
 IP 10.1.1.5
@@ -129,7 +129,14 @@ Group Search Filter: (&(objectClass=groupOfUniqueNames)(cn={searchterm}*))
 Group Membership Filter: uniqueMember={userDN}
 Directory User Search Filter: uid={username}
 Group Distinguished Name: cn=admin,ou=Groups,dc=f5demo,dc=com
-Users: look at ldap/f5demo.ldif file
+Users: look at ldap/f5demo.ldif under https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/ldap
+
+Tacac+ server:
+IP 10.1.1.5
+secret = ciscotacacskey
+Primary Service = shell
+Encrypt = yes
+Users: iosadmin/cisco, nxosadmin/cisco
 
 Splunk server:
 IP 10.1.1.5 port 8000 https
