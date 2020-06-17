@@ -108,8 +108,8 @@ Here is an example of the updated **config.yml** file:
 
 In case want to use your own AWS account, comment out the line ``01-configure-cloud-udf.sh`` in ``000-RUN_ALL.sh``.
 
-Update our SSG configuration (**OPTIONAL**)
-*******************************************
+Update our SSG configuration (OPTIONAL)
+***************************************
 
 .. warning:: this step is optional, if skipped, the SSG created will have 1 BIG-IP device to start with.
 
@@ -194,7 +194,7 @@ Change the **minSize** and **desiredSize** from 1 to 2 :
             }
 
 
-Trigger the deployment 
+Trigger the deployment
 **********************
 
 Now that the relevant files have been updated, we can trigger the deployment. 
@@ -206,11 +206,13 @@ To trigger the deployment, run the following command from the Ubuntu lamp server
 It will ask you to press Enter to confirm that you subscribed and agreed to 
 the EULA in the marketplace. Make sure you subscribed to the F5 BIG-IP VE - ALL BYOL, then press enter to start the deployment. 
 
+    .. image:: ../pictures/module4/img_module4_lab6_1.png
+       :scale: 50%
+
 .. warning:: If you are using UDF Cloud Accounts, you can also find the AWS console URL, login, password in the lab environment.
  
    .. image:: ../pictures/module4/img_module4_lab2_2a.png
       :scale: 50%
-
 
 You should see something like this: 
 
