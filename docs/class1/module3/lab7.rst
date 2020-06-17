@@ -150,7 +150,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 3. We are to install now the F5 WAF tester tool. Connect via ``SSH`` to the *Ubuntu Lamp Server* and execute:
 
-.. code-block:: yaml
+.. code-block::
 
    f5student@ip-10-1-1-5:~$ sudo pip install git+https://github.com/f5devcentral/f5-waf-tester.git
 
@@ -173,8 +173,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 On the *Ubuntu Lamp Server*, run:
 
-.. code-block:: yaml
-   :linenos:
+.. code-block::
    :emphasize-lines: 38,39
 
    f5student@ip-10-1-1-5:~$ sudo f5-waf-tester
@@ -254,8 +253,7 @@ Wait for the current major and critical alerts to clear before moving to the nex
 
 7. Back on the *Ubuntu Lamp Server*, let's launch a second attack on this application service while the policy is in blocking mode. 
 
-.. code-block:: yaml
-   :linenos:
+.. code-block::
    :emphasize-lines: 35,36
 
    f5student@ip-10-1-1-5:~$ sudo f5-waf-tester
