@@ -71,6 +71,8 @@ Then, start the new BIG-IQ DCD VM.
 
 3. Edit the hosts file and make sure only the ``big-iq-dcd-2.example.com`` is not commented with a ``#``.
 
+.. warning:: Double check the IP address of the new secondary BIG-IQ and update it if necessary
+
 .. code::
 
     # cd /home/f5/f5-ansible-bigiq-onboarding 
@@ -78,13 +80,11 @@ Then, start the new BIG-IQ DCD VM.
 
     [f5_bigiq_cm]
     #big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
-    #big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
+    #big-iq-cm-2.example.com ansible_host=10.1.1.x ...
 
     [f5_bigiq_dcd]
     #big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
-    big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
-
-.. warning:: Double check the IP address of the new secondary BIG-IQ and update it if necessary
+    big-iq-dcd-2.example.com ansible_host=10.1.1.9 ...
 
 4. Once the new VE is full up and running, execute the following script to onboard this new secondary BIG-IQ CM.
 

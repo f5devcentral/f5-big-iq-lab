@@ -9,9 +9,9 @@ Official documentation about BIG-IQ High Availability Auto Failover Configuratio
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/creating-a-big-iq-high-availability-auto-fail-over-config.html
 
-.. note:: If you haven’t setup a **SECOND** BIG-IQ Central Manager, please go to `Lab 4.1`_ and follow the steps.
+.. note:: If you haven’t setup a **SECOND** BIG-IQ Central Manager, please go to `Lab 4.1`_ and follow the steps from 1 to 6.
 
-.. _Lab 4.1: ../lab1.html
+.. _Lab 4.1: ./lab1.html
 
 1. Login to BIG-IQ 1 as user **David**  and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. Check that the current used High Available method is Manual Failover.
 
@@ -35,16 +35,16 @@ This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 5. Click ``Add System`` and fill in the following:
 
 *Properties*
- * IP Address =	10.1.10.14
+ * IP Address =	10.1.10.9
  * Username = admin
  * Password = purple123
- * Root Password = Purple123
+ * Root Password = purple123
 	
 *HA Settings*
  * Failover setting = Auto Failover
  * Select: bigiq1dcd.example.com (pull-down)
  * Quorum Root Password = purple123
- * Floating IP	(select) Enable Floating IP (10.1.1.15)
+ * Floating IP	(select) Enable Floating IP (10.1.1.9)
 
 6. Click **Add** and **OK**.
 
@@ -71,7 +71,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 .. image:: ../pictures/module4/lab-2-5.png
   :align: center
   
-8. To test this, grab a browser on your jumphost and go: https\:\/\/10.1.1.15 . Which BIG-IQ took the call? 
+8. To test this, grab a browser on your jumphost and go: https\:\/\/10.1.1.9 . Which BIG-IQ took the call? 
 
 9. Login with **David**  and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
 
@@ -79,13 +79,13 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 
 11.	From the jumphost, open Postman. *(If double-clicking does not work, try right-side of the mouse and press execute or open a terminal and type postman and hit enter.)*
 
-12.	Open the ``BIG-IQ AS3 Lab Postman Collection`` and select **POST BIG-IQ Token (Olivia)**. Before sending, first change the IP address from 10.1.1.4 to 10.1.1.15 and hit **Send**.
+12.	Open the ``BIG-IQ AS3 Lab Postman Collection`` and select **POST BIG-IQ Token (Olivia)**. Before sending, first change the IP address from 10.1.1.4 to 10.1.1.9 and hit **Send**.
 
-13.	Select ``POST BIG-IQ AS3 Declaration`` and change the management IP address to **10.1.1.15**.
+13.	Select ``POST BIG-IQ AS3 Declaration`` and change the management IP address to **10.1.1.9**.
 
 14.	Copy below example of an AS3 Declaration and paste as the body of your declaration.
 
-  POST ``https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true``
+  POST ``https\:\/\/10.1.1.9/mgmt/shared/appsvcs/declare?async=true``
 
 .. code-block:: yaml
 
@@ -150,7 +150,7 @@ BIG-IQ HA Settings delivers a bit more detail and also shows us the configured f
 - Login to ``BOS-vBIG01.termmarc.com`` by browsing to ``https\:\/\/10.1.1.8`` (admin/purple123) and check if the partition was created, Task1.
 - POST BIG-IQ AS3 Declaration (Delete) to remove the declaration. Copy and paste below declaration and:
 
-POST ``https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true`` and Check if the declaration got deleted.
+POST ``https\:\/\/10.1.1.9/mgmt/shared/appsvcs/declare?async=true`` and Check if the declaration got deleted.
 
 .. code-block:: yaml
 
@@ -176,7 +176,7 @@ POST ``https\:\/\/10.1.1.15/mgmt/shared/appsvcs/declare?async=true`` and Check i
 
 Before finishing this lab, there is one task to do. If you are done testing BIG-IQ HA, stop BIG-IQ CM Secondary to avoid additional costs. You might want to switch the active BIG-IQ before stopping the secondary… (or stop BIG-IQ primary in lab environment and skip the next steps)
 
-16.	Go to BIG-IQ CM Secondary ``https\:\/\/10.1.1.15`` and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
+16.	Go to BIG-IQ CM Secondary ``https\:\/\/10.1.1.9`` and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
 
 17.	Promote the standby device bigiq1cm.example.com, at the pop-up click **OK**.
 

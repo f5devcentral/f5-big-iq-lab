@@ -38,6 +38,7 @@ Click on **CREATE**.
 |
 
 After few minutes, the VM is created in lab environment. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).
+Use the same last digit of the management interface for the additional interfaces (in example below .12 but most probably .9).
 
 .. image:: ../pictures/module4/img_module4_lab1_1c.png
   :align: center
@@ -55,9 +56,19 @@ Finally, start the new BIG-IQ.
 
 Then, start the new BIG-IQ CM VM.
 
-2. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+2. Once the VM is started, open a web shell or ssh to the new BIG-IQ CM VM, reset the admin password, enable bash shell and enable root account.
 
-3. Edit the hosts file and make sure only the ``big-iq-cm-2.example.com`` is not commented with a ``#``.
+.. code::
+    modify auth user admin password admin
+    modify auth user admin shell bash
+    modify /sys db systemauth.disablerootlogin value false
+    save sys config
+
+3. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+
+4. Edit the hosts file and make sure only the ``big-iq-cm-2.example.com`` is not commented with a ``#``.
+
+.. warning:: Double check the IP addresses of the new secondary BIG-IQ and update it if necessary
 
 .. code::
 
@@ -66,16 +77,11 @@ Then, start the new BIG-IQ CM VM.
 
     [f5_bigiq_cm]
     #big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
-    big-iq-cm-2.example.com ansible_host=10.1.1.15 ...
-
-    [f5_bigiq_dcd]
-    #big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
-    #big-iq-dcd-2.example.com ansible_host=10.1.1.15 ...
+    big-iq-cm-2.example.com ansible_host=10.1.1.9 ...
 
 
-.. warning:: Double check the IP address of the new secondary BIG-IQ and update it if necessary
 
-4. Once the new VE is full up and running, execute the following script to onboard this new secondary BIG-IQ CM.
+5. Once the new VE is full up and running, execute the following script to onboard this new secondary BIG-IQ CM.
 
     ::
 
@@ -83,7 +89,7 @@ Then, start the new BIG-IQ CM VM.
         # sudo docker build -t f5-big-iq-onboarding .
         # ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
 
-5. Verify the new secondary BIG-IQ CM has been correclty configured (check hostname, self IP, VLAN, NTP, DNS, license)
+6. Verify the new secondary BIG-IQ CM has been correclty configured (check hostname, self IP, VLAN, NTP, DNS, license)
 
 .. image:: ../pictures/module4/img_module4_lab1_3.png
   :align: center
@@ -91,7 +97,11 @@ Then, start the new BIG-IQ CM VM.
 
 |
 
-6. Open active BIG-IQ, go to System > BIG-IQ HA and Click the Add Secondary button.
+.. warning:: If you are doing lab 2, stop here and go back to `Lab 4.2`_
+
+.. _Lab 4.2: ./lab2.html
+
+7. Open active BIG-IQ, go to System > BIG-IQ HA and Click the Add Secondary button.
 
 .. image:: ../pictures/module4/img_module4_lab1_4.png
   :align: center
@@ -99,7 +109,7 @@ Then, start the new BIG-IQ CM VM.
 
 |
 
-7. Type the properties for the BIG-IQ system that you are adding and click the Add button at the bottom of the screen.
+8. Type the properties for the BIG-IQ system that you are adding and click the Add button at the bottom of the screen.
 
 - In the IP Address field, type the IP address for the secondary BIG-IQ system.
 - In the Username and Password fields, type the administrator's user name and password for the new BIG-IQ system.

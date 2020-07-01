@@ -4,6 +4,11 @@ function pause(){
    read -p "$*"
 }
 
+# Usage
+if [[ "$1" != "save" ]]; then
+    echo -e "\nUsage: ${RED} $0 <save>${NC}\n"
+fi
+
 type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
     echo "Hypervisor: AWS"
@@ -60,28 +65,7 @@ if [[ "$1" = "save" ]]; then
 
         rm -f ~/f5-vmware/*.log
 
-        echo -e "\n* Shutdown BIG-IP and BIG-IQ gracefully...\n"
-        [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-        ssh -o StrictHostKeyChecking=no admin@10.1.1.4 shutdown -H now &
-        sleep 1
-        ssh -o StrictHostKeyChecking=no admin@10.1.1.6 shutdown -H now &
-        sleep 1
-        ssh -o StrictHostKeyChecking=no admin@10.1.1.8 shutdown -H now &
-        sleep 1
-        ssh -o StrictHostKeyChecking=no admin@10.1.1.10 shutdown -H now &
-        sleep 1
-        ssh -o StrictHostKeyChecking=no admin@10.1.1.7 shutdown -H now &
-        sleep 1
-        ssh -o StrictHostKeyChecking=no admin@10.1.1.11 shutdown -H now &
-    
-        echo -e "Wait at least 15min before saving the BP."
-        secs=$((15 * 60))
-        while [ $secs -gt 0 ]; do
-            echo -ne "$secs\033[0K\r"
-            sleep 1
-            : $((secs--))
-        done
-        echo -e "\n\nDouble check the BIG-IPs and BIG-IQ are shutdown.\n"
+        echo -e "\n\nYou can nominate the blueprint now.\n"
     else
         echo -e "The Lamp server initialisation did not complete, please check ~/upgrade_git.log and wait for it to be COMPLETED."
     fi
