@@ -59,10 +59,11 @@ Then, start the new BIG-IQ CM VM.
 2. Once the VM is started, open a web shell or ssh to the new BIG-IQ CM VM, reset the admin password, enable bash shell and enable root account.
 
 .. code::
-    modify auth user admin password admin
-    modify auth user admin shell bash
-    modify /sys db systemauth.disablerootlogin value false
-    save sys config
+
+    (tmos)# modify auth user admin password admin
+    (tmos)# modify auth user admin shell bash
+    (tmos)# modify /sys db systemauth.disablerootlogin value false
+    (tmos)# save sys config
 
 3. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
