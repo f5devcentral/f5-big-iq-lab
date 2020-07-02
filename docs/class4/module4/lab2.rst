@@ -44,7 +44,6 @@ This will take some time (~ 3 minutes) and log you out from BIG-IQ.
  * Failover setting = Auto Failover
  * Select: bigiq1dcd.example.com (pull-down)
  * Quorum Root Password = purple123
- * Floating IP	(select) Enable Floating IP (10.1.1.9)
 
 6. Click **Add** and **OK**.
 
@@ -59,128 +58,27 @@ At BIG-IQ HA you will find three devices configured:
  - bigiq2cm.example.com
  - bigiq1dcd.example.com
 
-The second BIG-IQ central manager acts as the standby device and the only DCD available in the lab acts as the quorum device. This does not mean it will take CM takes when one fails, but instead it delivers the tiebreak when the active CM fails and failover takes place from active to standby, which than will become the active CM.
+The second BIG-IQ central manager acts as the standby device and the only DCD available in the lab acts as the quorum device.
+This does not mean it will take CM takes when one fails, but instead it delivers the tiebreak 
+when the active CM fails and failover takes place from active to standby, which than will become the active CM.
 
 7. Click **BIG-IQ HA Settings**.
 
 .. image:: ../pictures/module4/lab-2-4.png
   :align: center
-  
-BIG-IQ HA Settings delivers a bit more detail and also shows us the configured floating IP Address and can be used as the cluster management IP address.
 
-.. image:: ../pictures/module4/lab-2-5.png
-  :align: center
-  
-8. To test this, grab a browser on your jumphost and go: https\:\/\/10.1.1.9 . Which BIG-IQ took the call? 
+8. Login with **David**  and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
 
-9. Login with **David**  and go **System > BIG-IQ HA > BIG-IQ HA Settings** and promote the Standby Device. The pop-up will ask: *Promote Standby Device to Active?* Click **OK**.
+9.	Repeat step 7.
 
-10.	Repeat step 7.
+Before finishing this lab, there is one task to do. If you are done testing BIG-IQ HA, stop BIG-IQ CM Secondary to avoid additional costs. 
+You might want to switch the active BIG-IQ before stopping the secondary… (or stop BIG-IQ primary in lab environment and skip the next steps)
 
-11.	From the jumphost, open Postman. *(If double-clicking does not work, try right-side of the mouse and press execute or open a terminal and type postman and hit enter.)*
+10.	Go to BIG-IQ CM Secondary ``https\:\/\/10.1.1.9`` and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
 
-12.	Open the ``BIG-IQ AS3 Lab Postman Collection`` and select **POST BIG-IQ Token (Olivia)**. Before sending, first change the IP address from 10.1.1.4 to 10.1.1.9 and hit **Send**.
+11.	Promote the standby device bigiq1cm.example.com, at the pop-up click **OK**.
 
-13.	Select ``POST BIG-IQ AS3 Declaration`` and change the management IP address to **10.1.1.9**.
+12.	Refresh the Browser window and wait (takes ~5min) until the BIG-IQ failover IP gets redirected to BIG-IQ CM (10.1.1.4) and check if it has become the primary unit.
 
-14.	Copy below example of an AS3 Declaration and paste as the body of your declaration.
-
-  POST ``https\:\/\/10.1.1.9/mgmt/shared/appsvcs/declare?async=true``
-
-.. code-block:: yaml
-
-   {
-       "class": "AS3",
-       "action": "deploy",
-       "persist": true,
-       "declaration": {
-           "class": "ADC",
-           "schemaVersion": "3.7.0",
-           "id": "example-declaration-01",
-           "label": "Task1",
-           "remark": "Task 1 - HTTP Application Service",
-           "target": {
-               "address": "10.1.1.8"
-           },
-           "Task1": {
-               "class": "Tenant",
-               "MyWebApp1http": {
-                   "class": "Application",
-                   "template": "http",
-                   "statsProfile": {
-                       "class": "Analytics_Profile",
-                       "collectClientSideStatistics": true,
-                       "collectOsAndBrowser": false,
-                       "collectMethod": false
-                   },
-                   "serviceMain": {
-                       "class": "Service_HTTP",
-                       "virtualAddresses": [
-                           "10.1.10.116"
-                       ],
-                       "pool": "web_pool",
-                       "profileAnalytics": {
-                           "use": "statsProfile"
-                       }
-                   },
-                   "web_pool": {
-                       "class": "Pool",
-                       "monitors": [
-                           "http"
-                       ],
-                       "members": [
-                           {
-                               "servicePort": 80,
-                               "serverAddresses": [
-                                   "10.1.20.120",
-                                   "10.1.20.121"
-                               ],
-                               "shareNodes": true
-                           }
-                       ]
-                   }
-               }
-           }
-       }
-   }
-
-15. Check if it was successful.
-
-- In the response section of Postman
-- Login to ``BOS-vBIG01.termmarc.com`` by browsing to ``https\:\/\/10.1.1.8`` (admin/purple123) and check if the partition was created, Task1.
-- POST BIG-IQ AS3 Declaration (Delete) to remove the declaration. Copy and paste below declaration and:
-
-POST ``https\:\/\/10.1.1.9/mgmt/shared/appsvcs/declare?async=true`` and Check if the declaration got deleted.
-
-.. code-block:: yaml
-
-  {
-    "class": "AS3",
-    "action": "deploy",
-    "persist": true,
-    "declaration": {
-        "class": "ADC",
-        "schemaVersion": "3.7.0",
-        "id": "delete",
-        "label": "delete",
-        "remark": "delete",
-        "target": {
-            "address": "10.1.1.8"
-        },
-        "apptesting": {
-            "class": "Tenant"
-        }
-    }
-  }
-
-
-Before finishing this lab, there is one task to do. If you are done testing BIG-IQ HA, stop BIG-IQ CM Secondary to avoid additional costs. You might want to switch the active BIG-IQ before stopping the secondary… (or stop BIG-IQ primary in lab environment and skip the next steps)
-
-16.	Go to BIG-IQ CM Secondary ``https\:\/\/10.1.1.9`` and then: **Systems > BIG-IQ HA > BIG-IQ HA Settings**.
-
-17.	Promote the standby device bigiq1cm.example.com, at the pop-up click **OK**.
-
-18.	Refresh the Browser window and wait (takes ~5min) until the BIG-IQ failover IP gets redirected to BIG-IQ CM (10.1.1.4) and check if it has become the primary unit.
-
-19.	Stop BIG-IQ CM Secondary in lab environment.
+13.	Stop BIG-IQ CM Secondary in lab environment.
 
