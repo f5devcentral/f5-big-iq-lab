@@ -190,6 +190,7 @@ if [[  $currentuser == "root" ]]; then
     wget $(curl -s https://api.github.com/repos/DumpySquare/vscode-f5-fast/releases | grep browser_download_url | grep '.vsix' | head -n 1 | cut -d '"' -f 4) 
     docker cp *.vsix $docker_codeserver_id:/tmp
     docker exec $docker_codeserver_id code-server --install-extension /tmp/$(ls *vsix)
+    docker exec $docker_codeserver_id code-server --install-extension dawhite.mustache
     docker restart $docker_codeserver_id
     rm *.vsix
 

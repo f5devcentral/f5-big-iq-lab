@@ -1,4 +1,4 @@
-Lab 4.1: Configure High Availability for BIG-IQ (6.1 and before)
+Lab 4.1: Configure High Availability for BIG-IQ: Manual Failover
 ----------------------------------------------------------------
 
 **Add a peer BIG-IQ system for a high availability configuration**
@@ -67,9 +67,9 @@ Then, start the new BIG-IQ CM VM.
 
 3. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-4. Edit the hosts file and make sure only the ``big-iq-cm-2.example.com`` is not commented with a ``#``.
+4. Edit the hosts file and make sure **ONLY** the ``big-iq-cm-2.example.com`` is not commented with a ``#``.
 
-.. warning:: Double check the IP addresses of the new secondary BIG-IQ and update it if necessary
+.. warning:: Double check the IP addresses of the new secondary BIG-IQ and update it if necessary. In below example 10.1.1.9 and 10.1.10.9 are used.
 
 .. code::
 
@@ -77,8 +77,8 @@ Then, start the new BIG-IQ CM VM.
     # vi hosts
 
     [f5_bigiq_cm]
-    #big-iq-cm-1.example.com ansible_host=10.1.1.4 ...
-    big-iq-cm-2.example.com ansible_host=10.1.1.9 ...
+    #big-iq-cm-1.example.com ansible_host=10.1.1.4 discoveryip=10.1.10.4/24 ...
+    big-iq-cm-2.example.com ansible_host=10.1.1.9 discoveryip=10.1.10.9/24 ...
 
 
 
@@ -102,7 +102,17 @@ Then, start the new BIG-IQ CM VM.
 
 .. _Lab 4.2: ./lab2.html
 
-7. Open active BIG-IQ, go to System > BIG-IQ HA and Click the Add Secondary button.
+7. In BIG-IQ HA Settings click **Reset to Standalone**.
+
+8. Open active BIG-IQ, go to System > BIG-IQ HA and Click the Add Secondary button.
+
+.. warning:: Double check the IP addresses of the new secondary BIG-IQ and update it if necessary. In below example 10.1.1.9 and 10.1.10.9 are used.
+
+*Properties*
+ * IP Address =	10.1.10.9
+ * Username = admin
+ * Password = purple123
+ * Root Password = purple123
 
 .. image:: ../pictures/module4/img_module4_lab1_4.png
   :align: center
@@ -110,7 +120,7 @@ Then, start the new BIG-IQ CM VM.
 
 |
 
-8. Type the properties for the BIG-IQ system that you are adding and click the Add button at the bottom of the screen.
+9. Type the properties for the BIG-IQ system that you are adding and click the Add button at the bottom of the screen.
 
 - In the IP Address field, type the IP address for the secondary BIG-IQ system.
 - In the Username and Password fields, type the administrator's user name and password for the new BIG-IQ system.
@@ -131,4 +141,3 @@ Then, click OK.
 |
 
 The BIG-IQ system synchronize. Once they are finished, both appear as ready (green).
-

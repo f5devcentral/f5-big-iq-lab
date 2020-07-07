@@ -85,6 +85,8 @@ Lab 2 of this module will cover Onboarding the newly created VE.
 
   |image10|
 
+.. Note:: If you try to open BIG-IP web interface, to bypass the Google Chrome “Your connection is not private” Warning, just type in blindly ``thisisunsafe``.
+
 See `Class 2 Module 5 Lab 6`_ for help with Troubleshooting.
 
 .. _Class 2 Module 5 Lab 6: ../../class2/module5/lab6.html

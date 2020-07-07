@@ -56,13 +56,13 @@ Once onboarding is complete, the BIG-IP VE will be a managed BIG-IP within BIG-I
 .. |image9| image:: pictures/image9.png
    :width: 60%
 .. |image10| image:: pictures/image10.png
-   :width: 60%
+   :width: 100%
 .. |image11| image:: pictures/image11.png
-   :width: 60%
+   :width: 100%
 .. |image12| image:: pictures/image12.png
-   :width: 60%
+   :width: 100%
 .. |image13| image:: pictures/image13.png
-   :width: 60%
+   :width: 100%
 .. |image14| image:: pictures/image14.png
    :width: 60%
 .. |image15| image:: pictures/image15.png
