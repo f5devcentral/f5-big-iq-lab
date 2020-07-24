@@ -66,6 +66,7 @@ This lab environment is available for internal F5 users.
 - 1x BIG-IP 11.5 / 1 standalone (DUBLIN)
 - LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security), Samba, AWX/Ansible Tower, Visual Studio Code.
 - SSLo Service TAP and L3/L2
+- Venafi Trust Protection 20.1
 - ESXi 6.5.0 + vCenter
 
 **Components available**:
