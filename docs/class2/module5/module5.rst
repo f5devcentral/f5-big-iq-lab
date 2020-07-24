@@ -7,6 +7,10 @@ provided with BIG-IQ 6.1 in a the ``Azure`` environment.
 The ``Service Scaling Group`` (SSG) gives us the capability to setup a cluster of BIG-IPs
 that will scale based on criterias defined by the administrator.
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/dDWybCsQGgY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Service Scaling Group Topology
 ******************************
 

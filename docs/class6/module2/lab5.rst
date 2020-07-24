@@ -82,7 +82,8 @@ The location is defined by IETF and used to demonstrate ownership of a domain.
   :align: center
 
 
-Here is the API call the BIG-IQ does to the web app API to deploy the HTTP challenge file.
+Here is the API call the BIG-IQ does to the web app API (more details on the `Tomcat demo challenge Webapp`_ and `Challenge Types`_) 
+to deploy the HTTP challenge file. This API needs to be developped and added into the web app itself (in the web app example the API enpoint is ``POST /hello``)
 
 .. code-block:: yaml
 
@@ -100,7 +101,6 @@ Here is the API call the BIG-IQ does to the web app API to deploy the HTTP chall
 
 .. note:: The use of an API to deploy automatically the HTTP challenge file to the web server is optional.
           The challenge file can be uploaded manually in the ``.well-known/acme-challenge`` folder in the web server.
-          More details on the `Tomcat demo challenge Webapp`_ and `Challenge Types`_.
 
 .. _`Challenge Types`: https://letsencrypt.org/docs/challenge-types/
 .. _`Tomcat demo challenge Webapp`: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-tomcat-challenge-webapp/ROOT

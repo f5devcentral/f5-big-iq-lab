@@ -39,3 +39,6 @@ deploy:
   on:
     branch: master
     repo: f5devcentral/f5-big-iq-lab
+
+cleanup:
+    - aws s3 ls s3://$AWS_S3_STAGING/training/community/big-iq/html --recursive
