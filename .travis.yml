@@ -12,7 +12,11 @@ install:
 - pip install sphinx-copybutton
 
 script:
+- aws s3 rm s3://$AWS_S3_STAGING/training/community/big-iq/html --recursive
 - aws s3 ls s3://$AWS_S3_STAGING/training/community/big-iq/html --recursive
+- aws s3 ls s3://$AWS_S3_BUCKET/training/community/big-iq/html --recursive
+- aws s3 rm s3://$AWS_S3_BUCKET/training/community/big-iq/html/class1/intro.html
+- aws s3 ls s3://$AWS_S3_BUCKET/training/community/big-iq/html/class1 --recursive
 - ./scripts/docker-docs.sh ./scripts/test-docs.sh
 
 deploy:
