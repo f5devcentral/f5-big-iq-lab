@@ -7,9 +7,9 @@ views and reports on the data.
 
 By default, BIG-IQ CM does *not* enable this service for DoS. This Lab blueprint has enabled already, however to validate and enable/disable this service:
 
-1. Log into the BIG-IQ CM
-2. Under *System* > *BIG-IQ Data Collection* > *BIG-IQ Data Collection Devices*, click *Services*
-3. Validate the *DoS Protection* services status is active (the listening port is 8020)
+1. Log into the BIG-IQ CM.
+2. Under *System* > *BIG-IQ Data Collection* > *BIG-IQ Data Collection Devices*, click *Services*.
+3. Validate the *DoS Protection* services status is active (the listening port is 8020).
 
 
 .. image:: ../pictures/module1/DoS-services.png
