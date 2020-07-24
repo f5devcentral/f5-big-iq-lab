@@ -28,6 +28,10 @@ While working through this module we will be focusing on L4-L7 deployments
 
 .. _AS3 documentation on BIG-IQ integration with AS3: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/big-iq.html
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/89j4eSZyybw" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 Layer 4-7 Application Service Delivery
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

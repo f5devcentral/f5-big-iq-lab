@@ -28,6 +28,11 @@ This automation scenario is composed of 4 parts:
 .. _bigiq_device_discovery: https://clouddocs.f5.com/products/orchestration/ansible/devel/modules/bigiq_device_discovery_module.html
 .. _Ansible using AS3: ../../class01/module2/module2.html
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/U8RZ_lw19Gs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 **Lab:**
 
 1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.

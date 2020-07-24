@@ -20,6 +20,11 @@ BIG-IQ supports these VMware cloud environments:
 
 .. Note:: After you save the configuration for the BIG-IP VE devices you created, BIG-IQ sends an API call to apply that configuration to the targeted BIG-IP VE devices. After BIG-IQ successfully applies the configuration, it then discovers and imports the services the device is licensed for, this means you don't have to discover and import services in a separate step.
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/zsZo8-faKe8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 .. toctree::
    :maxdepth: 1
    :glob:

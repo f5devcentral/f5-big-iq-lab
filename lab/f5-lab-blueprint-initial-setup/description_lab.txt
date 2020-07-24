@@ -184,6 +184,5 @@ Local:
 ###################################################
 Name: Venafi Trust Protection
 
-Microsoft CA f5demoCA
-CN=f5demoCA,DC=f5demo,DC=com
-
+- Microsoft CA:  f5demoCA (CN=f5demoCA,DC=f5demo,DC=com)
+- Microsoft AD: f5demo.com

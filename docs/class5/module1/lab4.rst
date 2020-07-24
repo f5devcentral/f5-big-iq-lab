@@ -9,6 +9,11 @@ automatically be associated/linked to the support case.
 
 .. warning:: Re-license BIG-IQ CM with an Eval License in order to run this lab.
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4zXcX90KRyc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
 1. Navigate to **Monitoring** on the top menu bar and then to
    **REPORTS-> Device-> iHealth** -> **Configuration** on the left-hand
    menu\ **.**
