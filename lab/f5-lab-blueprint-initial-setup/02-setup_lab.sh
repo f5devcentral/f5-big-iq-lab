@@ -18,6 +18,8 @@ name[4]="PARIS-vBIGIP01.termmarc.com"
 ip[4]="10.1.1.13"
 name[5]="SJC-vBIGIP01.termmarc.com"
 ip[5]="10.1.1.11"
+name[6]="DUBLIN-vBIGIP01.termmarc.com"
+ip[6]="10.1.1.15"
 
 iq_cm="10.1.1.4"
 iq_dcd="10.1.1.6"
@@ -33,11 +35,12 @@ elif [[ "$1" = "sshkeys" ]]; then
     echo -e "\n---------- INITIAL SETUP BIG-IPs -----------\n"
 
     echo -e "\nRun on all BIG-IPs as root:\n"
-    echo -e 'echo "root:default" | chpasswd'
-    echo -e 'echo "admin:admin" | chpasswd'
+    echo -e "tmsh modify auth user admin password"
     echo -e "tmsh modify auth user admin shell bash"
     echo -e "tmsh modify /sys db users.strictpasswords value disable"
     echo -e "tmsh modify /sys db systemauth.disablerootlogin value false"
+    echo -e 'echo "root:default" | chpasswd'
+    echo -e 'echo "admin:admin" | chpasswd'
     echo -e "tmsh save sys config\n"
 
     echo -e "---------- SSH KEY EXCHANGES BIG-IPs -----------\n"
@@ -128,6 +131,9 @@ elif [[ "$1" = "setup" ]]; then
 
     # PARIS-vBIGIP01.termmarc.com
     #-> SSLO config to be done from BIG-IQ following lab
+
+    ssh -o StrictHostKeyChecking=no root@${ip[6]} tmsh create ltm virtual vip-web  { destination 1.2.3.7:http ip-protocol tcp mask 255.255.255.255 }
+    ssh -o StrictHostKeyChecking=no root@${ip[6]} tmsh save sys config
 
 
     echo -e "\nAfter restore, go manually re-activate the license: (https://support.f5.com/csp/article/K2595)\n"

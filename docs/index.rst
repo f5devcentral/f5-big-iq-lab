@@ -63,6 +63,7 @@ This lab environment is available for internal F5 users.
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 15.1 / 1 standalone (SJC)
+- 1x BIG-IP 11.5 / 1 standalone (DUBLIN)
 - LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security), Samba, AWX/Ansible Tower, Visual Studio Code.
 - SSLo Service TAP and L3/L2
 - ESXi 6.5.0 + vCenter

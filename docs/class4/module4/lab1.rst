@@ -136,7 +136,7 @@ Then, click OK.
 
 .. image:: ../pictures/module4/img_module4_lab1_6.png
   :align: center
-  :scale: 60%
+  :scale: 100%
 
 |
 

@@ -264,6 +264,10 @@ netbios name = centos
 security = user
 map to guest = bad user
 dns proxy = no
+client min protocol = NT1 #SMBv1
+client max protocol = SMB3
+server min protocol = NT1 #SMBv1
+server max protocol = SMB3
 #============================ Share Definitions ==============================
 [dcdbackup]
 path = /dcdbackup
@@ -274,8 +278,14 @@ read only = no" > /etc/samba/smb.conf
 mkdir /dcdbackup
 chown -R nobody:nogroup /dcdbackup
 systemctl restart smbd
-smbclient -L localhost -N
-echo -e "\nTo test the Samba/CIFS server from BIG-IQ:\nmkdir /tmp/testfolder\nmount.cifs //10.1.1.5/dcdbackup /tmp/testfolder -o user=f5student,password=purple123\n\nworkgroup = WORKGROUP\n"
+nmap --script smb-protocols localhost
+smbclient -L localhost -N -W WORKGROUP
+echo -e "\nTo test the Samba/CIFS server from BIG-IQ:"
+echo -e "mkdir /tmp/testfolder"
+echo -e "mount.cifs //10.1.1.5/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=1.0"
+echo -e "mount.cifs //10.1.1.5/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=2.0"
+smbstatus
+echo -e "unmount /tmp/testfolder"
 
 echo -e "\nInstall Azure CLI"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"

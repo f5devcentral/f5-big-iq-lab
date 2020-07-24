@@ -28,7 +28,6 @@ Reset to Standalone? Click **OK**.
 
 .. image:: ../pictures/module4/lab-2-2.png
   :align: center
-  :scale: 30
 
 This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 

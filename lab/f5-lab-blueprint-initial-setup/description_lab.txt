@@ -180,3 +180,10 @@ Gitlab
 Protocol: HTTPS(Authenticated)
 Local:
 10.1.1.5 port 7002
+
+###################################################
+Name: Venafi Trust Protection
+
+Microsoft CA f5demoCA
+CN=f5demoCA,DC=f5demo,DC=com
+
