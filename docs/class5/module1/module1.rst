@@ -8,9 +8,7 @@ Adding a device to the BIG-IP Devices inventory is a two-stage process.
 Stage 1:
 
 -  You enter the IP address, port (if other than default), and credentials of the BIG-IP device you're adding, and associate it with a cluster (if applicable).
-
 -  BIG-IQ opens communication (establishes trust) with the BIG-IP device.
-
 -  BIG-IQ discovers the current configuration for any selected services you specified are licensed on the BIG-IP system, like LTM® (optional).
 
 Stage 2:
@@ -30,9 +28,9 @@ export our inventory to a CSV file, and review the inventory.
 .. note::
      Be aware of the following dependencies when adding a BIG-IP device to BIG-IQ CM
 
-     1.	The BIG-IP device must be located in your network or reachable from BIG-IQ.
-     2.	The BIG-IP device must be running a compatible software version [K34133507](https://support.f5.com/csp/article/K34133507).
-     3.	Port 22 and 443 must be open to the BIG-IQ management address, or any alternative IP address used to add the BIG-IP device to the BIG-IQ inventory.
+     - The BIG-IP device must be located in your network or reachable from BIG-IQ.
+     - The BIG-IP device must be running a compatible software version. see `K34133507 <https://support.f5.com/csp/article/K34133507>`_.
+     - Port 22 and 443 must be open to the BIG-IQ management address, or any alternative IP address used to add the BIG-IP device to the BIG-IQ inventory.
 
 
 .. toctree::

@@ -11,7 +11,10 @@ This area can be used for various purposes, including deploying or modifying BIG
 or running a standard device startup/provisioning script prior to import into BIG-IQ.
 Scripts can be bash or TMSH commands.
 
-<p align="center"><a href="https://youtu.be/PmaOq1bK4YU" target=”_blank”>Watch the Video Tutorial for AWS<br/>
-<img width="60%" height="60%" src="https://img.youtube.com/vi/PmaOq1bK4YU/3.jpg"></a></p>
 
-https://github.com/usrlocalbins/Big-IQ-scripts/blob/master/CVE-Bash%20Script
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/PmaOq1bK4YU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+
+`TMUI RCE vulnerability CVE-2020-5902 bash script <https://github.com/usrlocalbins/Big-IQ-scripts/blob/master/CVE-Bash%20Script>`_

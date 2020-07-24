@@ -6,5 +6,7 @@ Are you interested to see a lab on this topic? `Open an issue on GitHub`_
 
 .. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
 
-<p align="center"><a href="https://youtu.be/fR2O864JQwY" target=”_blank”>Watch the Video Tutorial for AWS<br/>
-<img width="60%" height="60%" src="https://img.youtube.com/vi/fR2O864JQwY/3.jpg"></a></p>
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/fR2O864JQwY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
