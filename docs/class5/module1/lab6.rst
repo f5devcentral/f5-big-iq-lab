@@ -13,6 +13,7 @@ Official documentation about BIG-IQ Script Management can be found on the `F5 Kn
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/PmaOq1bK4YU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+|
 
 1. Login to BIG-IQ as **david**.
 
@@ -24,8 +25,6 @@ Official documentation about BIG-IQ Script Management can be found on the `F5 Kn
 
 3. Type a name (e.g. ``CVE-2020-5902``), copy the |location_link| and replace the credentials with ``CREDS=admin:purple123`` instead of ``CREDS=<username><password>``.
 
-**Save & Close**.
-
 .. |location_link| raw:: html
 
    <a href="https://raw.githubusercontent.com/usrlocalbins/Big-IQ-scripts/master/CVE-Bash%20Script" target="_blank">TMUI RCE vulnerability CVE-2020-5902 bash script</a>
@@ -33,6 +32,8 @@ Official documentation about BIG-IQ Script Management can be found on the `F5 Kn
 .. image:: ./media/lab-6-2.png
   :scale: 60%
   :align: center
+
+**Save & Close**.
 
 4. After the script is saved, select it and click on **Run**.
 
@@ -49,7 +50,7 @@ Official documentation about BIG-IQ Script Management can be found on the `F5 Kn
 6. Click on **Run**. The following window opens. Click on *Script Logs*.
 
 .. image:: ./media/lab-6-5.png
-  :scale: 80%
+  :scale: 60%
   :align: center
 
 7. The link takes you to the script logs window where you can see the task running...
@@ -61,7 +62,7 @@ Official documentation about BIG-IQ Script Management can be found on the `F5 Kn
 8. When the task if completed, the status will show *Finished*.
 
 .. image:: ./media/lab-6-7.png
-  :scale: 80%
+  :scale: 60%
   :align: center
 
 9. You can see the details of the task by clicking on it.
