@@ -8,7 +8,6 @@ There are three steps to managing software images for devices:
 - Download the software image from F5 Networks.
 - Upload the software image to BIG-IQ.
 - Install the software image on a device in the BIG-IP Device inventory in one of the following two ways:
-
     - Managed Device Upgrade - use this process for installing a software image on managed BIG-IP devices running version 11.5.0 or later.
     - Legacy Device Upgrade - use this process for installing a software image on BIG-IP devices running versions 10.2.4 to 11.4.1.
 
