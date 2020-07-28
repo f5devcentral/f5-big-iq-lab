@@ -52,6 +52,10 @@ Official documentation about Silo feature can be found on the `BIG-IQ Knowledge 
 
 .. _`BIG-IQ Knowledge Center`: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/AWhhRbgnz90" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 .. toctree::
    :maxdepth: 1
    :glob:

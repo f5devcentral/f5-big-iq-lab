@@ -184,5 +184,22 @@ Local:
 ###################################################
 Name: Venafi Trust Protection
 
-- Microsoft CA:  f5demoCA (CN=f5demoCA,DC=f5demo,DC=com)
+To access Venafi Web Admin from UDF Venafi Access, add /vedadmin at the end of the URL (e.g. https://9077cbc1-a648-4b0c-945e-fd226e4d4133.access.udf.f5.com/vedadmin)
+
+Configuration:
+- Microsoft CA: f5demoCA (CN=f5demoCA,DC=f5demo,DC=com)
 - Microsoft AD: f5demo.com
+- Venafi Web Admin: https://ec2amaz-bq0fcmk.f5demo.com/vedadmin
+- Venafi API: https://ec2amaz-bq0fcmk.f5demo.com/vedsdk
+
+Import the RootCA in BIG-IQ restjavad:
+echo "" | openssl s_client -host 10.1.1.17 -port 443 -showcerts | awk '/BEGIN CERT/ {p=1} ; p==1; /END CERT/ {p=0}' > /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem
+cat /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem
+mount -o remount,rw /usr
+/usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/keytool -import -trustcacerts -keystore /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el6_10.x86_64/jre/lib/security/cacerts -alias example.com -file /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem
+mount -o remount,ro /usr
+
+Add custom DNS for venafi in BIG-IQ:
+tmsh modify /sys global-settings remote-host add {ec2amaz-bq0fcmk.f5demo.com {hostname ec2amaz-bq0fcmk.f5demo.com addr 10.1.1.17}}
+tmsh save /sys config
+cat /etc/hosts
