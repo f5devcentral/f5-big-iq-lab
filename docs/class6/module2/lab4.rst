@@ -228,7 +228,7 @@ AS3 HTTPS offload application service deployment
 +---------------------------------------------------------------------------------------------------+
 | Service_HTTPS                                                                                     |
 +---------------------------------------------------------------------------------------------------+
-| * Virtual addresses: ````                                                              |
+| * Virtual addresses: ``10.1.10.126``                                                              |
 +---------------------------------------------------------------------------------------------------+
 
 .. note:: In order to get the value of the Ciphertext, we convert the SSL key password (``Password@123456``) using https://www.url-encode-decode.com/base64-encode-decode/
