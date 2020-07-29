@@ -49,7 +49,7 @@ Click on **Add/Remove Devices**
   :scale: 40%
   :align: center
 
-6. Set the Target Volume: ``HD1.2``, click on **Save**, then **Run**.
+6. Set the Target Volume name to ``HD1.2``, click on **Save**, then **Run**.
 
 .. image:: ./media/lab-7-4.png
   :scale: 40%
@@ -122,3 +122,7 @@ Example of assessments comparison.
   :align: center
 
 14. Go back to the Device tab and re-import and re-discover SEA-vBIGIP01.termmarc.com, important step to perform after the BIG-IP upgrade.
+
+.. image:: ./media/lab-7-17.png
+  :scale: 40%
+  :align: center
