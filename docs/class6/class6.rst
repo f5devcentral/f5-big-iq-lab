@@ -90,3 +90,6 @@ The restore area allows you to restore all or part of the BIG-IQ configuration t
 **QUICK UPDATES**
 This area shows the list enable, disable, and force offline activities that have been launched by users.  These activities can be launched directly from the configuration area for virtual servers and pool members, by users with the right privileges.
 
+------------
+
+.. include:: ../lab.rst

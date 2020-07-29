@@ -21,14 +21,10 @@ Once you've imported or created an SSL certificate and keys, you can
 assign them to your managed devices by associating them with a Local
 Traffic Manager clientssl or serverssl profile, and deploying it.
 
-**Tasks:**
-
-1. Move a certificate from unmanaged to managed state.
-2. Create and Import a self-signed certificates/key to BIG-IQ
-3. Renew expired certificates and Deploy from BIG-IQ to managed BIG-IP
-
 .. note::
-	 When you discover a BIG-IP device, BIG-IQ Centralized Management imports its SSL certificates' properties (metadata), but not the actual SSL certificates and key pairs. These certificates display as Unmanaged on the BIG-IQ Certificates & Keys screen. This allows you to monitor each SSL certificate's expiration date from BIG-IQ, without having to log on directly to the BIG-IP device.
+	 When you discover a BIG-IP device, BIG-IQ Centralized Management imports its SSL certificates' properties (metadata), 
+    but not the actual SSL certificates and key pairs. These certificates display as Unmanaged on the BIG-IQ Certificates & Keys screen. 
+    This allows you to monitor each SSL certificate's expiration date from BIG-IQ, without having to log on directly to the BIG-IP device.
 
 Convert an unmanaged SSL key certificate and key pair to managed so you
 can centrally manage it from BIG-IQ Centralized Management. This saves

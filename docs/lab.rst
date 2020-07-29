@@ -35,7 +35,7 @@ is being send to (check ``crontab`` config for more details).
 
 **Lab Diagram**:
 
-.. image:: ./pictures/diagram_udf.png
+.. image:: ../pictures/diagram_udf.png
    :align: center
    :scale: 40%
 

@@ -5,13 +5,13 @@ To start managing a BIG-IP® device, you must add it to the BIG-IP Devices inven
 
 Adding a device to the BIG-IP Devices inventory is a two-stage process.
 
-Stage 1:
+**Stage 1:**
 
 -  You enter the IP address, port (if other than default), and credentials of the BIG-IP device you're adding, and associate it with a cluster (if applicable).
 -  BIG-IQ opens communication (establishes trust) with the BIG-IP device.
 -  BIG-IQ discovers the current configuration for any selected services you specified are licensed on the BIG-IP system, like LTM® (optional).
 
-Stage 2:
+**Stage 2:**
 
 -  BIG-IQ imports the licensed services configuration you selected in stage 1 (optional).
 

@@ -93,3 +93,7 @@ The audit logs (in the Monitoring tab) show who made what change, when they made
 **DASHBOARDS**
 
 The dashboards (in the Monitoring tab) provide the visualization of the data that is collected on the BIG-IQ Data Collection Devices (DCDs).  This menu area will be blank if DCDs are not deployed or the statistics collection is failing.  
+
+------------
+
+.. include:: ../lab.rst

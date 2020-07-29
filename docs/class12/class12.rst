@@ -14,4 +14,4 @@ We will deploy services and topologies. Then we will review the analytics from B
    
 ------------
 
-
+.. include:: ../lab.rst
