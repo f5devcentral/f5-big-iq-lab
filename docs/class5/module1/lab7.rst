@@ -26,13 +26,13 @@ Official documentation about BIG-IP Software Upgrades can be found on the `F5 Kn
 2. Navigate to the DEVICE tab. Look at the device list, specifically at the BIG-IP versions. In this lab, we are going to upgrade the SEA-vBIGIP01.termmarc.com BIG-IP to the latest 14.1 version.
 
 .. image:: ./media/lab-7-0.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 3. Navigate under Software Management, Software Images. Select the BIG-IP 14.1 image and click on **Manage Device Install**.
 
 .. image:: ./media/lab-7-1.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 4. Type a name for the task (e.g. ``seattle-upgrade``) and select the desired option for the BIG-IP upgrade.
@@ -40,85 +40,85 @@ Official documentation about BIG-IP Software Upgrades can be found on the `F5 Kn
 Click on **Add/Remove Devices**
 
 .. image:: ./media/lab-7-2.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 5. The device list shows up. Select SEA-vBIGIP01.termmarc.com.
 
 .. image:: ./media/lab-7-3.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 6. Set the Target Volume: ``HD1.2``, click on **Save**, then **Run**.
 
 .. image:: ./media/lab-7-4.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 7. The first step is to initiate the transfer of the iso file on the BIG-IP.
 
 .. image:: ./media/lab-7-5.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 8. Once the image transfer is completed, the next step is to take a ucs backup of the device. Click on **Back Up Devices**.
 
 .. image:: ./media/lab-7-6.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 9. Once the backup is completed, launch the **Run Pre-assessment**.
 
 .. image:: ./media/lab-7-7.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 Select all the options. 
 
 .. image:: ./media/lab-7-8.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 Then, press **Continue**.
 
 .. image:: ./media/lab-7-9.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 10. The software upgrade is starting. This step is typically done during a maintenance window. Time to take a coffee (or do another lab)!
 
 .. image:: ./media/lab-7-10.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 11. Once the software installation is completed, proceed with the reboot. Click on **Continue**.
 
 .. image:: ./media/lab-7-11.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 12. After the reboot complete, click on **Run All Post-Assessment**.
 
 .. image:: ./media/lab-7-12.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 And **Compare Assessment** to see what LTM differs from prior upgrade.
 
 .. image:: ./media/lab-7-13.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 Example of assessments comparison.
 
 .. image:: ./media/lab-7-14.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 13. Finally, when the Post-Assessment and software upgrade completed successfully, click on **Mark Finished**.
 
 .. image:: ./media/lab-7-15.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 14. Go back to the Device tab and re-import and re-discover SEA-vBIGIP01.termmarc.com, important step to perform after the BIG-IP upgrade.

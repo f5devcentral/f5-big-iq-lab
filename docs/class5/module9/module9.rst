@@ -1,5 +1,5 @@
-Module 9: Declarative Onboarding and VE Creation on Azure (new 7.0)
-===================================================================
+Module 9: Declarative Onboarding and VE Creation on Azure
+=========================================================
 
 BIG-IQ Centralized Management makes it easy for you to create, configure, and manage BIG-IP VE devices in an Azure environment.
 

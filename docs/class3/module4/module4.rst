@@ -1,5 +1,5 @@
-Module 4: Analytics Reporting (new 7.0)
-=======================================
+Module 4: Analytics Reporting
+=============================
 
 BIG-IQ offers new ways to export the statistical data that is stored on the BIG-IQ.
 

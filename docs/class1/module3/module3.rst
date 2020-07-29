@@ -1,5 +1,5 @@
-Module 3: BIG-IQ Application Templates & Deployment with AS3 using the UI (new 7.0)
-===================================================================================
+Module 3: BIG-IQ Application Templates & Deployment with AS3 using the UI
+=========================================================================
 
 Support of AS3 was delivered in v6.1 which got released December 2018, but only included usage via REST-API.
 With the release of BIG-IQ v7.0, AS3 is now also supported via the use of a GUI. 

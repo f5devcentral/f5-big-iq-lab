@@ -1,5 +1,5 @@
-Module 3: HTTP Traffic Capture Analytics in BIG-IQ (new 7.0)
-============================================================
+Module 3: HTTP Traffic Capture Analytics in BIG-IQ
+==================================================
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_

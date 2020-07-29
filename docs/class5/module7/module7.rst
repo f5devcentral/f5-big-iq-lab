@@ -1,5 +1,5 @@
-Module 7: Declarative Onboarding and VE Creation on VMware (new 7.0)
-====================================================================
+Module 7: Declarative Onboarding and VE Creation on VMware
+==========================================================
 
 BIG-IQ Centralized Management makes it easy for you to create, configure, and manage BIG-IP VE devices in a VMWare environment.
 
