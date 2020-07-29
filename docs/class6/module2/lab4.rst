@@ -88,18 +88,19 @@ Configured third-party certificate provider on BIG-IQ
 SSL Certificate & Key creation on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Name: ``webapp123``
-Issuer: ``Venafi UDF lab``
-Policy Folder: ``Seattle DataCenter``
-Common Name: ``webapp123.f5demo.com``
-Division: ``UDF lab``
-Organization: ``F5``
-Locality: ``Seattle``
-State/Province: ``WA``
-Country: ``US``
-E-mail Address: ``webadmin@f5demo.com``
-Subject Alternative Name: ``DNS: webapp123.f5demo.com``
-Key Password: ``Password@123456``
+- Name: ``webapp123``
+- Issuer: ``Venafi UDF lab``
+- Policy Folder: ``Seattle DataCenter``
+- Common Name: ``webapp123.f5demo.com``
+- Division: ``UDF lab``
+- Organization: ``F5``
+- Locality: ``Seattle``
+- State/Province: ``WA``
+- Country: ``US``
+- E-mail Address: ``webadmin@f5demo.com``
+- Subject Alternative Name: ``DNS: webapp123.f5demo.com``
+- Key Password: ``Password@123456``
+
 
 .. image:: ./media/img_module2_lab4-8.png
   :scale: 40%
