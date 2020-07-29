@@ -39,31 +39,6 @@ Watch the video from our partner Venafi:
 
    <a href="https://youtu.be/F0GjpYDf2qs" target="_blank">F5 New Application Deployed via Big-IQ | Paul Cleary, Venafi</a>
 
-Venafi Setup and Microsoft CA
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Open the **Venafi Trust Protection** in the Windows Server 2019 (start it if stopped).
-
-2. Open Chrome and open the Venafi Web Admin Console
-
-``https://ec2amaz-bq0fcmk.f5demo.com/vedadmin``.
-
-.. image:: ./media/img_module2_lab4-1.png
-  :scale: 40%
-  :align: center
-
-.. image:: ./media/img_module2_lab4-2.png
-  :scale: 40%
-  :align: center
-
-.. image:: ./media/img_module2_lab4-3.png
-  :scale: 40%
-  :align: center
-
-.. image:: ./media/img_module2_lab4-4.png
-  :scale: 40%
-  :align: center
-
 
 Configured third-party certificate provider on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -79,6 +54,8 @@ Click **Create**.
 - WebSDK Endpoint: ``https://ec2amaz-bq0fcmk.f5demo.com/vedsdk``
 - User Name: ``admin``
 - Password: ``Purple123@123``
+
+.. note:: The Key Passphrase is to specify a password that will be used to encrypt that private key when it's sent from verified to BIG-IQ.
 
 .. image:: ./media/img_module2_lab4-5.png
   :scale: 40%
@@ -173,7 +150,15 @@ Create a new deployment:
 
 Click **Deploy**.
 
-.. image:: ./media/img_module2_lab4-14.png
+.. image:: ./media/img_module2_lab4-14a.png
+  :scale: 40%
+  :align: center
+
+5. 
+
+Device Folder Path: ``\VED\Policy\Devices and Applications\External\Big-IQ``
+
+.. image:: ./media/img_module2_lab4-14b.png
   :scale: 40%
   :align: center
 
@@ -265,5 +250,44 @@ You can test the application service by opening a browser in the Ubuntu Jump-hos
 .. note:: The certificate shows not secure as we are using a demo Root CA not imported in the browser by default.
 
 .. image:: ./media/img_module2_lab4-18.png
+  :scale: 40%
+  :align: center
+
+Venafi Setup and Microsoft CA
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In this part, we are going to review some of the Venafi configuration.
+
+1. Open the **Venafi Trust Protection** in the Windows Server 2019 (start it if stopped).
+
+2. Open Chrome and open the Venafi Web Admin Console
+
+``https://ec2amaz-bq0fcmk.f5demo.com/vedadmin``
+
+3. Under the **Policy** menu, navigate under Policy > Administration > CA Templates and select the **Microsoft CA-lab-1year**.
+
+This is where is defined the connection between Venafi and Microsoft Certification Authority. 
+The Credentials below will contain the username and password to access the MS CA (more info on `MS CA<https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/server-certificate-deployment-overview>`_).
+
+.. image:: ./media/img_module2_lab4-1.png
+  :scale: 40%
+  :align: center
+
+4. Then, navigate under Policy > Certificates and select the policy folder called **F5**, then click on the **Certificates** tab.
+
+We can set default values in thie F5 Policy Parent folder and anything that isn't set on one of the sub folders in the Boston, 
+San Jose, Paris or Seattle folders gets defaulted to the F5 values.
+
+In this lab, we have changed the Management Type to **Enrollment**, as well as the Organization Name and Unit
+
+.. image:: ./media/img_module2_lab4-2.png
+  :scale: 40%
+  :align: center
+
+.. image:: ./media/img_module2_lab4-3.png
+  :scale: 40%
+  :align: center
+
+.. image:: ./media/img_module2_lab4-4.png
   :scale: 40%
   :align: center

@@ -28,7 +28,7 @@ is being send to (check ``crontab`` config for more details).
 |                                                                                           | - Port ``8081``: f5-hello-world application                                              |
 |                                                                                           | - Port ``8082``: f5-demo-httpd application                                               |
 |                                                                                           | - Port ``8083``: nginx application (delay 300ms loss 30% corrupt 30%)                    |
-|                                                                                           | - Port ``445``: ASM Policy Validator                                                     |
+|                                                                                           | - Port ``446``: ASM Policy Validator                                                     |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 
 .. note:: IPs from ``10.1.10.110`` to ``10.1.10.142`` have a corresponding FQDN named from ``site10.example.com`` to ``site42.example.com``.

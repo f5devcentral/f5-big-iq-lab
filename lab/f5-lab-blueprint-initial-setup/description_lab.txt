@@ -4,52 +4,51 @@ The Linux box in the environment has multiple cron jobs that are generating traf
 DEMO LAB GUIDE: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
 DRAFT VERSION: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/
 
-APPLICATION SERVICES ALREADY AVAILABLE IN THE BLUEPRINT:
-    # airport_security:
-        AS3 security_site18_seattle 10.1.10.118 SEA AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 (Paula)
-        AS3 security_site16_boston 10.1.10.116 BOS AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1 (Paula)
-        AS3 security_fqdn airports.example.com BOS AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1 (Paula)
-    # IT_apps
-        -- removed in 7.1 BP -- AS3 inventory_site38httpsBigip121 10.1.10.138 SJC without AS3 template (Paula)
-        AS3 backend_site24tcp 10.1.10.124 SEA AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2 (Paula)
-        Service Catalog site36.example.com 10.1.10.136 BOS Default-f5-HTTPS-WAF-lb-template-v1 (Paula)
-        Legacy App media.site42.example.com 10.1.10.142 SEA (Paula)
-    # finance_apps
-        AS3 conference_site41waf 10.1.10.141 SEA without AS3 template (Paul)
-        AS3 mail_site40waf 10.1.10.140 SEA without AS3 template (Paul)
-        AS3 tax_site17access 10.1.10.117 BOS without AS3 template (Paul)
-        -- removed in 7.1 BP -- Service Catalog site42.example.com 10.1.10.142 SEA Default-f5-HTTP-lb-template-v1 (Paul)
++----------------------------------------------------------------------------------------------------------------------------+
+| APPLICATION SERVICES ALREADY AVAILABLE IN THE BLUEPRINT:                                                                |
++------------------+--------------------------------------------------------------------------+--------------+------+------+
+| airport_security | AS3 security_site18_seattle                                                            | 10.1.10.118 | SEA | Paula |
+|                           | (AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2) |                     |         |          |
+|                           +--------------------------------------------------------------------------+--------------+------+         |
+|                           | AS3 security_site16_boston                                                            | 10.1.10.116 | BOS |          |
+|                           | (AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1)        |                     |          |         |
+|                           +--------------------------------------------------------------------------+--------------+------+         |
+|                           | AS3 security_fqdn airports.example.com                                       |                     | BOS |          |
+|                           | (AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1)              |                     |          |          |
++------------------+--------------------------------------------------------------------------+--------------+------+------+
+| IT_apps             | AS3 backend_site24tcp                                                                  | 10.1.10.124 | SEA  | Paula |
+|                           | (AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2)                     |                     |          |           |
+|                           +--------------------------------------------------------------------------+--------------+------+          |
+|                           | Service Catalog site36.example.com                                             | 10.1.10.136 | BOS  |          |
+|                           | (Default-f5-HTTPS-WAF-lb-template-v1)                                       |                     |           |          |
+|                           +--------------------------------------------------------------------------+--------------+------+          |
+|                           | Legacy App media.site42.example.com                                        | 10.1.10.142 | SEA   |          |
++------------------+--------------------------------------------------------------------------+--------------+------+-------+
+| finance_apps     | AS3 conference_site41waf                                                             | 10.1.10.141 | SEA  | Paul   |
+|                           | (without AS3 template using API)                                                    |                    |          |           |
+|                           +--------------------------------------------------------------------------+--------------+------+          |
+|                           | AS3 mail_site40waf                                                                        | 10.1.10.140 | SEA  |           |
+|                           | (without AS3 template using API)                                                   |                     |          |           |
+|                           +--------------------------------------------------------------------------+--------------+------+          |
+|                           | AS3 tax_site17access                                                                     | 10.1.10.117 | BOS |           |
+|                           | (without AS3 template using API)                                                    |                     |          |          |
++------------------+--------------------------------------------------------------------------+--------------+-----+--------+
 
-VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:
-    # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
-        10.1.10.111
-        10.1.10.113
-        10.1.10.119 (for access only)
-        10.1.10.123
-        10.1.10.127
-        10.1.10.129
-        10.1.10.131
-        10.1.10.133
-        10.1.10.134
++------------------------------------------------------------------------------------------------------------------------+
+| VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:                            |
++------------------------------------------------------------+----------------------------------------------------------+
+| BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE             | 10.1.10.111,113,119,123,127,129,131,133,134       |
++------------------------------------------------------------+----------------------------------------------------------+
+| SEA-vBIGIP01.termmarc.com.v14.1 (VPN, SSLO)      | 10.1.10.114,120,122,126                                         |
++------------------------------------------------------------+----------------------------------------------------------+
+| SJC-vBIGIP01.termmarc.com.v15.1                           | 10.1.10.137,138,139                                                 |
++------------------------------------------------------------------------------------------------------------------------+
 
-    # SEA-vBIGIP01.termmarc.com.v14.1 (VPN, SSLO)
-        10.1.10.114
-        10.1.10.120
-        10.1.10.122
-        10.1.10.126
-
-    # SJC-vBIGIP01.termmarc.com.v15.1
-        10.1.10.137
-        10.1.10.138
-        10.1.10.139
-
-POOL MEMBERS (on the Ubuntu 19.10 Lamp Server)
-        10.1.20.110-123
-
-DNS LISTENERS:
-    # BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
-        10.1.10.203
-        10.1.10.204
++-------------------------------------------------------------------------+-------------------+
+| POOL MEMBERS (on the Ubuntu 19.10 Lamp Server)                 | 10.1.20.110-123 |
++-------------------------------------------------------------------------+-------------------+
+| DNS LISTENERS: BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE  | 10.1.10.203,204 |
++-------------------------------------------------------------------------+-------------------+
 
 DOCUMENTATIONS:
 - BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
@@ -77,6 +76,7 @@ If you have questions, comments, or concerns, please reach out to Roman Jouhanne
 Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Splunk, Gitlab
 
 List of Virtual Servers and Applications Servers where various type of traffic is being send to (check crontab config for more details).
+
 - Virtual IP addresses where the traffic generator sends HTTP clean traffic	10.1.10.110 to 10.1.10.142 (except 10.1.10.117, 10.1.10.119 and 10.1.10.121 (used for access in class 9)
 - Virtual IP addresses where the traffic generator sends HTTP bad traffic	10.1.10.110 to 10.1.10.136
 - Virtual IP address(es) where the traffic generator sends access traffic (class 9)	10.1.10.222
