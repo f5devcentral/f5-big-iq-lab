@@ -24,9 +24,7 @@ Traffic Manager clientssl or serverssl profile, and deploying it.
 **Tasks:**
 
 1. Move a certificate from unmanaged to managed state.
-
 2. Create and Import a self-signed certificates/key to BIG-IQ
-
 3. Renew expired certificates and Deploy from BIG-IQ to managed BIG-IP
 
 .. note::

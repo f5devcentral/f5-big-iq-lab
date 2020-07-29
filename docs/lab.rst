@@ -33,4 +33,10 @@ is being send to (check ``crontab`` config for more details).
 
 .. note:: IPs from ``10.1.10.110`` to ``10.1.10.142`` have a corresponding FQDN named from ``site10.example.com`` to ``site42.example.com``.
 
+**Lab Diagram**:
+
+.. image:: ./pictures/diagram_udf.png
+   :align: center
+   :scale: 40%
+
 |repoinfo|

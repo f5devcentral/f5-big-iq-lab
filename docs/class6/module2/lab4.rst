@@ -29,25 +29,24 @@ Also:
 Watch the video from our partner Venafi:
 
 - |video1|
-- |video3|
+- |video2|
 
 .. |video1| raw:: html
 
    <a href="https://youtu.be/BrkIlhpEGtU" target="_blank">F5 Solution Overview: The Difference Between Big-IP and Big-IQ | Paul Cleary, Venafi</a>
 
-.. |video1| raw:: html
+.. |video2| raw:: html
 
    <a href="https://youtu.be/F0GjpYDf2qs" target="_blank">F5 New Application Deployed via Big-IQ | Paul Cleary, Venafi</a>
-
-|
-
 
 Venafi Setup and Microsoft CA
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Open the **Venafi Trust Protection** in the Windows Server 2019 (start it if stopped).
 
-2. Open Chrome and open the Venafi Web Admin Console ``https://ec2amaz-bq0fcmk.f5demo.com/vedadmin``.
+2. Open Chrome and open the Venafi Web Admin Console
+
+``https://ec2amaz-bq0fcmk.f5demo.com/vedadmin``.
 
 .. image:: ./media/img_module2_lab4-1.png
   :scale: 40%
@@ -94,6 +93,8 @@ Click on **Test Connection**.
   :align: center
 
 - Policy Folder Path: ``\VED\Policy\Certificates\F5``
+
+Click on **Get Policy Folder**.
 
 .. image:: ./media/img_module2_lab4-7.png
   :scale: 40%
