@@ -236,7 +236,6 @@ Click **Deploy**.
   :scale: 40%
   :align: center
 
-
 AS3 HTTPS offload application service deployment
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

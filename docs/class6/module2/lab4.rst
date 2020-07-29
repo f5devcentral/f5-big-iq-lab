@@ -22,13 +22,106 @@ Also:
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/MUl74aWxE88" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/BrkIlhpEGtU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/-LfDKoMYa9Y" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+.. raw:: html
 
-Are you interested to see a lab on this topic? `Open an issue on GitHub`_
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/F0GjpYDf2qs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-.. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
+|
 
+
+Venafi Setup and Microsoft CA
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: ./media/img_module2_lab4-1.png
+  :scale: 40%
+  :align: center
+
+.. image:: ./media/img_module2_lab4-2.png
+  :scale: 40%
+  :align: center
+
+.. image:: ./media/img_module2_lab4-3.png
+  :scale: 40%
+  :align: center
+
+.. image:: ./media/img_module2_lab4-4.png
+  :scale: 40%
+  :align: center
+
+
+Configured third-party certificate provider on BIG-IQ
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- CA Providers: ``Venafi``
+- Name: ``Venafi UDF lab``
+- WebSDK Endpoint: ``https://ec2amaz-bq0fcmk.f5demo.com/vedsdk``
+- User Name: ``admin``
+- Password: ``Purple123@123``
+
+.. image:: ./media/img_module2_lab4-5.png
+  :scale: 40%
+  :align: center
+
+**Test Connection**
+
+**Save & Close**
+
+.. image:: ./media/img_module2_lab4-6.png
+  :scale: 40%
+  :align: center
+
+- Policy Folder Path: ``\VED\Policy\Certificates\F5``
+
+.. image:: ./media/img_module2_lab4-7.png
+  :scale: 40%
+  :align: center
+
+
+SSL Certificate & Key creation on BIG-IQ
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Name: ``webapp123``
+Issuer: ``Venafi UDF lab``
+Policy Folder: ``Seattle DataCenter``
+Common Name: ``webapp123.f5demo.com``
+Division: ``UDF lab``
+Organization: ``F5``
+Locality: ``Seattle``
+State/Province: ``WA``
+Country: ``US``
+E-mail Address: ``webadmin@f5demo.com``
+Subject Alternative Name: ``DNS: webapp123.f5demo.com``
+Key Password: ``Password@123456``
+
+.. image:: ./media/img_module2_lab4-8.png
+  :scale: 40%
+  :align: center
+
+
+.. image:: ./media/img_module2_lab4-9.png
+  :scale: 40%
+  :align: center
+
+
+.. image:: ./media/img_module2_lab4-10.png
+  :scale: 40%
+  :align: center
+
+
+.. image:: ./media/img_module2_lab4-11.png
+  :scale: 40%
+  :align: center
+
+
+AS3 HTTPS offload application service deployment
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+to be continue...
