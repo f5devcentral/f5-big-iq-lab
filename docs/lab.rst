@@ -1,4 +1,3 @@
-
 Lab environment details
 ^^^^^^^^^^^^^^^^^^^^^^^
 
