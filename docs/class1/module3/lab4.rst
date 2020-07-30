@@ -1,6 +1,8 @@
 Lab 3.4: Limit Pool Member access only with AS3 Template through BIG-IQ GUI
 ---------------------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
 Workflow
 ^^^^^^^^
 

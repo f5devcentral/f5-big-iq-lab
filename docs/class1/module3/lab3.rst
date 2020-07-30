@@ -1,6 +1,11 @@
 Lab 3.3: AS3 Application Service modification through BIG-IQ UI
 ---------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+~~~~~
+
 Through the GUI and when allowed, the application owner is able to make small modifications.
 
 1. In ``tenant1_https_app_service``, click on the **SERVERS**, then select the **CONFIGURATION** tab 

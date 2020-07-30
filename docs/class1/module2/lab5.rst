@@ -1,6 +1,11 @@
 Lab 2.5: FQDN and Service Discovery
 -----------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+~~~~~
+
 Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
 Execute the playbooks for each tasks

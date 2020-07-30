@@ -7,29 +7,7 @@ deployed directly on BIG-IP using the API on BIG-IQ.
 The process consist simply to add the target property under the ADC class in the 
 AS3 declaration and re-send the full declaration to the BIG-IQ declare or deploy-to-application APIs.
 
-From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
-
-.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
-    :align: left
-    :scale: 60%
-
-|
-
-Open Chrome and Postman.
-
-For Postman, click right and click on execute (wait ~2 minutes).
-
-.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
-
-.. image:: ../../pictures/postman.png
-    :align: center
-    :scale: 60%
-
-|
+.. include:: /accesslab.rst
 
 Deploy AS3 Application Service directly to the BIG-IP
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

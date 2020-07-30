@@ -1,17 +1,7 @@
 Lab 2.1: Application Creation using AS3 through BIG-IQ
 ------------------------------------------------------
 
-From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
-
-.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
-    :align: left
-    :scale: 60%
-
-|
+.. include:: /accesslab.rst
 
 Open Chrome and Postman.
 

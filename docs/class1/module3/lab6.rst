@@ -1,6 +1,8 @@
 Lab 3.6: AS3 Switch Template: add a Firewall Policy to an existing Application Service
 --------------------------------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
 Workflow
 ^^^^^^^^
 

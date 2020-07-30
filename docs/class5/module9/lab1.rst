@@ -99,11 +99,7 @@ Once you've subscribed, you should see something like this:
 
 The below script takes Azure parameters and creates Azure resources. These resources are used in BIG-IQ as a place to our BIG-IP to be deployed and configured.
 
-SSH Ubuntu host in lab environment:
-
-.. image:: ../../pictures/udf_ubuntu_ssh.png
-    :align: left
-    :scale: 40%
+SSH Ubuntu host in lab environment.
 
 Navigate to: ``cd f5-azure-vpn-ssg``
 

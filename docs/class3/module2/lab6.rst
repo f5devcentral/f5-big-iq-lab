@@ -41,16 +41,6 @@ then Local Traffic  ››  Profiles : Services : HTTP. Click on ``HTTP_Profile`
           from https://github.com/f5devcentral/f5-big-iq and use switch template feature.
 
 6. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
-   To do this, in your lab environment, click on the *Access* button of the *Ubuntu Lamp Server* system 
-   and select *noVNC* or *xRDP*.
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
-
-.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
-    :align: left
-    :scale: 60%
-
-|
 
 7. Open Chrome and navigate on the website https\:\/\/site16.example.com. 
    If you open the developer tools in the browser (ctrl+shift+i), 

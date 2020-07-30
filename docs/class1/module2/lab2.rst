@@ -8,6 +8,8 @@ In this lab, we will show 2 use cases.
 - Task 5a will show an example of updating a tenant/application by re-posting the entire declaration using POST. In this case, user A and user B need to know the full content of the Tenant.
 - Task 5b will show an example of updating a tenant/application by posting only what's new to an existing declaration using PATCH. In this case, user A and user B don't need to know the full content of the Tenant but 1 single tenant can be shared.
 
+.. include:: /accesslab.rst
+
 Task 5a - Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

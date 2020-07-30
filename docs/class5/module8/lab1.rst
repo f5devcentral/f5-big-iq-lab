@@ -5,11 +5,7 @@ Lab 8.1: Prepare your AWS Account
 
 1. Create the AWS environment and VPN
 
-SSH Ubuntu host in lab environment:
-
-.. image:: ../../pictures/udf_ubuntu_ssh.png
-    :align: left
-    :scale: 40%
+SSH Ubuntu host in lab environment.
 
 Navigate to: ``cd f5-aws-vpn-ssg``
 

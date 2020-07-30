@@ -22,7 +22,7 @@ and select TMUI. The credentials to access the BIG-IQ TMUI are ``david/david`` a
 
 .. note:: You can also click on *DETAILS* on each component to see the credentials
 
-.. |image1| image:: /pictures/udf_ubuntu_rdp_vnc2.png
+.. |image1| image:: /pictures/udf_ubuntu_rdp_vnc.png
    :scale: 60%
 
 .. |image2| image:: /pictures/udf_bigiq_tmui.png

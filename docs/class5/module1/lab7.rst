@@ -21,6 +21,11 @@ Official documentation about BIG-IP Software Upgrades can be found on the `F5 Kn
 
 |
 
+.. include:: /accesslab.rst
+
+Tasks
+~~~~~
+
 1. Login to BIG-IQ as **david**.
 
 2. Navigate to the DEVICE tab. Look at the device list, specifically at the BIG-IP versions. In this lab, we are going to upgrade the SEA-vBIGIP01.termmarc.com BIG-IP to the latest 14.1 version.

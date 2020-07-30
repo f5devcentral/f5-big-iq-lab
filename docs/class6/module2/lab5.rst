@@ -22,11 +22,7 @@ We will start by deploying the web server (simple Hello World Java web app) on a
 .. warning:: If you already created an AWS environment and VPN in Class 2 Module 4 (AWS SSG) or Class 5 Module 8 (VE creation),
              you do not need to recreate this item.
 
-SSH Ubuntu host in lab environment:
-
-.. image:: ../../pictures/udf_ubuntu_ssh.png
-    :align: left
-    :scale: 40%
+SSH Ubuntu host in lab environment.
 
 Navigate to: ``cd f5-aws-vpn-ssg``
 

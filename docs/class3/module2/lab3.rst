@@ -5,16 +5,6 @@ Lab 2.3: Troubleshooting Application Response Time Browser
 2. Select application service ``security_site16_boston`` located under ``airport_security`` application.
 
 3. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
-
-.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
-    :align: left
-    :scale: 60%
-
-|
 
 Open Chrome and Firefox and navigate on the website http\:\/\/site16.example.com/f5_browser_issue.php.
 

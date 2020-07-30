@@ -7,12 +7,20 @@ uploads can be performed ad-hoc or as part of a F5 support case. If a
 support case is specified in the upload job, the qkview(s) will
 automatically be associated/linked to the support case.
 
-.. warning:: Re-license BIG-IQ CM with an Eval License in order to run this lab.
-
 .. raw:: html
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/4zXcX90KRyc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+.. include:: /accesslab.rst
+
+Tasks
+~~~~~
+
+.. warning::
+
+      The lab environement is using development license. In order to run this lab, 
+      ask your F5 representative to provide evaluation license, then re-license the BIG-IQ CM
+      prior starting this lab (go to System > This Device > Licensing, Reactivate Base Registration Key.
 
 1. Navigate to **Monitoring** on the top menu bar and then to
    **REPORTS-> Device-> iHealth** -> **Configuration** on the left-hand

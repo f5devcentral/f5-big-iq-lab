@@ -8,6 +8,11 @@ use it to deploy an AS3 Application Service on a BIG-IP through BIG-IQ.
 
 .. _FAST engine extension: https://marketplace.visualstudio.com/items?itemName=DumpySquare.vscode-f5-fast
 
+.. include:: /accesslab.rst
+
+Tasks
+~~~~~
+
 1. Click on the *Visual Studio Code* button on the system *Ubuntu Lamp Server* in lab environment.
 Use ``purple123`` to authenticate.
 

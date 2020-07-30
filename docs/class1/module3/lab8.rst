@@ -1,6 +1,8 @@
 Lab 3.8: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IQ
 -----------------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
 Workflow
 ^^^^^^^^
 

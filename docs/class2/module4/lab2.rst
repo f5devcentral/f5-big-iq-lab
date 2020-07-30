@@ -9,12 +9,6 @@ Access lab orchestrator (using ansible/bash)
 
 To setup ``BIG-IQ`` and ``AWS`` automatically, open a ``SSH`` connection on the system called: **Ubuntu Lamp Server**
 
-.. image:: ../../pictures/udf_ubuntu_ssh.png
-    :align: left
-    :scale: 40%
-
-|
-
 Once connected via ``SSH``, go into the folder: **f5-aws-vpn-ssg**: 
 
     ``cd f5-aws-vpn-ssg/``

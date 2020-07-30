@@ -23,9 +23,11 @@ Traffic Manager clientssl or serverssl profile, and deploying it.
 
 .. note::
 
-	 When you discover a BIG-IP device, BIG-IQ Centralized Management imports its SSL certificates properties (metadata), 
-    but not the actual SSL certificates and key pairs. These certificates display as Unmanaged on the BIG-IQ Certificates & Keys screen.
-    This allows you to monitor each SSL certificate's expiration date from BIG-IQ, without having to log on directly to the BIG-IP device.
+	 When you discover a BIG-IP device, BIG-IQ Centralized Management imports its SSL certificates 
+    properties (metadata), but not the actual SSL certificates and key pairs. 
+    These certificates display as Unmanaged on the BIG-IQ Certificates & Keys screen.
+    This allows you to monitor each SSL certificate\'s expiration date from BIG-IQ, without 
+    having to log on directly to the BIG-IP device.
 
 Convert an unmanaged SSL key certificate and key pair to managed so you
 can centrally manage it from BIG-IQ Centralized Management. This saves

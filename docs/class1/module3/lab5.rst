@@ -1,6 +1,8 @@
 Lab 3.5: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP
 -----------------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
 Workflow
 ^^^^^^^^
 
@@ -246,17 +248,7 @@ hit Policies. Application Security Policy is Enabled and the Log Profile has a t
   :scale: 40%
   :align: center
 
-9. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
-
-.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
-    :align: left
-    :scale: 40%
-
-|
+9. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
 
 Open Chrome and navigate to the following URL: ``https://10.1.10.122``.
 

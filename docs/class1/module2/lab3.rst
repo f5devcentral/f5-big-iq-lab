@@ -1,6 +1,8 @@
 Lab 2.3: Deploying AS3 Templates on BIG-IQ
 ------------------------------------------
 
+.. include:: /accesslab.rst
+
 Task 6 - Create custom HTTP AS3 Template on BIG-IQ
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
