@@ -5,18 +5,7 @@ Official documentation about AS3 application service management via a GUI can be
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/monitoring-managing-applications-using-big-iq.html
 
-From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
-
-.. image:: ../../pictures/udf_ubuntu_rdp_vnc.png
-    :align: left
-    :scale: 60%
-
-|
-
+.. include:: /accesslab.rst
 
 View AS3 templates section
 ^^^^^^^^^^^^^^^^^^^^^^^^^^

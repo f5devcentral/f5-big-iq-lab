@@ -267,7 +267,7 @@ In this part, we are going to review some of the Venafi configuration.
 3. Under the **Policy** menu, navigate under Policy > Administration > CA Templates and select the **Microsoft CA-lab-1year**.
 
 This is where is defined the connection between Venafi and Microsoft Certification Authority. 
-The Credentials below will contain the username and password to access the MS CA (more info on `MS CA<https://docs.microsoft.com/en-us/windows-server/networking/core-network-guide/cncg/server-certs/server-certificate-deployment-overview>`_).
+The Credentials below will contain the username and password to access the MS CA.
 
 .. image:: ./media/img_module2_lab4-1.png
   :scale: 40%
