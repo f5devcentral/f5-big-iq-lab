@@ -6,6 +6,11 @@ to the Application dashboard. Note this will not "re-deploy" the application or 
 Rather this will take the virtual server and all its child objects and group them together as an Application 
 within the Application dashboard of BIG-IQ.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
 
 2. Navigate to Applications > Applications. Click on **Create** to Create an Application Service:

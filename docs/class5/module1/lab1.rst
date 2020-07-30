@@ -4,7 +4,7 @@ Lab 1.1: Import a device to an existing Cluster
 .. include:: /accesslab.rst
 
 Tasks
-~~~~~
+^^^^^
 
 .. warning:: **BOS-vBIGIP02.termmarc.com (10.1.10.10)** is currently managed by BIG-IQ CM, however it is in the same Device Service Cluster (DSC) with BOS-vBIGIP01. We will be adding this device to BIG-IQ. 
 

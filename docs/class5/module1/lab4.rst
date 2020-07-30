@@ -14,7 +14,7 @@ automatically be associated/linked to the support case.
 .. include:: /accesslab.rst
 
 Tasks
-~~~~~
+^^^^^
 
 .. warning::
 

@@ -4,7 +4,7 @@ Lab 2.8: AS3 Application Creation using AWX/Ansible Tower and BIG-IQ
 .. include:: /accesslab.rst
 
 Tasks
-~~~~~
+^^^^^
 
 Click on the *AWX (Ansible Tower)* button on the system *Ubuntu Lamp Server* in lab environment.
 Use ``admin/purple123`` to authenticate.

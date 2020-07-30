@@ -5,6 +5,11 @@ In this lab, David is going to create an HTTP analytics profile and attach it to
 the VIP for the legacy application you just created. This will enable the BIG-IP to send HTTP analytics to the BIG-IQ and populate
 the dashboard.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Go to **Configuration > Local Traffic > Profiles** and look at all existing analytics profiles
    available in this BIG-IQ. You can use the filter to look for a specific profile.
 

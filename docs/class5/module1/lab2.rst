@@ -4,7 +4,7 @@ Lab 1.2: Import Services on the new device
 .. include:: /accesslab.rst
 
 Tasks
-~~~~~
+^^^^^
 
 On the Device Inventory screen, click the link in the Services column for BOS-vBIGIP01. (you may need to scroll right to see the services column)
 

@@ -4,7 +4,7 @@ Lab 2.7: Perform lab 1 to 3 using Ansible URI module
 .. include:: /accesslab.rst
 
 Tasks
-~~~~~
+^^^^^
 
 Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 

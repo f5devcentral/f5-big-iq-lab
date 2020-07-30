@@ -1,6 +1,11 @@
 Lab 4.1: Move Application Services in BIG-IQ
 --------------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Connect as **paula**.
 
 3 Applications are showing on the dashboard: ``IT_apps``, ``airport_security`` and ``Unknown Applications``.

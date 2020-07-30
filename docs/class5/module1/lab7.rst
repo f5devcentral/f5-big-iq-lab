@@ -24,7 +24,7 @@ Official documentation about BIG-IP Software Upgrades can be found on the `F5 Kn
 .. include:: /accesslab.rst
 
 Tasks
-~~~~~
+^^^^^
 
 1. Login to BIG-IQ as **david**.
 

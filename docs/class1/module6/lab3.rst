@@ -10,6 +10,11 @@ of the legacy application service on the BIG-IQ dashboard. This would be the rec
 
 .. _known issue: https://techdocs.f5.com/kb/en-us/products/big-iq-centralized-mgmt/releasenotes/related/relnote-supplement-big-iq-central-mgmt-7-1-0.html#A899789
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Login to BIG-IQ as **david**. Delete the application **legacy-app-service**.
 
 2. Delete the ``legacy-app-service``.
