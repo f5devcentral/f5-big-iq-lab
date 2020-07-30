@@ -3,11 +3,14 @@ Class 11: BIG-IQ DDoS Monitoring and Dashboard
 
 In this class, we will review new DDoS Dashboard view, protection summary, and DDoS Event logging and correlation. 
 
+We will cover BIG-IQ DDoS Monitoring and Dashboard. 
+Components used include BIG-IP CM/DCD along with the BOS and SJC BIG-IPs and Ubuntu host. 
+SEA BIG-IPs can be stopped.
+
 .. toctree::
    :maxdepth: 1
    :glob:
 
-   intro
    module*/module*
    
 ------------

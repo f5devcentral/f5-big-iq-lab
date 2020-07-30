@@ -38,3 +38,25 @@ export our inventory to a CSV file, and review the inventory.
    :glob:
 
    lab*
+
+
+**BIG-IP DEVICES**
+
+- Discuss the data shown in the table for each device: hostname, IP address, services managed
+- Discuss the ability to export a CSV file of the device inventory, point out additional information is included in that inventory: license key, license file, etc
+- Click the More button to show additional tasks that can be launched for each device from this menu.
+- Click on a device name and show the properties shown for each device
+
+**BIG-IP CLUSTERS**
+
+- Show the DSC cluster sync status is available
+- Drill down on a cluster and click the traffic group tab to show active vs standby
+- Show the DNS sync group information is available
+- Talk about how this is multiple commands run on each BIG-IP device and manual correlation without BIG-IQ.
+
+**DEVICE GROUPS**
+
+- Talk about the ability to create static and dynamic device groups
+- Static groups require you to choose each device that you want to include in the group
+- Dynamic groups allow you to specify a root group and a search term.  When devices match this search term, they are automatically added to the group.  For example, if the device host names have an indication of what datacenter they are installed it, you can create a dynamic group to manage things like backups to happen at the same time.  As new devices are added that match the term, they would automatically be backed up by the backup schedule that references this dynamic group.
+- Groups can be scoped for use in particular areas of the product, so if you have groups that only apply to the Web Application Security configuration, you can make sure that those groups don’t appear for selection in things like device backups.

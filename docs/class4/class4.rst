@@ -7,7 +7,6 @@ In this class, we will focus on the BIG-IQ CM and DCD plaforms. Let's have a loo
    :maxdepth: 1
    :glob:
 
-   intro
    module*/module*
 
 ------------

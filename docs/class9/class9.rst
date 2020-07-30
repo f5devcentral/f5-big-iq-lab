@@ -7,7 +7,6 @@ In this class, we will review the access management and access application creat
    :maxdepth: 1
    :glob:
 
-   intro
    module*/module*
 
 ------------

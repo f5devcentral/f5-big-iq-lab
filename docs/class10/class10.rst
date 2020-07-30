@@ -7,7 +7,6 @@ In this class, we will review the DNS Management in BIG-IQ.
    :maxdepth: 1
    :glob:
 
-   intro
    module*/module*
 
 ------------

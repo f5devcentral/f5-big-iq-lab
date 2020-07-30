@@ -23,7 +23,6 @@ See `Class 1 Module 3`_ for more details on BIG-IQ and AS3 WAF integration.
    :maxdepth: 1
    :glob:
 
-   intro
    module*/module*
 
 ------------

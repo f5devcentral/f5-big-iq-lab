@@ -7,7 +7,6 @@ In this class, we will review the application management feature available with 
    :maxdepth: 1
    :glob:
 
-   intro
    module*/module*
 
 ------------
