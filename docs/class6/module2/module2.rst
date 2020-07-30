@@ -70,8 +70,8 @@ This area allows you to manage and compare the snapshots created by the BIG-IQ s
 Snapshots are automatically created by the evaluation and deployment process described above, 
 but they can be created as part of configuration import or in an ad-hoc manner in this area.
 These snapshots are a reference to the versions of the objects that are stored in the BIG-IQ 
-database at the time the snapshot is taken. You can compare two snapshots to see what differences 
-there are between the two points in time the snapshots were taken.  
+database at the time the snapshot is taken. You can compare two snapshots to see what are the differences 
+between the two points in time the snapshots were taken.  
 
 The snapshots can be used as part of a deployment activity to roll back the configuration of an 
 object or objects to a prior version and they can also be used to roll back the BIG-IQ configuration 
