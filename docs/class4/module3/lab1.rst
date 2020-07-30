@@ -1,5 +1,9 @@
 Lab 3.1: BIG-IQ Configuration Management (CM)
 ---------------------------------------------
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 
 .. warning:: This lab has steps to reset the BIG-IQ CM and DCD to its factory configuration. Plan accordinly if you need to run other classes/labs (this one should be the last one).
 

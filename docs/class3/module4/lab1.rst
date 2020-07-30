@@ -1,5 +1,10 @@
 Lab 4.1: Generate Reports in PDF
 --------------------------------
+
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 1. Connect as **paula**.
 
 .. image:: ../pictures/module4/img_lab1_1.png

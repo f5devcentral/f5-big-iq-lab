@@ -1,6 +1,11 @@
 Lab 11.1: Prepare GCP account credentials
 -----------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 `Google service accounts`_ are used for authentication to Google, and are associated with service account keys (public/private RSA key pairs). 
 
 .. _Google service accounts: https://cloud.google.com/iam/docs/service-accounts

@@ -11,6 +11,8 @@ Replication within the ES cluster does not follow Zones.
 .. note:: There can still be latency issues when using BIG-IQ management console to view statistical data as the queries
           for that data are done in real-time, which means they must traverse the network for both the query and the results.
 
+.. include:: /accesslab.rst
+
 Configure a new DCD and setup 2 different zones
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

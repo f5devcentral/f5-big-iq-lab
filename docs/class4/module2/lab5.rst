@@ -1,6 +1,9 @@
 Lab 2.5: Test access privileges for the user with the custom role
 -----------------------------------------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Test user nsadmin on the access privileges for the custom resource groups assigned.
 
 1. Log out the admin user from the right upper corner, and log back into the BIG-IQ with the user “nsadmin” and password “nsadmin”, and select **Local** from Auth Provider list.

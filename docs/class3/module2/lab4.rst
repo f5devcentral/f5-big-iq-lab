@@ -1,5 +1,10 @@
 Lab 2.4: Troubleshooting 503 Service Unavailable
 ------------------------------------------------
+
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 1. Login as **paula** in BIG-IQ.
 
 2. Select the application service ``security_site16_boston`` located under ``airport_security`` application.

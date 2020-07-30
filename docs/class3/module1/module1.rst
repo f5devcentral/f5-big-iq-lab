@@ -15,6 +15,8 @@ the BIG-IP VE are in the public cloud such as AWS or Azure, you will need a VPN 
 
 .. _K96505382: https://support.f5.com/csp/article/K96505382
 
+.. include:: /accesslab.rst
+
 General Views and Configuration Applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

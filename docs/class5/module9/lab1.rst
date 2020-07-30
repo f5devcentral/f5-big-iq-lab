@@ -1,6 +1,9 @@
 Lab 9.1: Prepare your Azure Account 
 -----------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 .. warning:: If you already created an Azure Application in Class 2 (Azure SSG), you do not need to recreate this item.
 
 Setting up a Service Principal Account

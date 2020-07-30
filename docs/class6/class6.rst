@@ -16,7 +16,7 @@ To learn more on `Application Delivery Controllers`_.
 
 ------------
 
-Let's have a look at the ``Configuration Tab`` in BIG-IQ.
+The ``Configuration Tab`` in BIG-IQ.
 
 .. image:: ./pictures/img_module1_1.png
   :align: center
@@ -24,42 +24,7 @@ Let's have a look at the ``Configuration Tab`` in BIG-IQ.
 
 |
 
-**LOCAL TRAFFIC**
-
-  -	Click on the virtual server menu.  Show the state and availability.  Show the ability to sort the column in the table.  Show the ability to search and filter the table.
-  -	Click on a virtual server that is installed on the clustered BIG-IPs (01 and 02), like the HR virtual server.  Point out that the editing view is very similar to the view on the BIG-IP.  Change something like the port and save the change.  Point out that BIG-IQ has updated the staged configuration for the virtual server on both cluster devices.
-  -	Show the ability to clone a virtual server to create one that is very similar to an existing one.  Cloned virtuals can be created on the same device/cluster or on a different device/cluster.  Note: with the service template feature, this feature may become less used/useful, as this only clones the virtual, not all of the application components.
-  -	Show the ability to bulk attach iRules.
-  -	Show the ability to select one or more virtuals and create a partial deployment.
-  -	Show the ability to edit iRules.  BIG-IQ does not do any context checking, but depending on the browser, you might see some editing assistance.
-  -	Review the rest of the LTM components
-
-  - Click on the certificate management area
-  
-    - Click on Certs and Keys: This is where we can manage traffic certs to be used in SSL profiles.
-    - Create button allows you to create self-signed certs or create a CSR to send off to a CA for a signed cert.
-    - After you receive the signed cert, you can click the Import button to import the cert, key, or PKCS#12 bundle.
-    - The generate report button exports a CSV file of all of the metadata about the certs that are on the BIG-IQ.
-    - The Alert Settings button takes you to the page to configure the alerts about certificate expiration.
-
-      - The currently available alerts are N days ahead of certificate expiration and an alert that the certificates has expired.
-      - These alerts are currently send via email only.
-
-  - The More button exposed additional options to clone or delete a certificate.
-  - The status column in the table gives a visual indication if the cert has expired, will expire soon, or if the expiration is significantly in the future (beyond the alert threshold that is set for N days alert)
-  -	The state column indicates if the actual cert and key exist on the BIG-IQ or just the metadata.  Only the metadata can be discovered/imported from the BIG-IP, as there is no REST interface on the BIG-IP to pull the full cert and key at this time.  Certs and keys create or imported on BIG-IQ will show a “Managed” state and discovered certs will show an Unmanaged state until someone manually exports the cert and key from the BIG-IP GUI (save file or copy and paste).  You can accomplish this by clicking on the name of an unmanaged cert and importing the cert and key.
-  - If you click on the name of a cert that is Managed, you can renew the cert using the button in the upper right.  For self-signed certs, you are presented the self-signed cert page and for CA signed certs, you are brought to a CSR page.  You can change a cert from self-signed to CA signed here as well.
-  - Click on the row (not the name) for the “ f5test.com_self-signed_2015” cert.  The preview pane pops up at the bottom left and the bottom right allows you to show the items/objects related to this object. Click the Show button, to reveal the related items.  Anything that shows as a link will take you to the configuration page for that object.
-  - Click on Certificate Revocation Lists – This is where you can import CRLs from a BIG-IP.
-
-- Click on Eviction Policies – this is where you can configure Eviction Policies for use in various modules.
-- General Settings – This is where you can associate an Eviction Policy with a device, as well as set the Default Per VS SYN Check Threshold, Global SYN Check Threshold, and Enable Hardware VLAN SYN Cookie Protection.
-- Logs – This is where you can configure Log Filters, Log Publishers, and Log Destinations.  Some of these were available in Shared Security in prior releases, but have been moved to the LTM area in 5.4.
-- Pinning Policies – This is where you can manage what objects are pinned to a device for LTM.  Objects that are pinned will be pushed to a device or will remain installed on a device, even if they are not used/referenced in the configuration for that device.
-
-
-
-Let's have a look at the ``Deployment Tab`` in BIG-IQ.
+The ``Deployment Tab`` in BIG-IQ.
 
 .. image:: ./pictures/img_module1_2.png
   :align: center
@@ -69,7 +34,8 @@ Let's have a look at the ``Deployment Tab`` in BIG-IQ.
 
 **DEPLOYMENT TRACKING**
 
-This area shows the last deployment for a device in a module area.  Deployments are tracked separately from partial deployments.
+This area shows the last deployment for a device in a module area. 
+Deployments are tracked separately from partial deployments.
 
 **EVALUATE AND DEPLOY**
 
@@ -88,6 +54,7 @@ This area allows you to manage and compare the snapshots created by the BIG-IQ s
 The restore area allows you to restore all or part of the BIG-IQ configuration to a prior point in time.
 
 **QUICK UPDATES**
+
 This area shows the list enable, disable, and force offline activities that have been launched by users.  These activities can be launched directly from the configuration area for virtual servers and pool members, by users with the right privileges.
 
 ------------

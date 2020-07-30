@@ -1,6 +1,10 @@
 Lab 4.3: BIG-IQ Analytics and Splunk
 ------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 **Prerequisites Splunk**
 
 - This demo is using a instance of Splunk running in a `container`_.

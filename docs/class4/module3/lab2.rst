@@ -1,6 +1,9 @@
 Lab 3.2: BIG-IQ Data Collection Devices (DCD)
 ---------------------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 1. Similar to the previous lab 3.1, .ogin to BIG-IQ UI with the default passwords (admin/admin) and go through the setup wizard.
 
 Use ``bigiq1dcd.example.com`` for hostname, ``10.1.10.6/24`` for self-ip, ``time.nist.gov`` for NTP server and ``Thisisthemasterkey#1234`` for master key.

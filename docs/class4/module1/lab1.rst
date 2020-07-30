@@ -3,6 +3,11 @@ Lab 1.1: Custom login banner for GUI login screen
 
 This feature provides the ability for the customer to specify a message to be displayed on the BIG-IQ login page.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Open BIG-IQ, go to System > This Device > General Properties
 
 2. Click on Edit on the top right corner

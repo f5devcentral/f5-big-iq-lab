@@ -1,6 +1,9 @@
 Lab 2.1: Create a custom role type to give permissions to BIG-IP object types
 -----------------------------------------------------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Creating a custom role type is the first step to providing custom role-based access to users.
 
 |image2|

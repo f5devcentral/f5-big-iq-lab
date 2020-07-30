@@ -1,6 +1,9 @@
 Lab 9.2: Azure BIG-IP VE Creation
 ---------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Prerequisites to this module:
   - Run the script creation file at the end of the previous lab
 

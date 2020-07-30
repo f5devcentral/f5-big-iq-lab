@@ -1,6 +1,9 @@
 Lab 9.3: Device Onboarding with BIG-IQ
 --------------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Prerequisites to this module:
   - A BIG-IP available that you would like to target with F5 Declarative Onboarding
   - Connectivity to/from the BIG-IQ (CM/DCD) and the BIG-IP if you are going to onboard the BIG-IP into BIG-IQ

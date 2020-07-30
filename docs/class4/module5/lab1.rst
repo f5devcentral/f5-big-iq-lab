@@ -1,6 +1,9 @@
 Lab 5.1: Onboard BIG-IQ using Ansible Galaxy
 --------------------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 .. warning:: This lab has steps to reset the BIG-IQ CM and DCD to its factory configuration. Plan accordingly if you need to run other classes/labs.
 
 F5 provides Ansible Galaxy roles to onboard BIG-IQ Centralized Management (CM) and BIG-IQ Data Collection Device (DCD).

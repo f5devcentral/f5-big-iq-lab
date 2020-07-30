@@ -1,5 +1,10 @@
 Lab 2.6: Page Load Time
 -----------------------
+
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 1. Login as **paula** in BIG-IQ.
 
 2. Open service ``security_site16_boston`` located under ``airport_security`` application.

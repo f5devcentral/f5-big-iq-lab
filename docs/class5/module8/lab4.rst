@@ -6,6 +6,10 @@ In this lab, we are going to create and onboard from scratch a cluster of BIG-IP
 Using what you learned in previous labs, you can run the same below steps using the BIG-IQ UI 
 to create and onboard the VE.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
 
 Open Postman. Click right and click on execute (wait ~2 minutes).

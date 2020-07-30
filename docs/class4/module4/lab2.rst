@@ -8,7 +8,10 @@ As said, full-automated fail-over is only available for VMware. For public cloud
 Official documentation about BIG-IQ High Availability Auto Failover Configuration can be found on the `BIG-IQ Knowledge Center`_.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/creating-a-big-iq-high-availability-auto-fail-over-config.html
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 1. Login to BIG-IQ 1 as user **david**  and go to **System > BIG-IQ HA > BIG-IQ HA Settings**. 
 
 2. If no HA is setup, go to step 5.

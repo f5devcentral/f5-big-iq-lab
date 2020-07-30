@@ -1,5 +1,10 @@
 Lab 2.3: Troubleshooting Application Response Time Browser
 ----------------------------------------------------------
+
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 1. Login as **paula** in BIG-IQ.
 
 2. Select application service ``security_site16_boston`` located under ``airport_security`` application.

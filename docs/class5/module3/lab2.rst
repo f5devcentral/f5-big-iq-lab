@@ -1,6 +1,9 @@
 Lab 3.1: Create a backup schedule
 ---------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Now, we can create our backup schedule that references this dynamic group.
 
 1. Click on the Back Up & Restore on the left-hand menu

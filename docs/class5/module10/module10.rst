@@ -8,6 +8,11 @@ continent and country levels.
 
 F5 regularly releases database updates in the GeoLocationUpdates container on the F5 Downloads site.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Follow the steps to download the geolocation database and MD5 described in the following article `K22650515`_ (choose `BIG-IP v15.x`_).
 
 .. _K22650515: https://support.f5.com/csp/article/K22650515

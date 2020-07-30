@@ -1,6 +1,9 @@
 Lab 2.3: Add new custom role
 ----------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 In addition to the built-in roles that ship with BIG-IQ, you can create a custom role with specific privileges to particular areas of BIG-IQ and BIG-IP devices.
 
 |image8|

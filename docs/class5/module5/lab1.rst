@@ -1,6 +1,9 @@
 Lab 5.1: Using BIG-IQ as a license server for BIG-IP Virtual Edition devices
 ----------------------------------------------------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Login to the BIG-IQ system with your user name (david) and password (david).
 
 On the top menu bar, select Devices from the BIG-IQ menu.

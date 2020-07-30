@@ -1,6 +1,9 @@
 Lab 2.4: Add a user to a custom role
 ------------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Add a user to a custom role to give them specific permissions to a resource group.
 
 |image11|

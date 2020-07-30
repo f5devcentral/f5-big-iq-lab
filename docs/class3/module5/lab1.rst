@@ -16,6 +16,12 @@ attached to the Virtual IP address. For more details on `TCP analytics`_ within 
 
 .. _TCP analytics: https://clouddocs.f5.com/api/irules/TCP__analytics.html
 
+
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Connect as **david** on BIG-IQ. Navigate to the Applications tab > APPLICATION, click on **Create**.
 
 +---------------------------------------------------------------------------------------------------+

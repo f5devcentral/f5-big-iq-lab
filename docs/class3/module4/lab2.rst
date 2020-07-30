@@ -1,5 +1,10 @@
 Lab 4.2: Generate Reports in CSV using the API 
 ----------------------------------------------
+
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 1. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 
 2. Open a terminal and execute the following script to export the analytics of ``site16_boston`` into a CSV::

@@ -1,6 +1,9 @@
 Lab 8.2: AWS BIG-IP VE Creation
 -------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Prerequisites to this module:
   - Run the script creation file at the end of the previous lab
 

@@ -14,7 +14,6 @@ The labs in this module will cover below tasks:
 - Onboard BIG-IP onto BIG-IQ (Discovery, Assign License, Add to existing role)
 - Offboard BIG-IP from BIG-IQ (Revoke License, Remove BIG-IP from role, Remove from BIG-IQ, Delete Instance)
 
-
 .. toctree::
    :maxdepth: 1
    :glob:

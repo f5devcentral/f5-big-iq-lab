@@ -1,6 +1,9 @@
 Lab 8.1: Prepare your AWS Account 
 ---------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 .. warning:: If you already created an AWS environment and VPN in Class 2 Module 4 (AWS SSG) you do not need to recreate this item.
 
 1. Create the AWS environment and VPN

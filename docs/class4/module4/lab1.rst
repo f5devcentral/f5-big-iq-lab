@@ -1,6 +1,9 @@
 Lab 4.1: Configure High Availability for BIG-IQ: Manual Failover
 ----------------------------------------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 **Add a peer BIG-IQ system for a high availability configuration**
 
 Before you can set up F5 BIG-IQ Centralized Management in a high availability (HA) pair, you must have two licensed BIG-IQ systems.

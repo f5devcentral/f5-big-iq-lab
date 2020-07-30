@@ -1,6 +1,9 @@
 Lab 7.1: VMWare BIG-IP VE Creation
 ----------------------------------
+.. include:: /accesslab.rst
 
+Tasks
+^^^^^
 Prerequisites to this module:
   - None
 

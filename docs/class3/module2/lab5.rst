@@ -1,5 +1,10 @@
 Lab 2.5: Troubleshooting Security (single attack)
 -------------------------------------------------
+
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 1. Connect on the *Ubuntu Lamp Server* server and launch the following command:
 
 ``# /home/f5/f5-demo-app-troubleshooting/iloveyou.sh``
