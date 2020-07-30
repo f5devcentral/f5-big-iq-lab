@@ -6,7 +6,7 @@ Lab environment details
 The Linux box in the environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
 and Application dashboard.
 
-Below table shows the list of **Virtual Servers** and 88Applications Servers88 where various type of traffic
+Below table shows the list of **Virtual Servers** and **Web Applications Servers** where various type of traffic
 is being sent (check ``crontab`` config for more details).
 
 .. warning:: Make sure the IP address on the external network 10.1.10.0/24 is defined in lab environment on 
@@ -25,7 +25,7 @@ is being sent (check ``crontab`` config for more details).
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Virtual IP address(es) where the traffic generator sends DDOS attack (class 11)           | ``10.1.10.136``                                                                          |
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
-| Applications Servers (Pool Members) (running in docker containers)                        | ``10.1.20.110`` to ``10.1.20.123``                                                       |
+| Web Applications Servers (Pool Members) (running in docker containers)                    | ``10.1.20.110`` to ``10.1.20.123``                                                       |
 |                                                                                           |                                                                                          |
 |                                                                                           |                                                                                          |
 |                                                                                           | - Port ``80``: hackazon application                                                      |

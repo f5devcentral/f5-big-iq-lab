@@ -5,7 +5,7 @@ In this class, we will review the auto-scale feature available with BIG-IQ 6.0 a
 called ``Service Scaling Groups`` (SSG)
 
 Definition of Cloud Auto-scaling
-********************************
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Scalability of the infrastructure is a daily challenge for IT managers.
 It is difficult to predict growth rates of applications/services and their
@@ -29,8 +29,7 @@ Auto-scaling can offer greater uptime and more availability in cases where
 production workloads are variable and unpredictable.
 
 
-Scaling up/down (vertical scaling)
-----------------------------------
+**Scaling up/down (vertical scaling)**
 
 Vertical scaling is about resizing your server/virtual machine with no change
 to your code. You increase/decrease the capacity by adding resources to a
@@ -49,8 +48,7 @@ recourses to scale-up a given system could take weeks or months while scaling-up
 in the cloud can take only minutes.
 
 
-Scaling out/in (horizontal scaling)
------------------------------------
+**Scaling out/in (horizontal scaling)**
 
 Horizontal scaling affords the ability to scale wider to deal with traffic.
 It is the ability to connect multiple hardware or software entities, such as
@@ -62,8 +60,7 @@ Horizontal scaling makes it easy for service providers to offer
 “pay-as-you-grow” infrastructure and services.
 
 
-Scaling up vs Scaling out
--------------------------
+**Scaling up vs Scaling out**
 
 In today’s cloud infrastructure, horizontal scaling is preferred when possible.
 Instead of taking your server offline while you’re scaling up to a better one,
@@ -93,6 +90,9 @@ The more stateful is an application, the more difficult it will be to leverage
 a scale out infrastructure for it. Micro service architecture makes it easier
 to implement such a model: Loosely coupled distributed architecture allows for
 scaling of each part of the architecture independently.
+
+Labs
+^^^^
 
 .. toctree::
    :maxdepth: 1

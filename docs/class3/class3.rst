@@ -1,6 +1,9 @@
 Class 3: BIG-IQ Analytics
 =========================
 
+Overview
+^^^^^^^^
+
 In this class, we will review the various analytics available for the applications in BIG-IQ.
 
 A data collection device (DCD) is a specially provisioned BIG-IQ system that you use to manage and store alerts,
@@ -26,6 +29,8 @@ the BIG-IP VE are in the public cloud such as AWS or Azure, you will need a VPN 
 
 .. _K96505382: https://support.f5.com/csp/article/K96505382
 
+Labs
+^^^^
 
 .. toctree::
    :maxdepth: 1

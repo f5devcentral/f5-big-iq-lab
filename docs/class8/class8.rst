@@ -1,6 +1,9 @@
 Class 8: BIG-IQ Application Security Manager
 ============================================
 
+Overview
+^^^^^^^^
+
 BIG-IQ ASM enables enterprise-wide management and configuration of multiple BIG-IP devices from a central 
 management platform. 
 You can centrally manage BIG-IP devices and security policies, and import policies from files on those devices.
@@ -18,6 +21,10 @@ it as a new policy attached to an available virtual server or as an inactive pol
 See `Class 1 Module 3`_ for more details on BIG-IQ and AS3 WAF integration.
 
 .. _Class 1 Module 3: ../../class1/module3/module3.html
+
+
+Labs
+^^^^
 
 .. toctree::
    :maxdepth: 1

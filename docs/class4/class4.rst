@@ -1,15 +1,10 @@
 Class 4: BIG-IQ Platform
 ========================
 
+Overview
+^^^^^^^^
+
 In this class, we will focus on the BIG-IQ CM and DCD plaforms. Let's have a look at the ``System Tab`` in BIG-IQ.
-
-.. toctree::
-   :maxdepth: 1
-   :glob:
-
-   module*/module*
-
-------------
 
 **THIS DEVICE**
 
@@ -128,3 +123,16 @@ Related items are populated on the right.  You can click the name of the related
   :scale: 50%
 
 |
+
+Labs
+^^^^
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   module*/module*
+
+------------
+
+.. include:: ../lab.rst
