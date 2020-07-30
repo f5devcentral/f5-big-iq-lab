@@ -1,8 +1,6 @@
 Lab environment details
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-.. include:: ../warnings.rst
-
 The Linux box in the environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
 and Application dashboard.
 
@@ -42,6 +40,4 @@ is being sent (check ``crontab`` config for more details).
 
 .. image:: /pictures/diagram_udf.png
    :align: center
-   :scale: 40%
-
-|repoinfo|
+   :scale: 30%

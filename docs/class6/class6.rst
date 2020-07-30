@@ -22,8 +22,8 @@ The ``Deployment Tab`` in BIG-IQ.
   :align: center
   :scale: 30%
 
-Labs
-^^^^
+Modules/Labs
+^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1

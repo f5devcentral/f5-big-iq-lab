@@ -23,8 +23,8 @@ See `Class 1 Module 3`_ for more details on BIG-IQ and AS3 WAF integration.
 .. _Class 1 Module 3: ../../class1/module3/module3.html
 
 
-Labs
-^^^^
+Modules/Labs
+^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1

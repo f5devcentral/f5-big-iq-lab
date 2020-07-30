@@ -6,8 +6,8 @@ Overview
 
 In this class, we will review the DNS Management in BIG-IQ.
 
-Labs
-^^^^
+Modules/Labs
+^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1

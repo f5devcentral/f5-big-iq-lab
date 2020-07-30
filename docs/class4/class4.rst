@@ -124,8 +124,8 @@ Related items are populated on the right.  You can click the name of the related
 
 |
 
-Labs
-^^^^
+Modules/Labs
+^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1

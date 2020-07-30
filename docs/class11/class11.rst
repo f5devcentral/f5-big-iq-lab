@@ -17,8 +17,8 @@ At a minimum, this class only requires the two BOS BIG-IPs, the SJC BIG-IP, BIG-
 
 The DNS Virtual Server 10.1.10.203 is already created and will be used as an attacked destination in these labs.
 
-Labs
-^^^^
+Modules/Labs
+^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1

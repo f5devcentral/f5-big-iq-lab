@@ -91,8 +91,8 @@ a scale out infrastructure for it. Micro service architecture makes it easier
 to implement such a model: Loosely coupled distributed architecture allows for
 scaling of each part of the architecture independently.
 
-Labs
-^^^^
+Modules/Labs
+^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1

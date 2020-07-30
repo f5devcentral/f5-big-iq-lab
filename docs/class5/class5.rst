@@ -6,8 +6,8 @@ Overview
 
 In this class, we will focus on the BIG-IQ Device Management. Let's have a look at the ``Device Tab`` in BIG-IQ.
 
-Labs
-^^^^
+Modules/Labs
+^^^^^^^^^^^^
 
 .. toctree::
    :maxdepth: 1

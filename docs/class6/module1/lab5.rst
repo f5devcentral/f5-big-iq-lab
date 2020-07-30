@@ -81,7 +81,7 @@ The location is defined by IETF and used to demonstrate ownership of a domain.
 
 
 Here is the API call the BIG-IQ does to the web app API (more details on the `Tomcat demo challenge Webapp`_ and `Challenge Types`_) 
-to deploy the HTTP challenge file. This API needs to be developped and added into the web app itself (in the web app example the API enpoint is ``POST /hello``)
+to deploy the HTTP challenge file. This API needs to be developed and added into the web app itself (in the web app example the API endpoint is ``POST /hello``)
 
 .. code-block:: yaml
 

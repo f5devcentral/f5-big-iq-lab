@@ -44,7 +44,9 @@ Watch the video from our partner Venafi:
 Configured third-party certificate provider on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``.
+1. Start the **Venafi Trust Protection** component (the Windows Server 2019 in the lab). Wait at least 5 min so all the necessary services start.
+
+2. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``.
 
 Navigate to Configuration tab > Local Traffic > Certificate Management > Third Party CA Management.
 
@@ -66,18 +68,23 @@ Click on **Test Connection**.
 
 **Save & Close**
 
+3. Then click on **Edit Policy** under Additional Configuration
+
 .. image:: ./media/img_module1_lab4-6.png
   :scale: 40%
   :align: center
 
-- Policy Folder Path: ``\VED\Policy\Certificates\F5``
+Retrieve the policies available under the Policy Folder Path specified: ``\VED\Policy\Certificates\F5``
 
 Click on **Get Policy Folder**.
+
+Here, BIG-IQ will retrieve all the policies available under the policy folder specified.
 
 .. image:: ./media/img_module1_lab4-7.png
   :scale: 40%
   :align: center
 
+You can look at those policies in Venafi by looking at the last chapter of this lab *Venafi Setup and Microsoft CA*.
 
 SSL Certificate & Key creation on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -108,17 +115,6 @@ This CSR will be send to Let's encrypt server which will sign it and send it bac
 2. After the Certificate Request is signed, it will show Managed on the BIG-IQ and ready to be deploy on the BIG-IP.
 
 .. image:: ./media/img_module1_lab4-9.png
-  :scale: 40%
-  :align: center
-
-3. On Venafi
-
-.. image:: ./media/img_module1_lab4-10.png
-  :scale: 40%
-  :align: center
-
-
-.. image:: ./media/img_module1_lab4-11.png
   :scale: 40%
   :align: center
 
@@ -155,9 +151,30 @@ Click **Deploy**.
   :scale: 40%
   :align: center
 
-5. 
+5. Open a RDP session on the **Venafi Trust Protection** component (the Windows Server 2019 in the lab).
 
-Device Folder Path: ``\VED\Policy\Devices and Applications\External\Big-IQ``
+Open Chrome and navigate to the Venafi Web Admin Console ``https://ec2amaz-bq0fcmk.f5demo.com/vedadmin`` (admin/Purple123@123)
+
+.. note:: You can also open directly the Venafi Web Admin Console from the lab, click on the ACCESS button under **Venafi Trust Protection**.
+          Then, add ``/vedadmin`` at the end of the URL (e.g. ``https://9077cbc1-a648-4b0c-945e-fd226e4d4133.access.udf.f5.com/vedadmin``)
+
+6. On the Venafi Web Admin Console, select the **Policy** in the top menu (if not already selected) and navigate under ``Certificates > F5 > Seattle Data Center``.
+
+From there, expand the folder and look for the certificate previously generated from BIG-IQ.
+
+.. image:: ./media/img_module1_lab4-10.png
+  :scale: 40%
+  :align: center
+
+From the **Server Manager**, open **MS CA** admin interface and look for the same certificate under *Issued Certificates*.
+
+.. image:: ./media/img_module1_lab4-11.png
+  :scale: 40%
+  :align: center
+
+7. Finally, navigate in the Device Folder Path ``\VED\Policy\Devices and Applications\External\Big-IQ`` and 
+   notice Seattle BIG-IP has been added in Venafi automatically by BIG-IQ after the certificate has been pushed to the device.
+   This is to help keeping BIG-IQ and Venafi inventory up to date and synchronized.
 
 .. image:: ./media/img_module1_lab4-14b.png
   :scale: 40%
@@ -167,14 +184,24 @@ Device Folder Path: ``\VED\Policy\Devices and Applications\External\Big-IQ``
 AS3 HTTPS template with SSL Key Passphrase creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1. Go back on BIG-IQ and navigate to the Applications tab > Applications Templates and 
+   select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-<version>`` and press **Clone**.
+
+2. Give the cloned template a name: ``AS3-F5-HTTPS-offload-lb-existing-cert-with-passphrase`` and click Clone.
+
 .. image:: ./media/img_module1_lab4-15.png
   :scale: 40%
   :align: center
 
+3. Open the new templates created and select the AS3 class ``Certificates`` on the left menu of the AS3 template editor.
+
+Check **Editable** the 2 following attributes: ``JOSE header`` and ``Ciphertext``.
 
 .. image:: ./media/img_module1_lab4-16.png
   :scale: 40%
   :align: center
+
+4. Save & close the template and publish it so it can be used in the next step.
 
 
 AS3 HTTPS offload application service deployment
@@ -259,11 +286,12 @@ Venafi Setup and Microsoft CA
 
 In this part, we are going to review some of the Venafi configuration.
 
-1. Open the **Venafi Trust Protection** in the Windows Server 2019 (start it if stopped).
+1. Open a RDP session on the **Venafi Trust Protection** component (the Windows Server 2019 in the lab).
 
-2. Open Chrome and open the Venafi Web Admin Console
+Open Chrome and navigate to the Venafi Web Admin Console ``https://ec2amaz-bq0fcmk.f5demo.com/vedadmin`` (admin/Purple123@123)
 
-``https://ec2amaz-bq0fcmk.f5demo.com/vedadmin``
+.. note:: You can also open directly the Venafi Web Admin Console from the lab, click on the ACCESS button under **Venafi Trust Protection**.
+          Then, add ``/vedadmin`` at the end of the URL (e.g. ``https://9077cbc1-a648-4b0c-945e-fd226e4d4133.access.udf.f5.com/vedadmin``)
 
 3. Under the **Policy** menu, navigate under Policy > Administration > CA Templates and select the **Microsoft CA-lab-1year**.
 
@@ -276,18 +304,23 @@ The Credentials below will contain the username and password to access the MS CA
 
 4. Then, navigate under Policy > Certificates and select the policy folder called **F5**, then click on the **Certificates** tab.
 
-We can set default values in thie F5 Policy Parent folder and anything that isn't set on one of the sub folders in the Boston, 
+We can set default values in the F5 Policy Parent folder and anything that isn't set on one of the sub folders in the Boston, 
 San Jose, Paris or Seattle folders gets defaulted to the F5 values.
 
-In this lab, we have changed the Management Type to **Enrollment**, as well as the Organization Name and Unit
+In this lab, we have changed the Management Type to **Enrollment**. 
+The Organization Name and Unit have been set as locked values and we are letting the user to change the country but default value is US.
 
 .. image:: ./media/img_module1_lab4-2.png
   :scale: 40%
   :align: center
 
+5. Note we also assign the CA template from MS CA in the F5 policy.
+
 .. image:: ./media/img_module1_lab4-3.png
   :scale: 40%
   :align: center
+
+6. Finally, going down a level where you can see we have set a policy per data center, we lock the values for the city and state.
 
 .. image:: ./media/img_module1_lab4-4.png
   :scale: 40%
