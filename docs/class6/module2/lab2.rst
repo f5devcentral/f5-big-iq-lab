@@ -1,79 +1,60 @@
-Lab 2.2: Create and Import a self-signed certificates/key to BIG-IQ
--------------------------------------------------------------------
+Lab 2.2: Create a new virtual server by cloning an existing virtual server
+--------------------------------------------------------------------------
 
-Now that you have tried how to move a BIG-IP client certificate to “Managed”, we can now try to create a BIG-IP self-signed certificate and key pair, then import and manage them on BIG-IQ.
+.. include:: /accesslab.rst
 
-**Step 1: On BOS-vBIGIP01, create a new self-signed certificate.**
+Tasks
+^^^^^
 
-Log onto the TMUI interface of the BOS-vBIG-IP01.temmarc.com, go to System >> Certificate Management: Traffic Certificate Management: SSL Certificate List, click Create for a new SSL Certificate.
+BIG-IQ allows you to clone an existing virtual server to create a new virtual server. This cloned virtual can be deployed to the same BIG-IP device/cluster or to a new BIG-IP device/cluster. Cloning can be used to migrate a virtual server or to make a virtual server that is similar to one that already exists.
 
-Name: **BIG-IQ-Test-Cert**
-Common Name: **bigiq.testcrt.com**
+In this scenario, we will clone a virtual server from our cluster and deploy it to our standalone device.
 
-|image7|
+Navigate to the **Configuration** tab on the top menu bar.
 
-Leave everything else default and click on Finished.
+Navigate to **LOCAL TRAFFIC > Virtual Servers**
 
-|image8|
+|image19|
 
-Click on Export, and download the BIG-IQ-Test-Cert.crt file.
+Type forward in the filter box on the right-hand side of the screen and press return.
 
-|image9|
+|image20|
 
-Click on Cancel to return to the BIG-IQ-Test-Cert details screen.
+Click the check box to the left of the first virtual server entry.
 
-Click on the Key tab on the top, and then click on Export key again to export the BIG-IQ-Test-Cert.key file, and then click on “Download BIG-IQ-Test-Cert.key” to download the Key file.
+|image21|
 
-|image11-1|
+Click the **Clone** button under Virtual Servers at the top of the page.
 
-Click the Cancel button to return.
+Edit the Virtual Server Properties:
 
-Now that we have exported the Cert & Key files, we will go back to BIG-IQ CM and import the files.
+   | Name: **forward\_vs\_udf\_CLONED**
+   | Device: **SEA-vBIGIP01.termmarc.com**
+   | Destination Address: **1.0.0.0/8**
+   | Protocol: **All Protocols**
+   | VLANs and Tunnels: **Enabled on…**
+   | VLANs and Tunnels: Selected: **internal**
 
+|image22|
 
-**Step 2: Import the Self-Signed Certificate & Key pair to BIG-IQ**
+Click the **Save & Close** button in the lower right.
 
-Switch back to the BIG-IQ CM 6.0 TMUI, at the top of the screen, click Configuration.
+|image23|
 
-On the left, click LOCAL TRAFFIC > Certificate Management > Certificates & Keys.  
+Click on the X in the “Filtered by” box to clear the filter and move to next task.
 
-Click on Import button on the top, select Certificate from the Import Type drop down menu, and choose the BIG-IQ-Test-Cert.crt file from the location where you saved the Cert and Key files.
-
-|image11-2|
-
-Click on the Import button on the lower right, the Certificate file is now imported to BIG-IQ, and the system takes you back to the Certificate & Key screen.
-
-Click on the BIG-IQ-Test-Cert link again on the screen. Find the "Key Properties: State" section, click the Import button. 
-
-To upload the key's file, select Upload File and click the "Choose File" button to navigate to the key file.
-
-Select “Normal” for the Key Security Type: section, and then click on **Save & Close** button on the lower right.
-
-|image10|
-
-BIG-IQ now shows the cert/key being active (green status) and “Managed”.
-
-|image11|
-
-
-.. |image7| image:: media/image7.png
-   :width: 6.49167in
-   :height: 4.52083in
-.. |image8| image:: media/image8.png
-   :width: 6.49167in
-   :height: 4.46250in
-.. |image9| image:: media/image9.png
-   :width: 6.49583in
-   :height: 2.90833in
-.. |image10| image:: media/image10.png
-   :width: 6.49583in
-   :height: 3.39167in
-.. |image11| image:: media/image11.png
-   :width: 6.48750in
-   :height: 1.76250in
-.. |image11-1| image:: media/image11-1.png
-   :width: 6.49583in
-   :height: 2.90833in   
-.. |image11-2| image:: media/image11-2.png
-   :width: 6.49583in
-   :height: 3.39167in
+.. |image19| image:: media/image16.png
+   :width: 2.32263in
+   :height: 0.78115in
+.. |image20| image:: media/image20.png
+   :width: 3.36416in
+   :height: 0.74991in
+.. |image21| image:: media/image21.png
+   :width: 5.73887in
+   :height: 1.56230in
+.. |image22| image:: media/image22.png
+   :width: 6.50000in
+   :height: 2.80417in
+.. |image23| image:: media/image23.png
+   :width: 5.73887in
+   :height: 1.56230in

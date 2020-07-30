@@ -1,321 +1,101 @@
-Lab 2.5: Integrating Let's Encrypt with BIG-IQ for Certificate Management (new 7.1)
------------------------------------------------------------------------------------
+Lab 2.4: Decommission a virtual server
+--------------------------------------
 
-In this lab, we are going to do the initial authentication/validation with the Let's Encrypt servers.
-Then create a certificate request and key using BIG-IQ and sign it with Let's Encrypt stage server.
-Finally, the last step will be to deploy the new certificate and key to a BIG-IP and create an 
-HTTPS Application Service using AS3 to serve the web application and do HTTPS offload.
+.. include:: /accesslab.rst
 
-More information in `BIG-IQ Knowledge Center`_ and `Let’s Encrypt website`_.
+Tasks
+^^^^^
 
-.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/integrating-third-party-certificate-management.html
-.. _Let’s Encrypt website: https://letsencrypt.org/how-it-works/
+BIG-IQ can be used to remove virtual servers, and other objects that are no longer needed. The same staged change workflow applies for removal of objects.
 
-Demo web server and domain name setup in AWS
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Navigate to the **Configuration** on the top menu bar.
 
-To do this lab, we will need a real domain name and a web server accessible from the Let's Encrypt servers.
-We will start by deploying the web server (simple Hello World Java web app) on a EC2 instance in AWS.
+Navigate to **LOCAL TRAFFIC > Virtual Servers**
 
-1. Create the AWS environment and VPN
+|image45|
 
-.. warning:: If you already created an AWS environment and VPN in Class 2 Module 4 (AWS SSG) or Class 5 Module 8 (VE creation),
-             you do not need to recreate this item.
+Select the top **HR-CLONE** virtual server
 
-SSH Ubuntu host in lab environment.
+|image46|
 
-Navigate to: ``cd f5-aws-vpn-ssg``
+Click the Delete button
 
-Execute the Ansible scripts to create the AWS resources (including VPN between AWS and the lab), cloud provider and cloud environment.
+Verify that you want to delete this virtual server from the BIG-IQ configuration.
 
-``./000-RUN_ALL.sh vpn``
+|image47|
 
-.. note:: VPN object and servers can take up to 15 minutes to complete.
+Now we need to deploy this change. Navigate to the **Deployment** menu on the top menu bar.
 
-The console will output your ephemeral credentials for the resources created as well as 
-the demo web server public IP running in AWS. Save these for later use.
+Navigate to **EVALUATE & DEPLOY > Local Traffic & Network**
 
-2. We are going to use for this lab one of the below wildcard DNS services along with the demo web server public IP address in AWS.
+|image48|
 
-This will give us a valid domain name to use to generate a certificate with Let's Encrypt.
+Click the Create button under Deployments
 
-We are going to use a domain name like lab.webapp.34.219.3.233.nip.io resolves to IP address 34.219.3.233.
+|image49|
 
-+-----------------------+-------------------------------------------------+
-| Wildcard DNS services |                    Example                      |
-+=======================+=================================================+
-| xip.io                | ``http://lab.webapp.34.219.3.233.xip.io/``      |
-+-----------------------+-------------------------------------------------+
-| nip.io                | ``http://lab.webapp.34.219.3.233.nip.io/``      |
-+-----------------------+-------------------------------------------------+
-| sslip.io              | ``http://lab.webapp.34.219.3.233.sslip.io/``    |
-+-----------------------+-------------------------------------------------+
+Fill out the evaluation properties
+   | Name: **DeleteVirtual**
+   | Source: **Current Changes** 
+   | Source Scope: **All Changes** 
+   | Unused Objects: **Remove Unused Objects** 
+   | Method: **Create Evaluation**
+   | Target: Group, BostonCluster, both devices selected
 
-.. note:: Replace ``lab.webapp.34.219.3.233.nip.io`` and ``34.219.3.233`` with the correct wildcard DNS services 
-          and demo web server public IP address in AWS.
+|image50|
 
-3. Let's use nip.io service for the remaining of the lab.
+Click the create button in the lower right.
 
-Open a browser and navigate to ``http://lab.webapp.34.219.3.233.nip.io``
+|image51|
 
-.. image:: ./media/img_module2_lab5-1.png
-  :scale: 40%
-  :align: center
+After the evaluation completes, review the differences by clicking the view link under Differences.
 
-This is our demo web server which is available on port 80 (HTTP).
+|image52|
 
-4. This demo web server is hosting an API call to automatically deploy challenge resources to it.
+Review the differences.
 
-The API available for automatic deploy the HTTP challenge file is ``http://lab.webapp.34.219.3.233.nip.io/hello``
+|image53|
 
-For demo purpose, the API call is showing current HTTP challenge file(s) if any available on the demo web server.
-Note the challenge file must be located under ``.well-known/acme-challenge`` at the root of the web site.
+After you have reviewed all of the changes, click the Cancel button in the lower right
 
-The location is defined by IETF and used to demonstrate ownership of a domain.
+Click the Deploy button to push the changes to the BIG-IPs.
 
-.. image:: ./media/img_module2_lab5-2.png
-  :scale: 40%
-  :align: center
+|image55|
 
+Verify that you want to deploy the changes to the selected devices.
 
-Here is the API call the BIG-IQ does to the web app API (more details on the `Tomcat demo challenge Webapp`_ and `Challenge Types`_) 
-to deploy the HTTP challenge file. This API needs to be developped and added into the web app itself (in the web app example the API enpoint is ``POST /hello``)
+|image56|
 
-.. code-block:: yaml
-
-    {
-        "username": "username",
-        "password": "password",
-        "challenges": [
-            {
-                "type": "http",
-                "fileName": "u0I9eyI38aLP-xBs4x1TkYklr0hyvJ6RzWnwnIK2s",
-                "content": "u0I9eyI38aLP-xBs4x1TkYklhyvJ6RzWnwu8nIK2s.yI3JvlzD374If-XdBCLA729aSeiJb7hqPqfd9PxG8"
-            }
-        ]
-    }
-
-.. note:: The use of an API to deploy automatically the HTTP challenge file to the web server is optional.
-          The challenge file can be uploaded manually in the ``.well-known/acme-challenge`` folder in the web server.
-
-.. _`Challenge Types`: https://letsencrypt.org/docs/challenge-types/
-.. _`Tomcat demo challenge Webapp`: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-tomcat-challenge-webapp/ROOT
-
-Configured third-party certificate provider on BIG-IQ
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``.
-
-Navigate to Configuration tab > Local Traffic > Certificate Management > Third Party CA Management.
-
-Click **Create**.
-
-- Name: ``demolab``
-- CA Providers: ``Lets Encrypt``
-- Server: ``https://acme-staging-v02.api.letsencrypt.org/``
-
-Validate the server and accept the Terms and Conditions.
-
-.. note:: We are using the Let's encrypt stage server for this lab which won't generate a validate certificate.
-          If you want to generate a valid certificate, use Let's encrypt production server https://acme-v02.api.letsencrypt.org/
-          to sign the certificate request in BIG-IQ.
-
-.. image:: ./media/img_module2_lab5-3.png
-  :scale: 40%
-  :align: center
-
-2. Under Domain Configuration, click **Create**.
-
-.. note:: Replace ``lab.webapp.34.219.3.233.nip.io`` and ``34.219.3.233`` with the correct wildcard DNS services 
-          and demo web server public IP address in AWS.
-
-- Domain Name: ``lab.webapp.34.219.3.233.nip.io``
-- API End Point: ``http://lab.webapp.34.219.3.233.nip.io/hello``
-- User Name: ``username``
-- Password: ``password``
-
-Click **Deploy & Test**.
-
-.. image:: ./media/img_module2_lab5-4.png
-  :scale: 40%
-  :align: center
-
-3. While previous step is in progress, in your browser open ``http://lab.webapp.34.219.3.233.nip.io/hello``.
-
-Notice a new HTTP challenge file has been added automatically.
-
-.. image:: ./media/img_module2_lab5-5.png
-  :scale: 40%
-  :align: center
-
-4. Download the HTTP challenge file and compare with previous value showing in the previous step.
-
-.. image:: ./media/img_module2_lab5-6.png
-  :scale: 40%
-  :align: center
-
-.. note:: For security reason, it is not recommended to keep the HTTP challenge file for long.
-          The API example used on the demo web app server is deleting challenge file on the web server automatically
-          after validation is done.
-
-5. Wait until the Connection Status icon turns green and show Valid.
-
-.. image:: ./media/img_module2_lab5-7.png
-  :scale: 40%
-  :align: center
-
-.. note:: Challenge content is getting expired in below conditions:
-            - 7 days if validation is not done (status: pending)
-            - 30 days if validation is done with Let's Encrypt server (status: valid)
-            - If any wrong validations request has been sent, Let's Encrypt invalided the challenge immediately.
-
-          The use of the custom API on the web server will allow to automate the renewal of the HTTP challenge file.
-
-SSL Certificate & Key creation on BIG-IQ
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Navigate to Configuration tab > Local Traffic > Certificate Management > Certificates & Keys.
-
-Fill all necessary information and click **Create**. This will generate a certificate request or CSR along with a Private Key.
-This CSR will be send to Let's encrypt server which will sign it and send it back to BIG-IQ.
-
-- Name: ``lab.webapp.34.219.3.233.nip.io``
-- Issuer: ``demolab``
-- Common Name: ``lab.webapp.34.219.3.233.nip.io``
-- Division: ``module2``
-- Organization: ``class6``
-- Locality: ``Seattle``
-- State/Province: ``WA``
-- Country: ``USA``
-- Key Security Type: ``Normal``
-
-.. image:: ./media/img_module2_lab5-8.png
-  :scale: 40%
-  :align: center
-
-2. After the Certificate Request is signed, it will show Managed on the BIG-IQ and ready to be deploy on the BIG-IP.
-
-.. image:: ./media/img_module2_lab5-9.png
-  :scale: 40%
-  :align: center
-
-3. Now, let's pin both certificate and key to a device. Navigate to Pinning Policies under Local Traffic.
-
-Click on **SEA-vBIGIP01.termmarc.com** device.
-
-Look for the SSL certificate and add it to the device.
-
-.. image:: ./media/img_module2_lab5-10.png
-  :scale: 40%
-  :align: center
-
-Repeat the same with the SSL Key:
-
-.. image:: ./media/img_module2_lab5-11.png
-  :scale: 80%
-  :align: center
-
-4. Deploy the SSL objects to the BIG-IQ.
-
-Navigate Deployment tab > Evaluate & Deploy > Local Traffic & Networks.
-
-Create a new deployment:
-
-- Source Scope: ``Partial Change``
-- Method: ``Deploy Immediately``
-- Source Objects: select both SSL certificate & Key
-- Target Device(s): ``SEA-vBIGIP01.termmarc.com``
-
-Click **Deploy**.
-
-.. image:: ./media/img_module2_lab5-12.png
-  :scale: 40%
-  :align: center
-
-AS3 HTTPS offload application service deployment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Go to the Applications tab > Applications and  click **Create** to create an Application Service:
-
-.. note:: Replace ``lab.webapp.34.219.3.233.nip.io`` and ``34.219.3.233`` with the correct wildcard DNS services 
-          and demo web server public IP address in AWS.
-
-+---------------------------------------------------------------------------------------------------+
-| Application properties:                                                                           |
-+---------------------------------------------------------------------------------------------------+
-| * Grouping = Part of an Existing Application                                                      |
-| * Application Name = ``LAB_module2``                                                              |
-+---------------------------------------------------------------------------------------------------+
-| Select an Application Service Template:                                                           |
-+---------------------------------------------------------------------------------------------------+
-| * Template Type = Select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default [AS3]``  |
-+---------------------------------------------------------------------------------------------------+
-| General Properties:                                                                               |
-+---------------------------------------------------------------------------------------------------+
-| * Application Service Name = ``https_app_service``                                                |
-| * Target = ``SEA-vBIGIP01.termmarc.com``                                                          |
-| * Tenant = ``tenant4``                                                                            |
-+---------------------------------------------------------------------------------------------------+
-| Analytics_Profile. Keep default.                                                                  |
-+---------------------------------------------------------------------------------------------------+
-| Pool                                                                                              |
-+---------------------------------------------------------------------------------------------------+
-| * Members: ``34.219.3.233``                                                                       |
-+---------------------------------------------------------------------------------------------------+
-| Service_HTTPS                                                                                     |
-+---------------------------------------------------------------------------------------------------+
-| * Virtual addresses: ``10.1.10.114``                                                              |
-+---------------------------------------------------------------------------------------------------+
-| Certificate                                                                                       |
-+---------------------------------------------------------------------------------------------------+
-| * privateKey: ``/Common/lab.webapp.34.219.3.233.nip.io.key``                                      |
-| * certificate: ``/Common/lab.webapp.34.219.3.233.nip.io.crt``                                     |
-+---------------------------------------------------------------------------------------------------+
-| TLS_Server. Keep default.                                                                         |
-+---------------------------------------------------------------------------------------------------+
-
-.. note:: We are using the demo web server public IP in the pool members for the lab/demo but we would likely use 
-          the demo web server private IP as pool member and a public IP/private IP behind a NAT for the VIP.
-
-2. Check the application ``LAB_module2`` has been created along with the application service https_app_service
-
-.. image:: ./media/img_module2_lab5-13.png
-  :scale: 40%
-  :align: center
-
-.. note:: If not visible, refresh the page. It can take few seconds for the application service to appears on the dashboard.
-
-
-3. SSH Ubuntu host in lab environment and add the domain name and Virtual address to the /etc/hosts file.
-
-We are doing this to be able to use the domain name we used in the SSL certificate along with the Virtual IP address created in BIG-IP.
-This is only for this lab.
-
-.. code::
-
-    f5student@ip-10-1-1-5:~$ sudo su -
-    root@ip-10-1-1-5:/home/f5student# echo "10.1.10.114 lab.webapp.34.219.3.233.nip.io" >> /etc/hosts
-    root@ip-10-1-1-5:/home/f5student# nslookup lab.webapp.34.219.3.233.nip.io
-
-
-4. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
-
-You can test the application service by opening a browser in the Ubuntu Jump-host and type the URL ``https://lab.webapp.34.219.3.233.nip.io``.
-
-.. note:: We are using the Let's encrypt stage server for this lab which won't generate a validate certificate.
-          If you want to generate a valid certificate, use Let's encrypt production server https://acme-v02.api.letsencrypt.org/
-          to sign the certificate request in BIG-IQ.
-
-.. image:: ./media/img_module2_lab5-14.png
-  :scale: 40%
-  :align: center
-
-Example of the same workflow using the Let's encrypt production server using a different web server:
-
-.. image:: ./media/img_module2_lab5-15.png
-  :scale: 40%
-  :align: center
+.. |image45| image:: media/image16.png
+   :width: 2.32263in
+   :height: 0.78115in
+.. |image46| image:: media/image44.png
+   :width: 2.47886in
+   :height: 0.68741in
+.. |image47| image:: media/image45.png
+   :width: 3.92659in
+   :height: 2.43719in
+.. |image48| image:: media/image32.png
+   :width: 2.27055in
+   :height: 1.28109in
+.. |image49| image:: media/image46.png
+   :width: 3.18125in
+   :height: 1.03772in
+.. |image50| image:: media/image47.png
+   :width: 6.68264in
+   :height: 4.52778in
+.. |image51| image:: media/image48.png
+   :width: 1.72895in
+   :height: 0.52077in
+.. |image52| image:: media/image49.png
+   :width: 6.50000in
+   :height: 1.38194in
+.. |image53| image:: media/image50.png
+   :width: 6.50000in
+   :height: 3.40764in
+.. |image55| image:: media/image51.png
+   :width: 3.59330in
+   :height: 1.24984in
+.. |image56| image:: media/image52.png
+   :width: 4.60359in
+   :height: 2.17681in

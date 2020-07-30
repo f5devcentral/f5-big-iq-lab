@@ -1,6 +1,11 @@
 Lab 5.3: Remove device from a silo and re-import it in BIG-IQ
 -------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 Now the necessary objects have been renamed on the BIG-IP, let's remove the device 
 from its own Silo and re-discover and re-import it into BIG-IQ.
 

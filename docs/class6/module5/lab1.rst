@@ -1,6 +1,11 @@
 Lab 5.1: Import a device into a silo
 -------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
 
 2. Navigate to Devices > BIG-IP Devices. You can hide some columns you won't need 

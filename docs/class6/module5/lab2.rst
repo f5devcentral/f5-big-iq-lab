@@ -1,6 +1,11 @@
 Lab 5.2: Resolve conflicts in the silo
 --------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. Navigate to **BIG-IP Device Silos** under the **Devices** menu and clock on the ``silolab``.
 
 .. image:: ../pictures/img_module5_lab2-1.png
