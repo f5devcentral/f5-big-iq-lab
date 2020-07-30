@@ -1,6 +1,8 @@
 Lab 1.1: Simple APM Configuration via BIG-IQ (secure website with basic authentication)
 ---------------------------------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
 Workflow
 ^^^^^^^^
 

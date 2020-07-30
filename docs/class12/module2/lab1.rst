@@ -1,6 +1,11 @@
 Lab 2.1: Review SSLo Overview dashboard
 ---------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 - Click on Configuration > SSL Orchestrator > SSLo Overview
 
 .. image:: ../pictures/module1/SSLo_overview.png

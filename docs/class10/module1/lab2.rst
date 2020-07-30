@@ -1,6 +1,11 @@
 Lab 1.2: Managing DNS Profiles
 ------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 A DNS profile allows you to configure various DNS attributes that a virtual server or DNS listener object applies to DNS traffic. For example, when you enable the DNS Express feature in the DNS profile, the BIG-IP system acts as an authoritative secondary DNS server, and performs actions such as zone transfers from multiple primary DNS servers or zone transfers from the local BIND server on the BIG-IP system.
 
 You can view the DNS profiles you manage by navigating to "Configuration > DNS > Delivery > Profiles". From there, click "Create" to setup a new one, or click on an existing profile to edit it.

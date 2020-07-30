@@ -1,6 +1,11 @@
 Lab 1.2: Review the security services
 -------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 - Click on Configuration > SSL Orchestrator > Services
 
 .. image:: ../pictures/module1/services.png

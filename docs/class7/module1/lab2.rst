@@ -6,9 +6,10 @@ BIG-IP and BIG-IQ object models have long lacked support for renaming core confi
 
 .. note:: All steps in this lab will be completed using the persona Larry.
 
+.. include:: /accesslab.rst
 
-Lab 1.2.1: Rename Port Lists
-*****************************
+Rename Port Lists
+^^^^^^^^^^^^^^^^^
 
 #. Connect to your BIG-IQ (as *Larry*)and go to : *Configuration* > *Security* > *Network Security* > *Port Lists*
 #. Click the checkbox next to ``deployed_app_ports``, and click the *Rename* button in top right of UI view.
@@ -33,8 +34,8 @@ Lab 1.2.1: Rename Port Lists
 
 In this release, BIG-IQ also supports renaming of the following objects: Firewall Rule Schedules, Address Lists, Rule Lists, and Firewall Policies not assocatied with application templates.
 
-Lab 1.2.2: Rename Firewall Policy Associated With An Application Template
-*************************************************************************
+Rename Firewall Policy Associated With An Application Template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Under *Configuration* > *Security* > *Network Security* > *Firewall Policies*
 #. Click the checkbox next to ``f5-afm-policy_136``, the click the *More* button dropdown, and select *Rename*

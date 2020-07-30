@@ -3,9 +3,10 @@ Lab 2.1: Using BIG-IQ AFM Logging to View Centralized Firewall logs
 
 .. note:: This lab uses firewall objects created on Class 7 Module 1, and also uses previously created application deployments (site36.example.com).  Please verify the application site36.example.com is a currently deployed application in your environment, and complete the steps in Module 1 before proceeding with steps below
 
+.. include:: /accesslab.rst
 
-Lab 2.1.1: Configure and Use BIG-IQ Logging for AFM
-****************************************************
+Configure and Use BIG-IQ Logging for AFM
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 As of BIG-IQ 6.0, BIG-IQ supports remote log collecting and viewing for AFM policies.  The below steps will take you through the configuration required to support this feature:
 
 1. Under *Configuration* > *Security* > *Network Security*, click *Contexts*
@@ -37,8 +38,8 @@ At this point, we have created all the objects necessary for logging firewall ev
 5. Log out of system as Admin, and log back in as Larry.
 
 
-Lab 2.1.2: Create new Application Template Using Firewall objects
-*****************************************************************
+Create new Application Template Using Firewall objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In the steps below, we are going to attach our newly created firewall policies to application templates.
 
@@ -66,8 +67,8 @@ For the steps below, we will use the **david** (or **marco**) account to manipul
 
 At this point, we have created a new application template that is using our newly created firewall policy and logging profiles.  Next, we will associate an existing application with our new template.
 
-Lab 2.1.3: Update Existing Application To Use New Application Template
-**********************************************************************
+Update Existing Application To Use New Application Template
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In previous labs, we have created and deployed a new application using a fresh template.  In this exercise, we are going to update an existing application to use a new template.
 
 Complete the steps below logged in as **david** (or **marco**)
@@ -93,8 +94,8 @@ Complete the steps below logged in as **david** (or **marco**)
       :scale: 50%
 
 
-Lab 2.1.4: Monitoring Firewall Logging On BIG-IQ
-************************************************
+Monitoring Firewall Logging On BIG-IQ
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 In this exercise, we will generate some traffic to be processes by the firewall policy, and use BIG-IQ monitoring to examine the results.
 
 Complete the steps below logged in as *Larry*

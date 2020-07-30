@@ -1,11 +1,17 @@
 
-.. note:: Credentials (login/password) available under lab's Documentation > Credentials section for each components.
+Lab environment details
+^^^^^^^^^^^^^^^^^^^^^^^
 
-List of Virtual Servers and Applications Servers where various type of traffic
-is being send to (check ``crontab`` config for more details).
+.. include:: ../warnings.rst
 
-.. warning:: Make sure the IP address on the external network 10.1.10.0/24 is defined in lab environment on the BIG-IP external interface
-             where you are deploying the application service or VIP
+The Linux box in the environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
+and Application dashboard.
+
+Below table shows the list of **Virtual Servers** and 88Applications Servers88 where various type of traffic
+is being sent (check ``crontab`` config for more details).
+
+.. warning:: Make sure the IP address on the external network 10.1.10.0/24 is defined in lab environment on 
+             the BIG-IP external interface where you are deploying the application service or VIP.
 
 +-------------------------------------------------------------------------------------------+------------------------------------------------------------------------------------------+
 | Virtual IP addresses where the traffic generator sends HTTP clean traffic                 | ``10.1.10.110`` to ``10.1.10.142``                                                       |

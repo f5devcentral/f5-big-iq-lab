@@ -1,6 +1,8 @@
 Module 3: Sync Group Management
 ===============================
 
+.. include:: /accesslab.rst
+
 Limitations
 ^^^^^^^^^^^
 - Need an GSLB object pre-provision in BIG-IP prior adding any GSLB object from BIG-IQ

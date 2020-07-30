@@ -1,6 +1,11 @@
 Lab 2.2: Review SSLo Analytics
 ------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 - Click on Monitoring > SSL Orchestrator > SSLo Analytics
 
 .. image:: ../pictures/module1/sslo_analytics.png

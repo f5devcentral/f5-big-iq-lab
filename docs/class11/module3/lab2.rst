@@ -1,7 +1,16 @@
 Lab 1.2: Additional DDoS Monitoring 
 -----------------------------------
 
-In addition to the DoS Dashboard, there are a few other methods to extract data/reporting information about DoS attacks in the Monitoring Tab. Using both *Reports* and *Events*, DoS attack details, events, logs, and graphs can be viewed and generated. In additon, filtering by device, attack types are avaialble to fine tune the data view. DoS Visibilty and reporting has been improved with each version, which overlaps and deprecates in some cases what can be generated on demand in the *Reports* tab. 
+In addition to the DoS Dashboard, there are a few other methods to extract data/reporting information about 
+DoS attacks in the Monitoring Tab. Using both *Reports* and *Events*, DoS attack details, events, logs, 
+and graphs can be viewed and generated. In additon, filtering by device, attack types are avaialble to fine 
+tune the data view. DoS Visibilty and reporting has been improved with each version, which overlaps and 
+deprecates in some cases what can be generated on demand in the *Reports* tab. 
+
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
 
 Lets explore the DoS Events section:
 

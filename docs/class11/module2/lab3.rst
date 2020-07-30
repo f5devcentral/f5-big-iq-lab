@@ -1,6 +1,11 @@
 Lab 2.3: Managing Device DoS Profiles
 -------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 When managing multiple BIG-IPs with Device DoS Configurations, changing the settings and keeping all profiles in sync can be time consuming if multiple edits of profiles are needed. Another use case is when importing a new BIG-IP and the Device DoS profile needs to be changed from default. 
 
 In BIG-IQ 6.1, the Device DoS Config from one device can be copied to one or more target devices which speeds up the sync process as well as provides protection against typos from multiple edits. 

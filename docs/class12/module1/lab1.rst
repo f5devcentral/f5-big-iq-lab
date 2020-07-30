@@ -1,6 +1,11 @@
 Lab 1.1: Review device discovery
 --------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 - Click on Configuration > SSL Orchestrator > Devices
 
 .. image:: ../pictures/module1/Devices_discovery.png

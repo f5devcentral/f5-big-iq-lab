@@ -1,6 +1,11 @@
 Lab 1.4: Review the security policy
 -----------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 - Click on Configuration > SSL Orchestrator > Security Policies
 
 - Click on ssloP_transparent and then edit the service (click on the pencil icon)

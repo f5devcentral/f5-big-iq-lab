@@ -11,6 +11,11 @@ configured with UDP flood values to detect and mitigate values of 10000 PPS, how
 The default Device DoS profile settings manual detect and mitigate are set high for all vectors. To simplify any demo, reducing these values allows for easier demonstrations. 
 Additionally, if using a lab VE license there is a 10 Mb/s limit which limits how many PPS can be processed by TMM. If using larger values for DoS demonstration, use at least a 1 Gb/s license. 
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 For this set of labs we will be utilizing Device DoS to detect and mitigate bad packet and flood types, while using a DoS Profile to detect and mitigate 
 specific DNS vectors only. This allows us to layer a fine grained DNS policy while letting Device DoS catch bad packet types across all Virtuals. 
 

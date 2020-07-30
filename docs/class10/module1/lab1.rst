@@ -12,6 +12,11 @@ relies on complete alignment of a variety of device configuration
 elements. Using BIG-IQ simplifies the process of determining the health
 of your DNS sync groups.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 At the top of the screen > click Devices.
 
 On the left, click BIG-IP CLUSTERS > DNS Sync Groups.

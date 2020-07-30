@@ -6,6 +6,11 @@ the BIG-IQ Centralized Management Access Monitoring tools to understand
 how they can benefit an Administrators day to day Access tasks and also
 how it can help with troubleshooting Access related issues.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 -  Navigate to Monitoring Audit Logs Access
 
 |image40|

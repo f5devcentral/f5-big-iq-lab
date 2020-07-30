@@ -1,6 +1,11 @@
 Lab 2.2: Creating and Applying a DoS Profile for a Virtual Server
 -----------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 For more granular DoS Settings, a DoS Profile can be created and applied to Virtual Servers which will then be viewed as *Protected Objects* under DoS Reporting. In this lab we will create a DoS profile for the DNS Virtual Server that detects and mitigates a sub-set of vectors at a lower rate then Device DoS. 
 
 First we will create and edit a new DoS Profile:

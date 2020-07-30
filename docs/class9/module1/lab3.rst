@@ -1,6 +1,11 @@
 Lab 1.3: Create a new VPN Access profile
 ----------------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 -  Navigate to ConfigurationAccessAccess Groups
 
 -  Select BostonAG

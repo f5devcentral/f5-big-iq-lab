@@ -1,6 +1,8 @@
 Lab 1.2: Modifying an existing APM access policy using Virtual Policy Editor (VPE)
 ----------------------------------------------------------------------------------
 
+.. include:: /accesslab.rst
+
 Access Policy Review
 ~~~~~~~~~~~~~~~~~~~~
 

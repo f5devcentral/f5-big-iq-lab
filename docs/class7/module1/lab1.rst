@@ -1,8 +1,9 @@
 Lab 1.1: Creating and Managing Network Firewall Objects
 -------------------------------------------------------
+.. include:: /accesslab.rst
 
-Lab 1.1.1: Create Shared Firewall Objects
-*****************************************
+Create Shared Firewall Objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 F5 Advanced Firewall Manager (AFM) configurations are built-up using a series of smaller object containers. 
 For example, a firewall policy may contain one or more rule lists, which contain firewall rules in an ordered list; a rule in  a rule list may contain one or more address lists, which contain lists of addresses or networks, and/or one or more port lists, which contain lists of ports.  Building firewall policies through a series of smaller building blocks, allows for object re-use across all firewall objects, and when managed through BIG-IQ allows for simple re-use of firewall objects across an entire fleet for F5 AFM instances.  In this excercise, we will create a few shared objects to be used in subsequent exercises for building a firewall policy.
@@ -45,8 +46,8 @@ Create another address list identifying some known bad sources to block (small s
 #. Click *Update*, then click *Save & Close* from the bottom right
 
 
-Lab 1.1.2: Create Firewall Rules using Shared Firewall Objects
-**************************************************************
+Create Firewall Rules using Shared Firewall Objects
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Network firewalls use rules and rule lists to specify traffic-handling actions. The network software compares IP packets to the criteria specified in rules. If a packet matches the criteria, then the system takes the action specified by the rule. If a packet does not match any rule from the list, the software accepts the packet or passes it to the next rule or rule list. For example, the system compares the packet to self IP rules if the packet is destined for a network associated with a self IP address that has firewall rules defined.
 
 Rule lists are containers for rules, which are run in the order they appear in their assigned rule list. A rule list can contain thousands of ordered rules, but cannot be nested inside another rule list. You can reorder rules in a given rule list at any time.
@@ -113,8 +114,8 @@ In this section, we will work with various options for managing rule lists
 #. Click the cloned rule list.  In the bottom on the screen, view the elements of the rule list in the left hand pane.  In the right hand pane, click the *Related Items* button.  This will show you the objects related to the rule list, and the application components that are using the rule list.
 #. Click the *Delete* button.  In this case, our cloned rule list isn't being used, so it is safe to delete.  If, however, the rule list was in use BIQ would present a dialog box informing you that you cannot remove the rule list because it is in use.
 
-Lab 1.1.3: Create Firewall Policy, Publish, and Assign to Context
-*****************************************************************
+Create Firewall Policy, Publish, and Assign to Context
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Ultimately, the rule lists we worked with in the previous section are associated with a firewall policy for deployment.  Firewall policies, can be attached in multiple contexts (Global, Route Domain, Virtual Server, Self IP, and Management IP).  In this lab, we will explore using BIG-IQ to create a firewall policy, and look at options for attaching the policy in various contexts.  Finally, we will publish our firewall policy, and assign it to an application template.
 

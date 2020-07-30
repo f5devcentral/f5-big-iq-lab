@@ -1,6 +1,11 @@
 Lab 1.3: Review the service chains
 ----------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 - Click on Configuration > SSL Orchestrator > Service Chains
 
 .. image:: ../pictures/module1/service_chain.png

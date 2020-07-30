@@ -5,6 +5,11 @@ This section of the lab is design to present an overview of the DNS statistics t
 
 For this lab, the student is not asked to create any configuration, but rather just explore the information available.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 Navigate to *Monitoring* > *Dashboards* > *DNS* > *Overview* 
 In this view, you can see a general view of DNS traffic. The panels on the right-hand side may be used to limit the view to a particular device, Listener, or Sync Group.
 

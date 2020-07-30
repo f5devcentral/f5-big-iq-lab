@@ -1,6 +1,11 @@
 Lab 1.3: Managing DNS Listeners
 -------------------------------
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 A \ *listener* is a specialized virtual server that passively checks for DNS packets on port 53 and the IP address you assign to the listener.
 
 When a DNS query is sent to the IP address of the listener, BIG-IP DNS either handles the request locally or forwards the request to the appropriate resource.

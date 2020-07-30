@@ -5,6 +5,11 @@ With the DoS Profiles applied to the BIG-IP, we can now generate attack traffic 
 
 By logging DoS event massagesto the DCDs of BIG-IQ, both archived reporting and real time dashboards can be used to display attack and traffic information. The blueprint has some cron jobs that are generating background periodic attack traffic for additional logs and historical events. 
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 First, generate an attack that will be handled by Device DoS:
 
 1. Begin by launching a web shell to the Ubuntu host, and one shell to the active BOS BIG-IP

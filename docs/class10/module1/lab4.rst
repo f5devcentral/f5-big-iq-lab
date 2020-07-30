@@ -7,6 +7,11 @@ When you use F5 BIG-IQ Centralized Management to manage your DNS sync
 group, you can view the GSLB objects that are defined on devices in the
 sync group.
 
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
 1. At the top of the screen, click Configuration.
 
 2. On the left, click DNS > GSLB, and then select the object type that you want to view.
