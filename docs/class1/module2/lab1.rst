@@ -5,7 +5,7 @@ Lab 2.1: Application Creation using AS3 through BIG-IQ
 
 Open Chrome and Postman.
 
-For Postman, click right and click on execute (wait ~2 minutes).
+For Postman, click right and click on execute (wait ^2 minutes).
 
 .. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
 
@@ -25,7 +25,7 @@ Press Send. This, will save the token value as _f5_token. If your token expires,
 |lab-1-1|
 
 Task 1 - HTTP Application Service
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template. This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistence, etc...
 
@@ -145,7 +145,7 @@ Click on your Application, Properties > CONFIGURATION, look at AS3 Declaration.
 
 
 Task 2 - HTTPS Offload
-~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^
 
 Now we are going to create another service but this time, we will do some SSL offloading.
 
@@ -247,7 +247,7 @@ Now we are going to create another service but this time, we will do some SSL of
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Task 3a - HTTPS Application with Web Application Firewall
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This declaration will create an HTTPS application on BIG-IQ using an HTTPS template, a WAF policy and a security Log Profile.
 
@@ -368,7 +368,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Task 4 - Generic Services
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Note that because this declaration uses the generic template, the service does not have to be named serviceMain
 

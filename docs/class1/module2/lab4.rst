@@ -4,7 +4,7 @@ Lab 2.4: Delete AS3 Tenant/Applications on BIG-IQ
 .. include:: /accesslab.rst
 
 Task 9 - Delete Task1 with its AS3 application services
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Here, we empty the tenant/partition of Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
 should also disappear from BIG-IQ. 

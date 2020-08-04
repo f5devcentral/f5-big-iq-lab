@@ -11,7 +11,7 @@ In this lab, we will show 2 use cases.
 .. include:: /accesslab.rst
 
 Task 5a - Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This declaration will add a HTTPS application to a existing HTTP application. In this task, we will re-submit the entire declaration.
 
@@ -175,7 +175,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
              Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Task 5b - Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: This isn't the recommended way of adding an application to an existing Tenant. The method described in Task 5a is preferred.
              The PATCH operation will be fully supported starting with BIG-IQ 7.0/AS3.12 and above (not supported in BIG-IQ 6.1/AS3.7)

@@ -10,7 +10,7 @@ AS3 declaration and re-send the full declaration to the BIG-IQ declare or deploy
 .. include:: /accesslab.rst
 
 Deploy AS3 Application Service directly to the BIG-IP
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template. 
 This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistence, etc...
@@ -108,7 +108,7 @@ This declaration abstracts the complexity of having to configure all the HTTP de
 5. Login on **BOS-vBIGIP01.termmarc.com** and verify the application is correctly deployed in partition Task1.
 
 Deploy AS3 Application Service through BIG-IQ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Now the application service has been deployed directly on the BIG-IP, let's re-deploy the same AS3 declaration but through BIG-IQ.
 

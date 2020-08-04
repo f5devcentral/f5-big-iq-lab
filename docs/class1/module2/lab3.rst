@@ -4,7 +4,7 @@ Lab 2.3: Deploying AS3 Templates on BIG-IQ
 .. include:: /accesslab.rst
 
 Task 6 - Create custom HTTP AS3 Template on BIG-IQ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. warning:: AS3 Templates cannot be created through BIG-IQ UI but only using the API in 6.1.
              Go to `Module 3`_ for more details on how to create a AS3 Template using the UI start BIG-IQ 7.0.
@@ -232,7 +232,7 @@ You can see the Template in JSON format if you click on it.
 
 
 Task 7 - Admin set RBAC for Oliva on BIG-IQ
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Let's update now Oliva's service catalog.
 
@@ -244,7 +244,7 @@ Click **Save & Close**.
 
 
 Task 8 - Deploy the HTTP Application Service using a Custom Template
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Now, let's deploy an application as **Oliva** using the AS3 template previously created in Task 6. Note in the below declaration, 
 the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
