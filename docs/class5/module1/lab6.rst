@@ -1,6 +1,7 @@
 Lab 1.6: Run Bash Scripts on Devices that BIG-IQ Manages 
 --------------------------------------------------------
-Estimated time to complete: 4 minutes
+
+.. note:: Estimated time to complete: **5 minutes**
 
 This lab will show you how to create and deploy/run scripts on a managed device from BIG-IQ.
 
@@ -39,26 +40,38 @@ Tasks
 .. code-block:: yaml
    :linenos:
 
-    #!/bin/bash
-    # TMUI RCE vulnerability CVE-2020-5902
-    # Security Advisory Description
-    # The Traffic Management User Interface (TMUI), also referred to as the Configuration utility, 
-    # has a Remote Code Execution (RCE) vulnerability in undisclosed pages. (CVE-2020-5902)
-    CREDS=admin:purple123
-    IP=localhosts
-    curl -u $CREDS -k https://$IP/mgmt/tm/sys/httpd -X PATCH -d '{"include":"\n <LocationMatch \\\";\\\">\n Redirect 404 /\n </LocationMatch>\n <LocationMatch \\\"hsqldb\\\">\n Redirect 404 /\n </LocationMatch>\n "}' -H content-type:application/json
-    sleep 10
-    curl -k -u $CREDS -H "Content-Type: application/json" -d '{"command":"save"}' https://$IP/mgmt/tm/sys/config
-    sleep 10
-    Device="$(uname -n)"
-    echo HOSTNAME:${Device/.*/}
-    URL="https://localhost/tmui/login.jsp/..;/login.jsp"
-    response=$(curl -k -s -w "%{http_code}" $URL)
-    http_code=$(tail -n1 <<< "$response")  # get the last line
-    content=$(sed '$ d' <<< "$response")   # get all but the last line which contains the status code
-    echo "$http_code"
-    #echo "$content"
-    echo "done"
+   #!/bin/bash
+   
+   # TMUI RCE vulnerability CVE-2020-5902
+   # Security Advisory Description
+   # The Traffic Management User Interface (TMUI), also referred to as the Configuration utility, 
+   # has a Remote Code Execution (RCE) vulnerability in undisclosed pages. (CVE-2020-5902)
+
+   CREDS=admin:purple123
+   IP=localhost
+   
+   json='{"include":"\n <LocationMatch \\\";\\\">\n Redirect 404 /\n </LocationMatch>\n <LocationMatch \\\"hsqldb\\\">\n Redirect 404 /\n </LocationMatch>\n "}'
+   curl -u $CREDS -k https://$IP/mgmt/tm/sys/httpd -X PATCH -d "$json" -H content-type:application/json
+   
+   sleep 10
+   
+   curl -k -u $CREDS -H "Content-Type: application/json" -d '{"command":"save"}' https://$IP/mgmt/tm/sys/config
+   
+   sleep 10
+   
+   Device="$(uname -n)"
+   echo HOSTNAME:${Device/.*/}
+   
+   URL="https://localhost/tmui/login.jsp/..;/login.jsp"
+   response=$(curl -k -s -w "%{http_code}" $URL)
+   http_code=$(tail -n1 <<< "$response")  # get the last line
+   content=$(sed '$ d' <<< "$response")   # get all but the last line which contains the status code
+   
+   echo "$http_code"
+   echo "$content"
+   echo "done"
+
+|
 
 .. image:: ./media/lab-6-2.png
   :scale: 40%

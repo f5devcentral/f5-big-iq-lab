@@ -1,5 +1,8 @@
 Lab 1.7: Upgrade Managed Devices to New Versions of TMOS with BIG-IQ
 --------------------------------------------------------------------
+
+.. note:: Estimated time to complete: **20 minutes**
+
 A key feature of BIG-IQ is the ability to manage software images for multiple remote devices from one location.
 You can deploy software without having to log in to each individual BIG-IP device.
 
