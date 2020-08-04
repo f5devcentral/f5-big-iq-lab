@@ -37,8 +37,7 @@ Tasks
 
    <a href="https://raw.githubusercontent.com/usrlocalbins/Big-IQ-scripts/master/CVE-Bash%20Script" target="_blank">TMUI RCE vulnerability CVE-2020-5902 bash script</a>
 
-.. code-block:: yaml
-   :linenos:
+.. code-block:: bash
 
    #!/bin/bash
    
@@ -48,27 +47,32 @@ Tasks
    # has a Remote Code Execution (RCE) vulnerability in undisclosed pages. (CVE-2020-5902)
 
    CREDS=admin:purple123
+
    IP=localhost
-   
-   json='{"include":"\n <LocationMatch \\\";\\\">\n Redirect 404 /\n </LocationMatch>\n <LocationMatch \\\"hsqldb\\\">\n Redirect 404 /\n </LocationMatch>\n "}'
-   curl -u $CREDS -k https://$IP/mgmt/tm/sys/httpd -X PATCH -d "$json" -H content-type:application/json
-   
+
+   curl -u $CREDS -k https://$IP/mgmt/tm/sys/httpd -X PATCH -d '{"include":"\n <LocationMatch \\\";\\\">\n  \
+   Redirect 404 /\n </LocationMatch>\n <LocationMatch \\\"hsqldb\\\">\n Redirect 404 /\n </LocationMatch>\n "}'  \
+   -H content-type:application/json
+
    sleep 10
-   
+
    curl -k -u $CREDS -H "Content-Type: application/json" -d '{"command":"save"}' https://$IP/mgmt/tm/sys/config
-   
+
    sleep 10
-   
+
    Device="$(uname -n)"
    echo HOSTNAME:${Device/.*/}
-   
+
    URL="https://localhost/tmui/login.jsp/..;/login.jsp"
+
    response=$(curl -k -s -w "%{http_code}" $URL)
+
    http_code=$(tail -n1 <<< "$response")  # get the last line
-   content=$(sed '$ d' <<< "$response")   # get all but the last line which contains the status code
-   
+   content=$(sed '$ d' <<< "$response")   # get all but the last line which contains the status code 
+
    echo "$http_code"
-   echo "$content"
+   #echo "$content"
+ 
    echo "done"
 
 |
