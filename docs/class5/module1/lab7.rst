@@ -126,8 +126,12 @@ Example of assessments comparison.
   :scale: 40%
   :align: center
 
-14. Go back to the Device tab and re-import and re-discover SEA-vBIGIP01.termmarc.com, important step to perform after the BIG-IP upgrade.
+14. Go back to the Device tab click under services for SEA-vBIGIP01.termmarc.com then re-discover and re-import, important step to perform after the BIG-IP upgrade.
 
 .. image:: ./media/lab-7-17.png
+  :scale: 40%
+  :align: center
+
+.. image:: ./media/lab-7-18.png
   :scale: 40%
   :align: center
