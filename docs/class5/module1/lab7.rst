@@ -126,12 +126,16 @@ Example of assessments comparison.
   :scale: 40%
   :align: center
 
-14. Go back to the Device tab click under services for SEA-vBIGIP01.termmarc.com then re-discover and re-import, important step to perform after the BIG-IP upgrade.
+14. Go back to the Device tab click under services for SEA-vBIGIP01.termmarc.com then re-discover and re-import the LTM module on the BIG-IP, important step to perform after the BIG-IP upgrade.
 
 .. image:: ./media/lab-7-17.png
   :scale: 40%
   :align: center
 
+Click on **Re-discover** first. Then once object discovery is completed, click on **Re-import**.
+
 .. image:: ./media/lab-7-18.png
   :scale: 40%
   :align: center
+
+You should have the conflict resolution window showing up, choose *Create Version*.
