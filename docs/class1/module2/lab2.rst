@@ -204,7 +204,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
     {
         "class": "AS3",
         "action": "patch",
-        "patchbody": [
+        "patchBody": [
             {
                "target": {
                     "address": "10.1.1.8"
