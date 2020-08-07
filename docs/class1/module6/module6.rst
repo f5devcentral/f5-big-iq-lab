@@ -27,6 +27,10 @@ For more information about requirements and recommendations for creating a BIG-I
 
 .. _BIG-IQ Application Service Sizing Guidelines: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-sizing-guidelines/big-iq-sizing-guidelines.html#big-iq-sizing-guidelines
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/fscXGPUtkn0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 .. toctree::
    :maxdepth: 1
    :glob:
