@@ -1,0 +1,292 @@
+---
+- hosts: f5_bigiq_cm
+  connection: local
+  serial: 1
+  gather_facts: false
+  vars:
+    provider:
+      server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
+      server_port: 443
+      user: admin
+      password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
+      loginProviderName: "tmos"
+      validate_certs: no
+    cn: "webapp123api"
+    vip: "10.1.10.126"
+    servers: 
+      - "10.1.20.126"
+
+  tasks:
+    - name: Get BIG-IQ Token
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: 
+          username: "{{ provider.user }}"
+          password: "{{ provider.password }}"
+          loginProviderName: "{{ provider.loginProviderName }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: auth
+
+    - name: Check Venafi/BIG-IQ connection is setup) and get BIG-IQ CA provider selfLink for "Venafi UDF lab"
+      uri:
+        url: "https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/adc-core/external-ca/config?$filter=name%20eq%20'Venafi%20UDF%20lab'"
+        timeout: 60
+        validate_certs: "{{ provider.validate_certs }}"
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+      register: json_response_venafi
+
+#    - debug:
+#        msg: "{{ json_response_venafi.json | json_query('items[*].selfLink') | first }}"
+
+    - name: Generate Certificate Request (CSR)
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/adc-core/tasks/certificate-management
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+        body: |
+          {
+              "issuer": "Venafi UDF lab",
+              "caProvider": "Venafi",
+              "itemName": "{{ cn }}.csr",
+              "itemPartition": "Common",
+              "durationInDays": 365,
+              "country": "US",
+              "commonName": "{{ cn }}.f5demo.com",
+              "policyFolderName": "",
+              "division": "UDF lab",
+              "organization": "F5",
+              "locality": "Seattle",
+              "state": "WA",
+              "policyFolder": "\\VED\\Policy\\Certificates\\F5\\Seattle DataCenter",
+              "securityType": "password",
+              "keyType": "RSA",
+              "keySize": 2048,
+              "disableDSA": true,
+              "checkComplexity": true,
+              "minPasswordLength": 12,
+              "keyPassphrase": "Password@123456",
+              "confirmedKeyPassphrase": "Password@123456",
+              "administratorEmail": "",
+              "challengePassword": "",
+              "confirmedChallengePassword": "",
+              "thirdPartyCa": {
+                  "policyFolder": "\\VED\\Policy\\Certificates\\F5\\Seattle DataCenter",
+                  "issuer": "Venafi UDF lab",
+                  "caProvider": "Venafi"
+              },
+              "command": "GENERATE_CSR"
+          }
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: json_response
+
+    - name: Check CSR creation status
+      uri:
+        url: "https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/adc-core/tasks/certificate-management/{{ json_response.json.id }}"
+        timeout: 60
+        validate_certs: "{{ provider.validate_certs }}"
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+      register: status
+      until: status.json.status in ['FINISHED', 'FAILED']
+      retries: 40
+      delay: 10
+      failed_when: "'FAILED' in status.json.status"
+      changed_when: "'FINISHED' in status.json.status"
+
+    - name: Send CSR Request to Venafi
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/adc-core/external-ca/venafi/csr-request
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+        body: |
+          {
+              "certificateName": "{{ cn }}",
+              "policyFolderName": "\\VED\\Policy\\Certificates\\F5\\Seattle DataCenter",
+              "commonName": "{{ cn }}.f5demo.com",
+              "organization": "F5",
+              "organizationUnit": "UDF lab",
+              "state": "WA",
+              "country": "US",
+              "externalCaConfigReference": {
+                  "link": "{{ json_response_venafi.json | json_query('items[*].selfLink') | first }}"
+              },
+              "keySize": 2048,
+              "keyAlgorithm": "RSA"
+          }
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: json_response
+
+    - name: Check CSR Request to Venafi status
+      uri:
+        url: "https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/adc-core/external-ca/venafi/csr-request/{{ json_response.json.id }}"
+        timeout: 60
+        validate_certs: "{{ provider.validate_certs }}"
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+      register: status
+      until: status.json.status in ['FINISHED', 'FAILED']
+      retries: 40
+      delay: 10
+      failed_when: "'FAILED' in status.json.status"
+      changed_when: "'FINISHED' in status.json.status"
+
+    - name: Pin and deploy SSL certificate and key to BIG-IP
+      include_role:
+        name: rjouhann.bigiq_pinning_deploy_objects
+        #name: f5devcentral.bigiq_pinning_deploy_objects
+      vars:
+        bigiq_task_name: "Deployment through Ansible/API - {{ cn }}"
+        ltm: 
+          - { type: "sslCertReferences", name: "{{ cn }}.crt" }
+          - { type: "sslKeyReferences", name: "{{ cn }}.key" }
+        device_address: 10.1.1.7
+      register: status
+
+    - name: Deploy AS3 application services to BIG-IP
+      include_role:
+        name: f5devcentral.atc_deploy
+      vars:
+        atc_service: AS3
+        atc_method: POST
+        atc_declaration: |
+          {
+            "class": "AS3",
+            "action": "deploy",
+            "declaration": {
+              "class": "ADC",
+              "schemaVersion": "3.12.0",
+              "target": {
+                  "address": "10.1.1.7"
+              },
+              "tenant4": {
+                  "class": "Tenant",
+                  "https_app_service": {
+                      "class": "Application",
+                      "template": "https",
+                      "serviceMain": {
+                          "pool": "Pool",
+                          "enable": true,
+                          "serverTLS": "TLS_Server",
+                          "virtualPort": 443,
+                          "profileAnalytics": {
+                              "use": "Analytics_Profile"
+                          },
+                          "virtualAddresses": [
+                              "{{ vip }}"
+                          ],
+                          "class": "Service_HTTPS"
+                      },
+                      "Pool": {
+                          "members": [
+                              {
+                                  "monitors": [
+                                      "http"
+                                  ],
+                                  "adminState": "enable",
+                                  "shareNodes": true,
+                                  "servicePort": 80,
+                                  "serverAddresses": {{ servers }}
+                              }
+                          ],
+                          "class": "Pool"
+                      },
+                      "TLS_Server": {
+                          "certificates": [
+                              {
+                                  "certificate": "Certificate"
+                              }
+                          ],
+                          "class": "TLS_Server"
+                      },
+                      "Certificate": {
+                          "passphrase": {
+                              "protected": "eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0",
+                              "ciphertext": "UGFzc3dvcmRAMTIzNDU2"
+                          },
+                          "privateKey": {
+                              "bigip": "/Common/{{ cn }}.key"
+                          },
+                          "certificate": {
+                              "bigip": "/Common/{{ cn }}.crt"
+                          },
+                          "class": "Certificate"
+                      },
+                      "Analytics_Profile": {
+                          "collectIp": false,
+                          "collectGeo": false,
+                          "collectUrl": false,
+                          "collectMethod": false,
+                          "collectUserAgent": false,
+                          "collectOsAndBrowser": false,
+                          "collectPageLoadTime": false,
+                          "collectResponseCode": true,
+                          "collectClientSideStatistics": true,
+                          "class": "Analytics_Profile"
+                      }
+                  }
+              }
+            }
+          }
+        atc_delay: 15
+        atc_retries: 30
+      register: atc_AS3_status
+
+    - debug: var=atc_AS3_status
+
+    - name: Get Application Service Name (Config set) tenant4_https_app_service
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'tenant4_https_app_service'
+        method: GET
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: json_response
+
+    - debug:
+        msg: "{{ json_response.json | json_query('items[*].selfLink') }}"
+
+    - name: Create Application LAB_module2 in BIG-IQ
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/global/global-apps-merge-move
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+        body: |
+          {
+            "componentAppReferencesToMove": [
+              {
+                "link": "{{ json_response.json | json_query('items[0].selfLink') }}"
+              }
+            ],
+            "targetGlobalAppName": "LAB_module2",
+            "deleteEmptyGlobalAppsWhenDone": false,
+            "requireNewGlobalApp": false
+          }
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: json_response

@@ -2,11 +2,15 @@ Lab 1.4: Integrating Venafi with BIG-IQ for Certificate Management
 ------------------------------------------------------------------
 F5 Networks and Venafi have partnered to provide a tightly-integrated solution for certificate and key management.
 Managing Venafi certificate requests through BIG-IQ automates laborious processes and reduces the amount of time you 
-have to spend requesting and distributing certificates and keys to your managed devices. 
+have to spend requesting and distributing certificates and keys to your managed devices.
 
 More information in `BIG-IQ Knowledge Center`_.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-1-0/integrating-third-party-certificate-management.html
+
+See `Class 1 Module 2 Lab 2.11`_ to run the same lab fully automated using Ansible!
+
+.. _Class 1 Module 2 Lab 2.11: /class1/module2/lab11.html
 
 Also:
 
@@ -204,8 +208,8 @@ Check **Editable** the 2 following attributes: ``JOSE header`` and ``Ciphertext`
 4. Save & close the template and publish it so it can be used in the next step.
 
 
-AS3 HTTPS offload application service deployment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 HTTPS offload application service creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Go to the Applications tab > Applications and  click **Create** to create an Application Service:
 

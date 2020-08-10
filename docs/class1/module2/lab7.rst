@@ -1,5 +1,5 @@
-Lab 2.7: Perform lab 1 to 3 using Ansible URI module
-----------------------------------------------------
+Lab 2.7: Perform lab 1 to 3 using Ansible
+-----------------------------------------
 
 .. include:: /accesslab.rst
 
@@ -20,7 +20,7 @@ Execute the playbooks for each tasks.
 - Task 1: HTTP Application Service::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task01_create_http_app.yml paula
+    # ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task01_create_http_app.json paula
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
@@ -29,7 +29,7 @@ Execute the playbooks for each tasks.
 - Task 2: HTTPS Offload::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task02_create_https_app.yml paula
+    # ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task02_create_https_app.json paula
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
@@ -38,7 +38,7 @@ Execute the playbooks for each tasks.
 - Task 3a: HTTPS Application with Web Application Firewall::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task03a_create_waf_app.yml paula
+    # ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task03a_create_waf_app.json paula
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
@@ -47,7 +47,7 @@ Execute the playbooks for each tasks.
 - Task 3b: HTTPS Application with Web Application Firewall using an External ASM policy::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task03b_create_waf_ext_policy_app.yml paula
+    # ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task03b_create_waf_ext_policy_app.json paula
 
   Connect as **paul** and check on BIG-IQ the application has been correctly created.
 
@@ -56,7 +56,7 @@ Execute the playbooks for each tasks.
 - Task 4: Generic Services::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task04_create_generic_app.yml paul
+    # ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task04_create_generic_app.json paul
 
   Connect as **paul** and check on BIG-IQ the application has been correctly created.
 
@@ -65,18 +65,7 @@ Execute the playbooks for each tasks.
 - Task 5a: Add a HTTPS Application to existing HTTP AS3 Declaration (using POST)::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task05a_modify_post_http_app.yml paul
-
-  Connect as **paula** and check on BIG-IQ the application has been correctly created.
-
-|
-
-- Task 5b: Add a HTTPS Application to existing HTTP AS3 Declaration (using PATCH)::
-
-    # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task05b_modify_patch_http_app.yml paula
-
-  .. warning:: The PATCH operation will be fully supported started BIG-IQ 7.0/AS3.12 and above (not supported in BIG-IQ 6.1/AS3.7)
+    # ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task05a_modify_post_http_app.json paul
 
   Connect as **paula** and check on BIG-IQ the application has been correctly created.
 
@@ -85,7 +74,7 @@ Execute the playbooks for each tasks.
 - Task 6: Create custom HTTP AS3 Template on BIG-IQ::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task06_create_template.yml david
+    # ./ansible_helper ansible-playbook /ansible/bigiq_as3_task06_create_template.yml -i /ansible/hosts
 
   Connect as **david** and check on BIG-IQ the AS3 template has been correctly created.
 
@@ -119,7 +108,7 @@ Execute the playbooks for each tasks.
 - Task 8: Deploy the HTTP Application Service using a Custom Template::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task08_create_http_app.yml olivia
+    # ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task08_create_http_app.json olivia
 
   Connect as **olivia** and check on BIG-IQ the application has been correctly created.
 
@@ -127,10 +116,23 @@ Execute the playbooks for each tasks.
 
 |
 
+- Move Task1 application services into a single Application on BIG-IQ::
+
+    # cd /home/f5/f5-ansible-bigiq-as3-demo
+    # ./ansible_helper ansible-playbook /ansible/bigiq_as3_move_apps.yml -i /ansible/hosts
+
+  Connect as **david** and check on BIG-IQ the application has been correctly created.
+
+  .. warning:: If you want Paula to access the new Application called LAB_task1, David will need to assign the role ``LAB_task1 Manager``
+
+  |lab-3-5|
+
+|
+
 - Task 9: Delete Task1 with their AS3 application services::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
-    # ./cmd_playbook.sh as3_bigiq_task09_delete_task1_app.yml david
+    # ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task09_delete_task1_app.json david
 
   Connect as **david** on BIG-IQ.
 
@@ -144,4 +146,6 @@ Execute the playbooks for each tasks.
 .. |lab-3-3| image:: ../pictures/module2/lab-3-3.png
    :scale: 60%
 .. |lab-3-4| image:: ../pictures/module2/lab-3-4.png
+   :scale: 60%
+.. |lab-3-5| image:: ../pictures/module2/lab-3-5.png
    :scale: 60%

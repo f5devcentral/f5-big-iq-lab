@@ -1,0 +1,134 @@
+---
+# BIG-IQ and AS3 Lab - Task 6 - Create custom HTTP AS3 Template on BIG-IQ
+- hosts: f5_bigiq_cm
+  connection: local
+  serial: 1
+  gather_facts: false
+  vars:
+    provider:
+      server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
+      server_port: 443
+      user: admin
+      password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
+      loginProviderName: "tmos"
+      validate_certs: no
+
+  tasks: 
+    - name: Get BIG-IQ Token
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body:
+          username: "{{ provider.user }}"
+          password: "{{ provider.password }}"
+          loginProviderName: "{{ provider.loginProviderName }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: auth
+
+    - name: Task 6 - Create custom HTTP AS3 Template on BIG-IQ
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/global/appsvcs-templates
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{auth.json.token.token}}"
+        body: |
+          {
+            "description": "Task 6 - Create custom HTTP AS3 Template on BIG-IQ",
+            "name": "HTTPcustomTemplateTask6",
+            "published": true,
+            "schemaOverlay": {
+              "type": "object",
+              "properties": {
+                "class": {
+                  "type": "string",
+                  "const": "Application"
+                },
+                "schemaOverlay": {
+                },
+                "label": {
+                },
+                "remark": {
+                },
+                "template": {
+                },
+                "enable": {
+                },
+                "constants": {
+                }
+              },
+              "additionalProperties": {
+                "allOf": [
+                  {
+                    "if": {
+                      "properties": {
+                        "class": {
+                          "const": "Service_HTTP"
+                        }
+                      }
+                    },
+                    "then": {
+                      "$ref": "#/definitions/Service_HTTP"
+                    }
+                  }
+                ],
+                "not": {
+                  "anyOf": [
+                    {
+                      "properties": {
+                        "class": {
+                          "const": "IAM_Policy"
+                        }
+                      }
+                    },
+                    {
+                      "properties": {
+                        "class": {
+                          "const": "WAF_Policy"
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "class"
+              ],
+              "definitions": {
+                "Service_HTTP": {
+                  "type": "object",
+                  "properties": {
+                    "virtualPort": {
+                      "type": "integer",
+                      "const": 8080,
+                      "default": 8080
+                    }
+                  },
+                  "dependencies": {
+                    "policyIAM": {
+                      "not": {
+                      }
+                    },
+                    "policyWAF": {
+                      "not": {
+                      }
+                    }
+                  },
+                  "additionalProperties": true
+                }
+              }
+            }
+          }
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: json_response
+
+    - debug:
+        var: json_response.json

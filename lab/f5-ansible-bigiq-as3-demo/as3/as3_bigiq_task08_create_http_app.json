@@ -1,0 +1,54 @@
+{
+  "class": "AS3",
+  "action": "deploy",
+  "declaration": {
+    "class": "ADC",
+    "schemaVersion": "3.12.0",
+    "id": "isc-lab",
+    "label": "Task8",
+    "target": {
+      "address": "10.1.1.8"
+    },
+    "Task8": {
+      "class": "Tenant",
+      "MyWebApp8http": {
+        "class": "Application",
+        "schemaOverlay": "HTTPcustomTemplateTask6",
+        "template": "http",
+        "statsProfile": {
+          "class": "Analytics_Profile",
+          "collectClientSideStatistics": true,
+          "collectOsAndBrowser": false,
+          "collectMethod": false
+        },
+        "serviceMain": {
+          "class": "Service_HTTP",
+          "virtualAddresses": [
+            "10.1.10.133"
+          ],
+          "virtualPort": 8080,
+          "pool": "pool_8",
+          "profileAnalytics": {
+            "use": "statsProfile"
+          }
+        },
+        "pool_8": {
+          "class": "Pool",
+          "monitors": [
+            "http"
+          ],
+          "members": [
+            {
+              "servicePort": 80,
+              "serverAddresses": [
+                "10.1.20.132",
+                "10.1.20.133"
+              ],
+              "shareNodes": true
+            }
+          ]
+        }
+      }
+    }
+  }
+}

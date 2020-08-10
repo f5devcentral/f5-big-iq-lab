@@ -1,0 +1,87 @@
+---
+# BIG-IQ and AS3 Lab - Move App services into Apps
+- hosts: f5_bigiq_cm
+  connection: local
+  serial: 1
+  gather_facts: false
+  vars:
+    provider:
+      server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
+      server_port: 443
+      user: admin
+      password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
+      loginProviderName: "tmos"
+      validate_certs: no
+
+  tasks: 
+  - name: Get BIG-IQ Token
+    uri:
+      url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/shared/authn/login
+      method: POST
+      headers:
+        Content-Type: application/json
+      body:
+        username: "{{ provider.user }}"
+        password: "{{ provider.password }}"
+        loginProviderName: "{{ provider.loginProviderName }}"
+      body_format: json
+      timeout: 60
+      status_code: 200, 202
+      validate_certs: "{{ provider.validate_certs }}"
+    register: auth
+
+  - name: Get Application Service Name (Config set) Task1_MyWebApp1http
+    uri:
+      url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'Task1_MyWebApp1http'
+      method: GET
+      headers:
+        Content-Type: application/json
+        X-F5-Auth-Token: "{{auth.json.token.token}}"
+      status_code: 200, 202
+      validate_certs: "{{ provider.validate_certs }}"
+    register: json_response_task1a
+
+  - debug:
+      msg: "{{ json_response_task1a.json | json_query('items[*].selfLink') }}"
+
+  - name: Get Application Service Name (Config set) Task1_MyWebApp6https
+    uri:
+      url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'Task1_MyWebApp6https'
+      method: GET
+      headers:
+        Content-Type: application/json
+        X-F5-Auth-Token: "{{auth.json.token.token}}"
+      status_code: 200, 202
+      validate_certs: "{{ provider.validate_certs }}"
+    register: json_response_task1b
+
+  - debug:
+      msg: "{{ json_response_task1b.json | json_query('items[*].selfLink') }}"
+
+  - name: Create Application LAB_task1 in BIG-IQ
+    uri:
+      url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/global/global-apps-merge-move
+      method: POST
+      headers:
+        Content-Type: application/json
+        X-F5-Auth-Token: "{{auth.json.token.token}}"
+      body: |
+        {
+          "componentAppReferencesToMove": [
+            {
+              "link": "{{ json_response_task1a.json | json_query('items[0].selfLink') }}"
+            },
+            {
+              "link": "{{ json_response_task1b.json | json_query('items[0].selfLink') }}"
+            }
+          ],
+          "targetGlobalAppName": "LAB_task1",
+          "deleteEmptyGlobalAppsWhenDone": false,
+          "requireNewGlobalApp": false
+        }
+      body_format: json
+      timeout: 60
+      status_code: 200, 202
+      validate_certs: "{{ provider.validate_certs }}"
+    register: json_response
+    

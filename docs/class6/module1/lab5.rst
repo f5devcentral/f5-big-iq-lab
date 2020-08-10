@@ -234,8 +234,8 @@ Click **Deploy**.
   :scale: 40%
   :align: center
 
-AS3 HTTPS offload application service deployment
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AS3 HTTPS offload application service creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Go to the Applications tab > Applications and  click **Create** to create an Application Service:
 

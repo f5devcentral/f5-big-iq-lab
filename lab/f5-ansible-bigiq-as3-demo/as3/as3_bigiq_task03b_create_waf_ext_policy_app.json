@@ -1,0 +1,104 @@
+{
+  "class": "AS3",
+  "action": "deploy",
+  "persist": true,
+  "declaration": {
+    "class": "ADC",
+    "schemaVersion": "3.12.0",
+    "id": "isc-lab",
+    "label": "Task3b",
+    "remark": "Task 3b - HTTPS Application with WAF",
+    "target": {
+      "address": "10.1.1.8"
+    },
+    "Task3b": {
+      "class": "Tenant",
+      "MyWebApp3waf": {
+        "class": "Application",
+        "template": "https",
+        "statsProfile": {
+          "class": "Analytics_Profile",
+          "collectClientSideStatistics": true,
+          "collectOsAndBrowser": false,
+          "collectMethod": false
+        },
+        "serviceMain": {
+          "class": "Service_HTTPS",
+          "virtualAddresses": [
+            "10.1.10.125"
+          ],
+          "pool": "web_pool",
+          "profileAnalytics": {
+            "use": "statsProfile"
+          },
+          "serverTLS": "webtls",
+          "policyWAF": {
+            "use": "linux_high"
+          },
+          "securityLogProfiles": [
+            {
+              "use": "asmSecurityLogProfile"
+            }
+          ]
+        },
+        "web_pool": {
+          "class": "Pool",
+          "monitors": [
+            "http"
+          ],
+          "members": [
+            {
+              "servicePort": 80,
+              "serverAddresses": [
+                "10.1.20.124",
+                "10.1.20.125"
+              ],
+              "shareNodes": true
+            }
+          ]
+        },
+        "linux_high": {
+          "class": "WAF_Policy",
+          "url": "https://raw.githubusercontent.com/f5devcentral/f5-asm-policy-templates/master/owasp_ready_template/owasp-auto-tune-v1.1.xml",
+          "ignoreChanges": true
+        },
+        "asmSecurityLogProfile": {
+          "class": "Security_Log_Profile",
+          "application": {
+            "localStorage": false,
+            "maxEntryLength": "64k",
+            "protocol": "tcp",
+            "remoteStorage": "bigiq",
+            "reportAnomaliesEnabled": true,
+            "servers": [
+              {
+                "address": "10.1.10.6",
+                "port": "8514"
+              }
+            ],
+            "storageFilter": {
+              "requestType": "illegal"
+            }
+          }
+        },
+        "webtls": {
+          "class": "TLS_Server",
+          "certificates": [
+            {
+              "certificate": "webcert"
+            }
+          ]
+        },
+        "webcert": {
+          "class": "Certificate",
+          "certificate": {
+            "bigip": "/Common/default.crt"
+          },
+          "privateKey": {
+            "bigip": "/Common/default.key"
+          }
+        }
+      }
+    }
+  }
+}
