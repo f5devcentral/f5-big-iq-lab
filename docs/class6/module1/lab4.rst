@@ -10,7 +10,7 @@ More information in `BIG-IQ Knowledge Center`_.
 
 See `Class 1 Module 2 Lab 2.11`_ to run the same lab fully automated using Ansible!
 
-.. _Class 1 Module 2 Lab 2.11: /class1/module2/lab11.html
+.. _Class 1 Module 2 Lab 2.11: ../../class1/module2/lab11.html
 
 Also:
 

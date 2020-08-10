@@ -13,8 +13,6 @@ Configured third-party certificate provider on BIG-IQ
 
 Follow `Class 6 Module 1 Lab 1.4`_ to configure Venafi with BIG-IQ for Certificate Management.
 
-.. _Class 6 Module 1 Lab 1.4: /class6/module1/lab4.html
-
 .. note:: We are not automating this step as setting up Venafi with BIG-IQ is a one time operation.
 
 SSL Certificate & Key and AS3 HTTPS offload application service creation 
@@ -22,7 +20,7 @@ SSL Certificate & Key and AS3 HTTPS offload application service creation
 
 1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-2. Execute the playbook ``bigiq_as3_deploy_venafi_certificate_as3_app.yml``:
+2. Execute the playbook ``bigiq_as3_deploy_venafi_certificate_as3_app.yml``::
 
     # cd /home/f5/f5-ansible-bigiq-as3-demo
     # docker build -t f5-big-iq-onboarding .
@@ -44,8 +42,10 @@ You can look at the details of the Ansible Playbook source on the `GitHub reposi
 
 .. note:: With BIG-IQ and Venafi, the certificate can be automatically renewed prior the expiration date.
 
+.. _Class 6 Module 1 Lab 1.4: ../../class6/module1/lab4.html
+
 .. |lab-11-1| image:: ../pictures/module2/lab-11-1.png
-   :scale: 60%
+   :scale: 40%
 
 .. |lab-11-2| image:: ../pictures/module2/lab-11-2.png
-   :scale: 60%
+   :scale: 40%
