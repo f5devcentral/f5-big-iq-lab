@@ -42,6 +42,8 @@
           Content-Type: application/json
           X-F5-Auth-Token: "{{ auth.json.token.token }}"
       register: json_response_venafi
+      failed_when: >
+        not json_response_venafi.json | json_query('items[*].selfLink') | first
 
 #    - debug:
 #        msg: "{{ json_response_venafi.json | json_query('items[*].selfLink') | first }}"
