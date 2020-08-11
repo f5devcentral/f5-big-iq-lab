@@ -11,7 +11,6 @@ RUN pip3 install ansible
 COPY ansible.cfg /etc/ansible/ansible.cfg
 
 RUN ansible-galaxy install f5devcentral.atc_deploy --force
-#RUN ansible-galaxy install f5devcentral.bigiq_pinning_deploy_objects --force
-RUN ansible-galaxy install rjouhann.bigiq_pinning_deploy_objects --force
+RUN ansible-galaxy install f5devcentral.bigiq_pinning_deploy_objects --force
 
 RUN ansible-galaxy collection install f5networks.f5_modules

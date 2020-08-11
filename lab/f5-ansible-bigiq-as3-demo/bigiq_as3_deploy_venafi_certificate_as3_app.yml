@@ -152,8 +152,7 @@
 
     - name: Pin and deploy SSL certificate and key to BIG-IP
       include_role:
-        name: rjouhann.bigiq_pinning_deploy_objects
-        #name: f5devcentral.bigiq_pinning_deploy_objects
+        name: f5devcentral.bigiq_pinning_deploy_objects
       vars:
         bigiq_task_name: "Deployment through Ansible/API - {{ cn }}"
         ltm: 
