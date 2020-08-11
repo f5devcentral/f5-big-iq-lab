@@ -28,7 +28,6 @@ This automation scenario is composed of 4 parts:
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/U8RZ_lw19Gs" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-
 **Lab:**
 
 1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.

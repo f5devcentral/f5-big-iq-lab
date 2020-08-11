@@ -49,7 +49,7 @@ You can look at the details of the Ansible Playbook source on the `GitHub reposi
 
 .. note:: With BIG-IQ and Venafi, the certificate can be automatically renewed prior the expiration date.
 
-.. _Class 6 Module 1 Lab 1.4: ../../class6/module1/lab4.html
+.. _Class 6 Module 1 Lab 1.4: ../../class6/module1/lab4.html#configured-third-party-certificate-provider-on-big-iq
 
 .. |lab-11-1| image:: ../pictures/module2/lab-11-1.png
    :scale: 40%

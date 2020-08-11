@@ -90,6 +90,10 @@ Here, BIG-IQ will retrieve all the policies available under the policy folder sp
 
 You can look at those policies in Venafi by looking at the last chapter of this lab *Venafi Setup and Microsoft CA*.
 
+.. warning:: If you are doing **Class 1 Module 2 Lab 2.11**, `go back to this lab`_ so you can use Ansible to create, deploy the SSL objects and AS3 application service.
+
+.. _go back to this lab: ../../class1/module2/lab11.html#configured-third-party-certificate-provider-on-big-iq
+
 SSL Certificate & Key creation on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
