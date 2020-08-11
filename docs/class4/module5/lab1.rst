@@ -10,20 +10,13 @@ F5 provides Ansible Galaxy roles to onboard BIG-IQ Centralized Management (CM) a
 
 This automation scenario is composed of 4 parts:
 
-* Erase the current BIG-IQ CM and DCD configuration to default.
-
-* Onboard BIG-IQ CM and DCD
-
+1. Erase the current BIG-IQ CM and DCD configuration to default.
+2. Onboard BIG-IQ CM and DCD:
     - `bigiq_onboard`_ **ansible Role**: Performs a basic series of on-boarding steps to bootstrap a BIG-IQ system to the point that it can accept configuration.
-
     - `register_dcd`_  **ansible Role**: Performs a series of steps needed to register a BIG-IQ provisioned as a Data Collection Device (DCD) to a BIG-IQ provisioned as a Configuration Management (CM) device.
-
-* Add BIG-IPs to the BIG-IQ
-
+3. Add BIG-IPs to the BIG-IQ:
     - `bigiq_device_discovery`_  **ansible module**: Leverage BIG-IQ APIs to Discover and Import BIG-IP in BIG-IQ.
-    
-* Create Application Services
-
+4. Create Application Services:
     - `Ansible using AS3`_ **playbook**: Use BIG-IQ Ansible and AS3 to deploy application services (see class 1, module 2).
 
 .. _bigiq_onboard: https://galaxy.ansible.com/f5devcentral/bigiq_onboard
