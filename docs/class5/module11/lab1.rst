@@ -1,6 +1,8 @@
 Lab 11.1: Prepare GCP account credentials
 -----------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

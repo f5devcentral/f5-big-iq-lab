@@ -1,6 +1,8 @@
 Lab 8.4: AWS BIG-IP HA VE Creation and Onboarding using the API
 ---------------------------------------------------------------
 
+.. note:: Estimated time to complete: **30 minutes**
+
 In this lab, we are going to create and onboard from scratch a cluster of BIG-IPs in AWS using BIG-IQ.
 
 Using what you learned in previous labs, you can run the same below steps using the BIG-IQ UI 

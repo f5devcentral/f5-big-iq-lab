@@ -1,6 +1,8 @@
 Lab 1.3: Review the service chains
 ----------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

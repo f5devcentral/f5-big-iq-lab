@@ -1,6 +1,8 @@
 Lab 2.1: Stage a new application on BIG-IQ for deployment
 ---------------------------------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

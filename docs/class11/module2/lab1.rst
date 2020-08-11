@@ -1,6 +1,8 @@
 Lab 2.1: Configuring DoS Device Profile
 ---------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 The Device DoS profile reports and mitigates based on aggregated data across the entire BIG-IP. All packets that are not explicitly white listed
 count for the Device DoS vectors. When using more specific profiles on Virtual Servers, the Device DoS profile should be set using values large
 enough that they provide protection for the device without conflicting with Virtual Server profiles. For example individual virtual servers may be 

@@ -1,6 +1,8 @@
 Lab 5.3: Onboard BIG-IQ in Azure
 --------------------------------
 
+.. note:: Estimated time to complete: **25 minutes**
+
 There are different ways to onboard BIG-IQ in Azure:
 
 1. Using the `F5 Trial Azure Resource Manager Template`_

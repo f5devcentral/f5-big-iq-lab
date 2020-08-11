@@ -1,5 +1,8 @@
 Lab 2.3: Using BIG-IQ to Make Wide-Scale Changes to AFM Device DOS Profiles
 ---------------------------------------------------------------------------
+
+.. note:: Estimated time to complete: **10 minutes**
+
 Prior to BIG-IQ 6.0.1, AFM Device Dos Profile could be managed centrally using BIG-IQ.  However, BIG-IQ still required that each profile was managed and deployed individually.  In the latest release, BIG-IQ added the ability to edit device dos profiles across multiple devices from a single profile by supporting a "copy-to" functionality.  This still doesn't allow for editing of individual fields in the configuration, and then pushing to many devices.  However, does provide ability to make changes to one profile, and copy broadly to many devices.  In this lab, we will work with this new feature.
 
 .. note:: All steps in this lab will be completed using the persona Larry.

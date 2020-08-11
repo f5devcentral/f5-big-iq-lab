@@ -1,6 +1,8 @@
 Lab 5.2: Troubleshooting latency and packet loss
 ------------------------------------------------
 
+.. note:: Estimated time to complete: **15 minutes**
+
 In this lab, we are going to identify latency and packet loss issues happening on an application sitting behind the BIG-IP.
 
 .. include:: /accesslab.rst

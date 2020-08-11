@@ -1,6 +1,8 @@
 Lab 2.3: Create iRule and attach to multiple virtual servers
 ------------------------------------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

@@ -1,6 +1,8 @@
 Lab 1.1: Check DNS Sync Group Health
 ------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 Before you can monitor the sync group health, you must add a BIG-IP
 device configured in a DNS sync group to the BIG-IP Devices inventory
 list, and import the LTM and DNS services. For the purpose of this lab,

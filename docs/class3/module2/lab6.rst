@@ -1,6 +1,8 @@
 Lab 2.6: Page Load Time
 -----------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

@@ -1,5 +1,8 @@
 Lab 2.1: Create a custom role type to give permissions to BIG-IP object types
 -----------------------------------------------------------------------------
+
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

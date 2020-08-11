@@ -1,5 +1,8 @@
 Lab 9.2: Azure BIG-IP VE Creation
 ---------------------------------
+
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

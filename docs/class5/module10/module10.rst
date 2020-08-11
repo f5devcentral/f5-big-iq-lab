@@ -1,6 +1,8 @@
 Module 10: Distribute User-provided GeoIP DB update package to BIG-IPs (new 7.1)
 ================================================================================
 
+.. note:: Estimated time to complete: **10 minutes**
+
 The BIG-IP system uses geolocation software to identify the geographic location of a client
 or web application user. The default IP geolocation database provides IPv4 addresses at 
 the continent, country, state, ISP, and organization levels, and IPv6 addresses at the 

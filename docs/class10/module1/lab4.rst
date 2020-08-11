@@ -1,6 +1,8 @@
 Lab 1.4: Managing permissions for GSLB Objects
 ----------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 **View GSLB objects**
 
 When you use F5 BIG-IQ Centralized Management to manage your DNS sync

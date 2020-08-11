@@ -1,6 +1,8 @@
 Module 3: Version Specific Objects
 ==================================
 
+.. note:: Estimated time to complete: **5 minutes**
+
 The Version Specific feature added in 6.1 is meant to address issues with changes to default profiles and 
 monitors across versions. This feature is still there, and should continue to be used for that use case.
  

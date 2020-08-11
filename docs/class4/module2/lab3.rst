@@ -1,5 +1,8 @@
 Lab 2.3: Add new custom role
 ----------------------------
+
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

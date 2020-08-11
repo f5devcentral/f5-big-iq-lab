@@ -1,6 +1,8 @@
 Lab 2.2: Create a new virtual server by cloning an existing virtual server
 --------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

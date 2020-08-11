@@ -1,6 +1,8 @@
 Lab 2.4: Troubleshooting 503 Service Unavailable
 ------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

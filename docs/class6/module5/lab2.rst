@@ -1,6 +1,8 @@
 Lab 5.2: Resolve conflicts in the silo
 --------------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

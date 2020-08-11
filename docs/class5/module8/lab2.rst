@@ -1,5 +1,8 @@
 Lab 8.2: AWS BIG-IP VE Creation
 -------------------------------
+
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

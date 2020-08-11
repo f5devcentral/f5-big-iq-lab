@@ -1,6 +1,8 @@
 Lab 2.1: Using BIG-IQ AFM Logging to View Centralized Firewall logs
 -------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **35 minutes**
+
 .. note:: This lab uses firewall objects created on Class 7 Module 1, and also uses previously created application deployments (site36.example.com).  Please verify the application site36.example.com is a currently deployed application in your environment, and complete the steps in Module 1 before proceeding with steps below
 
 .. include:: /accesslab.rst

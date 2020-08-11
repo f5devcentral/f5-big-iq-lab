@@ -1,5 +1,8 @@
 Lab 2.1: Checking DSC Group status
 ----------------------------------
+
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

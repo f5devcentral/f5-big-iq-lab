@@ -1,6 +1,8 @@
 Lab 1.1: Simple APM Configuration via BIG-IQ (secure website with basic authentication)
 ---------------------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **20 minutes**
+
 .. include:: /accesslab.rst
 
 Workflow

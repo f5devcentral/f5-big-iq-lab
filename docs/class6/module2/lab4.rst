@@ -1,6 +1,8 @@
 Lab 2.4: Deploy Staged Changes
 ------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

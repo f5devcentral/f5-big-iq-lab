@@ -1,5 +1,8 @@
 Lab 1.1: Creating and Managing Network Firewall Objects
 -------------------------------------------------------
+
+.. note:: Estimated time to complete: **25 minutes**
+
 .. include:: /accesslab.rst
 
 Create Shared Firewall Objects

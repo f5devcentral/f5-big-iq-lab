@@ -1,6 +1,8 @@
 Lab 1.1: Move a certificate from unmanaged to managed state
 ------------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

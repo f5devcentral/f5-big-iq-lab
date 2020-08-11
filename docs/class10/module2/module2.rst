@@ -1,6 +1,8 @@
 Module 2: Wide-IP Configuration
 ===============================
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Limitation

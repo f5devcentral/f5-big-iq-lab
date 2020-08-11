@@ -1,6 +1,8 @@
 Lab 1.2: Managing DNS Profiles
 ------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

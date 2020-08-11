@@ -1,5 +1,8 @@
 Lab 2.2: Create a resource group and associate it with a role type
 ------------------------------------------------------------------
+
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

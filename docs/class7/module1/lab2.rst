@@ -1,5 +1,8 @@
 Lab 1.2: Renaming Firewall Objects
 ----------------------------------
+
+.. note:: Estimated time to complete: **15 minutes**
+
 BIG-IP and BIG-IQ object models have long lacked support for renaming core configuration objects.  BIG-IQ 6.0.1 has added support for renaming various AFM objects.  In this lab, we will work with this new functionality.
 
 .. note:: This lab uses firewall objects created on Class 7 Module 1, and also uses previously created application deployments (site36.example.com).  Please verify the application site36.example.com is a currently deployed application in your environment, and complete the steps in Module 1 before proceeding with steps below

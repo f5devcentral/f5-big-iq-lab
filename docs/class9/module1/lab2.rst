@@ -1,6 +1,8 @@
 Lab 1.2: Modifying an existing APM access policy using Virtual Policy Editor (VPE)
 ----------------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **25 minutes**
+
 .. include:: /accesslab.rst
 
 Access Policy Review

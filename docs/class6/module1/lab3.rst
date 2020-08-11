@@ -1,6 +1,8 @@
 Lab 1.3: Renew expired certificates and Deploy from BIG-IQ to managed BIG-IP
 ----------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

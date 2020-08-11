@@ -1,6 +1,8 @@
 Module 6: BIG-IQ Zone Management
 ================================
 
+.. note:: Estimated time to complete: **10 minutes**
+
 Since BIG-IQ 6.1, you can have **zones** for the Data Collection Devices, DCDs.
 The zoning allows you to put BIG-IP devices and DCDs in close proximity to each other while the BIG-IQ management console is in another location.
 The biggest reason for doing this is to avoid any issues relating to latency between the BIG-IP and DCDs.

@@ -1,6 +1,8 @@
 Lab 1.4: View APM Audit logs and Dashboards
 -------------------------------------------
 
+.. note:: Estimated time to complete: **25 minutes**
+
 In this workflow the Student will learn how to navigate through and use
 the BIG-IQ Centralized Management Access Monitoring tools to understand
 how they can benefit an Administrators day to day Access tasks and also

@@ -1,6 +1,8 @@
 Lab 5.2: Onboard BIG-IQ in AWS
 ------------------------------
 
+.. note:: Estimated time to complete: **25 minutes**
+
 There are different ways to onboard BIG-IQ in AWS:
 
 1. Using the `F5 Trial Cloud Formation Template`_

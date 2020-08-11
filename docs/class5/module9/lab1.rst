@@ -1,5 +1,8 @@
 Lab 9.1: Prepare your Azure Account 
 -----------------------------------
+
+.. note:: Estimated time to complete: **15 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

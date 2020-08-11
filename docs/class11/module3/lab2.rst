@@ -1,6 +1,8 @@
 Lab 1.2: Additional DDoS Monitoring 
 -----------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 In addition to the DoS Dashboard, there are a few other methods to extract data/reporting information about 
 DoS attacks in the Monitoring Tab. Using both *Reports* and *Events*, DoS attack details, events, logs, 
 and graphs can be viewed and generated. In additon, filtering by device, attack types are avaialble to fine 

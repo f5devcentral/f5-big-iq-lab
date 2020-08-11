@@ -1,5 +1,8 @@
 Lab 3.1: BIG-IQ Configuration Management (CM)
 ---------------------------------------------
+
+.. note:: Estimated time to complete: **15 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

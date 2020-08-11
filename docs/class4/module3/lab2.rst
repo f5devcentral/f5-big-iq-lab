@@ -1,5 +1,8 @@
 Lab 3.2: BIG-IQ Data Collection Devices (DCD)
 ---------------------------------------------
+
+.. note:: Estimated time to complete: **15 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

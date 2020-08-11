@@ -1,5 +1,8 @@
 Lab 4.1: Create multiple changes. Deploy single change
 ------------------------------------------------------
+
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

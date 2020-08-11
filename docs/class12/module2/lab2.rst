@@ -1,6 +1,8 @@
 Lab 2.2: Review SSLo Analytics
 ------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

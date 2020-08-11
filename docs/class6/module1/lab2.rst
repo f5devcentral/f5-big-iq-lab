@@ -1,6 +1,8 @@
 Lab 1.2: Create and Import a self-signed certificates/key to BIG-IQ
 -------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

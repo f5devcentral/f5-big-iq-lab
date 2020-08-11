@@ -1,6 +1,8 @@
 Lab 1.2: Import Services on the new device
 -------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

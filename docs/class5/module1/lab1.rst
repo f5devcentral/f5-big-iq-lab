@@ -1,6 +1,8 @@
 Lab 1.1: Import a device to an existing Cluster
 -----------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

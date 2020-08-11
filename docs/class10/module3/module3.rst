@@ -1,6 +1,8 @@
 Module 3: Sync Group Management
 ===============================
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Limitations

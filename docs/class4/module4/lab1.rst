@@ -1,5 +1,8 @@
 Lab 4.1: Configure High Availability for BIG-IQ: Manual Failover
 ----------------------------------------------------------------
+
+.. note:: Estimated time to complete: **15 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

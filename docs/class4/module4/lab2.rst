@@ -1,5 +1,8 @@
 Lab 4.2: Configure High Availability for BIG-IQ: Auto Failover
 --------------------------------------------------------------
+
+.. note:: Estimated time to complete: **15 minutes**
+
 **Overview**
 
 With BIG-IQ v7.0 and above, BIG-IQ CM High Availability can be automated for VMware. Election of the primary BIG-IQ Central Manager goes via a quorum-based technology which enforces consistent fail-over. In case of a fail-over, quorum will make that the secondary BIG-IQ central manager will be able to automatically take over, without an administrator doing the election or promotion from standby to master manually.

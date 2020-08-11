@@ -1,6 +1,8 @@
 Lab 1.3: Create a new VPN Access profile
 ----------------------------------------
 
+.. note:: Estimated time to complete: **25 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

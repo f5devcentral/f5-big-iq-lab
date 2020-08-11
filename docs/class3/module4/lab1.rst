@@ -1,6 +1,8 @@
 Lab 4.1: Generate Reports in PDF
 --------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

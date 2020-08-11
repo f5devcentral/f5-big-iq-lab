@@ -1,6 +1,8 @@
 Lab 2.2: Creating and Applying a DoS Profile for a Virtual Server
 -----------------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

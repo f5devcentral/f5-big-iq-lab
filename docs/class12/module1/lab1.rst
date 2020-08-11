@@ -1,6 +1,8 @@
 Lab 1.1: Review device discovery
 --------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

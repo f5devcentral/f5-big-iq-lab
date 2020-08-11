@@ -1,5 +1,8 @@
 Lab 2.4: Add a user to a custom role
 ------------------------------------
+
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

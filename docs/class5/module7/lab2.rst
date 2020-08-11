@@ -1,5 +1,8 @@
 Lab 7.2: Device Onboarding with BIG-IQ
 --------------------------------------
+
+.. note:: Estimated time to complete: **15 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

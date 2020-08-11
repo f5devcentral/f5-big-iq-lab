@@ -1,6 +1,8 @@
 Lab 11.4: Create User
 ---------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 In this lab, we will add a new user to an existing custom role on BIG-IQ. 
 
 .. Note:: Currently there is no Ansible playbook to create custom roles so we will add this using the BIG-IQ UI first.

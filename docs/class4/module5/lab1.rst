@@ -1,5 +1,8 @@
 Lab 5.1: Onboard BIG-IQ using Ansible Galaxy
 --------------------------------------------
+
+.. note:: Estimated time to complete: **25 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

@@ -1,6 +1,8 @@
 Lab 5.3: Remove device from a silo and re-import it in BIG-IQ
 -------------------------------------------------------------
 
+.. note:: Estimated time to complete: **15 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

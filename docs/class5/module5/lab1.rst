@@ -1,5 +1,8 @@
 Lab 5.1: Using BIG-IQ as a license server for BIG-IP Virtual Edition devices
 ----------------------------------------------------------------------------
+
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

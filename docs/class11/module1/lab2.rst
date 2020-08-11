@@ -1,6 +1,8 @@
 Lab 1.2: Configuring BIG-IP for DDoS Logging to BIG-IQ
 ------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 BIG-IP uses logging profiles to format and send DoS log messages to one more destinations. Prior to BIG-IQ 6.0, this confifuration
 was done using log destinations, publishers and creating profiles in multiple steps. 
 

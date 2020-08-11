@@ -1,6 +1,8 @@
 Module 4: DNS Analytics
 =======================
 
+.. note:: Estimated time to complete: **5 minutes**
+
 This section of the lab is design to present an overview of the DNS statistics that are available in BIG-IQ. While not a complete customer scenario, the lab environment is built to provide some DNS traffic in order to populate the charts and graphs.
 
 For this lab, the student is not asked to create any configuration, but rather just explore the information available.

@@ -1,5 +1,8 @@
 Lab 7.1: VMWare BIG-IP VE Creation
 ----------------------------------
+
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

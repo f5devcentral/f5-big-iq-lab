@@ -1,6 +1,8 @@
 Lab 1.4: Uploading QKviews to iHealth for a support case
 --------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 BIG-IQ can now push qkviews from managed devices to ihealth.f5.com and
 provide a report of heuristic hits based on the qkview. These qkview
 uploads can be performed ad-hoc or as part of a F5 support case. If a

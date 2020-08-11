@@ -1,6 +1,8 @@
 Lab 2.3: Managing Device DoS Profiles
 -------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

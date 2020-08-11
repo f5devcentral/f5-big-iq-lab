@@ -1,6 +1,8 @@
 Lab 5.1: TCP Analytics: how to add a user-provided key
 ------------------------------------------------------
 
+.. note:: Estimated time to complete: **15 minutes**
+
 In the BIG-IQ UI, go to Applications > Application Templates. Notice there are two different types of Templates
 (AS3 Templates and Service Catalog Templates). AS3 Templates are the recommended templates for deploying new
 application services. Service Catalog Templates while still supported, are not recommended for new environments.

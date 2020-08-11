@@ -1,6 +1,8 @@
 Lab 1.1: Custom login banner for GUI login screen
 -------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 This feature provides the ability for the customer to specify a message to be displayed on the BIG-IQ login page.
 
 .. include:: /accesslab.rst

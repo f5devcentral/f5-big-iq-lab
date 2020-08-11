@@ -1,6 +1,8 @@
 Lab 11.5: Discover, License, and Register BIG-IP on BIG-IQ using Declarative Onboarding
 ---------------------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 In this lab, we will create a BIG-IP on GCP and discover and register it on BIG-IQ. 
 
 **Prerequisites**

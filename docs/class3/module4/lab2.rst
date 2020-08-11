@@ -1,6 +1,8 @@
 Lab 4.2: Generate Reports in CSV using the API 
 ----------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

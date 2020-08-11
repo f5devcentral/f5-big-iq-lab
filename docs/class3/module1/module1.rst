@@ -1,6 +1,8 @@
 Module 1: Analytics in BIG-IQ
 =============================
 
+.. note:: Estimated time to complete: **15 minutes**
+
 BIG-IQ preserve all the Analytics from the previous release 5.4, 
 under the **Monitoring** Tab: Device Health, DNS, Access, WAF.
 

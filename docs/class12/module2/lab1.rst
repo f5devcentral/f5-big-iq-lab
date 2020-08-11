@@ -1,6 +1,8 @@
 Lab 2.1: Review SSLo Overview dashboard
 ---------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

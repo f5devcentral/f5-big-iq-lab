@@ -1,6 +1,8 @@
 Lab 5.1: Import a device into a silo
 -------------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

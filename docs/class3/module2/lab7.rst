@@ -1,6 +1,8 @@
 Lab 2.7: Troubleshooting 418 I'm a teapot
 -----------------------------------------
 
+.. note:: Estimated time to complete: **2 hours**
+
 .. image:: ../pictures/module2/beverage-black-coffee-blurred-background-922217.jpg
   :align: center
   :scale: 50%

@@ -1,6 +1,8 @@
 Lab 11.3: Add Key to Regkey Pool
 --------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 In this lab, we will add a new key to the previously created regkey pool on BIG-IQ. 
 
 **Prerequisites**

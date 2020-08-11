@@ -1,5 +1,8 @@
 Lab 2.2: Using BIG-IQ Multi-Device Packet and Flow Tracers to test AFM policy
 -----------------------------------------------------------------------------
+
+.. note:: Estimated time to complete: **20 minutes**
+
 In this lab, we will use the BIG-IQ Multi-Device Packet tracer and flow analyzers to test firewall policy.
 
 .. include:: /accesslab.rst

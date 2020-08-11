@@ -1,5 +1,8 @@
 Lab 3.1: Create a backup schedule
 ---------------------------------
+
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

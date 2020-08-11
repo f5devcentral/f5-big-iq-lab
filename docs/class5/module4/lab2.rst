@@ -1,5 +1,8 @@
 Lab 4.2: Deploy multiple changes and restore single change
 ----------------------------------------------------------
+
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

@@ -1,6 +1,8 @@
 Lab 1.4: Review the security policy
 -----------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

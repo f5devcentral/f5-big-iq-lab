@@ -1,5 +1,5 @@
-Module 2: Local Traffic Management Virtual Servers
-===================================================
+Module 2: Local Traffic Management Virtual Servers from the Configuration Tab
+=============================================================================
 
 In this lab, we will demonstrate how to manage Virtual Servers on the managed BIG-IP devices.
 

@@ -1,6 +1,8 @@
 Lab 2.3: Troubleshooting Application Response Time Browser
 ----------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

@@ -1,5 +1,8 @@
 Lab 2.5: Test access privileges for the user with the custom role
 -----------------------------------------------------------------
+
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

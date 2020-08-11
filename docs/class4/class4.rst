@@ -71,6 +71,10 @@ See `Class 1 Module 1`_ for description of the different personas.
 
 .. _Class 1 Module 1: ../class01/module1/lab1.html
 
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/mDau6FvewoQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
 **USER PREFERENCES**
 
 This area allows the user to specify preferences, including UI idle timeout, default page to be displayed on login, and Network Security editing preferences.

@@ -1,5 +1,8 @@
 Lab 8.1: Prepare your AWS Account 
 ---------------------------------
+
+.. note:: Estimated time to complete: **15 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

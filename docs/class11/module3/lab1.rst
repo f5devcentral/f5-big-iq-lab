@@ -1,6 +1,8 @@
 Lab 1.1: Generating Simple DDoS Attacks
 ---------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 With the DoS Profiles applied to the BIG-IP, we can now generate attack traffic that will be detected and mitigated. The Ubuntu host has several simple tools useful in generating packet and application based attacks such as hping3 and dnsperf. 
 
 By logging DoS event massagesto the DCDs of BIG-IQ, both archived reporting and real time dashboards can be used to display attack and traffic information. The blueprint has some cron jobs that are generating background periodic attack traffic for additional logs and historical events. 
