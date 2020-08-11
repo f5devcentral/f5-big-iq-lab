@@ -1,6 +1,8 @@
 Lab 2.1: Application Creation using AS3 through BIG-IQ
 ------------------------------------------------------
 
+.. note:: Estimated time to complete: **25 minutes**
+
 .. include:: /accesslab.rst
 
 Open Chrome and Postman.

@@ -1,6 +1,8 @@
 Lab 2.8: AS3 Application Creation using AWX/Ansible Tower and BIG-IQ
 --------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **20 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

@@ -1,6 +1,8 @@
 Lab 2.6: Enable/Disable Enhanced Analytics via API for AS3 apps on BIG-IQ
 -------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

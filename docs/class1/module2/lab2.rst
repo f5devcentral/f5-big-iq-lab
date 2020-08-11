@@ -1,6 +1,8 @@
 Lab 2.2: Modify Tenant/Application using AS3
 --------------------------------------------
 
+.. note:: Estimated time to complete: **25 minutes**
+
 Using the declarative AS3 API, let's modfiy the HTTP application created during the previous **Lab 1 - Task 1** through BIG-IQ using an updated AS3 declaration.
 
 In this lab, we will show 2 use cases.

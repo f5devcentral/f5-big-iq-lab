@@ -1,6 +1,8 @@
 Lab 3.4: Limit Pool Member access only with AS3 Template through BIG-IQ GUI
 ---------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 Workflow

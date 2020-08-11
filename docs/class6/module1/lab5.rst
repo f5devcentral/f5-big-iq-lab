@@ -1,6 +1,8 @@
 Lab 1.5: Integrating Let's Encrypt with BIG-IQ for Certificate Management (new 7.1)
 -----------------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **30 minutes**
+
 In this lab, we are going to do the initial authentication/validation with the Let's Encrypt servers.
 Then create a certificate request and key using BIG-IQ and sign it with Let's Encrypt stage server.
 Finally, the last step will be to deploy the new certificate and key to a BIG-IP and create an 

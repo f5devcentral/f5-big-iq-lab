@@ -1,6 +1,8 @@
 Lab 6.1: HTTP Legacy Application Creation
 -----------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 In this lab you will add an existing legacy application (by choosing the virtual server(s) representing that application) 
 to the Application dashboard. Note this will not "re-deploy" the application or change anything on the BIG-IP itself. 
 Rather this will take the virtual server and all its child objects and group them together as an Application 

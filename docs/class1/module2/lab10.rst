@@ -1,6 +1,8 @@
 Lab 2.10: Moving existing AS3 Application Services from BIG-IP to BIG-IQ
 ------------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 In this lab, we are going to see the process to move AS3 Application Services already 
 deployed directly on BIG-IP using the API on BIG-IQ.
 

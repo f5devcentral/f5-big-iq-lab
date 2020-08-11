@@ -1,6 +1,8 @@
 Lab 6.3: Legacy Application and RBAC: Paula workflow
 ----------------------------------------------------
 
+.. note:: Estimated time to complete: **15 minutes**
+
 Because the vip134 ``legacy-app-service`` was deployed on a cluster (see `known issue`_), 
 we need to first re-create the Legacy Application Service ``legacy-app-service`` on BIG-IQ.
 

@@ -1,6 +1,8 @@
 Module 5: Limit available devices for AS3 Application Services (new 7.1)
 ========================================================================
 
+.. note:: Estimated time to complete: **10 minutes**
+
 In prior versions of BIG-IQ, there was no way to limit where application owners 
 could deploy their applications. 
 

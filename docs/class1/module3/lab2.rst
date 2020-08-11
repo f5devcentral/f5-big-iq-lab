@@ -1,6 +1,8 @@
 Lab 3.2: Application Service creation using AS3 through BIG-IQ GUI
 ------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 .. include:: /accesslab.rst
 
 HTTPS Service using AS3 through GUI

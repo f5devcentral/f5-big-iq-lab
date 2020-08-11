@@ -1,6 +1,8 @@
 Lab 4.2: DNS Application Service Creation
 -----------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

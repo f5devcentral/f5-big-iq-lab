@@ -1,6 +1,8 @@
 Lab 3.3: AS3 Application Service modification through BIG-IQ UI
 ---------------------------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

@@ -1,6 +1,8 @@
 Lab 3.5: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP
 -----------------------------------------------------------------------
 
+.. note:: Estimated time to complete: **25 minutes**
+
 .. include:: /accesslab.rst
 
 Workflow

@@ -1,6 +1,8 @@
 Lab 6.2: HTTP Analytics Profile Creation for Legacy Applications
 ----------------------------------------------------------------
 
+.. note:: Estimated time to complete: **15 minutes**
+
 In this lab, David is going to create an HTTP analytics profile and attach it to
 the VIP for the legacy application you just created. This will enable the BIG-IP to send HTTP analytics to the BIG-IQ and populate
 the dashboard.

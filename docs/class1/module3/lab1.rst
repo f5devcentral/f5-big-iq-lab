@@ -1,6 +1,8 @@
 Lab 3.1: Importing AS3 templates
 --------------------------------
 
+.. note:: Estimated time to complete: **10 minutes**
+
 Official documentation about AS3 application service management via a GUI can be found on the `BIG-IQ Knowledge Center`_.
 
 .. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/monitoring-managing-applications-using-big-iq.html

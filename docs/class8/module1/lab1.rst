@@ -1,5 +1,8 @@
 Lab 1.1: Proactive Bot Defense Configuration and Monitoring (new 7.1)
 ---------------------------------------------------------------------
+
+.. note:: Estimated time to complete: **30 minutes**
+
 BIG-IP Bot protection protects apps from automated attacks by bots and other malicious tools.
 
 The goal of this lab is to show how to use BIG-IQ to configure the Bot protection to 

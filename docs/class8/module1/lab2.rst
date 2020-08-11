@@ -1,5 +1,8 @@
 Lab 1.2: Configuring L7 Behavioral DoS Protection (new 7.1)
 -----------------------------------------------------------
+
+.. note:: Estimated time to complete: **30 minutes**
+
 A denial-of-service attack (DoS attack) or distributed denial-of-service attack (DDoS attack) makes 
 a victim's resource unavailable to its intended users, or obstructs the communication media between 
 the intended users and the victimized site so that they can no longer communicate adequately. 

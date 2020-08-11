@@ -1,6 +1,8 @@
 Lab 4.1: Move Application Services in BIG-IQ
 --------------------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks

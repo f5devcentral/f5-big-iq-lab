@@ -1,6 +1,8 @@
 Lab 2.5: FQDN and Service Discovery
 -----------------------------------
 
+.. note:: Estimated time to complete: **5 minutes**
+
 .. include:: /accesslab.rst
 
 Tasks
