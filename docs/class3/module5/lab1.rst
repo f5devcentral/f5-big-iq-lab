@@ -60,7 +60,7 @@ Tasks
 
 Click **Create**.
 
-.. code-block:: JSON
+.. code-block:: yaml
    :linenos:
    :emphasize-lines: 4,6
 

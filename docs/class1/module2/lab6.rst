@@ -10,7 +10,7 @@ Tasks
 
 Using Postman, you can turn Enhanced Analytics on/off directly by updating below attributes within your AS3 declaration:
 
-.. code-block:: JSON
+.. code-block:: yaml
    :linenos:
 
     "statsProfile": {
