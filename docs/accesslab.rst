@@ -3,7 +3,6 @@ Lab environment access
 
 You will find 2 ways to access the different systems in this lab.
    - From the Jump Host:
-
       From the lab environment, launch an remove desktop session to access the Ubuntu Desktop. 
       To do this, in your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
       *noVNC*. The password is ``purple123``.
@@ -16,7 +15,6 @@ You will find 2 ways to access the different systems in this lab.
       |udf_ubuntu_rdp_vnc|
 
    - Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH
-
       To access the BIG-IQ directly, click on the ACCESS button under **BIG-IQ CM**
       and select TMUI. The credentials to access the BIG-IQ TMUI are ``david/david`` and ``paula/paula`` as directed in the labs.
 

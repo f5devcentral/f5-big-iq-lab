@@ -49,16 +49,16 @@ You can look at the details of the Ansible Playbook source on the `GitHub reposi
 
 |lab-11-2|
 
-.. note:: With BIG-IQ and Venafi, the certificate can be automatically renewed prior the expiration date.
-          This feature can be configured under the Third Party CA Management Venafi config under the section *Automatic renewal*.
+5. With BIG-IQ and Venafi, the certificate can be automatically renewed prior the expiration date.
+This feature can be configured under the Third Party CA Management Venafi config under the section *Automatic renewal*.
 
-          |lab-11-3|
+|lab-11-3|
 
-          Certificate Auto Renewal triggers an automatic renewal of certificates prior to expiration. 
-          You configure renewal by number of days prior to certificate expiration.
+**Certificate Auto Renewal** triggers an automatic renewal of certificates prior to expiration. 
+You configure renewal by number of days prior to certificate expiration.
           
-          Certificate Auto Deployment allows BIG-IQ to automatically deploy renewed certificates to its managed BIG-IP systems. 
-          You configure the time of day at which the automatic deployment occurs.
+**Certificate Auto Deployment** allows BIG-IQ to automatically deploy renewed certificates to its managed BIG-IP systems. 
+You configure the time of day at which the automatic deployment occurs.
 
           
 .. _Class 6 Module 1 Lab 1.4: ../../class6/module1/lab4.html#configured-third-party-certificate-provider-on-big-iq
