@@ -44,7 +44,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
    .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
    :emphasize-lines: 12,28,44,45
 
@@ -157,7 +157,7 @@ Now we are going to create another service but this time, we will do some SSL of
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
    {
@@ -263,7 +263,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
           "bigip": "/Common/templates-default"
         }
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
    :emphasize-lines: 36
 
@@ -376,7 +376,7 @@ Task 4 - Generic Services
 
 Modify the Generic virtual with something other than <generic_virtual>.
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
    :emphasize-lines: 25
 

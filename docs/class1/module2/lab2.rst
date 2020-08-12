@@ -19,7 +19,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
 1. Start with the previous AS3 Declaration from **lab 1 - Task 1**
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
    {
@@ -97,7 +97,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
 |lab-2-1|
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
    "MyWebApp6https": {
@@ -199,7 +199,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
    .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
    :emphasize-lines: 3, 7, 10
 

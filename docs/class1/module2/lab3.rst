@@ -27,7 +27,7 @@ The following examples demonstrate how these goals can be met with JSON Schema.
 
 In order to trigger schema enforcement of each class in the template other than Tenant and Application, specify the class name(s) and reference(s) in the application class additionalProperties, like this:
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
     "additionalProperties": {
@@ -47,7 +47,7 @@ In order to trigger schema enforcement of each class in the template other than 
 
 To override a default, specify the property name, type, and new default like this snippet for the HTTP_Profile class: 
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
     "xForwardedFor": {
@@ -59,7 +59,7 @@ To override a default, specify the property name, type, and new default like thi
 
 To force a property to a specific value and accept no other, specify the property name, type, and const.  To add the static value when the user omits the property, specify the default as well, like this snippet added to the Service_HTTP class:
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
     "virtualPort": {
@@ -72,7 +72,7 @@ To force a property to a specific value and accept no other, specify the propert
 
 To reject a specific property whenever it appears in a declaration, specify that property within dependencies, like this snippet added to the Service_HTTP class:
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
     "dependencies": {
@@ -84,7 +84,7 @@ To reject a specific property whenever it appears in a declaration, specify that
 
 To act on a handful of properties and reject all others, make sure to include a stub for the "class" property and specify:
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
     "additionalProperties": false
@@ -93,7 +93,7 @@ To act on a handful of properties and reject all others, make sure to include a 
 
 To reject an entire class, specify this not anyOf properties clause within the application class additionalProperties object:
 
-.. code-block:: yaml
+.. code-block:: json
 
    :linenos:
     "additionalProperties": {
@@ -109,7 +109,7 @@ To reject an entire class, specify this not anyOf properties clause within the a
 
 To allow just 1 or 2 classes, use an if-then construct within additionalProperties:
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
     "additionalProperties": {
@@ -137,7 +137,7 @@ In this task, we will create a template which require a Service_HTTP object, for
 
     ``POST https://10.1.1.4/mgmt/cm/global/appsvcs-templates``
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
 
     {
@@ -262,7 +262,7 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-.. code-block:: yaml
+.. code-block:: json
    :linenos:
    :emphasize-lines: 29
 

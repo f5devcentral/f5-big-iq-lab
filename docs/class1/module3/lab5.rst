@@ -207,6 +207,7 @@ available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ
 +---------------------------------------------------------------------------------------------------+
 | * Virtual addresses: ``10.1.10.122``                                                              |
 | * policyWAF: ``/Common/templates-default-cloned``                                                 |
+| * Security Log Profiles: ``/Common/templates-default``                                            |
 +---------------------------------------------------------------------------------------------------+
 | Certificate. Keep default.                                                                        |
 +---------------------------------------------------------------------------------------------------+
