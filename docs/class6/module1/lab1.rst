@@ -38,7 +38,7 @@ Click on the **Import**
   :scale: 40%
   :align: center
 
-.. note:: If you like to automate the import of Certificate and Key, read the following devcentral article `Automate import of SSL Certificate, Key & CRL from BIG-IP to BIG-IQ`_.
+.. note:: If you are interested to know how to automate the import of Certificate and Key, read the following devcentral article `Automate import of SSL Certificate, Key & CRL from BIG-IP to BIG-IQ`_.
 
 .. _Automate import of SSL Certificate, Key & CRL from BIG-IP to BIG-IQ: https://devcentral.f5.com/s/articles/automate-import-of-ssl-certificate-key-crl-from-big-ip-to-big-iq-31899
 
