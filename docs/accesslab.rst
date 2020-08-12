@@ -1,7 +1,7 @@
 Lab environment access
 ^^^^^^^^^^^^^^^^^^^^^^
 
-There are 2 ways to access the different systems in this lab.
+You will find 2 ways to access the different systems in this lab.
    - From the Jump Host:
 
       From the lab environment, launch an remove desktop session to access the Ubuntu Desktop. 
