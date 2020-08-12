@@ -30,7 +30,7 @@ This declaration abstracts the complexity of having to configure all the HTTP de
 
    .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
 
-.. code-block:: json
+.. code-block:: JSON
    :linenos:
    :emphasize-lines: 12,28,44,45
 

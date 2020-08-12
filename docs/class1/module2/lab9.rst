@@ -51,7 +51,7 @@ Use ``purple123`` to authenticate.
 
 7. Let's now deploy a new AS3 Spplication Service. Open a new tab and copy/past below AS3 declaration:
 
-.. code-block:: json
+.. code-block:: JSON
    :linenos:
 
    {

@@ -22,7 +22,7 @@ should also disappear from BIG-IQ.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.
    
 
-.. code-block:: json
+.. code-block:: JSON
    :linenos:
    :emphasize-lines: 14,15,16
 

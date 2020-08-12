@@ -45,7 +45,7 @@ Open Postman. Click right and click on execute (wait ~2 minutes).
    Replace the method and URL with ``POST https://10.1.1.4/mgmt/cm/cloud/tasks/create-ve``.
    Copy/Paste the below  from the validator to the body in Postman.
 
-.. code-block:: yaml
+.. code-block:: JSON
    :linenos:
    :emphasize-lines: 5
 
@@ -66,7 +66,7 @@ Keep a note of it as we will need it later.
 
 5. Repeat previous step to create the 2nd VE. Don't forget to update the veName.
 
-.. code-block:: yaml
+.. code-block:: JSON
    :linenos:
    :emphasize-lines: 5
 
@@ -118,7 +118,7 @@ Note the Private DNS and IPs which will be used later. This information could be
 
    Make sure all highlited information are correct (targetHost=Public IP, Private Key filename, Private DNS and IPs).
 
-.. code-block:: yaml
+.. code-block:: JSON
    :linenos:
    :emphasize-lines: 46,50,55,57,58,66,72,76,78
 
@@ -262,7 +262,7 @@ The GET on the URI monitoring the task will also show a success message.
 
 13. Repeat the same steps to onboard the 2nd VE. Don't forget to update all the necessary highlited values.
 
-.. code-block:: yaml
+.. code-block:: JSON
    :linenos:
    :emphasize-lines: 46,50,55,57,58,66,72,76,78
 
@@ -375,7 +375,7 @@ The GET on the URI monitoring the task will also show a success message.
     
     This AS3 application service will deploy an HTTP application service to optimize HTTP traffic toward the app server(s) on port 8080.
 
-.. code-block:: yaml
+.. code-block:: JSON
    :linenos:
    :emphasize-lines: 11,25
 

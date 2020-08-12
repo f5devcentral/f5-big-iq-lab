@@ -165,7 +165,7 @@ obtain a new token by re-sending the ``BIG-IQ Token``
 
   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
 
-.. code-block:: yaml
+.. code-block:: JSON
    :linenos:
    :emphasize-lines: 9,20,22
 
