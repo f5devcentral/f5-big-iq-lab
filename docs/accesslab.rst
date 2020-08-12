@@ -9,7 +9,7 @@ There are 2 ways to access the different systems in this lab.
       *noVNC*. The password is ``purple123``.
       
       You can also use *XRDP*, click on the resolution that works for your laptop. 
-      There are no credentials, when the RDP session launches showing *Session: Xorg*, simply click *OK*.
+      When the RDP session launches showing *Session: Xorg*, simply click *OK*, no credentials are needed.
 
       .. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%
 
@@ -24,7 +24,7 @@ There are 2 ways to access the different systems in this lab.
 
       .. note:: You can also click on *DETAILS* on each component to see the credentials (login/password)
 
-      To ssh into a system, you can click on WEB SHELL or SSH (you will need your ssh keys setup in the lab environement for SSH).
+      To ssh into a system, you can click on WEB SHELL or SSH (you will need your ssh keys setup in the lab environment for SSH).
 
 .. |udf_ubuntu_rdp_vnc| image:: /pictures/udf_ubuntu_rdp_vnc.png
    :scale: 60%

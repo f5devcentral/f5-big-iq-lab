@@ -12,10 +12,3 @@ Tasks
 
 2. On the left, click LOCAL TRAFFIC > Certificate Management > Certificates & Keys. These are the imported from BIG-IP but not yet managed by BIG-IQ.
 
-.. image:: media/img_module1_lab1-1.png
-  :scale: 40%
-  :align: center
-
-3. in progress
-
-
