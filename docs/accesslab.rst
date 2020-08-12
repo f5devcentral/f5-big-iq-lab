@@ -1,26 +1,30 @@
 Lab environment access
 ^^^^^^^^^^^^^^^^^^^^^^
 
-From the lab environment, launch an RDP session to access the Ubuntu Desktop. 
-To do this, in your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and from the
-*XRDP*, click on the resolution that works for your laptop.
+There are 2 ways to access the different systems in this lab.
+   - From the Jump Host:
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%)
+      From the lab environment, launch an remove desktop session to access the Ubuntu Desktop. 
+      To do this, in your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
+      *noVNC*. The password is ``purple123``.
+      
+      You can also use *XRDP*, click on the resolution that works for your laptop. 
+      There are no credentials, when the RDP session launches showing *Session: Xorg*, simply click *OK*.
 
-If the RDP session does not render correctly or the resolution poor, you
-can try to use the *noVNC* option or complete the labs by going directly to the BIG-IP and BIG-IQ CM TMUI.
+      .. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%
 
-|udf_ubuntu_rdp_vnc|
+      |udf_ubuntu_rdp_vnc|
 
-For XRDP, there are no credentials, when the RDP session launches showing *Session: Xorg*, simply click *OK*.
-For NoVNC, the password is ``purple123``.
+   - Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH
 
-To access the BIG-IQ directly, click on the ACCESS button under **BIG-IQ CM**
-and select TMUI. The credentials to access the BIG-IQ TMUI are ``david/david`` and ``paula/paula`` as directed in the labs.
+      To access the BIG-IQ directly, click on the ACCESS button under **BIG-IQ CM**
+      and select TMUI. The credentials to access the BIG-IQ TMUI are ``david/david`` and ``paula/paula`` as directed in the labs.
 
-|udf_bigiq_tmui|
+      |udf_bigiq_tmui|
 
-.. note:: You can also click on *DETAILS* on each component to see the credentials (login/password)
+      .. note:: You can also click on *DETAILS* on each component to see the credentials (login/password)
+
+      To ssh into a system, you can click on WEB SHELL or SSH (you will need your ssh keys setup in the lab environement for SSH).
 
 .. |udf_ubuntu_rdp_vnc| image:: /pictures/udf_ubuntu_rdp_vnc.png
    :scale: 60%
