@@ -6,11 +6,15 @@ You will find 2 ways to access the different systems in this lab:
       From the lab environment, launch a remote desktop session to access the Jump Host (Ubuntu Desktop). 
       To do this, in your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
       *noVNC*. The password is ``purple123``.
+
       |
+
       You can also use *XRDP* as an alternative, click on the resolution that works for your laptop. 
       When the RDP session launches showing *Session: Xorg*, simply click *OK*, no credentials are needed.
       Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
+      |
+      
       |udf_ubuntu_rdp_vnc|
 
    - Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH
@@ -19,9 +23,11 @@ You will find 2 ways to access the different systems in this lab:
 
       |udf_bigiq_tmui|
 
-      To ssh into a system, you can click on WEB SHELL or SSH (you will need your ssh keys setup in the lab environment for SSH).
+      To ssh into a system, you can click on *WEB SHELL* or *SSH* (you will need your ssh keys setup in the lab environment for SSH).
 
-You can also click on *DETAILS* on each component to see the credentials (login/password).
+      |    
+
+      You can also click on *DETAILS* on each component to see the credentials (login/password).
 
 .. |udf_ubuntu_rdp_vnc| image:: /pictures/udf_ubuntu_rdp_vnc.png
    :scale: 60%
