@@ -9,11 +9,12 @@ deploy those SSL object to a BIG-IP and create the HTTPS offload application ser
 Instead of doing all the necessary steps using BIG-IQ user interface, we are going to use Ansible.
 
 This lab will be using following F5 Ansible Galaxy roles:
-    - `bigiq_pinning_deploy_objects`_ **ansible Role**: Pin objects on BIG-IQ and deploy it BIG-IP(s).
-    - `atc_deploy`_  **ansible Role**: Allows declaration to be sent to automation tool chain service (AS3, DO, or TS).
+    - `bigiq_pinning_deploy_objects`_ **ansible Role**: Pin objects (e.g. Cert & Key) on BIG-IQ and deploy it to BIG-IP(s).
+    - `atc_deploy`_  **ansible Role**: Allows AS3 declaration to be sent to `automation tool chain`_ service.
 
 .. _bigiq_pinning_deploy_objects: https://galaxy.ansible.com/f5devcentral/bigiq_pinning_deploy_objects
 .. _atc_deploy: https://galaxy.ansible.com/f5devcentral/atc_deploy
+.. _automation tool chain: https://www.f5.com/products/automation-and-orchestration
 
 .. include:: /accesslab.rst
 
