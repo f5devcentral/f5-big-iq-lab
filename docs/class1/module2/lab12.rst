@@ -131,7 +131,8 @@ Infrastructure as code: add a new pool member to the AS3 app service through Git
 Add the pool member ``10.1.20.111`` as showing below:
 
 .. code-block:: yaml
-   :linenos: 6
+   :linenos:
+   :emphasize-lines: 6
 
    "members": [
    {
