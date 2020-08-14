@@ -4,10 +4,10 @@ Lab 2.12: AS3 Application Creation using GitLab CI/CD pipeline, Ansible and BIG-
 .. note:: Estimated time to complete: **25 minutes**
 
 In this lab, we are going to use GitLab to store the BIG-IP configuration (AS3 declaration) and deploy it through BIG-IQ to BIG-IP.
-We are leveraging a CI/CD pipeline in GitLab in order to make changes on the BIG-IP device.
+We are leveraging a **CI/CD pipeline** in GitLab in order to make changes on the BIG-IP device.
 
-Gitlab will keep track of the changes and control user access to the application service configuration of the F5 BIG-IP.
-We are using BIG-IQ to provide visibility with enhanced analytics (HTTP/TCP) to the DevOps/Application owner.
+Gitlab will keep track of the changes and control **user access** to the application service configuration of the F5 BIG-IP.
+We are using BIG-IQ to provide **visibility with enhanced analytics** (HTTP/TCP) to the DevOps/Application owner.
 
 This lab will be using following F5 Ansible Galaxy role:
     - `atc_deploy`_  **ansible Role**: Allows AS3 declaration to be sent to `automation tool chain`_ service.
@@ -27,7 +27,8 @@ Start GitLab and create new a project
     # export GITLAB_HOME="~/gitlab/"
     # docker-compose -f ~/gitlab/docker-compose.yml up -d
 
-3. Wait 5min open GitLab from the lab environement or open ``http://localhost:7002`` from a brownser in the jumphost using ``root/purple123``.
+3. Wait 5min to open GitLab web UI from the lab environement. Click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
+   *GitLab*. The login/password is ``root/purple123``. Or open ``http://localhost:7002`` from a brownser in the jumphost.
 
 |lab-12-1|
 
@@ -37,22 +38,26 @@ Start GitLab and create new a project
 
 |lab-12-3|
 
-|lab-12-4|
-
-5. Copy the jumphost ssh public key::
+5. Copy the jumphost *Ubuntu Lamp Server* ssh public key::
 
     # cat ~/.ssh/id_rsa.pub 
 
-6. Back in gitlab, copy/paste the public key into gitlab.
+6. Back in GitLab, click on **Add SSH Key**.
+
+|lab-12-4|
+
+Paste the public key and click om **Add Key**.
 
 |lab-12-5|
 
 7. Let's now configure the gitlab runner with this project.
    This runner will be used to trigger pipelines when a commit is done on the project and allow us to automatically trigger a set of tasks.
    
-   Navigate the CI/CD option copy the token value
+First look up your project.
 
 |lab-12-6|
+
+Navigate the CI/CD option copy the token value.
 
 8. Back in the jumphost, run the following command to register the gitlab runner using the token value::
 
