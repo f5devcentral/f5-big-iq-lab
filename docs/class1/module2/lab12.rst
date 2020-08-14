@@ -75,10 +75,11 @@ Finally copy the token value.
 
 |lab-12-10|
 
-8. Back in the jumphost, run the following command to register the gitlab runner using the token value::
+8. Back in the Linux jumphost, run the following command to register the gitlab runner using the token value::
 
-    # ./gitlab/gitlab-runner-register.sh HK2KYv6uvgUBmN21pbr5
+    # ./gitlab/gitlab-runner-register.sh <token>
 
+9. In GitLab, confirm the GitLab runner is correctly attached to your project. Navigate to the same location where you copy the token.
 
 Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -172,14 +173,14 @@ Add the pool member ``10.1.20.111`` as showing below:
 .. |lab-12-6| image:: ../pictures/module2/lab-12-6.png
    :scale: 40%
 
-.. |lab-12-7| image:: ../pictures/module2/lab-12-3.png
+.. |lab-12-7| image:: ../pictures/module2/lab-12-7.png
    :scale: 40%
 
-.. |lab-12-8| image:: ../pictures/module2/lab-12-4.png
+.. |lab-12-8| image:: ../pictures/module2/lab-12-8.png
    :scale: 40%
 
-.. |lab-12-9| image:: ../pictures/module2/lab-12-5.png
+.. |lab-12-9| image:: ../pictures/module2/lab-12-9.png
    :scale: 40%
 
-.. |lab-12-10| image:: ../pictures/module2/lab-12-6.png
+.. |lab-12-10| image:: ../pictures/module2/lab-12-10.png
    :scale: 40%
