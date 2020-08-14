@@ -53,15 +53,31 @@ Paste the public key and click om **Add Key**.
 7. Let's now configure the gitlab runner with this project.
    This runner will be used to trigger pipelines when a commit is done on the project and allow us to automatically trigger a set of tasks.
    
-First look up your project.
+First Let's open your project, click **Your Projects**.
 
 |lab-12-6|
 
+Click on ``mywebapp``.
+
+|lab-12-7|
+
 Navigate the CI/CD option copy the token value.
+
+Click on Settings > CI/CD.
+
+|lab-12-8|
+
+Find and expand the **Runner** section.
+
+|lab-12-9|
+
+Finally copy the token value.
+
+|lab-12-10|
 
 8. Back in the jumphost, run the following command to register the gitlab runner using the token value::
 
-    # ./$GITLAB_HOME/gitlab-runner-register.sh <token>
+    # ./gitlab/gitlab-runner-register.sh HK2KYv6uvgUBmN21pbr5
 
 
 Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through BIG-IQ
@@ -154,4 +170,16 @@ Add the pool member ``10.1.20.111`` as showing below:
    :scale: 40%
 
 .. |lab-12-6| image:: ../pictures/module2/lab-12-6.png
+   :scale: 40%
+
+.. |lab-12-7| image:: ../pictures/module2/lab-12-3.png
+   :scale: 40%
+
+.. |lab-12-8| image:: ../pictures/module2/lab-12-4.png
+   :scale: 40%
+
+.. |lab-12-9| image:: ../pictures/module2/lab-12-5.png
+   :scale: 40%
+
+.. |lab-12-10| image:: ../pictures/module2/lab-12-6.png
    :scale: 40%

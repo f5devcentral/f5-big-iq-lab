@@ -18,7 +18,7 @@ docker exec -it gitlab-runner1 \
     --registration-token ${registration_token} \
     --locked=false \
     --description docker-stable \
-    --url https://${server}:7002 \
+    --url http://${server}:7002 \
     --executor docker \
     --docker-image docker:stable \
     --docker-volumes "/var/run/docker.sock:/var/run/docker.sock" \
