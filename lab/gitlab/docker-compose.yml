@@ -1,8 +1,8 @@
 version: '2'
 services:
 
-  gitlab-web:
-    image: 'gitlab/gitlab-ce:latest'
+  gitlab:
+    image: 'gitlab/gitlab-ee:latest'
     restart: always
     hostname: 'gitlab-web'
     environment:
@@ -20,6 +20,7 @@ services:
 
   gitlab-runner1:
     image: gitlab/gitlab-runner:latest
+    restart: always
     container_name: gitlab-runner1
     hostname: gitlab-runner1.example.com
     volumes:
