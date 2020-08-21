@@ -43,7 +43,7 @@ Import AS3 BIG-IQ templates
 
 .. note:: The F5 default AS3 BIG-IQ templates are already imported in the lab environment.
 
-5. Walk through the provided templates and select them to understand the structure. If familiar with AS3 you will notice the structure. 
+5. Walk through the provided templates and select them to understand the structure. If you are familiar with AS3 you will notice the structure. 
    Otherwise go make sure you have gone through `Module 2`_ or visit `AS3 Example declarations`_.
 
 .. _Module 2: ../module2

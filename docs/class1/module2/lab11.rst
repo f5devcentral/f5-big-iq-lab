@@ -3,7 +3,7 @@ Lab 2.11: Create and deploy a SSL Certificate & Key from Venafi with BIG-IQ and 
 
 .. note:: Estimated time to complete: **15 minutes**
 
-In this lab, we are going to see the follow the same workflow as `Class 6 Module 1 Lab 1.4`_ to create the SSL Certificate & Key on BIG-IQ signed with Venafi Platform,
+In this lab, we are going to see the same workflow as `Class 6 Module 1 Lab 1.4`_ to create the SSL Certificate & Key on BIG-IQ signed with Venafi Platform,
 deploy those SSL object to a BIG-IP and create the HTTPS offload application service using AS3.
 
 Instead of doing all the necessary steps using BIG-IQ user interface, we are going to use Ansible.
