@@ -6,7 +6,7 @@ Lab 2.12: AS3 Application Creation using GitLab CI/CD pipeline, Ansible and BIG-
 In this lab, we are going to use GitLab to store the BIG-IP configuration (AS3 declaration) and deploy it through BIG-IQ to BIG-IP.
 We are leveraging a **CI/CD pipeline** in GitLab in order to make changes on the BIG-IP device.
 
-Gitlab will keep track of the changes and control **user access** to the application service configuration of the F5 BIG-IP.
+GitLab will keep track of the changes and control **user access** to the application service configuration of the F5 BIG-IP.
 We are using BIG-IQ to provide **visibility with enhanced analytics** (HTTP/TCP) to the DevOps/Application owner.
 
 This lab will be using following F5 Ansible Galaxy role:
@@ -27,8 +27,8 @@ Start GitLab and create new a project
     # export GITLAB_HOME="~/gitlab/"
     # docker-compose -f ~/gitlab/docker-compose.yml up -d
 
-3. Wait 5min to open GitLab web UI from the lab environement. Click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
-   *GitLab*. The login/password is ``root/purple123``. Or open ``http://localhost:7002`` from a brownser in the jumphost.
+3. Wait 5min to open GitLab web UI from the lab environment. Click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
+   *GitLab*. The login/password is ``root/purple123``. Or open ``http://localhost:7002`` from a browser in the Jumphost.
 
 |lab-12-1|
 
@@ -38,7 +38,7 @@ Start GitLab and create new a project
 
 |lab-12-3|
 
-5. Copy the jumphost *Ubuntu Lamp Server* ssh public key::
+5. Copy the Jumphost *Ubuntu Lamp Server* ssh public key::
 
     # cat ~/.ssh/id_rsa.pub 
 
@@ -75,16 +75,18 @@ Finally copy the token value.
 
 |lab-12-10|
 
-8. Back in the Linux jumphost, run the following command to register the gitlab runner using the token value::
+8. Back in the Linux Jumphost, run the following command to register the gitlab runner using the token value::
 
     # ./gitlab/gitlab-runner-register.sh <token>
 
 9. In GitLab, confirm the GitLab runner is correctly attached to your project. Navigate to the same location where you copy the token.
 
+|lab-12-11|
+
 Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. From the linux jumphost, clone the repository::
+1. From the Linux Jumphost, clone the repository::
 
     # git clone ssh://git@localhost:7022/root/mywebapp.git
     # cd mywebapp
@@ -96,7 +98,8 @@ Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through
 
 3. Copy the lab files into the ``mywebapp`` repository::
 
-    # cp ~/gitlab/lab/* .
+    # cp -r ~/gitlab/lab/* ~/gitlab/lab/.gitlab-ci.yml .
+    # ls -l *
 
 This folder contains:
    - **.gitlab-ci.yml**: pipeline definition
@@ -118,8 +121,19 @@ This folder contains:
 
 6. Back in gitlab, navigate under jobs and click on the running jobs, display output.
 
-7. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing. 
+|lab-12-12|
 
+Follow the execution of the job and wait for it to end.
+
+|lab-12-13|
+
+7. Login on **BIG-IQ** as **david**, go to Applications tab, under``Unknown Applications`` Application, check the application is there and analytics are showing.
+
+|lab-12-14|
+
+.. note:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
+             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Infrastructure as code: add a new pool member to the AS3 app service through GitLab
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -146,15 +160,18 @@ Add the pool member ``10.1.20.111`` as showing below:
 
 3. Commit and push the changes::
 
+    # git add as3/my_http_app_service1.json
     # git commit -m "Add new pool member 10.1.20.111"
     # git status
     # git push origin master
 
 4. Back in gitlab, navigate under jobs and click on the running jobs, display output.
 
+|lab-12-15|
+
 5. Login on **BIG-IQ** as **david**, go to Applications tab and check the new pool member has been added.
 
-
+|lab-12-16|
 
 .. |lab-12-1| image:: ../pictures/module2/lab-12-1.png
    :scale: 40%
@@ -184,4 +201,22 @@ Add the pool member ``10.1.20.111`` as showing below:
    :scale: 40%
 
 .. |lab-12-10| image:: ../pictures/module2/lab-12-10.png
+   :scale: 40%
+
+.. |lab-12-11| image:: ../pictures/module2/lab-12-11.png
+   :scale: 40%
+
+.. |lab-12-12| image:: ../pictures/module2/lab-12-12.png
+   :scale: 40%
+
+.. |lab-12-13| image:: ../pictures/module2/lab-12-13.png
+   :scale: 40%
+
+.. |lab-12-14| image:: ../pictures/module2/lab-12-14.png
+   :scale: 40%
+
+.. |lab-12-15| image:: ../pictures/module2/lab-12-15.png
+   :scale: 40%
+
+.. |lab-12-16| image:: ../pictures/module2/lab-12-16.png
    :scale: 40%

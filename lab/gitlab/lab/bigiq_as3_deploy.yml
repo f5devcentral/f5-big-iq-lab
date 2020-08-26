@@ -8,7 +8,7 @@
         server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
         server_port: 443
         user: admin
-        password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_passt'] }}"
+        password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
         validate_certs: no
 
     tasks:
