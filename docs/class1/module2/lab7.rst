@@ -1,4 +1,4 @@
-Lab 2.7: Perform lab 1 to 3 using Ansible
+Lab 2.7: Perform lab 1 to 4 using Ansible
 -----------------------------------------
 
 .. note:: Estimated time to complete: **20 minutes**

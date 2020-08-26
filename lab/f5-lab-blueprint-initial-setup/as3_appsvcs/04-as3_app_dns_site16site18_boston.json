@@ -1,88 +1,88 @@
 {
-  "class": "AS3",
-  "action": "patch",
-  "patchBody": [
-      {
-          "class": "ADC",
-          "target": {
-              "address": "10.1.1.8"
-          },
-          "op": "add",
-          "path": "/security/fqdn2",
-          "value": {
-              "class": "Application",
-              "schemaOverlay": "AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1",
-              "template": "generic",
-              "dnsMain": {
-                  "pools": [
-                      {
-                          "use": "GSLB_Pool1"
-                      },
-                      {
-                          "use": "GSLB_Pool2"
-                      }
-                  ],
-                  "enabled": true,
-                  "domainName": "airports2.example.com",
-                  "class": "GSLB_Domain"
-              },
-              "GSLB_Pool1": {
-                  "members": [
-                      {
-                          "server": {
-                              "bigip": "/Common/BOS-vBIGIP01.termmarc.com"
-                          },
-                          "virtualServer": "/security/site16_boston/serviceMain"
-                      },
-                      {
-                          "server": {
-                              "bigip": "/Common/BOS-vBIGIP02.termmarc.com"
-                          },
-                          "virtualServer": "/security/site16_boston/serviceMain"
-                      }
-                  ],
-                  "monitors": [
-                      {
-                          "use": "GSLB_Monitor1"
-                      }
-                  ],
-                  "lbModeFallback": "return-to-dns",
-                  "lbModeAlternate": "round-robin",
-                  "lbModePreferred": "round-robin",
-                  "class": "GSLB_Pool"
-              },
-              "GSLB_Pool2": {
-                  "members": [
-                      {
-                          "server": {
-                              "bigip": "/Common/SEA-vBIGIP01.termmarc.com"
-                          },
-                          "virtualServer": "/security/site18_seattle/serviceMain"
-                      }
-                  ],
-                  "monitors": [
-                      {
-                          "use": "GSLB_Monitor2"
-                      }
-                  ],
-                  "lbModeFallback": "return-to-dns",
-                  "lbModeAlternate": "round-robin",
-                  "lbModePreferred": "round-robin",
-                  "class": "GSLB_Pool"
-              },
-              "GSLB_Monitor1": {
-                  "send": "GET / HTTP/1.0",
-                  "receive": "HTTP/1.1 200 OK",
-                  "monitorType": "http",
-                  "class": "GSLB_Monitor"
-              },
-              "GSLB_Monitor2": {
-                  "send": "GET / HTTP/1.0",
-                  "receive": "HTTP/1.1 200 OK",
-                  "monitorType": "https",
-                  "class": "GSLB_Monitor"
-              }
-          }
-      }
-  ]
+    "class": "AS3",
+    "action": "patch",
+    "patchBody": [
+        {
+            "class": "ADC",
+            "target": {
+                "address": "10.1.1.8"
+            },
+            "op": "add",
+            "path": "/security/fqdn",
+            "value": {
+                "class": "Application",
+                "schemaOverlay": "AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1",
+                "template": "generic",
+                "dnsMain": {
+                    "pools": [
+                        {
+                            "use": "GSLB_Pool1"
+                        },
+                        {
+                            "use": "GSLB_Pool2"
+                        }
+                    ],
+                    "enabled": true,
+                    "domainName": "airports.example.com",
+                    "class": "GSLB_Domain"
+                },
+                "GSLB_Pool1": {
+                    "members": [
+                        {
+                            "server": {
+                                "bigip": "/Common/BOS-vBIGIP01.termmarc.com"
+                            },
+                            "virtualServer": "/security/site16_boston/serviceMain"
+                        },
+                        {
+                            "server": {
+                                "bigip": "/Common/BOS-vBIGIP02.termmarc.com"
+                            },
+                            "virtualServer": "/security/site16_boston/serviceMain"
+                        }
+                    ],
+                    "monitors": [
+                        {
+                            "use": "GSLB_Monitor1"
+                        }
+                    ],
+                    "lbModeFallback": "return-to-dns",
+                    "lbModeAlternate": "round-robin",
+                    "lbModePreferred": "round-robin",
+                    "class": "GSLB_Pool"
+                },
+                "GSLB_Pool2": {
+                    "members": [
+                        {
+                            "server": {
+                                "bigip": "/Common/SEA-vBIGIP01.termmarc.com"
+                            },
+                            "virtualServer": "/security/site18_seattle/serviceMain"
+                        }
+                    ],
+                    "monitors": [
+                        {
+                            "use": "GSLB_Monitor2"
+                        }
+                    ],
+                    "lbModeFallback": "return-to-dns",
+                    "lbModeAlternate": "round-robin",
+                    "lbModePreferred": "round-robin",
+                    "class": "GSLB_Pool"
+                },
+                "GSLB_Monitor1": {
+                    "send": "GET / HTTP/1.0",
+                    "receive": "HTTP/1.1 200 OK",
+                    "monitorType": "http",
+                    "class": "GSLB_Monitor"
+                },
+                "GSLB_Monitor2": {
+                    "send": "GET / HTTP/1.0",
+                    "receive": "HTTP/1.1 200 OK",
+                    "monitorType": "https",
+                    "class": "GSLB_Monitor"
+                }
+            }
+        }
+    ]
 }

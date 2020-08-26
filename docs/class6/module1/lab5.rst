@@ -162,6 +162,17 @@ Notice a new HTTP challenge file has been added automatically.
           The API example used on the demo web app server is deleting challenge file on the web server automatically
           after validation is done.
 
+For demo/lab purpose, if you do not have a web server, you could also use below iRule attached to the VIP with correct challenge value.
+
+.. code-block:: yaml
+
+    when HTTP_REQUEST {
+        if { [HTTP::uri] starts_with "/.well-known/acme-challenge/" }
+        {
+            HTTP::respond 200 content xt1nLS9B9qW2CKZ2Yog_9ekKGr9N3ruA7cvuSXK2y7M.eersV-VMYS4CmKeHuCa--qT9o5-yF5TOYwE2fXJN_is
+        }
+    }
+
 5. Wait until the Connection Status icon turns green and show Valid.
 
 .. image:: ./media/img_module1_lab5-7.png
