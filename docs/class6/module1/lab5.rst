@@ -144,7 +144,9 @@ Click **Deploy & Test**.
   :scale: 40%
   :align: center
 
-3. While previous step is in progress, in your browser open ``http://lab.webapp.34.219.3.233.nip.io/hello``.
+3. You only have to pass one challenge, in thi lab, we are going to use the **HTTP challenge**. 
+
+While previous step is in progress, in your browser open ``http://lab.webapp.34.219.3.233.nip.io/hello``.
 
 Notice a new HTTP challenge file has been added automatically.
 
