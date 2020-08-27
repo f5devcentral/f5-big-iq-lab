@@ -22,19 +22,25 @@ Start GitLab and create new a project
 
 1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
-2. Execute the playbook::
+2. Execute the following commands::
 
     # export GITLAB_HOME="~/gitlab/"
     # docker-compose -f ~/gitlab/docker-compose.yml up -d
+    # docker exec gitlab_gitlab_1 update-permissions
+    # docker restart gitlab_gitlab_1
 
-3. Wait 5min to open GitLab web UI from the lab environment. Click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
+3. Wait ~10 min to open GitLab web UI from the lab environment. Click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
    *GitLab*. The login/password is ``root/purple123``. Or open ``http://localhost:7002`` from a browser in the Jumphost.
+
+.. note:: you can check GitLab logs with ``docker logs gitlab_gitlab_1``.
 
 |lab-12-1|
 
 4. Create a new project and name it ``mywebapp``.
 
 |lab-12-2|
+
+Select *Initialize repository with a README*.
 
 |lab-12-3|
 
@@ -99,7 +105,8 @@ Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through
 3. Copy the lab files into the ``mywebapp`` repository::
 
     # cp -r ~/gitlab/lab/* ~/gitlab/lab/.gitlab-ci.yml .
-    # ls -l *
+    # ls -la
+    # ls -l as3
 
 This folder contains:
    - **.gitlab-ci.yml**: pipeline definition
