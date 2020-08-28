@@ -109,7 +109,7 @@ Then, start the new BIG-IQ DCD VM.
 
 6. Currently, there is only 1 zone defined called ``default``. We will create a new zone called ``westcoast``, keeping the ``default`` zone for the East coast.
 
-.. note:: In order to avoid error messages complaining about the lack of a default zone, you must have one DCD at minimum have the default zone.
+.. note:: In order to avoid error messages complaining about the lack of a default zone in the Device tab, you must have one DCD at minimum using the ``default`` zone
 
 7. Let's define the new zone ``westcoast`` on the new BIG-IQ DCD 02 added earlier. Login on the BIG-IQ CM server, go to the **System** tab, 
    under **BIG-IQ DATA COLLECTION** > **BIG-IQ Data Collection Devices**, select the new BIG-IQ DCD 02. In **Properties**, and click **Edit**, select the Zone box, click **Create New**.
