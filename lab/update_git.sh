@@ -37,7 +37,8 @@ if [[  $currentuser == "root" ]]; then
     else
         # DNS and internet connectivity working
         echo "Cleanup previous files..."
-        rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp
+        rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token
+        ls -lrt
 
         echo "Install new scripts..."
         git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -117,8 +118,9 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
     
     ### Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
-    export SPLUNK_HOME="$home/splunk"
-    docker-compose -f $SPLUNK_HOME/docker-compose.yml up -d
+    echo -e "\nSplunk begin"
+    SPLUNK_HOME="$home/splunk" docker-compose -f $home/splunk/docker-compose.yml up -d
+    sleep 30
     docker logs splunk_splunk_1 
     # ==> data stored under /opt/splunk/var/lib/splunk
     docker_splunk_id="splunk_splunk_1"
@@ -126,12 +128,12 @@ if [[  $currentuser == "root" ]]; then
     echo "Sleep 1 min for splunk to be ready."
     sleep 1m
     # Splunk create admin directories
-    mkdir -p $SPLUNK_HOME/etc/users/admin/search/local/data/ui/views
-    mkdir -p $SPLUNK_HOME/etc/users/admin/user-prefs/local
+    mkdir -p $home/splunk/etc/users/admin/search/local/data/ui/views
+    mkdir -p $home/splunk/etc/users/admin/user-prefs/local
     # Splunk create BIG-IQ dashboard
-    cp $SPLUNK_HOME/bigiq_dashboard_splunk.xml $SPLUNK_HOME/etc/users/admin/search/local/data/ui/views
+    cp $home/splunk/bigiq_dashboard_splunk.xml $home/splunk/etc/users/admin/search/local/data/ui/views
     # Splunk set default dashboard for admin user
-    cp $SPLUNK_HOME/user-prefs.conf $SPLUNK_HOME/etc/users/admin/user-prefs/local
+    cp $home/splunk/user-prefs.conf $home/splunk/etc/users/admin/user-prefs/local
     # Splunk create spunlk HTTP Event Collector and enable it
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description 'demo splunk' -disabled 0 -index main -indexes main -sourcetype _json -auth admin:purple123
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123
@@ -139,8 +141,10 @@ if [[  $currentuser == "root" ]]; then
     sleep 5
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk restart
     docker logs splunk_splunk_1 
+    echo -e "\nSplunk end"
 
     ### LDAP: load f5demo.ldif and expose port 389 for LDAP access
+    echo -e "\nLdap"
     docker run --volume $home/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
             -e LDAP_ORGANISATION="F5 Networks" \
             -e LDAP_DOMAIN="f5demo.com" \
@@ -154,7 +158,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=tacacs -dit -p 49:49 dchidell/docker-tacacs
 
     ### Copy some custom files in hackazon docker for labs
-    echo -e "\nApp Troubleshooting customization begin\n"
+    echo -e "\nApp Troubleshooting customization begin"
     docker_hackazon_id="hackazon"
     docker cp f5-demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
@@ -166,7 +170,7 @@ if [[  $currentuser == "root" ]]; then
     rm -f grosfichier.html
     # fix permissions
     docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
-    echo -e "\nApp Troubleshooting customization end\n"
+    echo -e "App Troubleshooting customization end\n"
 
     ### Configure AWX
     tower-cli config host http://localhost:9001
@@ -177,6 +181,7 @@ if [[  $currentuser == "root" ]]; then
     sleep 2m
     tower-cli send ~/.awx/awxcompose/awx_backup.json
     tower-cli send ~/.awx/awxcompose/awx_backup.json
+    echo -e "AWX end\n"
 
     ### Visual Code https://github.com/cdr/code-server
     docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
@@ -198,10 +203,6 @@ if [[  $currentuser == "root" ]]; then
     docker images
     docker ps -a
     docker ps
-
-    # Restart the VM if already created (SSG and VE creation)
-    #sleep 900 && $home/f5-vmware/cmd_power_on_vm.sh > $home/f5-vmware/cmd_power_on_vm.log 2> /dev/null &
-    #sleep 1100 && sudo chown -R $user:$user $home/f5-vmware/*.log 2> /dev/null &
     
     chown -R $user:$user $home
 
