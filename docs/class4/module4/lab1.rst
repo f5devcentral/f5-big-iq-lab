@@ -79,8 +79,8 @@ Then, start the new BIG-IQ CM VM.
 
 .. code::
 
-    # cd /home/f5/f5-ansible-bigiq-onboarding 
-    # vi hosts
+    cd /home/f5/f5-ansible-bigiq-onboarding 
+    vi hosts
 
     [f5_bigiq_cm]
     #big-iq-cm-1.example.com ansible_host=10.1.1.4 discoveryip=10.1.10.4/24 ...
@@ -92,9 +92,9 @@ Then, start the new BIG-IQ CM VM.
 
     ::
 
-        # cd /home/f5/f5-ansible-bigiq-onboarding
-        # sudo docker build -t f5-big-iq-onboarding .
-        # ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
+        cd /home/f5/f5-ansible-bigiq-onboarding
+        sudo docker build -t f5-big-iq-onboarding .
+        ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
 
 6. Verify the new secondary BIG-IQ CM has been correclty configured (check hostname, self IP, VLAN, NTP, DNS, license)
 

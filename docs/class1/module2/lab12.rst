@@ -24,10 +24,7 @@ Start GitLab and create new a project
 
 2. Execute the following commands::
 
-    # export GITLAB_HOME="~/gitlab/"
-    # docker-compose -f ~/gitlab/docker-compose.yml up -d
-    # docker exec gitlab_gitlab_1 update-permissions
-    # docker restart gitlab_gitlab_1
+    ./gitlab/start-gitlab.sh
 
 3. Wait ~10 min to open GitLab web UI from the lab environment. Click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
    *GitLab*. The login/password is ``root/purple123``. Or open ``http://localhost:7002`` from a browser in the Jumphost.
@@ -46,7 +43,7 @@ Select *Initialize repository with a README*.
 
 5. Copy the Jumphost *Ubuntu Lamp Server* ssh public key::
 
-    # cat ~/.ssh/id_rsa.pub 
+    cat ~/.ssh/id_rsa.pub 
 
 6. Back in GitLab, click on **Add SSH Key**.
 
@@ -83,7 +80,7 @@ Finally copy the token value.
 
 8. Back in the Linux Jumphost, run the following command to register the gitlab runner using the token value::
 
-    # ./gitlab/gitlab-runner-register.sh <token>
+    ./gitlab/gitlab-runner-register.sh <token>
 
 9. In GitLab, confirm the GitLab runner is correctly attached to your project. Navigate to the same location where you copy the token.
 
@@ -94,19 +91,19 @@ Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through
 
 1. From the Linux Jumphost, clone the repository::
 
-    # git clone ssh://git@localhost:7022/root/mywebapp.git
-    # cd mywebapp
+    git clone ssh://git@localhost:7022/root/mywebapp.git
+    cd mywebapp
 
 2. Or order to be able to commit and push changes, we will need to configure the user email and name in git::
 
-    # git config --global user.email "admin@example.com"
-    # git config --global user.name "root"
+    git config --global user.email "admin@example.com"
+    git config --global user.name "root"
 
 3. Copy the lab files into the ``mywebapp`` repository::
 
-    # cp -r ~/gitlab/lab/* ~/gitlab/lab/.gitlab-ci.yml .
-    # ls -la
-    # ls -l as3
+    cp -r ~/gitlab/lab/* ~/gitlab/lab/.gitlab-ci.yml .
+    ls -la
+    ls -l as3
 
 This folder contains:
    - **.gitlab-ci.yml**: pipeline definition
@@ -116,15 +113,15 @@ This folder contains:
 
 4. Add and commit the new files to the ``mywebapp`` repository::
 
-    # git status
-    # git add .
-    # git status
-    # git commit -m "Add .gitlab-ci.yml, Ansible playbook, host file and AS3 declaration"
-    # git status
+    git status
+    git add .
+    git status
+    git commit -m "Add .gitlab-ci.yml, Ansible playbook, host file and AS3 declaration"
+    git status
 
 5. Push the changes to gitlab::
 
-    # git push origin master
+    git push origin master
 
 6. Back in gitlab, navigate under jobs and click on the running jobs, display output.
 
@@ -150,7 +147,7 @@ Infrastructure as code: add a new pool member to the AS3 app service through Git
 
 1. Now, let's add a new pool member to our HTTP application service. Edit the file ``as3/my_http_app_service1.json``::
 
-    # vi as3/my_http_app_service1.json
+    vi as3/my_http_app_service1.json
 
 Add the pool member ``10.1.20.111`` as showing below:
 
@@ -170,10 +167,10 @@ Add the pool member ``10.1.20.111`` as showing below:
 
 3. Commit and push the changes::
 
-    # git add as3/my_http_app_service1.json
-    # git commit -m "Add new pool member 10.1.20.111"
-    # git status
-    # git push origin master
+    git add as3/my_http_app_service1.json
+    git commit -m "Add new pool member 10.1.20.111"
+    git status
+    git push origin master
 
 4. Back in gitlab, navigate under jobs and click on the running jobs, display output.
 

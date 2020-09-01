@@ -94,9 +94,9 @@ Then, start the new BIG-IQ DCD VM.
 
     ::
 
-        # cd /home/f5/f5-ansible-bigiq-onboarding
-        # sudo docker build -t f5-big-iq-onboarding .
-        # ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
+        cd /home/f5/f5-ansible-bigiq-onboarding
+        sudo docker build -t f5-big-iq-onboarding .
+        ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
 
 
 5. Verify the new secondary BIG-IQ DCD has been correctly added to the BIG-IQ Data Colletion Devices list.

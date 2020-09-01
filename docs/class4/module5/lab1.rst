@@ -54,8 +54,8 @@ This automation scenario is composed of 4 parts:
 
     ::
 
-        # cd /home/f5/f5-ansible-bigiq-onboarding
-        # ./cmd_bigiq_onboard_reset.sh
+        cd /home/f5/f5-ansible-bigiq-onboarding
+        ./cmd_bigiq_onboard_reset.sh
 
     The script will do in this order:
     
@@ -69,8 +69,8 @@ This automation scenario is composed of 4 parts:
 
     ::
 
-        # cd /home/f5/f5-ansible-bigiq-onboarding
-        # ./cmd_bigiq_onboard.sh
+        cd /home/f5/f5-ansible-bigiq-onboarding
+        ./cmd_bigiq_onboard.sh
 
 | 
 

@@ -1,5 +1,5 @@
-Lab 1.2: Configuring SNMP agent for sending alerts
---------------------------------------------------
+Lab 1.2: Configuring SMTP for sending alerts
+--------------------------------------------
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_

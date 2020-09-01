@@ -37,7 +37,7 @@ if [[  $currentuser == "root" ]]; then
     else
         # DNS and internet connectivity working
         echo "Cleanup previous files..."
-        rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* > /dev/null 2>&1
+        rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp > /dev/null 2>&1
 
         echo "Install new scripts..."
         git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
