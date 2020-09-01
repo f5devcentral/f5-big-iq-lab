@@ -1,9 +1,9 @@
 <dashboard theme="dark">
-  <label>BIG-IQ Transactions</label>
-  <description>https://clouddocs.f5networks.net/products/big-iq/mgmt-api/v7.0.0/ApiReferences/bigiq_public_api_ref/entity_catalog/http.html</description>
+  <label>BIG-IQ Application Services Transactions</label>
+  <description>https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/entity_catalog/http.html</description>
   <row>
     <panel>
-      <title>Number of transactions (conference site41waf) - https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-demo-bigiq-analytics-export-restapi</title>
+      <title>Application Service: Number of transactions (conference site41waf) - https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-demo-bigiq-analytics-export-restapi</title>
       <chart>
         <title>The average number of transactions per second that reached the server and got response, hence have relevant information of server latency</title>
         <search>
@@ -46,6 +46,23 @@
         <option name="trellis.scales.shared">1</option>
         <option name="trellis.size">medium</option>
       </chart>
+    </panel>
+  </row>
+  <row>
+    <panel>
+      <title>BIG-IQ Events</title>
+      <event>
+        <title>SNMP Traps</title>
+        <search>
+          <query>source="/var/log/snmp/snmp-traps.log" AND OID</query>
+          <earliest>-24h@h</earliest>
+          <latest>now</latest>
+          <refresh>30s</refresh>
+          <refreshType>delay</refreshType>
+        </search>
+        <option name="list.drilldown">none</option>
+        <option name="refresh.display">progressbar</option>
+      </event>
     </panel>
   </row>
 </dashboard>

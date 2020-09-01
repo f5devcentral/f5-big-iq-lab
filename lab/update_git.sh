@@ -104,7 +104,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
 
     ### Add delay, loss and corruption to the nginx web app
-    docker_nginx_id=$(docker ps | grep nginx | awk '{print $1}')
+    docker_nginx_id="nginx"
     docker exec $docker_nginx_id apt-get update
     docker exec $docker_nginx_id apt-get install iproute2 iputils-ping net-tools -y
     docker exec $docker_nginx_id tc qdisc add dev eth0 root netem delay 300ms loss 30% corrupt 30%
@@ -117,22 +117,19 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
     
     ### Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
+    export SPLUNK_HOME="$home/splunk/"
+    docker-compose -f $home/splunk/docker-compose.yml up -d
     # ==> data stored under /opt/splunk/var/lib/splunk
-    docker run -d -p 8000:8000 -p 8088:8088 -e "SPLUNK_START_ARGS=--accept-license" -e "SPLUNK_PASSWORD=purple123" --name splunk splunk/splunk:latest
-    docker_splunk_id=$(docker ps | grep splunk | awk '{print $1}')
+    docker_splunk_id="splunk_splunk_1"
     # wait for splunk to initalize
     sleep 60
-    # Splunk enable SSL
-    docker exec $docker_splunk_id sudo -u root sed -i 's/enableSplunkWebSSL = false/enableSplunkWebSSL = true/g' /opt/splunk/etc/system/default/web.conf
     # Splunk create admin directories
-    docker exec $docker_splunk_id sudo -u root mkdir -p /opt/splunk/etc/users/admin/search/local/data/ui/views
-    docker exec $docker_splunk_id sudo -u root mkdir -p /opt/splunk/etc/users/admin/user-prefs/local
+    mkdir -p $SPLUNK_HOME/etc/users/admin/search/local/data/ui/views
+    mkdir -p $SPLUNK_HOME/users/admin/user-prefs/local
     # Splunk create BIG-IQ dashboard
-    docker cp splunk/*.xml $docker_splunk_id:/opt/splunk/etc/users/admin/search/local/data/ui/views
+    cp $SPLUNK_HOME/bigiq_dashboard_splunk.xml $SPLUNK_HOME/etc/users/admin/search/local/data/ui/views
     # Splunk set default dashboard for admin user
-    docker cp splunk/user-prefs.conf $docker_splunk_id:/opt/splunk/etc/users/admin/user-prefs/local
-    # Splunk fix permissions
-    docker exec $docker_splunk_id sudo -u root chown -R splunk:splunk /opt/splunk/etc/users
+    cp $SPLUNK_HOME/user-prefs.conf $SPLUNK_HOME/etc/users/admin/user-prefs/local
     # Splunk create spunlk HTTP Event Collector and enable it
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description 'demo splunk' -disabled 0 -index main -indexes main -sourcetype _json -auth admin:purple123
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123
@@ -155,7 +152,7 @@ if [[  $currentuser == "root" ]]; then
 
     ### Copy some custom files in hackazon docker for labs
     # App Troubleshooting
-    docker_hackazon_id=$(docker ps | grep hackazon | awk '{print $1}')
+    docker_hackazon_id="hackazon"
     docker cp f5-demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
@@ -178,8 +175,8 @@ if [[  $currentuser == "root" ]]; then
     tower-cli send ~/.awx/awxcompose/awx_backup.json
 
     ### Visual Code https://github.com/cdr/code-server
-    docker run --restart=always -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
-    docker_codeserver_id=$(docker ps | grep code-server | awk '{print $1}')
+    docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
+    docker_codeserver_id="code-server"
     docker exec $docker_codeserver_id sh -c "sudo apt-get update"
     docker exec $docker_codeserver_id sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
     docker exec $docker_codeserver_id sh -c "pip3 install ansible"
@@ -193,10 +190,6 @@ if [[  $currentuser == "root" ]]; then
 
     ### Ldap connectivity check
     ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > $home/ldap/f5-ldap.log
-
-    ### Start Gitlab Container
-    #export GITLAB_HOME="$home/gitlab/"
-    #docker-compose -f $home/gitlab/docker-compose.yml up -d
 
     docker images
     docker ps -a

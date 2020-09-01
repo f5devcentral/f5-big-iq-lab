@@ -1,7 +1,20 @@
-Lab 1.2: Configuring SMTP for sending alerts
---------------------------------------------
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+Lab 1.2: Configuring SMTP for sending alerts to Splunk
+------------------------------------------------------
+.. note:: Estimated time to complete: **5 minutes**
 
-Are you interested to see a lab on this topic? `Open an issue on GitHub`_
+This feature provides the ability for the customer to specify a message to be displayed on the BIG-IQ login page.
 
-.. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
+1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+
+2. Execute the following commands::
+
+    ./tools/startSNMPtrapListener.sh
+
+1. Open BIG-IQ, go to System > 
+
+

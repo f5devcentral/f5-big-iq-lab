@@ -214,7 +214,7 @@ echo -e "\nInstall Apache Benchmark, Git, SNMPD, jq"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apache2-utils -y
 apt install git git-lfs -y
-apt install snmpd snmptrapd -y
+apt install snmp snmpd snmptrapd -y
 apt install jq -y
 
 echo -e "\nInstall Ansible and sshpass"

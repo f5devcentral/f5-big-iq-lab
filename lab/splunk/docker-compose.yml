@@ -1,0 +1,19 @@
+version: '2'
+services:
+
+  splunk:
+    image: 'splunk/splunk:latest'
+    restart: always
+    hostname: 'splunk'
+    environment:
+      - SPLUNK_START_ARGS=--accept-license
+      - SPLUNK_LICENSE_URI=Free
+      - SPLUNK_PASSWORD=purple123
+      - SPLUNK_HTTP_ENABLESSL=true
+    ports:
+      - '8000:8000'
+      - '8088:8088'
+    volumes:
+      - '$SPLUNK_HOME/snmp:/var/log/snmp'
+      - '$SPLUNK_HOME/etc:/opt/splunk/etc'
+      - '$SPLUNK_HOME/splunk-token:/tmp/splunk-token'
