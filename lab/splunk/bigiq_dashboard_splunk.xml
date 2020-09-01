@@ -1,5 +1,5 @@
 <dashboard theme="dark">
-  <label>BIG-IQ Application Services Transactions</label>
+  <label>BIG-IQ Dashboard</label>
   <description>https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/entity_catalog/http.html</description>
   <row>
     <panel>

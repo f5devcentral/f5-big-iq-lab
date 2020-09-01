@@ -13,7 +13,7 @@ type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
     echo "Hypervisor: AWS"
 else
-    echo "Hypervisor: Ravello"
+    echo "Hypervisor: Unknown"
 fi
 
 echo -e "\n* Kill all jobs in sleep..."

@@ -5,7 +5,7 @@ home="/home/$user"
 
 echo -e "\nLaunching snmptrapd, redirecting SNMP traps into $home/snmptrap/snmp-traps.log: \n"
 sudo killall snmptrapd > /dev/null 2>&1
-# Link
+# Link snmp traps log file to splunk directory so he can be monitor in Splunk
 ln -snf $home/snmptrap/snmp-traps.log $home/splunk/snmp/snmp-traps.log
 
 sudo snmptrapd -Lf $home/splunk/snmp/snmp-traps.log --disableAuthorization=yes

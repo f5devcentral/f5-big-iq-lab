@@ -55,7 +55,7 @@ if [[  $type == 1 ]]; then
        echo "Hypervisor: AWS"
        UDF_METADATA_URL=$UDF_METADATA_URL_AWS
 else
-       echo "Hypervisor: Ravello"
+       echo "Hypervisor: Unknown"
        UDF_METADATA_URL=$UDF_METADATA_URL_RAVELLO
 fi
 

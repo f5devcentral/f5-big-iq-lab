@@ -10,15 +10,13 @@ This feature provides the ability for the customer to specify a message to be di
 Tasks
 ^^^^^
 
-1. Open BIG-IQ, go to System > This Device > General Properties
+1. Open BIG-IQ, go to **System > This Device > General Properties**.
 
 2. Click on Edit on the top right corner
 
 .. image:: ../pictures/module1/img_module1_lab1_1.png
   :align: center
   :scale: 50%
-
-|
 
 3. Add the custom login below, check the box Show on Login Screen
 
@@ -31,8 +29,6 @@ Tasks
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
   :scale: 50%
-
-|
   
 4. Save and Close
 
@@ -43,5 +39,3 @@ Tasks
 .. image:: ../pictures/module1/img_module1_lab1_3.png
   :align: center
   :scale: 50%
-
-|

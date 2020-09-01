@@ -22,7 +22,7 @@ type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
     echo "Hypervisor: AWS"
 else
-    echo "Hypervisor: Ravello"
+    echo "Hypervisor: Unknown"
 fi
 
 # run only when server boots (through /etc/rc.local as root)
@@ -37,7 +37,7 @@ if [[  $currentuser == "root" ]]; then
     else
         # DNS and internet connectivity working
         echo "Cleanup previous files..."
-        rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp > /dev/null 2>&1
+        rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp
 
         echo "Install new scripts..."
         git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -55,7 +55,7 @@ if [[  $currentuser == "root" ]]; then
         mkdir $home/traffic-scripts/logs
         mkdir $home/tools/logs
 
-        chown -R $user:$user . > /dev/null 2>&1
+        chown -R $user:$user .
 
         # Cleanup Clouds credentials
         rm -fr $home/.aws/*
@@ -117,15 +117,17 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
     
     ### Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
-    export SPLUNK_HOME="$home/splunk/"
-    docker-compose -f $home/splunk/docker-compose.yml up -d
+    export SPLUNK_HOME="$home/splunk"
+    docker-compose -f $SPLUNK_HOME/docker-compose.yml up -d
+    docker logs splunk_splunk_1 
     # ==> data stored under /opt/splunk/var/lib/splunk
     docker_splunk_id="splunk_splunk_1"
     # wait for splunk to initalize
-    sleep 60
+    echo "Sleep 1 min for splunk to be ready."
+    sleep 1m
     # Splunk create admin directories
     mkdir -p $SPLUNK_HOME/etc/users/admin/search/local/data/ui/views
-    mkdir -p $SPLUNK_HOME/users/admin/user-prefs/local
+    mkdir -p $SPLUNK_HOME/etc/users/admin/user-prefs/local
     # Splunk create BIG-IQ dashboard
     cp $SPLUNK_HOME/bigiq_dashboard_splunk.xml $SPLUNK_HOME/etc/users/admin/search/local/data/ui/views
     # Splunk set default dashboard for admin user
@@ -136,6 +138,7 @@ if [[  $currentuser == "root" ]]; then
     docker exec $docker_splunk_id /opt/splunk/bin/splunk http-event-collector list -uri https://localhost:8089 -auth admin:purple123 | grep 'token=' | awk 'BEGIN { FS="=" } { print $2 }' | tr -dc '[:print:]' > $home/splunk-token
     sleep 5
     docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk restart
+    docker logs splunk_splunk_1 
 
     ### LDAP: load f5demo.ldif and expose port 389 for LDAP access
     docker run --volume $home/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
@@ -151,7 +154,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=tacacs -dit -p 49:49 dchidell/docker-tacacs
 
     ### Copy some custom files in hackazon docker for labs
-    # App Troubleshooting
+    echo -e "\nApp Troubleshooting customization begin\n"
     docker_hackazon_id="hackazon"
     docker cp f5-demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
     docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
@@ -163,13 +166,14 @@ if [[  $currentuser == "root" ]]; then
     rm -f grosfichier.html
     # fix permissions
     docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
+    echo -e "\nApp Troubleshooting customization end\n"
 
     ### Configure AWX
     tower-cli config host http://localhost:9001
     tower-cli config username admin
     tower-cli config password purple123
     tower-cli config verify_ssl False
-    echo "Sleeping 2 min for AWX db to be ready."
+    echo "Sleep 2 min for AWX db to be ready."
     sleep 2m
     tower-cli send ~/.awx/awxcompose/awx_backup.json
     tower-cli send ~/.awx/awxcompose/awx_backup.json
