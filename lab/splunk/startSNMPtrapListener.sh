@@ -1,9 +1,11 @@
 #!/bin/bash
+# Uncomment set command below for code debuging bash
+#set -x
 
 user="f5student"
 home="/home/$user"
 
-# to remove once Ubuntu lamp server is updated
+# Install SNMP linux package
 sudo apt install snmp -y
 
 echo -e "\nLaunching snmptrapd, redirecting SNMP traps into $home/splunk/snmp/snmp-traps.log: \n"

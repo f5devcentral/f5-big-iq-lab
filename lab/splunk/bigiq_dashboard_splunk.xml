@@ -1,9 +1,9 @@
 <dashboard theme="dark">
   <label>BIG-IQ Dashboard</label>
-  <description>https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/entity_catalog/http.html</description>
+  <description>Analytics Reporting and SNMP Event export to external source</description>
   <row>
     <panel>
-      <title>Application Service: Number of transactions (conference site41waf) - https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-demo-bigiq-analytics-export-restapi</title>
+      <title>Application Service conference-site41waf: Number of transactions - Check lab guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/class3/module4/lab3.html</title>
       <chart>
         <title>The average number of transactions per second that reached the server and got response, hence have relevant information of server latency</title>
         <search>
@@ -52,7 +52,7 @@
     <panel>
       <title>BIG-IQ Events</title>
       <event>
-        <title>SNMP Traps</title>
+        <title>SNMP Traps - Check Lab Guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/class4/module1/lab2.html</title>
         <search>
           <query>source="/var/log/snmp/snmp-traps.log" AND OID</query>
           <earliest>-24h@h</earliest>
