@@ -15,6 +15,14 @@ More information in `BIG-IQ Knowledge Center`_ and `Let’s Encrypt website`_.
 
 .. include:: /accesslab.rst
 
+Workflow
+^^^^^^^^
+
+1. Demo web server and domain name setup in AWS
+2. Configured third-party certificate provider on BIG-IQ
+3. SSL Certificate & Key creation on BIG-IQ
+4. AS3 HTTPS offload application service creation
+
 Demo web server and domain name setup in AWS
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

@@ -18,6 +18,12 @@ This lab will be using following F5 Ansible Galaxy roles:
 
 .. include:: /accesslab.rst
 
+Workflow
+^^^^^^^^
+
+1. Configured third-party certificate provider on BIG-IQ UI
+2. SSL Certificate & Key and AS3 HTTPS offload application service creation via the API
+
 Configured third-party certificate provider on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

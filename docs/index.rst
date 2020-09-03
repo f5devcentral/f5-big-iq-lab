@@ -20,8 +20,8 @@ environment has multiple cron jobs that are generating traffic that
 populates the Monitoring tab and Application dashboard.
 
 This lab environment is available for internal F5 users.
-Please reach out to your local **F5 Sales representative** if you are interested to run this 
-lab or see a **demo**.
+Please reach out to your local **F5 Sales representative** if you are interested 
+to **run one of the lab** or see a **demo**.
 
 .. toctree::
    :maxdepth: 1
@@ -70,7 +70,6 @@ lab or see a **demo**.
 - LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, GitLab, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security), Samba, AWX/Ansible Tower, Visual Studio Code.
 - SSLo Service TAP and L3/L2
 - Venafi Trust Protection 20.1
-- ESXi 6.5.0 + vCenter
 
 **Components available**:
 

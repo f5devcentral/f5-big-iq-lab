@@ -157,9 +157,11 @@
         name: f5devcentral.bigiq_pinning_deploy_objects
       vars:
         bigiq_task_name: "Deployment through Ansible/API - {{ cn }}"
-        ltm: 
-          - { type: "sslCertReferences", name: "{{ cn }}.crt" }
-          - { type: "sslKeyReferences", name: "{{ cn }}.key" }
+        modules: 
+          - name: ltm
+            pins:
+              - { type: "sslCertReferences", name: "{{ cn }}.crt" }
+              - { type: "sslKeyReferences", name: "{{ cn }}.key" }
         device_address: 10.1.1.7
       register: status
 

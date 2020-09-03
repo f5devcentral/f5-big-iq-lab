@@ -12,6 +12,21 @@
         validate_certs: no
 
     tasks:
+      - name: Pin and deploy WAF Policy and Security Logging Profile
+        include_role:
+          name: f5devcentral.bigiq_pinning_deploy_objects
+        vars:
+          bigiq_task_name: "Deployment through Ansible/API - GitLab"
+          modules: 
+            - name: asm
+              pins:
+                - { type: "attachedPoliciesReferences", name: "gitlab_demo"}
+            - name: shared_security
+              pins:
+                - { type: "logProfileReferences", name: "gitlab_demo" }
+          device_address: 10.1.1.7
+        register: status
+
       - name: ATC POST all JSON under as3 directory
         include_role:
           name: f5devcentral.atc_deploy
@@ -24,4 +39,4 @@
         loop: "{{ query('fileglob', 'as3/*.json') | sort }}"
         register: atc_AS3_status
 
-      - debug: var=atc_AS3_status
+#      - debug: var=atc_AS3_status

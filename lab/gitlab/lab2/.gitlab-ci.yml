@@ -13,4 +13,4 @@ ansible:
     - ansible-playbook --version
     - pwd
     - ls -lrt
-    - ansible-playbook bigiq_as3_deploy.yml -i hosts
+    - ansible-playbook bigiq_waf_policy_and_as3_deploy.yml -i hosts

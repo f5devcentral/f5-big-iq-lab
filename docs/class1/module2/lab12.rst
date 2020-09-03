@@ -17,6 +17,13 @@ This lab will be using following F5 Ansible Galaxy role:
 
 .. include:: /accesslab.rst
 
+Workflow
+^^^^^^^^
+
+1. Start GitLab and create new a project
+2. Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through BIG-IQ
+3. Infrastructure as code: add a new pool member to the AS3 app service through GitLab
+
 Start GitLab and create new a project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -101,7 +108,7 @@ Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through
 
 3. Copy the lab files into the ``mywebapp`` repository::
 
-    cp -r ~/gitlab/lab1/* ~/gitlab/lab/.gitlab-ci.yml .
+    cp -r ~/gitlab/lab1/* ~/gitlab/lab1/.gitlab-ci.yml .
     ls -la
     ls -l as3
 

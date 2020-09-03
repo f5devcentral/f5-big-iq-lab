@@ -48,6 +48,15 @@ Watch the video from our partner Venafi:
 
 .. include:: /accesslab.rst
 
+Workflow
+^^^^^^^^
+
+1. Configured third-party certificate provider on BIG-IQ
+2. SSL Certificate & Key creation on BIG-IQ
+3. AS3 HTTPS template with SSL Key Passphrase creation
+4. AS3 HTTPS offload application service creation
+5. Venafi Setup and Microsoft CA
+
 Configured third-party certificate provider on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
