@@ -1,247 +1,336 @@
-Lab 3.6: AS3 Switch Template: add a Firewall Policy to an existing Application Service
---------------------------------------------------------------------------------------
+Lab 3.6: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP
+-----------------------------------------------------------------------
 
-.. note:: Estimated time to complete: **15 minutes**
+.. note:: Estimated time to complete: **25 minutes**
 
 .. include:: /accesslab.rst
 
 Workflow
 ^^^^^^^^
 
-1. **Paula** creates her application service using the template given by **david**.
-2. **Larry** create the AFM policy (Advanced Firewall Manager).
-3. **David** clone the template used by Paula and add firewall policy to it.
-4. **David** assigns the new AS3 template to Paula.
-5. **Paula** use the switch template functionality to move her app service to the new template.
-6. **Larry** looks at the Firewall dashboard available on BIG-IQ.
+1. **Larry** creates the ASM policy in transparent mode on the BIG-IQ and deploy on the BIG-IP(s).
+2. **David** creates the AS3 template and reference ASM policy created by **Larry** in the template.
+3. **David** assigns the AS3 template to Paula.
+4. **Paula** creates her application service using the template given by **david**.
+5. After **Paula** does the necessary testing of her application, she reaches to Larry.
+6. **Larry** reviews the ASM learning and deploy the ASM policy changes on the BIG-IP(s) and set the policy to blocking mode.
+7. They all go for happy hour.
 
 Prerequisites
 ^^^^^^^^^^^^^
 
-1. First make sure your device has AFM module discovered and imported 
+1. First make sure your device has ASM module discovered and imported 
 for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 
-2. Check if the **AFM Statistics Collection** Statistics Collection is turned on
-for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
-
-3. Check if the **Network Security** service is Active 
+2. Check if the **Web Application Security** service is Active 
 under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
-
-AS3 application service deployment (Paula)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Follow `Lab 3.2`_ to deploy the application service as Paula.
-
-.. _Lab 3.2: ./lab2.html
-
-AFM Policy creation (Larry)
+ASM Policy creation (Larry)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Let's first create and deploy the AFM policy in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
+Let's first deploy the default Advance WAF policy and Security Logging Profile available in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 
 1. Login to BIG-IQ as **larry** by opening a browser and go to: ``https://10.1.1.4``
 
-2. Go to Configuration > Security > Network Security > Network Firewall > Firewall Policies and
-   create a new policy called ``module3lab6_fw_policy``.
+2. Go to Configuration > Security > Web Application Security > Policies and clone the policy called ``templates-default``
+and name it as ``templates-default-cloned``.
 
-.. image:: ../pictures/module3/lab-6-1.png
+.. image:: ../pictures/module3/lab-5-1a.png
   :scale: 40%
   :align: center
 
-Under Rules, create the 1st rule allowing traffic to destination port 443 and 80, protocol TCP, action ``accept``.
-
-.. image:: ../pictures/module3/lab-6-2.png
+.. image:: ../pictures/module3/lab-5-1b.png
   :scale: 40%
   :align: center
 
-Name the Rule (here we call it http) and click on **Update** to save it.
-
-.. image:: ../pictures/module3/lab-6-3.png
+3. Select ``templates-default-cloned`` and change **Enforcement Mode** to ``transparent`` under POLICY BUILDING > Settings, then click on **Save & Close**.
+  
+.. image:: ../pictures/module3/lab-5-1c.png
   :scale: 40%
   :align: center
 
-Create the 2nd rule rejecting all traffic, set destination address to ``0.0.0.0/0``, action ``reject``.
+4. Under Virtual Servers, click on the ``inactive`` virtual server attached to **SEA-vBIGIP01.termmarc.com**.
 
-.. image:: ../pictures/module3/lab-6-4.png
+.. image:: ../pictures/module3/lab-5-2.png
   :scale: 40%
   :align: center
 
-Click on **Save & Close**.
+5. Select the ``/Common/templates-default-cloned``, then click on **Save & Close**.
 
-.. image:: ../pictures/module3/lab-6-5.png
+.. image:: ../pictures/module3/lab-5-3.png
+  :scale: 60%
+  :align: center
+
+6. Notice the policy is now attached to the ``inactive`` virtual servers.
+
+Select the ``inactive`` virtual servers attached to **SEA-vBIGIP01.termmarc.com**, click on Deploy.
+
+.. image:: ../pictures/module3/lab-5-4.png
   :scale: 40%
   :align: center
 
-3. Under Pinning Policies, click on the **SEA-vBIGIP01.termmarc.com** device.
+7. The deployment window opens. Type a name, select ``Deploy immediately`` for the Method.
 
-.. image:: ../pictures/module3/lab-6-6.png
-  :scale: 40%
-  :align: center
-
-Select the ``/Common/module3lab6_fw_policy`` and add it to the device, then click on **Save & Close**.
-
-.. image:: ../pictures/module3/lab-6-7.png
-  :scale: 40%
-  :align: center
-
-4. Select the ``/Common/module3lab6_fw_policy``, click on Deploy.
-
-.. image:: ../pictures/module3/lab-6-8.png
-  :scale: 40%
-  :align: center
-
-The deployment window opens. Type a name, select ``Deploy immediately`` for the Method.
-
-.. image:: ../pictures/module3/lab-6-9.png
+.. image:: ../pictures/module3/lab-5-5.png
   :scale: 40%
   :align: center
 
 Under the Target Device(s) section, click on ``Find Relevant Devices``
 and select the **SEA-vBIGIP01.termmarc.com**. Then, click on Deploy.
 
-
-AS3 clone template to add firewall rules (David)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Login as **david** and Go to the Applications tab > Applications Templates and 
-   select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-<version>`` and press **Clone**.
-
-2. Give the cloned template a name: ``AS3-LAB-HTTPS-custom-firewall-template`` and click Clone.
-
-3. Open the template you just cloned and select the ``Service_HTTPS`` AS3 class.
-   Set property ``Firewall policy (enforced)`` to ``/Common/module3lab6_fw_policy`` and change it to Override.
-
-.. image:: ../pictures/module3/lab-6-10.png
+.. image:: ../pictures/module3/lab-5-6.png
   :scale: 40%
   :align: center
 
-.. note:: The firewall policy will be hidden from the application owner, Paula, as we set the policy with option Override.
+8. Confirm the deployment information, click on Deploy.
 
-4. Click **Save & Close**.
+.. image:: ../pictures/module3/lab-5-7.png
+  :scale: 40%
+  :align: center
 
-5. Select ``AS3-LAB-HTTPS-WAF-custom-template`` and click **Publish**.
+9. Wait for the deployment to complete.
 
-6. Before **paula** can use this AS3 template, **david** needs to update her role.
-   Use the previous steps in `Lab 3.2`_ to add AS3 Template ``AS3-LAB-HTTPS-custom-firewall-template`` to ``Application Creator VMware`` custom role
+.. image:: ../pictures/module3/lab-5-8.png
+  :scale: 40%
+  :align: center
+
+Once the deployment is completed, you confirm the changes by clicking on *view**.
+
+.. image:: ../pictures/module3/lab-5-9.png
+  :scale: 40%
+  :align: center
+
+10. Deploy the default BIG-IQ Security Logging Profile so the ASM events are being sent correctly to BIG-IQ DCD.
+
+.. note:: This step is only for your information as it's already perform in this lab.
+
+Under configuration tab, SECURITY, Shared Security, Logging Profiles. ``templates-default`` 
+is the default Security Logging Profile available on BIG-IQ.
+
+.. image:: ../pictures/module3/lab-5-10.png
+  :scale: 40%
+  :align: center
+
+11. Under Pinning Policies, click on the **SEA-vBIGIP01.termmarc.com** device.
+
+Confirm the logging profile has been added under Logging Profiles.
+
+.. image:: ../pictures/module3/lab-5-11.png
+  :scale: 40%
+  :align: center
+
+.. note:: More information `Managing Logging Profiles in Shared Security`_.
+
+.. _Managing Logging Profiles in Shared Security: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-security/managing-logging-profiles-in-shared-security.html
+
+
+AS3 WAF template creation (David)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Until now we used a default AS3 template out-of-the-box (available on https://github.com/f5devcentral/f5-big-iq) 
+for deploying an application service. It is a good practice to clone the default AS3 templates and use them more 
+tailored to your custom needs.
+
+1. Login as **david** and Go to the Applications tab > Applications Templates and 
+   select ``AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-<version>`` and press **Clone**.
+
+2. Give the cloned template a name: ``AS3-LAB-HTTPS-WAF-custom-template`` and click Clone.
+
+.. image:: ../pictures/module3/lab-5-12.png
+  :scale: 40%
+  :align: center
+
+3. Open the template ``AS3-LAB-HTTPS-WAF-custom-template`` and select the ``Analytics_Profile`` AS3 class.
+   Change to Override the Property ``Collect Client-Side Statistics``, 
+   as well as ``Collect URL`` and ``Collect User Agent``.
+
+.. image:: ../pictures/module3/lab-5-13a.png
+  :scale: 40%
+  :align: center
+
+.. note:: ``Response Code``, ``User Method`` and ``Operating System and Browser`` are already enabled by default in the AS3 schema.
+
+4. Now, select the ``Service_HTTPS`` AS3 class.
+   Change to the property ``bigip`` under policyWAF to ``/Common/templates-default-cloned``.
+   Make sure the property is set to Editable.
+
+.. note:: If you want to hide the ASM policy in the template, you can set the property to Override (only starting BIG-IQ 7.1, see BIG-IQ 7.0 Release note #811013).
+
+.. image:: ../pictures/module3/lab-5-13b.png
+  :scale: 40%
+  :align: center
+
+5. Click **Save & Close**.
+
+6. Select ``AS3-LAB-HTTPS-WAF-custom-template`` and click **Publish**.
+
+7. Before **paula** can use this AS3 template, **david** needs to update her role.
+   Use the previous steps in `Lab 3.2`_ to add AS3 Template ``AS3-LAB-HTTPS-WAF-custom-template`` to ``Application Creator VMware`` custom role
    assigned to **paula**.
 
 .. _Lab 3.2: ./lab2.html
 
-.. image:: ../pictures/module3/lab-6-11.png
+AS3 WAF application service deployment (Paula)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Now both Advance WAF policy and Security Logging Profile are available on BIG-IP and AS3 WAF template 
+available on BIG-IQ, let's create the WAF application service using AS3 & BIG-IQ.
+
+1. Login as **paula** and select previously created ``LAB_module3`` Application and click **Create**.
+  
+2. Click **Create** to create an Application Service:
+
++---------------------------------------------------------------------------------------------------+
+| Application properties:                                                                           |
++---------------------------------------------------------------------------------------------------+
+| * Grouping = Part of an Existing Application                                                      |
+| * Application Name = ``LAB_module3``                                                              |
+| * Description = ``My second AS3 template deployment through a GUI``                               |
++---------------------------------------------------------------------------------------------------+
+| Select an Application Service Template:                                                           |
++---------------------------------------------------------------------------------------------------+
+| * Template Type = Select ``AS3-LAB-HTTPS-WAF-custom-template [AS3]``                              |
++---------------------------------------------------------------------------------------------------+
+| General Properties:                                                                               |
++---------------------------------------------------------------------------------------------------+
+| * Application Service Name = ``https_waf_app_service``                                            |
+| * Target = ``SEA-vBIGIP01.termmarc.com``                                                          |
+| * Tenant = ``tenant2``                                                                            |
++---------------------------------------------------------------------------------------------------+
+| Analytics_Profile. Keep default.                                                                  |
++---------------------------------------------------------------------------------------------------+
+| Pool                                                                                              |
++---------------------------------------------------------------------------------------------------+
+| * Members: ``10.1.20.123``                                                                        |
++---------------------------------------------------------------------------------------------------+
+| Service_HTTPS                                                                                     |
++---------------------------------------------------------------------------------------------------+
+| * Virtual addresses: ``10.1.10.122``                                                              |
+| * policyWAF: ``/Common/templates-default-cloned``                                                 |
+| * Security Log Profiles: ``/Common/templates-default``                                            |
++---------------------------------------------------------------------------------------------------+
+| Certificate. Keep default.                                                                        |
++---------------------------------------------------------------------------------------------------+
+| TLS_Server. Keep default.                                                                         |
++---------------------------------------------------------------------------------------------------+
+
+.. image:: ../pictures/module3/lab-5-14a.png
   :scale: 40%
   :align: center
 
-.. warning:: Manually select and remove the ``undefined [API only]`` entries from the Selected column if needed.
-
-AS3 Application Service Update using Switch Template (Paula)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Now AFM policy is available on BIG-IP and new AS3 HTTPS firewall template 
-available on BIG-IQ, let's use the switch template feature to add 
-the firewall policy to Paula's existing application service.
-
-1. Login as **paula** and select previously created ``https_app_service`` Application Service 
-   under ``LAB_module3`` (created in `Lab 3.2`_).
-
-.. _Lab 3.2: ./lab2.html
-
-2. In order to save the properties of the application service, click on the top right corner of the dashboard,
-   click on **View Sample API Request** and save the API call in a text editor.
-
-.. image:: ../pictures/module3/lab-6-12.png
+.. image:: ../pictures/module3/lab-5-14b.png
   :scale: 40%
   :align: center
 
-3. Then click on **Switch to template**/
+3. Click **Create**.
 
-.. image:: ../pictures/module3/lab-6-13.png
+4. Check the application service ``https_waf_app_service`` has been created under Application ``LAB_module3``.
+
+.. image:: ../pictures/module3/lab-5-15.png
   :scale: 40%
   :align: center
 
-4. Select ``AS3-LAB-HTTPS-custom-firewall-template`` for Template Type.
-Using the information saved in step 2, fill necessary fields (Server Addresses, Virtual Server Addresses).
+5. Now, let's look on the BIG-IP  and verify the application is correctly deployed in partition ``tenant2``.
+    
+6. Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``tenant2`` and look at the objects created on the BIG-IP.
 
-.. image:: ../pictures/module3/lab-6-14.png
+ .. image:: ../pictures/module3/lab-5-16.png
+  :scale: 40%
+  :align: center
+  
+7. Notice that new ``https_waf_app_service`` comes with a redirect. Select the HTTPS VS, Select Security and 
+hit Policies. Application Security Policy is Enabled and the Log Profile has a templates-default selected.
+ 
+.. image:: ../pictures/module3/lab-5-17.png
   :scale: 40%
   :align: center
 
-5. Now, let's change the virtual server port to ``444`` instead of 443.
+8. Back to the BIG-IQ and logged in as **paula**, select ``tenant2_https_waf_app_service``. What is the enforced Protection Mode?
 
-.. image:: ../pictures/module3/lab-6-15.png
+.. image:: ../pictures/module3/lab-5-18.png
   :scale: 40%
   :align: center
 
-6. Click **Save & Close**.
+9. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
 
-7.	Now, let's look on the BIG-IP and verify the Firewall policy has been correctly applied to the application service.
-Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment. 
-Select the partition ``tenant1`` and look at the security resources attached to the virtual server ``ServiceMain``.
+Open Chrome and navigate to the following URL: ``https://10.1.10.122``.
 
-
-.. image:: ../pictures/module3/lab-6-16.png
+.. image:: ../pictures/module3/lab-5-19.png
   :scale: 40%
   :align: center
 
-8. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
+10. Paula does the necessary testing of her application, she reach to Larry.
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
+.. note:: There are traffic generator sending good and bad traffic from the Lamp server in the lab.
 
-Open a terminal and run the following commands:
+11. Paula can update application service health alert rules by clicking on the Health Icon on the top left of the Application Dashboard.
 
-.. code::
+.. image:: ../pictures/module3/lab-5-20a.png
+  :scale: 60%
+  :align: center
 
-    f5student@ip-10-1-1-5:~$ nmap -F 10.1.10.120
-    Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-11 01:12 UTC
-    Nmap scan report for site20.example.com (10.1.10.120)
-    Host is up (0.00036s latency).
-    Not shown: 98 filtered ports
-    PORT    STATE  SERVICE
-    80/tcp  open   http
-    444/tcp closed snpp
-
-    Nmap done: 1 IP address (1 host up) scanned in 1.73 seconds
-
-    f5student@ip-10-1-1-5:~$ curl -k https://10.1.10.120:444
-    curl: (7) Failed to connect to 10.1.10.120 port 444: Connection refused
-
-Notice the port 444 shows closed and when trying to run a curl against the virtual IP address on port 444, it shows connection refused.
-
-Run above commands few times, then go back to the BIG-IQ Application Dashboard and 
-change the ``virtual server TCP port`` back to ``443``.
-
-Back on the Ubuntu Jump host on the terminal, and run the following commands:
-
-.. code::
-
-    f5student@ip-10-1-1-5:~$ nmap -F 10.1.10.120
-    Starting Nmap 7.80 ( https://nmap.org ) at 2020-04-11 01:23 UTC
-    Nmap scan report for site20.example.com (10.1.10.120)
-    Host is up (0.00037s latency).
-    Not shown: 98 filtered ports
-    PORT    STATE SERVICE
-    80/tcp  open  http
-    443/tcp open  https
-
-    Nmap done: 1 IP address (1 host up) scanned in 1.74 seconds
-
-    f5student@ip-10-1-1-5:~$ curl -s -k https://10.1.10.120:443 | tail -3
-    setTimeout(f5_cspm.wait_perf_data,100);return;},go:function(){var chunk=window.document.cookie.split(/\s*;\s*/);for(var i=0;i<chunk.length;++i){var pair=chunk[i].split(/\s*=\s*/);if(pair[0]=='f5_cspm'&&pair[1]=='1234')
-    {var d=new Date();d.setTime(d.getTime()-1000);window.document.cookie='f5_cspm=;expires='+d.toUTCString()+';path=/;';setTimeout(f5_cspm.wait_perf_data,100);}}}}
-    f5_cspm.go();}());</script>
-
-Notice now the port 443 shows open and when trying to run a curl against the virtual IP address on port 443, 
-the page is loading correctly and showing in the terminal. Run above commands few times.
-
-
-AFM Policy Dashboard (Larry)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-1. Login as **larry** and go to Monitoring > Dashboards > AFM > ACL Enforced.
-Acknowledge the various attempts made by Paula when trying to reach her Application Services on port 444 and port 443.
-
-.. image:: ../pictures/module3/lab-6-17.png
+.. image:: ../pictures/module3/lab-5-20b.png
   :scale: 40%
   :align: center
+
+ASM Policy Learning review and Dashboard/Events (Larry & Paula)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Login as **larry** and go to Configuration > Security > Web Application Security > Policies.
+
+2. Select ``templates-default-cloned`` and navigate under POLICY BUILDING > Suggestions and review the learning.
+
+.. image:: ../pictures/module3/lab-5-21.png
+  :scale: 40%
+  :align: center
+
+3. Accept necessary suggestions.
+
+.. image:: ../pictures/module3/lab-5-22.png
+  :scale: 40%
+  :align: center
+
+.. note:: In case the app is deployed on a BIG-IP HA pair, the learning is not sync unless the failover group is set to automatic or the centrally builder feature is used.
+
+4. Navigate under POLICY BUILDING > Settings, change **Enforcement Mode** to ``blocking`` then click on **Save & Close**.
+
+.. image:: ../pictures/module3/lab-5-23.png
+  :scale: 40%
+  :align: center
+
+5. Select the ``templates-default-cloned``, click on Deploy to deploy the changes (same as previously done).
+
+.. image:: ../pictures/module3/lab-5-24.png
+  :scale: 40%
+  :align: center
+
+6. Let's generate some bad traffic, connect on the Ubuntu Lamp Server server and launch the following script::
+
+    /home/f5/traffic-scripts/generate_http_bad_traffic.sh
+
+7. Check ASM type of attacks by navigating under Monitoring > EVENTS > Web Application Security > Event Logs > Events
+
+.. image:: ../pictures/module3/lab-5-25wa.png
+  :scale: 40%
+  :align: center
+
+8. Login as **paula** and select previously created ``LAB_module3`` Application, then click on ``https_waf_app_service``.
+
+9. In 7.x, the protection mode isn't automatically updated on the Application Dashboard. 
+
+Under Properties, select CONFIGURATION, then add ``upgradeProtectionMode 3/26/20`` in the Description 
+field and click Save.
+
+.. image:: ../pictures/module3/lab-5-25wa.png
+  :scale: 40%
+  :align: center
+
+10. In Application Dashboard, navigate to the Security Statistics and notice the Malicious Transactions.
+
+.. image:: ../pictures/module3/lab-5-26.png
+  :scale: 40%
+  :align: center
+
+11. Stop the bad traffic script, connect on the Ubuntu Lamp Server server and CTRL+C.
+
+.. note:: Try navigating to ``https://10.1.10.122/cal.exe`` from Chrome on the Lamp server.

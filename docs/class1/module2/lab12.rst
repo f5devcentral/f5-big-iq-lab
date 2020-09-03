@@ -101,7 +101,7 @@ Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through
 
 3. Copy the lab files into the ``mywebapp`` repository::
 
-    cp -r ~/gitlab/lab/* ~/gitlab/lab/.gitlab-ci.yml .
+    cp -r ~/gitlab/lab1/* ~/gitlab/lab/.gitlab-ci.yml .
     ls -la
     ls -l as3
 

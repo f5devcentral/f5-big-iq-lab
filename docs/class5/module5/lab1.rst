@@ -57,11 +57,11 @@ Once the license has been activated, it will show in the Licenses list.
 
 Click the Add RegKey button to add new standalone registration key(s) to this pool:
 
-``I6422-93902-12096-91072-2592888``
+- ``A1234-56789-10111-21314-1516171``
+- ``A1234-56789-10111-21314-1516172``
+- ``A1234-56789-10111-21314-1516173``
 
-``U1518-45188-32185-88097-8895588``
-
-``V0951-08388-67526-48941-9468555``
+.. note:: Above RegKeys are invalid on purpose. Please reach out to your local F5 Sales representative to acquire a valid lab licenses for this lab.
 
 |lab-5-5|
 

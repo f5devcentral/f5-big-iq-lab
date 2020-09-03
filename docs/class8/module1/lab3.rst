@@ -1,5 +1,5 @@
-Lab 1.3: Central Policy Management for Advanced-WAF
----------------------------------------------------
+Lab 1.3: WAF Policy Management via GitLab CI/CD pipeline with default WAF template and AS3
+------------------------------------------------------------------------------------------
 ``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
 Are you interested to see a lab on this topic? `Open an issue on GitHub`_
