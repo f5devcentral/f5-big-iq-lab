@@ -20,9 +20,9 @@ This lab will be using following F5 Ansible Galaxy role:
 Workflow
 ^^^^^^^^
 
-1. Start GitLab and create new a project
-2. Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through BIG-IQ
-3. Infrastructure as code: add a new pool member to the AS3 app service through GitLab
+   1. Start GitLab and create new a project
+   2. Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through BIG-IQ
+   3. Infrastructure as code: add a new pool member to the AS3 app service through GitLab
 
 Start GitLab and create new a project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
