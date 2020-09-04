@@ -5,8 +5,7 @@
 # cleanup old ssh keys
 ssh-keygen -f "/home/f5student/.ssh/known_hosts" -R "[localhost]:7022"
 
-export GITLAB_HOME="~/gitlab/"
-docker-compose -f ~/gitlab/docker-compose.yml up -d
+GITLAB_HOME="~/gitlab/" docker-compose -f ~/gitlab/docker-compose.yml up -d
 
 secs=120
 while [ $secs -gt 0 ]; do
@@ -26,4 +25,6 @@ while [ $secs -gt 0 ]; do
         : $((secs--))
 done
 
-docker logs gitlab_gitlab_1 | tail -10
+docker logs gitlab_gitlab_1
+
+echo -e "To continue monitor GitLab starting, run:\n\ndocker logs gitlab_gitlab_1\n" 

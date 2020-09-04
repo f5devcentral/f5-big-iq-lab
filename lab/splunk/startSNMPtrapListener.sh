@@ -5,8 +5,10 @@
 user="f5student"
 home="/home/$user"
 
-# Install SNMP linux package
-sudo apt install snmp -y
+# Install SNMP linux package for snmptrap
+if [ ! -f /usr/bin/snmptrap ]; then
+    sudo apt install snmp -y
+fi
 
 echo -e "\nLaunching snmptrapd, redirecting SNMP traps into $home/splunk/snmp/snmp-traps.log: \n"
 sudo killall snmptrapd > /dev/null 2>&1

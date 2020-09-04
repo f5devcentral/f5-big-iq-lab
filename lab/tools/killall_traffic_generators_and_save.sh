@@ -53,6 +53,7 @@ if [[ "$1" = "save" ]]; then
         [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
         rm -f ~/f5-demo-bigiq-analytics-export-restapi/input.json*
         rm -f ~/splunk-token
+        rm -fr ~/gitlab/gitlab ~/gitlab/gitlab-runner1-config
 
         rm -f ~/update_git.log
         rm -f ~/.bash_history

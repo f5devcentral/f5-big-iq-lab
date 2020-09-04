@@ -36,6 +36,14 @@ if [[  $currentuser == "root" ]]; then
         exit 1
     else
         # DNS and internet connectivity working
+
+        # Cleanup docker
+        docker kill $(docker ps -q)
+        docker stop $(docker ps -q)
+        docker rm $(docker ps -a -q)
+        docker rmi $(docker images -q) -f
+        $home/tools/cleanup-docker.sh
+
         echo "Cleanup previous files..."
         rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token
         ls -lrt
@@ -83,14 +91,7 @@ if [[  $currentuser == "root" ]]; then
     ps -ef | grep vnc | grep -v grep
     ps -ef | grep websockify | grep -v grep
 
-    # Cleanup docker
-    docker kill $(docker ps -q)
-    docker stop $(docker ps -q)
-    docker rm $(docker ps -a -q)
-    docker rmi $(docker images -q) -f
-    $home/tools/cleanup-docker.sh
-
-    ### Start AWX Compose
+    ### Start Ansible Tower/AWX Compose
     rm -rf ~/.awx
     mkdir -p ~/.awx
     ln -snf $home/awx ~/.awx/awxcompose
@@ -155,6 +156,7 @@ if [[  $currentuser == "root" ]]; then
             --copy-service
 
     # TACAC+ https://hub.docker.com/r/dchidell/docker-tacacs
+    echo -e "\nTacacs"
     docker run --restart=always --name=tacacs -dit -p 49:49 dchidell/docker-tacacs
 
     ### Copy some custom files in hackazon docker for labs

@@ -10,7 +10,7 @@
     "label": "Gitlab",
     "remark": "WAF HTTP Application Service",
     "target": {
-      "address": "10.1.1.7"
+      "address": "{{ target_device }}"
     },
     "gitlab": {
       "class": "Tenant",
@@ -37,11 +37,11 @@
           },
           "serverTLS": "webtls",
           "policyWAF": {
-            "bigip": "/Common/gitlab_demo"
+            "bigip": "/Common/{{ waf_policy_name }}"
           },
           "securityLogProfiles": [
             {
-              "bigip": "/Common/gitlab_demo"
+              "bigip": "/Common/{{ security_logging_profile }}"
             }
           ]
         },
@@ -78,10 +78,10 @@
         "webcert": {
           "class": "Certificate",
           "certificate": {
-            "bigip": "/Common/default.crt"
+            "bigip": "/Common/{{ certificate }}"
           },
           "privateKey": {
-            "bigip": "/Common/default.key"
+            "bigip": "/Common/{{ privateKey }}"
           }
         }
       }

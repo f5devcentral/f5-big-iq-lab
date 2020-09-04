@@ -10,33 +10,141 @@
         user: admin
         password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
         validate_certs: no
+    certificate: "default.crt"
+    privateKey: "default.key"
+    waf_policy_template: "Rapid Deployment Policy"
+    waf_policy_name: "gitlab_demo"
+    security_logging_profile: "templates-default"
+    target_device: "10.1.1.7"
 
     tasks:
+    - name: Get BIG-IQ Token
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/shared/authn/login
+        method: POST
+        headers:
+          Content-Type: application/json
+        body: 
+          username: "{{ provider.user }}"
+          password: "{{ provider.password }}"
+          loginProviderName: "{{ provider.loginProviderName }}"
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: auth
+
+    - name: Get ASM Policy Template details
+      uri:
+        url: "https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/asm/policy-templates?$filter=name%20eq%20'{{ waf_policy_template }}'"
+        method: GET
+        validate_certs: "{{ provider.validate_certs }}"
+        headers:
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+      register: json_response
+
+    - name: Get ASM Policy Template id
+      set_fact:
+        waf_policy_template_id: "{{ json_response | json_query(query) }}"
+      vars: 
+        query: "json.items[0].id"
+
+    - name: Check if the WAF policy already exist
+      uri:
+        url: "https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/asm/working-config/policies?$filter=name%20eq%20'{{ waf_policy_name }}'"
+        method: GET
+        validate_certs: "{{ provider.validate_certs }}"
+        headers:
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+      register: json_response_exist
+    
+#    - debug:
+#        var: json_response_exist.json.totalItems
+
+    - name: Create WAF Policy
+      uri:
+        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/asm/tasks/create-policy
+        method: POST
+        headers:
+          Content-Type: application/json
+          X-F5-Auth-Token: "{{ auth.json.token.token }}"
+        body: |
+          {
+            "name": "policy create task from template Rapid Deployment Policy. Policy name {{ waf_policy_name }}",
+            "partition": "Common",
+            "policyProperties": {
+                "applicationLanguage": "utf-8",
+                "description": "",
+                "learningMode": "manual",
+                "name": "{{ waf_policy_name }}",
+                "fullPath": "/Common/{{ waf_policy_name }}",
+                "caseInsensitive": false,
+                "isPublishedForTemplates": false,
+                "enforcementMode": "blocking",
+                "attributes": {
+                    "triggerAsmIruleEvent": "disabled",
+                    "enableEventCorrelation": true,
+                    "maximumHttpHeaderLength": "any",
+                    "maximumCookieHeaderLength": "any"
+                },
+                "stagingSettings": {
+                    "enforcementReadinessPeriod": "0"
+                },
+                "allowedResponseCodes": [
+                    "400",
+                    "401",
+                    "404",
+                    "407",
+                    "417",
+                    "503"
+                ],
+                "trustXff": true,
+                "customXffHeaders": [],
+                "hasParent": false,
+                "type": "security",
+                "partition": "Common",
+                "pathParameterHandling": "as parameters",
+                "maskCreditCardNumbersInRequest": true
+            },
+            "templateReference": {
+                "link": "https://localhost/mgmt/cm/asm/policy-templates/{{ waf_policy_template_id }}"
+            }
+          }
+        body_format: json
+        timeout: 60
+        status_code: 200, 202
+        validate_certs: "{{ provider.validate_certs }}"
+      register: json_response
+      # Only create the policy if it does not exist already
+      when: json_response_exist.json.totalItems == 0
+
       - name: Pin and deploy WAF Policy and Security Logging Profile
         include_role:
           name: f5devcentral.bigiq_pinning_deploy_objects
         vars:
           bigiq_task_name: "Deployment through Ansible/API - GitLab"
           modules: 
-            - name: asm
-              pins:
-                - { type: "attachedPoliciesReferences", name: "gitlab_demo"}
-            - name: shared_security
-              pins:
-                - { type: "logProfileReferences", name: "gitlab_demo" }
-          device_address: 10.1.1.7
+          - name: ltm
+            pins:
+              - { type: "sslCertReferences", name: "{{ certificate }}" }
+              - { type: "sslKeyReferences", name: "{{ privateKey }}" }
+          - name: asm
+            pins:
+              - { type: "attachedPoliciesReferences", name: "{{ waf_policy_name }}"}
+          - name: shared_security
+            pins:
+              - { type: "logProfileReferences", name: "{{ security_logging_profile }}" }
+          device_address: "{{ target_device }}"
         register: status
 
-      - name: ATC POST all JSON under as3 directory
+      - name: ATC POST AS3 declaration
         include_role:
           name: f5devcentral.atc_deploy
         vars:
           atc_service: AS3
           atc_method: POST
-          atc_declaration_file: "{{ item }}"
+          # Using Jinja2 template, we can use the Ansible Variable and inject them into the AS3 declaration (such as the WAF policy, Cert & Key, etc..)
+          atc_declaration: "{{ lookup('template','j2/my_waf_https_app_service1.j2') }}"
           atc_delay: 15
           atc_retries: 30
-        loop: "{{ query('fileglob', 'as3/*.json') | sort }}"
         register: atc_AS3_status
-
-#      - debug: var=atc_AS3_status
