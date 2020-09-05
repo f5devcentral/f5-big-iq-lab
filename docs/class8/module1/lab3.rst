@@ -30,9 +30,9 @@ Workflow
 
 1. Start GitLab and create new a project
 2. Create WAF policy and security logging profile on BIG-IQ using the BIG-IQ UI
-3. Clone gitlab project and ...
-   3.1 Deploy WAF policy and logging profile to BIG-IQ with API through Gitlab and Ansible
-   3.2 Deploy AS3 WAF HTTPS offload application service to a BIG-IP through Gitlab and Ansible
+3. Clone gitlab project:
+   - Deploy WAF policy and logging profile to BIG-IQ with API through Gitlab and Ansible
+   - Deploy AS3 WAF HTTPS offload application service to a BIG-IP through Gitlab and Ansible
 4. Update policy through BIG-IQ, deploy policy update using the BIG-IQ UI
 
 Start GitLab and create new a project
