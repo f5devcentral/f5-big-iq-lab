@@ -67,13 +67,16 @@ LIST OF INSTANCES:
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 15.1 / 1 standalone (SJC)
-- LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, Docker, AWX 9.1.0, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
+- LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, GitLab, Docker, AWX 9.1.0, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
 - SSLo Service TAP and L3
 
 If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com) or Kyle Oliver (k.oliver@f5.com)
 
 ###################################################
 Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Splunk, Gitlab
+
+It takes about 20min for the Ubuntu and all its services running in docker container to initalize.
+Note than GitLab needs to be started manually (./gitlab/start-gitlab.sh) and it takes approximately 10min to start.
 
 List of Virtual Servers and Applications Servers where various type of traffic is being send to (check crontab config for more details).
 
@@ -149,6 +152,9 @@ Samba:
 User: f5student/purple123
 Domain: WORKGROUP
 Storage Path: //10.1.1.5/dcdbackup
+
+GitLab server:
+IP 10.1.1.5 port 7002 https 7022 ssh
 
 ###################################################
 XRDP

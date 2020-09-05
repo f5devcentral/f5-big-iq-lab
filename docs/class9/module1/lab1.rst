@@ -1,5 +1,5 @@
-Lab 1.1: Simple APM Configuration via BIG-IQ (secure website with basic authentication)
----------------------------------------------------------------------------------------
+Lab 1.1: Simple APM Configuration via BIG-IQ and AS3 (secure website with basic authentication)
+-----------------------------------------------------------------------------------------------
 
 .. note:: Estimated time to complete: **20 minutes**
 
@@ -12,7 +12,6 @@ Workflow
 2. **David** creates the AS3 template and reference APM policy created by **Larry** in the template.
 3. **David** creates the application service using the template created previously.
 4. **Larry** review the BIG-IQ Access dahsboards showing the sessions.
-
 
 APM Policy creation
 ^^^^^^^^^^^^^^^^^^^

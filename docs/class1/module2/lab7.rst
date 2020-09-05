@@ -3,6 +3,13 @@ Lab 2.7: Perform lab 1 to 4 using Ansible
 
 .. note:: Estimated time to complete: **20 minutes**
 
+This lab will be using the following F5 Ansible Galaxy roles:
+    - `atc_deploy`_  **ansible Role**: Allows AS3 declaration to be sent to `automation tool chain`_ service.
+    - *bigiq_app_merge_move* **ansible Role**: Move or merge an AS3 application service in BIG-IQ Dashboard -- *coming soon*.
+
+.. _atc_deploy: https://galaxy.ansible.com/f5devcentral/atc_deploy
+.. _automation tool chain: https://www.f5.com/products/automation-and-orchestration
+
 .. include:: /accesslab.rst
 
 Tasks

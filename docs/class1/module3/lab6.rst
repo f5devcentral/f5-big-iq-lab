@@ -25,8 +25,8 @@ for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 2. Check if the **Web Application Security** service is Active 
 under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
-ASM Policy creation (Larry)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ASM Policy and Security Logging Profile creation (Larry)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Let's first deploy the default Advance WAF policy and Security Logging Profile available in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 

@@ -6,6 +6,7 @@ before_script:
   - apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
   - pip3 install ansible
   - ansible-galaxy install f5devcentral.atc_deploy --force
+  - ansible-galaxy install f5devcentral.bigiq_pinning_deploy_objects --force
   - ansible-galaxy collection install f5networks.f5_modules
 
 ansible:

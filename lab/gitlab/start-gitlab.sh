@@ -14,11 +14,15 @@ while [ $secs -gt 0 ]; do
         : $((secs--))
 done
 
+docker exec gitlab_gitlab_1 gitlab-ctl status
+
+# work around permissions
 docker exec gitlab_gitlab_1 update-permissions
-sleep 5
+docker exec gitlab_gitlab_1 chown -R git:git /var/opt/gitlab/gitaly
+sleep 2
 docker restart gitlab_gitlab_1
 
-secs=30
+secs=120
 while [ $secs -gt 0 ]; do
         echo -ne "$secs\033[0K\r"
         sleep 1
@@ -27,4 +31,8 @@ done
 
 docker logs gitlab_gitlab_1
 
-echo -e "To continue monitor GitLab starting, run:\n\ndocker logs gitlab_gitlab_1\n" 
+docker exec gitlab_gitlab_1 gitlab-ctl status
+
+echo -e "To continue monitor GitLab starting, run:"
+echo -e "\t- docker logs gitlab_gitlab_1"
+echo -e "\t- docker exec gitlab_gitlab_1 gitlab-ctl status" 

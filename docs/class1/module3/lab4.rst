@@ -12,7 +12,6 @@ Workflow
 2. **David** assigns the AS3 template to Paula.
 3. **Paula** creates her application service using the template given by **david**.
 
-
 AS3 template creation (David)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

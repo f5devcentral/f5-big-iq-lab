@@ -9,8 +9,9 @@ We are leveraging a **CI/CD pipeline** in GitLab in order to make changes on the
 GitLab will keep track of the changes and control **user access** to the application service configuration of the F5 BIG-IP.
 We are using BIG-IQ to provide **visibility with enhanced analytics** (HTTP/TCP) to the DevOps/Application owner.
 
-This lab will be using following F5 Ansible Galaxy role:
+This lab will be using the following F5 Ansible Galaxy roles:
     - `atc_deploy`_  **ansible Role**: Allows AS3 declaration to be sent to `automation tool chain`_ service.
+    - *bigiq_app_merge_move* **ansible Role**: Move or merge an AS3 application service in BIG-IQ Dashboard -- *coming soon*.
 
 .. _atc_deploy: https://galaxy.ansible.com/f5devcentral/atc_deploy
 .. _automation tool chain: https://www.f5.com/products/automation-and-orchestration
@@ -20,9 +21,9 @@ This lab will be using following F5 Ansible Galaxy role:
 Workflow
 ^^^^^^^^
 
-   1. Start GitLab and create new a project
-   2. Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through BIG-IQ
-   3. Infrastructure as code: add a new pool member to the AS3 app service through GitLab
+1. Start GitLab and create new a project
+2. Clone gitlab project and deploy AS3 HTTP application service to a BIG-IP through BIG-IQ
+3. Infrastructure as code: add a new pool member to the AS3 app service through GitLab
 
 Start GitLab and create new a project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -117,6 +118,10 @@ This folder contains:
    - **hosts**: ansible host file with BIG-IQ access information
    - **bigiq_as3_deploy.yml**: ansible playbook to deploy the AS3 application services
    - **as3/my_http_app_service1.json**: AS3 declaration defining HTTP application service load balancer
+
+You can look at each file on the lab `GitHub repository`_.
+
+.. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/gitlab/lab1
 
 4. Add and commit the new files to the ``mywebapp`` repository::
 

@@ -11,7 +11,8 @@ Instead of doing all the necessary steps using BIG-IQ user interface, we are goi
 This lab will be using following F5 Ansible Galaxy roles:
     - `bigiq_pinning_deploy_objects`_ **ansible Role**: Pin objects (e.g. Cert & Key) on BIG-IQ and deploy it to BIG-IP(s).
     - `atc_deploy`_  **ansible Role**: Allows AS3 declaration to be sent to `automation tool chain`_ service.
-
+    - *bigiq_app_merge_move* **ansible Role**: Move or merge an AS3 application service in BIG-IQ Dashboard -- *coming soon*.
+    
 .. _bigiq_pinning_deploy_objects: https://galaxy.ansible.com/f5devcentral/bigiq_pinning_deploy_objects
 .. _atc_deploy: https://galaxy.ansible.com/f5devcentral/atc_deploy
 .. _automation tool chain: https://www.f5.com/products/automation-and-orchestration

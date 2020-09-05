@@ -1,5 +1,5 @@
-Lab 3.3: AS3 Application Service modification through BIG-IQ UI
----------------------------------------------------------------
+Lab 3.3: AS3 Application Service modification through BIG-IQ GUI
+----------------------------------------------------------------
 
 .. note:: Estimated time to complete: **5 minutes**
 
