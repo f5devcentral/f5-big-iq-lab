@@ -20,7 +20,7 @@
     vars:
         apps: 
         - name: LAB_task1
-            pins:
+          pins:
             - name: Task1_MyWebApp1http
             - name: Task1_MyWebApp6https
     register: status

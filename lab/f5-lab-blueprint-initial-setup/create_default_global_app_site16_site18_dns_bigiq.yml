@@ -10,7 +10,7 @@
       vars:
           apps: 
           - name: airport_security
-              pins:
+            pins:
               - name: security_site16_boston
               - name: security_site18_seattle
               - name: security_fqdn

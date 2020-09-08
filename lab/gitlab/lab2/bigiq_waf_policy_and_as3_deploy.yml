@@ -158,6 +158,6 @@
         vars:
             apps: 
             - name: LAB_gitlab
-                pins:
+              pins:
                 - name: gitlab_MyWebApp10waf_https
         register: status

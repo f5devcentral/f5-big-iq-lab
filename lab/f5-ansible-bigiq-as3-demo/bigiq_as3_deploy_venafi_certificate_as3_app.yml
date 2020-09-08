@@ -262,6 +262,6 @@
       vars:
           apps: 
           - name: LAB_module2
-              pins:
+            pins:
               - name: tenant4_https_app_service
       register: status
