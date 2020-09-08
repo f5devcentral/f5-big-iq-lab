@@ -50,7 +50,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
                    "serviceMain": {
                        "class": "Service_HTTP",
                        "virtualAddresses": [
-                           "10.1.10.111"
+                           "10.1.10.110"
                        ],
                        "pool": "web_pool",
                        "profileAnalytics": {

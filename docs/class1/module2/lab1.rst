@@ -112,7 +112,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
        }
    }
 
-2. Now that the AS3 declaration is validated, modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
+2. Now that the AS3 declaration is validated, modify the Virtual Address to 10.1.10.110 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
 
 3. Let's now add the target (BIG-IP device)::
 

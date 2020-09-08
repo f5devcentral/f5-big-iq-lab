@@ -96,7 +96,7 @@ This declaration abstracts the complexity of having to configure all the HTTP de
        }
    }
 
-2. Now that the AS3 declaration is validated, modify the Virtual Address to 10.1.10.111 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
+2. Now that the AS3 declaration is validated, modify the Virtual Address to 10.1.10.110 and the serverAddresses to 10.1.20.110 and 10.1.20.111.
 
 3. Using Postman, open the **BIG-IQ Token (david)** collections and replace IP address in the URL with ``10.1.1.8`` instead of ``10.1.1.4`` 
    (**BOS-vBIGIP01.termmarc.com** instead of BIG-IQ). 
