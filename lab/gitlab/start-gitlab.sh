@@ -17,8 +17,9 @@ done
 docker exec gitlab_gitlab_1 gitlab-ctl status
 
 # work around permissions
-docker exec gitlab_gitlab_1 update-permissions
+docker exec -it gitlab_gitlab_1 update-permissions
 docker exec gitlab_gitlab_1 chown -R git:git /var/opt/gitlab/gitaly
+docker exec gitlab_gitlab_1 chown -R gitlab-prometheus:gitlab-prometheus /var/opt/gitlab/grafana/data
 sleep 2
 docker restart gitlab_gitlab_1
 
