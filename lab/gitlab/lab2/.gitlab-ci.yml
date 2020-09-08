@@ -7,6 +7,7 @@ before_script:
   - pip3 install ansible
   - ansible-galaxy install f5devcentral.atc_deploy --force
   - ansible-galaxy install f5devcentral.bigiq_pinning_deploy_objects --force
+  - ansible-galaxy install f5devcentral.bigiq_move_app_dashboard --force
   - ansible-galaxy collection install f5networks.f5_modules
 
 ansible:

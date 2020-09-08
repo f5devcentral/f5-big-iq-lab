@@ -90,11 +90,12 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 9. Login on **BIG-IQ** as **paula**, go to Applications tab and check the application is displayed and analytics are showing.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
-             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
-             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+             You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
+             or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 .. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
 .. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
+.. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
 
 .. image:: ../pictures/module2/lab-8-11.png
   :scale: 60%

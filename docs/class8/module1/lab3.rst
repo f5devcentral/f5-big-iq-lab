@@ -17,9 +17,10 @@ the WAF policy from BIG-IQ independently from the VIP, pool and pool members.
 This lab will be using the following F5 Ansible Galaxy roles:
     - `bigiq_pinning_deploy_objects`_ **ansible Role**: Pin objects (e.g. Cert & Key, WAF policy, Security Logging Profile) on BIG-IQ and deploy it to BIG-IP(s).
     - `atc_deploy`_  **ansible Role**: Allows AS3 declaration to be sent to `automation tool chain`_ service.
-    - *bigiq_app_merge_move* **ansible Role**: Move or merge an AS3 application service in BIG-IQ Dashboard -- *coming soon*.
+    - `bigiq_move_app_dashboard`_ **ansible Role**: Move Application Service(s) in BIG-IQ Application Dashboard.
 
 .. _bigiq_pinning_deploy_objects: https://galaxy.ansible.com/f5devcentral/bigiq_pinning_deploy_objects
+.. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
 .. _atc_deploy: https://galaxy.ansible.com/f5devcentral/atc_deploy
 .. _automation tool chain: https://www.f5.com/products/automation-and-orchestration
 
@@ -49,7 +50,7 @@ Start GitLab and create new a project
 3. Wait ~10 min to open GitLab web UI from the lab environment. Click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
    *GitLab*. The login/password is ``root/purple123``. Or open ``http://localhost:7002`` from a browser in the Jumphost.
 
-.. note:: you can check GitLab logs with ``docker logs gitlab_gitlab_1``.
+.. note:: You can check GitLab status with ``docker exec gitlab_gitlab_1 gitlab-ctl status`` and GitLab logs with ``docker logs gitlab_gitlab_1``.
 
 |lab-12-1|
 
@@ -145,7 +146,6 @@ Clone gitlab project and deploy AS3 WAF HTTPS offload application service to a B
 1. From the Linux Jumphost, clone the repository::
 
     git clone ssh://git@localhost:7022/root/mywebapp.git
-    cd mywebapp
 
 2. Or order to be able to commit and push changes, we will need to configure the user email and name in git::
 
@@ -154,6 +154,7 @@ Clone gitlab project and deploy AS3 WAF HTTPS offload application service to a B
 
 3. Copy the lab files into the ``mywebapp`` repository::
 
+    cd mywebapp
     cp -r ~/gitlab/lab2/* ~/gitlab/lab2/.gitlab-ci.yml .
     ls -la
     ls -l j2

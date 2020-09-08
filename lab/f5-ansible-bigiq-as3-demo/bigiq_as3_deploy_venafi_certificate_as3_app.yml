@@ -256,40 +256,12 @@
 
     - debug: var=atc_AS3_status
 
-    - name: Get Application Service Name (Config set) tenant4_https_app_service
-      uri:
-        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/global/config-sets?$filter=configSetName%20eq%20'tenant4_https_app_service'
-        method: GET
-        headers:
-          Content-Type: application/json
-          X-F5-Auth-Token: "{{ auth.json.token.token }}"
-        status_code: 200, 202
-        validate_certs: "{{ provider.validate_certs }}"
-      register: json_response
-
-    - debug:
-        msg: "{{ json_response.json | json_query('items[*].selfLink') }}"
-
-    - name: Create Application LAB_module2 in BIG-IQ
-      uri:
-        url: https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/global/global-apps-merge-move
-        method: POST
-        headers:
-          Content-Type: application/json
-          X-F5-Auth-Token: "{{ auth.json.token.token }}"
-        body: |
-          {
-            "componentAppReferencesToMove": [
-              {
-                "link": "{{ json_response.json | json_query('items[0].selfLink') }}"
-              }
-            ],
-            "targetGlobalAppName": "LAB_module2",
-            "deleteEmptyGlobalAppsWhenDone": false,
-            "requireNewGlobalApp": false
-          }
-        body_format: json
-        timeout: 60
-        status_code: 200, 202
-        validate_certs: "{{ provider.validate_certs }}"
-      register: json_response
+    - name: Move an AS3 application service in BIG-IQ dashboard.
+      include_role:
+        name: f5devcentral.bigiq_move_app_dashboard
+      vars:
+          apps: 
+          - name: LAB_module2
+              pins:
+              - name: tenant4_https_app_service
+      register: status

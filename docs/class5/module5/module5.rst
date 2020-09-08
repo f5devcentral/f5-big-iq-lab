@@ -12,10 +12,12 @@ to assign to another BIG-IP VE. This flexible licensing model helps keep track o
 
 There are 3 types of devices you can manage licenses for:
 
-- **Managed BIG-IP devices**: From BIG-IQ, you assign licenses to and revoke license from BIG-IP devices using each device’s SSL certificate 
-  for authentication over an SSL connection.
-- **Unmanaged BIG-IP devices**: From BIG-IQ, you assign licenses to and revoke licenses from BIG-IP devices using each BIG-IP device’s IP address, 
-  user name, and password for authentication over an SSL connection.
+- **Managed BIG-IP devices**: Managed BIG-IPs are included in BIG-IQ’s inventory of trusted devices. 
+  This means BIG-IQ can perform operations on these BIG-IPs such as licensing, backups, upgrades, and configuration management. 
+  To assign a purchased pool license to a managed BIG-IP, you can provide the name of the pool and the discovery address of the BIG-IP. 
+  The discovery address is the address used to add the BIG-IP to BIG-IQ.​
+- **Unmanaged BIG-IP devices**: Unmanaged BIG-IPs are BIG-IPs that BIG-IQ communicates with solely for licensing purposes. Because these BIG-IPs 
+  are not actively managed using device trust, you must provide user credentials when assigning a license to an unmanaged BIG-IP.​
 - **Unreachable devices**: For devices that BIG-IQ does not have network access to, a third-party computer or program communicates with BIG-IQ through 
   API calls to get a license from BIG-IQ and assign it to the BIG-IP device by a method of your choosing. The third party makes a similar API call to 
   BIG-IQ for revoking a license.

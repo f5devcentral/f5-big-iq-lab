@@ -25,4 +25,14 @@
         loop: "{{ query('fileglob', 'as3/*.json') | sort }}"
         register: atc_AS3_status
 
-      - debug: var=atc_AS3_status
+      #- debug: var=atc_AS3_status
+
+      - name: Move an AS3 application service in BIG-IQ dashboard.
+        include_role:
+          name: f5devcentral.bigiq_move_app_dashboard
+        vars:
+            apps: 
+            - name: LAB_gitlab
+                pins:
+                - name: gitlab_MyWebApp10http
+        register: status

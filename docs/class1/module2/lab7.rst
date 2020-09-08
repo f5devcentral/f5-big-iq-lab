@@ -5,10 +5,7 @@ Lab 2.7: Perform lab 1 to 4 using Ansible
 
 This lab will be using the following F5 Ansible Galaxy roles:
     - `atc_deploy`_  **ansible Role**: Allows AS3 declaration to be sent to `automation tool chain`_ service.
-    - *bigiq_app_merge_move* **ansible Role**: Move or merge an AS3 application service in BIG-IQ Dashboard -- *coming soon*.
-
-.. _atc_deploy: https://galaxy.ansible.com/f5devcentral/atc_deploy
-.. _automation tool chain: https://www.f5.com/products/automation-and-orchestration
+    - `bigiq_move_app_dashboard`_ **ansible Role**: Move Application Service(s) in BIG-IQ Application Dashboard.
 
 .. include:: /accesslab.rst
 
@@ -20,11 +17,15 @@ Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 Execute the playbooks for each tasks.
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
-             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
-             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+             You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
+             or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 .. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
 .. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
+
+.. _atc_deploy: https://galaxy.ansible.com/f5devcentral/atc_deploy
+.. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
+.. _automation tool chain: https://www.f5.com/products/automation-and-orchestration
 
 - Task 1: HTTP Application Service::
 
