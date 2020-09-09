@@ -146,9 +146,9 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
 |lab-1-3|
 
-.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
-             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
-             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
+             or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Click on your Application, Properties > CONFIGURATION, look at AS3 Declaration.
 
@@ -253,9 +253,9 @@ Now we are going to create another service but this time, we will do some SSL of
 
 4. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
-             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
-             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
+             or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Task 3a - HTTPS Application with Web Application Firewall
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -374,9 +374,9 @@ Update the WAF policy section below with the policy available on BIG-IP::
 
 4. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
-             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
-             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
+             or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 Task 4 - Generic Services
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -462,12 +462,13 @@ Modify the Generic virtual with something other than <generic_virtual>.
 
 4. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
-             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
-             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
+             or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 .. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
 .. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
+.. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
 
 .. |lab-1-1| image:: ../pictures/module2/lab-1-1.png
    :scale: 60%

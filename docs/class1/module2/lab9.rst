@@ -42,7 +42,7 @@ Use ``purple123`` to authenticate.
   :scale: 60%
   :align: center
 
-6. Under AS3 Tenant, click on **Get-All-Tenant**. 
+6. Under AS3, expand **Targets**. 
    This will show you all the devices and the AS3 Application Services in each tenant (partition on BIG-IP).
 
 .. image:: ../pictures/module2/lab-9-5.png
@@ -110,12 +110,14 @@ Use ``purple123`` to authenticate.
        }
    }
 
-.. image:: ../pictures/module2/lab-9-6.png
-  :scale: 60%
-  :align: center
   
 8. Then, press F1 or cntrl+shift+p to open the extension command line. Type ``F5-AS3`` and select ``F5-AS3: Post Declaration``.
 
+.. image:: ../pictures/module2/lab-9-6.png
+  :scale: 80%
+  :align: center
+
+You should see a progress window showing in the bottom right.
 
 .. image:: ../pictures/module2/lab-9-7.png
   :scale: 80%
@@ -136,12 +138,13 @@ Use ``purple123`` to authenticate.
 
 10. Now, login on BIG-IQ as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting in 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
-             You can move those application services using the GUI, the `Move/Merge API`_ or create it directly into 
-             Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
+             You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
+             or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
 
 .. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
 .. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
+.. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
 
 .. image:: ../pictures/module2/lab-9-10.png
   :scale: 60%
