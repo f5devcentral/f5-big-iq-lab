@@ -1,5 +1,5 @@
-F5 BIG-IQ Centralized Management Test Drive Lab
-===============================================
+BIG-IQ Test Drive
+=================
 
 Welcome
 -------

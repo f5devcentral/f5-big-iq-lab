@@ -28,6 +28,7 @@ to **run one of the lab** or see a **demo**.
    :caption: Contents/Lab:
    :glob:
 
+   bigiqtestdrive.rst
    class1/class1
    class2/class2
    class3/class3
