@@ -119,6 +119,10 @@
         # Only create the policy if it does not exist already
         when: json_response_exist.json.totalItems == 0
 
+      # Pause for 15 seconds to allow time for WAF policy to get created in BIG-IQ
+      - pause:
+          seconds: 15
+
       - name: Pin and deploy WAF Policy and Security Logging Profile
         include_role:
           name: f5devcentral.bigiq_pinning_deploy_objects
