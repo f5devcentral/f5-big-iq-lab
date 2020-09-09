@@ -24,7 +24,6 @@ populates the Monitoring tab and Application dashboard.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents/Lab:
    :glob:
 
    class1/module3/lab1
@@ -38,7 +37,6 @@ populates the Monitoring tab and Application dashboard.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents/Lab:
    :glob:
 
    class3/module1
@@ -51,7 +49,6 @@ populates the Monitoring tab and Application dashboard.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents/Lab:
    :glob:
 
    class6/module1/lab1
@@ -62,7 +59,6 @@ populates the Monitoring tab and Application dashboard.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents/Lab:
    :glob:
 
    class5/module3/lab1
