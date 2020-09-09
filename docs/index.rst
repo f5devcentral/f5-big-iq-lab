@@ -23,6 +23,9 @@ This lab environment is available for internal F5 users.
 Please reach out to your local **F5 Sales representative** if you are interested 
 to **run one of the lab** or see a **demo**.
 
+Labs
+----
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents/Lab:
@@ -42,9 +45,8 @@ to **run one of the lab** or see a **demo**.
    class11/class11
    class12/class12
 
-------------
-
-**Lab Diagram**:
+Lab Diagram
+-----------
 
 .. image:: ./pictures/diagram_udf.png
    :align: center
@@ -81,9 +83,8 @@ to **run one of the lab** or see a **demo**.
 - "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
 
-------------
-
-**Documentations**:
+Documentation
+-------------
 
 - `BIG-IQ Knowledge Center`_
 - `F5 BIG-IQ API`_
@@ -103,17 +104,15 @@ to **run one of the lab** or see a **demo**.
 .. _BIG-IQ compatibility with Application Services 3 Extension and declarative onboarding: https://support.f5.com/csp/article/K54909607
 .. _Free Training Courses - Getting Started with BIG-IQ Centralized Management: https://f5.com/education/training/free-courses/getting-started-with-big-iq
 
-------------
-
-**Videos**:
+Videos
+------
 
 - `Look for the BIG-IQ videos on the YouTube DevCentral Channel`_
 
 .. _Look for the BIG-IQ videos on the YouTube DevCentral Channel: https://www.youtube.com/playlist?list=PLyqga7AXMtPMw9ob6u73-anE6BWRsPhLr
 
-------------
-
-**Tools**:
+Tools
+-----
 
 - BIG-IQ License Manager Public Cloud Template `AWS`_ and `Azure`_
 - `BIG-IQ Trial on AWS and Azure`_

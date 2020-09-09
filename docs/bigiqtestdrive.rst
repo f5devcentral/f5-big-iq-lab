@@ -19,6 +19,8 @@ significant portion of the BIG-IQ product. The Linux box in the
 environment has multiple cron jobs that are generating traffic that
 populates the Monitoring tab and Application dashboard.
 
+Labs
+----
 
 **Class 1: BIG-IQ Application Management and AS3** (Estimated time to complete: **1h**)
 
@@ -66,7 +68,8 @@ populates the Monitoring tab and Application dashboard.
    class5/module1/lab6
    class5/module1/lab7
 
-**Optional labst**
+Optional labs
+-------------
 
 .. toctree::
    :maxdepth: 1
@@ -76,9 +79,8 @@ populates the Monitoring tab and Application dashboard.
    class1/module2/lab12
    class6/module5/module5.rst
 
-------------
-
-**Lab Diagram**:
+Lab Diagram
+-----------
 
 .. image:: ./pictures/diagram_udf.png
    :align: center
