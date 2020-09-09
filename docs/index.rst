@@ -63,7 +63,7 @@ to **run one of the lab** or see a **demo**.
 
 **List of instances**:
 
-- BIG-IQ <> DCD 7.1.0
+- BIG-IQ <> DCD 7.1.0.1
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 15.1 / 1 standalone (SJC)
