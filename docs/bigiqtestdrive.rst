@@ -20,6 +20,8 @@ environment has multiple cron jobs that are generating traffic that
 populates the Monitoring tab and Application dashboard.
 
 
+**Class 1: BIG-IQ Application Management and AS3** (Estimated time to complete: **1h**)
+
 .. toctree::
    :maxdepth: 1
    :caption: Contents/Lab:
@@ -31,18 +33,43 @@ populates the Monitoring tab and Application dashboard.
    class1/module6/lab1
    class1/module6/lab2
    class1/module6/lab3
+
+**Class 3: BIG-IQ Analytics** (Estimated time to complete: **30min**)
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents/Lab:
+   :glob:
+
    class3/module1
    class3/module2/lab1
    class3/module2/lab2
    class3/module2/lab3
    class3/module4/lab1
+
+**Class 6: BIG-IQ LTM Configuration Management** (Estimated time to complete: **20min**)
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents/Lab:
+   :glob:
+
    class6/module1/lab1
    class6/module1/lab2
    class6/module1/lab3
+
+**Class 5: BIG-IQ Device Management** (Estimated time to complete: **30min**)
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Contents/Lab:
+   :glob:
+
    class5/module3/lab1
    class5/module3/lab2
    class5/module1/lab6
    class5/module1/lab7
+
 
 ------------
 
