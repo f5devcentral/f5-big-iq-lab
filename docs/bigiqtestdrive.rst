@@ -22,7 +22,7 @@ populates the Monitoring tab and Application dashboard.
 Labs
 ----
 
-**Class 1: BIG-IQ Application Management and AS3** (Estimated time to complete: **1h**)
+**Class 1: BIG-IQ Application Management and AS3** *(Estimated time to complete: 1h)*
 
 .. toctree::
    :maxdepth: 1
@@ -35,7 +35,7 @@ Labs
    class1/module6/lab2
    class1/module6/lab3
 
-**Class 3: BIG-IQ Analytics** (Estimated time to complete: **30min**)
+**Class 3: BIG-IQ Analytics** *(Estimated time to complete: 30min)*
 
 .. toctree::
    :maxdepth: 1
@@ -47,7 +47,7 @@ Labs
    class3/module2/lab3
    class3/module4/lab1
 
-**Class 6: BIG-IQ LTM Configuration Management** (Estimated time to complete: **20min**)
+**Class 6: BIG-IQ LTM Configuration Management** *(Estimated time to complete: 20min)*
 
 .. toctree::
    :maxdepth: 1
@@ -57,7 +57,7 @@ Labs
    class6/module1/lab2
    class6/module1/lab3
 
-**Class 5: BIG-IQ Device Management** (Estimated time to complete: **30min**)
+**Class 5: BIG-IQ Device Management** *(Estimated time to complete: 30min)*
 
 .. toctree::
    :maxdepth: 1
