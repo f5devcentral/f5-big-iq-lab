@@ -66,6 +66,15 @@ populates the Monitoring tab and Application dashboard.
    class5/module1/lab6
    class5/module1/lab7
 
+**Optional labst**
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   class6/module1/lab4
+   class1/module2/lab12
+   class6/module5/module5.rst
 
 ------------
 
