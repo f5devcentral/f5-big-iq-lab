@@ -23,8 +23,18 @@ This lab environment is available for internal F5 users.
 Please reach out to your local **F5 Sales representative** if you are interested 
 to **run one of the lab** or see a **demo**.
 
-Labs
-----
+First of all, if you don't know what is BIG-IQ, watch the following video!
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/YZ6dZa512j8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Read `Understanding Core Features of BIG-IQ Centralized Management`_ and understand **Why should I use BIG-IQ?** and **What elements make up a BIG-IQ solution?**
+
+.. _Understanding Core Features of BIG-IQ Centralized Management: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management
+
+Hands-On Labs
+-------------
 
 .. toctree::
    :maxdepth: 1
@@ -32,6 +42,7 @@ Labs
    :glob:
 
    bigiqtestdrive.rst
+   startup.rst
    class1/class1
    class2/class2
    class3/class3
@@ -45,47 +56,10 @@ Labs
    class11/class11
    class12/class12
 
-Lab Diagram
------------
+Resources
+---------
 
-.. image:: ./pictures/diagram_udf.png
-   :align: center
-   :scale: 40%
-
-**Networks**:
-
-- 10.1.1.0/24 lab environment Management Network
-- 10.1.10.0/24 lab environment External Network
-- 10.1.20.0/24 lab environment Internal Network
-- 10.1.30.0/24 lab environment SSLo Inline L3 IN Network
-- 10.1.40.0/24 lab environment SSLo Inline L3 OUT Network
-- 10.1.50.0/24 lab environment SSLo TAP Network
-- 172.17.0.0/16 lab environment Docker Internal Network
-- 172.100.0.0/16 AWS Internal Network
-- 172.200.0.0/16 Azure Internal Network
-
-**List of instances**:
-
-- BIG-IQ <> DCD 7.1.0.1
-- 2x BIG-IP 13.1 / 1 cluster (BOS)
-- 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
-- 1x BIG-IP 15.1 / 1 standalone (SJC)
-- LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, GitLab, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security), Samba, AWX/Ansible Tower, Visual Studio Code.
-- SSLo Service TAP and L3/L2
-- Venafi Trust Protection 20.1
-
-**Components available**:
-
-- "Applications" - Application Management (Legacy, AS3) and Service Scaling Group
-- "System" - Manage all aspects for BIG-IQ, 
-- "Devices" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
-- "Deployment" - Manage evaluation task and deployment.
-- "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
-- "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-
-Documentation
--------------
-
+- `BIG-IQ Centralized Management for Complete Visibility and Control`_
 - `BIG-IQ Knowledge Center`_
 - `F5 BIG-IQ API`_
 - `Light Product Demo`_ 
@@ -95,6 +69,7 @@ Documentation
 - `BIG-IQ compatibility with Application Services 3 Extension and declarative onboarding`_
 - `Free Training Courses - Getting Started with BIG-IQ Centralized Management`_
 
+.. _BIG-IQ Centralized Management for Complete Visibility and Control: https://www.f5.com/products/automation-and-orchestration/big-iq
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
 .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
 .. _Light Product Demo: https://www.f5.com/products/automation-and-orchestration/big-iq/app-visibility-demo

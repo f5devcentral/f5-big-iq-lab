@@ -8,19 +8,34 @@ Welcome to the |classbold| - |year|
 
 |repoinfo|
 
-This document details the lab exercises and demonstrations that comprise
-the hands-on component of the BIG-IQ. The environment is setup with
-basic configuration and associated traffic generation to populate
-dashboards for easy demos. Additional configuration can be added to
-support items that are not currently covered.
+This lab provides hands-on experience using F5's BIG-IQ for configuration of a BIG-IP.
 
-This lab environment is designed to allow for quick and easy demos of a
-significant portion of the BIG-IQ product. The Linux box in the
-environment has multiple cron jobs that are generating traffic that
-populates the Monitoring tab and Application dashboard.
+First of all, if you don't know what is BIG-IQ, watch the following video!
 
-Labs
-----
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/YZ6dZa512j8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+Read `Understanding Core Features of BIG-IQ Centralized Management`_ and understand **Why should I use BIG-IQ?** and **What elements make up a BIG-IQ solution?**
+
+.. _Understanding Core Features of BIG-IQ Centralized Management: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management
+
+The lab will cover the following topics in the labs that follow:
+- Application Service Manager in BIG-IQ: Legacy and AS3 Templates
+- Simplify troubleshooting and assess health and performance at a glance with big-picture and application-specific dashboards.
+- Keep your traffic certs compliant and up to date with central, automated, and Venafi-integrated cert management.
+- Back up devices, orchestrate BIG-IP upgrades
+- *optional* - How to use BIG-IQ with Venafi, leader in X.509 certificate management
+- *optional* - How to deal with naming conflicts when importing BIG-IPs into BIG-IQ, the 7.1 Silo feature
+
+Once you are ready to start your BIG-IQ journey, start with `Getting Started`_.
+
+.. _Getting Started: ./startup.html
+
+Hands-On Labs
+-------------
+
+.. note:: It is recommended to open the labs in a new tab/window: **Right Click > Open Link In new tab**.
 
 **Class 1: BIG-IQ Application Management and AS3** *(Estimated time to complete: 1h)*
 
@@ -68,8 +83,8 @@ Labs
    class5/module1/lab6
    class5/module1/lab7
 
-Optional labs
--------------
+Optional Hands-On Labs
+----------------------
 
 .. toctree::
    :maxdepth: 1
@@ -78,10 +93,3 @@ Optional labs
    class6/module1/lab4
    class1/module2/lab12
    class6/module5/module5.rst
-
-Lab Diagram
------------
-
-.. image:: ./pictures/diagram_udf.png
-   :align: center
-   :scale: 40%

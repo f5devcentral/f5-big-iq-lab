@@ -15,6 +15,3 @@ Modules/Labs
 
    module*/module*
 
-------------
-
-.. include:: ../lab.rst

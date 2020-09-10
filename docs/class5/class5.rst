@@ -25,6 +25,3 @@ Modules/Labs
    module10/module10
    module11/module11
 
-------------
-
-.. include:: ../lab.rst
