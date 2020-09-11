@@ -27,11 +27,12 @@ If you don't know what is BIG-IQ, watch the following video.
 
 |
 
-Read |location_link_core_feature| and understand **Why should I use BIG-IQ?** and **What elements make up a BIG-IQ solution?**
+Understand the |location_link_core_feature|.
 
 .. |location_link_core_feature| raw:: html
 
-   <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Understanding Core Features of BIG-IQ Centralized Management</a>
+   <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Core Features of BIG-IQ Centralized Management.</a>
+
 
 Hands-On Labs
 -------------

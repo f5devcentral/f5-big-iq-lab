@@ -21,32 +21,24 @@ app—has the resources required to perform optimally. With BIG-IQ you can **qui
 and **troubleshoot** every device, every application, and every policy from one centralized location—no matter 
 the operating environment. 
 
-First of all, if you have never heard about BIG-IQ, watch the following video.
-
-.. raw:: html
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/YZ6dZa512j8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-Also, read |location_link_core_feature| and understand **Why should I use BIG-IQ?** and **What elements make up a BIG-IQ solution?**
+Understand the |location_link_core_feature|.
 
 .. |location_link_core_feature| raw:: html
 
-   <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Understanding Core Features of BIG-IQ Centralized Management</a>
+   <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Core Features of BIG-IQ Centralized Management.</a>
 
 The lab will cover the following topics in the labs that follow:
 
-- Application Service Manager in BIG-IQ: Legacy and AS3 Templates
-- Simplify troubleshooting and assess health and performance at a glance with big-picture and application-specific dashboards.
-- Keep your traffic certs compliant and up to date with central and automated cert management.
-- Backup & patch devices, orchestrate BIG-IP upgrades
+- Application Service Manager in BIG-IQ: Legacy and AS3 Templates *(class 1)*
+- Simplify troubleshooting and assess health and performance at a glance with big-picture and application-specific dashboards *(class 3)*
+- Keep your traffic certs compliant and up to date with central and automated cert management *(class 6)*
+- Backup & patch devices, orchestrate BIG-IP upgrades *(class 5)*
 
 Optional labs:
 
-- How to use BIG-IQ with Venafi, leader in X.509 certificate management
-- Full Automation with BIG-IQ, a web-based DevOps lifecycle tool (GitLAb) and an open-source software provisioning & configuration management (Ansible)
-- How to deal with naming conflicts when importing BIG-IPs into BIG-IQ
+- How to use BIG-IQ with Venafi, leader in X.509 certificate management *(class 3)*
+- Full Automation with BIG-IQ, a web-based DevOps lifecycle tool (GitLAb) and an open-source software provisioning & configuration management (Ansible) *(class 1)*
+- How to deal with naming conflicts when importing BIG-IPs into BIG-IQ *(class 6)*
 
 Once you are ready to start your BIG-IQ journey, consult the |location_link_getstarted2| page, then start with *Class 1: BIG-IQ Application Management and AS3* Hands-On Labs.
 
