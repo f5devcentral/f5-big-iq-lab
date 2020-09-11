@@ -12,14 +12,15 @@ F5® BIG-IQ® is an **end-to-end visibility**, analytics, configuration, and man
 application delivery and security services** and the devices that power them. BIG-IQ offers a **unified platform** 
 to create, configure, provision, deploy, and manage F5 security and application delivery services. 
 
-This lab is designed to allow for quick and easy demos of a significant portion of the **BIG-IQ product**. 
-The environment is setup with basic configuration and associated traffic generation to populate dashboards. 
-Additional configuration can be added to support items that are not currently covered.
+This lab is designed to allow for quick and easy demos of a significant portion of the BIG-IQ product’s core 
+features and functionality. The environment is setup with basic configuration in place as well as a traffic 
+generator that populates the app-centric dashboards. Additional configurations can be added to support workflows 
+that are not currently covered in this lab.
 
 This lab environment is available for internal F5 users. Please reach out to your local **F5 Sales representative** 
-if you are interested to **run one of the lab** or see a **demo**.
+if you are interested in running one of the labs or to schedule a live demo.
 
-If you don't know what is BIG-IQ, watch the following video.
+New to BIG-IQ? Get started by watching the video below.
 
 .. raw:: html
 
