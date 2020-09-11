@@ -8,26 +8,18 @@ Welcome to the |classbold| - |year|
 
 |repoinfo|
 
-This document details the lab exercises and demonstrations that comprise
-the hands-on component of the BIG-IQ. The environment is setup with
-basic configuration and associated traffic generation to populate
-dashboards for easy demos. Additional configuration can be added to
-support items that are not currently covered.
+F5® BIG-IQ® is an **end-to-end visibility**, analytics, configuration, and management solution for **F5 BIG-IP 
+application delivery and security services** and the devices that power them. BIG-IQ offers a **unified platform** 
+to create, configure, provision, deploy, and manage F5 security and application delivery services. 
 
-This lab environment is designed to allow for quick and easy demos of a
-significant portion of the BIG-IQ product. The Linux box in the
-environment has multiple cron jobs that are generating traffic that
-populates the Monitoring tab and Application dashboard.
+This lab is designed to allow for quick and easy demos of a significant portion of the **BIG-IQ product**. 
+The environment is setup with basic configuration and associated traffic generation to populate dashboards. 
+Additional configuration can be added to support items that are not currently covered.
 
-This lab environment is available for internal F5 users.
-Please reach out to your local **F5 Sales representative** if you are interested 
-to **run one of the lab** or see a **demo**.
+This lab environment is available for internal F5 users. Please reach out to your local **F5 Sales representative** 
+if you are interested to **run one of the lab** or see a **demo**.
 
-F5® BIG-IQ® is an end-to-end visibility, analytics, configuration, and management solution for F5 BIG-IP 
-application delivery and security services and the devices that power them. BIG-IQ offers a unified 
-platform to create, configure, provision, deploy, and manage F5 security and application delivery services. 
-
-First of all, if you don't know what is BIG-IQ, watch the following video!
+If you don't know what is BIG-IQ, watch the following video.
 
 .. raw:: html
 

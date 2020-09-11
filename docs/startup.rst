@@ -119,7 +119,7 @@ The following table lists the virtual appliances in the lab along with their cre
 The Linux box in the environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
 and Application dashboard in BIG-IQ.
 
-Below table shows the list of **Virtual Servers** and **Web Applications Servers** where various type of traffic
+Below table shows the list of **Virtual Servers** and *Backend *Web Applications Servers** where various type of traffic
 is being sent (check ``crontab`` config for more details).
 
 .. warning:: Make sure the IP address on the external network 10.1.10.0/24 is defined in lab environment on 

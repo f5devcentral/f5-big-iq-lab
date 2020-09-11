@@ -15,8 +15,8 @@ BIG-IQ significantly extends the operability and value of your F5 investment wit
 configure, deploy, analyze, orchestrate **F5 security and application delivery services**. BIG-IQ supports 
 management of **F5 BIG-IP™ physical and virtual** devices both locally and in the cloud.  
 
-From per-app virtual editions to traditional hardware appliances, BIG-IQ makes it possible to gain visibility 
-into apps and devices, leverage automated workflows, simplify configuration, and ensure every team—and every 
+From per-app virtual editions to traditional hardware appliances, BIG-IQ makes it possible to **gain visibility** 
+into apps and devices, leverage **automated workflows**, simplify configuration, and ensure every team—and every 
 app—has the resources required to perform optimally. With BIG-IQ you can **quickly and easily** manage, analyze, 
 and **troubleshoot** every device, every application, and every policy from one centralized location—no matter 
 the operating environment. 
