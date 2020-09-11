@@ -6,9 +6,20 @@ Welcome
 
 Welcome to the |classbold| - |year|
 
-|repoinfo|
-
 This lab provides hands-on experience using F5's BIG-IQ for configuration of a BIG-IP.
+
+F5® BIG-IQ™ allows you to take an **application-centric** approach to core IT, networking, development, and 
+deployment with a unified tool for managing your F5 application delivery and security portfolio.
+
+BIG-IQ significantly extends the operability and value of your F5 investment with the ability to create, 
+configure, deploy, analyze, orchestrate **F5 security and application delivery services**. BIG-IQ supports 
+management of **F5 BIG-IP™ physical and virtual** devices both locally and in the cloud.  
+
+From per-app virtual editions to traditional hardware appliances, BIG-IQ makes it possible to gain visibility 
+into apps and devices, leverage automated workflows, simplify configuration, and ensure every team—and every 
+app—has the resources required to perform optimally. With BIG-IQ you can **quickly and easily** manage, analyze, 
+and **troubleshoot** every device, every application, and every policy from one centralized location—no matter 
+the operating environment. 
 
 First of all, if you don't know what is BIG-IQ, watch the following video!
 
@@ -16,9 +27,12 @@ First of all, if you don't know what is BIG-IQ, watch the following video!
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/YZ6dZa512j8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Read `Understanding Core Features of BIG-IQ Centralized Management`_ and understand **Why should I use BIG-IQ?** and **What elements make up a BIG-IQ solution?**
+|
 
-.. _Understanding Core Features of BIG-IQ Centralized Management: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management
+.. |location_link| raw:: html
+
+   Read <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Understanding Core Features of BIG-IQ Centralized Management</a> 
+   and understand <strong>Why should I use BIG-IQ?</strong> and <strong>**What elements make up a BIG-IQ solution?</strong>
 
 The lab will cover the following topics in the labs that follow:
 - Application Service Manager in BIG-IQ: Legacy and AS3 Templates
@@ -28,7 +42,7 @@ The lab will cover the following topics in the labs that follow:
 - *optional* - How to use BIG-IQ with Venafi, leader in X.509 certificate management
 - *optional* - How to deal with naming conflicts when importing BIG-IPs into BIG-IQ, the 7.1 Silo feature
 
-Once you are ready to start your BIG-IQ journey, start with `Getting Started`_.
+Once you are ready to start your BIG-IQ journey, start with `Getting Started`_, then start with **Class 1: BIG-IQ Application Management and AS3** Hands-On Labs.
 
 .. _Getting Started: ./startup.html
 

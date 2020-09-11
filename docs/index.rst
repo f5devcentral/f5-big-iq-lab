@@ -29,9 +29,16 @@ First of all, if you don't know what is BIG-IQ, watch the following video!
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/YZ6dZa512j8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-Read `Understanding Core Features of BIG-IQ Centralized Management`_ and understand **Why should I use BIG-IQ?** and **What elements make up a BIG-IQ solution?**
+|
 
-.. _Understanding Core Features of BIG-IQ Centralized Management: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management
+F5® BIG-IQ® is an end-to-end visibility, analytics, configuration, and management solution for F5 BIG-IP 
+application delivery and security services and the devices that power them. BIG-IQ offers a unified 
+platform to create, configure, provision, deploy, and manage F5 security and application delivery services. 
+
+.. |location_link| raw:: html
+
+   Read <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Understanding Core Features of BIG-IQ Centralized Management</a> 
+   and understand <strong>Why should I use BIG-IQ?</strong> and <strong>**What elements make up a BIG-IQ solution?</strong>
 
 Hands-On Labs
 -------------

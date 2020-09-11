@@ -82,7 +82,7 @@ The following table lists the virtual appliances in the lab along with their cre
 +-------------------------+---------+-----------------------------------------------------+-----------------------------+
 | SSLo Service TAP and L3 |         |                                                     | ubuntu/purple123            |
 +-------------------------+---------+-----------------------------------------------------+-----------------------------+
-| Venafi Trust Protection | 20.1    |                                                     | venafi/Purple123@123        |
+| Venafi Trust Protection | 20.1    |                                                     | venafi/Purple123\@123       |
 +-------------------------+---------+-----------------------------------------------------+-----------------------------+
 | LAMP Server             |         | - Radius, LDAP, TACAx                               | f5student/purple123         |
 |                         |         | - xRDP and noVNC for User Remove Desktop            |                             |
@@ -133,8 +133,7 @@ is being sent (check ``crontab`` config for more details).
 .. note:: IPs from ``10.1.10.110`` to ``10.1.10.142`` have a corresponding FQDN named from ``site10.example.com`` to ``site42.example.com``.
 
 +-----------------------------------------------------------------------+
-| Web Applications Servers                                              |
-| (Pool Members)                                                        |
+| Backend Web Applications Servers                                      |
 +=======================================================================+
 | 10.1.20.110-123                                                       |
 |                                                                       |
@@ -145,11 +144,6 @@ is being sent (check ``crontab`` config for more details).
 | - Port ``8083``: nginx application (delay 300ms loss 30% corrupt 30%) |
 | - Port ``446``: ASM Policy Validator                                  |
 +-----------------------------------------------------------------------+
-
-Glossary
---------
-
-
 
 .. raw:: html
     

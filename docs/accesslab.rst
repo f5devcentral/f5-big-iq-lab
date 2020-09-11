@@ -1,6 +1,6 @@
 Lab environment access
 ^^^^^^^^^^^^^^^^^^^^^^
 
-If you have not visited the page `Getting Started`_, please visit it by clicking on it.
+.. |location_link| raw:: html
 
-.. _Getting Started: ./startup.html
+   If you have not visited the page <a href="./startup.html" target="_blank">Getting Started:</a>, please visit it by clicking on it.
