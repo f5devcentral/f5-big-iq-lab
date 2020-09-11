@@ -15,9 +15,6 @@
 ## DNS Traffic
 */5 * * * * perl -le 'sleep rand 120' && /home/f5/traffic-scripts/generate_dns_traffic.sh > /home/f5/traffic-scripts/logs/generate_dns_traffic.log 2>&1
 
-## ASM Brute Force Attacks
-#@reboot perl -le 'sleep 2400' && /home/f5/traffic-scripts/asm-brute-force/asm_brute_force_attack.sh > /home/f5/traffic-scripts/logs/asm_brute_force_attack.log 2>&1
-
 ## Access Traffic
 */5 * * * * /home/f5/traffic-scripts/generate_access_traffic.sh > /home/f5/traffic-scripts/logs/generate_access_traffic.log 2>&1
 
