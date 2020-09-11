@@ -76,6 +76,7 @@ Resources
 - `DO Documentation`_
 - `BIG-IQ compatibility with Application Services 3 Extension and declarative onboarding`_
 - `Free Training Courses - Getting Started with BIG-IQ Centralized Management`_
+- `Glossary`_
 
 .. _BIG-IQ Centralized Management for Complete Visibility and Control: https://www.f5.com/products/automation-and-orchestration/big-iq
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
@@ -86,6 +87,7 @@ Resources
 .. _DO Documentation: https://clouddocs.f5.com/products/extensions/f5-declarative-onboarding/latest/
 .. _BIG-IQ compatibility with Application Services 3 Extension and declarative onboarding: https://support.f5.com/csp/article/K54909607
 .. _Free Training Courses - Getting Started with BIG-IQ Centralized Management: https://f5.com/education/training/free-courses/getting-started-with-big-iq
+.. _Glossary: https://www.f5.com/services/resources/glossary
 
 Videos
 ------
