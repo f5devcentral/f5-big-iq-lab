@@ -48,7 +48,7 @@ Once you are ready to start your BIG-IQ journey, consult the |location_link_gets
 
 .. |location_link_getstarted2| raw:: html
 
-   <a href="/startup.html" target="_blank">Getting Started</a>
+   <a href="/training/community/big-iq-cloud-edition/html/startup.html" target="_blank">Getting Started</a>
 
 Hands-On Labs
 -------------
