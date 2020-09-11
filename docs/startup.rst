@@ -71,17 +71,17 @@ The following table lists the virtual appliances in the lab along with their cre
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
 | System                  | Version | Description                                                                                  | Credentials                 |
 +=========================+=========+==============================================================================================+=============================+
-| BIG-IQ CM               | 7.1.0.1 | Using BIG-IQ, you can centrally manage your BIG-IP devices,                                  | admin/purple123 (local)     |
-|                         |         | performing operations such as backups, licensing, monitoring,                                | david/david (RadiusServer)  |
-|                         |         | and configuration management.                                                                | paula/paula (RadiusServer)  |
-|                         |         |                                                                                              | paul/paul (RadiusServer)    |
-|                         |         |                                                                                              | larry/larry (RadiusServer)  |
+| BIG-IQ CM               | 7.1.0.1 | Using BIG-IQ, you can centrally manage your BIG-IP devices,                                  | admin/purple123 *(local)*   |
+|                         |         | performing operations such as backups, licensing, monitoring,                                | david/david *(RadiusServer)*|
+|                         |         | and configuration management.                                                                | paula/paula *(RadiusServer)*|
+|                         |         |                                                                                              | paul/paul *(RadiusServer)*  |
+|                         |         |                                                                                              | larry/larry *(RadiusServer)*|
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
 | BIG-IQ DCD              | 7.1.0.1 | A data collection device (**DCD**) is a specially provisioned                                | admin/purple123             |
 |                         |         | BIG-IQ system that you use to manage and store alerts, events,                               |                             |
 |                         |         | and statistical data from one or more BIG-IP systems.                                        |                             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| BIG-IP Boston           | 13.1    | HA Pair/                                                                                     | admin/purple123             |
+| BIG-IP Boston           | 13.1    | HA Pair                                                                                      | admin/purple123             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
 | BIG-IP Seattle          | 14.1    | Standalone                                                                                   | admin/purple123             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
@@ -93,13 +93,13 @@ The following table lists the virtual appliances in the lab along with their cre
 |                         |         | and security with dynamic, policy-based decryption,                                          |                             |
 |                         |         | encryption, and traffic steering through multiple inspection devices.                        |                             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| Venafi Trust Protection | 20.1    | Manages, secures and protects keysand certificates, delivering an enterprise-grade platform  | venafi/Purple123@123        |
+| Venafi Trust Protection | 20.1    | Manages, secures and protects keysand certificates, delivering an enterprise-grade platform  | venafi/Purple123\@123       |
 |                         |         | that provides enterprise-wide security, operational efficiency and                           |                             |
 |                         |         | organizational compliance.                                                                   |                             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
 | LAMP Server             |         | - Radius, LDAP, TACAx (auth)                                                                 | f5student/purple123         |
-|                         |         | - xRDP and noVNC for User Remote Desktop                                                     | noVNC password is purple123 |
-|                         |         | - AWX/Ansible Tower                                                                          |                             |
+|                         |         | - xRDP and noVNC for User Remote Desktop                                                     |                             |
+|                         |         | - AWX/Ansible Tower                                                                          | noVNC password is purple123 |
 |                         |         | - GitLab                                                                                     |                             |
 |                         |         | - Splunk                                                                                     |                             |
 |                         |         | - Application Servers (Hackazon, dvmw, f5 demo app)                                          |                             |
@@ -110,13 +110,13 @@ The following table lists the virtual appliances in the lab along with their cre
 
 **Networks**:
 
-- 10.1.1.0/24 lab environment Management Network
-- 10.1.10.0/24 lab environment External Network
-- 10.1.20.0/24 lab environment Internal Network
-- 10.1.30.0/24 lab environment SSLo Inline L3 IN Network
-- 10.1.40.0/24 lab environment SSLo Inline L3 OUT Network
-- 10.1.50.0/24 lab environment SSLo TAP Network
-- 172.17.0.0/16 lab environment Docker Internal Network
+- 10.1.1.0/24 Management Network
+- 10.1.10.0/24 External Network
+- 10.1.20.0/24 Internal Network
+- 10.1.30.0/24 SSLo Inline L3 IN Network
+- 10.1.40.0/24 SSLo Inline L3 OUT Network
+- 10.1.50.0/24 SSLo TAP Network
+- 172.17.0.0/16 Docker Internal Network
 - 172.100.0.0/16 AWS Internal Network
 - 172.200.0.0/16 Azure Internal Network
 

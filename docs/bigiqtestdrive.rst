@@ -39,10 +39,14 @@ The lab will cover the following topics in the labs that follow:
 
 - Application Service Manager in BIG-IQ: Legacy and AS3 Templates
 - Simplify troubleshooting and assess health and performance at a glance with big-picture and application-specific dashboards.
-- Keep your traffic certs compliant and up to date with central, automated, and Venafi-integrated cert management.
-- Back up devices, orchestrate BIG-IP upgrades
-- *optional* - How to use BIG-IQ with Venafi, leader in X.509 certificate management
-- *optional* - How to deal with naming conflicts when importing BIG-IPs into BIG-IQ, the 7.1 Silo feature
+- Keep your traffic certs compliant and up to date with central and automated cert management.
+- Backup & patch devices, orchestrate BIG-IP upgrades
+
+Optional labs:
+
+- How to use BIG-IQ with Venafi, leader in X.509 certificate management
+- Full Automation with BIG-IQ, a web-based DevOps lifecycle tool (GitLAb) and an open-source software provisioning & configuration management (Ansible)
+- How to deal with naming conflicts when importing BIG-IPs into BIG-IQ
 
 Once you are ready to start your BIG-IQ journey, consult the |location_link_getstarted2| page, then start with *Class 1: BIG-IQ Application Management and AS3* Hands-On Labs.
 
