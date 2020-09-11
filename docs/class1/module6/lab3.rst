@@ -3,14 +3,15 @@ Lab 6.3: Legacy Application and RBAC: Paula workflow
 
 .. note:: Estimated time to complete: **15 minutes**
 
-Because the vip134 ``legacy-app-service`` was deployed on a cluster (see `known issue`_), 
-we need to first re-create the Legacy Application Service ``legacy-app-service`` on BIG-IQ.
+..
+  Because the vip134 ``legacy-app-service`` was deployed on a cluster (see `known issue`_), 
+  we need to first re-create the Legacy Application Service ``legacy-app-service`` on BIG-IQ.
 
-This is not needed on Standalone BIG-IP, but only on cluster. Because of this limitation, it is
-recommended to create and attach the analytics profile to the VIP before the creation
-of the legacy application service on the BIG-IQ dashboard. This would be the recommended production workflow for customers.
+  This is not needed on Standalone BIG-IP, but only on cluster. Because of this limitation, it is
+  recommended to create and attach the analytics profile to the VIP before the creation
+  of the legacy application service on the BIG-IQ dashboard. This would be the recommended production workflow for customers.
 
-.. _known issue: https://techdocs.f5.com/kb/en-us/products/big-iq-centralized-mgmt/releasenotes/related/relnote-supplement-big-iq-central-mgmt-7-1-0.html#A899789
+  .. _known issue: https://techdocs.f5.com/kb/en-us/products/big-iq-centralized-mgmt/releasenotes/related/relnote-supplement-big-iq-central-mgmt-7-1-0.html#A899789
 
 .. include:: /accesslab.rst
 
