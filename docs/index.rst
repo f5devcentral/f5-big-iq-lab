@@ -42,6 +42,7 @@ Hands-On Labs
    :glob:
 
    startup.rst
+   bigiqtestdrive.rst
    class1/class1
    class2/class2
    class3/class3
@@ -54,7 +55,6 @@ Hands-On Labs
    class10/class10
    class11/class11
    class12/class12
-   bigiqtestdrive.rst
 
 Resources
 ---------
