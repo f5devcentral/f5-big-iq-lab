@@ -302,7 +302,8 @@ Wait until the deployment completes.
    :scale: 40%
 
 .. |gitlab-diagram-waf| image:: ../pictures/module1/diagram_gitlab_as3_bigiq-waf.png
-   :scale: 40%
+   :align: center
+   :scale: 60%
 
 .. |lab-3-1| image:: ../pictures/module1/lab-3-1.png
    :scale: 40%
