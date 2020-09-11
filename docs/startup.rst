@@ -53,7 +53,7 @@ Once you connect to BIG-IQ, you can navigate in the following tabs:
 |welcomebigiq|
 
 .. |welcomebigiq| image:: /pictures/welcomebigiq.png
-   :scale: 60%
+   :scale: 40%
 
 Lab Components
 --------------
@@ -71,11 +71,11 @@ The following table lists the virtual appliances in the lab along with their cre
 +-------------------------+---------+-----------------------------------------------------+-----------------------------+
 | System                  | Version | Description                                         | Credentials                 |
 +=========================+=========+=====================================================+=============================+
-| BIG-IQ CM               | 7.1.0.1 |                                                     | admin/purple123 (local)     |
-|                         |         |                                                     | david/david (RadiusServer)  |
-|                         |         |                                                     | paula/paula (RadiusServer)  |
-|                         |         |                                                     | paul/paul (RadiusServer)    |
-|                         |         |                                                     | larry/larry (RadiusServer)  |
+| BIG-IQ CM               | 7.1.0.1 |                                                     | admin/purple123 *(local)*   |
+|                         |         |                                                     | david/david *(RadiusServer)*|
+|                         |         |                                                     | paula/paula *(RadiusServer)*|
+|                         |         |                                                     | paul/paul *(RadiusServer)*  |
+|                         |         |                                                     | larry/larry *(RadiusServer)*|
 +-------------------------+---------+-----------------------------------------------------+-----------------------------+
 | BIG-IQ DCD              | 7.1.0.1 |                                                     | admin/purple123             |
 +-------------------------+---------+-----------------------------------------------------+-----------------------------+
@@ -151,7 +151,3 @@ is being sent (check ``crontab`` config for more details).
 | - Port ``8083``: nginx application (delay 300ms loss 30% corrupt 30%) |
 | - Port ``446``: ASM Policy Validator                                  |
 +-----------------------------------------------------------------------+
-
-.. raw:: html
-    
-    <center><a href="javascript:history.go(-1)">Back</a></center>
