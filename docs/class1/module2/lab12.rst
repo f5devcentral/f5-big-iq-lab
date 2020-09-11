@@ -204,7 +204,7 @@ Add the pool member ``10.1.20.111`` as showing below:
 |lab-12-16|
 
 .. |gitlab-diagram-http| image:: /class1/pictures/module2/diagram_gitlab_as3_bigiq_http.png
-   :align: center
+   :align: middle
    :scale: 60%
 
 .. |lab-12-1| image:: ../pictures/module2/lab-12-1.png
