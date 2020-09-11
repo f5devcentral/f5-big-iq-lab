@@ -21,6 +21,14 @@ app—has the resources required to perform optimally. With BIG-IQ you can **qui
 and **troubleshoot** every device, every application, and every policy from one centralized location—no matter 
 the operating environment. 
 
+If you don't know what is BIG-IQ, watch the following video.
+
+.. raw:: html
+
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/YZ6dZa512j8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
+
 Understand the |location_link_core_feature|.
 
 .. |location_link_core_feature| raw:: html
@@ -29,7 +37,7 @@ Understand the |location_link_core_feature|.
 
 The lab will cover the following topics in the labs that follow:
 
-- Application Service Manager in BIG-IQ: Legacy and AS3 Templates *(class 1)*
+- Automating the configuration of application services through BIG-IQ; Legacy and AS3 Templates *(class 1)*
 - Simplify troubleshooting and assess health and performance at a glance with big-picture and application-specific dashboards *(class 3)*
 - Keep your traffic certs compliant and up to date with central and automated cert management *(class 6)*
 - Backup & patch devices, orchestrate BIG-IP upgrades *(class 5)*

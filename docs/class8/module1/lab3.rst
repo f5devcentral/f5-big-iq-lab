@@ -8,6 +8,8 @@ The AS3 declaration will be referencing a WAF policy which will be created prior
 
 We are leveraging a **CI/CD pipeline** in GitLab in order to make changes on the BIG-IP device.
 
+|gitlab-diagram-waf|
+
 **Ansible** is an open-source software provisioning, configuration management, and application-deployment 
 tool enabling infrastructure as code.
 
@@ -260,7 +262,6 @@ Wait until the deployment completes.
 
 .. _Class 1 Module 2 Lab 1.12: ../../class1/module2/lab12.html
 
-
 .. |lab-12-1| image:: /class1/pictures/module2/lab-12-1.png
    :scale: 40%
 
@@ -298,6 +299,9 @@ Wait until the deployment completes.
    :scale: 40%
 
 .. |lab-12-13| image:: /class1/pictures/module2/lab-12-13.png
+   :scale: 40%
+
+.. |gitlab-diagram-waf| image:: ../pictures/module1/diagram_gitlab_as3_bigiq-waf.png
    :scale: 40%
 
 .. |lab-3-1| image:: ../pictures/module1/lab-3-1.png

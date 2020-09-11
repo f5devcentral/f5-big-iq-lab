@@ -4,7 +4,10 @@ Lab 2.12: AS3 Application Creation using GitLab CI/CD pipeline, Ansible and BIG-
 .. note:: Estimated time to complete: **25 minutes**
 
 In this lab, we are going to use GitLab to store the BIG-IP configuration (AS3 declaration) and deploy it through BIG-IQ to BIG-IP using Ansible.
+
 We are leveraging a **CI/CD pipeline** in GitLab in order to make changes on the BIG-IP device.
+
+|gitlab-diagram-http|
 
 **Ansible** is an open-source software provisioning, configuration management, and application-deployment 
 tool enabling infrastructure as code.
@@ -199,6 +202,9 @@ Add the pool member ``10.1.20.111`` as showing below:
 5. Login on **BIG-IQ** as **david**, go to Applications tab and check the new pool member has been added.
 
 |lab-12-16|
+
+.. |gitlab-diagram-http| image:: /class1/pictures/module2/diagram_gitlab_as3_bigiq_http.png
+   :scale: 40%
 
 .. |lab-12-1| image:: ../pictures/module2/lab-12-1.png
    :scale: 40%

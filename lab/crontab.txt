@@ -40,4 +40,4 @@
 @reboot sleep 900 && /home/f5/tools/reactivate_licenses.sh > /home/f5/tools/logs/reactivate_licenses.log 2>&1
 
 ## WA UDF BIQPROJ-17471 Failed to get cm-bigip-allBigIpDevices device
-@reboot sleep 600 && /home/f5/tools/wa_restart_restjavad_bigiq.sh > /home/f5/tools/logs/wa_restart_restjavad_bigiq.log 2>&1
+##@reboot sleep 600 && /home/f5/tools/wa_restart_restjavad_bigiq.sh > /home/f5/tools/logs/wa_restart_restjavad_bigiq.log 2>&1
