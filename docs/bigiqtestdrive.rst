@@ -29,18 +29,19 @@ First of all, if you don't know what is BIG-IQ, watch the following video!
 
 |
 
-.. |location_link| raw:: html
+Read |location_link_core_feature| and understand **Why should I use BIG-IQ?** and **What elements make up a BIG-IQ solution?**
 
-   Read <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Understanding Core Features of BIG-IQ Centralized Management</a> 
-   and understand <strong>Why should I use BIG-IQ?</strong> and <strong>**What elements make up a BIG-IQ solution?</strong>
+.. |location_link_core_feature| raw:: html
+
+   <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Understanding Core Features of BIG-IQ Centralized Management</a>
 
 The lab will cover the following topics in the labs that follow:
-- Application Service Manager in BIG-IQ: Legacy and AS3 Templates
-- Simplify troubleshooting and assess health and performance at a glance with big-picture and application-specific dashboards.
-- Keep your traffic certs compliant and up to date with central, automated, and Venafi-integrated cert management.
-- Back up devices, orchestrate BIG-IP upgrades
-- *optional* - How to use BIG-IQ with Venafi, leader in X.509 certificate management
-- *optional* - How to deal with naming conflicts when importing BIG-IPs into BIG-IQ, the 7.1 Silo feature
+   - Application Service Manager in BIG-IQ: Legacy and AS3 Templates
+   - Simplify troubleshooting and assess health and performance at a glance with big-picture and application-specific dashboards.
+   - Keep your traffic certs compliant and up to date with central, automated, and Venafi-integrated cert management.
+   - Back up devices, orchestrate BIG-IP upgrades
+   - *optional* - How to use BIG-IQ with Venafi, leader in X.509 certificate management
+   - *optional* - How to deal with naming conflicts when importing BIG-IPs into BIG-IQ, the 7.1 Silo feature
 
 Once you are ready to start your BIG-IQ journey, start with `Getting Started`_, then start with **Class 1: BIG-IQ Application Management and AS3** Hands-On Labs.
 
@@ -70,7 +71,7 @@ Hands-On Labs
    :maxdepth: 1
    :glob:
 
-   class3/module1
+   class3/module1/module1
    class3/module2/lab1
    class3/module2/lab2
    class3/module2/lab3

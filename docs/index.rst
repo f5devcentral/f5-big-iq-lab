@@ -23,6 +23,10 @@ This lab environment is available for internal F5 users.
 Please reach out to your local **F5 Sales representative** if you are interested 
 to **run one of the lab** or see a **demo**.
 
+F5® BIG-IQ® is an end-to-end visibility, analytics, configuration, and management solution for F5 BIG-IP 
+application delivery and security services and the devices that power them. BIG-IQ offers a unified 
+platform to create, configure, provision, deploy, and manage F5 security and application delivery services. 
+
 First of all, if you don't know what is BIG-IQ, watch the following video!
 
 .. raw:: html
@@ -31,14 +35,11 @@ First of all, if you don't know what is BIG-IQ, watch the following video!
 
 |
 
-F5® BIG-IQ® is an end-to-end visibility, analytics, configuration, and management solution for F5 BIG-IP 
-application delivery and security services and the devices that power them. BIG-IQ offers a unified 
-platform to create, configure, provision, deploy, and manage F5 security and application delivery services. 
+Read |location_link_core_feature| and understand **Why should I use BIG-IQ?** and **What elements make up a BIG-IQ solution?**
 
-.. |location_link| raw:: html
+.. |location_link_core_feature| raw:: html
 
-   Read <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Understanding Core Features of BIG-IQ Centralized Management</a> 
-   and understand <strong>Why should I use BIG-IQ?</strong> and <strong>**What elements make up a BIG-IQ solution?</strong>
+   <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Understanding Core Features of BIG-IQ Centralized Management</a>
 
 Hands-On Labs
 -------------
@@ -48,7 +49,6 @@ Hands-On Labs
    :caption: Contents/Lab:
    :glob:
 
-   bigiqtestdrive.rst
    startup.rst
    class1/class1
    class2/class2
@@ -62,6 +62,7 @@ Hands-On Labs
    class10/class10
    class11/class11
    class12/class12
+   bigiqtestdrive.rst
 
 Resources
 ---------

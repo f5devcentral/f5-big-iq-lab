@@ -31,9 +31,9 @@ Tasks
   :scale: 40%
   :align: center
 
-3. Type a name (e.g. ``CVE-2020-5902``), and copy the code below or copy the |location_link| and replace the credentials with ``CREDS=admin:purple123`` instead of ``CREDS=<username><password>``.
+3. Type a name (e.g. ``CVE-2020-5902``), and copy the code below or copy the |location_link_cve| and replace the credentials with ``CREDS=admin:purple123`` instead of ``CREDS=<username><password>``.
 
-.. |location_link| raw:: html
+.. |location_link_cve| raw:: html
 
    <a href="https://raw.githubusercontent.com/usrlocalbins/Big-IQ-scripts/master/CVE-Bash%20Script" target="_blank">TMUI RCE vulnerability CVE-2020-5902 bash script</a>
 

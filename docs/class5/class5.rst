@@ -4,7 +4,7 @@ Class 5: BIG-IQ Device Management
 Overview
 ^^^^^^^^
 
-In this class, we will focus on the BIG-IQ Device Management. Let's have a look at the ``Device Tab`` in BIG-IQ.
+In this class, we will focus on the BIG-IQ Device Management.
 
 Modules/Labs
 ^^^^^^^^^^^^
