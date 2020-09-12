@@ -98,6 +98,7 @@ List of Virtual Servers and Applications Servers where various type of traffic i
   - Port 6080: NoVNC
   - Port 7001: Visual Code
   - Port 7002: Gitlab (7022 SSH)
+  - Port 8089: Locust.io (Load testing tool)
 
 IPs from 10.1.10.110 to 10.1.10.138 have a corresponding FQDN named from site10.example.com to site42.example.com.
 
@@ -165,7 +166,7 @@ Local:
 noVNC
 Protocol: HTTPS(Authenticated)
 Local:
-10.1.1.5port 6080
+10.1.1.5 port 6080
 
 AWX (Ansible Tower)
 Protocol: HTTPS(Authenticated)
@@ -186,6 +187,12 @@ Gitlab
 Protocol: HTTPS(Authenticated)
 Local:
 10.1.1.5 port 7002
+
+Locust
+Protocol: HTTPS(Authenticated)
+Local:
+10.1.1.5 port 8089
+
 
 ###################################################
 Name: Venafi Trust Protection

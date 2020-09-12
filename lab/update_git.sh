@@ -117,6 +117,9 @@ if [[  $currentuser == "root" ]]; then
     ### ASM Brute Force
     docker build $home/traffic-scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
+
+    ## Load testing tool: https://locust.io
+    docker run --restart=unless-stopped --name=locust -dit -p 8089:8089 -v $home/locust:/mnt/locust locustio/locust -f /mnt/locust/locustfile.py
     
     ### Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
     echo -e "\nSplunk begin"
