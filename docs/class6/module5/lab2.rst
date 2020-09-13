@@ -28,14 +28,6 @@ Tasks
 
 4. Select Profile HTTP ``silo-lab-http-profile`` and look at the differences.
 
-Ignore the following diff:
-
-.. code::
-
-    1	    "cm": {
-    2	        "silo": "silolab"
-    3	    },
-
 The values of the ``Accept XFF`` and ``Insert X-Forwarded-For`` are different. This is why the original import before adding 
 to a Silo failed.
 

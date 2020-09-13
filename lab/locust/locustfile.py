@@ -1,3 +1,4 @@
+import time
 from locust import HttpUser, task, between
 
 # https://docs.locust.io/en/stable/quickstart.html
@@ -17,7 +18,7 @@ class QuickstartUser(HttpUser):
     @task(3)
     def view_item(self):
         for item_id in range(200):
-            self.client.get(f"/product/view?id={item_id}", name="/item")
+            self.client.get(f"/product/view?id={item_id}", name="/product-view")
             time.sleep(1)
 
     def on_start(self):

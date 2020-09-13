@@ -59,8 +59,6 @@ Once you are ready to start your BIG-IQ journey, consult the |location_link_gets
 Hands-On Labs
 -------------
 
-.. note:: It is recommended to open the labs in a new tab/window: **Right Click > Open Link In new tab**.
-
 **Class 1: BIG-IQ Application Management and AS3** *(Estimated time to complete: 1h)*
 
 .. toctree::

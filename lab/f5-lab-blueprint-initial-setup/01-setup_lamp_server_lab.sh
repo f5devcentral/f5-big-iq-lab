@@ -42,6 +42,30 @@ if [[  $answer == "Y" ]]; then
     if [[  $answer == "Y" ]]; then
         shutdown -r now
     fi
+fi
+
+lsb_release -a
+
+read -p "Perform Ubuntu Upgrade 19.10 to 20.04? (Y/N) (Default=N): " answer
+if [[  $answer == "Y" ]]; then
+    lsb_release -a
+    apt update
+    export DEBIAN_FRONTEND=noninteractive; apt dist-upgrade -y
+    apt install update-manager-core -y
+    sed -i 's/normal/lts/g' /etc/update-manager/release-upgrades
+    sed -i 's/eoan/focal/g' /etc/apt/sources.list
+    apt update
+    apt upgrade -y
+    apt update
+    export DEBIAN_FRONTEND=noninteractive; apt dist-upgrade -y
+    apt autoremove -y
+    apt clean
+
+    lsb_release -a
+    read -p "Reboot? (Y/N) (Default=N): " answer
+    if [[  $answer == "Y" ]]; then
+        shutdown -r now
+    fi
 
 fi
 
