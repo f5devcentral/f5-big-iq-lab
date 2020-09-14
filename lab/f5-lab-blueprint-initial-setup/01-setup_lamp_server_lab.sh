@@ -212,24 +212,8 @@ range   10.1.1.220   10.1.1.250;
 /etc/init.d/isc-dhcp-server status
 dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
 
-echo -e "\nInstall Radius service"
-pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install freeradius -y
-freeradius –v
-echo 'paula   Cleartext-Password := "paula"
-paul    Cleartext-Password := "paul"
-marco   Cleartext-Password := "marco"
-larry   Cleartext-Password := "larry"
-david   Cleartext-Password := "david"
-chris   Cleartext-Password := "chris"
-olivia  Cleartext-Password := "olivia"' >> /etc/freeradius/3.0/users
-
-echo 'client 0.0.0.0/0 {
-secret = default
-shortname = bigiq
-}' >> /etc/freeradius/3.0/radiusd.conf
-/etc/init.d/freeradius restart
-/etc/init.d/freeradius status
+echo -e "\nInstall Radius utils"
+apt install freeradius-utils -y
 
 echo -e "\nInstall LDAP utils"
 apt install ldap-utils -y

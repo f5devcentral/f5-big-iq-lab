@@ -115,3 +115,14 @@ Optional Hands-On Labs
    class6/module1/lab4
    class1/module2/lab12
    class6/module5/module5.rst
+
+Resources
+---------
+
+- `BIG-IQ Centralized Management for Complete Visibility and Control`_
+- `BIG-IQ Knowledge Center`_
+- `Glossary`_
+
+.. _BIG-IQ Centralized Management for Complete Visibility and Control: https://www.f5.com/products/automation-and-orchestration/big-iq
+.. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
+.. _Glossary: https://www.f5.com/services/resources/glossary

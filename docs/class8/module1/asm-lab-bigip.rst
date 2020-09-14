@@ -48,6 +48,9 @@ and name it as ``templates-default-cloned``.
   :scale: 40%
   :align: center
 
+.. note:: In this example, we created a clone from an existing policy but you could also create a new policy from one of the default WAF template available in BIG-IQ under 
+          **Configuration > Security > Web Application Security > Policy Templates**.
+
 4. Under Virtual Servers, click on the ``inactive`` virtual server attached to **SEA-vBIGIP01.termmarc.com**.
 
 .. image:: ../pictures/asm-as3/lab-5-2.png

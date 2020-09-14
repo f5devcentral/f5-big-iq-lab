@@ -85,11 +85,16 @@ if [[  $currentuser == "root" ]]; then
     echo "Check/Restart sevices: Radius, DHCP, NoVNC, Websockify"
     su - f5student -c "$home/tools/services_monitor.sh"
     sleep 5
-    /etc/init.d/freeradius status
+    /etc/init.d/freeradius status # to remove once radius docker is used
     /etc/init.d/isc-dhcp-server status
     dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
     ps -ef | grep vnc | grep -v grep
     ps -ef | grep websockify | grep -v grep
+
+    # Radius
+    #echo -e "\Radius"
+    #RADIUS_HOME="$home/radius" docker-compose -f $home/radius/docker-compose.yml up -d
+    #radtest david david 10.1.1.5 1812 default
 
     ### Start Ansible Tower/AWX Compose
     rm -rf ~/.awx
@@ -212,7 +217,7 @@ if [[  $currentuser == "root" ]]; then
     chown -R $user:$user $home
 
     echo -e "\nStatus Radius Server"
-    /etc/init.d/freeradius status
+    /etc/init.d/freeradius status # to remove once radius docker is used
 
     ### Update BIG-IQ welcome banner
     if [ ! -f /usr/games/fortune ]; then
