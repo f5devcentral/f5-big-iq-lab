@@ -37,13 +37,13 @@ AS3 WAF template creation (David)
 1. Login as **david** and Go to the Applications tab > Applications Templates and 
    select ``AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-<version>``.
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-1.png
+.. image:: ../pictures/asm-as3/lab-7-1.png
   :scale: 40%
   :align: center
 
 2. Select the ``WAF_Policy`` AS3 class. Look at the URL of the WAF policy stored on GitHub.
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-2.png
+.. image:: ../pictures/asm-as3/lab-7-2.png
   :scale: 40%
   :align: center
 
@@ -54,11 +54,11 @@ AS3 WAF template creation (David)
 
 .. _Lab 3.2: ./lab2.html
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-3.png
+.. image:: ../pictures/asm-as3/lab-7-3.png
   :scale: 40%
   :align: center
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-4.png
+.. image:: ../pictures/asm-as3/lab-7-4.png
   :scale: 40%
   :align: center
 
@@ -72,7 +72,7 @@ Now let's create the WAF application service using AS3 & BIG-IQ.
   
 2. Click **Create** to create an Application Service:
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-5.png
+.. image:: ../pictures/asm-as3/lab-7-5.png
   :scale: 40%
   :align: center
 
@@ -130,17 +130,17 @@ Now let's create the WAF application service using AS3 & BIG-IQ.
 
 4. Check the application service ``https_waf_url_app_service`` has been created under Application ``LAB_module3``.
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-6.png
+.. image:: ../pictures/asm-as3/lab-7-6.png
   :scale: 40%
   :align: center
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-7.png
+.. image:: ../pictures/asm-as3/lab-7-7.png
   :scale: 40%
   :align: center
 
 5. What is the enforced Protection Mode?
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-8.png
+.. image:: ../pictures/asm-as3/lab-7-8.png
   :scale: 40%
   :align: center
 
@@ -224,13 +224,13 @@ On the *Ubuntu Lamp Server*, run:
 
 Under **F5 Services**, Security > Analytics > All Transactions
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-9.png
+.. image:: ../pictures/asm-as3/lab-7-9.png
   :scale: 40%
   :align: center
 
 Violations:
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-10.png
+.. image:: ../pictures/asm-as3/lab-7-10.png
   :scale: 40%
   :align: center
 
@@ -238,19 +238,19 @@ Violations:
 
 Under **F5 Services**, Configuration, update Enforcement Mode to **Blocking**.
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-11.png
+.. image:: ../pictures/asm-as3/lab-7-11.png
   :scale: 40%
   :align: center
 
 Notice the shield changing color in the BIG-IQ dashboard.
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-12.png
+.. image:: ../pictures/asm-as3/lab-7-12.png
   :scale: 40%
   :align: center
 
 Wait for the current major and critical alerts to clear before moving to the next step.
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-13.png
+.. image:: ../pictures/asm-as3/lab-7-13.png
   :scale: 40%
   :align: center
 
@@ -300,13 +300,13 @@ Wait for the current major and critical alerts to clear before moving to the nex
 
 8. Notice after few seconds the BIG-IQ dashboard reporting the attack.
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-14.png
+.. image:: ../pictures/asm-as3/lab-7-14.png
   :scale: 40%
   :align: center
 
 Expend the dimensions and filter on **Blocked** attack to see attacks being blocked by the WAF policy.
 
-.. image:: ../pictures/module1/pictures/asm-as3/lab-7-15.png
+.. image:: ../pictures/asm-as3/lab-7-15.png
   :scale: 40%
   :align: center
 
