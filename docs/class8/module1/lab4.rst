@@ -1,11 +1,4 @@
-Lab 1.4: Brute Force Attack configuration and reporting
--------------------------------------------------------
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+Lab 1.4: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP
+-----------------------------------------------------------------------
 
-Are you interested to see a lab on this topic? `Open an issue on GitHub`_
-
-.. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
-
-Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
-
-``/home/f5/traffic-scripts/asm-brute-force/asm_brute_force_attack.sh``
+.. include:: /class8/module1/asm-lab-bigip.rst
