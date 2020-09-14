@@ -18,11 +18,6 @@ it as a new policy attached to an available virtual server or as an inactive pol
 
 .. _K07359270 Succeeding with application security: https://support.f5.com/csp/article/K07359270
 
-See `Class 1 Module 3`_ for more details on BIG-IQ and AS3 WAF integration.
-
-.. _Class 1 Module 3: ../../class1/module3/module3.html
-
-
 Modules/Labs
 ^^^^^^^^^^^^
 

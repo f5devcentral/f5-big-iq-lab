@@ -29,8 +29,6 @@ ASM Policy and Security Logging Profile creation (Larry)
 
 Let's first deploy the default Advance WAF policy and Security Logging Profile available in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 
-https://techdocs.f5.com/en-us/bigiq-7-1-0/planning-and-implementing-big-iq-deployment/config-ha-logging-over-multi-dcds.html#concept-5774
-
 1. Login to BIG-IQ as **larry** by opening a browser and go to: ``https://10.1.1.4``
 
 2. Go to Configuration > Security > Web Application Security > Policies and clone the policy called ``templates-default``
