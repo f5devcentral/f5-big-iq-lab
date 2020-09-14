@@ -34,6 +34,9 @@ Let's first deploy the default Advance WAF policy and Security Logging Profile a
 2. Go to Configuration > Security > Web Application Security > Policies and clone the policy called ``templates-default``
 and name it as ``templates-default-cloned``.
 
+.. note:: In this example, we created a clone from an existing policy but you could also create a new policy from one of the default WAF template available in BIG-IQ under 
+          **Configuration > Security > Web Application Security > Policy Templates**.
+
 .. image:: ../pictures/asm-as3/lab-5-1a.png
   :scale: 40%
   :align: center
@@ -47,9 +50,6 @@ and name it as ``templates-default-cloned``.
 .. image:: ../pictures/asm-as3/lab-5-1c.png
   :scale: 40%
   :align: center
-
-.. note:: In this example, we created a clone from an existing policy but you could also create a new policy from one of the default WAF template available in BIG-IQ under 
-          **Configuration > Security > Web Application Security > Policy Templates**.
 
 4. Under Virtual Servers, click on the ``inactive`` virtual server attached to **SEA-vBIGIP01.termmarc.com**.
 
