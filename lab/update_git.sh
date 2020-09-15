@@ -15,6 +15,7 @@ NC='\033[0m' # No Color
 env="udf"
 user="f5student"
 home="/home/$user"
+jumphostIp="10.1.1.5"
 
 echo -e "Environement:${RED} $env ${NC}"
 
@@ -94,7 +95,7 @@ if [[  $currentuser == "root" ]]; then
     # Radius
     #echo -e "\Radius"
     #RADIUS_HOME="$home/radius" docker-compose -f $home/radius/docker-compose.yml up -d
-    #radtest david david 10.1.1.5 1812 default
+    #radtest david david $jumphostIp 1812 default
 
     ### Start Ansible Tower/AWX Compose
     rm -rf ~/.awx
@@ -218,6 +219,28 @@ if [[  $currentuser == "root" ]]; then
 
     echo -e "\nStatus Radius Server"
     /etc/init.d/freeradius status # to remove once radius docker is used
+
+    #echo -e "\nSamba"
+    #rm -rf /dcdbackup
+    #mkdir /dcdbackup
+    #chown -R nobody:nogroup /dcdbackup
+    #docker run --restart=always --name=samba -dit -p 445:445 -v /dcdbackup:/mount dperson/samba -n -S -p \
+    #        -w WORKGROUP \
+    #        -u "f5student;purple123" \
+    #        -s "dcdbackup;/mount;yes;no;no;f5student" \
+    #        -g "ntlm auth=yes" \
+    #        -g "client min protocol = NT1" \
+    #        -g "server min protocol = NT1" \
+    #        -g "client ipc min protocol = NT1"
+
+    #nmap --script smb-protocols localhost
+    #smbclient -L $jumphostIp -W WORKGROUP -U f5%purple123
+    #echo -e "\nTo test the Samba/CIFS server from BIG-IQ:"
+    #echo -e "mkdir /tmp/testfolder"
+    #echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=1.0"
+    #echo -e "unmount /tmp/testfolder"
+    #echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=2.0"
+    #echo -e "unmount /tmp/testfolder"
 
     ### Update BIG-IQ welcome banner
     if [ ! -f /usr/games/fortune ]; then

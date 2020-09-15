@@ -261,39 +261,8 @@ apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
 apt install gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev -y
 snap install --devmode --beta dnsperf
 
-echo -e "\nInstall Samba"
-pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt install samba samba-client -y
-cp -p /etc/samba/smb.conf /etc/samba/smb.conf.orig
-echo "[global]
-workgroup = WORKGROUP
-server string = Samba Server %v
-netbios name = centos
-security = user
-map to guest = bad user
-dns proxy = no
-client min protocol = NT1 #SMBv1
-client max protocol = SMB3
-server min protocol = NT1 #SMBv1
-server max protocol = SMB3
-#============================ Share Definitions ==============================
-[dcdbackup]
-path = /dcdbackup
-browsable =yes
-writable = yes
-guest ok = yes
-read only = no" > /etc/samba/smb.conf
-mkdir /dcdbackup
-chown -R nobody:nogroup /dcdbackup
-systemctl restart smbd
-nmap --script smb-protocols localhost
-smbclient -L localhost -N -W WORKGROUP
-echo -e "\nTo test the Samba/CIFS server from BIG-IQ:"
-echo -e "mkdir /tmp/testfolder"
-echo -e "mount.cifs //10.1.1.5/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=1.0"
-echo -e "mount.cifs //10.1.1.5/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=2.0"
-smbstatus
-echo -e "unmount /tmp/testfolder"
+echo -e "\nInstall Samba Client"
+apt install samba-client -y
 
 echo -e "\nInstall Azure CLI"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
