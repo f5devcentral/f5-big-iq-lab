@@ -85,17 +85,11 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
    You can also use an online tool such as `www.jsonschemavalidator.net`_.
 
-   If you also use `FAST templates`_ you can use `vscode F5 Networks FAST extension`_.
-
    .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
    .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
    .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
-
-   .. _FAST templates: https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/
-
-   .. _vscode F5 Networks FAST extension: https://marketplace.visualstudio.com/items?itemName=DumpySquare.vscode-f5-fast
    
 .. note:: Add a **","** at the end of the MyWebApp1 statement.
           If you want to "minimize" MyWebApp1 statement (like in the screenshot below), click on the tiny down arrow on the left of this line
@@ -198,18 +192,10 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
    of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
    You can also use an online tool such as `www.jsonschemavalidator.net`_.
-   
-   If you also use `FAST templates`_ you can use `vscode F5 Networks FAST extension`_.
-
-   .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
    .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
    .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
-
-   .. _FAST templates: https://clouddocs.f5.com/products/extensions/f5-appsvcs-templates/latest/
-
-   .. _vscode F5 Networks FAST extension: https://marketplace.visualstudio.com/items?itemName=DumpySquare.vscode-f5-fast
 
 .. code-block:: yaml
    :linenos:
