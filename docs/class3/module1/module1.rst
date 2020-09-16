@@ -17,6 +17,9 @@ the BIG-IP VE are in the public cloud such as AWS or Azure, you will need a VPN 
 
 .. _K96505382: https://support.f5.com/csp/article/K96505382
 
+Check the BIG-IQ documentation on the BIG-IQ knowledge center to learn more on how to `Configuring Statistics Collection`_ for your Application Service.
+
+.. _Configuring Statistics Collection: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-monitoring-and-reports/configuring-statistics-collection.html
 
 .. raw:: html
 

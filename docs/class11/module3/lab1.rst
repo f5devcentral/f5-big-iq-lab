@@ -42,6 +42,10 @@ With the DoS Log messages (which appear since the DoS publisher includes local s
 Clicking on each of these views allow for selection/deselection of many objects including Attack Types and criticality. Under Protected Objects there is no DNS object listed. Why is that? The reason is this attack is at the Device level: the DoS Profile on the protected object is not involved at this time. Lets now attack DNS VIP and exercise the applied DoS Profile.
 
 1. On the Ubuntu host edit a new file using vi/vim: *vi soa.txt*
+
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+
 2. Add the following query to 10 lines: *example.com soa*
 3. Save and exit, then cat the file to validate
 

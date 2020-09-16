@@ -86,7 +86,8 @@ Then, start the new BIG-IQ CM VM.
     #big-iq-cm-1.example.com ansible_host=10.1.1.4 discoveryip=10.1.10.4/24 ...
     big-iq-cm-2.example.com ansible_host=10.1.1.9 discoveryip=10.1.10.9/24 ...
 
-
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
 
 5. Once the new VE is full up and running, execute the following script to onboard this new secondary BIG-IQ CM.
 

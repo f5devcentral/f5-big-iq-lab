@@ -35,6 +35,9 @@ Use your favorite editor to update this file.
 
     ``vi config.yml``
 
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+
 Here are the settings you will need to change to deploy everything successfully: 
 
 * SUBSCRIPTION_ID

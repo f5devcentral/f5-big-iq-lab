@@ -50,6 +50,9 @@ This automation scenario is composed of 4 parts:
     big-iq-dcd-1.example.com ansible_host=10.1.1.6 ...
     #big-iq-dcd-2.example.com ansible_host=10.1.1.x ...
 
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+
 3. Reset both BIG-IQ CM and DCD.
 
     ::

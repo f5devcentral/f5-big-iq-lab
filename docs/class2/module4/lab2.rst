@@ -37,6 +37,9 @@ In the case you are **NOT** using the UDF Cloud account and using your own AWS a
 
     ``vi config.yml``
 
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+
 Here are the settings you will need to change to deploy everything successfully: 
 
 * AWS_ACCESS_KEY_ID: Use the ``AWS Access Key`` you retrieved from the previous 

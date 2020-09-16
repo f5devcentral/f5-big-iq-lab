@@ -111,6 +111,9 @@ Navigate to: ``cd f5-azure-vpn-ssg``
 
 Modify the **config.yml** file: ``vi config.yml``
 
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+
 Modify the following four items to reflect the Azure Application you created above:
 
 - SUBSCRIPTION_ID: <Subscription Id>
