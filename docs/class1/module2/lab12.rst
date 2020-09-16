@@ -172,9 +172,6 @@ Infrastructure as code: add a new pool member to the AS3 app service through Git
 
     vi as3/my_http_app_service1.json
 
-.. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
-
 Add the pool member ``10.1.20.111`` as showing below:
 
 .. code-block:: yaml
@@ -190,6 +187,9 @@ Add the pool member ``10.1.20.111`` as showing below:
       ],
       "shareNodes": true
    }
+
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
 
 3. Commit and push the changes::
 

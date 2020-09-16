@@ -14,9 +14,6 @@ In this lab, we are going to convert the Service Catalog Application Service cal
 
     vi /home/admin/f5_remove_app_tags.py
 
-.. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
-
 .. code-block:: python
 
     #!/usr/bin/env python
@@ -78,6 +75,8 @@ In this lab, we are going to convert the Service Catalog Application Service cal
         cleanup = Cleanup()
         cleanup.main()
 
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
 
 2. The first step is to force-delete the Application Service on the BIG-IQ, execute the following command from BIG-IQ CLI::
 
@@ -99,7 +98,7 @@ You can follow the force-delete task by running the following command (replace t
 
 4. Navigate to the Device tab click under services for both **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com** and re-discover and re-import the LTM module on the BIG-IP.
 
-5. Follow steps described in `Lab 6.1` to re-create the Application Service ``site36.example.com`` in BIG-IQ dashboard.
+5. Follow steps described in `Lab 6.1`_ to re-create the Application Service ``site36.example.com`` in BIG-IQ dashboard.
 
 .. _Lab 6.1: ./lab1.html
 
@@ -122,6 +121,6 @@ You can follow the force-delete task by running the following command (replace t
 | Virtual Servers: ``virtual - 10.1.10.136``                                       |
 +----------------------------------------------------------------------------------+
 
-6. Follow steps described in `Lab 6.3` assign the ``site36.example.com`` Manager role to **Paula** so she can access it in her BIG-IQ dashboard.
+6. Follow steps described in `Lab 6.3`_ assign the ``site36.example.com`` Manager role to **Paula** so she can access it in her BIG-IQ dashboard.
 
-.. _Lab 6.1: ./lab1.html
+.. _Lab 6.3: ./lab3.html

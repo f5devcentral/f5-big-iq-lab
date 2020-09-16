@@ -31,12 +31,12 @@ we will need to edit the following files:
 Launch our ``SSG`` - Update config.yml - Azure
 ***********************************************
 
+.. note:: `How to Use the vi Editor`_
+.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+
 Use your favorite editor to update this file. 
 
     ``vi config.yml``
-
-.. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
 
 Here are the settings you will need to change to deploy everything successfully: 
 
@@ -100,7 +100,6 @@ Here is an example of the updated **config.yml** file:
     # Adjust the BIG-IP Version based on your region 
     BYOL_BIGIP_NAME: "f5-big-all-1slot-byol"
     BYOL_BIGIP_VERSION: "13.1.100000" #14.0.001000
-
 
 .. note:: We don't have to change anything else as long as we use the US-East (N. Virginia) Location
 
