@@ -29,11 +29,15 @@ in lab environment, on the ``F5 Products`` column, click on **ADD**
 
 |
 
-Select approriate release of BIG-IQ (same as the existing active BIG-IQ part of the blueprint) and set the following values for CPU/Memory/Disk:
+Select **approriate release of BIG-IQ** (*same as the existing active BIG-IQ part of the blueprint*).
 
-    - vCPUs: 4
-    - Memory: 16 GiB
-    - Disk Size: 500 GiB
+Set the following values for CPU/Memory/Disk:
+
+- vCPUs: 4
+- Memory: 16 GiB
+- Disk Size: 500 GiB
+
+Call is ``BIG-IQ CM Secondary``.
 
 Click on **CREATE**.
 
@@ -44,7 +48,7 @@ Click on **CREATE**.
 |
 
 After few minutes, the VM is created in lab environment. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).
-Use the same last digit of the management interface for the additional interfaces (in example below .12 but most probably .9).
+Use the same last digit of the management interface for the additional interfaces.
 
 .. image:: ../pictures/module4/img_module4_lab1_1c.png
   :align: center
@@ -66,10 +70,10 @@ Then, start the new BIG-IQ CM VM.
 
 .. code::
 
-    (tmos)# modify auth user admin password admin
-    (tmos)# modify auth user admin shell bash
-    (tmos)# modify /sys db systemauth.disablerootlogin value false
-    (tmos)# save sys config
+    modify auth user admin password admin
+    modify auth user admin shell bash
+    modify /sys db systemauth.disablerootlogin value false
+    save sys config
 
 3. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
@@ -82,9 +86,25 @@ Then, start the new BIG-IQ CM VM.
     cd /home/f5/f5-ansible-bigiq-onboarding 
     vi hosts
 
+.. code::
+
     [f5_bigiq_cm]
     #big-iq-cm-1.example.com ansible_host=10.1.1.4 discoveryip=10.1.10.4/24 ...
     big-iq-cm-2.example.com ansible_host=10.1.1.9 discoveryip=10.1.10.9/24 ...
+
+To confirm, execute
+
+.. code::
+
+    grep -v "#" hosts 
+
+You should see only ``big-iq-cm-2.example.com`` and the IPs addresses needs to be set correctly.
+
+.. code::
+
+    [f5_bigiq_cm]
+    big-iq-cm-2.example.com ansible_host=10.1.1.9 discoveryip=10.1.10.9/24 bigiq_onboard_node_type=cm haprimary=False bigiq_onboard_license_key=A-B-C-D
+
 
 .. note:: `How to Use the vi Editor`_
 .. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
@@ -94,7 +114,7 @@ Then, start the new BIG-IQ CM VM.
     ::
 
         cd /home/f5/f5-ansible-bigiq-onboarding
-        sudo docker build -t f5-big-iq-onboarding .
+        docker build -t f5-big-iq-onboarding .
         ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
 
 6. Verify the new secondary BIG-IQ CM has been correclty configured (check hostname, self IP, VLAN, NTP, DNS, license)
