@@ -98,6 +98,7 @@ if [[  $currentuser == "root" ]]; then
     #radtest david david $jumphostIp 1812 default
 
     ### Start Ansible Tower/AWX Compose
+    echo -e "AWX start\n"
     rm -rf ~/.awx
     mkdir -p ~/.awx
     ln -snf $home/awx ~/.awx/awxcompose
@@ -105,6 +106,7 @@ if [[  $currentuser == "root" ]]; then
     # Configuration done later in the script
 
     ### Starting other docker web app: Hackazon, DVWA, hello world web apps
+    echo -e "Start Web Apps Backend Servers\n"
     docker run --restart=always --name=hackazon -d -p 80:80 mutzel/all-in-one-hackazon:postinstall supervisord -n
     docker run --restart=always --name=dvwa -dit -p 8080:80 infoslack/dvwa
     docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
@@ -112,19 +114,23 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
 
     ### Add delay, loss and corruption to the nginx web app
+    echo -e "Customized Nginx container\n"
     docker_nginx_id="nginx"
     docker exec $docker_nginx_id apt-get update
     docker exec $docker_nginx_id apt-get install iproute2 iputils-ping net-tools -y
     docker exec $docker_nginx_id tc qdisc add dev eth0 root netem delay 300ms loss 30% corrupt 30%
     
     ### ASM Policy Validator
+    echo -e "ASM Policy Validator\n"
     docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
     
     ### ASM Brute Force
+    echo -e "Brute Force\n"
     docker build $home/traffic-scripts/asm-brute-force -t asm-brute-force
     docker run --restart=always --name=asm-brute-force -dit asm-brute-force
 
     ## Load testing tool: https://locust.io
+    echo -e "Locust\n"
     docker run --restart=unless-stopped --name=locust -dit -p 8089:8089 -v $home/locust:/mnt/locust locustio/locust -f /mnt/locust/locustfile.py --host http://10.1.10.116
     
     ### Splunk (admin insterface listening on port 8000, HTTP Event Collector listening on port 8088)
@@ -184,6 +190,8 @@ if [[  $currentuser == "root" ]]; then
     echo -e "App Troubleshooting customization end\n"
 
     ### Configure AWX
+    echo -e "AWX continue...\n"
+    docker-compose -f ~/.awx/awxcompose/docker-compose.yml up -d
     tower-cli config host http://localhost:9001
     tower-cli config username admin
     tower-cli config password purple123

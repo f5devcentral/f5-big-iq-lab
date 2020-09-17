@@ -37,7 +37,7 @@ Set the following values for CPU/Memory/Disk:
 - Memory: 16 GiB
 - Disk Size: 500 GiB
 
-Call is ``BIG-IQ CM Secondary``.
+Call it ``BIG-IQ CM Secondary``.
 
 Click on **CREATE**.
 
