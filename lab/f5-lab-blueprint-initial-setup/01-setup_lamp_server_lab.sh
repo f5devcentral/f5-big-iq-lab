@@ -374,7 +374,8 @@ echo '10.1.10.110 site10.example.com
 10.1.10.142 site42.example.com
 10.1.10.143 site43.example.com
 10.1.10.144 site44.example.com
-10.1.10.145 site45.example.com' >> /etc/hosts
+10.1.10.145 site45.example.com
+10.1.1.17 ec2amaz-bq0fcmk.f5demo.com' >> /etc/hosts
 
 echo -e "\nInstall and execution of update_git.sh"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"

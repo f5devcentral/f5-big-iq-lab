@@ -10,9 +10,12 @@ RUN pip3 install ansible
 
 COPY ansible.cfg /etc/ansible/ansible.cfg
 
-RUN ansible-galaxy install f5devcentral.bigiq_onboard,master --force
-RUN ansible-galaxy install f5devcentral.register_dcd,master --force
-RUN ansible-galaxy install f5devcentral.bigiq_move_app_dashboard --force
+RUN ansible-galaxy install f5devcentral.bigiq_onboard,master
+RUN ansible-galaxy install f5devcentral.register_dcd,master
 RUN ansible-galaxy install f5devcentral.atc_deploy --force
+RUN ansible-galaxy install f5devcentral.bigiq_pinning_deploy_objects --force
+RUN ansible-galaxy install f5devcentral.bigiq_move_app_dashboard --force
+RUN ansible-galaxy install f5devcentral.bigiq_as3_device_disaster_recovery
+RUN ansible-galaxy install f5devcentral.bigiq_create_ve
 
 RUN ansible-galaxy collection install f5networks.f5_modules
