@@ -51,7 +51,7 @@
           server_port: 443
           user: "{{ bigiq_user }}"
           password: "{{ bigiq_pass }}"
-          loginProviderName: "{{ bigiq_provider }}"
+          auth_provider: "{{ bigiq_provider }}"
           validate_certs: false
 
     - name: prepare the DO declarations
@@ -192,7 +192,7 @@
         provider:
           user: "{{ bigiq_user }}"
           password: "{{ bigiq_pass }}"
-          #loginProviderName: "{{ bigiq_provider }}" # default: tmos (local)
+          #auth_provider: "{{ bigiq_provider }}" # default: local
           server: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
           validate_certs: no
       delegate_to: localhost
