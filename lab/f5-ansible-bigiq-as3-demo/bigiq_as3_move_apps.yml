@@ -10,7 +10,7 @@
       server_port: 443
       user: admin
       password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
-      loginProviderName: "tmos"
+      auth_provider: "tmos"
       validate_certs: no
 
   tasks: 
