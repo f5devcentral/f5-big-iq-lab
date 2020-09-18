@@ -21,12 +21,15 @@
     atc_timeout: 120
 
   tasks:
-    # # First download galaxy roles for F5 ATC
-    # - name: Install roles from Ansible Galaxy
-    #   command: ansible-galaxy install f5devcentral.atc_deploy -p ./roles/ 
+    # First download galaxy roles for F5 ATC
+    - name: Install roles from Ansible Galaxy
+      command: ansible-galaxy install f5devcentral.atc_deploy
 
-    # - name: show downloaded roles
-    #   command: ls ./roles/
+    - name: show downloaded roles
+      command: ansible-galaxy list
+
+    - name: Install roles from Ansible Galaxy
+      command: ansible-galaxy collection install f5networks.f5_modules
 
     ####################################################
     # Below tasks are for creating a new BIG-IP in GCP #

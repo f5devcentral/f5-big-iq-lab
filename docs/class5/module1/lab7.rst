@@ -3,6 +3,8 @@ Lab 1.7: Upgrade Managed Devices to New Versions of TMOS with BIG-IQ
 
 .. note:: Estimated time to complete: **20 minutes**
 
+.. warning:: If you run a series of labs, this one should be the last one to run.
+
 A key feature of BIG-IQ is the ability to manage software images for multiple remote devices from one location.
 You can deploy software without having to log in to each individual BIG-IP device.
 
@@ -93,7 +95,9 @@ Then, press **Continue**.
   :scale: 40%
   :align: center
 
-10. The software upgrade is starting. This step is typically done during a maintenance window. Time to take a coffee (or do another lab)!
+10. The software upgrade is starting. This step is typically done during a maintenance window.
+
+.. note:: Time to take a break, go for a coffee/tea (or do another lab not using **SEA-vBIGIP01.termmarc.com**)!
 
 .. image:: ./media/lab-7-10.png
   :scale: 40%

@@ -186,7 +186,7 @@
 
     # Completely removes BIG-IP from BIG-IQ
     - name: Remove discovered device and its config
-      bigiq_device_discovery:
+      f5networks.f5_modules.bigiq_device_discovery:
         device_address: "{{ bigip_mgmt }}"
         state: absent
         provider:

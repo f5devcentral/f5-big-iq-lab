@@ -83,6 +83,7 @@ integrated directly into the relevant CI/CD toolchains and workflows.
    lab10
    lab11
    lab12
+   lab13
 
 .. |diagram_as3_bigiq| image:: ../pictures/module2/diagram_as3_bigiq.png
    :scale: 60%
