@@ -43,7 +43,7 @@ Click on **CREATE**.
 
 .. image:: ../pictures/module4/img_module4_lab1_1b.png
   :align: center
-  :scale: 60%
+  :scale: 40%
 
 |
 
@@ -52,7 +52,7 @@ Use the same last digit of the management interface for the additional interface
 
 .. image:: ../pictures/module4/img_module4_lab1_1c.png
   :align: center
-  :scale: 60%
+  :scale: 40%
 
 |
 
@@ -129,17 +129,15 @@ You should see only ``big-iq-cm-2.example.com`` and the IPs addresses needs to b
 
 .. _Lab 4.2: ./lab2.html
 
-7. In BIG-IQ HA Settings click **Reset to Standalone**.
+7. Open active BIG-IQ, go to System > BIG-IQ HA and Click the Add Secondary button.
 
-8. Open active BIG-IQ, go to System > BIG-IQ HA and Click the Add Secondary button.
-
-.. warning:: Double check the IP addresses of the new secondary BIG-IQ and update it if necessary. In below example 10.1.1.9 and 10.1.10.9 are used.
+.. warning:: Make sure you are adding the self-ip and not the management IP: **10.1.10.9**.
 
 *Properties*
- * IP Address =	10.1.10.9
- * Username = admin
- * Password = purple123
- * Root Password = purple123
+ * IP Address =	``10.1.10.9``
+ * Username = ``admin``
+ * Password = ``purple123``
+ * Root Password = ``purple123``
 
 .. image:: ../pictures/module4/img_module4_lab1_4.png
   :align: center
@@ -147,7 +145,7 @@ You should see only ``big-iq-cm-2.example.com`` and the IPs addresses needs to b
 
 |
 
-9. Type the properties for the BIG-IQ system that you are adding and click the Add button at the bottom of the screen.
+8. Type the properties for the BIG-IQ system that you are adding and click the Add button at the bottom of the screen.
 
 - In the IP Address field, type the IP address for the secondary BIG-IQ system.
 - In the Username and Password fields, type the administrator's user name and password for the new BIG-IQ system.

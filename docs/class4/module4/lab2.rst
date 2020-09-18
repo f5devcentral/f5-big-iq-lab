@@ -42,18 +42,18 @@ This will take some time (~ 3 minutes) and log you out from BIG-IQ.
 
 5. Click ``Add System`` and fill in the following:
 
-.. warning:: Double check the IP addresses of the new secondary BIG-IQ and update it if necessary. In below example 10.1.1.9 and 10.1.10.9 are used.
+.. warning:: Make sure you are adding the self-ip and not the management IP: **10.1.10.9**.
 
 *Properties*
- * IP Address =	10.1.10.9
- * Username = admin
- * Password = purple123
- * Root Password = purple123
+ * IP Address =	``10.1.10.9``
+ * Username = ``admin``
+ * Password = ``purple123``
+ * Root Password = purple123``
 	
 *HA Settings*
- * Failover setting = Auto Failover
- * Select: bigiq1dcd.example.com (pull-down)
- * Quorum Root Password = purple123
+ * Failover setting = ``Auto Failover``
+ * Select: ``bigiq1dcd.example.com (pull-down)``
+ * Quorum Root Password = ``purple123``
 
 .. image:: ../pictures/module4/lab-2-3a.png
   :align: center
