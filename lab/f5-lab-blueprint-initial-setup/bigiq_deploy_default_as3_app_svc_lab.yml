@@ -9,7 +9,7 @@
         server_port: 443
         user: admin
         password: "{{ hostvars[groups['f5_bigiq'][0]]['bigiq_onboard_new_admin_password'] }}"
-        validate_certs: no
+        validate_certs: false
 
     tasks:
       - name: Display paths of all .json files in dir

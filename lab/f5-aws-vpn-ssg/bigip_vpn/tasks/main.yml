@@ -26,7 +26,7 @@
       server: "{{ ansible_ssh_host }}"
       user: "{{ bigip_rest_user }}"
       password: "{{ bigip_rest_password }}"
-      validate_certs: no
+      validate_certs: false
     merge_content: |
        net ipsec ike-peer /Common/aws_vpn_conn_peer_{{ idx + 1 }} {
          lifetime 480
@@ -60,7 +60,7 @@
       server: "{{ ansible_ssh_host }}"
       user: "{{ bigip_rest_user }}"
       password: "{{ bigip_rest_password }}"
-      validate_certs: no
+      validate_certs: false
     merge_content: |
        net ipsec traffic-selector /Common/aws_conn_tun_{{ idx + 1 }}_selector {
          destination-address "{{ item['vpn_gateway']['tunnel_inside_address']['ip_address'] | ipsubnet(item['vpn_gateway']['tunnel_inside_address']['network_cidr']) }}"
@@ -78,7 +78,7 @@
       server: "{{ ansible_ssh_host }}"
       user: "{{ bigip_rest_user }}"
       password: "{{ bigip_rest_password }}"
-      validate_certs: no
+      validate_certs: false
     merge_content: |
        net tunnels ipsec /Common/aws_conn_tun_{{ idx + 1 }}_profile {
          app-service none
@@ -96,7 +96,7 @@
       server: "{{ ansible_ssh_host }}"
       user: "{{ bigip_rest_user }}"
       password: "{{ bigip_rest_password }}"
-      validate_certs: no
+      validate_certs: false
     merge_content: |
        net tunnels tunnel /Common/aws_conn_tun_{{ idx + 1 }} {
          local-address {{ ExternalInterfacePrivateIp }}
@@ -115,7 +115,7 @@
       server: "{{ ansible_ssh_host }}"
       user: "{{ bigip_rest_user }}"
       password: "{{ bigip_rest_password }}"
-      validate_certs: no
+      validate_certs: false
     merge_content: |
        net self /Common/{{ item['customer_gateway']['tunnel_inside_address']['ip_address'] }} {
          address "{{ item['customer_gateway']['tunnel_inside_address']['ip_address'] }}/{{ item['customer_gateway']['tunnel_inside_address']['network_cidr'] }}"

@@ -11,7 +11,7 @@
       hostname: 10.1.1.90
       username: administrator@vsphere.local
       password: "Purpl3$lab"
-      validate_certs: no
+      validate_certs: false
       folder: /vm
       uuid: "{{ uuid }}"
       state: powered-on

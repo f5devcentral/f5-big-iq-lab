@@ -10,7 +10,7 @@
         user: admin
         password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
         auth_provider: tmos
-        validate_certs: no
+        validate_certs: false
       target_device: "10.1.1.8"
       certificate: "default.crt"
       privateKey: "default.key"

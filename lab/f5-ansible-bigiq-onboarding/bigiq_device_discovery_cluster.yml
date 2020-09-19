@@ -17,7 +17,7 @@
           server: "{{ bigiq_ip }}"
           user: admin
           password: "{{ bigiq_password }}"
-          validate_certs: no
+          validate_certs: false
         device_address: "{{ device_address }}"
         device_username: "{{ device_username }}"
         device_password: "{{ device_password }}"

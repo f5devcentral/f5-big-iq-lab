@@ -11,7 +11,7 @@
           user: david
           password: david
           auth_provider: RadiusServer #local
-          validate_certs: no
+          validate_certs: false
         gather_subset: all
       delegate_to: localhost
 

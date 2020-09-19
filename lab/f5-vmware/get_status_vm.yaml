@@ -12,7 +12,7 @@
       username: administrator@vsphere.local
       password: "Purpl3$lab"
       vm_type: vm
-      validate_certs: no
+      validate_certs: false
     delegate_to: localhost
     register: vmfacts
 
