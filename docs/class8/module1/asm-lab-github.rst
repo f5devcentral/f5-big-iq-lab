@@ -151,7 +151,7 @@ Test and enforcement mode update (Paula)
 
 2. Open Chrome and navigate to the following URL: ``https://10.1.10.126`` which open the web application protected by the WAF policy.
 
-3. We are to install now the F5 WAF tester tool. Connect via ``SSH`` to the *Ubuntu Lamp Server* and execute:
+3. We will now install the F5 WAF tester tool. Connect via ``SSH`` to the *Ubuntu Lamp Server* and execute:
 
 .. code-block:: bash
 
