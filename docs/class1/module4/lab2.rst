@@ -35,7 +35,7 @@ This Application is composed of 3 Application Services:
 +----------------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                            |
 +----------------------------------------------------------------------------------------------------+
-| * Template Type = Select ``AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default [AS3]``          |
+| * Template Type = Select ``AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1 [AS3]``       |
 +----------------------------------------------------------------------------------------------------+
 | General Properties:                                                                                |
 +----------------------------------------------------------------------------------------------------+
@@ -73,8 +73,8 @@ This Application is composed of 3 Application Services:
   :scale: 60%
   :align: center
 
-5. Navigate back to the ``airport_security`` Application, under **FQND** > **CONFIGURATION** tab, scroll down and
-   add the new Member and click on **Save & Close**.
+5. Navigate back to the ``airport_security`` Application, under **FQND** > **CONFIGURATION** tab, scroll down to Members row which is under Name: GSLB_Pool1 and
+   click the plus button to add the new Member and click on **Save & Close**.
 
 +----------------+---------------------------------------+
 | Bigip          | /Common/SEA-vBIGIP01.termmarc.com     |
@@ -96,13 +96,13 @@ Notice the new Application Service have been added under *APPLICATION SERVICES*.
    Login to ``BOSvBIGIP01.termmarc.com`` BIG-IP from lab environment. Select the partition ``security`` and look at 
    the objects created on the BIG-IP.
 
-Under DNS > GSLB > Servers > Service List
+Under DNS > GSLB > Servers > Service List > SEA-vBIGIP01.termmarc.com > Virtual Servers
 
 .. image:: ../pictures/module4/lab-2-7.png
   :scale: 60%
   :align: center
 
-Under DNS > GSLB > Pools > Pool List > GSLB_Pool > Members
+Under DNS > GSLB > Pools > Pool List > GSLB_Pool1 > Members
 
 .. image:: ../pictures/module4/lab-2-8.png
   :scale: 60%
