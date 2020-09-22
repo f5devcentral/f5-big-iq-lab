@@ -65,6 +65,7 @@ ASM Bot Log Destinations and Publisher creation using UI
 - Device ``SEA-vBIGIP01.termmarc.com``
 - Health Monitors: ``tcp``
 - Pool Member/Port: ``10.1.10.6:8514``
+- Save and close
 
 .. image:: ../pictures/module1/img_module1_lab1_1.png
   :align: center
@@ -78,6 +79,7 @@ ASM Bot Log Destinations and Publisher creation using UI
 - Type: ``Remote High-Speed Log``
 - Device: ``SEA-vBIGIP01.termmarc.com``
 - Pool: ``bot-remote-dcd-asm-pool`` previously created
+- Save and close
 
 .. image:: ../pictures/module1/img_module1_lab1_2.png
   :align: center
@@ -90,6 +92,7 @@ ASM Bot Log Destinations and Publisher creation using UI
 - Name Log Destination Splunk: ``bot-remote-logging-destination-splunk-8514``
 - Type: ``Splunk``
 - Forward To: ``Remote High Speed Log`` - ``bot-remote-logging-destination-remote-hslog-8514`` previously created
+- Save and close
 
 .. image:: ../pictures/module1/img_module1_lab1_3.png
   :align: center
@@ -103,6 +106,7 @@ ASM Bot Log Destinations and Publisher creation using UI
 
 - Name: ``bot-remote-logging-publisher-8514``
 - Log Destinations: ``bot-remote-logging-destination-splunk-8514`` previously created
+- Save and close
 
 .. image:: ../pictures/module1/img_module1_lab1_4.png
   :align: center
@@ -111,7 +115,7 @@ ASM Bot Log Destinations and Publisher creation using UI
 |
 
 5. Pin the new Log Publisher to the SEA-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and 
-   add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com.
+   add the Log Publisher previously created to SEA-vBIGIP01.termmarc.com. Save and close.
 
 .. image:: ../pictures/module1/img_module1_lab1_5.png
   :align: center
@@ -248,6 +252,7 @@ ASM Bot Logging Profile creation
 - Properties: select ``Bot Defense``
 - Remote Publisher: ``bot-remote-logging-publisher-8514``
 - Logs Requests: select all options (Human Users, Bots, etc...)]
+- Save and close.
 
 .. image:: ../pictures/module1/img_module1_lab1_9.png
   :align: center
