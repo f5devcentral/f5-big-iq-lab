@@ -1,5 +1,5 @@
-Lab 2.7: Perform lab 1 to 4 using Ansible
------------------------------------------
+Lab 2.7: Perform lab 1, 2 and 4 using Ansible
+---------------------------------------------
 
 .. note:: Estimated time to complete: **20 minutes**
 
@@ -49,15 +49,6 @@ Execute the playbooks for each tasks.
 
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task03a_create_waf_app.json
-
-  Connect as **david** and check on BIG-IQ the application has been correctly created.
-
-|
-
-- Task 3b: HTTPS Application with Web Application Firewall using an External ASM policy::
-
-    cd /home/f5/f5-ansible-bigiq-as3-demo
-    ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task03b_create_waf_ext_policy_app.json
 
   Connect as **david** and check on BIG-IQ the application has been correctly created.
 
