@@ -26,7 +26,7 @@
   # Rescue block for handling BIG-IQ token timeouts
   rescue:
     - fail:
-        msg: Ended after 3 retries
+        msg: Ended after 5 retries
       when: retry_count|int == 5
     
     - debug:
