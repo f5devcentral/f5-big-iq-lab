@@ -7,11 +7,14 @@
     provider:
       server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
       server_port: 443
-      user: admin
-      password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
+      user: "{{ lookup('file',user) | from_json | json_query('username') }}"
+      password: "{{ lookup('file',user) | from_json | json_query('password')  }}"
+      auth_provider: "{{ lookup('file',user) | from_json | json_query('loginProviderName') }}"
       validate_certs: false
 
   tasks:
+    - debug: var=provider
+
     - name: AS3 deploy
       include_role:
         name: f5devcentral.atc_deploy

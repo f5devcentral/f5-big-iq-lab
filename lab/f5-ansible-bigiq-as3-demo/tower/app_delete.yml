@@ -3,73 +3,33 @@
   hosts: bigiq
   connection: local
   gather_facts: false
+  vars:
+    provider:
+      server: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}"
+      server_port: "{{ hostvars[inventory_hostname]['mgmt_port'] }}"
+      user: "{{ bigiq_user }}"
+      password: "{{ bigiq_pass }}"
+      auth_provider: "{{ bigiq_provider }}"
+      validate_certs: false
 
   tasks:
+    - debug: var=provider
 
-    - set_fact:
-        mgmt: "{{ hostvars[inventory_hostname]['mgmt_ip'] }}:{{ hostvars[inventory_hostname]['mgmt_port'] }}"
+    - name: Install role from Ansible Galaxy atc_deploy
+      command: ansible-galaxy install f5devcentral.atc_deploy
 
-    - name: Authenticate to BIG-IQ
-      uri:
-        url: "https://{{ mgmt }}/mgmt/shared/authn/login"
-        method: POST
-        headers:
-          Content-Type: application/json
-        body:
-          username: "{{ bigiq_user }}"
-          password: "{{ bigiq_pass }}"
-          loginProviderName: "{{ bigiq_provider }}"
-        body_format: json
-        timeout: 60
-        status_code: 200, 202
-        validate_certs: false
-      register: auth
-      
-    - name: Validate AS3 Rest Worker is ready
-      uri:
-        url: "https://{{ mgmt }}/mgmt/shared/appsvcs/declare"
-        method: GET
-        headers:
-          Content-Type: application/json
-          X-F5-Auth-Token: "{{auth.json.token.token}}"
-        validate_certs: false
-      retries: 30
-      delay: 5
-      register: result
-      until: "(result is success) and (result.status == 200)"
+    - name: Install role from Ansible Galaxy bigiq_move_app_dashboard
+      command: ansible-galaxy install f5devcentral.bigiq_move_app_dashboard
 
-    - name: Send AS3 Declaration - POST /mgmt/shared/appsvcs/declare?async=true
-      uri:
-        url: https://{{ mgmt }}/mgmt/shared/appsvcs/declare?async=true
-        method: POST
-        headers:
-          Content-Type: application/json
-          X-F5-Auth-Token: "{{auth.json.token.token}}"
-        body: "{{ lookup('template','j2/delete_app.j2') }}"
-        body_format: json
-        timeout: 60
-        status_code: 200, 202
-        validate_certs: false
-      register: json_response
+    - name: AS3 deploy
+      include_role:
+        name: f5devcentral.atc_deploy
+      vars:
+        atc_service: AS3
+        atc_method: POST
+        atc_declaration: "{{ lookup('template','j2/delete_app.j2') }}"
+        atc_delay: 15
+        atc_retries: 30
+      register: atc_AS3_status
 
-    - pause:
-        seconds: 15
-
-    ## LOOP TO CHECK THE TASK
-
-    - name: LOOP Check AS3 Deployment Task - GET /mgmt/shared/appsvcs/task/<task_id>
-      uri:
-        url: https://{{ mgmt }}/mgmt/shared/appsvcs/task/{{json_response.json.id}}
-        method: GET
-        headers:
-          Content-Type: application/json
-          X-F5-Auth-Token: "{{auth.json.token.token}}"
-        status_code: 200, 202
-        validate_certs: false
-      register: json_response_task
-      until: "json_response_task.json.results[0].message != 'in progress'"
-      retries: 20
-      delay: 10
-
-    - debug:
-        var: json_response_task.json
+    - debug: var=atc_AS3_status

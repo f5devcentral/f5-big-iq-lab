@@ -23,7 +23,7 @@
         body:
           username: "{{ provider.user }}"
           password: "{{ provider.password }}"
-          loginProviderName: "{{ provider.auth_provider }}"
+          loginProviderName: "{{ provider.auth_provider | default('tmos') }}"
         body_format: json
         timeout: 60
         status_code: 200, 202

@@ -5,8 +5,8 @@ Lab 2.8: AS3 Application Creation using AWX/Ansible Tower and BIG-IQ
 
 .. include:: /accesslab.rst
 
-Tasks
-^^^^^
+Application Service Creation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Click on the *AWX (Ansible Tower)* button on the system *Ubuntu Lamp Server* in lab environment.
 Use ``admin/purple123`` to authenticate.
@@ -51,15 +51,17 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 
 5. **SURVEY**: Enter below information regarding your application service definition.
 
-+------------+-------------------------------+
-| APP NAME   | MyAppDeployedWithAnsibleTower |
-+------------+-------------------------------+
-| APP TYPE   | http_app or waf_app           |
-+------------+-------------------------------+
-| SERVICE IP | 10.1.10.124                   |
-+------------+-------------------------------+
-| NODES      | 10.1.20.120 and 10.1.20.121   |
-+------------+-------------------------------+
++-------------+-------------------------------+
+| TENANT NAME | AnsibleTower                  |
++-------------+-------------------------------+
+| APP NAME    | MyApp139                      |
++-------------+-------------------------------+
+| APP TYPE    | http_app or waf_app           |
++-------------+-------------------------------+
+| SERVICE IP  | 10.1.10.139                   |
++-------------+-------------------------------+
+| NODES       | 10.1.20.120 and 10.1.20.121   |
++-------------+-------------------------------+
 
 
 .. image:: ../pictures/module2/lab-8-7.png
@@ -89,22 +91,49 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 
 9. Login on **BIG-IQ** as **paula**, go to Applications tab and check the application is displayed and analytics are showing.
 
-.. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
-             You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
-             or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
-
-.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
-.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
-.. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
-
 .. image:: ../pictures/module2/lab-8-11.png
   :scale: 60%
   :align: center
 
-Select ``Unknown Applications`` Application, select ``MyAppDeployedWithAnsibleTower_M...`` Application Service and look HTTP traffic analytics.
+Select ``AnsibleTower`` Application, select ``AnsibleTower_MyApp139`` Application Service and look HTTP traffic analytics.
 
 .. image:: ../pictures/module2/lab-8-12.png
   :scale: 60%
   :align: center
 
-10. Repeat the same steps to delete the application services using the ``(Class1-Mod2-Lab8) Delete_AS3_App`` template.
+Application Service Deletion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The application owner has informed Paul that the application is no longer needed and needs to be deleted. Paul will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
+
+1. Return to *AWX (Ansible Tower)* and if needed log back in as **paul** *(paul\\paul)*  
+   Navigate to the **Templates** page and click on *(Agility 2020) Delete_AS3_App*
+
+2. Click on the *Launch* button to start a job using this
+   template*. 
+
+3. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
+   select *paul-iq*. Click on *NEXT*
+
+4. **SURVEY**: Enter below information regarding your application
+   service definition. Click on *NEXT.*
+
++-------------+-------------------------------+
+| TENANT NAME | AnsibleTower                  |
++-------------+-------------------------------+
+
+5. **PREVIEW**: Review the summary of the template deployment. 
+   Click on *LAUNCH*
+
+6. Follow the JOB deployment of the Ansible playbook.
+
+   The *FAILED - RETRYING* messages are expected as the playbook runs into a LOOP to check the AS3 task 
+   completion and will show failed until loop is completed.
+
+7.  When the job is completed, check the **PLAY RECAP** and make sure that *failed=* status is **0**.
+
+8. Logon on **BIG-IQ** as **paul** *(paul\\paul)*, go to main Application page 
+    
+9. Select *Unknown Applications* Application tile
+
+10. Notice that the application is now deleted.
