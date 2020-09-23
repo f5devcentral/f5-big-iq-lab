@@ -205,7 +205,7 @@
             "question_name": "Tenant Name", 
             "choices": "", 
             "new_question": true, 
-            "question_description": "", 
+            "question_description": "Partition on BIG-IP", 
             "variable": "tenant_name", 
             "type": "text"
           }
@@ -264,7 +264,7 @@
             "question_name": "Tenant Name", 
             "choices": "", 
             "new_question": true, 
-            "question_description": "", 
+            "question_description": "Partition on BIG-IP", 
             "variable": "tenant_name", 
             "type": "text"
           }
@@ -787,7 +787,7 @@
             "question_name": "Tenant Name", 
             "choices": "", 
             "new_question": true, 
-            "question_description": "", 
+            "question_description": "Partition on BIG-IP", 
             "variable": "tenant_name", 
             "type": "text"
           }, 
@@ -796,7 +796,7 @@
             "min": 0, 
             "default": "", 
             "max": 1024, 
-            "question_name": "App Name", 
+            "question_name": "App Service Name", 
             "choices": "", 
             "new_question": true, 
             "question_description": "", 
@@ -906,7 +906,7 @@
             "question_name": "Tenant Name", 
             "choices": "", 
             "new_question": true, 
-            "question_description": "", 
+            "question_description": "Partition on BIG-IP", 
             "variable": "tenant_name", 
             "type": "text"
           }, 
@@ -915,7 +915,7 @@
             "min": 0, 
             "default": "", 
             "max": 1024, 
-            "question_name": "App Name", 
+            "question_name": "App Service Name", 
             "choices": "", 
             "new_question": true, 
             "question_description": "", 
@@ -1041,7 +1041,7 @@
         {
           "id": "iq_provider", 
           "type": "string", 
-          "label": "BIG-IQ Auth Provider", 
+          "label": "BIG-IQ Auth Provider"
         }
       ], 
       "required": [
