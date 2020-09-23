@@ -1,5 +1,5 @@
-BIG-IQ Centralized Management Test Drive
-========================================
+BIG-IQ Test Drive
+=================
 
 Welcome
 -------

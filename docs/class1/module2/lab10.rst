@@ -128,9 +128,6 @@ Deploy AS3 Application Service through BIG-IQ
    Replace IP address in the URL with ``10.1.1.4`` instead of ``10.1.1.8``.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.
-   
-.. warning:: If you encounter ``status: 422: /declare failed with status of 422, Failed to get cm-bigip-allBigipDevices device for address ... 
-             Device not found in device group``, ssh the BIG-IQ CM and execute: ``bigstart restart restjavad``, when the services come back and retry.
 
 5. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 

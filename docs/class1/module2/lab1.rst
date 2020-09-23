@@ -123,9 +123,6 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-.. warning:: If you encounter ``status: 422: /declare failed with status of 422, Failed to get cm-bigip-allBigipDevices device for address ... 
-             Device not found in device group``, ssh the BIG-IQ CM and execute: ``bigstart restart restjavad``, when the services come back and retry.
-
 6. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
