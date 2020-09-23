@@ -53,6 +53,8 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 | Existing Role Name                                         | testrole1                |
 +------------------------------------------------------------+--------------------------+
 
+.. warning:: Make sure you use a strong enough password for BIG-IP Password (see https://support.f5.com/csp/article/K10612010)
+
 .. note:: Your values may differ from the example above
 
 .. image:: pictures/lab-5-4.png
@@ -101,7 +103,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
   :scale: 60%
   :align: center
 
-11. On BIG-IQ, log out of admin, and log back in as the user you created earlier. The BIG-IP has been added to the same role assigned to this user so you should see the new BIG-IP device in the target list when creating an AS3 application deployment.
+11. On BIG-IQ, log out of admin, and log back in as the user you created earlier (choose Auth Provider: Local). The BIG-IP has been added to the same role assigned to this user so you should see the new BIG-IP device in the target list when creating an AS3 application deployment.
 
 .. image:: pictures/lab-5-12.png
   :scale: 60%

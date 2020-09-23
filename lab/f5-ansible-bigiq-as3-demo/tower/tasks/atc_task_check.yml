@@ -30,11 +30,11 @@
       when: retry_count|int == 5
     
     - debug:
-        msg: "caught error: {{ atc_DO_status.json.message }}"
+        msg: "caught error: {{ atc_DO_status.json.result.message }}"
 
     - name: Re authenticate to BIG-IQ
       include_tasks: authentication.yml
-      when: atc_DO_status.json.message == "Invalid registered claims."
+      when: atc_DO_status.json.result.message == "Invalid registered claims."
 
     - name: Redo check
       include_tasks: atc_task_check.yml
