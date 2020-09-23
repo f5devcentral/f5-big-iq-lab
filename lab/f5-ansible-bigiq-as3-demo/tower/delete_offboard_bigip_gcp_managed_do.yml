@@ -15,14 +15,6 @@
     atc_timeout: 120
 
   tasks:
-
-    # # First download galaxy roles for F5 ATC
-    # - name: Install roles from Ansible Galaxy
-    #   command: ansible-galaxy install f5devcentral.atc_deploy -p ./roles/ 
-
-    # - name: show downloaded roles
-    #   command: ls ./roles/
-
     # Get the IP address of the Previously created BIG-IP instance
     - name: get IP Address of BIG-IP instance
       gcp_compute_instance_facts:

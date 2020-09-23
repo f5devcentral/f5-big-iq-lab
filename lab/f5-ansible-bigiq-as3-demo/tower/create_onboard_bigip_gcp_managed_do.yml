@@ -166,6 +166,7 @@
         atc_service: "{{ (lookup('file', atc_declaration_file, errors='strict')| from_json).get('class') }}"
       when: atc_declaration_file is defined and atc_service is undefined
 
+    # Use DO to license, provision, and discover new BIG-IP on BIG-IQ
     - name: Set Automated Tool Chain metadata
       set_fact:
         toolchain_metadata: "{{ lookup('file', 'files/toolchain_metadata.json', errors='strict') }}"
