@@ -202,11 +202,11 @@
             "min": 0, 
             "default": "", 
             "max": 1024, 
-            "question_name": "App Name", 
+            "question_name": "Tenant Name", 
             "choices": "", 
             "new_question": true, 
             "question_description": "", 
-            "variable": "app_name", 
+            "variable": "tenant_name", 
             "type": "text"
           }
         ], 
@@ -261,11 +261,11 @@
             "min": 0, 
             "default": "", 
             "max": 1024, 
-            "question_name": "App Name", 
+            "question_name": "Tenant Name", 
             "choices": "", 
             "new_question": true, 
             "question_description": "", 
-            "variable": "app_name", 
+            "variable": "tenant_name", 
             "type": "text"
           }
         ], 
@@ -784,6 +784,18 @@
             "min": 0, 
             "default": "", 
             "max": 1024, 
+            "question_name": "Tenant Name", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "tenant_name", 
+            "type": "text"
+          }, 
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
             "question_name": "App Name", 
             "choices": "", 
             "new_question": true, 
@@ -886,6 +898,18 @@
       ], 
       "survey_spec": {
         "spec": [
+          {
+            "required": true, 
+            "min": 0, 
+            "default": "", 
+            "max": 1024, 
+            "question_name": "Tenant Name", 
+            "choices": "", 
+            "new_question": true, 
+            "question_description": "", 
+            "variable": "tenant_name", 
+            "type": "text"
+          }, 
           {
             "required": true, 
             "min": 0, 
