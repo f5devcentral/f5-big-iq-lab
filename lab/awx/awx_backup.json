@@ -63,70 +63,6 @@
     "name": "admin-iq"
   },
   {
-    "credential_type": "BIG-IQ_Creds", 
-    "inputs": {
-      "iq_pass": "paula", 
-      "iq_user": "paula",
-      "iq_provider": "RadiusServer"
-    }, 
-    "asset_relation": {
-      "roles": [
-        {
-          "team": [], 
-          "name": "Admin", 
-          "user": [
-            "admin", 
-            "paula"
-          ]
-        }, 
-        {
-          "team": [], 
-          "name": "Use", 
-          "user": []
-        }, 
-        {
-          "team": [], 
-          "name": "Read", 
-          "user": []
-        }
-      ]
-    }, 
-    "asset_type": "credential", 
-    "name": "paula-iq"
-  }, 
-  {
-    "credential_type": "BIG-IQ_Creds", 
-    "inputs": {
-      "iq_pass": "paul", 
-      "iq_user": "paul",
-      "iq_provider": "RadiusServer"
-    }, 
-    "asset_relation": {
-      "roles": [
-        {
-          "team": [], 
-          "name": "Admin", 
-          "user": [
-            "admin", 
-            "paul"
-          ]
-        }, 
-        {
-          "team": [], 
-          "name": "Use", 
-          "user": []
-        }, 
-        {
-          "team": [], 
-          "name": "Read", 
-          "user": []
-        }
-      ]
-    }, 
-    "asset_type": "credential", 
-    "name": "paul-iq"
-  }, 
-  {
     "credential_type": "Ansible Tower", 
     "inputs": {
       "host": "10.1.1.5", 
@@ -146,8 +82,6 @@
           "team": [], 
           "name": "Use", 
           "user": [
-            "paul", 
-            "paula",
             "david"
           ]
         }, 
@@ -179,8 +113,6 @@
           "team": [], 
           "name": "Execute", 
           "user": [
-            "paul", 
-            "paula",
             "david"
           ]
         }, 
@@ -238,8 +170,6 @@
           "team": [], 
           "name": "Execute", 
           "user": [
-            "paul", 
-            "paula",
             "david"
           ]
         }, 
@@ -761,8 +691,6 @@
           "team": [], 
           "name": "Execute", 
           "user": [
-            "paul", 
-            "paula",
             "david"
           ]
         }, 
@@ -880,8 +808,6 @@
           "team": [], 
           "name": "Execute", 
           "user": [
-            "paul", 
-            "paula",
             "david"
           ]
         }, 
@@ -1062,25 +988,7 @@
     "is_superuser": true,
     "last_login": "2020-03-07T22:21:32.042393Z", 
     "asset_type": "user"
-  }, 
-  {
-    "username": "paul", 
-    "first_name": "", 
-    "last_name": "", 
-    "email": "paul@localhost.com", 
-    "last_login": "2020-03-08T22:21:13.509551Z", 
-    "asset_type": "user",
-    "password": "paul"
-  }, 
-  {
-    "username": "paula", 
-    "first_name": "", 
-    "last_name": "", 
-    "email": "paula@localhost.com", 
-    "last_login": "2020-03-09T22:21:12.042323Z", 
-    "asset_type": "user",
-    "password": "paula"
-  }, 
+  },
   {
     "username": "david", 
     "first_name": "", 
@@ -1096,7 +1004,9 @@
         {
           "team": [], 
           "name": "Admin", 
-          "user": []
+          "user": [
+            "david"
+          ]
         }, 
         {
           "team": [], 
@@ -1141,10 +1051,7 @@
         {
           "team": [], 
           "name": "Member", 
-          "user": [
-            "paul", 
-            "paula"
-          ]
+          "user": []
         }, 
         {
           "team": [], 

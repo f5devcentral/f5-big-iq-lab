@@ -7,9 +7,9 @@
     provider:
       server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
       server_port: 443
-      user: "{{ lookup('file',user) | from_json | json_query('username') }}"
-      password: "{{ lookup('file',user) | from_json | json_query('password')  }}"
-      auth_provider: "{{ lookup('file',user) | from_json | json_query('loginProviderName') }}"
+      user: david
+      password: david
+      auth_provider: RadiusServer # for local auth, use "tmos"
       validate_certs: false
 
   tasks:

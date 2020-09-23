@@ -39,9 +39,8 @@
         name: f5devcentral.bigiq_move_app_dashboard
       vars:
           apps: 
-          - name: LAB_task1
+          - name: "{{ tenant_name }}"
             pins:
-              - name: "{{ tenant_name }}"
               - name: "{{ tenant_name }}_{{ app_name }}"
       register: status
 

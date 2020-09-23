@@ -8,9 +8,9 @@
     provider:
       server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
       server_port: 443
-      user: admin
-      password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
-      auth_provider: "tmos"
+      user: david
+      password: david
+      auth_provider: RadiusServer # for local auth, use "tmos"
       validate_certs: false
 
   tasks: 

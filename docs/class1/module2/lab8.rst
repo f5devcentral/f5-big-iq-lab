@@ -43,7 +43,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
   :scale: 60%
   :align: center
 
-4. **CREDENTIAL**: Select ``BIG-IQ Creds`` as **Credential Type**. Then select ``paula-iq``.
+4. **CREDENTIAL**: Select ``BIG-IQ Creds`` as **Credential Type**. Then select ``david-iq``.
 
 .. image:: ../pictures/module2/lab-8-6.png
   :scale: 60%
@@ -89,7 +89,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
   :scale: 60%
   :align: center
 
-9. Login on **BIG-IQ** as **paula**, go to Applications tab and check the application is displayed and analytics are showing.
+9. Login on **BIG-IQ** as **david**, go to Applications tab and check the application is displayed and analytics are showing.
 
 .. image:: ../pictures/module2/lab-8-11.png
   :scale: 60%
@@ -106,14 +106,14 @@ Application Service Deletion
 
 The application owner has informed Paul that the application is no longer needed and needs to be deleted. Paul will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
 
-1. Return to *AWX (Ansible Tower)* and if needed log back in as **paul** *(paul\\paul)*  
+1. Return to *AWX (Ansible Tower)* and if needed log back in as **david** *(david\\david)*  
    Navigate to the **Templates** page and click on *(Agility 2020) Delete_AS3_App*
 
 2. Click on the *Launch* button to start a job using this
    template*. 
 
 3. **CREDENTIAL**: Select *BIG-IQ Creds* as **Credential Type**. Then
-   select *paul-iq*. Click on *NEXT*
+   select *david-iq*. Click on *NEXT*
 
 4. **SURVEY**: Enter below information regarding your application
    service definition. Click on *NEXT.*
@@ -132,8 +132,8 @@ The application owner has informed Paul that the application is no longer needed
 
 7.  When the job is completed, check the **PLAY RECAP** and make sure that *failed=* status is **0**.
 
-8. Logon on **BIG-IQ** as **paul** *(paul\\paul)*, go to main Application page 
+8. Logon on **BIG-IQ** as **david** *(david\\david)*, go to main Application page 
     
-9. Select *Unknown Applications* Application tile
+9. Select *AnsibleTower* Application tile
 
 10. Notice that the application is now deleted.

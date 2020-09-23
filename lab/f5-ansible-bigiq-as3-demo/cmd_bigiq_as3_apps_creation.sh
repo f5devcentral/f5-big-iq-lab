@@ -10,8 +10,8 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Usage
-if [[ -z $1 || -z $2 ]]; then
-    echo -e "\nUsage:${RED} $0 <as3declaration.json> <admin/david/paula/paul/olivia>\n"
+if [[ -z $1 ]]; then
+    echo -e "\nUsage:${RED} $0 <as3declaration.json>\n"
     ls -l as3/ | grep -v total | awk '{print $NF}'
     echo
     exit 1;
@@ -22,19 +22,6 @@ if [ ! -f as3/$1 ]; then
     ls -l as3/ | grep -v total | awk '{print $NF}'
     echo
     exit 2;
-fi
-
-if [[  $2 == "admin" ]]; then
-    user_playbook="auth_bigiq_admin.json"
-else
-    user_playbook="auth_bigiq_$2.json"
-fi
-
-if [ ! -f $user_playbook ]; then
-    echo -e "\n${RED}ERROR: $user_playbook user json file${NC} does not exist.\n"
-    ls -lrt auth_bigiq* | grep -v total | awk '{print $NF}'
-    echo
-    exit 3;
 fi
 
 ### Docker build and check
@@ -55,14 +42,10 @@ fi
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-echo -e "\nUser being used:${BLUE}"
-cat $user_playbook
-echo -e "${NC}"
-
 echo -e "\n${GREEN}Create AS3 Applications:${NC}\n"
 cat as3/$1 | jq .
 echo
 echo
-./ansible_helper ansible-playbook /ansible/bigiq_as3_deploy.yml -i /ansible/hosts --extra-vars "as3app=as3/$1 user=$user_playbook" $DEBUG_arg
+./ansible_helper ansible-playbook /ansible/bigiq_as3_deploy.yml -i /ansible/hosts --extra-vars "as3app=as3/$1" $DEBUG_arg
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
