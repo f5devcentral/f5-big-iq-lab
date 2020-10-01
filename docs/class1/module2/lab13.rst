@@ -107,7 +107,7 @@ Let's add the 2 variables to the playbook ``remove_old_tenant`` and ``cleanup_on
 
     ./ansible_helper ansible-playbook /ansible/bigiq_as3_migrate_apps.yml -i /ansible/hosts
 
-   Answer yes to the following question::
+   Answer **yes** to the following question::
 
     Are you sure you want to delete tenant backend and all its content on 10.1.1.7?
 
