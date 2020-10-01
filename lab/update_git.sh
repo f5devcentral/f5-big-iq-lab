@@ -242,7 +242,7 @@ if [[  $currentuser == "root" ]]; then
     #        -g "client ipc min protocol = NT1"
 
     #nmap --script smb-protocols localhost
-    #smbclient -L $jumphostIp -W WORKGROUP -U f5%purple123
+    #smbclient -L $jumphostIp -W WORKGROUP -U f5student%purple123
     #echo -e "\nTo test the Samba/CIFS server from BIG-IQ:"
     #echo -e "mkdir /tmp/testfolder"
     #echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=1.0"

@@ -98,7 +98,7 @@ Then, start the new BIG-IQ DCD VM.
     ::
 
         cd /home/f5/f5-ansible-bigiq-onboarding
-        sudo docker build -t f5-big-iq-onboarding .
+        sudo docker build -t f5-ansible-runner .
         ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
 
 

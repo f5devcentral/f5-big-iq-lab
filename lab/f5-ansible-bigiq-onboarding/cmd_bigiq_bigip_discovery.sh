@@ -39,8 +39,8 @@ done
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
-sudo docker build -t f5-big-iq-onboarding .
-sudo docker run -t f5-big-iq-onboarding ansible-playbook --version
+sudo docker build -t f5-ansible-runner .
+sudo docker run -t f5-ansible-runner ansible-playbook --version
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 

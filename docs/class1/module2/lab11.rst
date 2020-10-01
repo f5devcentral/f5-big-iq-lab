@@ -41,10 +41,21 @@ SSL Certificate & Key and AS3 HTTPS offload application service creation
 2. Execute the playbook ``bigiq_as3_deploy_venafi_certificate_as3_app.yml``::
 
     cd /home/f5/f5-ansible-bigiq-as3-demo
-    docker build -t f5-big-iq-onboarding .
+    docker build -t f5-ansible-runner .
     ./ansible_helper ansible-playbook /ansible/bigiq_as3_deploy_venafi_certificate_as3_app.yml -i /ansible/hosts --extra-vars "cn=webapp123api"
 
-.. note:: You can change the Common Name (CN) of the certificate by updating the variable ``cn``. Add ``-vvv`` if you want to get the debug output.
+.. note:: Add ``-vvv`` if you want to get the debug output.
+
+You can change the Common Name (CN) of the certificate by updating the variable ``cn``, as well as the VIP (Virtual IP) and application servers in the Ansible Playbook.
+
+.. code-block:: yaml
+   :linenos:
+
+    vars:
+      cn: "webapp123api"
+      vip: "10.1.10.126"
+      servers: 
+         - "10.1.20.126"
 
 You can look at the details of the Ansible Playbook source on the `GitHub repository`_.
 

@@ -39,8 +39,8 @@ echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 
 echo -e "\n${GREEN}Onboard BIG-IQ CM and DCD severs.${NC}"
 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-sudo docker build -t f5-big-iq-onboarding .
-sudo docker run -t f5-big-iq-onboarding ansible-playbook --version
+sudo docker build -t f5-ansible-runner .
+sudo docker run -t f5-ansible-runner ansible-playbook --version
 ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts $DEBUG_arg
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

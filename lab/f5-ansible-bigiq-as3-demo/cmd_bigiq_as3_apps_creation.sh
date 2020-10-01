@@ -25,8 +25,8 @@ if [ ! -f as3/$1 ]; then
 fi
 
 ### Docker build and check
-docker build -t f5-big-iq-onboarding .
-docker run f5-big-iq-onboarding ansible-playbook --version
+docker build -t f5-ansible-runner .
+docker run f5-ansible-runner ansible-playbook --version
 if [ $? -eq 0 ]; then
     echo -e "\n${GREEN}Docker running.${NC}"
 else

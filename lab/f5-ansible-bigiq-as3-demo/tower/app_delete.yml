@@ -16,10 +16,10 @@
     - debug: var=provider
 
     - name: Install role from Ansible Galaxy atc_deploy
-      command: ansible-galaxy install f5devcentral.atc_deploy
+      command: ansible-galaxy install f5devcentral.atc_deploy --force
 
     - name: Install role from Ansible Galaxy bigiq_move_app_dashboard
-      command: ansible-galaxy install f5devcentral.bigiq_move_app_dashboard
+      command: ansible-galaxy install f5devcentral.bigiq_move_app_dashboard --force
 
     - name: AS3 deploy
       include_role:

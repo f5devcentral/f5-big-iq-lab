@@ -114,7 +114,7 @@ You should see only ``big-iq-cm-2.example.com`` and the IPs addresses needs to b
     ::
 
         cd /home/f5/f5-ansible-bigiq-onboarding
-        docker build -t f5-big-iq-onboarding .
+        docker build -t f5-ansible-runner .
         ./ansible_helper ansible-playbook /ansible/bigiq_onboard.yml -i /ansible/hosts
 
 6. Verify the new secondary BIG-IQ CM has been correclty configured (check hostname, self IP, VLAN, NTP, DNS, license)

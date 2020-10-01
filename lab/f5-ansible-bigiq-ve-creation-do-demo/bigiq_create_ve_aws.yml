@@ -11,6 +11,8 @@
       password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
       auth_provider: "tmos"
       validate_certs: false
+    cloud_environment: "demo-6001-aws-environment_DO"
+    ve_name: bigipvm03
     servers: 
       - "10.1.20.126"
 
@@ -19,8 +21,8 @@
       include_role:
         name: ansible-role-bigiq_create_ve
       vars:
-        cloud_environment: "AWS Roman"
-        ve_name: bigipvm-aws-test
+        cloud_environment: "{{ cloud_environment }}"
+        ve_name: "{{ ve_name }}"
       register: status
 
     - name: Get AWS BIG-IP VE IP address (port 8443)
@@ -100,7 +102,7 @@
             }
           }
         atc_delay: 30
-        atc_retries: 60
+        atc_retries: 15
       register: atc_DO_status
 
 #    - debug: var=atc_DO_status
@@ -170,8 +172,8 @@
                     }
                 }
             }
-        atc_delay: 15
-        atc_retries: 30
+        atc_delay: 30
+        atc_retries: 15
       register: atc_AS3_status
 
 #    - debug: var=atc_AS3_status

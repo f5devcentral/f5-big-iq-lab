@@ -1,0 +1,26 @@
+---
+- hosts: f5_bigiq_cm
+  connection: local
+  serial: 1
+  gather_facts: false
+  vars:
+    provider:
+      server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
+      server_port: 443
+      user: admin
+      password: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_ssh_pass'] }}"
+      auth_provider: "tmos"
+      validate_certs: false
+
+  tasks:
+      - name: Migrate AS3 application service(s) from a BIG-IP to another.
+        include_role:
+          name: f5devcentral.bigiq_migrate_apps
+        vars:
+          dir_as3: /ansible/tmp
+          device_address: 10.1.1.7
+          tenant_to_migrate: backend
+          new_device_address: 10.1.1.11
+          new_tenant_name: backendm
+          new_bigiq_app_name: "App Services migrated"
+        register: status
