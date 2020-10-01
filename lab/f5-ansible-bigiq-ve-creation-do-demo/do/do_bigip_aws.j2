@@ -1,0 +1,60 @@
+{
+    "class": "DO",
+    "declaration": {
+        "schemaVersion": "1.5.0",
+        "class": "Device",
+        "async": true,
+        "Common": {
+              "class": "Tenant",
+              "myDbVariables": {
+                "class": "DbVariables",
+                "configsync.allowmanagement": "enable"
+              },
+              "myLicense": {
+                "class": "License",
+                "licenseType": "licensePool",
+                "licensePool": "byol-pool",
+                "bigIpUsername": "admin",
+                "bigIpPassword": "u7BnD@4f5"
+              },
+              "myProvision": {
+                "class": "Provision",
+                "ltm": "nominal",
+                "asm": "nominal",
+                "avr": "nominal"
+              },
+              "myNtp": {
+                "class": "NTP",
+                "servers": [
+                    "169.254.169.123"
+                ],
+                "timezone": "UTC"
+              },
+              "admin": {
+                "class": "User",
+                "keys": [],
+                "userType": "regular",
+                "partitionAccess": {
+                    "all-partitions": {
+                          "role": "admin"
+                    }
+                },
+                "password": "u7BnD@4f5"
+              }
+        }
+    },
+    "targetUsername": "admin",
+    "targetHost": "{{ ve_ip_Address }}",
+    "targetSshKey": {
+        "path": "{{ private_key_filename }}"
+    },
+    "bigIqSettings": {
+        "conflictPolicy": "USE_BIGIQ",
+        "deviceConflictPolicy": "USE_BIGIP",
+        "failImportOnConflict": false,
+        "versionedConflictPolicy": "KEEP_VERSION",
+        "statsConfig": {
+          "enabled": true
+      }
+    }
+}

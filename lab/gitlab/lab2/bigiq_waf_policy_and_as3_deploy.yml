@@ -149,7 +149,7 @@
           atc_service: AS3
           atc_method: POST
           # Using Jinja2 template, we can use the Ansible Variable and inject them into the AS3 declaration (such as the WAF policy, Cert & Key, etc..)
-          atc_declaration: "{{ lookup('template','j2/my_waf_https_app_service1.j2') }}"
+          atc_declaration: "{{ lookup('template','as3/my_waf_https_app_service1.j2') }}"
           atc_delay: 15
           atc_retries: 30
         register: atc_AS3_status

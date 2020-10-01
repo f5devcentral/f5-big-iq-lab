@@ -67,7 +67,7 @@ if [[ $cloudProvider == "$UDF_CLOUD" && $config_yml_already_configured == 1 ]]; 
 
       echo -e "\n- BIG-IP AMI ($BIGIP_RELEASE - AllOneBootLocation):${GREEN} $bigipami ${NC}"
       # ami-58c3d327 is the default value in the config.yml file
-      sed -i "s/ami-58c3d327/$bigipami/g" ./config.yml
+      sed -i "s/ami-01a8cbb8c7108f017/$bigipami/g" ./config.yml
 
       echo -e "\n\nAWS console Credentials:${GREEN} https://console.aws.amazon.com/ ${NC}"
       echo -e "\t- accountId:${GREEN} $(curl -s http://$UDF_METADATA_URL/cloudAccounts/0 | jq .accountId) ${NC}"

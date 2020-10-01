@@ -35,7 +35,7 @@ DEFAULT_LOCATION: eastus
 # Adjust the BIG-IP Version based on your region 
 BYOL_BIGIP_NAME: "f5-big-all-1slot-byol"
 BYOL_BIGIP_OFFER: "f5-big-ip-byol"
-BYOL_BIGIP_VERSION: "13.1.100000" #14.0.001000
+BYOL_BIGIP_VERSION: "13.1.304000" # 14.1.206000 / 15.1.004000
 MODULE: WAF # LTM OR WAF
 
 ##################################################################################################

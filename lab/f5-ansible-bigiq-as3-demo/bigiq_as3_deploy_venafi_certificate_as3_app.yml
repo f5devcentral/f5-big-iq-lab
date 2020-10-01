@@ -33,7 +33,7 @@
         validate_certs: "{{ provider.validate_certs }}"
       register: auth
 
-    - name: Check Venafi/BIG-IQ connection is setup) and get BIG-IQ CA provider selfLink for "Venafi UDF lab"
+    - name: Check Venafi/BIG-IQ connection is setup and get BIG-IQ CA provider selfLink for "Venafi UDF lab"
       uri:
         url: "https://{{ provider.server }}:{{ provider.server_port }}/mgmt/cm/adc-core/external-ca/config?$filter=name%20eq%20'Venafi%20UDF%20lab'"
         timeout: 60

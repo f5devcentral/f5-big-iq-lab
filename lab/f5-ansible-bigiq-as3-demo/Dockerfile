@@ -10,6 +10,9 @@ RUN pip3 install ansible
 
 COPY ansible.cfg /etc/ansible/ansible.cfg
 
+RUN mkdir -p /usr/share/ansible/roles
+RUN mkdir -p /etc/ansible/roles
+
 RUN ansible-galaxy install f5devcentral.bigiq_onboard,master
 RUN ansible-galaxy install f5devcentral.register_dcd,master
 RUN ansible-galaxy install f5devcentral.atc_deploy --force

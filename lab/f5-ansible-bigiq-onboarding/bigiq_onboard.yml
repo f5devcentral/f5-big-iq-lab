@@ -2,21 +2,18 @@
   - hosts: f5_bigiq
     connection: local
     serial: 1
-    gather_facts: false
 
     roles:
       - f5devcentral.bigiq_onboard
     tags: onboarding
 
   - hosts: localhost
-    gather_facts: false
     tasks:
       - pause: seconds=120
 
   - hosts: f5_bigiq_cm
     connection: local
     serial: 1
-    gather_facts: false
     vars:
       register_cm_password: "{{ bigiq_onboard_new_admin_password }}"
       register_dcd_password: "{{ bigiq_onboard_new_admin_password }}"

@@ -451,7 +451,7 @@ The GET on the URI monitoring the task will also show a success message.
 |image29|
 
 16. Test the application service by opening a browser and typing the Virtual Server IP address/port ``http://54.184.72.42:8080``.
-    You should see the Hackazon website.
+    You should see the *Hello, World* website.
 
 |image30|
 

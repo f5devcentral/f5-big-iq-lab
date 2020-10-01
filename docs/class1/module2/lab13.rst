@@ -10,6 +10,8 @@ For the example, we are going to migrate a backend application service running o
 This lab will be using the following F5 Ansible Galaxy role:
     - `bigiq_migrate_apps`_  **ansible Role**: Migrate AS3 application service(s) with its referenced objects from a BIG-IP to another BIG-IP.
 
+.. _bigiq_migrate_apps: https://galaxy.ansible.com/f5devcentral/bigiq_migrate_apps
+
 .. include:: /accesslab.rst
 
 Tasks
@@ -39,7 +41,7 @@ This playbook is using the `bigiq_migrate_apps`_ ansible role to move all AS3 ap
 
 |lab-13-1|
 
-2. Connect via ``SSH`` to the system *Ubuntu Lamp Server* and ::
+2. Connect via ``SSH`` to the system *Ubuntu Lamp Server* and add the bigiq_migrate_apps role to the Ansible runner container::
 
     cd /home/f5/f5-ansible-bigiq-as3-demo
     vi Dockerfile
@@ -114,9 +116,6 @@ Let's add the 2 variables to the playbook ``remove_old_tenant`` and ``cleanup_on
     Do you want to proceed? (yes/no):
 
 7. Back on the BIG-IQ Application dashboard, verify the Application Service **backend_site24tcp** under **IT_apps** has been removed.
-
-
-.. _bigiq_migrate_apps: https://galaxy.ansible.com/f5devcentral/bigiq_migrate_apps
 
 .. |lab-13-1| image:: ../pictures/module2/lab-13-1.png
    :scale: 40%

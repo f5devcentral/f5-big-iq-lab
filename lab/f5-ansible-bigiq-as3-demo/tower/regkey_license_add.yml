@@ -5,7 +5,6 @@
   gather_facts: false
 
   tasks:
-
     - name: Add a registration key license to a pool
       bigiq_regkey_license:
         regkey_pool: "{{ regkey_pool_name }}"

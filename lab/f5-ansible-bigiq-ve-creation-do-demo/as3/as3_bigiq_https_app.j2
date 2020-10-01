@@ -1,0 +1,71 @@
+{
+    "class": "AS3",
+    "action": "deploy",
+    "declaration": {
+        "class": "ADC",
+        "schemaVersion": "3.12.0",
+        "target": {
+            "address": "{{ ve_ip_Address }}"
+        },
+        "aws": {
+            "class": "Tenant",
+            "webAppServiceHttp2": {
+                "class": "Application",
+                "schemaOverlay": "AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1",
+                "template": "https",
+                "serviceMain": {
+                    "class": "Service_HTTPS",
+                    "pool": "Pool",
+                    "enable": true,
+                    "serverTLS": "TLS_Server",
+                    "virtualPort": "{{ sslport }},
+                    "profileAnalytics": {
+                        "use": "Analytics_Profile"
+                    },
+                    "virtualAddresses": [
+                        "{{ vip }}"
+                    ]
+                },
+                "Pool": {
+                    "class": "Pool",
+                    "members": [
+                        {
+                            "adminState": "enable",
+                            "servicePort": 80,
+                            "serverAddresses": {{ servers }}
+                        }
+                    ]
+                },
+                "TLS_Server": {
+                    "class": "TLS_Server",
+                    "certificates": [
+                        {
+                            "certificate": "Certificate"
+                        }
+                    ] 
+                },
+                "Certificate": {
+                    "class": "Certificate",
+                    "privateKey": {
+                        "bigip": "/Common/{{ cn }}.key"
+                    },
+                    "certificate": {
+                        "bigip": "/Common/{{ cn }}.crt"
+                    }
+                },
+                "Analytics_Profile": {
+                    "class": "Analytics_Profile",
+                    "collectIp": false,
+                    "collectGeo": false,
+                    "collectUrl": false,
+                    "collectMethod": false,
+                    "collectUserAgent": false,
+                    "collectOsAndBrowser": false,
+                    "collectPageLoadTime": false,
+                    "collectResponseCode": true,
+                    "collectClientSideStatistics": true
+                }
+            }
+        }
+    }
+}

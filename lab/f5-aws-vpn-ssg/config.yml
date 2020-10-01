@@ -26,10 +26,10 @@ AWS_AZ_1A: us-east-1a
 AWS_AZ_1B: us-east-1b
 
 # AllOneBootLocation (make sure it exists on the F5 mapping file https://github.com/F5Networks/f5-aws-cloudformation/tree/master/AMI%20Maps)
-BIGIP_RELEASE: 13.1.1-0.0.4
-# other option: 14.1.0.3-0.0.6
+BIGIP_RELEASE: 13.1.3.4-005
+# other option: 14.1.2.6-002 or 15.1.0.4-006
 # Do not modified if using UDF Cloud Account, the AMI is automatically updated based above release
-BYOL_BIGIP_AMI: "ami-58c3d327" # us-east-1 F5 Networks BIGIP-13.1.1-0.0.4 BYOL - All Modules 1 Boot Location
+BYOL_BIGIP_AMI: "ami-01a8cbb8c7108f017" # us-east-1 F5 Networks BIGIP-13.1.3.4-0.0.5 BYOL - All Modules 1 Boot Location
 # See links for other AMI: https://github.com/F5Networks/f5-aws-cloudformation/tree/master/AMI%20Maps
 MODULE: WAF # LTM OR WAF
 

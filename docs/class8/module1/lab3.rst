@@ -165,13 +165,13 @@ Clone gitlab project and deploy AS3 WAF HTTPS offload application service to a B
     cd mywebapp
     cp -r ~/gitlab/lab2/* ~/gitlab/lab2/.gitlab-ci.yml .
     ls -la
-    ls -l j2
+    ls -l as3
 
 This folder contains:
    - **.gitlab-ci.yml**: pipeline definition
    - **hosts**: ansible host file with BIG-IQ access information
    - **bigiq_waf_policy_and_as3_deploy.yml**: ansible playbook to deploy the WAF policy, Security Logging Profile and AS3 application services
-   - **j2/my_waf_https_app_service1.j2**: AS3 declaration Jinja2 templates defining WAF HTTPS offload application service load balancer
+   - **as3/my_waf_https_app_service1.j2**: AS3 declaration Jinja2 templates defining WAF HTTPS offload application service load balancer
 
 The Ansible playbook will contain the various calls to create the WAF policy, deploy it to the BIG-IP, then create the Application Service with AS3.
 
