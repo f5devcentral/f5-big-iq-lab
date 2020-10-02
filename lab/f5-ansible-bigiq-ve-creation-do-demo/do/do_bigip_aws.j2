@@ -6,10 +6,6 @@
         "async": true,
         "Common": {
               "class": "Tenant",
-              "myDbVariables": {
-                "class": "DbVariables",
-                "configsync.allowmanagement": "enable"
-              },
               "myLicense": {
                 "class": "License",
                 "licenseType": "licensePool",
@@ -32,19 +28,21 @@
               },
               "admin": {
                 "class": "User",
-                "keys": [],
+                "shell": "bash",
                 "userType": "regular",
                 "partitionAccess": {
                     "all-partitions": {
                           "role": "admin"
                     }
                 },
-                "password": "u7BnD@4f5"
+                "password": "{{ vePassword }}"
               }
+              "hostname": "{{ veName }}.example.com"
         }
     },
     "targetUsername": "admin",
-    "targetHost": "{{ ve_ip_Address }}",
+    "targetHost": "{{ ve_ip_address }}",
+    "targetPort": 8443,
     "targetSshKey": {
         "path": "{{ private_key_filename }}"
     },

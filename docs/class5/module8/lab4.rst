@@ -156,7 +156,7 @@ Note the Private DNS and IPs which will be used later. This information could be
                },
                "admin": {
                   "class": "User",
-                  "keys": [],
+                  "shell": "bash",
                   "userType": "regular",
                   "partitionAccess": {
                      "all-partitions": {
@@ -198,6 +198,7 @@ Note the Private DNS and IPs which will be used later. This information could be
       },
       "targetUsername": "admin",
       "targetHost": "54.218.134.126",
+      "targetPort": 8443,
       "targetSshKey": {
          "path": "/var/ssh/restnoded/bigipvm-cluster01_57989.pem"
       },
@@ -300,7 +301,7 @@ The GET on the URI monitoring the task will also show a success message.
                },
                "admin": {
                   "class": "User",
-                  "keys": [],
+                  "shell": "bash",
                   "userType": "regular",
                   "partitionAccess": {
                      "all-partitions": {
@@ -342,6 +343,7 @@ The GET on the URI monitoring the task will also show a success message.
       },
       "targetUsername": "admin",
       "targetHost": "34.209.122.180",
+      "targetPort": 8443,
       "targetSshKey": {
          "path": "/var/ssh/restnoded/bigipvm-cluster02_10783.pem"
       },

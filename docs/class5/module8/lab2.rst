@@ -11,12 +11,7 @@ Prerequisites to this module:
   - Run the script creation file at the end of the previous lab
 
 An AWS account with full access permissions for the following AWS resources
-  - Auto Scale Groups
   - Instances
-  - SQS
-  - S3
-  - CloudWatch
-  - CloudFormation
 
 IAM role/rolePolicy/InstanceProfile containing
   - List

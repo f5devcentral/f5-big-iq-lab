@@ -12,9 +12,12 @@
       validate_certs: false
     cloudEnvironment: "demo-6001-aws-environment_DO"
     veName: "bigipvm03"
+    vePassword: "u7BnD@4f5"
+    tenant: "aws"
+    appName: "webAppServiceHttp2"
     cn: "webapp-aws"
     vip: "0.0.0.0" # because on AWS single NIC
-    sslport: "8080"
+    sslport: 443
     servers: 
       - "172.100.2.50"
 
@@ -29,7 +32,7 @@
 
     - name: Get AWS BIG-IP VE IP address (port 8443)
       debug:
-        msg: "{{ ve_ip_Address }}"
+        msg: "{{ ve_ip_address }}"
 
     - name: Get AWS BIG-IP VE private Key Filename
       debug:
@@ -120,7 +123,7 @@
             pins:
               - { type: "sslCertReferences", name: "{{ cn }}.crt" }
               - { type: "sslKeyReferences", name: "{{ cn }}.key" }
-        device_address: "{{ ve_ip_Address }}"
+        device_address: "{{ ve_ip_address }}"
       register: status
 
     - name: Deploy AS3 application services to BIG-IP
@@ -141,5 +144,5 @@
           apps: 
           - name: myWebApp
             pins:
-              - name: aws_webAppServiceHttp2
+              - name: "{{ tenant }}_{{ appName }}"
       register: status

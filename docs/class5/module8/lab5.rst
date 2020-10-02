@@ -24,14 +24,14 @@ This lab will be using following F5 Ansible Galaxy roles:
 Workflow
 ^^^^^^^^
 
-      1. Create VPN between F5 Lab and AWS
-      2. Create BIG-IP VE using **bigiq_create_ve**
-      3. Onboard BIG-IP using **atc_deploy**
-      4. Create SSL Certificate and Key on BIG-IQ using **ansible.builtin.uri**
-      5. Deploy SSL objects to BIG-IP using **bigiq_pinning_deploy_objects**
-      6. Create AS3 Application Service HTTPS offload using **atc_deploy**
-      7. Organized Application Service in BIG-IQ Application Dashboard using **bigiq_move_app_dashboard**
-      8. Your HTTPS offload Application Service is now up and ready to serve traffic
+1. Create VPN between F5 Lab and AWS
+2. Create BIG-IP VE using **bigiq_create_ve**
+3. Onboard BIG-IP using **atc_deploy**
+4. Create SSL Certificate and Key on BIG-IQ using **ansible.builtin.uri**
+5. Deploy SSL objects to BIG-IP using **bigiq_pinning_deploy_objects**
+6. Create AS3 Application Service HTTPS offload using **atc_deploy**
+7. Organized Application Service in BIG-IQ Application Dashboard using **bigiq_move_app_dashboard**
+8. Your HTTPS offload Application Service is now up and ready to serve traffic
 
 All steps from 2 to 3 are handed in an simple Ansible playbook where creation & deployments of the BIG-IP and its configuration is automated.
 
@@ -80,16 +80,38 @@ You can look at the details of the Ansible Playbook source on the `GitHub reposi
 
 6. Let's now review everything which was created by the playbook.
 
+Devices > BIG-IP VE Creation
+
 |lab-5-2|
+
+Devices > BIG-IP VE Onboarding
 
 |lab-5-3|
 
+Devices > BIG-IP Devices
+
 |lab-5-4|
+
+Log in to your AWS console to the EC2 Dashboard and look for the VE created.
 
 |lab-5-5|
 
-7. Test the application service by opening a browser and typing the Virtual Server IP address/port ``https://54.214.186.233:8080/``.
+Configuration > Local Traffic > Certificate Management > Certificates & Keys
+
+|lab-5-6|
+
+Deployments > Evaluate & Deploy > Local Traffic & Network
+
+|lab-5-7|
+
+7. Test the application service by opening a browser and typing the Virtual Server IP address/port ``https://54.214.186.233``.
    You should see the *Hello, World* website.
+
+|lab-5-8|
+
+8. Go back on the BIG-IQ application dashboard and look at the HTTP analytics.
+
+|lab-5-9|
 
 .. |lab-5-1| image:: pictures/lab-5-1.png
    :scale: 40%
@@ -104,4 +126,16 @@ You can look at the details of the Ansible Playbook source on the `GitHub reposi
    :scale: 40%
 
 .. |lab-5-5| image:: pictures/lab-5-5.png
+   :scale: 40%
+
+.. |lab-5-6| image:: pictures/lab-5-6.png
+   :scale: 40%
+
+.. |lab-5-7| image:: pictures/lab-5-7.png
+   :scale: 40%
+
+.. |lab-5-8| image:: pictures/lab-5-8.png
+   :scale: 40%
+
+.. |lab-5-9| image:: pictures/lab-5-9.png
    :scale: 40%

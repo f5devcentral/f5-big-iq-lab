@@ -5,11 +5,11 @@
         "class": "ADC",
         "schemaVersion": "3.12.0",
         "target": {
-            "address": "{{ ve_ip_Address }}"
+            "address": "{{ ve_ip_address }}"
         },
-        "aws": {
+        "{{ tenant }}": {
             "class": "Tenant",
-            "webAppServiceHttp2": {
+            "{{ appName }}": {
                 "class": "Application",
                 "schemaOverlay": "AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1",
                 "template": "https",
@@ -18,7 +18,7 @@
                     "pool": "Pool",
                     "enable": true,
                     "serverTLS": "TLS_Server",
-                    "virtualPort": "{{ sslport }},
+                    "virtualPort": {{ sslport }},
                     "profileAnalytics": {
                         "use": "Analytics_Profile"
                     },
