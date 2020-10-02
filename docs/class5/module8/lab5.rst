@@ -24,14 +24,14 @@ This lab will be using following F5 Ansible Galaxy roles:
 Workflow
 ^^^^^^^^
 
-   1. Create VPN between F5 Lab and AWS
-   2. Create BIG-IP VE using **bigiq_create_ve**
-   3. Onboard BIG-IP using **atc_deploy**
-   4. Create SSL Certificate and Key on BIG-IQ using **ansible.builtin.uri**
-   5. Deploy SSL objects to BIG-IP using **bigiq_pinning_deploy_objects**
-   6. Create AS3 Application Service HTTPS offload using **atc_deploy**
-   7. Organized Application Service in BIG-IQ Application Dashboard using **bigiq_move_app_dashboard**
-   8. Your HTTPS offload Application Service is now up and ready to serve traffic
+      1. Create VPN between F5 Lab and AWS
+      2. Create BIG-IP VE using **bigiq_create_ve**
+      3. Onboard BIG-IP using **atc_deploy**
+      4. Create SSL Certificate and Key on BIG-IQ using **ansible.builtin.uri**
+      5. Deploy SSL objects to BIG-IP using **bigiq_pinning_deploy_objects**
+      6. Create AS3 Application Service HTTPS offload using **atc_deploy**
+      7. Organized Application Service in BIG-IQ Application Dashboard using **bigiq_move_app_dashboard**
+      8. Your HTTPS offload Application Service is now up and ready to serve traffic
 
 All steps from 2 to 3 are handed in an simple Ansible playbook where creation & deployments of the BIG-IP and its configuration is automated.
 
