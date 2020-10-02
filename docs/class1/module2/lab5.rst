@@ -17,6 +17,10 @@ Execute the playbooks for each tasks
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task10_create_http_app_fqdn_nodes.json
 
+You can look at the details of the AS3 declaration on the `GitHub repository`_.
+
+.. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/blob/develop/lab/f5-ansible-bigiq-as3-demo/as3/as3_bigiq_task10_create_http_app_fqdn_nodes.json
+
 Connect as **david** and check on BIG-IQ the application has been correctly created.
 
 |lab-5-1|

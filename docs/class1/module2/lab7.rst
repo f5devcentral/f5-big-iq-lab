@@ -12,6 +12,10 @@ This lab will be using the following F5 Ansible Galaxy roles:
 Tasks
 ^^^^^
 
+You can look at the details of the AS3 declarations on the `GitHub repository`_.
+
+.. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/blob/develop/lab/f5-ansible-bigiq-as3-demo/as3
+
 Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
 
 Execute the playbooks for each tasks.
