@@ -1,14 +1,14 @@
-Lab 8.5: Deploy BIG-IP in AWS and configure App Services using Ansible, BIG-IQ and Automation Tool Chain
---------------------------------------------------------------------------------------------------------
+Lab 8.5: Deploy BIG-IP in AWS and configure App Services using Ansible, BIG-IQ & Automation Tool Chain
+------------------------------------------------------------------------------------------------------
 
 .. note:: Estimated time to complete: **20 minutes**
 
 In this lab, we are going to deploy a new BIG-IP in AWS and deploy an HTTPS offload Application Service using BIG-IQ and Automation Tool Chain.
 
 This lab will be using following F5 Ansible Galaxy roles:
-    - `bigiq_create_ve`_ **ansible Role**: PCreate a BIG-IP VE (Virtual Edition) from BIG-IQ in AWS, Azure or VMware.
-    - `atc_deploy`_  **ansible Role**: Allows AS3 declaration to be sent to `automation tool chain`_ service.
-    - `ansible.builtin.uri`_ **ansible Module**: Interacts with webservices, create SSL cert & key on BIG-IQ
+    - `bigiq_create_ve`_ **ansible Role**: Create a BIG-IP VE (Virtual Edition) from BIG-IQ in AWS, Azure or VMware.
+    - `atc_deploy`_  **ansible Role**: Allows AS3 and DO declarations to be sent to `automation tool chain`_ service.
+    - `ansible.builtin.uri`_ **ansible Module**: Interacts with web services, create SSL cert & key on BIG-IQ
     - `bigiq_pinning_deploy_objects`_ **ansible Role**: Pin objects (e.g. Cert & Key) on BIG-IQ and deploy it to BIG-IP(s).
     - `bigiq_move_app_dashboard`_ **ansible Role**: Move Application Service(s) in BIG-IQ Application Dashboard.
     
@@ -51,12 +51,16 @@ Tasks
     cd /home/f5/f5-ansible-bigiq-ve-creation-do-demo
     vi bigiq_create_ve_and_app_services_aws.yml
 
-   Update Cloud Envrionement variable in the playbook::
+   Update Cloud Environment variable in the playbook::
 
     cloud_environment: "demo-8574-aws-environment_DO"
 
-   You can change the Common Name (CN) of the certificate by updating the variable ``cn`` in the playbook::
+   You also have the option to change few variables such as VE name, VE password, tenant, app service name, Common Name (CN) of the SSL certificate::
 
+    veName: "bigipvm03"
+    vePassword: "u7BnD@4f5"
+    tenant: "aws"
+    appName: "webAppServiceHttp2"
     cn: "webapp-aws"
 
 You can look at the details of the Ansible Playbook source on the `GitHub repository`_.

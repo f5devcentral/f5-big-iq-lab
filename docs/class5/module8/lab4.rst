@@ -30,11 +30,11 @@ Open Postman. Click right and click on execute (wait ~2 minutes).
 
 
 2. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+   If your token expires, obtain a new token by re-sending the ``BIG-IQ Token (david)``.
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
-3. First, let's get the Cloud Environement Reference. 
+3. First, let's get the Cloud Environment Reference. 
    Using Postman, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``GET https://10.1.1.4/mgmt/cm/cloud/environments``.
 
    Save the **selfLink** value.
@@ -61,7 +61,7 @@ Open Postman. Click right and click on execute (wait ~2 minutes).
 
 .. _here: https://aws.amazon.com/marketplace/pp?sku=sxmg2kgwdu7h1ptwzl9d8e4b
 
-Let's retreive the ``privateKeyFilename`` by doing a GET on the same URI: ``GET https://10.1.1.4/mgmt/cm/cloud/tasks/create-ve``.
+Let's retrieve the ``privateKeyFilename`` by doing a GET on the same URI: ``GET https://10.1.1.4/mgmt/cm/cloud/tasks/create-ve``.
 Keep a note of it as we will need it later.
 
 5. Repeat previous step to create the 2nd VE. Don't forget to update the veName.
@@ -78,7 +78,7 @@ Keep a note of it as we will need it later.
       }
    }
 
-Let's retreive the ``privateKeyFilename`` by doing a GET on the same URI: ``GET https://10.1.1.4/mgmt/cm/cloud/tasks/create-ve``.
+Let's retrieve the ``privateKeyFilename`` by doing a GET on the same URI: ``GET https://10.1.1.4/mgmt/cm/cloud/tasks/create-ve``.
 Keep a note of it as we will need it later.
 
 6. Login as **david** and navigate to Devices > BIG-IP VE Creation and see the 2 BIG-IPs created in AWS using the BIG-IQ API.
@@ -90,7 +90,7 @@ Keep a note of it as we will need it later.
 
 |image24|
 
-Note the Private DNS and IPs which will be used later. This information could be retreived using the `AWS API`_.
+Note the Private DNS and IPs which will be used later. This information could be retrieved using the `AWS API`_.
 
 .. _AWS API: https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html
 
@@ -116,7 +116,7 @@ Note the Private DNS and IPs which will be used later. This information could be
 
    .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
 
-   Make sure all highlited information are correct (targetHost=Public IP, Private Key filename, Private DNS and IPs).
+   Make sure all highlighted information are correct (targetHost=Public IP, Private Key filename, Private DNS and IPs).
 
 .. code-block:: yaml
    :linenos:
@@ -215,7 +215,7 @@ Note the Private DNS and IPs which will be used later. This information could be
    }
 
 9. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+   If your token expires, obtain a new token by re-sending the ``BIG-IQ Token (david)``.
 
    .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
@@ -261,7 +261,7 @@ The GET on the URI monitoring the task will also show a success message.
           and ``"admin": { "class": "User", ... }`` sections and add ``"targetPassphrase": "u7BnD@4f5",`` under ``targetUsername`` 
           to the declaration.
 
-13. Repeat the same steps to onboard the 2nd VE. Don't forget to update all the necessary highlited values.
+13. Repeat the same steps to onboard the 2nd VE. Don't forget to update all the necessary highlighted values.
 
 .. code-block:: yaml
    :linenos:

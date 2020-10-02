@@ -92,7 +92,7 @@ echo -e "3. To make sure command will run after you close the ssh session execut
 # Force pause to accept the terms under UDF account (to be removed later when terms can be accepted programmatically or by default on the AWS F5 account)
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
-echo -e "\n${BLUE}EXPECTED TIME: ${RED}~45 min${NC}\n"
+echo -e "\n${BLUE}EXPECTED TIME: ${RED}~20 min${NC}\n"
 
 ## If AWS UDF account is used, no need to run this
 if [[ $c3 == 0 || $c4 == 0 ]]; then

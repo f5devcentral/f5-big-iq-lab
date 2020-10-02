@@ -71,7 +71,7 @@ echo -e "3. To make sure command will run after you close the ssh session execut
 # Force pause to accept the terms under UDF account (to be removed later when terms can be accepted programmatically or by default on the AWS F5 account)
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 
-echo -e "${BLUE}EXPECTED TIME: ~45 min${NC}\n"
+echo -e "${BLUE}EXPECTED TIME: ~30 min${NC}\n"
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"
 ./01-install_azure_cli.sh
