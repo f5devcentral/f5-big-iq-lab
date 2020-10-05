@@ -62,7 +62,7 @@ Configured third-party certificate provider on BIG-IQ
 
 1. Start the **Venafi Trust Protection** component (the Windows Server 2019 in the lab). Wait at least 5 min so all the necessary services start.
 
-2. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``.
+2. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*..
 
 Navigate to Configuration tab > Local Traffic > Certificate Management > Third Party CA Management.
 

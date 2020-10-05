@@ -40,7 +40,7 @@ AFM Policy creation (Larry)
 
 Let's first create and deploy the AFM policy in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 
-1. Login to BIG-IQ as **larry** by opening a browser and go to: ``https://10.1.1.4``
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*.
 
 2. Go to Configuration > Security > Network Security > Network Firewall > Firewall Policies and
    create a new policy called ``module3lab6_fw_policy``.

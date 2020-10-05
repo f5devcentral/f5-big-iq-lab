@@ -3,25 +3,21 @@ Lab 3.1: Importing AS3 templates
 
 .. note:: Estimated time to complete: **10 minutes**
 
-Official documentation about AS3 application service management via a GUI can be found on the `BIG-IQ Knowledge Center`_.
-
-.. _`BIG-IQ Knowledge Center`: https://techdocs.f5.com/en-us/bigiq-7-0-0/monitoring-managing-applications-using-big-iq.html
-
 .. include:: /accesslab.rst
 
 View AS3 templates section
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*.
 
-2. Go to Applications > Application Templates and review the top section which is titled **AS3 Templates**.
+2. Go to **Applications > Application Templates** and review the top section which is titled **AS3 Templates**.
 
 Notice there are two different types of Templates (AS3 Templates and Service Catalog Templates). 
-AS3 Templates are the recommended templates for deploying new application services. 
+**AS3 Templates are the recommended templates** for deploying new application services. 
 Service Catalog Templates while still supported, are not recommended for new environments.
 
-In this lab you will utilize some of the new templates that have the TCP analytics profiles built in. Note the
-**Import Templates** hyperlink in the top right hand corener of the page. 
-This link will take you to the **f5devcentral/f5-big-iq** repository on Github, where F5 will push new templates.  
+In this lab you will utilize the AS3 templates. Note the **Import Templates** hyperlink in the top right hand corner of the page. 
+This link will take you to the **f5devcentral/f5-big-iq** repository on Github, where F5 publishes BIG-IQ AS3 templates and instructions
+on how to import them into BIG-IQ.
 
 A new BIG-IQ v7.0 deployment will NOT include AS3 templates out of the box.
 If you want to start using AS3 templates which are provided by F5, then those AS3 templates can be found 
@@ -37,14 +33,13 @@ Import AS3 BIG-IQ templates
 
 2. Make yourself familiar with the Github page and understand which AS3 templates are available.
 
-3. When the AS3 templates are already imported in BIG-IQ you don’t need to perform next step, instead continue with the following step.
+3. In this lab, the AS3 templates are already imported in BIG-IQ.
 
-4. Use the provided instructions on the Github page to import the templates into BIG-IQ.
+4. Walk through the provided templates and select them to understand the structure.
+   If you are not already familiar with AS3, visit the `Application Services 3 Extension Documentation`_ and `Managing BIG-IQ AS3 Templates`_ Documentation.
+   
+   You can also look at the `Module 2`_ in this lab guide which will give you more information on how AS3 was integrated with BIG-IQ.
 
-.. note:: The F5 default AS3 BIG-IQ templates are already imported in the lab environment.
-
-5. Walk through the provided templates and select them to understand the structure. If you are familiar with AS3 you will notice the structure. 
-   Otherwise go make sure you have gone through `Module 2`_ or visit `AS3 Example declarations`_.
-
-.. _Module 2: ../module2
-.. _AS3 Example declarations: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/examples.html.
+.. _Module 2: ../module2/module2.html
+.. _Application Services 3 Extension Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/#introduction
+.. _`Managing BIG-IQ AS3 Templates`: https://techdocs.f5.com/en-us/bigiq-7-0-0/monitoring-managing-applications-using-big-iq.html

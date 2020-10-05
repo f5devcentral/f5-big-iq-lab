@@ -116,7 +116,7 @@ to deploy the HTTP challenge file. This API needs to be developed and added into
 Configured third-party certificate provider on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Login to BIG-IQ as **david** by opening a browser and go to: ``https://10.1.1.4``.
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*..
 
 Navigate to Configuration tab > Local Traffic > Certificate Management > Third Party CA Management.
 

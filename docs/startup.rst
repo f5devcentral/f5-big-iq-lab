@@ -43,7 +43,7 @@ BIG-IQ User Interface
 
 Once you connect to BIG-IQ, you can navigate in the following tabs:
 
-- **Applications** - Application Management (Legacy, AS3) and Cloud Environement
+- **Applications** - Application Management (Legacy, AS3) and Cloud Environment
 - **System** - Manage all aspects for BIG-IQ and DCDs.
 - **Devices** - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
 - **Deployment** - Manage evaluation task and deployment for Configuration Management (none AS3)
@@ -55,8 +55,8 @@ Once you connect to BIG-IQ, you can navigate in the following tabs:
 .. |welcomebigiq| image:: /pictures/welcomebigiq.png
    :scale: 40%
 
-Lab Components
---------------
+Lab Components & Credentials
+----------------------------
 
 **Lab Diagram**:
 
@@ -97,7 +97,7 @@ The following table lists the virtual appliances in the lab along with their cre
 | 10.1.1.14/10.1.1.16     |         | and security with dynamic, policy-based decryption,                                          |                             |
 |                         |         | encryption, and traffic steering through multiple inspection devices.                        |                             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| Venafi Trust Protection | 20.1    | Manages, secures and protects keysand certificates, delivering an enterprise-grade platform  | venafi/Purple123\@123       |
+| Venafi Trust Protection | 20.1    | Manages, secures and protects keys and certificates, delivering an enterprise-grade platform | venafi/Purple123\@123       |
 | 10.1.1.17               |         | that provides enterprise-wide security, operational efficiency and                           |                             |
 |                         |         | organizational compliance.                                                                   |                             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
