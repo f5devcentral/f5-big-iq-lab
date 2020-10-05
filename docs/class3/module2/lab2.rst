@@ -29,7 +29,7 @@ Tasks
 
 * Click the + next to Server Addresses and add a wrong node ``1.3.5.6`` for ``123``.
 
-* Click **Save & Close**.
+* Click **Save**.
 
 .. image:: ../pictures/module2/img_module2_lab2_3.png
   :align: center

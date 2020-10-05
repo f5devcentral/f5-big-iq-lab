@@ -8,7 +8,7 @@ Lab 5.1: Import a device into a silo
 Tasks
 ^^^^^
 
-1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*.
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*.
 
 2. Navigate to Devices > BIG-IP Devices. You can hide some columns you won't need 
    for this lab such as Stats Collection, Data Collection, Stats Last Collection.

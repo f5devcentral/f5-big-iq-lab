@@ -7,7 +7,7 @@ Lab 3.1: Importing AS3 templates
 
 View AS3 templates section
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*.
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*.
 
 2. Go to **Applications > Application Templates** and review the top section which is titled **AS3 Templates**.
 

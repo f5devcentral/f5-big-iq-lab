@@ -116,7 +116,7 @@ to deploy the HTTP challenge file. This API needs to be developed and added into
 Configured third-party certificate provider on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*..
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*..
 
 Navigate to Configuration tab > Local Traffic > Certificate Management > Third Party CA Management.
 
@@ -329,7 +329,7 @@ of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
 
 .. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
-You can test the application service by opening a browser in the Ubuntu Jump-host and type the URL ``https://lab.webapp.34.219.3.233.nip.io``.
+You can test the application service by opening a browser in the **Ubuntu Jump-host** and type the URL ``https://lab.webapp.34.219.3.233.nip.io``.
 
 .. note:: We are using the Let's encrypt stage server for this lab which won't generate a validate certificate.
           If you want to generate a valid certificate, use Let's encrypt production server https://acme-v02.api.letsencrypt.org/

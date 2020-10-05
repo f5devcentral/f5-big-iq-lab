@@ -25,7 +25,7 @@ Next add the ``legacy-app-service`` Role and then Click **Save & Close**.
   :align: center
 
 
-3. Now logout from the david session and Login to BIG-IQ as **paula**.
+3. Now logout from the **david** session and login to BIG-IQ as **paula**.
 
 .. image:: ../pictures/module6/lab-3-4.png
   :scale: 40%
@@ -54,5 +54,3 @@ Next add the ``legacy-app-service`` Role and then Click **Save & Close**.
 .. image:: ../pictures/module6/lab-3-8.png
   :scale: 40%
   :align: center
-
-8. Now, look at the changes in the analytics and then re-enable the pool member.

@@ -7,7 +7,7 @@ In this lab, we will add a new user to an existing custom role on BIG-IQ.
 
 .. Note:: Currently there is no Ansible playbook to create custom roles so we will add this using the BIG-IQ UI first.
 
-1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*.
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*.
 
 2. Go to System > ROLE MANAGEMENT > Roles > CUSTOM ROLES > Application Roles > click **Add**. 
 

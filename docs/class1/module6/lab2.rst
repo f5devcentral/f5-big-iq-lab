@@ -32,7 +32,6 @@ Tasks
 - Max TPS and Throughput: ``Enabled``
 - HTTP Timing (RTT, TTFB, Duration): ``Enabled``
 - URLs: ``Enabled``
-- Client IP Addresses: ``Enabled``
 - Response Codes: ``Enabled``
 - User Agents: ``Enabled``
 - Methods: ``Enabled``
@@ -91,20 +90,18 @@ Wait for the deployment to complete.
   :scale: 40%
   :align: center
 
-5. Back on the Applications tab > Applications, go back to the ``legacy-app-service``.
-   Under **F5 Services**, Traffic Management > Configuration > Profile HTTP Analytics, notice the warning disappeared.
+5. Back on the **Applications tab > Applications**, go back to the ``legacy-app-service``.
+   Under **F5 Services**, *Traffic Management > Configuration > Profile HTTP Analytics*, notice the warning disappeared.
 
 .. image:: ../pictures/module6/lab-2-9.png
   :scale: 40%
   :align: center
 
-6. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
+6. You can test the HTTP application service by opening a browser in the **Ubuntu Jump-host**.
 
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
+Open Chrome or Firefox and navigate on the website ``http://site34.example.com``.
 
-Open Chrome and Firefox and navigate on the website http\:\/\/site34.example.com.
+The virtual IP address ``10.1.10.134`` is configured behind ``site34.example.com`` FQDN.
 
 .. note:: Accept the private certificates.
 
@@ -123,10 +120,10 @@ Proper sizing should be done ahead of time, and new applications should be enabl
   :scale: 40%
   :align: center
 
-8. By the way, did you see the new **Feedback** link on the top right? This is a feature that quite a few customers have requested.
-They want a way to submit feedback on the BIG-IQ UI so it gets right to the developers. This is not meant as a substitute for a support case.
-It is intended to give customers a means of providing feedback on workflows and navigation within the UI. It will take them to a brief survey monkey 
-link where they can answer a few questions and provide their feedback. This is one way of capturing customer input directly
+8. By the way, did you see the new **Feedback** link on the top right? 
+
+This is not meant as a substitute for a support case. It is intended to give customers a means of providing feedback on workflows and navigation within the UI. 
+It will take them to a brief survey monkey link where they can answer a few questions and provide their feedback. This is one way of capturing customer input directly
 on how we can improve the product.
 
 .. image:: ../pictures/module6/lab-2-12.png

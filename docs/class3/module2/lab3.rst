@@ -9,11 +9,11 @@ Tasks
 ^^^^^
 1. Login as **paula** in BIG-IQ.
 
-2. Select application service ``security_site16_boston`` located under ``airport_security`` application.
+2. Select application service ``security_site16_boston`` located under ``airport_security`` application. 
 
-3. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
+The virtual IP address ``10.1.10.116`` is configured behind ``site16.example.com`` FQDN.
 
-Open Chrome and Firefox and navigate on the website http\:\/\/site16.example.com/f5_browser_issue.php.
+3. Open Chrome and Firefox in the **Ubuntu Jump-host** and navigate on the website ``http://site16.example.com/f5_browser_issue.php``.
 
 .. note:: Accept the private certificates.
 
@@ -44,10 +44,12 @@ select Columns, then select Avg under the Application Response Time:
 
 |
 
-5. Select the page f5_browser_issue.php, which has the highest value. Now all the values in all the other tables are about the page previously selected.
+5. Select the page **f5_browser_issue.php**, which has the highest value. Now all the values in all the other tables are about the page previously selected.
 
-In the Browsers filter, notice the 30 sec Application Response Time for Chrome browser.
+In the Browsers filter, notice the **30 seconds** Application Response Time for Chrome browser while other browsers show a much lower value.
 
 .. image:: ../pictures/module2/img_module2_lab3_3.png
    :align: center
    :scale: 40%
+
+We know now the problem with this web application isn't realated to F5 but to the application itself.

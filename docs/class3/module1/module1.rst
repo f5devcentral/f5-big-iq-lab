@@ -38,9 +38,9 @@ Use this screen to create, delete, deploy and oversee all of your applications.
 Summary Bar provides summary information about your application's health, traffic and security status.
 Click the elements in this area to filter or sort the application list.
 
-- Health: Lists the number of applications at each health status.
-- Traffic Performance: Lists the top 5 applications for each performance data indicator.
-- Security: Lists the number of applications that have an active security alert.
+- **Health**: Lists the number of applications at each health status.
+- **Traffic Performance**: Lists the top 5 applications for each performance data indicator.
+- **Security**: Lists the number of applications that have an active security alert.
 
 Use one of the screen's filter and sort settings to isolate an application of interest, 
 based on summary data or active alerts.
@@ -61,10 +61,6 @@ Filter on **Not Protected** Applications:
 
 Click on the ``airport_security`` application. 
 This screen lists all of the application services that make up this specific application. 
-
-.. note:: See `Class 1 Module 4 Multi-Tier/Multi-Cloud Application Visibility`_ for more details.
-
-.. _Class 1 Module 4 Multi-Tier/Multi-Cloud Application Visibility: ../../class1/module4/module4.html
 
 .. image:: ../pictures/module1/img_module1_lab1_2b.png
   :align: center
@@ -154,5 +150,47 @@ Take the time to navigate in all the different menu.
 See example below with an Application Service deployed using an AS3 template.
 
 .. image:: ../pictures/module1/img_module1_lab1_8.png
+  :align: center
+  :scale: 40%
+
+**locust.io: Load testing tool**
+
+Now, let's use locust.io, an open source load testing tool, to generate some HTTP traffic from multiple users.
+
+Click on the *Locust* button on the system *Ubuntu Lamp Server* in lab environment.
+
+Enter the following options:
+  - Number of total user: ``50``
+  - Hatch Rate: ``2``
+  - Host: ``http://10.1.10.116`` (airport_security > security_site16_boston)
+
+The hatch rate is the number of users to spawn per second, starting from zero when load generation first begins until the total number of users is reached.
+
+.. image:: ../pictures/module1/img_module1_lab1_9.png
+  :align: center
+  :scale: 40%
+
+Traffic simulator is started.
+
+.. image:: ../pictures/module1/img_module1_lab1_10.png
+  :align: center
+  :scale: 40%
+
+Swtich to the **Charts** tab to see various metrics such as *Total Requests per seconds*, *Response Time* and *Number of users*.
+
+.. image:: ../pictures/module1/img_module1_lab1_11.png
+  :align: center
+  :scale: 40%
+
+Now, let's go back on BIG-IQ dahsboard and navigate in the various HTTP analytics collected while locust.io 
+is sending traffic through ``security_site16_boston` application service down to the application servers.
+
+.. image:: ../pictures/module1/img_module1_lab1_12.png
+  :align: center
+  :scale: 40%
+
+Once you have finished, do not forget to stop the Load testing tool.
+
+.. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
   :scale: 40%

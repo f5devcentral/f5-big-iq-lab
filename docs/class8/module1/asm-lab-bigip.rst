@@ -29,7 +29,7 @@ ASM Policy and Security Logging Profile creation (Larry)
 
 Let's first deploy the default Advance WAF policy and Security Logging Profile available in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 
-1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*.
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*.
 
 2. Go to Configuration > Security > Web Application Security > Policies and clone the policy called ``templates-default``
 and name it as ``templates-default-cloned``.

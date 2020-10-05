@@ -11,7 +11,7 @@
             "path": "/security/fqdn",
             "value": {
                 "class": "Application",
-                "schemaOverlay": "AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1",
+                "schemaOverlay": "AS3-F5-DNS-FQDN-A-type-default-monitors-template-big-iq-v1",
                 "template": "generic",
                 "dnsMain": {
                     "pools": [
@@ -43,7 +43,7 @@
                     ],
                     "monitors": [
                         {
-                            "use": "GSLB_Monitor1"
+                            "bigip": "/Common/tcp"
                         }
                     ],
                     "lbModeFallback": "return-to-dns",
@@ -62,25 +62,13 @@
                     ],
                     "monitors": [
                         {
-                            "use": "GSLB_Monitor2"
+                            "bigip": "/Common/tcp"
                         }
                     ],
                     "lbModeFallback": "return-to-dns",
                     "lbModeAlternate": "round-robin",
                     "lbModePreferred": "round-robin",
                     "class": "GSLB_Pool"
-                },
-                "GSLB_Monitor1": {
-                    "send": "GET / HTTP/1.0",
-                    "receive": "HTTP/1.1 200 OK",
-                    "monitorType": "http",
-                    "class": "GSLB_Monitor"
-                },
-                "GSLB_Monitor2": {
-                    "send": "GET / HTTP/1.0",
-                    "receive": "HTTP/1.1 200 OK",
-                    "monitorType": "https",
-                    "class": "GSLB_Monitor"
                 }
             }
         }

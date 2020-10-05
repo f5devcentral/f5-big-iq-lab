@@ -54,7 +54,7 @@ if [ -f $home/ssg-apps ]; then
 fi
 
 # for hackazon app on port 80 in a docker
-sitepages="index.php f5_browser_issue.php f5_capacity_issue.php faq contact wishlist /images/Hackazon.png user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=72 product/view?id=130"
+sitepages="index.php f5_browser_issue.php f5_capacity_issue.php faq contact wishlist images/Hackazon.png user/login cart/view product/view?id=1 product/view?id=16 product/view?id=39 product/view?id=72 product/view?id=130"
 
 # get length of the array
 arraylength=${#sitefqdn[@]}

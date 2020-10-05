@@ -7,7 +7,7 @@ Lab 4.1: Generate Reports in PDF
 
 Tasks
 ^^^^^
-1. Connect as **paula**.
+1. Connect as **paula** in BIG-IQ.
 
 .. image:: ../pictures/module4/img_lab1_1.png
   :align: center
@@ -22,15 +22,11 @@ Tasks
 3. Collapse the top and middle banner, click on the **Server** object on the right of the dashboard.
 Select Server Latency. Look for the URL dimension and click on the PDF Export button located above the dimensions.
 
-.. image:: ../pictures/module4/img_lab1_2.png
+.. image:: ../pictures/module4/img_lab1_3.png
   :align: center
   :scale: 40%
 
 4. Click on the first option ``Charts with user expended dimension data``
-
-.. image:: ../pictures/module4/img_lab1_3.png
-  :align: center
-  :scale: 40%
 
 5. After few seconds a `PDF`_ will be generated which you will be able to save on your computer.
 

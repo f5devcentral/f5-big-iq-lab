@@ -13,7 +13,7 @@ within the Application dashboard of BIG-IQ.
 Tasks
 ^^^^^
 
-1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*.
+1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*.
 
 2. Navigate to Applications > Applications. Click on **Create** to Create an Application Service:
 
@@ -73,7 +73,7 @@ Move *vip134* over to the **Selected** column and then scroll down.
   :scale: 40%
   :align: center
 
-.. warning:: Review carefully `K02142132`_: Requirements and recommendations for creating a BIG-IQ application service with existing device configurations
+.. warning:: Review carefully `K02142132`_ Requirements and recommendations for creating a BIG-IQ application service with existing device configurations
 
 .. _K02142132: https://support.f5.com/csp/article/K02142132
 

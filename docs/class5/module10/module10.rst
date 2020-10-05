@@ -23,7 +23,7 @@ Tasks
 
 2. You should have now 2 ip-geolocation files (1 zip and 1 MD5).
 
-3. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jumphost or access directly to the BIG-IQ CM)*.
+3. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*.
 
 4. Go to Devices > Geo-IP Database Management > Database Files.
 

@@ -8,7 +8,7 @@ Lab 3.2: Application Service creation using AS3 through BIG-IQ GUI
 HTTPS Service using AS3 through GUI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Logout from **david** and login as **paula** in BIG-IQ.
+1. Now logout from the **david** session and login to BIG-IQ as **paula**.
 
 2. Click **Create** to create an Application Service
 
@@ -125,7 +125,11 @@ Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment (admin/purple
   :scale: 40%
   :align: center
 
-15.	You can test the HTTPS offload application service by opening a browser in the Ubuntu Jump-host and type the Virtual Server IP address ``https://10.1.10.120``.
+15.	You can test the HTTPS offload application service by opening a browser in the **Ubuntu Jump-host** and type the Virtual Server IP address.
+
+Open Chrome or Firefox and navigate on the website ``https://10.1.10.120``.
+
+.. note:: Accept the private certificates.
 
 .. image:: ../pictures/module3/lab-2-9.png
   :scale: 40%
