@@ -183,7 +183,7 @@ Swtich to the **Charts** tab to see various metrics such as *Total Requests per 
   :scale: 40%
 
 Now, let's go back on BIG-IQ dahsboard and navigate in the various HTTP analytics collected while locust.io 
-is sending traffic through ``security_site16_boston` application service down to the application servers.
+is sending traffic through ``security_site16_boston`` application service down to the application servers.
 
 .. image:: ../pictures/module1/img_module1_lab1_12.png
   :align: center
