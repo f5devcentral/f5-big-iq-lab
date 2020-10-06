@@ -57,6 +57,8 @@ Click **Deploy**.
 
 You can test the application service by opening a browser in the **Ubuntu Jump-host** and type the URL ``https://10.1.10.126``.
 
+Notice the new certificate is now being used by the browser.
+
 .. note:: The certificate shows not secure as we are using a demo Root CA not imported in the browser by default.
 
 .. image:: media/img_module1_lab3-5.png

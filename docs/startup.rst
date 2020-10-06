@@ -62,18 +62,6 @@ Lab Diagram
    :align: center
    :scale: 40%
 
-**Networks**:
-
-- 10.1.1.0/24 Management Network
-- 10.1.10.0/24 External Network
-- 10.1.20.0/24 Internal Network
-- 10.1.30.0/24 SSLo Inline L3 IN Network
-- 10.1.40.0/24 SSLo Inline L3 OUT Network
-- 10.1.50.0/24 SSLo TAP Network
-- 172.17.0.0/16 Docker Internal Network
-- 172.100.0.0/16 AWS Internal Network
-- 172.200.0.0/16 Azure Internal Network
-
 List of instances & Credentials
 -------------------------------
 
@@ -122,6 +110,19 @@ The following table lists the virtual appliances in the lab along with their cre
 |                         |         | - Visual Studio Code                                                                         |                             |
 |                         |         | - Samba                                                                                      |                             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
+
+Networks
+--------
+
+- 10.1.1.0/24 Management Network
+- 10.1.10.0/24 External Network
+- 10.1.20.0/24 Internal Network
+- 10.1.30.0/24 SSLo Inline L3 IN Network
+- 10.1.40.0/24 SSLo Inline L3 OUT Network
+- 10.1.50.0/24 SSLo TAP Network
+- 172.17.0.0/16 Docker Internal Network
+- 172.100.0.0/16 AWS Internal Network
+- 172.200.0.0/16 Azure Internal Network
 
 Application Services already deployed in this lab
 -------------------------------------------------

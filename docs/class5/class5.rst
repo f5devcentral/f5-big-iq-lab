@@ -23,5 +23,4 @@ Modules/Labs
    module8/module8
    module9/module9
    module10/module10
-   module11/module11
 
