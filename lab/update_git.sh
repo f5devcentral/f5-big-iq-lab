@@ -83,19 +83,16 @@ if [[  $currentuser == "root" ]]; then
         touch last_update_$(date +%Y-%m-%d_%H-%M)
     fi
 
-    echo "Check/Restart sevices: Radius, DHCP, NoVNC, Websockify"
+    echo "Check/Restart sevices: NoVNC, Websockify"
     su - f5student -c "$home/tools/services_monitor.sh"
     sleep 5
-    /etc/init.d/freeradius status # to remove once radius docker is used
-    /etc/init.d/isc-dhcp-server status
-    dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
     ps -ef | grep vnc | grep -v grep
     ps -ef | grep websockify | grep -v grep
 
     # Radius
-    #echo -e "\Radius"
-    #RADIUS_HOME="$home/radius" docker-compose -f $home/radius/docker-compose.yml up -d
-    #radtest david david $jumphostIp 1812 default
+    echo -e "\Radius"
+    RADIUS_HOME="$home/radius" docker-compose -f $home/radius/docker-compose.yml up -d
+    radtest david david $jumphostIp 1812 default
 
     ### Start Ansible Tower/AWX Compose
     echo -e "AWX start\n"
@@ -233,30 +230,27 @@ if [[  $currentuser == "root" ]]; then
     
     chown -R $user:$user $home
 
-    echo -e "\nStatus Radius Server"
-    /etc/init.d/freeradius status # to remove once radius docker is used
+    echo -e "\nSamba"
+    rm -rf /dcdbackup
+    mkdir /dcdbackup
+    chown -R nobody:nogroup /dcdbackup
+    docker run --restart=always --name=samba -dit -p 445:445 -v /dcdbackup:/mount dperson/samba -n -S -p \
+           -w WORKGROUP \
+           -u "f5student;purple123" \
+           -s "dcdbackup;/mount;yes;no;no;f5student" \
+           -g "ntlm auth=yes" \
+           -g "client min protocol = NT1" \
+           -g "server min protocol = NT1" \
+           -g "client ipc min protocol = NT1"
 
-    #echo -e "\nSamba"
-    #rm -rf /dcdbackup
-    #mkdir /dcdbackup
-    #chown -R nobody:nogroup /dcdbackup
-    #docker run --restart=always --name=samba -dit -p 445:445 -v /dcdbackup:/mount dperson/samba -n -S -p \
-    #        -w WORKGROUP \
-    #        -u "f5student;purple123" \
-    #        -s "dcdbackup;/mount;yes;no;no;f5student" \
-    #        -g "ntlm auth=yes" \
-    #        -g "client min protocol = NT1" \
-    #        -g "server min protocol = NT1" \
-    #        -g "client ipc min protocol = NT1"
-
-    #nmap --script smb-protocols localhost
-    #smbclient -L $jumphostIp -W WORKGROUP -U f5student%purple123
-    #echo -e "\nTo test the Samba/CIFS server from BIG-IQ:"
-    #echo -e "mkdir /tmp/testfolder"
-    #echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=1.0"
-    #echo -e "unmount /tmp/testfolder"
-    #echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=2.0"
-    #echo -e "unmount /tmp/testfolder"
+    nmap --script smb-protocols localhost
+    smbclient -L $jumphostIp -W WORKGROUP -U f5student%purple123
+    echo -e "\nTo test the Samba/CIFS server from BIG-IQ:"
+    echo -e "mkdir /tmp/testfolder"
+    echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=1.0"
+    echo -e "unmount /tmp/testfolder"
+    echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=2.0"
+    echo -e "unmount /tmp/testfolder"
 
     ### Update BIG-IQ welcome banner
     if [ ! -f /usr/games/fortune ]; then

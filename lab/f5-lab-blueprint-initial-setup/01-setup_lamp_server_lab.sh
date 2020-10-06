@@ -192,25 +192,25 @@ if [[  $answer == "Y" ]]; then
     chown -R f5student:f5student /home/f5student
 fi
 
-echo -e "\nInstall DHCP service"
-pause "Press [Enter] key to continue... CTRL+C to Cancel"
-apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install isc-dhcp-server -y
-echo 'INTERFACES="ens3"' > /etc/default/isc-dhcp-server
+# echo -e "\nInstall DHCP service"
+# pause "Press [Enter] key to continue... CTRL+C to Cancel"
+# apt -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" install isc-dhcp-server -y
+# echo 'INTERFACES="ens3"' > /etc/default/isc-dhcp-server
 
-cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.orig
-echo 'default-lease-time 600;
-max-lease-time 7200;
+# cp /etc/dhcp/dhcpd.conf /etc/dhcp/dhcpd.conf.orig
+# echo 'default-lease-time 600;
+# max-lease-time 7200;
 
-subnet 10.1.1.0 netmask 255.255.255.0 {
-option routers                  10.1.1.1;
-option subnet-mask              255.255.255.0;
-option domain-search            "example.com";
-option domain-name-servers      8.8.8.8;
-range   10.1.1.220   10.1.1.250;
-}' > /etc/dhcp/dhcpd.conf
-/etc/init.d/isc-dhcp-server restart
-/etc/init.d/isc-dhcp-server status
-dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
+# subnet 10.1.1.0 netmask 255.255.255.0 {
+# option routers                  10.1.1.1;
+# option subnet-mask              255.255.255.0;
+# option domain-search            "example.com";
+# option domain-name-servers      8.8.8.8;
+# range   10.1.1.220   10.1.1.250;
+# }' > /etc/dhcp/dhcpd.conf
+# /etc/init.d/isc-dhcp-server restart
+# /etc/init.d/isc-dhcp-server status
+# dhcp-lease-list --lease /var/lib/dhcp/dhcpd.leases
 
 echo -e "\nInstall Radius utils"
 apt install freeradius-utils -y

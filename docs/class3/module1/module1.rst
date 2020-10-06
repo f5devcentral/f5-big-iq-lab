@@ -153,7 +153,8 @@ See example below with an Application Service deployed using an AS3 template.
   :align: center
   :scale: 40%
 
-**Traffic Generation**
+Traffic Generation with locus.io
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Ubuntu Jump-host in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
 and Application dashboard in BIG-IQ.

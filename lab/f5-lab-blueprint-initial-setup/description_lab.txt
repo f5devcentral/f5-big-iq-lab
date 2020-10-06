@@ -1,76 +1,9 @@
-This lab environment is designed to allow for quick and easy demos of a significant portion of the BIG-IQ product.
-The Linux box in the environment has multiple cron jobs that are generating traffic that populates the Monitoring tab and Application dashboard.
+This lab environment is designed to demo a significant portion of the BIG-IQ product and allow you to configure the key topics discussed in the BIG-IQ Test Drive session.
 
-DEMO LAB GUIDE: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
-DRAFT VERSION: https://clouddocs.f5networks.net/training/community/big-iq-cloud-edition/html/
+BIG-IQ test drive Lab Guide: https://f5.com/bigiqtestdrive
 
-+----------------------------------------------------------------------------------------------------------------------------+
-| APPLICATION SERVICES ALREADY AVAILABLE IN THE BLUEPRINT:                                                                |
-+------------------+--------------------------------------------------------------------------+--------------+------+------+
-| airport_security | AS3 security_site18_seattle                                                            | 10.1.10.118 | SEA | Paula |
-|                           | (AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2) |                     |         |          |
-|                           +--------------------------------------------------------------------------+--------------+------+         |
-|                           | AS3 security_site16_boston                                                            | 10.1.10.116 | BOS |          |
-|                           | (AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1)        |                     |          |         |
-|                           +--------------------------------------------------------------------------+--------------+------+         |
-|                           | AS3 security_fqdn airports.example.com                                       |                     | BOS |          |
-|                           | (AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1)              |                     |          |          |
-+------------------+--------------------------------------------------------------------------+--------------+------+------+
-| IT_apps             | AS3 backend_site24tcp                                                                  | 10.1.10.124 | SEA  | Paula |
-|                           | (AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2)                     |                     |          |           |
-|                           +--------------------------------------------------------------------------+--------------+------+          |
-|                           | Service Catalog site36.example.com                                             | 10.1.10.136 | BOS  |          |
-|                           | (Default-f5-HTTPS-WAF-lb-template-v1)                                       |                     |           |          |
-|                           +--------------------------------------------------------------------------+--------------+------+          |
-|                           | Legacy App media.site42.example.com                                        | 10.1.10.142 | SEA   |          |
-+------------------+--------------------------------------------------------------------------+--------------+------+-------+
-| finance_apps     | AS3 conference_site41waf                                                             | 10.1.10.141 | SEA  | Paul   |
-|                           | (without AS3 template using API)                                                    |                    |          |           |
-|                           +--------------------------------------------------------------------------+--------------+------+          |
-|                           | AS3 mail_site40waf                                                                        | 10.1.10.140 | SEA  |           |
-|                           | (without AS3 template using API)                                                   |                     |          |           |
-|                           +--------------------------------------------------------------------------+--------------+------+          |
-|                           | AS3 tax_site17access                                                                     | 10.1.10.117 | BOS |           |
-|                           | (without AS3 template using API)                                                    |                     |          |          |
-+------------------+--------------------------------------------------------------------------+--------------+-----+--------+
-
-+------------------------------------------------------------------------------------------------------------------------+
-| VIRTUAL IP ADDRESSES AVAILABLE TO USE WHERE HTTP TRAFFIC IS BEING SENT:                            |
-+------------------------------------------------------------+----------------------------------------------------------+
-| BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE             | 10.1.10.111,113,119,123,127,129,131,133,134       |
-+------------------------------------------------------------+----------------------------------------------------------+
-| SEA-vBIGIP01.termmarc.com.v14.1 (VPN, SSLO)      | 10.1.10.114,120,122,126                                         |
-+------------------------------------------------------------+----------------------------------------------------------+
-| SJC-vBIGIP01.termmarc.com.v15.1                           | 10.1.10.137,138,139                                                 |
-+------------------------------------------------------------------------------------------------------------------------+
-
-+-------------------------------------------------------------------------+-------------------+
-| POOL MEMBERS (on the Ubuntu 19.10 Lamp Server)                 | 10.1.20.110-123 |
-+-------------------------------------------------------------------------+-------------------+
-| DNS LISTENERS: BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE  | 10.1.10.203,204 |
-+-------------------------------------------------------------------------+-------------------+
-
-DOCUMENTATIONS:
-- BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
-- Customer Deck: https://f5.sharepoint.com/sites/SMEManagement/Shared%20Documents/Forms/AllItems.aspx
-
-COMPONENTS AVAILABLE:
-- "Application" - Application Management (Cloud Edition, AS3, Legacy) and Service Scaling Group
-- "System" - Manage all aspects for BIG-IQ, 
-- "Device" - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
-- "Deployment" - Manage evaluation task and deployment.
-- "Configuration" - ADC, Security (ASM, AFM, APM, DDOS, SSLo config/monitoring)
-- "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
-
-LIST OF INSTANCES:
-- BIG-IQ <> DCD 7.1.0.1 + DO1.5 + AS3.19.1 with burst feature enabled
-- 2x BIG-IP 13.1 / 1 cluster (BOS)
-- 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
-- 1x BIG-IP 15.1 / 1 standalone (SJC)
-- LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, GitLab, Docker, AWX 9.1.0, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
-- SSLo Service TAP and L3
-
-If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com).
+Full Lab Guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
+Lab Components & Credentials: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/startup.html
 
 ###################################################
 Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Gitlab

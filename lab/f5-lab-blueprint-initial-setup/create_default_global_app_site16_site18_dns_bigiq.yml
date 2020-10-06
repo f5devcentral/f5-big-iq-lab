@@ -11,15 +11,15 @@
         password: "{{ hostvars[groups['f5_bigiq'][0]]['bigiq_onboard_new_admin_password'] }}"
         validate_certs: false
 
-  tasks:
-    - name: Move an AS3 application service in BIG-IQ dashboard.
-      include_role:
-        name: f5devcentral.bigiq_move_app_dashboard
-      vars:
-          apps: 
-          - name: airport_security
-            pins:
-              - name: security_site16_boston
-              - name: security_site18_seattle
-              - name: security_fqdn
-      register: status
+    tasks:
+      - name: Move an AS3 application service in BIG-IQ dashboard.
+        include_role:
+          name: f5devcentral.bigiq_move_app_dashboard
+        vars:
+            apps: 
+            - name: airport_security
+              pins:
+                - name: security_site16_boston
+                - name: security_site18_seattle
+                - name: security_fqdn
+        register: status

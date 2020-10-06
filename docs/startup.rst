@@ -55,16 +55,27 @@ Once you connect to BIG-IQ, you can navigate in the following tabs:
 .. |welcomebigiq| image:: /pictures/welcomebigiq.png
    :scale: 40%
 
-Lab Components & Credentials
-----------------------------
-
-**Lab Diagram**:
+Lab Diagram
+-----------
 
 .. image:: ./pictures/diagram_udf.png
    :align: center
    :scale: 40%
 
-**List of instances**:
+**Networks**:
+
+- 10.1.1.0/24 Management Network
+- 10.1.10.0/24 External Network
+- 10.1.20.0/24 Internal Network
+- 10.1.30.0/24 SSLo Inline L3 IN Network
+- 10.1.40.0/24 SSLo Inline L3 OUT Network
+- 10.1.50.0/24 SSLo TAP Network
+- 172.17.0.0/16 Docker Internal Network
+- 172.100.0.0/16 AWS Internal Network
+- 172.200.0.0/16 Azure Internal Network
+
+List of instances & Credentials
+-------------------------------
 
 The following table lists the virtual appliances in the lab along with their credentials to use.
 
@@ -112,19 +123,8 @@ The following table lists the virtual appliances in the lab along with their cre
 |                         |         | - Samba                                                                                      |                             |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
 
-**Networks**:
-
-- 10.1.1.0/24 Management Network
-- 10.1.10.0/24 External Network
-- 10.1.20.0/24 Internal Network
-- 10.1.30.0/24 SSLo Inline L3 IN Network
-- 10.1.40.0/24 SSLo Inline L3 OUT Network
-- 10.1.50.0/24 SSLo TAP Network
-- 172.17.0.0/16 Docker Internal Network
-- 172.100.0.0/16 AWS Internal Network
-- 172.200.0.0/16 Azure Internal Network
-
-**Application Services already deployed in this lab**:
+Application Services already deployed in this lab
+-------------------------------------------------
 
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
 | Applications     | Application Services                | Template used                                               | IP/WideIP            | Location     | User Access |
@@ -148,10 +148,13 @@ The following table lists the virtual appliances in the lab along with their cre
 |                  | AS3 tax_site17access                | without AS3 template using API                              | 10.1.10.117          | Seattle      |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
 
-**LAMP Server details**:
+Traffic Generation
+------------------
 
 The Ubuntu Jump-host in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
-and Application dashboard in BIG-IQ.
+and Application dashboard in BIG-IQ. Note you can also use `locust.io`_  to generate HTTP traffic toward a specific virtual IP address.
+
+.. _locust.io: ./class3/module1/module1.html#traffic-generation-with-locus.io
 
 Below table shows the list of **Virtual Servers** and *Backend *Web Applications Servers** where various type of traffic
 is being sent (check ``crontab`` config for more details).
