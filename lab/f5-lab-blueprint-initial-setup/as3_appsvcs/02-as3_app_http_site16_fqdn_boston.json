@@ -70,6 +70,68 @@
             }
           ]
         }
+      },
+      "fqdn": {
+        "class": "Application",
+        "schemaOverlay": "AS3-F5-DNS-FQDN-A-type-default-monitors-template-big-iq-v1",
+        "template": "generic",
+        "dnsMain": {
+            "pools": [
+                {
+                    "use": "GSLB_Pool1"
+                },
+                {
+                    "use": "GSLB_Pool2"
+                }
+            ],
+            "enabled": true,
+            "domainName": "airports.example.com",
+            "class": "GSLB_Domain"
+        },
+        "GSLB_Pool1": {
+            "members": [
+                {
+                    "server": {
+                        "bigip": "/Common/BOS-vBIGIP01.termmarc.com"
+                    },
+                    "virtualServer": "/security/site16_boston/serviceMain"
+                },
+                {
+                    "server": {
+                        "bigip": "/Common/BOS-vBIGIP02.termmarc.com"
+                    },
+                    "virtualServer": "/security/site16_boston/serviceMain"
+                }
+            ],
+            "monitors": [
+                {
+                    "bigip": "/Common/tcp"
+                }
+            ],
+            "lbModeFallback": "return-to-dns",
+            "lbModeAlternate": "round-robin",
+            "lbModePreferred": "round-robin",
+            "class": "GSLB_Pool"
+        },
+        "GSLB_Pool2": {
+            "members": [
+                {
+                    "server": {
+                        "bigip": "/Common/SEA-vBIGIP01.termmarc.com"
+                    },
+                    "virtualServer": "/security/site18_seattle/serviceMain"
+                }
+            ],
+            "monitors": [
+                {
+                    "bigip": "/Common/tcp"
+                }
+            ],
+            "lbModeFallback": "return-to-dns",
+            "lbModeAlternate": "round-robin",
+            "lbModePreferred": "round-robin",
+            "class": "GSLB_Pool"
+        }
       }
     }
   }

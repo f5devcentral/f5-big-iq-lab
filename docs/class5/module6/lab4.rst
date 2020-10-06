@@ -83,7 +83,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
   :scale: 60%
   :align: center
 
-11. Login on **BIG-IQ** as **admin**, go to System tab > USER MANAGEMENT > Users. Confirm the new user exists.
+11. Login on **BIG-IQ** as **admin**, go to **System > USER MANAGEMENT > Users**. Confirm the new user exists.
 
 .. image:: pictures/lab-4-11.png
   :scale: 60%

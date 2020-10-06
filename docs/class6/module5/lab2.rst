@@ -48,7 +48,7 @@ Click **Save & Close**.
   :scale: 40%
   :align: center
 
-6. The previous step only made changes on BIG-IQ. You must now deploy the changes to the BIG-IP device. Navigate to the Deployment tab > Evaluate & Deploy > Local Traffic & Network.
+6. The previous step only made changes on BIG-IQ. You must now deploy the changes to the BIG-IP device. Navigate to **Deployment > Evaluate & Deploy > Local Traffic & Network**.
 
 .. image:: ../pictures/img_module5_lab2-6.png
   :scale: 40%
@@ -81,7 +81,7 @@ Click **Create**.
   :scale: 40%
   :align: center
 
-10. Navigate to the Configuration tab > Local Traffic > Profile and filter on ``silo-lab-http-profile``
+10. Navigate to **Configuration > Local Traffic > Profile** and filter on ``silo-lab-http-profile``
     to confirm the HTTP profile was renamed. The original conflict that prevented import into the default
     Silo has now been fixed, however the SJC BIG-IP device is still in it's own Silo. The Next steps will
     remove the device form its own Silo and re-import into the default Silo. 

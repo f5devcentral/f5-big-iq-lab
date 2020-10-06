@@ -65,7 +65,7 @@ You can look at the details of the Ansible Playbook source on the `GitHub reposi
 
 |lab-11-1|
 
-4. Navigate to Configuration tab > Local Traffic > Certificate Management > Certificates & Keys and check the certificate expiration date of ``webapp123api``.
+4. Navigate to **Configuration > Local Traffic > Certificate Management > Certificates & Keys** and check the certificate expiration date of ``webapp123api``.
 
 |lab-11-2|
 

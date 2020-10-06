@@ -1,14 +1,22 @@
-Lab 6.4: Convert a Service Catalog Application to a Legacy Application Service
-------------------------------------------------------------------------------
+Lab 6.4: Convert a BIG-IQ Service Catalog Application Service to a Legacy Application Service
+---------------------------------------------------------------------------------------------
 
 .. note:: Estimated time to complete: **10 minutes**
+
+The original Application Templates on BIG-IQ (introduced in v6.0) provided a graphical UI that allowed administrators to easily templatize and deploy applications.
+However, this initial implementation of Application Templates on BIG-IQ was not compatible with AS3. Those templates are called on BIG-IQ "Service Catalog Templates".
+
+F5 highly recommend to use AS3 Application Templates over the original Application Templates as they are not being enhanced going forward.
+
+If you have existing application services deployed with the original Application Templates (*BIG-IQ Service Catalog*), 
+you could either translate and re-deploy it using AS3 or convert it to an Legacy Application Service on BIG-IQ.
+
+In this lab, we are going to convert the BIG-IQ Service Catalog Application Service called ``site36.example.com`` under ``IT Apps`` to a Legacy Application Service.
 
 .. include:: /accesslab.rst
 
 Tasks
 ^^^^^
-
-In this lab, we are going to convert the Service Catalog Application Service called ``site36.example.com`` under ``IT Apps`` to a Legacy Application Service.
 
 1. Connect via ``SSH`` to the **BIG-IQ CM** and create the following python script which will be used later on::
 

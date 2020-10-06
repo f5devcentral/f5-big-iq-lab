@@ -86,7 +86,7 @@ DoS Log Destinations and Publisher creation using UI
 5. Pin the new Log Publisher to the SJC-vBIGIP01.termmarc.com device. Navigate to Pinning Policies and 
    add the Log Publisher previously created to SJC-vBIGIP01.termmarc.com.
 
-6. Deploy the Pool, Log Destinations, Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
+6. Deploy the Pool, Log Destinations, Log Publisher. Go to **Deployment > EVALUATE & DEPLOY > Local Traffic & Network**.
 
 Create a Deployment to deploy the Remote Logging Changes on the SJC BIG-IP.
 
@@ -289,7 +289,7 @@ Make sure you disable **TPS-based Detection** in the DoS profile by setting Oper
 |
 
 3. Deploy the DoS profile. 
-   Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
+   Go to **Deployment > EVALUATE & DEPLOY > Shared Security**.
 
 Create a Deployment to deploy the DoS Profile & Remote Logging changes on the SJC BIG-IP.
 

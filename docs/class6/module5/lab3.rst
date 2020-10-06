@@ -11,7 +11,7 @@ Tasks
 Now the necessary objects have been renamed on the BIG-IP, let's remove the device 
 from its own Silo and re-discover and re-import it into BIG-IQ.
 
-1. From the Devices tab > BIG-IP Devices, select **SJC-vBIGIP01.termmarc.com** and click on
+1. From **Devices > BIG-IP Devices**, select **SJC-vBIGIP01.termmarc.com** and click on
    **Remove All Services**
 
 .. image:: ../pictures/img_module5_lab3-1.png
@@ -83,7 +83,7 @@ Click on **Continue**.
   :scale: 40%
   :align: center
 
-10. You can navigate to the Configuration tab > Local Traffic > Profile and filter on ``silo-lab-http-profile``
+10. You can navigate to **Configuration > Local Traffic > Profile** and filter on ``silo-lab-http-profile``
     to confirm both HTTP profiles ``silo-lab-http-profile`` and ``silo-lab-http-profile2`` were imported. Note 
     a second copy of `silo-lab-http-profile2` still exists in the silolab Silo. Since this Silo is no longer in use 
     it will be deleted.

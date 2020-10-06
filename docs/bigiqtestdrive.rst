@@ -115,6 +115,7 @@ Optional Hands-On Labs
    class6/module1/lab4
    class1/module2/lab12
    class6/module5/module5.rst
+   class1/module2/lab13
 
 Resources
 ---------

@@ -49,7 +49,7 @@ then Local Traffic  ››  Profiles : Services : HTTP. Click on ``HTTP_Profile`
 
 6. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 
-7. Open Chrome and navigate on the website https\:\/\/site16.example.com. 
+7. Open Chrome and navigate on the website ``https://site16.example.com``
    If you open the developer tools in the browser (ctrl+shift+i), 
    you can see the F5 CSPM javascript added to the page.
 

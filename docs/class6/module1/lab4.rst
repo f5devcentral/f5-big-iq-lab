@@ -64,7 +64,7 @@ Configured third-party certificate provider on BIG-IQ
 
 2. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*..
 
-Navigate to Configuration tab > Local Traffic > Certificate Management > Third Party CA Management.
+Navigate to **Configuration > Local Traffic > Certificate Management > Third Party CA Management**.
 
 Click **Create**.
 
@@ -109,7 +109,7 @@ You can look at those policies in Venafi by looking at the last chapter of this 
 SSL Certificate & Key creation on BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Navigate to Configuration tab > Local Traffic > Certificate Management > Certificates & Keys.
+1. Navigate to **Configuration > Local Traffic > Certificate Management > Certificates & Keys**.
 
 Fill all necessary information and click **Create**. This will generate a certificate request or CSR along with a Private Key.
 This CSR will be send to Let's encrypt server which will sign it and send it back to BIG-IQ.
@@ -156,7 +156,7 @@ Repeat the same with the SSL Key:
 
 4. Deploy the SSL objects to the BIG-IQ.
 
-Navigate Deployment tab > Evaluate & Deploy > Local Traffic & Networks.
+Navigate **Deployment > Evaluate & Deploy > Local Traffic & Networks**.
 
 Create a new deployment:
 
@@ -288,10 +288,6 @@ This is only for this lab.
 
 
 4. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
-To do this, in your lab environment, click on the *Access* button
-of the *Ubuntu Lamp Server* system and select *noVNC* or *xRDP*.
-
-.. note:: Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
 
 You can test the application service by opening a browser in the **Ubuntu Jump-host** and type the URL ``https://webapp123.f5demo.com``.
 

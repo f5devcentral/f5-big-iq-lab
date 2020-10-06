@@ -106,7 +106,7 @@ After the Successful outcome, change Deny to Allow.
 
 4.4 Deploy the Access Policy to the device.
 
-Deployment tab > EVALUATE & DEPLOY > Access
+**Deployment > EVALUATE & DEPLOY > Access**
 
 Name: ``new-access-policy`
 Method: ``Deploy immediately``
@@ -201,7 +201,7 @@ the Virtual Server delivering the service.
 Access Policy Session Monitoring
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. From BIG-IQ navigate to the Monitoring tab > Access > Access Summary.
+1. From BIG-IQ navigate to **Monitoring > Access > Access Summary**.
 
 .. image:: ../pictures/module1/lab-1-21.png
   :scale: 60%

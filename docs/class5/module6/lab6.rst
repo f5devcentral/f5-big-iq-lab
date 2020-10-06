@@ -73,7 +73,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
   :scale: 60%
   :align: center
 
-7. Login on **BIG-IQ** as **admin**, go to Devices tab > BIG-IP DEVICES and confirm that the device is no longer displayed. 
+7. Login on **BIG-IQ** as **admin**, go to **Devices > BIG-IP DEVICES** and confirm that the device is no longer displayed. 
 
 .. image:: pictures/lab-6-8.png
   :scale: 60%

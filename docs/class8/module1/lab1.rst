@@ -123,7 +123,7 @@ ASM Bot Log Destinations and Publisher creation using UI
 
 |
 
-6. Deploy the Pool, Log Destinations, Log Publisher. Go to Deployment tab > EVALUATE & DEPLOY > Local Traffic & Network.
+6. Deploy the Pool, Log Destinations, Log Publisher. Go to **Deployment > EVALUATE & DEPLOY > Local Traffic & Network**.
 
 Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 
@@ -246,7 +246,7 @@ ASM Bot Logging Profile creation
 
 .. warning:: This step is only for BIG-IQ => 7.1, go see the Annex at the end if you are using a lower version.
 
-1. While logged in as **larry**, create a new BOT Logging profile. Navigate to Configuration tab > SECURITY > Shared Security > Logging Profiles. Click Create.
+1. While logged in as **larry**, create a new BOT Logging profile. Navigate to **Configuration > SECURITY > Shared Security > Logging Profiles**. Click Create.
 
 - Name: ``lab-bot-logging-profile``
 - Properties: select ``Bot Defense``
@@ -321,7 +321,7 @@ MITIGATION SETTINGS:
 |
 
 3. Deploy the Bot Defense profile along with the Bot Logging Profile. 
-   Go to Deployment tab > EVALUATE & DEPLOY > Shared Security.
+   Go to **Deployment > EVALUATE & DEPLOY > Shared Security**.
 
 Create a Deployment to deploy the Remote Logging Changes on the SEA BIG-IP.
 

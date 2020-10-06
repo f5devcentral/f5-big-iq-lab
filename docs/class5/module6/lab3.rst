@@ -62,7 +62,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
   :scale: 60%
   :align: center
 
-7. Login on **BIG-IQ** as **admin**, go to Devices tab > LICENSE MANAGEMENT > Licenses.  Click on the regkey pool and check the newly added key.
+7. Login on **BIG-IQ** as **admin**, go to **Devices > LICENSE MANAGEMENT > Licenses**.  Click on the regkey pool and check the newly added key.
 
 .. image:: pictures/lab-3-8.png
   :scale: 60%

@@ -63,17 +63,17 @@ COMPONENTS AVAILABLE:
 - "Monitoring" - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
 
 LIST OF INSTANCES:
-- BIG-IQ <> DCD 7.1.0 + DO1.5 + AS3.19.1 with burst feature enabled
+- BIG-IQ <> DCD 7.1.0.1 + DO1.5 + AS3.19.1 with burst feature enabled
 - 2x BIG-IP 13.1 / 1 cluster (BOS)
 - 2x BIG-IP 14.1 / 1 standalone (SEA) and 1 standalone (PARIS)
 - 1x BIG-IP 15.1 / 1 standalone (SJC)
 - LAMP Server - Radius, LDAP, DHCP, xRDP, noVNC, Splunk, GitLab, Docker, AWX 9.1.0, Application Servers (Hackazon, dvmw, f5 demo app), Traffic Generator (HTTP, Access, DNS, Security).
 - SSLo Service TAP and L3
 
-If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com) or Kyle Oliver (k.oliver@f5.com)
+If you have questions, comments, or concerns, please reach out to Roman Jouhannet (r.jouhannet@f5.com).
 
 ###################################################
-Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Splunk, Gitlab
+Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Gitlab
 
 It takes about 20min for the Ubuntu and all its services running in docker container to initalize.
 Note than GitLab needs to be started manually (./gitlab/start-gitlab.sh) and it takes approximately 10min to start.

@@ -112,7 +112,7 @@ into a Silo named ``silolab``.
   :scale: 40%
   :align: center
 
-10. If you navigate to the Configuration tab > Local Traffic > Profile and filter on ``silo-lab-http-profile``
+10. If you navigate to **Configuration > Local Traffic > Profile** and filter on ``silo-lab-http-profile``
     you will see the 2 different instances of the same HTTP profile. One which is part of the default silo and the newly
     imported profile from the SJC BIG-IP device which is in the Silo called ``silolab``.
 

@@ -1,7 +1,15 @@
 ---
-- name: Create Global App on BIG-IQ with site16, 18 and DNS app
-  hosts: all
-  connection: local
+  - hosts: f5_bigiq
+    connection: local
+    serial: 1
+    gather_facts: false
+    vars:
+      provider:
+        server: "{{ hostvars[groups['f5_bigiq_cm'][0]]['ansible_host'] }}"
+        server_port: 443
+        user: admin
+        password: "{{ hostvars[groups['f5_bigiq'][0]]['bigiq_onboard_new_admin_password'] }}"
+        validate_certs: false
 
   tasks:
     - name: Move an AS3 application service in BIG-IQ dashboard.
