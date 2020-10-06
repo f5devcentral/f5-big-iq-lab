@@ -111,13 +111,13 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
 
     ### Starting Arcadia Finance https://gitlab.com/MattDierick/arcadia-finance
-    echo -e "Start Arcadia Finance apps\n"
-    docker network create internal
-    docker run --restart=always -dit --name=mainapp -h mainapp --net=internal registry.gitlab.com/mattdierick/arcadia-finance/mainapp:latest
-    docker run --restart=always -dit --name=backend -h backend --net=internalregistry.gitlab.com/mattdierick/arcadia-finance/backend:latest
-    docker run --restart=always -dit --name=app2 -h app2 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app2:latest
-    docker run --restart=always -dit --name=app3 -h app3 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
-    docker run --restart=always -dit -p 8084:80 --name=arcadia -h nginx --net=internal -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
+    # echo -e "Start Arcadia Finance apps\n"
+    # docker network create internal
+    # docker run --restart=always -dit --name=mainapp -h mainapp --net=internal registry.gitlab.com/mattdierick/arcadia-finance/mainapp:latest
+    # docker run --restart=always -dit --name=backend -h backend --net=internalregistry.gitlab.com/mattdierick/arcadia-finance/backend:latest
+    # docker run --restart=always -dit --name=app2 -h app2 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app2:latest
+    # docker run --restart=always -dit --name=app3 -h app3 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
+    # docker run --restart=always -dit -p 8084:80 --name=arcadia -h arcadia --net=internal -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
 
     ### Add delay, loss and corruption to the nginx web app
     echo -e "Customized Nginx container\n"
