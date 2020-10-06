@@ -154,7 +154,7 @@ Traffic Generation
 The Ubuntu Jump-host in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
 and Application dashboard in BIG-IQ. Note you can also use `locust.io`_  to generate HTTP traffic toward a specific virtual IP address.
 
-.. _locust.io: ./class3/module1/module1.html#traffic-generation-with-locus.io
+.. _locust.io: ./class3/module1/module1.html#traffic-generation-with-locus-io
 
 Below table shows the list of **Virtual Servers** and *Backend *Web Applications Servers** where various type of traffic
 is being sent (check ``crontab`` config for more details).

@@ -46,7 +46,7 @@ if [[  $currentuser == "root" ]]; then
         $home/tools/cleanup-docker.sh
 
         echo "Cleanup previous files..."
-        rm -rf f5-* awx gitlab ldap splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token
+        rm -rf f5-* arcadia awx gitlab ldap locust radius splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token
         ls -lrt
 
         echo "Install new scripts..."
@@ -111,12 +111,13 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
 
     ### Starting Arcadia Finance https://gitlab.com/MattDierick/arcadia-finance
+    echo -e "Start Arcadia Finance apps\n"
     docker network create internal
-    docker run --restart=always -dit -h mainapp --name=mainapp --net=internal_arcadia registry.gitlab.com/mattdierick/arcadia-finance/mainapp:latest
-    docker run --restart=always -dit -h backend --name=backend --net=internal_arcadia registry.gitlab.com/mattdierick/arcadia-finance/backend:latest
-    docker run --restart=always -dit -h app2 --name=app2 --net=internal_arcadia registry.gitlab.com/mattdierick/arcadia-finance/app2:latest
-    docker run --restart=always -dit -h app3 --name=app3 --net=internal_arcadia registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
-    docker run --restart=always -dit -h nginx --name=arcadia --net=internal_arcadia -p 8084:80 -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
+    docker run --restart=always -dit --name=mainapp -h mainapp --net=internal registry.gitlab.com/mattdierick/arcadia-finance/mainapp:latest
+    docker run --restart=always -dit --name=backend -h backend --net=internalregistry.gitlab.com/mattdierick/arcadia-finance/backend:latest
+    docker run --restart=always -dit --name=app2 -h app2 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app2:latest
+    docker run --restart=always -dit --name=app3 -h app3 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
+    docker run --restart=always -dit -p 8084:80 --name=arcadia -h nginx --net=internal -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
 
     ### Add delay, loss and corruption to the nginx web app
     echo -e "Customized Nginx container\n"
@@ -248,9 +249,9 @@ if [[  $currentuser == "root" ]]; then
     echo -e "\nTo test the Samba/CIFS server from BIG-IQ:"
     echo -e "mkdir /tmp/testfolder"
     echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=1.0"
-    echo -e "unmount /tmp/testfolder"
+    echo -e "umount /tmp/testfolder"
     echo -e "mount.cifs //$jumphostIp/dcdbackup /tmp/testfolder -o user=f5student,password=purple123,domain=WORKGROUP,vers=2.0"
-    echo -e "unmount /tmp/testfolder"
+    echo -e "umount /tmp/testfolder"
 
     ### Update BIG-IQ welcome banner
     if [ ! -f /usr/games/fortune ]; then

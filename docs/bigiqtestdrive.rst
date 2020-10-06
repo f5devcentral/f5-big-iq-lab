@@ -84,7 +84,7 @@ Hands-On Labs
    class3/module2/lab3
    class3/module4/lab1
 
-**Class 6: BIG-IQ LTM Configuration Management** *(Estimated time to complete: 15min)*
+**Class 6: BIG-IQ LTM Configuration Management** *(Estimated time to complete: 20min)*
 
 .. toctree::
    :maxdepth: 1

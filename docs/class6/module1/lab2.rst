@@ -1,7 +1,7 @@
 Lab 1.2: Create a self-signed SSL certificate & key on BIG-IQ
 -------------------------------------------------------------
 
-.. note:: Estimated time to complete: **5 minutes**
+.. note:: Estimated time to complete: **10 minutes**
 
 .. include:: /accesslab.rst
 
@@ -56,7 +56,7 @@ Repeat the same with the SSL Key:
   :scale: 40%
   :align: center
 
-4. Deploy the SSL objects to the BIG-IQ.
+4. Deploy the SSL objects to the BIG-IP.
 
 Navigate **Deployment > Evaluate & Deploy > Local Traffic & Networks**.
 

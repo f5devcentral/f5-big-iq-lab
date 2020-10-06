@@ -152,7 +152,7 @@ Click **Deploy & Test**.
   :scale: 40%
   :align: center
 
-3. You only have to pass one challenge, in thi lab, we are going to use the **HTTP challenge**. 
+3. You only have to pass one challenge, in this lab, we are going to use the **HTTP challenge**. 
 
 While previous step is in progress, in your browser open ``http://lab.webapp.34.219.3.233.nip.io/hello``.
 
@@ -240,7 +240,7 @@ Repeat the same with the SSL Key:
   :scale: 80%
   :align: center
 
-4. Deploy the SSL objects to the BIG-IQ.
+4. Deploy the SSL objects to the BIG-IP.
 
 Navigate **Deployment > Evaluate & Deploy > Local Traffic & Networks**.
 

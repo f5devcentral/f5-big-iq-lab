@@ -154,7 +154,7 @@ Repeat the same with the SSL Key:
   :scale: 80%
   :align: center
 
-4. Deploy the SSL objects to the BIG-IQ.
+4. Deploy the SSL objects to the BIG-IP.
 
 Navigate **Deployment > Evaluate & Deploy > Local Traffic & Networks**.
 

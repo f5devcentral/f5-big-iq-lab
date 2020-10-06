@@ -10,7 +10,7 @@ Tasks
 
 1. Login as **david** in BIG-IQ and navigate to **Devices > Password Management > Change Device Passwords**.
 
-Change both admin and root password to:
+Change both admin and root passwords to:
 
 - Old Admin Password: ``purple123``
 - New Admin Password: ``Purple123#321``
@@ -21,4 +21,14 @@ Change both admin and root password to:
   :scale: 40%
   :align: center
 
+2. Once the task is completed, you can review it and check its status.
 
+.. image:: ./media/lab-5-2.png
+  :scale: 40%
+  :align: center
+
+|
+
+.. image:: ./media/lab-5-3.png
+  :scale: 40%
+  :align: center
