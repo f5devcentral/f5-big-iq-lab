@@ -1,5 +1,5 @@
-Lab 4.1: Create multiple changes. Deploy single change
-------------------------------------------------------
+Lab 4.1: Create multiple changes & deploy single change
+-------------------------------------------------------
 
 .. note:: Estimated time to complete: **10 minutes**
 

@@ -1,4 +1,4 @@
-Lab 11.5: Discover, License, and Register BIG-IP on BIG-IQ using Declarative Onboarding
+Lab 6.5: Discover, License, and Register BIG-IP on BIG-IQ using Declarative Onboarding
 ---------------------------------------------------------------------------------------
 
 .. note:: Estimated time to complete: **5 minutes**

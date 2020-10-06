@@ -113,6 +113,14 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
 
+    ### Starting Arcadia Finance https://gitlab.com/MattDierick/arcadia-finance
+    docker network create internal
+    docker run --restart=always -dit -h mainapp --name=mainapp --net=internal_arcadia registry.gitlab.com/mattdierick/arcadia-finance/mainapp:latest
+    docker run --restart=always -dit -h backend --name=backend --net=internal_arcadia registry.gitlab.com/mattdierick/arcadia-finance/backend:latest
+    docker run --restart=always -dit -h app2 --name=app2 --net=internal_arcadia registry.gitlab.com/mattdierick/arcadia-finance/app2:latest
+    docker run --restart=always -dit -h app3 --name=app3 --net=internal_arcadia registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
+    docker run --restart=always -dit -h nginx --name=arcadia --net=internal_arcadia -p 8084:80 -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
+
     ### Add delay, loss and corruption to the nginx web app
     echo -e "Customized Nginx container\n"
     docker_nginx_id="nginx"

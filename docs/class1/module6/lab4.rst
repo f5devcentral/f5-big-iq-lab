@@ -1,7 +1,7 @@
 Lab 6.4: Convert a Service Catalog Application to a Legacy Application Service
 ------------------------------------------------------------------------------
 
-.. note:: Estimated time to complete: **15 minutes**
+.. note:: Estimated time to complete: **10 minutes**
 
 .. include:: /accesslab.rst
 

@@ -11,7 +11,7 @@ Tasks
 
 1. Create the AWS environment and VPN
 
-SSH Ubuntu host in lab environment.
+SSH Ubuntu host in the lab environment.
 
 Navigate to: ``cd f5-aws-vpn-ssg``
 

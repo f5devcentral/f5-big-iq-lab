@@ -29,7 +29,7 @@ Below is an example of a search query used to display the HTTP Transactions:
 
 ``index = "main" |table _time,result.result{}.transactions$avg-count-per-sec | rename result.result{}.transactions$avg-count-per-sec as transactions | spath``
 
-Click on the *SPLUNK* button on the system *Ubuntu Lamp Server* in lab environment.
+Click on the *SPLUNK* button on the system *Ubuntu Lamp Server* in the lab environment.
 Use ``admin/purple123`` to authenticate.
 
 *Dashboard in Splunk*

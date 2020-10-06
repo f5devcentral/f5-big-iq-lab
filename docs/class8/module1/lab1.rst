@@ -33,7 +33,7 @@ Workflow
 Prerequisites
 ^^^^^^^^^^^^^
 
-Connect as **david** on BIG-IQ.
+Login as **david** on BIG-IQ.
 
 1. First make sure your device has ASM module discovered and imported 
 for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
@@ -468,7 +468,7 @@ Annex | ASM Bot Defense & Logging Profiles creation from BIG-IP
 
 .. warning:: This part is only for BIG-IQ <= 7.0. It can be done from BIG-IQ UI starting BIG-IQ 7.1.
 
-1. Connect as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
+1. Login as **admin** on BIG-IP SEA-vBIGIP01.termmarc.com.
 
 2. Create the Bot Defense Profile. Navigate to Security > Bot Defense. Click Create.
 

@@ -51,7 +51,7 @@ Start GitLab and create new a project
 
 |lab-12-1|
 
-4. Click on the *GitLab* button on the system *Ubuntu Lamp Server* in lab environment. Create a new project and name it ``mywebapp``.
+4. Click on the *GitLab* button on the system *Ubuntu Lamp Server* in the lab environment. Create a new project and name it ``mywebapp``.
 
 |lab-12-2|
 

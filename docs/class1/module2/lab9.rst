@@ -13,7 +13,7 @@ use it to deploy an AS3 Application Service on a BIG-IP through BIG-IQ.
 Tasks
 ^^^^^
 
-1. Click on the *Visual Studio Code* button on the system *Ubuntu Lamp Server* in lab environment.
+1. Click on the *Visual Studio Code* button on the system *Ubuntu Lamp Server* in the lab environment.
 Use ``purple123`` to authenticate.
 
 2. Click on the **F5** logo on the left menu in the Visual Code Studio window.

@@ -59,7 +59,7 @@ Once you are ready to start your BIG-IQ journey, consult the |location_link_gets
 Hands-On Labs
 -------------
 
-**Class 1: BIG-IQ Application Management and AS3** *(Estimated time to complete: 1h)*
+**Class 1: BIG-IQ Application Management and AS3** *(Estimated time to complete: 40min)*
 
 .. toctree::
    :maxdepth: 1
@@ -84,7 +84,7 @@ Hands-On Labs
    class3/module2/lab3
    class3/module4/lab1
 
-**Class 6: BIG-IQ LTM Configuration Management** *(Estimated time to complete: 20min)*
+**Class 6: BIG-IQ LTM Configuration Management** *(Estimated time to complete: 15min)*
 
 .. toctree::
    :maxdepth: 1

@@ -8,7 +8,7 @@ Lab 4.2: DNS Application Service Creation
 Tasks
 ^^^^^
 
-1. Connect as **paula**. Navigate to the ``airport_security`` Application.
+1. Login as **paula**. Navigate to the ``airport_security`` Application.
 
 This Application is composed of 3 Application Services:
 

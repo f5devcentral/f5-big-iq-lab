@@ -7,7 +7,7 @@ Lab 4.1: Generate Reports in PDF
 
 Tasks
 ^^^^^
-1. Connect as **paula** in BIG-IQ.
+1. Login as **paula** in BIG-IQ.
 
 .. image:: ../pictures/module4/img_lab1_1.png
   :align: center

@@ -30,7 +30,7 @@ Check the BIG-IQ documentation on the BIG-IQ knowledge center to learn more on h
 General Views and Configuration Applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Connect as **paula**.
+Login as **paula**.
 
 The screen lists all of your applications and current summary data about health, traffic performance and security. 
 Use this screen to create, delete, deploy and oversee all of your applications.
@@ -153,11 +153,16 @@ See example below with an Application Service deployed using an AS3 template.
   :align: center
   :scale: 40%
 
-**locust.io: Load testing tool**
+**Traffic Generation**
 
-Now, let's use locust.io, an open source load testing tool, to generate some HTTP traffic from multiple users.
+The Ubuntu Jump-host in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
+and Application dashboard in BIG-IQ.
 
-Click on the *Locust* button on the system *Ubuntu Lamp Server* in lab environment.
+This lab also includes an open source load testing tool called locust.io which can be used to generate HTTP traffic from multiple users.
+
+Let's try to use it!
+
+Click on the *Locust* button on the system *Ubuntu Lamp Server* in the lab environment.
 
 Enter the following options:
   - Number of total user: ``50``
@@ -170,7 +175,7 @@ The hatch rate is the number of users to spawn per second, starting from zero wh
   :align: center
   :scale: 40%
 
-Traffic simulator is started.
+The HTTP traffic simulator is started.
 
 .. image:: ../pictures/module1/img_module1_lab1_10.png
   :align: center

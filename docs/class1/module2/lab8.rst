@@ -8,7 +8,7 @@ Lab 2.8: AS3 Application Creation using AWX/Ansible Tower and BIG-IQ
 Application Service Creation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Click on the *AWX (Ansible Tower)* button on the system *Ubuntu Lamp Server* in lab environment.
+Click on the *AWX (Ansible Tower)* button on the system *Ubuntu Lamp Server* in the lab environment.
 Use ``admin/purple123`` to authenticate.
 
 .. image:: ../pictures/module2/lab-8-1.png

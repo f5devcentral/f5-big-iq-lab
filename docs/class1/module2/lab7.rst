@@ -36,7 +36,7 @@ Execute the playbooks for each tasks.
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task01_create_http_app.json
 
-  Connect as **david** and check on BIG-IQ the application has been correctly created.
+  Login as **david** and check on BIG-IQ the application has been correctly created.
 
 |
 
@@ -45,7 +45,7 @@ Execute the playbooks for each tasks.
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task02_create_https_app.json
 
-  Connect as **david** and check on BIG-IQ the application has been correctly created.
+  Login as **david** and check on BIG-IQ the application has been correctly created.
 
 |
 
@@ -54,7 +54,7 @@ Execute the playbooks for each tasks.
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task03a_create_waf_app.json
 
-  Connect as **david** and check on BIG-IQ the application has been correctly created.
+  Login as **david** and check on BIG-IQ the application has been correctly created.
 
 |
 
@@ -63,7 +63,7 @@ Execute the playbooks for each tasks.
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task04_create_generic_app.json
 
-  Connect as **david** and check on BIG-IQ the application has been correctly created.
+  Login as **david** and check on BIG-IQ the application has been correctly created.
 
 |
 
@@ -72,7 +72,7 @@ Execute the playbooks for each tasks.
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task05a_modify_post_http_app.json
 
-  Connect as **david** and check on BIG-IQ the application has been correctly created.
+  Login as **david** and check on BIG-IQ the application has been correctly created.
 
 |
 
@@ -81,7 +81,7 @@ Execute the playbooks for each tasks.
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./ansible_helper ansible-playbook /ansible/bigiq_as3_move_apps.yml -i /ansible/hosts
 
-  Connect as **david** and check on BIG-IQ the application has been correctly created.
+  Login as **david** and check on BIG-IQ the application has been correctly created.
 
   .. warning:: If you want Paula to access the new Application called LAB_task1, David will need to assign the role ``LAB_task1 Manager``
 
@@ -94,7 +94,7 @@ Execute the playbooks for each tasks.
     cd /home/f5/f5-ansible-bigiq-as3-demo
     ./cmd_bigiq_as3_apps_creation.sh as3_bigiq_task09_delete_task1_app.json
 
-  Connect as **david** on BIG-IQ.
+  Login as **david** on BIG-IQ.
 
   Here, we empty the tenant/partition Task1. This should remove those partitions from BOS-vBIGIP01.termmarc.com. The relevant Apps 
   should also disappear from BIG-IQ. 

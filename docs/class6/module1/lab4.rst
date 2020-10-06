@@ -1,7 +1,7 @@
 Lab 1.4: Integrating Venafi with BIG-IQ for Certificate Management
 ------------------------------------------------------------------
 
-.. note:: Estimated time to complete: **30 minutes**
+.. note:: Estimated time to complete: **20 minutes**
 
 F5 Networks and Venafi have partnered to provide a tightly-integrated solution for certificate and key management.
 Managing Venafi certificate requests through BIG-IQ automates laborious processes and reduces the amount of time you 

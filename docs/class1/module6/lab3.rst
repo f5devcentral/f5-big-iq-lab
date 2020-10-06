@@ -1,7 +1,7 @@
 Lab 6.3: Legacy Application and RBAC: Paula workflow
 ----------------------------------------------------
 
-.. note:: Estimated time to complete: **15 minutes**
+.. note:: Estimated time to complete: **5 minutes**
 
 .. include:: /accesslab.rst
 

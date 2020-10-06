@@ -25,7 +25,7 @@ Tasks
 
 1. Login to BIG-IQ as **david**.
 
-2. Navigate to the DEVICE tab, Script Management, Scripts. Click on Add.
+2. Navigate to **Device > Script Management > Scripts**. Click on Add.
 
 .. image:: ./media/lab-6-1.png
   :scale: 40%

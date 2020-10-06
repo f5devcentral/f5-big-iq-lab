@@ -53,7 +53,7 @@ Click on **CREATE**.
 
 |
 
-After few minutes, the VM is created in lab environment. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).
+After few minutes, the VM is created in the lab environment. Click on the new VM, go to the Subnets tab and bind additional interfaces (External and Internal).
 
 .. image:: ../pictures/module6/img_module6_lab1_1c.png
   :align: center

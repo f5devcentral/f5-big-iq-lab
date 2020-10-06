@@ -1,5 +1,5 @@
-Lab 3.2: Create a backup schedule
----------------------------------
+Lab 3.2: Create a schedule backup on BIG-IQ
+-------------------------------------------
 
 .. note:: Estimated time to complete: **5 minutes**
 
@@ -9,59 +9,47 @@ Tasks
 ^^^^^
 Now, we can create our backup schedule that references this dynamic group.
 
-1. Click on the Back Up & Restore on the left-hand menu
+1. Click on the **Back Up & Restore > Backup Schedules** on the left-hand menu
 
-2. Click on Backup Schedules
+.. image:: media/image22.png
+  :scale: 40%
+  :align: center
 
-|image22|
-
-3. Click the Create button in the main pane
-
-4. Fill out the Backup Schedule
+2. Click the Create button and fill out the Backup Schedule details. Make sure you pick a start time in the next 5 minutes.
 
 +--------------------------+------------------------------------------------------+
-| Name                     | **BostonNightly**                                    |
-+==========================+======================================================+
-| Local Retention Policy   | **Delete local backup copy 3 days after creation**   |
+| Name                     | ``BostonNightly``                                    |
 +--------------------------+------------------------------------------------------+
-| Backup Frequency         | **Daily**                                            |
+| Local Retention Policy   | ``Delete local backup copy 3 days after creation``   |
 +--------------------------+------------------------------------------------------+
-| Start Time               | 00:00 Eastern Standard Time                          |
+| Backup Frequency         | ``Daily``                                            |
++--------------------------+------------------------------------------------------+
+| Start Time               | *Today's date and time in the next 5min*             |
 +--------------------------+------------------------------------------------------+
 
-Under Devices, select the **Groups radio button**
+Under *Devices*, select the **Groups radio button** and select from the drop-down **BostonDCGroup**
 
-Select from the drop-down **BostonDCGroup**
+.. image:: media/image23.png
+  :scale: 60%
+  :align: center
 
 In the Backup Archive section, enter the following:
 
 +-------------+------------------------------------+
-| Archive     | **Store Archive Copy of Backup**   |
-+=============+====================================+
-| Location    | **SCP**                            |
+| Archive     | ``Store Archive Copy of Backup``   |
 +-------------+------------------------------------+
-| IP Address  | **10.1.10.80**                     |
+| Location    | ``SCP``                            |
 +-------------+------------------------------------+
-| User name   | **F5**                             |
+| IP Address  | ``10.1.1.5``                       |
 +-------------+------------------------------------+
-| Password    | **default**                        |
+| User name   | ``F5``                             |
 +-------------+------------------------------------+
-| Directory   | **/home/f5**                       |
+| Password    | ``default``                        |
 +-------------+------------------------------------+
-
-|image23|
-
-|image24|
+| Directory   | ``/home/f5``                       |
++-------------+------------------------------------+
 
 Click **Save & Close** to save the scheduled backup job.
 
+3. Navigate under **Back Up & Restore > Backup Files**, wait few minutes the backup job starts.
 
-.. |image22| image:: media/image22.png
-   :width: 2.28096in
-   :height: 1.23943in
-.. |image23| image:: media/image23.png
-   :width: 6.35479in
-   :height: 5.69259in
-.. |image24| image:: media/image24.png
-   :width: 6.50000in
-   :height: 2.21319in

@@ -1,7 +1,7 @@
 Lab 3.1: Importing AS3 templates
 --------------------------------
 
-.. note:: Estimated time to complete: **10 minutes**
+.. note:: Estimated time to complete: **5 minutes**
 
 .. include:: /accesslab.rst
 

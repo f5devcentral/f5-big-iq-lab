@@ -1,7 +1,14 @@
 Lab 1.5: Manage the local root and admin passwords on the managed devices
 -------------------------------------------------------------------------
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
 
-Are you interested to see a lab on this topic? `Open an issue on GitHub`_
+.. note:: Estimated time to complete: **5 minutes**
 
-.. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
+.. include:: /accesslab.rst
+
+Tasks
+^^^^^
+
+1. Login as **david** in BIG-IQ and navigate to **Devices > Password Management > Change Device Passwords**.
+
+
+

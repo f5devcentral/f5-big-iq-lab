@@ -1,7 +1,5 @@
 Module 4: Partial Deployment & Partial Restore
-===============================================
-
-**Goal:**
+==============================================
 
 In this lab, we will demonstrate how to partially deploy the changes made to the device specific objects to the managed BIG-IP devices.
 

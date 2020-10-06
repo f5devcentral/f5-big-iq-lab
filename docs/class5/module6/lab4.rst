@@ -1,4 +1,4 @@
-Lab 11.4: Create User
+Lab 6.4: Create User
 ---------------------
 
 .. note:: Estimated time to complete: **5 minutes**

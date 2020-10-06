@@ -93,5 +93,5 @@ You might want to switch the active BIG-IQ before stopping the secondary… (or 
 
 11.	Promote the standby device bigiq1cm.example.com, at the pop-up click **OK**.
 
-12.	Stop BIG-IQ CM Secondary in lab environment.
+12.	Stop BIG-IQ CM Secondary in the lab environment.
 

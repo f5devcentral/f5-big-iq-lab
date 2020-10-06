@@ -150,7 +150,7 @@ The following table lists the virtual appliances in the lab along with their cre
 
 **LAMP Server details**:
 
-The Linux box in the environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
+The Ubuntu Jump-host in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
 and Application dashboard in BIG-IQ.
 
 Below table shows the list of **Virtual Servers** and *Backend *Web Applications Servers** where various type of traffic

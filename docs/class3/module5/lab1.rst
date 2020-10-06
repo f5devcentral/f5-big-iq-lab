@@ -24,7 +24,7 @@ attached to the Virtual IP address. For more details on `TCP analytics`_ within 
 Tasks
 ^^^^^
 
-1. Connect as **david** on BIG-IQ. Navigate to the Applications tab > APPLICATION, click on **Create**.
+1. Login as **david** on BIG-IQ. Navigate to the Applications tab > APPLICATION, click on **Create**.
 
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |

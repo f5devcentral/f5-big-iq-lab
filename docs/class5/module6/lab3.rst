@@ -1,4 +1,4 @@
-Lab 11.3: Add Key to Regkey Pool
+Lab 6.3: Add Key to Regkey Pool
 --------------------------------
 
 .. note:: Estimated time to complete: **5 minutes**

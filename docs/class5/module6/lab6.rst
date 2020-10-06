@@ -1,4 +1,4 @@
-Lab 11.6: Offboard BIG-IP from BIG-IQ
+Lab 6.6: Offboard BIG-IP from BIG-IQ
 -------------------------------------
 
 .. note:: Estimated time to complete: **5 minutes**

@@ -33,13 +33,13 @@ Tasks
 
 1. Login to BIG-IQ as **david**.
 
-2. Navigate to the DEVICE tab. Look at the device list, specifically at the BIG-IP versions. In this lab, we are going to upgrade the SEA-vBIGIP01.termmarc.com BIG-IP to the latest 14.1 version.
+2. Navigate to the **Device** tab. Look at the device list, specifically at the BIG-IP versions. In this lab, we are going to upgrade the **SEA-vBIGIP01.termmarc.com** BIG-IP to the latest 14.1 version.
 
 .. image:: ./media/lab-7-0.png
   :scale: 40%
   :align: center
 
-3. Navigate under Software Management, Software Images. Select the BIG-IP 14.1 image and click on **Manage Device Install**.
+3. Navigate under **Software Management > Software Images**. Select the BIG-IP 14.1 image and click on **Manage Device Install**.
 
 .. image:: ./media/lab-7-1.png
   :scale: 40%
