@@ -128,7 +128,7 @@ Application Services already deployed in this lab
 -------------------------------------------------
 
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
-| Applications     | Application Services                | `BIG-IQ Template used`_                                     | IP/WideIP            | Location     | User Access |
+| Applications     | Application Services                | BIG-IQ Template used                                        | IP/WideIP            | Location     | User Access |
 +==================+=====================================+=============================================================+======================+==============+=============+
 | airport_security | AS3 security_site18_seattle         | AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 | 10.1.10.118          | Seattle      | Paula       |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
@@ -148,8 +148,6 @@ Application Services already deployed in this lab
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
 |                  | AS3 tax_site17access                | without AS3 template using API                              | 10.1.10.117          | Seattle      |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
-
-.. _BIG-IQ Template used: http://github.com/f5devcentral/f5-big-iq
 
 Traffic Generation
 ------------------

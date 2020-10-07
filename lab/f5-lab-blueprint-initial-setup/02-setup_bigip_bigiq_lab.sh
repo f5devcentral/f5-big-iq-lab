@@ -1,6 +1,9 @@
 #!/bin/bash
-
 #set -x
+
+# curl -O https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/f5-lab-blueprint-initial-setup/02-setup_bigip_bigiq_lab.sh
+# chmod +x /root/02-setup_bigip_bigiq_lab.sh
+# ./02-setup_bigip_bigiq_lab.sh
 
 function pause(){
    read -p "$*"
@@ -8,30 +11,47 @@ function pause(){
 
 iq_lamp="10.1.1.5"
 
+# make sure the ucs files are located under ~/f5-lab-blueprint-initial-setup/ucs
+
 name[1]="SEA-vBIGIP01.termmarc.com"
 ip[1]="10.1.1.7"
+ucs[1]="backup_udf_20201007_SEA-vBIGIP01.termmarc.com_20201007102710.ucs"
+
 name[2]="BOS-vBIGIP01.termmarc.com"
 ip[2]="10.1.1.8"
+ucs[1]="backup_udf_20201007_BOS-vBIGIP01.termmarc.com_20201007102710.ucs"
+
 name[3]="BOS-vBIGIP02.termmarc.com"
 ip[3]="10.1.1.10"
+ucs[1]="backup_udf_20201007_BOS-vBIGIP02.termmarc.com_20201007102710.ucs"
+
 name[4]="PARIS-vBIGIP01.termmarc.com"
 ip[4]="10.1.1.13"
+ucs[1]="backup_udf_20201007_PARIS-vBIGIP01.termmarc.com_20201007102710.ucs"
+
 name[5]="SJC-vBIGIP01.termmarc.com"
 ip[5]="10.1.1.11"
+ucs[1]="backup_udf_20201007_SJC-vBIGIP01.termmarc.com_20201007102710.ucs"
 
 iq_cm="10.1.1.4"
+ucs_cm="backup_udf_20201007_ip-10-1-1-4.us-west-2.compute.internal_20201007102850.ucs"
 iq_dcd="10.1.1.6"
+ucs_dcd="backup_udf_20201007_ip-10-1-1-6.us-west-2.compute.internal_20201007102850.ucs"
 
 d=$2
 
 if [[ -z $1 ]]; then
     echo -e "\nSetup BIG-IP, then BIG-IQ for the lab.\n\n"
-    echo -e "\nOPTIONS: \nsshkeys [admin_password] [root_password]\nsetup\nresizedisk\n"
+    echo -e "\nOPTIONS:"
+    echo -e "init"
+    echo -e "sshkeys [admin_password] [root_password]"
+    echo -e "setup"
+    echo -e "resizedisk"
+    echo -e "ucs"
 
-elif [[ "$1" = "sshkeys" ]]; then
+elif [[ "$1" = "init" ]]; then
 
     echo -e "\n---------- INITIAL SETUP BIG-IPs -----------\n"
-
     echo -e "\nRun on all BIG-IPs as root:\n"
     echo -e "tmsh modify auth user admin password"
     echo -e "tmsh modify auth user admin shell bash"
@@ -41,6 +61,15 @@ elif [[ "$1" = "sshkeys" ]]; then
     echo -e 'echo "admin:admin" | chpasswd'
     echo -e "tmsh save sys config\n"
 
+    echo -e "\n---------- INITIAL SETUP BIG-IQs -----------\n"
+    echo -e "\nRun on both BIG-IQ CM and DCD as root:\n"
+    echo -e "tmsh modify auth password (set default)"
+    echo -e "tmsh modify auth user admin password admin"
+    echo -e "tmsh modify /sys db systemauth.disablerootlogin value false"
+    echo -e "tmsh modify auth user admin shell bash"
+    echo -e "tmsh save sys config\n"
+
+elif [[ "$1" = "sshkeys" ]]; then
     echo -e "---------- SSH KEY EXCHANGES BIG-IPs -----------\n"
     read -p "Continue (Y/N) (Default=N):" answer
     if [[  $answer == "Y" ]]; then
@@ -65,14 +94,6 @@ elif [[ "$1" = "sshkeys" ]]; then
         done
     fi
 
-    echo -e "\n---------- INITIAL SETUP BIG-IQs -----------\n"
-    echo -e "\nRun on both BIG-IQ CM and DCD as root:\n"
-    echo -e "tmsh modify auth password (set default)"
-    echo -e "tmsh modify auth user admin password admin"
-    echo -e "tmsh modify /sys db systemauth.disablerootlogin value false"
-    echo -e "tmsh modify auth user admin shell bash"
-    echo -e "tmsh save sys config\n"
-
     echo -e "---------- SSH KEY EXCHANGES BIG-IQs -----------\n"
     read -p "Continue (Y/N) (Default=N):" answer
     if [[  $answer == "Y" ]]; then
@@ -83,7 +104,6 @@ elif [[ "$1" = "sshkeys" ]]; then
     fi
 
 elif [[ "$1" = "resizedisk" ]]; then
-
     echo -e "---------- INCREASE PARTITION SIZE -----------\n"
     for ((i=1; i <= ${#ip[@]}; i++)); do
         echo -e "** ${ip[i]}"
@@ -100,51 +120,56 @@ elif [[ "$1" = "resizedisk" ]]; then
         fi
     done
 
-elif [[ "$1" = "setup" ]]; then
-    echo -e "\n---------- SETUP BIG-IPs -----------\n"
+elif [[ "$1" = "ucs" ]]; then
+    echo -e "\n---------- RESTORE BIG-IPs -----------\n"
+    # Restore UCS BIG-IP https://support.f5.com/csp/article/K13132
+    read -p "Continue (Y/N) (Default=N):" answer
+    if [[  $answer == "Y" ]]; then
+        for ((i=1; i <= ${#ip[@]}; i++)); do
+            echo -e "\n** ${ip[i]}\n"
+            read -p "Continue (Y/N) (Default=N):" answer
+            if [[  $answer == "Y" ]]; then
+                scp -o StrictHostKeyChecking=no ucs/${ucs[i]} root@${ip[i]}:/var/local/ucs
+                # ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh load /sys ucs /var/local/ucs/${ucs[i]}
+                # Enable iApps  ››  Package Management LX in BIG-IP UI
+                # ssh -o StrictHostKeyChecking=no root@${ip[i]} touch /var/config/rest/iapps/enable
+            fi
+        done
 
-    # Common tasks to run on all BIG-IPs
-    for ((i=1; i <= ${#ip[@]}; i++)); do 
-        echo -e "** ${ip[i]} - ${name[i]}\n"
+        echo -e "\nAfter restore, go manually re-activate the license: (https://support.f5.com/csp/article/K2595)\n"
+        echo -e "get_dossier -b ABCDE-ABCDE-ABCDE-ABCDE-ABCDEFG"
+        echo -e "vi /config/bigip.license"
+        echo -e "reloadlic"
+
+        echo -e "\nApply https://support.f5.com/csp/article/K45728203 to address hostname issue in AWS."
+    fi
+
+    echo -e "\n---------- RESTORE BIG-IQ CM and DCD -----------\n"
+    # Restore UCS BIG-IQ https://support.f5.com/csp/article/K45246805
+    read -p "Continue (Y/N) (Default=N):" answer
+    if [[  $answer == "Y" ]]; then
+        echo -e "\n** $iq_dcd\n"
         read -p "Continue (Y/N) (Default=N):" answer
         if [[  $answer == "Y" ]]; then
-            # Enable iApps  ››  Package Management LX in BIG-IP UI
-            ssh -o StrictHostKeyChecking=no root@${ip[i]} touch /var/config/rest/iapps/enable
+            scp -o StrictHostKeyChecking=no ucs/$ucs_dcd root@$iq_dcd:/var/local/ucs
+            # ssh -o StrictHostKeyChecking=no root@$iq_dcd tmsh load /sys ucs /var/local/ucs/$ucs_dcd
         fi
-    done
+        echo -e "\n** $iq_cm\n"
+        read -p "Continue (Y/N) (Default=N):" answer
+        if [[  $answer == "Y" ]]; then
+            scp -o StrictHostKeyChecking=no ucs/$ucs_cm root@$iq_cm:/var/local/ucs
+            # ssh -o StrictHostKeyChecking=no root@$iq_cm tmsh load /sys ucs /var/local/ucs/$ucs_cm
+        fi
+    fi
+
+elif [[ "$1" = "setup" ]]; then
+    echo -e "\n---------- SETUP BIG-IPs -----------\n"
 
     # SJC-vBIGIP01.termmarc.com
     # for Silo lab
     ssh -o StrictHostKeyChecking=no root@${ip[5]} tmsh create ltm profile http silo-lab-http-profile { accept-xff disabled insert-xforwarded-for disabled }
     ssh -o StrictHostKeyChecking=no root@${ip[5]} tmsh create ltm virtual vip-silo-lab  { destination 1.2.3.6:http ip-protocol tcp mask 255.255.255.255 profiles add { silo-lab-http-profile } }
     ssh -o StrictHostKeyChecking=no root@${ip[5]} tmsh save sys config
-
-    # BOS-vBIGIP01.termmarc.com (standby BOS-vBIGIP02.termmarc.com)
-    # Restore initial config
-    # Create legacy app directly on BIG-IP legacy_apps/01-as3_legacy_app1_site34_boston_direct_bigip.json
-
-    # SEA-vBIGIP01.termmarc.com
-    #-> SSLO config to be done from BIG-IQ following lab
-    # Create legacy app directly on BIG-IP legacy_apps/02-as3_legacy_app1_site42_seattle_direct_bigip.json
-
-    # PARIS-vBIGIP01.termmarc.com
-    #-> SSLO config to be done from BIG-IQ following lab
-
-    ssh -o StrictHostKeyChecking=no root@${ip[6]} tmsh create ltm virtual vip-web  { destination 1.2.3.7:http ip-protocol tcp mask 255.255.255.255 }
-    ssh -o StrictHostKeyChecking=no root@${ip[6]} tmsh save sys config
-
-
-    echo -e "\nAfter restore, go manually re-activate the license: (https://support.f5.com/csp/article/K2595)\n"
-    echo -e "get_dossier -b ABCDE-ABCDE-ABCDE-ABCDE-ABCDEFG"
-    echo -e "vi /config/bigip.license"
-    echo -e "reloadlic"
-
-    echo -e "\nFor BIG-IP Cluster: tmsh run cm config-sync force-full-load-push to-group datasync-global-dg"
-
-    echo -e "\nApply https://support.f5.com/csp/article/K45728203 to address hostname issue in AWS."
-
-    echo -e "\nAfter the restore, check LAB SSH connectivity with all BIG-IPs/BIG-IQs."
-
 fi
 
 echo -e "\nPost-Checks:

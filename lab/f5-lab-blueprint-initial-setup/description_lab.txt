@@ -47,7 +47,6 @@ Protocol: HTTPS(Authenticated)
 Local:
 10.1.1.5 port 8089
 
-
 ###################################################
 Name: Venafi Trust Protection
 
@@ -70,3 +69,76 @@ Add custom DNS for venafi in BIG-IQ:
 tmsh modify /sys global-settings remote-host add {ec2amaz-bq0fcmk.f5demo.com {hostname ec2amaz-bq0fcmk.f5demo.com addr 10.1.1.17}}
 tmsh save /sys config
 cat /etc/hosts
+
+sql database cred 127.0.0.1 port 1433: venafi/venafi
+
+
+###################################################
+CPU: 16*2 + 8*4 + 4*3 + 2*2 = 80vCPU (64vCPU max)
+Memory: 64*2 + 16*3 + 8*3 + 4*2 = 208GB (240GB max)
+
+- SJC-vBIGIP01.termmarc.com.v15.1
+10.1.1.11
+vCPUs: 4
+Memory: 8 GiB
+Disk Size: 200 GiB
+
+- PARIS-vBIGIP01.termmarc.com.v14.1
+10.1.1.13
+vCPUs: 4
+Memory: 8 GiB
+Disk Size: 250 GiB
+
+- BOS-vBIGIP01.termmarc.com.v13.1 ACTIVE
+10.1.1.8
+vCPUs: 8
+Memory: 16 GiB
+Disk Size: 250 GiB
+
+- BOS-vBIGIP02.termmarc.com.v13.1 STANDBY
+10.1.1.10
+vCPUs: 8
+Memory: 16 GiB
+Disk Size: 250 GiB
+
+- SEA-vBIGIP01.termmarc.com.v14.1 (VPN, SSLO)
+10.1.1.7
+vCPUs: 8
+Memory: 16 GiB
+Disk Size: 250 GiB
+
+- BIGIQ CM (Config Mgt) v7.1
+10.1.1.4
+vCPUs: 16
+Memory: 64 GiB
+Disk Size: 500 GiB
+
+- BIGIQ DCD (Data Collection Device) v7.1
+10.1.1.6
+vCPUs: 16
+Memory: 64 GiB
+Disk Size: 500 GiB
+
+- Ubuntu 20.04 Lamp, RDP, LDAP, Docker, AWX, Gitlab
+10.1.1.5
+vCPUs: 8
+Memory: 16 GiB
+Disk Size: 100 GiB
+
+- Venafi Trust Protection
+10.1.1.17
+vCPUs: 4
+Memory: 8 GiB
+Disk Size: 200 GiB
+
+- SSLo Service Inline L3
+10.1.1.14
+vCPUs: 2
+Memory: 4 GiB
+Disk Size: 80 GiB
+
+- SSLo Service TAP
+10.1.1.16
+vCPUs: 2
+Memory: 4 GiB
+Disk Size: 80 GiB
