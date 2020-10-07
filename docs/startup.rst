@@ -128,7 +128,7 @@ Application Services already deployed in this lab
 -------------------------------------------------
 
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
-| Applications     | Application Services                | Template used                                               | IP/WideIP            | Location     | User Access |
+| Applications     | Application Services                | `BIG-IQ Template used`_                                     | IP/WideIP            | Location     | User Access |
 +==================+=====================================+=============================================================+======================+==============+=============+
 | airport_security | AS3 security_site18_seattle         | AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 | 10.1.10.118          | Seattle      | Paula       |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
@@ -148,6 +148,8 @@ Application Services already deployed in this lab
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
 |                  | AS3 tax_site17access                | without AS3 template using API                              | 10.1.10.117          | Seattle      |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
+
+.. _BIG-IQ Template used: http://github.com/f5devcentral/f5-big-iq
 
 Traffic Generation
 ------------------
@@ -205,11 +207,11 @@ To run `Kali Linux`_ Docker Image: ``docker run -t -i kalilinux/kali-linux-docke
 To connect to a docker instance: ``docker exec -i -t <container id or name> /bin/bash``
 
 +--------+--------------------------------------------------------------------------------+
-| Radius | - ip/port 10.1.1.5:1812                                                        |
+| Radius | - ip:port 10.1.1.5:1812                                                        |
 |        | - secret = default                                                             |
 |        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/radius |
 +--------+--------------------------------------------------------------------------------+
-| LDAP   | - ip/port 10.1.1.5:389                                                         |
+| LDAP   | - ip:port 10.1.1.5:389                                                         |
 |        | - SSL: Disabled                                                                |
 |        | - Bind User Distinguished Name: cn=admin,dc=f5demo,dc=com                      |
 |        | - Bind User Password: ldappass                                                 |
@@ -221,7 +223,7 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 |        | - Group Distinguished Name: cn=admin,ou=Groups,dc=f5demo,dc=com                |
 |        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/ldap   |
 +--------+--------------------------------------------------------------------------------+
-| Tacac+ | - ip/port 10.1.1.5:49                                                          |
+| Tacac+ | - ip:port 10.1.1.5:49                                                          |
 |        | - secret = ciscotacacskey                                                      |
 |        | - Primary Service = shell                                                      |
 |        | - Encrypt = yes                                                                |
@@ -229,24 +231,24 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 +--------+--------------------------------------------------------------------------------+
 
 +-------+-----------------------------+
-| XRDP  | ip/port 10.1.1.5:3389       |
+| XRDP  | ip:port 10.1.1.5:3389       |
 +-------+-----------------------------+
-| noVNC | ip/port 10.1.1.5:6080 https |
+| noVNC | ip:port 10.1.1.5:6080 https |
 +-------+-----------------------------+
 
 +------------------------+--------------------------------------+
-| `Splunk`_              | ip/port 10.1.1.5:8000 https          |
+| `Splunk`_              | ip:port 10.1.1.5:8000 https          |
 |                        | HTTP Event Data Collector port 8088  |
 +------------------------+--------------------------------------+
-| `AWX (Ansible Tower)`_ | ip/port 10.1.1.5:9001 https          |
+| `AWX (Ansible Tower)`_ | ip:port 10.1.1.5:9001 https          |
 +------------------------+--------------------------------------+
-| `GitLab`_              | ip/port 10.1.1.5:7002 https 7022 ssh |
+| `GitLab`_              | ip:port 10.1.1.5:7002 https 7022 ssh |
 +------------------------+--------------------------------------+
-| `Visual Studio Code`_  | ip/port 10.1.1.5:7001 https          |
+| `Visual Studio Code`_  | ip:port 10.1.1.5:7001 https          |
 +------------------------+--------------------------------------+
-| `Locust`_              | ip/port 10.1.1.5:7089 https          |
+| `Locust`_              | ip:port 10.1.1.5:7089 https          |
 +------------------------+--------------------------------------+
-| Samba                  | - ip/port 10.1.1.5:445               |
+| Samba                  | - ip:port 10.1.1.5:445               |
 |                        | - User: f5student/purple123          |
 |                        | - Domain: WORKGROUP                  |
 |                        | - Storage Path: //10.1.1.5/dcdbackup |
