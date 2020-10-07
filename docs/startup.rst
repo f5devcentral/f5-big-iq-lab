@@ -200,7 +200,7 @@ Miscellaneous
 
 To run `Kali Linux`_ Docker Image: ``docker run -t -i kalilinux/kali-linux-docker /bin/bash`` *(run apt-get update && apt-get install metasploit-framework after starting Kali Linux)*
 
-.. Kali Linux: https://www.kali.org
+.. _Kali Linux: https://www.kali.org
 
 To connect to a docker instance: ``docker exec -i -t <container id or name> /bin/bash``
 
