@@ -253,7 +253,7 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 +------------------------+--------------------------------------+
 
 .. _AWX (Ansible Tower): https://www.ansible.com/products/awx-project/faq
-.. _Splunk: https://www.splunk.com/
+.. _Splunk: https://www.splunk.com
 .. _Visual Studio Code: https://github.com/cdr/code-server
-.. _GitLab: http://gitlab.com/
+.. _GitLab: https://gitlab.com
 .. _Locust: https://locust.io
