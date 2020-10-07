@@ -182,10 +182,77 @@ is being sent (check ``crontab`` config for more details).
 +=======================================================================+
 | 10.1.20.110-123                                                       |
 |                                                                       |
-| - Port ``80``: hackazon application                                   |
-| - Port ``8080``: web-dvwa application                                 |
+| - Port ``80``: `hackazon application`_ (test_user/123456)             |
+| - Port ``8080``: `web-dvwa application`_ (admin/password)             |
 | - Port ``8081``: f5-hello-world application                           |
 | - Port ``8082``: f5-demo-httpd application                            |
 | - Port ``8083``: nginx application (delay 300ms loss 30% corrupt 30%) |
+| - Port ``8084``: `arcadia finance`_ (admin/iloveblue)                 |
 | - Port ``446``: ASM Policy Validator                                  |
 +-----------------------------------------------------------------------+
+
+.. _hackazon: https://github.com/rapid7/hackazon
+.. _web-dvwa: https://hub.docker.com/r/vulnerables/web-dvwa
+.. _arcadia finance: https://gitlab.com/MattDierick/arcadia-finance
+
+Miscellaneous
+-------------
+
+To run `Kali Linux`_ Docker Image: ``docker run -t -i kalilinux/kali-linux-docker /bin/bash`` *(run apt-get update && apt-get install metasploit-framework after starting Kali Linux)*
+
+.. Kali Linux: https://www.kali.org
+
+To connect to a docker instance: ``docker exec -i -t <container id or name> /bin/bash``
+
++--------+--------------------------------------------------------------------------------+
+| Radius | - ip/port 10.1.1.5:1812                                                        |
+|        | - secret = default                                                             |
+|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/radius |
++--------+--------------------------------------------------------------------------------+
+| LDAP   | - ip/port 10.1.1.5:389                                                         |
+|        | - SSL: Disabled                                                                |
+|        | - Bind User Distinguished Name: cn=admin,dc=f5demo,dc=com                      |
+|        | - Bind User Password: ldappass                                                 |
+|        | - User Bind Template: uid={username},ou=People,dc=f5demo,dc=com                |
+|        | - Root Distinguished Name: dc=f5demo,dc=com                                    |
+|        | - Group Search Filter: (&(objectClass=groupOfUniqueNames)(cn={searchterm}*))   |
+|        | - Group Membership Filter: uniqueMember={userDN}                               |
+|        | - Directory User Search Filter: uid={username}                                 |
+|        | - Group Distinguished Name: cn=admin,ou=Groups,dc=f5demo,dc=com                |
+|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/ldap   |
++--------+--------------------------------------------------------------------------------+
+| Tacac+ | - ip/port 10.1.1.5:49                                                          |
+|        | - secret = ciscotacacskey                                                      |
+|        | - Primary Service = shell                                                      |
+|        | - Encrypt = yes                                                                |
+|        | - Users: iosadmin/cisco, nxosadmin/cisco                                       |
++--------+--------------------------------------------------------------------------------+
+
++-------+-----------------------------+
+| XRDP  | ip/port 10.1.1.5:3389       |
++-------+-----------------------------+
+| noVNC | ip/port 10.1.1.5:6080 https |
++-------+-----------------------------+
+
++------------------------+--------------------------------------+
+| `Splunk`_              | ip/port 10.1.1.5:8000 https          |
+|                        | HTTP Event Data Collector port 8088  |
++------------------------+--------------------------------------+
+| `AWX (Ansible Tower)`_ | ip/port 10.1.1.5:9001 https          |
++------------------------+--------------------------------------+
+| GitLab                 | ip/port 10.1.1.5:7002 https 7022 ssh |
++------------------------+--------------------------------------+
+| `Visual Studio Code`_  | ip/port 10.1.1.5:7001 https          |
++------------------------+--------------------------------------+
+| `Locust.io`_           | ip/port 10.1.1.5:7089 https          |
++------------------------+--------------------------------------+
+| Samba                  | - ip/port 10.1.1.5:445               |
+|                        | - User: f5student/purple123          |
+|                        | - Domain: WORKGROUP                  |
+|                        | - Storage Path: //10.1.1.5/dcdbackup |
++------------------------+--------------------------------------+
+
+.. _AWX (Ansible Tower): https://www.ansible.com/products/awx-project/faq
+.. _Splunk: https://www.splunk.com/
+.. _Visual Studio Code: https://github.com/cdr/code-server
+.. _Locust.io: https://locust.io
