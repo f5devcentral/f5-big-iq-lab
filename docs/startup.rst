@@ -182,8 +182,8 @@ is being sent (check ``crontab`` config for more details).
 +=======================================================================+
 | 10.1.20.110-123                                                       |
 |                                                                       |
-| - Port ``80``: `hackazon application`_ (test_user/123456)             |
-| - Port ``8080``: `web-dvwa application`_ (admin/password)             |
+| - Port ``80``: `hackazon`_ application (test_user/123456)             |
+| - Port ``8080``: `web-dvwa`_ application (admin/password)             |
 | - Port ``8081``: f5-hello-world application                           |
 | - Port ``8082``: f5-demo-httpd application                            |
 | - Port ``8083``: nginx application (delay 300ms loss 30% corrupt 30%) |
@@ -240,11 +240,11 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 +------------------------+--------------------------------------+
 | `AWX (Ansible Tower)`_ | ip/port 10.1.1.5:9001 https          |
 +------------------------+--------------------------------------+
-| GitLab                 | ip/port 10.1.1.5:7002 https 7022 ssh |
+| `GitLab`_              | ip/port 10.1.1.5:7002 https 7022 ssh |
 +------------------------+--------------------------------------+
 | `Visual Studio Code`_  | ip/port 10.1.1.5:7001 https          |
 +------------------------+--------------------------------------+
-| `Locust.io`_           | ip/port 10.1.1.5:7089 https          |
+| `Locust`_              | ip/port 10.1.1.5:7089 https          |
 +------------------------+--------------------------------------+
 | Samba                  | - ip/port 10.1.1.5:445               |
 |                        | - User: f5student/purple123          |
@@ -255,4 +255,4 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 .. _AWX (Ansible Tower): https://www.ansible.com/products/awx-project/faq
 .. _Splunk: https://www.splunk.com/
 .. _Visual Studio Code: https://github.com/cdr/code-server
-.. _Locust.io: https://locust.io
+.. _Locust: https://locust.io
