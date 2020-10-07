@@ -200,11 +200,13 @@ read -p "Install Postman? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     echo -e "\nInstall Postman"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    apt install cdcat libqt5core5a libqt5network5 libqt5widgets5 -y 
+    apt install libqt5core5a libqt5network5 libqt5widgets5 -y 
     #wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
     #tar -xzf postman.tar.gz -C /opt
     #rm postman.tar.gz
     #ln -s /opt/Postman/Postman /usr/bin/postman
+    apt purge snapd -y
+    apt install snapd -y
     snap install postman
 fi
 

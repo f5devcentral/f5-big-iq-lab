@@ -126,12 +126,13 @@ elif [[ "$1" = "ucs" ]]; then
     read -p "Continue (Y/N) (Default=N):" answer
     if [[  $answer == "Y" ]]; then
         for ((i=1; i <= ${#ip[@]}; i++)); do
-            echo -e "\n** ${ip[i]}\n"
+            echo -e "\n** ${ip[i]} - ${ucs[i]}\n"
             read -p "Continue (Y/N) (Default=N):" answer
             if [[  $answer == "Y" ]]; then
                 scp -o StrictHostKeyChecking=no ucs/${ucs[i]} root@${ip[i]}:/var/local/ucs
-                # ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh load /sys ucs /var/local/ucs/${ucs[i]}
-                # Enable iApps  ››  Package Management LX in BIG-IP UI
+                [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+                ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh load /sys ucs /var/local/ucs/${ucs[i]}
+                # enable iApps  ››  Package Management LX in BIG-IP UI
                 # ssh -o StrictHostKeyChecking=no root@${ip[i]} touch /var/config/rest/iapps/enable
             fi
         done
@@ -148,17 +149,23 @@ elif [[ "$1" = "ucs" ]]; then
     # Restore UCS BIG-IQ https://support.f5.com/csp/article/K45246805
     read -p "Continue (Y/N) (Default=N):" answer
     if [[  $answer == "Y" ]]; then
-        echo -e "\n** $iq_dcd\n"
+        echo -e "\n** $iq_dcd - $ucs_dcd\n"
         read -p "Continue (Y/N) (Default=N):" answer
         if [[  $answer == "Y" ]]; then
-            scp -o StrictHostKeyChecking=no ucs/$ucs_dcd root@$iq_dcd:/var/local/ucs
-            # ssh -o StrictHostKeyChecking=no root@$iq_dcd tmsh load /sys ucs /var/local/ucs/$ucs_dcd
+            scp -o StrictHostKeyChecking=no ucs/$ucs_dcd root@$iq_dcd:/shared/ucs_backups
+            [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+            ssh -o StrictHostKeyChecking=no root@$iq_dcd tmsh load /sys ucs /shared/ucs_backups/$ucs_dcd
+            [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+            ssh -o StrictHostKeyChecking=no root@$iq_dcd restart /sys service restjavad
         fi
-        echo -e "\n** $iq_cm\n"
+        echo -e "\n** $iq_cm - $ucs_cm\n"
         read -p "Continue (Y/N) (Default=N):" answer
         if [[  $answer == "Y" ]]; then
-            scp -o StrictHostKeyChecking=no ucs/$ucs_cm root@$iq_cm:/var/local/ucs
-            # ssh -o StrictHostKeyChecking=no root@$iq_cm tmsh load /sys ucs /var/local/ucs/$ucs_cm
+            scp -o StrictHostKeyChecking=no ucs/$ucs_cm root@$iq_cm:/shared/ucs_backups
+            [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+            ssh -o StrictHostKeyChecking=no root@$iq_cm tmsh load /sys ucs /shared/ucs_backups/$ucs_cm
+            [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
+            ssh -o StrictHostKeyChecking=no root@$iq_cm restart /sys service restjavad
         fi
     fi
 
