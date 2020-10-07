@@ -218,6 +218,9 @@ apt install freeradius-utils -y
 echo -e "\nInstall LDAP utils"
 apt install ldap-utils -y
 
+echo -e "\nInstall Samba Client"
+apt install samba-client -y
+
 echo -e "\nInstall Apache Benchmark, Git, SNMPD, jq"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install apache2-utils -y
@@ -260,9 +263,6 @@ pause "Press [Enter] key to continue... CTRL+C to Cancel"
 apt install libbind-dev libkrb5-dev libssl-dev libcap-dev libxml2-dev -y
 apt install gzip curl make gcc bind9utils libjson-c-dev libgeoip-dev -y
 snap install --devmode --beta dnsperf
-
-echo -e "\nInstall Samba Client"
-apt install samba-client -y
 
 echo -e "\nInstall Azure CLI"
 pause "Press [Enter] key to continue... CTRL+C to Cancel"
@@ -393,13 +393,9 @@ curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcen
 chown f5student:f5student /home/f5student/update_git.sh
 chmod +x /home/f5student/update_git.sh
 
-# remove GIT_LFS_SKIP_SMUDGE=1 to get the qkviews
-sed -i 's/GIT_LFS_SKIP_SMUDGE=1//g' /home/f5student/update_git.sh
-/home/f5student/update_git.sh
-chown -R f5student:f5student /home/f5student
 killall sleep
 
-echo -e "\nSSH keys exchanges between Lamp server and BIG-IP and BIG-IQ CM/DCD"
+echo -e "\nSSH keys for between Lamp server and BIG-IP and BIG-IQ CM/DCD"
 su - f5student -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
 
 ## Add there things to do manually

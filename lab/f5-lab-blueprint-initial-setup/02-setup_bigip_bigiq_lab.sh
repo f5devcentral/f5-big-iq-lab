@@ -18,8 +18,6 @@ name[4]="PARIS-vBIGIP01.termmarc.com"
 ip[4]="10.1.1.13"
 name[5]="SJC-vBIGIP01.termmarc.com"
 ip[5]="10.1.1.11"
-name[6]="DUBLIN-vBIGIP01.termmarc.com"
-ip[6]="10.1.1.15"
 
 iq_cm="10.1.1.4"
 iq_dcd="10.1.1.6"

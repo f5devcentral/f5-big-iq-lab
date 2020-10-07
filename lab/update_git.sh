@@ -7,6 +7,9 @@
 ## /home/f5student/update_git.sh > /home/f5student/update_git.log
 ## chown -R f5student:f5student /home/f5student
 
+# SECONDS used for total execution time (see end of the script)
+SECONDS=0
+
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
@@ -111,13 +114,13 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
 
     ### Starting Arcadia Finance https://gitlab.com/MattDierick/arcadia-finance
-    # echo -e "Start Arcadia Finance apps\n"
-    # docker network create internal
-    # docker run --restart=always -dit --name=mainapp -h mainapp --net=internal registry.gitlab.com/mattdierick/arcadia-finance/mainapp:latest
-    # docker run --restart=always -dit --name=backend -h backend --net=internalregistry.gitlab.com/mattdierick/arcadia-finance/backend:latest
-    # docker run --restart=always -dit --name=app2 -h app2 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app2:latest
-    # docker run --restart=always -dit --name=app3 -h app3 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
-    # docker run --restart=always -dit -p 8084:80 --name=arcadia -h arcadia --net=internal -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
+    echo -e "Start Arcadia Finance apps\n"
+    docker network create internal
+    docker run --restart=always -dit --name=mainapp -h mainapp --net=internal registry.gitlab.com/mattdierick/arcadia-finance/mainapp:latest
+    docker run --restart=always -dit --name=backend -h backend --net=internal registry.gitlab.com/mattdierick/arcadia-finance/backend:latest
+    docker run --restart=always -dit --name=app2 -h app2 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app2:latest
+    docker run --restart=always -dit --name=app3 -h app3 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
+    docker run --restart=always -dit -p 8084:80 --name=arcadia -h arcadia --net=internal -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
 
     ### Add delay, loss and corruption to the nginx web app
     echo -e "Customized Nginx container\n"
@@ -275,5 +278,8 @@ if [[  $currentuser == "root" ]]; then
 else
     echo -e "\nIn order to force the lab scripts updates and re-build ALL docker containers, run ./update_git.sh as root user.\n"
 fi
+
+# total script execution time
+echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time:${RED} $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec${NC}"
 
 exit 0
