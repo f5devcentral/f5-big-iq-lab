@@ -357,6 +357,7 @@ if [[  $answer == "Y" ]]; then
     sudo netplan apply
 
     echo -e "\nEnable Sharing > Screen Sharing in Ubuntu\n"
+    echo -e "\nEnable Automatic Login for f5student in Ubuntu\n"
     echo -e "Execute:\n"
     echo -e "gsettings set org.gnome.Vino require-encryption false"
     echo -e "gsettings set org.gnome.Vino vnc-password $(echo -n 'purple123'|base64)"
@@ -435,7 +436,7 @@ if [[  $answer == "Y" ]]; then
 
 curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 chmod +x /home/f5student/update_git.sh
-/home/f5student/update_git.sh > /home/f5student/update_git.log
+/home/f5student/update_git.sh > /home/f5student/update_git.log 2>&1 &
 chown -R f5student:f5student /home/f5student
 
 exit 0' > /etc/rc.local

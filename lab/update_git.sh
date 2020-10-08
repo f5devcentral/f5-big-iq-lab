@@ -4,7 +4,7 @@
 ## Configured in /etc/rc.local
 ## curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 ## chmod +x /home/f5student/update_git.sh
-## /home/f5student/update_git.sh > /home/f5student/update_git.log
+## /home/f5student/update_git.sh > /home/f5student/update_git.log 2>&1 &
 ## chown -R f5student:f5student /home/f5student
 
 # SECONDS used for total execution time (see end of the script)
@@ -91,6 +91,7 @@ if [[  $currentuser == "root" ]]; then
     sleep 5
     ps -ef | grep vnc | grep -v grep
     ps -ef | grep websockify | grep -v grep
+    netstat -na | grep 590
 
     # Radius
     echo -e "\Radius"
