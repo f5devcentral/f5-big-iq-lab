@@ -89,6 +89,7 @@ if [[  $currentuser == "root" ]]; then
     echo "Check/Restart sevices: NoVNC, Websockify"
     su - f5student -c "$home/tools/services_monitor.sh"
     sleep 5
+    service gdm3 status
     ps -ef | grep vnc | grep -v grep
     ps -ef | grep websockify | grep -v grep
     netstat -na | grep 590
