@@ -1,13 +1,13 @@
 #!/bin/bash
 
 ## Inbound interface
-inbound_interface=eth1
+inbound_interface=ens6
 inbound_ip=10.1.30.14
 inbound_mask=24
 inbound_gw=10.1.30.7
 
 ## Outbound interface
-outbound_interface=eth2
+outbound_interface=ens7
 outbound_ip=10.1.40.14
 outbound_mask=24
 outbound_gw=10.1.40.7

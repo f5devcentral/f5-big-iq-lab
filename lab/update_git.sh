@@ -26,7 +26,7 @@ type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
     echo "Hypervisor: AWS"
 else
-    echo "Hypervisor: Unknown"
+    echo "Hypervisor: UDF Hypervisor or others"
 fi
 
 # run only when server boots (through /etc/rc.local as root)

@@ -61,7 +61,7 @@ elif [[ "$1" = "init" ]]; then
     echo -e 'echo "admin:admin" | chpasswd'
     echo -e "tmsh save sys config\n"
 
-    # In case you need to change BIG-IP version so it match the UCS
+    ### In case you need to change BIG-IP version so it match the UCS
     # tmsh show sys software status
     # tmsh modify sys db liveinstall.saveconfig value disable
     # tmsh modify sys db liveinstall.moveconfig value disable
