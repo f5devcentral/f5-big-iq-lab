@@ -61,6 +61,13 @@ elif [[ "$1" = "init" ]]; then
     echo -e 'echo "admin:admin" | chpasswd'
     echo -e "tmsh save sys config\n"
 
+    # In case you need to change BIG-IP version so it match the UCS
+    # tmsh show sys software status
+    # tmsh modify sys db liveinstall.saveconfig value disable
+    # tmsh modify sys db liveinstall.moveconfig value disable
+    # tmsh install sys software image BIGIP-13.1.3.2-0.0.4.iso volume HD1.2 create-volume reboot
+    # tmsh delete sys software volume HD1.1
+
     echo -e "\n---------- INITIAL SETUP BIG-IQs -----------\n"
     echo -e "\nRun on both BIG-IQ CM and DCD as root:\n"
     echo -e "tmsh modify auth password (set default)"

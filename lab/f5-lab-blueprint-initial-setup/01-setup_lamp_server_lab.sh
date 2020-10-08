@@ -24,7 +24,7 @@ cd /root
 
 lsb_release -a
 
-read -p "Perform Ubuntu Upgrade from 18.04 (bionic) to 20.04? (Y/N) (Default=N): " answer
+read -p "Perform Ubuntu Upgrade from 18.04 (bionic) to 20.04 (focal)? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     lsb_release -a
     apt update
@@ -44,9 +44,21 @@ if [[  $answer == "Y" ]]; then
     if [[  $answer == "Y" ]]; then
         shutdown -r now
     fi
-
 fi
 
+read -p "Change Kernel to boot on old one 4.15 to mitigate speed issue? (Y/N) (Default=N): " answer
+if [[  $answer == "Y" ]]; then
+
+    sed -i 's/GRUB_DEFAULT=0/GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 4.15.0-118-generic"/g' /etc/default/grub
+    cat /etc/default/grub
+    update-grub
+    read -p "Reboot? (Y/N) (Default=N): " answer
+    if [[  $answer == "Y" ]]; then
+        shutdown -r now
+    fi
+fi
+
+uname -a
 lsb_release -a
 
 echo -e "Cleanup unnessary packages"
@@ -62,14 +74,16 @@ fi
 
 read -p "Configure Network with Netplan? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
+    echo -e "Double check network interface names along with network interface in UDF."
+    pause "Press [Enter] key to continue... CTRL+C to Cancel"
     # Configure Network
     echo 'network:
   version: 2
   ethernets:
-    ens4:
+    ens6:
         addresses:
             - 10.1.10.5/24
-    ens5:
+    ens7:
         addresses:
             - 10.1.20.5/24
             - 10.1.20.110/24
@@ -140,18 +154,16 @@ if [[  $answer == "Y" ]]; then
     echo -e "\nInstall Samba Client"
     apt install samba-client -y
 
-    echo -e "\nInstall Apache Benchmark, Git, SNMPD, jq"
+    echo -e "\nInstall Apache Benchmark, Git, SNMPD, jq, unzip"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
     apt install apache2-utils -y
     apt install git git-lfs -y
     apt install snmp snmpd snmptrapd -y
     apt install jq -y
+    apt install unzip -y
 
     echo -e "\nInstall Ansible and sshpass"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    apt install software-properties-common -y
-    apt-add-repository --yes --update ppa:ansible/ansible
-    apt update
     apt install ansible -y
     apt install sshpass -y
     ansible-playbook --version
@@ -173,6 +185,24 @@ if [[  $answer == "Y" ]]; then
     snap install --devmode --beta dnsperf
 fi
 
+read -p "Install Postman? (Y/N) (Default=N):" answer
+if [[  $answer == "Y" ]]; then
+    echo -e "\nInstall Postman"
+    pause "Press [Enter] key to continue... CTRL+C to Cancel"
+    #apt install libqt5core5a libqt5network5 libqt5widgets5 -y 
+    # wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
+    # tar -xzf postman.tar.gz -C /opt
+    # rm postman.tar.gz
+    # ln -s /opt/Postman/Postman /usr/bin/postman
+    snap install postman
+fi
+
+read -p "Install python pip3 (Y/N) (Default=N):" answer
+if [[  $answer == "Y" ]]; then
+    apt install python3-pip
+    pip3 --version
+fi
+
 read -p "Install AWS/Azure CLI? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     echo -e "\nInstall Azure CLI"
@@ -184,38 +214,23 @@ if [[  $answer == "Y" ]]; then
     curl -L https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
     # Install the CLI:
     apt update
-    apt --fix-broken install -y
     apt install apt-transport-https azure-cli -y
+    az --version
 
     echo -e "\nInstall AWS CLI"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    apt install python-pip -y
-    apt --fix-broken install -y
-    pip --version
-    cd /home/f5student/f5-aws-vpn-ssg
-    ansible-playbook 01a-install-pip.yml
-fi
-
-read -p "Install Postman? (Y/N) (Default=N):" answer
-if [[  $answer == "Y" ]]; then
-    echo -e "\nInstall Postman"
-    pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    apt install libqt5core5a libqt5network5 libqt5widgets5 -y 
-    #wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
-    #tar -xzf postman.tar.gz -C /opt
-    #rm postman.tar.gz
-    #ln -s /opt/Postman/Postman /usr/bin/postman
-    apt purge snapd -y
-    apt install snapd -y
-    snap install postman
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    ./aws/install
+    aws --version
 fi
 
 read -p "Install Java? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     echo -e "\nInstall Java (used for Access traffic generator)"
-    add-apt-repository --yes --update ppa:linuxuprising/java
-    apt update
-    apt install openjdk-12-jdk -y
+    apt install default-jdk
+    java -version
+    javac -version
 fi
 
 # read -p "Install DHCP server? (Y/N) (Default=N):" answer
@@ -287,10 +302,9 @@ fi
 read -p "Install Python librairies? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     echo -e "\nInstall Python librairies (as f5sutdent)"
-    su - f5student -c "pip install PyVmomi" # VMware ansible playbooks 
-    su - f5student -c "pip install dnspython" # for DDOS DNS traffic generator
-    su - f5student -c "pip install jmespath" # for AS3 ansible playbooks 
-    su - f5student -c "pip install ansible-tower-cli" # for AWX / Ansible Tower
+    su - f5student -c "pip3 install PyVmomi" # VMware ansible playbooks 
+    su - f5student -c "pip3 install dnspython" # for DDOS DNS traffic generator
+    su - f5student -c "pip3 install jmespath" # for AS3 ansible playbooks 
 fi
 
 read -p "Install Desktop and RDP? (Y/N) (Default=N):" answer
@@ -334,6 +348,15 @@ if [[  $answer == "Y" ]]; then
     exec startxfce4 &' > /home/f5student/.vnc/xstartup
     chmod 755 /home/f5student/.vnc/xstartup
     chown f5student:f5student /home/f5student/.vnc/xstartup
+
+    echo "[Desktop Entry]
+    Type=Application
+    Name=Postman
+    Icon=/opt/Postman/app/resources/app/assets/icon.png
+    Exec="/opt/Postman/Postman"
+    Comment=Postman GUI
+    Categories=Development;Code;" >> /usr/share/applications/postman.desktop
+
 fi
 
 read -p "Install Chrome? (Y/N) (Default=N):" answer
