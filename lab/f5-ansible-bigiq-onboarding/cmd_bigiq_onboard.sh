@@ -82,6 +82,13 @@ ssh -o StrictHostKeyChecking=no root@$ip_cm1 << EOF
   for json in *.json; do 
   curl -s -k -H "Content-Type: application/json" -X POST -d @$json http://localhost:8100/cm/global/appsvcs-templates ;
   done
+  cd /home/admin;
+  cd f5*/f5-appsvcs-templates-big-iq/community/json/;
+  sed -i 's/"published": false/"published": true/g' *json
+  for json in *.json; do 
+  curl -s -k -H "Content-Type: application/json" -X POST -d @$json http://localhost:8100/cm/global/appsvcs-templates ;
+  sleep 1
+  done
 EOF
 
 echo -e "\n${BLUE}TIME:: $(date +"%H:%M")${NC}"

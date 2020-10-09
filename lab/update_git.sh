@@ -10,17 +10,12 @@
 # SECONDS used for total execution time (see end of the script)
 SECONDS=0
 
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-BLUE='\033[0;34m'
-NC='\033[0m' # No Color
-
 env="udf"
 user="f5student"
 home="/home/$user"
 jumphostIp="10.1.1.5"
 
-echo -e "Environement:${RED} $env ${NC}"
+echo -e "Environement: $env"
 
 type=$(cat /sys/hypervisor/uuid 2>/dev/null | grep ec2 | wc -l)
 if [[  $type == 1 ]]; then
@@ -117,6 +112,9 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
 
+    echo "Juice Shop - https://owasp.org/www-project-juice-shop/"
+    docker run --restart=always --name=juice-shop -dit -p 8085:81 bkimminich/juice-shop
+
     ### Starting Arcadia Finance https://gitlab.com/MattDierick/arcadia-finance
     echo -e "Start Arcadia Finance apps\n"
     docker network create internal
@@ -125,6 +123,17 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always -dit --name=app2 -h app2 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app2:latest
     docker run --restart=always -dit --name=app3 -h app3 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
     docker run --restart=always -dit -p 8084:80 --name=arcadia -h arcadia --net=internal -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
+
+    #--- Cockpit ---
+    #- give cockpit access to docker api
+    groupadd docker
+    usermod -aG docker $USER
+    newgrp docker
+    #----------------
+    apt -y install cockpit cockpit-docker
+    systemctl start cockpit
+    systemctl enable cockpit
+    echo "Browse cockpit to: http://<LOCAL IP>:9090 "
 
     ### Add delay, loss and corruption to the nginx web app
     echo -e "Customized Nginx container\n"
@@ -284,6 +293,6 @@ else
 fi
 
 # total script execution time
-echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time:${RED} $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec${NC}"
+echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time: $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
 
 exit 0

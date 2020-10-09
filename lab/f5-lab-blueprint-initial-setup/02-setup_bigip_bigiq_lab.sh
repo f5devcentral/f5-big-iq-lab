@@ -192,11 +192,13 @@ elif [[ "$1" = "ucs_restore" ]]; then
         echo -e "rm -f /config/bigip.license.20*"
         echo -e "rm /var/config/rest/pgsecrets.json"
         echo -e "bigstart restart restjavad"
-
+        echo -e "tmsh modify /sys global-settings hostname big-iq-cm-1.example.com; tmsh save /sys config"
+        echo -e "tmsh modify /sys global-settings hostname big-iq-dcd-1.example.com; tmsh save /sys config"
 
         echo -e "Potential help:
             - https://support.f5.com/csp/article/K14593 (BIG-IQ state failed)
-            - https://support.f5.com/csp/article/K25071552 (set HA)  sh /usr/bin/ha_reset -f 10.1.10.4"
+            - https://support.f5.com/csp/article/K25071552 (set HA)  sh /usr/bin/ha_reset -f 10.1.10.4
+            - in case adding DCD doesn't work, remove & re-add the vlan/selfip on the CM"
 
         echo "/config/.udf/udf-userdata" > /config/startup
 
