@@ -124,17 +124,6 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always -dit --name=app3 -h app3 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
     docker run --restart=always -dit -p 8084:80 --name=arcadia -h arcadia --net=internal -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
 
-    #--- Cockpit ---
-    #- give cockpit access to docker api
-    groupadd docker
-    usermod -aG docker $USER
-    newgrp docker
-    #----------------
-    apt -y install cockpit cockpit-docker
-    systemctl start cockpit
-    systemctl enable cockpit
-    echo "Browse cockpit to: http://<LOCAL IP>:9090 "
-
     ### Add delay, loss and corruption to the nginx web app
     echo -e "Customized Nginx container\n"
     docker_nginx_id="nginx"

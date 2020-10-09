@@ -216,7 +216,6 @@ is being sent (check ``crontab`` config for more details).
 | - Port ``8083``: nginx application (delay 300ms loss 30% corrupt 30%) |
 | - Port ``8084``: `arcadia finance`_ (admin/iloveblue)                 |
 | - Port ``8085``: `juice-shop`_ (admin@juice-sh.op/admin123)           |
-| - Port ``9090``: `cockpit`_ (f5student/purple123)                     |
 | - Port ``446``: ASM Policy Validator                                  |
 +-----------------------------------------------------------------------+
 
@@ -224,7 +223,6 @@ is being sent (check ``crontab`` config for more details).
 .. _web-dvwa: https://hub.docker.com/r/vulnerables/web-dvwa
 .. _arcadia finance: https://gitlab.com/MattDierick/arcadia-finance
 .. _juice-shop: https://owasp.org/www-project-juice-shop/
-.. _cockpit: https://cockpit-project.org/
 
 Miscellaneous
 -------------

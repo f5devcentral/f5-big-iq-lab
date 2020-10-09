@@ -14,37 +14,30 @@ Note than GitLab needs to be started manually (./gitlab/start-gitlab.sh) and it 
 ###################################################
 XRDP
 Protocol: RDP
-Local:
 10.1.1.5 port 3389
 
 noVNC
 Protocol: HTTPS(Authenticated)
-Local:
 10.1.1.5 port 6080
 
 AWX (Ansible Tower)
 Protocol: HTTPS(Authenticated)
-Local:
 10.1.1.5 port 9001
 
 Splunk
 Protocol: HTTPS(SSL, Authenticated)
-Local:
 10.1.1.5 port 8000
 
 Visual Studio Code
 Protocol: HTTPS(Authenticated)
-Local:
 10.1.1.5 port 7001
 
 Gitlab
 Protocol: HTTPS(Authenticated)
-Local:
 10.1.1.5 port 7002
 
 Locust
 Protocol: HTTPS(Authenticated)
-Local:
 10.1.1.5 port 8089
 
 ###################################################
