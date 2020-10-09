@@ -67,49 +67,51 @@ List of instances & Credentials
 
 The following table lists the virtual appliances in the lab along with their credentials to use.
 
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| System                  | Version | Description                                                                                  | Credentials                 |
-+=========================+=========+==============================================================================================+=============================+
-| BIG-IQ CM               | 7.1.0.1 | Using BIG-IQ, you can centrally manage your BIG-IP devices,                                  | admin/purple123 *(local)*   |
-| 10.1.1.4                |         | performing operations such as backups, licensing, monitoring,                                | david/david *(RadiusServer)*|
-|                         |         | and configuration management.                                                                | paula/paula *(RadiusServer)*|
-|                         |         |                                                                                              | paul/paul *(RadiusServer)*  |
-|                         |         |                                                                                              | larry/larry *(RadiusServer)*|
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| BIG-IQ DCD              | 7.1.0.1 | A data collection device (**DCD**) is a specially provisioned                                | admin/purple123             |
-| 10.1.1.6                |         | BIG-IQ system that you use to manage and store alerts, events,                               |                             |
-|                         |         | and statistical data from one or more BIG-IP systems.                                        |                             |
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| BIG-IP Boston           | 13.1    | HA Pair                                                                                      | admin/purple123             |
-| 10.1.1.8/10.1.1.10      |         |                                                                                              |                             |
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| BIG-IP Seattle          | 14.1    | Standalone                                                                                   | admin/purple123             |
-| 10.1.1.7                |         |                                                                                              |                             |
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| BIG-IP Paris            | 14.1    | Standalone                                                                                   | admin/purple123             |
-| 10.1.1.13               |         |                                                                                              |                             |
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| BIG-IP San Jose         | 15.1    | Standalone                                                                                   | admin/purple123             |
-| 10.1.1.11               |         |                                                                                              |                             |
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| SSLo Service TAP and L3 |         | Maximize infrastructure investments, efficiencies,                                           | ubuntu/purple123            |
-| 10.1.1.14/10.1.1.16     |         | and security with dynamic, policy-based decryption,                                          |                             |
-|                         |         | encryption, and traffic steering through multiple inspection devices.                        |                             |
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| Venafi Trust Protection | 20.1    | Manages, secures and protects keys and certificates, delivering an enterprise-grade platform | venafi/Purple123\@123       |
-| 10.1.1.17               |         | that provides enterprise-wide security, operational efficiency and                           |                             |
-|                         |         | organizational compliance.                                                                   |                             |
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
-| LAMP Server             |         | - Radius, LDAP, TACAx (auth)                                                                 | f5student/purple123         |
-| 10.1.1.5                |         | - xRDP and noVNC for User Remote Desktop                                                     |                             |
-|                         |         | - AWX/Ansible Tower                                                                          | noVNC password is purple123 |
-|                         |         | - GitLab                                                                                     |                             |
-|                         |         | - Splunk                                                                                     |                             |
-|                         |         | - Application Servers (Hackazon, dvmw, f5 demo app)                                          |                             |
-|                         |         | - Traffic Generator (HTTP, Access, DNS, Security)                                            |                             |
-|                         |         | - Visual Studio Code                                                                         |                             |
-|                         |         | - Samba                                                                                      |                             |
-+-------------------------+---------+----------------------------------------------------------------------------------------------+-----------------------------+
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| System                  | Version | Description                                                                                  | Credentials                   |
++=========================+=========+==============================================================================================+===============================+
+| BIG-IQ CM               | 7.1.0.1 | Using BIG-IQ, you can centrally manage your BIG-IP devices,                                  | admin/purple123 *(local)*     |
+| 10.1.1.4                |         | performing operations such as backups, licensing, monitoring,                                | david/david *(RadiusServer)*  |
+|                         |         | and configuration management.                                                                | paula/paula *(RadiusServer)*  |
+|                         |         |                                                                                              | paul/paul *(RadiusServer)*    |
+|                         |         |                                                                                              | olivia/olivia *(RadiusServer)*|
+|                         |         |                                                                                              | larry/larry *(RadiusServer)*  |
+|                         |         |                                                                                              | chris/chris *(RadiusServer)*  |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| BIG-IQ DCD              | 7.1.0.1 | A data collection device (**DCD**) is a specially provisioned                                | admin/purple123               |
+| 10.1.1.6                |         | BIG-IQ system that you use to manage and store alerts, events,                               |                               |
+|                         |         | and statistical data from one or more BIG-IP systems.                                        |                               |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| BIG-IP Boston           | 13.1    | HA Pair                                                                                      | admin/purple123               |
+| 10.1.1.8/10.1.1.10      |         |                                                                                              |                               |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| BIG-IP Seattle          | 14.1    | Standalone                                                                                   | admin/purple123               |
+| 10.1.1.7                |         |                                                                                              |                               |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| BIG-IP Paris            | 14.1    | Standalone                                                                                   | admin/purple123               |
+| 10.1.1.13               |         |                                                                                              |                               |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| BIG-IP San Jose         | 15.1    | Standalone                                                                                   | admin/purple123               |
+| 10.1.1.11               |         |                                                                                              |                               |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| SSLo Service TAP and L3 |         | Maximize infrastructure investments, efficiencies,                                           | ubuntu/purple123              |
+| 10.1.1.14/10.1.1.16     |         | and security with dynamic, policy-based decryption,                                          |                               |
+|                         |         | encryption, and traffic steering through multiple inspection devices.                        |                               |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| Venafi Trust Protection | 20.1    | Manages, secures and protects keys and certificates, delivering an enterprise-grade platform | venafi/Purple123\@123         |
+| 10.1.1.17               |         | that provides enterprise-wide security, operational efficiency and                           |                               |
+|                         |         | organizational compliance.                                                                   |                               |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
+| LAMP Server             |         | - Radius, LDAP, TACAx (auth)                                                                 | f5student/purple123           |
+| 10.1.1.5                |         | - xRDP and noVNC for User Remote Desktop                                                     |                               |
+|                         |         | - AWX/Ansible Tower                                                                          | noVNC password is purple123   |
+|                         |         | - GitLab                                                                                     |                               |
+|                         |         | - Splunk                                                                                     |                               |
+|                         |         | - Application Servers (Hackazon, dvmw, f5 demo app)                                          |                               |
+|                         |         | - Traffic Generator (HTTP, Access, DNS, Security)                                            |                               |
+|                         |         | - Visual Studio Code                                                                         |                               |
+|                         |         | - Samba                                                                                      |                               |
++-------------------------+---------+----------------------------------------------------------------------------------------------+-------------------------------+
 
 Networks
 --------
@@ -136,7 +138,7 @@ Application Services already deployed in this lab
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
 |                  | AS3 security_fqdn                   | AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1           | airports.example.com | Boston       |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
-| IT_apps          | AS3 backend_site24tcp               | AS3-F5-FastL4-TCP-lb-template-big-iq-default-v2             | 10.1.10.124          | Seattle      | Paula       |
+| IT_apps          | AS3 backend_site24tcp               | AS3-F5-TCP-lb-built-in-profile-template-big-iq-v1           | 10.1.10.124          | Seattle      | Paula       |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
 |                  | Service Catalog site36.example.com  | Default-f5-HTTPS-WAF-lb-template-v1                         | 10.1.10.136          | Boston       |             |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
@@ -148,6 +150,32 @@ Application Services already deployed in this lab
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
 |                  | AS3 tax_site17access                | without AS3 template using API                              | 10.1.10.117          | Seattle      |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
+        
+User Roles
+----------
+
++----------------------------+-------------------------------------------------------------+----------------+--------+
+| Role Name                  | AS3 Templates                                               | Devices        | Users  |
++============================+=============================================================+================+========+
+| Administrator Role         | All                                                         | All            | david  |
+|                            |                                                             |                | marco  |
++----------------------------+-------------------------------------------------------------+----------------+--------+
+| Security Manager           | All                                                         | All            | larry  |
+|                            |                                                             |                | chris  |
++----------------------------+-------------------------------------------------------------+----------------+--------+
+| Application Creator AS3    | Allow using AS3 without Template                            | All            | olivia |
++----------------------------+-------------------------------------------------------------+----------------+--------+
+| Application Creator Cloud  | AS3-F5-HTTP-lb-template-big-iq-default-v1                   | All            | paul   |
+|                            | AS3-F5-TCP-lb-template-big-iq-default-v2                    |                |        |
+|                            | AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-v1     |                |        |
++----------------------------+-------------------------------------------------------------+----------------+--------+
+| Application Creator VMware | AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1           | Boston BIG-IPs | paula  |
+|                            | AS3-F5-HTTP-lb-template-big-iq-default-v1                   | Seattle BIG-IP |        |
+|                            | AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1   |                |        |
+|                            | AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 |                |        |
+|                            | AS3-F5-FastL4-TCP-lb-template-default-v2                    |                |        |
+|                            | AS3-F5-TCP-lb-built-in-profile-template-big-iq-v1           |                |        |
++----------------------------+-------------------------------------------------------------+----------------+--------+
 
 Traffic Generation
 ------------------

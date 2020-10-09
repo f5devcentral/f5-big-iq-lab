@@ -84,9 +84,8 @@ fi
 
 read -p "Configure Network with Netplan? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
-    echo -e "Double check network interface names along with network interface in UDF."
+    echo -e "Double check network interface names along with network interface in UDF (e.g. ens6, ens7 look at the MAC address) )."
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    # Configure Network
     echo 'network:
   version: 2
   ethernets:
@@ -201,11 +200,6 @@ fi
 read -p "Install Postman? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     echo -e "\nInstall Postman"
-    # apt install libqt5core5a libqt5network5 libqt5widgets5 -y 
-    # wget https://dl.pstmn.io/download/latest/linux64 -O postman.tar.gz
-    # tar -xzf postman.tar.gz -C /opt
-    # rm postman.tar.gz
-    # ln -s /opt/Postman/Postman /usr/bin/postman
     snap install postman
 fi
 
@@ -276,6 +270,9 @@ if [[  $answer == "Y" ]]; then
 
     usermod -aG docker f5student
 
+    echo "Reset ubuntu user password"
+    echo "ubuntu:purple123" | chpasswd
+
     # bashrc config
     echo 'cd /home/f5student
 echo
@@ -312,6 +309,7 @@ if [[  $answer == "Y" ]]; then
     su - f5student -c "pip3 install PyVmomi" # VMware ansible playbooks 
     su - f5student -c "pip3 install dnspython" # for DDOS DNS traffic generator
     su - f5student -c "pip3 install jmespath" # for AS3 ansible playbooks 
+    su - f5student -c "pip3 install ansible-tower-cli" # for AWX / Ansible Tower
 fi
 
 read -p "Install Desktop and RDP? (Y/N) (Default=N):" answer
@@ -319,19 +317,7 @@ if [[  $answer == "Y" ]]; then
     echo -e "\nInstall and Desktop and xRDP"
     apt --fix-broken install
     apt install -y ubuntu-desktop gnome-shell-extension-desktop-icons gnome xrdp
-    # apt install -y xfce4 xfce4-goodies
-    # echo "polkit.addRule(function(action, subject) {
-    # if ((action.id == “org.freedesktop.color-manager.create-device” ||
-    # action.id == “org.freedesktop.color-manager.create-profile” ||
-    # action.id == “org.freedesktop.color-manager.delete-device” ||
-    # action.id == “org.freedesktop.color-manager.delete-profile” ||
-    # action.id == “org.freedesktop.color-manager.modify-device” ||
-    # action.id == “org.freedesktop.color-manager.modify-profile”) &&
-    # subject.isInGroup(“{users}”)) {
-    # return polkit.Result.YES;
-    # }
-    # });" > /etc/polkit-1/localauthority.conf.d/02-allow-color.d.conf
-    # ONLY FOR UDF option to have no passwords to JumpHost
+    # XRDP
     sed -i 's/username=ask/username=f5student/g' /etc/xrdp/xrdp.ini
     sed -i 's/password=ask/password=purple123/g' /etc/xrdp/xrdp.ini
     service xrdp restart
@@ -362,6 +348,21 @@ if [[  $answer == "Y" ]]; then
     echo -e "gsettings set org.gnome.Vino require-encryption false"
     echo -e "gsettings set org.gnome.Vino vnc-password $(echo -n 'purple123'|base64)"
 
+    ## This is for in case you want to use xfce4 for VNC desktop
+    # apt install -y xfce4 xfce4-goodies
+    # echo "polkit.addRule(function(action, subject) {
+    # if ((action.id == “org.freedesktop.color-manager.create-device” ||
+    # action.id == “org.freedesktop.color-manager.create-profile” ||
+    # action.id == “org.freedesktop.color-manager.delete-device” ||
+    # action.id == “org.freedesktop.color-manager.delete-profile” ||
+    # action.id == “org.freedesktop.color-manager.modify-device” ||
+    # action.id == “org.freedesktop.color-manager.modify-profile”) &&
+    # subject.isInGroup(“{users}”)) {
+    # return polkit.Result.YES;
+    # }
+    # });" > /etc/polkit-1/localauthority.conf.d/02-allow-color.d.conf
+    # ONLY FOR UDF option to have no passwords to JumpHost
+
     #apt -y install tightvncserver
     #su - f5student -c "printf 'purple123\npurple123\nn\n\n' | vncpasswd"
     #su - f5student -c "/usr/bin/vncserver :1 -geometry 1280x800 -depth 24"
@@ -379,7 +380,6 @@ read -p "Install Chrome? (Y/N) (Default=N):" answer
 if [[  $answer == "Y" ]]; then
     echo -e "\nInstall Chrome"
     pause "Press [Enter] key to continue... CTRL+C to Cancel"
-    #echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' >> /etc/apt/sources.list
     wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
     dpkg -i google-chrome-stable_current_amd64.deb
 fi
@@ -450,19 +450,20 @@ exit 0' > /etc/rc.local
 
     echo -e "\nSSH keys for between Lamp server and BIG-IP and BIG-IQ CM/DCD"
     su - f5student -c 'ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa'
+
+
 fi
 
 ## Add there things to do manually
 echo -e "\nPost-Checks:
-- Disable auto-lock screen for f5student user
-- Disable keying (https://www.fosslinux.com/2561/how-to-disable-keyring-in-ubuntu-elementary-os-and-linux-mint.htm)
-- Test Reboot (shutdown -r now) and stop/start from UDF
 - Test Connection to RDP
 - Test Connection to noVNC
-- Re-arrange Favorites in the task bar (have Chrome, Firefox, Terminal, Postman)
+- Disable auto-lock screen for f5student user
+- Re-arrange Favorites in the desktop task bar (have Chrome, Firefox, Terminal, Postman)
 - Test Launch Chrome & Firefox
-- Add bookmark of the BIG-IQ CE lab guide and Splunk, check all bookmarks works
+- Add bookmark of the BIG-IQ lab guide
 - Add postman collection from f5-ansible-bigiq-as3-demo, disable SSL in postman
-- Install BIG-IQ MIB from /usr/share/snmp/mibs/\n\n"
+- Install BIG-IQ MIB from /usr/share/snmp/mibs/
+- Test Reboot (shutdown -r now) and stop/start from UDF\n\n"
 
 exit 0
