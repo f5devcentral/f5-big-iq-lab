@@ -196,9 +196,6 @@ elif [[ "$1" = "ucs_restore" ]]; then
             - https://support.f5.com/csp/article/K14593 (BIG-IQ state failed)
             - https://support.f5.com/csp/article/K25071552 (set HA)  sh /usr/bin/ha_reset -f 10.1.10.4"
 
-
-        Getting sys personality state failed  Getting masterkey state failed
-
     fi
 
 elif [[ "$1" = "setup" ]]; then
