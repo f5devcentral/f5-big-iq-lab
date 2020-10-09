@@ -43,20 +43,20 @@ d=$2
 if [[ -z $1 ]]; then
     echo -e "\nSetup BIG-IP, then BIG-IQ for the lab.\n"
     echo -e "OPTIONS:\n"
-    echo -e "init"
-    echo -e "ucs_restore"
+    echo -e "- init"
+    echo -e "- ucs_restore"
+    echo -e "- udf [root_password]"
     echo
-    echo -e "sshkeys [admin_password] [root_password]"
-    echo -e "setup"
-    echo -e "resizedisk"
+    echo -e "- sshkeys [admin_password] [root_password]"
+    echo -e "- setup"
+    echo -e "- resizedisk"
     echo
-    echo -e "test\n"
+    echo -e "- testing\n"
 
 elif [[ "$1" = "init" ]]; then
 
     echo -e "\n---------- INITIAL SETUP BIG-IPs -----------\n"
     echo -e "\nRun on all BIG-IPs as root:\n"
-    echo -e "tmsh modify auth user admin password purple123"
     echo -e "tmsh modify auth user admin shell bash"
     echo -e "tmsh modify /sys db users.strictpasswords value disable"
     echo -e "tmsh modify /sys db systemauth.disablerootlogin value false"
@@ -139,9 +139,9 @@ elif [[ "$1" = "ucs_restore" ]]; then
             echo -e "Visit https://support.f5.com/csp/article/K13132"
             read -p "Continue (Y/N) (Default=N):" answer
             if [[  $answer == "Y" ]]; then
-                scp -o StrictHostKeyChecking=no ucs/${ucs[i]} root@${ip[i]}:/var/local/ucs
+                sshpass -p "$root_password" scp -o StrictHostKeyChecking=no ucs/${ucs[i]} root@${ip[i]}:/var/local/ucs
                 [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-                ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh load /sys ucs /var/local/ucs/${ucs[i]}
+                sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@${ip[i]} tmsh load /sys ucs /var/local/ucs/${ucs[i]}
                 # enable iApps  ››  Package Management LX in BIG-IP UI
                 # ssh -o StrictHostKeyChecking=no root@${ip[i]} touch /var/config/rest/iapps/enable
             fi
@@ -169,19 +169,19 @@ elif [[ "$1" = "ucs_restore" ]]; then
         echo -e "Visit https://support.f5.com/csp/article/K45246805"
         read -p "Continue (Y/N) (Default=N):" answer
         if [[  $answer == "Y" ]]; then
-            ssh -o StrictHostKeyChecking=no root@$iq_dcd mkdir /shared/ucs_backups
-            scp -o StrictHostKeyChecking=no ucs/$ucs_dcd root@$iq_dcd:/shared/ucs_backups
+            sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@$iq_dcd mkdir /shared/ucs_backups
+            sshpass -p "$root_password" scp -o StrictHostKeyChecking=no ucs/$ucs_dcd root@$iq_dcd:/shared/ucs_backups
             [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-            ssh -o StrictHostKeyChecking=no root@$iq_dcd tmsh load /sys ucs /shared/ucs_backups/$ucs_dcd
+            sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@$iq_dcd tmsh load /sys ucs /shared/ucs_backups/$ucs_dcd
         fi
         echo -e "\n** $iq_cm - $ucs_cm\n"
         echo -e "Visit https://support.f5.com/csp/article/K45246805"
         read -p "Continue (Y/N) (Default=N):" answer
         if [[  $answer == "Y" ]]; then
-            ssh -o StrictHostKeyChecking=no root@$iq_cm mkdir /shared/ucs_backups
-            scp -o StrictHostKeyChecking=no ucs/$ucs_cm root@$iq_cm:/shared/ucs_backups
+            sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@$iq_cm mkdir /shared/ucs_backups
+            sshpass -p "$root_password" scp -o StrictHostKeyChecking=no ucs/$ucs_cm root@$iq_cm:/shared/ucs_backups
             [[ $1 != "nopause" ]] && pause "Press [Enter] key to continue... CTRL+C to Cancel"
-            ssh -o StrictHostKeyChecking=no root@$iq_cm tmsh load /sys ucs /shared/ucs_backups/$ucs_cm
+            sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@$iq_cm tmsh load /sys ucs /shared/ucs_backups/$ucs_cm
         fi
 
         echo -e "\nAfter restore, go manually re-activate the license: (https://support.f5.com/csp/article/K2595)\n"
@@ -190,12 +190,49 @@ elif [[ "$1" = "ucs_restore" ]]; then
         echo -e "vi /config/bigip.license"
         echo -e "reloadlic"
         echo -e "rm -f /config/bigip.license.20*"
+        echo -e "rm /var/config/rest/pgsecrets.json"
         echo -e "bigstart restart restjavad"
+
 
         echo -e "Potential help:
             - https://support.f5.com/csp/article/K14593 (BIG-IQ state failed)
             - https://support.f5.com/csp/article/K25071552 (set HA)  sh /usr/bin/ha_reset -f 10.1.10.4"
 
+        echo "/config/.udf/udf-userdata" > /config/startup
+
+
+    fi
+
+elif [[ "$1" = "udf" ]]; then
+
+    ls -lrt udfscripts.tar.gz
+
+    echo -e "\n---------- RESTORE UDF SCRIPTS BIG-IPs -----------\n"
+    read -p "Continue (Y/N) (Default=N):" answer
+    if [[  $answer == "Y" ]]; then
+        for ((i=1; i <= ${#ip[@]}; i++)); do
+            echo -e "\n** ${ip[i]}\n"
+            read -p "Continue (Y/N) (Default=N):" answer
+            if [[  $answer == "Y" ]]; then
+                sshpass -p "$root_password" scp -o StrictHostKeyChecking=no udfscripts.tar.gz root@${ip[i]}:/config
+                sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@${ip[i]} tar -xf /config/udfscripts.tar.gz -C /config
+                sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@${ip[i]} rm -f /config/udfscripts.tar.gz
+            fi
+        done
+    fi
+
+    echo -e "\n---------- RESTORE UDF SCRIPTS BIG-IQ CM and DCD -----------\n"
+    read -p "Continue (Y/N) (Default=N):" answer
+    if [[  $answer == "Y" ]]; then
+        echo -e "\n** $iq_dcd\n"
+        sshpass -p "$root_password" scp -o StrictHostKeyChecking=no udfscripts.tar.gz root@$iq_dcd:/config
+        sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@$iq_dcd tar -xf /config/udfscripts.tar.gz -C /config
+        sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@$iq_dcd rm -f /config/udfscripts.tar.gz
+
+        echo -e "\n** $iq_cm\n"
+        sshpass -p "$root_password" scp -o StrictHostKeyChecking=no udfscripts.tar.gz root@$iq_cm:/config
+        sshpass -p "$root_password"  ssh -o StrictHostKeyChecking=no root@$iq_cm tar -xf /config/udfscripts.tar.gz -C /config
+        sshpass -p "$root_password" ssh -o StrictHostKeyChecking=no root@$iq_cm rm -f /config/udfscripts.tar.gz
     fi
 
 elif [[ "$1" = "setup" ]]; then
@@ -232,7 +269,7 @@ elif [[ "$1" = "setup" ]]; then
     - Add example TMSH script: config-sync boston cluster (tmsh run cm config-sync force-full-load-push to-group datasync-global-dg)
     - Add example iHealth, create schedule report
     - Import BIG-IPs to BIG-IQ using using scripts under ./f5-ansible-bigiq-onboarding or manually using the BIG-IQ UI
-    - Pre-deployed Application Services: (ansible playbooks commands in ~/f5-ansible-bigiq-onboarding/cmd_bigiq_onboard.sh)"
+    - Deployed Application Services: (ansible playbooks commands in ~/f5-ansible-bigiq-onboarding/cmd_bigiq_onboard.sh)"
 
 elif [[ "$1" = "test" ]]; then
 

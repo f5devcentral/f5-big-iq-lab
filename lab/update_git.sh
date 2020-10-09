@@ -42,11 +42,11 @@ if [[  $currentuser == "root" ]]; then
         # DNS and internet connectivity working
 
         # Cleanup docker
-        docker kill $(docker ps -q)
-        docker stop $(docker ps -q)
-        docker rm $(docker ps -a -q)
-        docker rmi $(docker images -q) -f
-        $home/tools/cleanup-docker.sh
+        # docker kill $(docker ps -q)
+        # docker stop $(docker ps -q)
+        # docker rm $(docker ps -a -q)
+        # docker rmi $(docker images -q) -f
+        # $home/tools/cleanup-docker.sh
 
         echo "Cleanup previous files..."
         rm -rf f5-* arcadia awx gitlab ldap locust radius splunk tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token

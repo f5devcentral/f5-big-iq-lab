@@ -76,7 +76,6 @@ The following table lists the virtual appliances in the lab along with their cre
 |                         |         |                                                                                              | - paul/paul *(RadiusServer)*    |
 |                         |         |                                                                                              | - olivia/olivia *(RadiusServer)*|
 |                         |         |                                                                                              | - larry/larry *(RadiusServer)*  |
-|                         |         |                                                                                              | - chris/chris *(RadiusServer)*  |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
 | BIG-IQ DCD              | 7.1.0.1 | A data collection device (**DCD**) is a specially provisioned                                | admin/purple123                 |
 | 10.1.1.6                |         | BIG-IQ system that you use to manage and store alerts, events,                               |                                 |
