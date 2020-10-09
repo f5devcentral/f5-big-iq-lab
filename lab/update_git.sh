@@ -113,7 +113,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
 
     echo "Juice Shop - https://owasp.org/www-project-juice-shop/"
-    docker run --restart=always --name=juice-shop -dit -p 8085:81 bkimminich/juice-shop
+    docker run --restart=always --name=juice-shop -dit -p 8085:3000 bkimminich/juice-shop
 
     ### Starting Arcadia Finance https://gitlab.com/MattDierick/arcadia-finance
     echo -e "Start Arcadia Finance apps\n"
