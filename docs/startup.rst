@@ -131,51 +131,51 @@ Application Services already deployed in this lab
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
 | Applications     | Application Services                | BIG-IQ Template used                                        | IP/WideIP            | Location     | User Access |
 +==================+=====================================+=============================================================+======================+==============+=============+
-| airport_security | AS3 security_site18_seattle         | AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 | 10.1.10.118          | Seattle      | Paula       |
+| airport_security | security_site18_seattle             | AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 | 10.1.10.118          | Seattle      | Paula       |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | AS3 security_site16_boston          | AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1   | 10.1.10.116          | Boston       |             |
+|                  | security_site16_boston              | AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1   | 10.1.10.116          | Boston       |             |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | AS3 security_fqdn                   | AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1           | airports.example.com | Boston       |             |
+|                  | security_fqdn                       | AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1           | airports.example.com | Boston       |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
-| IT_apps          | AS3 backend_site24tcp               | AS3-F5-TCP-lb-built-in-profile-template-big-iq-v1           | 10.1.10.124          | Seattle      | Paula       |
+| IT_apps          | backend_site24tcp                   | AS3-F5-TCP-lb-built-in-profile-template-big-iq-v1           | 10.1.10.124          | Seattle      | Paula       |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | Service Catalog site36.example.com  | Default-f5-HTTPS-WAF-lb-template-v1                         | 10.1.10.136          | Boston       |             |
+|                  | site36.example.com                  | Default-f5-HTTPS-WAF-lb-template-v1 (Service Catalog)       | 10.1.10.136          | Boston       |             |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | Legacy App media.site42.example.com |                                                             | 10.1.10.142          | Seattle      |             |
+|                  | media.site42.example.com            | Legacy App Service (no template used)                       | 10.1.10.142          | Seattle      |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
-| finance_apps     | AS3 conference_site41https          | without AS3 template using API                              | 10.1.10.141 (https)  | Seattle      | Paul        |
-|                  | AS3 conference_site41ftp            |                                                             | 10.1.10.141 (ftp)    |              |             |
+| finance_apps     | conference_site41https              | without AS3 template using API                              | 10.1.10.141 (https)  | Seattle      | Paul        |
+|                  | conference_site41ftp                |                                                             | 10.1.10.141 (ftp)    |              |             |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | AS3 mail_site40https                | without AS3 template using API                              | 10.1.10.140 (https)  | Seattle      |             |
+|                  | mail_site40https                    | without AS3 template using API                              | 10.1.10.140 (https)  | Seattle      |             |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | AS3 tax_site17access                | without AS3 template using API                              | 10.1.10.117 (https)  | Seattle      |             |
+|                  | tax_site17access                    | without AS3 template using API                              | 10.1.10.117 (https)  | Seattle      |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
         
 User Roles
 ----------
 
-+----------------------------+---------------------------------------------------------------+----------------+--------+
-| Role Name                  | AS3 Templates                                                 | Devices        | Users  |
-+============================+===============================================================+================+========+
-| Administrator Role         | All                                                           | All            | david  |
-|                            |                                                               |                | marco  |
-+----------------------------+---------------------------------------------------------------+----------------+--------+
-| Security Manager           | All                                                           | All            | larry  |
-|                            |                                                               |                | chris  |
-+----------------------------+---------------------------------------------------------------+----------------+--------+
-| Application Creator AS3    | Allow using AS3 without Template                              | All            | olivia |
-+----------------------------+---------------------------------------------------------------+----------------+--------+
-| Application Creator Cloud  | - AS3-F5-HTTP-lb-template-big-iq-default-v1                   | All            | paul   |
-|                            | - AS3-F5-TCP-lb-template-big-iq-default-v2                    |                |        |
-|                            | - AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-v1     |                |        |
-+----------------------------+---------------------------------------------------------------+----------------+--------+
-| Application Creator VMware | - AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1           | Boston BIG-IPs | paula  |
-|                            | - AS3-F5-HTTP-lb-template-big-iq-default-v1                   | Seattle BIG-IP |        |
-|                            | - AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1   |                |        |
-|                            | - AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 |                |        |
-|                            | - AS3-F5-FastL4-TCP-lb-template-default-v2                    |                |        |
-|                            | - AS3-F5-TCP-lb-built-in-profile-template-big-iq-v1           |                |        |
-+----------------------------+---------------------------------------------------------------+----------------+--------+
++----------------------------+---------------------------------------------------------------+-----------------+--------+
+| Role Name                  | AS3 Templates allowed                                         | Devices allowed | Users  |
++============================+===============================================================+=================+========+
+| Administrator Role         | All                                                           | All             | david  |
+|                            |                                                               |                 | marco  |
++----------------------------+---------------------------------------------------------------+-----------------+--------+
+| Security Manager           | All                                                           | All             | larry  |
+|                            |                                                               |                 | chris  |
++----------------------------+---------------------------------------------------------------+-----------------+--------+
+| Application Creator AS3    | Allow using AS3 without Template                              | All             | olivia |
++----------------------------+---------------------------------------------------------------+-----------------+--------+
+| Application Creator Cloud  | - AS3-F5-HTTP-lb-template-big-iq-default-v1                   | All             | paul   |
+|                            | - AS3-F5-TCP-lb-template-big-iq-default-v2                    |                 |        |
+|                            | - AS3-F5-HTTPS-WAF-existing-lb-template-big-iq-default-v1     |                 |        |
++----------------------------+---------------------------------------------------------------+-----------------+--------+
+| Application Creator VMware | - AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1           | Boston BIG-IPs  | paula  |
+|                            | - AS3-F5-HTTP-lb-template-big-iq-default-v1                   | Seattle BIG-IP  |        |
+|                            | - AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1   |                 |        |
+|                            | - AS3-F5-HTTPS-WAF-external-url-lb-template-big-iq-default-v2 |                 |        |
+|                            | - AS3-F5-FastL4-TCP-lb-template-default-v2                    |                 |        |
+|                            | - AS3-F5-TCP-lb-built-in-profile-template-big-iq-v1           |                 |        |
++----------------------------+---------------------------------------------------------------+-----------------+--------+
 
 Traffic Generation
 ------------------
