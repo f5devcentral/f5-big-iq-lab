@@ -19,7 +19,6 @@ This CSR will be send to Let's encrypt server which will sign it and send it bac
 
 - Name: ``webappLab2``
 - Issuer: ``Self``
-- Policy Folder: ``Seattle DataCenter``
 - Common Name: ``webapplab2.f5demo.com``
 - Division: ``UDF lab``
 - Organization: ``F5``

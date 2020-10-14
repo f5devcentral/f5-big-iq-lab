@@ -1,11 +1,11 @@
-Class 8: BIG-IQ Application Security Manager
-============================================
+Class 8: Web Application Security
+=================================
 
 Overview
 ^^^^^^^^
 
-BIG-IQ ASM enables enterprise-wide management and configuration of multiple BIG-IP devices from a central 
-management platform. 
+BIG-IQ Web Application Security enables enterprise-wide management and configuration of multiple
+BIG-IP devices from a central management platform. 
 You can centrally manage BIG-IP devices and security policies, and import policies from files on those devices.
 
 For each device discovered, an additional virtual server is created to hold all security policies

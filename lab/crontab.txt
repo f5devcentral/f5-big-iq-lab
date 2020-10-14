@@ -4,6 +4,9 @@
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/traffic-scripts/generate_http_bad_traffic.sh > /home/f5/traffic-scripts/logs/generate_http_bad_traffic.log 2>&1
 @reboot perl -le 'sleep 1800' && /home/f5/traffic-scripts/generate_http_bad_traffic.sh > /home/f5/traffic-scripts/logs/generate_http_bad_traffic.log 2>&1
 
+# IPS traffic
+#*/15 * * * * /home/f5/traffic-scripts/generate_ips_traffic.sh > /home/f5/traffic-scripts/logs/generate_ips_traffic.log 2>&1
+
 ## App Troubleshooting (class 3 module 2)
 0 0,3,6,9,12,15,18,21 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/503.sh > /home/f5/traffic-scripts/logs/503.log 2>&1
 0 0,2,5,8,11,14,17,20 * * * perl -le 'sleep rand 3600' && /home/f5/f5-demo-app-troubleshooting/404.sh > /home/f5/traffic-scripts/logs/404.log 2>&1

@@ -262,6 +262,7 @@ elif [[ "$1" = "setup" ]]; then
     - Import ASM policies
     - Configure Radius Server on BIG-IQ: RadiusServer
     - Configure LDAP Server on BIG-IQ: serverLdap
+    - Configure TACAC+ Server on BIG-IQ: serverTacac
     - Create Paula, Paul, Marco, David, Larry, Olivia (radius) users
     - Create application cutom roles
     - Add licenses pools examples:

@@ -11,9 +11,9 @@
     "target": {
       "address": "10.1.1.7"
     },
-    "conference": {
+    "mail": {
       "class": "Tenant",
-      "site41waf": {
+      "site40https": {
         "class": "Application",
         "template": "https",
         "statsProfile": {
@@ -25,10 +25,10 @@
         "serviceMain": {
           "class": "Service_HTTPS",
           "virtualAddresses": [
-            "10.1.10.141"
+            "10.1.10.140"
           ],
           "profileHTTP": {
-            "use": "http_site41"
+            "use": "http_site40"
           },
           "pool": "web_pool",
           "profileAnalytics": {
@@ -36,7 +36,7 @@
           },
           "serverTLS": "webtls",
           "policyWAF": {
-            "bigip": "/Common/asm-lab3"
+            "bigip": "/Common/asm-lab1"
           },
           "securityLogProfiles": [
             {
@@ -44,10 +44,10 @@
             }
           ]
         },
-        "http_site41": {
+        "http_site40": {
           "class": "HTTP_Profile",
-          "label": "http_site41",
-          "remark": "http_site41",
+          "label": "http_site40",
+          "remark": "http_site40",
           "trustXFF": true,
           "xForwardedFor": false
         },
@@ -60,8 +60,8 @@
             {
               "servicePort": 80,
               "serverAddresses": [
-                "10.1.20.118",
-                "10.1.20.119"
+                "10.1.20.116",
+                "10.1.20.117"
               ],
               "shareNodes": true
             }

@@ -143,11 +143,12 @@ Application Services already deployed in this lab
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
 |                  | Legacy App media.site42.example.com |                                                             | 10.1.10.142          | Seattle      |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
-| finance_apps     | AS3 conference_site41waf            | without AS3 template using API                              | 10.1.10.141          | Seattle      | Paul        |
+| finance_apps     | AS3 conference_site41https          | without AS3 template using API                              | 10.1.10.141 (https)  | Seattle      | Paul        |
+|                  | AS3 conference_site41ftp            |                                                             | 10.1.10.141 (ftp)    |              |             |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | AS3 mail_site40waf                  | without AS3 template using API                              | 10.1.10.140          | Seattle      |             |
+|                  | AS3 mail_site40https                | without AS3 template using API                              | 10.1.10.140 (https)  | Seattle      |             |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | AS3 tax_site17access                | without AS3 template using API                              | 10.1.10.117          | Seattle      |             |
+|                  | AS3 tax_site17access                | without AS3 template using API                              | 10.1.10.117 (https)  | Seattle      |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
         
 User Roles
@@ -209,6 +210,7 @@ is being sent (check ``crontab`` config for more details).
 +=======================================================================+
 | 10.1.20.110-123                                                       |
 |                                                                       |
+| - Port ``21``: ftp-server (ftpuser/ftpuser) on ``10.1.20.110``        |
 | - Port ``80``: `hackazon`_ application (test_user/123456)             |
 | - Port ``8080``: `web-dvwa`_ application (admin/password)             |
 | - Port ``8081``: f5-hello-world application                           |
@@ -216,7 +218,6 @@ is being sent (check ``crontab`` config for more details).
 | - Port ``8083``: nginx application (delay 300ms loss 30% corrupt 30%) |
 | - Port ``8084``: `arcadia finance`_ (admin/iloveblue)                 |
 | - Port ``8085``: `juice-shop`_ (admin@juice-sh.op/admin123)           |
-| - Port ``446``: ASM Policy Validator                                  |
 +-----------------------------------------------------------------------+
 
 .. _hackazon: https://github.com/rapid7/hackazon
@@ -227,35 +228,35 @@ is being sent (check ``crontab`` config for more details).
 Miscellaneous
 -------------
 
-To run `Kali Linux`_ Docker Image: ``docker run -t -i kalilinux/kali-linux-docker /bin/bash`` *(run apt-get update && apt-get install metasploit-framework after starting Kali Linux)*
+To run `Kali Linux`_ Docker Image: ``docker run -t -i kalilinux/kali-rolling /bin/bash`` (run ``apt-get update && apt-get install metasploit-framework -y`` after starting Kali Linux).
 
 .. _Kali Linux: https://en.wikipedia.org/wiki/Kali_Linux
 
 To connect to a docker instance: ``docker exec -i -t <container id or name> /bin/bash``
 
-+--------+--------------------------------------------------------------------------------+
-| Radius | - ip:port 10.1.1.5:1812                                                        |
-|        | - secret = default                                                             |
-|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/radius |
-+--------+--------------------------------------------------------------------------------+
-| LDAP   | - ip:port 10.1.1.5:389                                                         |
-|        | - SSL: Disabled                                                                |
-|        | - Bind User Distinguished Name: cn=admin,dc=f5demo,dc=com                      |
-|        | - Bind User Password: ldappass                                                 |
-|        | - User Bind Template: uid={username},ou=People,dc=f5demo,dc=com                |
-|        | - Root Distinguished Name: dc=f5demo,dc=com                                    |
-|        | - Group Search Filter: (&(objectClass=groupOfUniqueNames)(cn={searchterm}*))   |
-|        | - Group Membership Filter: uniqueMember={userDN}                               |
-|        | - Directory User Search Filter: uid={username}                                 |
-|        | - Group Distinguished Name: cn=admin,ou=Groups,dc=f5demo,dc=com                |
-|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/ldap   |
-+--------+--------------------------------------------------------------------------------+
-| Tacac+ | - ip:port 10.1.1.5:49                                                          |
-|        | - secret = ciscotacacskey                                                      |
-|        | - Primary Service = shell                                                      |
-|        | - Encrypt = yes                                                                |
-|        | - Users: iosadmin/cisco, nxosadmin/cisco                                       |
-+--------+--------------------------------------------------------------------------------+
++--------+------------------------------------------------------------------------------------+
+| Radius | - ip:port ``10.1.1.5:1812``                                                        |
+|        | - secret = ``default``                                                             |
+|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/radius     |
++--------+------------------------------------------------------------------------------------+
+| LDAP   | - ip:port ``10.1.1.5:389``                                                         |
+|        | - SSL: ``Disabled``                                                                |
+|        | - Bind User Distinguished Name: ``cn=admin,dc=f5demo,dc=com``                      |
+|        | - Bind User Password: ``ldappass``                                                 |
+|        | - User Bind Template: ``uid={username},ou=People,dc=f5demo,dc=com``                |
+|        | - Root Distinguished Name: ``dc=f5demo,dc=com``                                    |
+|        | - Group Search Filter: ``(&(objectClass=groupOfUniqueNames)(cn={searchterm}*))``   |
+|        | - Group Membership Filter: ``uniqueMember={userDN}``                               |
+|        | - Directory User Search Filter: ``uid={username}``                                 |
+|        | - Group Distinguished Name: ``cn=admin,ou=Groups,dc=f5demo,dc=com``                |
+|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/ldap       |
++--------+------------------------------------------------------------------------------------+
+| Tacac+ | - ip:port ``10.1.1.5:49``                                                          |
+|        | - secret = ``ciscotacacskey``                                                      |
+|        | - Primary Service = ``shell``                                                      |
+|        | - Encrypt = ``yes``                                                                |
+|        | - Users: iosadmin/cisco, nxosadmin/cisco                                           |
++--------+------------------------------------------------------------------------------------+
 
 +-------+-------------------------------+
 | XRDP  | - ip:port 10.1.1.5:3389       |
@@ -263,23 +264,23 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 | noVNC | - ip:port 10.1.1.5:6080 https |
 +-------+-------------------------------+
 
-+------------------------+----------------------------------------+
-| `Splunk`_              | - ip:port 10.1.1.5:8000 https          |
-|                        | - HTTP Event Data Collector port 8088  |
-+------------------------+----------------------------------------+
-| `AWX (Ansible Tower)`_ | - ip:port 10.1.1.5:9001 https          |
-+------------------------+----------------------------------------+
-| `GitLab`_              | - ip:port 10.1.1.5:7002 https 7022 ssh |
-+------------------------+----------------------------------------+
-| `Visual Studio Code`_  | - ip:port 10.1.1.5:7001 https          |
-+------------------------+----------------------------------------+
-| `Locust`_              | - ip:port 10.1.1.5:7089 https          |
-+------------------------+----------------------------------------+
-| Samba                  | - ip:port 10.1.1.5:445                 |
-|                        | - User: f5student/purple123            |
-|                        | - Domain: WORKGROUP                    |
-|                        | - Storage Path: //10.1.1.5/dcdbackup   |
-+------------------------+----------------------------------------+
++------------------------+------------------------------------------+
+| `Splunk`_              | - ip:port 10.1.1.5:8000 https            |
+|                        | - HTTP Event Data Collector port 8088    |
++------------------------+------------------------------------------+
+| `AWX (Ansible Tower)`_ | - ip:port 10.1.1.5:9001 https            |
++------------------------+------------------------------------------+
+| `GitLab`_              | - ip:port 10.1.1.5:7002 https 7022 ssh   |
++------------------------+------------------------------------------+
+| `Visual Studio Code`_  | - ip:port 10.1.1.5:7001 https            |
++------------------------+------------------------------------------+
+| `Locust`_              | - ip:port 10.1.1.5:7089 https            |
++------------------------+------------------------------------------+
+| Samba                  | - ip:port 10.1.1.5:445                   |
+|                        | - User: f5student/purple123              |
+|                        | - Domain: ``WORKGROUP``                  |
+|                        | - Storage Path: ``//10.1.1.5/dcdbackup`` |
++------------------------+------------------------------------------+
 
 .. _AWX (Ansible Tower): https://www.ansible.com/products/awx-project/faq
 .. _Splunk: https://www.splunk.com

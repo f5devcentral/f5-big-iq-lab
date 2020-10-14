@@ -111,7 +111,7 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always --name=f5-hello-world-blue -dit -p 8081:8080 -e NODE='Blue' f5devcentral/f5-hello-world
     docker run --restart=always --name=f5website -dit -p 8082:80 -e F5DEMO_APP=website f5devcentral/f5-demo-httpd
     docker run --restart=always --name=nginx -dit -p 8083:80 --cap-add NET_ADMIN nginx
-
+    
     echo "Juice Shop - https://owasp.org/www-project-juice-shop/"
     docker run --restart=always --name=juice-shop -dit -p 8085:3000 bkimminich/juice-shop
 
@@ -124,6 +124,11 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always -dit --name=app3 -h app3 --net=internal registry.gitlab.com/mattdierick/arcadia-finance/app3:latest
     docker run --restart=always -dit -p 8084:80 --name=arcadia -h arcadia --net=internal -v $home/arcadia/default.conf:/etc/nginx/conf.d/default.conf registry.gitlab.com/mattdierick/arcadia-finance/nginx_oss:latest
 
+    # FTP server
+    mkdir /tmp/ftp
+    chmod 777 /tmp/ftp
+    docker run --restart=always -dit -p 21:21 -p 21000-21010:21000-21010 -e USERS="ftpuser|ftpuser|/tmp/ftp" -v /tmp/ftp:/tmp/ftp  -e ADDRESS=10.1.20.110 --name ftp-server delfer/alpine-ftp-server
+
     ### Add delay, loss and corruption to the nginx web app
     echo -e "Customized Nginx container\n"
     docker_nginx_id="nginx"
@@ -132,8 +137,8 @@ if [[  $currentuser == "root" ]]; then
     docker exec $docker_nginx_id tc qdisc add dev eth0 root netem delay 300ms loss 30% corrupt 30%
     
     ### ASM Policy Validator
-    echo -e "ASM Policy Validator\n"
-    docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
+    #echo -e "ASM Policy Validator\n"
+    #docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
     
     ### ASM Brute Force
     echo -e "Brute Force\n"

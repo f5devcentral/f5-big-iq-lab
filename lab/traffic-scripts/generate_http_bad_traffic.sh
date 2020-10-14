@@ -119,13 +119,19 @@ do
                         # Port 80 open
                         port=80
                 else
-                      port=0
+                        port=0
                 fi
         fi
 
         if [[  $port == 443 || $port == 80 ]]; then
-                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages)"
 
+                if [  $port == 443 ]; then
+                        http="https://"
+                else
+                        http="http://"
+                fi
+
+                echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($sitepages) ($http)"
                 # add random number for loop
                 r=`shuf -i 2-4 -n 1`;
                 for k in `seq 1 $r`; do
@@ -138,11 +144,8 @@ do
                                 rb=`shuf -i 1-$arraylengthbrowser -n 1`;
 
                                 echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
-                                if [  $port == 443 ]; then
-                                        curl -k -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" https://${sitefqdn[$i]}/$j &
-                                else
-                                        curl -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" http://${sitefqdn[$i]}/$j &
-                                fi
+                                curl -k -s -m 30 -o /dev/null --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" $http${sitefqdn[$i]}/$j &
+                              
                         done
                 done
 
@@ -154,15 +157,10 @@ do
                 nmap --system-dns -p $port -script http-generator -T4 -Pn ${sitefqdn[$i]} &
 
                 echo -e "\n# site $i ab traffic gen"
-                if [  $port == 443 ]; then
-                       count=`shuf -i 11-30 -n 1`;
-                       conc=`shuf -i 1-10 -n 1`;
-                       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc https://${sitefqdn[$i]}/$j
-                else
-                       count=`shuf -i 11-30 -n 1`;
-                       conc=`shuf -i 1-10 -n 1`;
-                       ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc http://${sitefqdn[$i]}:$port/$j
-                fi
+                count=`shuf -i 11-30 -n 1`;
+                conc=`shuf -i 1-10 -n 1`;
+                ab -H "X-Forwarded-For: $source_ip_address" -n $count -c $conc $http${sitefqdn[$i]}:$port/$j
+        
 
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"

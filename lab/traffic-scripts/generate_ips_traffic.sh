@@ -3,25 +3,19 @@
 # set -x
 
 home="/home/f5/traffic-scripts"
-dcdip="10.1.10.6"
 lampip="10.1.10.5"
 
 already=$(ps -ef | grep "$0" | grep bash | grep -v grep | wc -l)
 alreadypid=$(ps -ef | grep "$0" | grep bash | grep -v grep | awk '{ print $2 }')
-if [  $already -gt 2 ]; then
+if [  $already -gt 3 ]; then
     echo "The script is already running `expr $already - 2` time."
     exit 1
 fi
 
-sitefqdn[1]="site17.example.com"
-sitefqdn[2]="site19.example.com"
-sitefqdn[3]="site21.example.com"
+sitefqdn[1]="site41.example.com" #https+ftp
 
 # get length of the array
 arraylength=${#sitefqdn[@]}
-
-# users available in the radius server
-users="paul paula david larry marco chris romain ronnie kyle"
 
 # Browser's list
 browser[1]="Mozilla/5.0 (compatible; MSIE 7.01; Windows NT 5.0)"
@@ -66,9 +60,8 @@ do
                       port=0
                 fi
         fi
-
         if [[  $port == 443 || $port == 80 ]]; then
-
+        
                 if [  $port == 443 ]; then
                         http="https://"
                 else
@@ -76,56 +69,66 @@ do
                 fi
 
                 echo -e "\n# site $i ${sitefqdn[$i]} curl traffic gen ($http)"
-                
-                for j in $users; do
+                # add random number for loop
+                r=`shuf -i 1-10 -n 1`;
+                for k in `seq 1 $r`; do
+                        echo "Loop $k"
                         #Randome IP
                         source_ip_address=$(dd if=/dev/urandom bs=4 count=1 2>/dev/null | od -An -tu1 | sed -e 's/^ *//' -e 's/  */./g')
-                        interface=$(/sbin/ifconfig | grep -B 1 $lampip | grep -v $lampip | awk -F':' '{ print $1 }')
-                        sudo ip addr add $source_ip_address/24 dev $interface
-                        sleep 2
+                        echo $source_ip_address
+                        #interface=$(/sbin/ifconfig | grep -B 1 $lampip | grep -v $lampip | awk -F':' '{ print $1 }')
+                        #sudo ip addr add $source_ip_address/24 dev $interface
+                        #sleep 1
 
                         # add random number for browsers
                         rb=`shuf -i 1-$arraylengthbrowser -n 1`;
 
-                        echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]} - user $j"
-                        
-                        curl -k -s -o /dev/null -u $j:$j --interface $source_ip_address --header "clientless-mode: 1" --header "X-Forwarded-For: $source_ip_address"  -A "${browser[$rb]}" -w "$j\tstatus: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" $http${sitefqdn[$i]}/grosfichier.html &
-                        
-                        sleep 2
-                        sudo ip addr del $source_ip_address/24 dev $interface
+                        echo -e "\n# site $i curl traffic gen ${sitefqdn[$i]}"
+                        http_header="-H 'X-Forwarded-For: $source_ip_address' -H 'authority: ${sitefqdn[$i]}' -H 'pragma: no-cache' -H 'cache-control: no-cache' -H 'upgrade-insecure-requests: 1' -H 'dnt: 1' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8' -H 'accept-encoding: gzip, deflate, br' -H 'accept-language: en-US,en;q=0.9,fr-FR;q=0.8,fr;q=0.7' --compressed"
+    
+                        echo "http_host_with_ip_address"
+                        curl -k -s -o /dev/null $http_header  -A "${browser[$rb]}" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" $http${ip:1:-1} 
+
+                        echo "http_max_uri_length"
+                        curl -k -s -o /dev/null $http_header  -A "${browser[$rb]}" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" $http${sitefqdn[$i]}/1234567891234567890 
+
+                        echo "http_server_webapp_ds_store_access"
+                        curl -k -s -o /dev/null $http_header  -A "${browser[$rb]}" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" $http${sitefqdn[$i]}/.DS_Store 
+
+                        echo "http_pua_adware_user_agent_vitruvian"
+                        curl -k -s -o /dev/null -A Vitruvian -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" $http${sitefqdn[$i]} 
+
+                        echo "http_server_webapp_cgi_bin_access"
+                        curl -k -m 10 -s -o /dev/null $http_header  -A "${browser[$rb]}" -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" $http${sitefqdn[$i]}/cgi-bin/ 
+
+                        echo "http_server_webapp_delete_attempt"
+                        curl -k -m 10 -s -o /dev/null -X DELETE -w "status: %{http_code}\tbytes: %{size_download}\ttime: %{time_total} source ip: $source_ip_address\n" $http${sitefqdn[$i]}/search?q=test 
+
+echo "ftp_anonymous_user"
+ftp -n ${ip:1:-1} <<END_SCRIPT1
+quote USER anonymous
+quote PASS anonymous@example.com
+quit
+END_SCRIPT1
+
+echo "ftp_admw0rm_ftp_login_attempt"
+ftp -n ${ip:1:-1} <<END_SCRIPT3
+quote USER w0rm
+quote PASS secret
+quit
+END_SCRIPT3
+
+                        sleep $r
+                        #sudo ip addr del $source_ip_address/24 dev $interface
                 done
+
+                # This is outside the loop
+                echo "ftp_bounce_attack"
+                # http://etutorials.org/Networking/network+security+assessment/Chapter+8.+Assessing+FTP+and+Database+Services/8.4+FTP+Bounce+Attacks/
+                nmap -P0 -b ftpuser:ftpuser@${ip:1:-1}:21 10.1.1.5
                 
         else
                 echo "SKIP ${sitefqdn[$i]} - $ip not answering on port 443 or 80"
         fi
    fi
 done
-
-# For SAML analytics
-echo "# generate_access_reports_data.sh"
-cd $home/access
-count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_data.sh accessmock 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
-count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_data.sh access 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
-count=`shuf -i 1-2 -n 1`;
-./generate_access_reports_data.sh accesssessions 10.1.10.222 BOS-vBIGIP01.termmarc.com,BOS-vBIGIP02.termmarc.com $dcdip $count;
-
-#echo "# generate_access_reports_mock_data.sh"
-#cd $home/access
-#count=`shuf -i 1-2 -n 1`;
-#./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP01.termmarc.com $count
-#count=`shuf -i 1-2 -n 1`;
-#./generate_access_reports_mock_data.sh $dcdip BOS-vBIGIP02.termmarc.com $count
-
-#echo "# rate-ht-sender.py"
-#cd $home/access
-#./rate-ht-sender.py --log-iq $dcdip
-
-#echo "# generate_data.sh"
-#cd $home/access
-#count=`shuf -i 1-4 -n 1`;
-#./generate_data.sh 10.1.10.222 access $count
-#count=`shuf -i 1-4 -n 1`;
-#./generate_data.sh 10.1.10.222 all $count
-

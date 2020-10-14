@@ -1,0 +1,207 @@
+{
+  "class": "AS3",
+  "action": "deploy",
+  "persist": true,
+  "declaration": {
+      "class": "ADC",
+      "schemaVersion": "3.12.0",
+      "id": "mail-declaration-01",
+      "label": "mail",
+      "remark": "Mail Application Service",
+      "target": {
+          "address": "10.1.1.7"
+      },
+      "conference": {
+          "class": "Tenant",
+          "site41https": {
+              "class": "Application",
+              "template": "https",
+              "statsProfile": {
+                  "class": "Analytics_Profile",
+                  "collectClientSideStatistics": true,
+                  "collectOsAndBrowser": false,
+                  "collectMethod": false
+              },
+              "serviceMain": {
+                  "class": "Service_HTTPS",
+                  "virtualAddresses": [
+                      "10.1.10.141"
+                  ],
+                  "profileHTTP": {
+                      "use": "http_site41"
+                  },
+                  "pool": "web_pool",
+                  "profileAnalytics": {
+                      "use": "statsProfile"
+                  },
+                  "serverTLS": "webtls",
+                  "policyWAF": {
+                      "bigip": "/Common/asm-lab3"
+                  },
+                  "securityLogProfiles": [
+                      {
+                          "bigip": "/Common/templates-default"
+                      }
+                  ],
+                  "profileProtocolInspection": {
+                      "use": "HTTPInspectionProfile"
+                  }
+              },
+              "http_site41": {
+                  "class": "HTTP_Profile",
+                  "label": "http_site41",
+                  "remark": "http_site41",
+                  "trustXFF": true,
+                  "xForwardedFor": false
+              },
+              "web_pool": {
+                  "class": "Pool",
+                  "monitors": [
+                      "http"
+                  ],
+                  "members": [
+                      {
+                          "servicePort": 8085,
+                          "serverAddresses": [
+                              "10.1.20.118",
+                              "10.1.20.119"
+                          ],
+                          "shareNodes": true
+                      }
+                  ]
+              },
+              "webtls": {
+                  "class": "TLS_Server",
+                  "certificates": [
+                      {
+                          "certificate": "webcert"
+                      }
+                  ]
+              },
+              "webcert": {
+                  "class": "Certificate",
+                  "certificate": {
+                      "bigip": "/Common/default.crt"
+                  },
+                  "privateKey": {
+                      "bigip": "/Common/default.key"
+                  }
+              },
+              "HTTPInspectionProfile": {
+                  "class": "Protocol_Inspection_Profile",
+                  "remark": "Custom HTTP Inspection Profile",
+                  "collectAVRStats": true,
+                  "enableComplianceChecks": true,
+                  "enableSignatureChecks": true,
+                  "autoAddNewInspections": false,
+                  "autoPublish": false,
+                  "services": [
+                      {
+                          "type": "http",
+                          "compliance": [
+                              {
+                                  "check": "http_max_uri_length",
+                                  "value": "16",
+                                  "action": "reject",
+                                  "log": true
+                              },
+                              {
+                                  "check": "http_host_with_ip_address",
+                                  "action": "reject",
+                                  "log": true
+                              }
+                          ],
+                          "signature": [
+                              {
+                                  "check": "http_server_webapp_ds_store_access",
+                                  "action": "reject",
+                                  "log": true
+                              },
+                              {
+                                  "check": "http_server_webapp_delete_attempt",
+                                  "action": "drop",
+                                  "log": true
+                              },
+                              {
+                                  "check": "http_server_webapp_cgi_bin_access",
+                                  "action": "drop",
+                                  "log": true
+                              },
+                              {
+                                  "check": "http_pua_adware_user_agent_vitruvian",
+                                  "action": "reject",
+                                  "log": true
+                              }
+                          ]
+                      }
+                  ]
+              }
+          },
+          "site41ftp": {
+              "class": "Application",
+              "service": {
+                  "class": "Service_TCP",
+                  "virtualAddresses": [
+                      "10.1.10.141"
+                  ],
+                  "virtualPort": 21,
+                  "profileFTP": {
+                      "bigip": "/Common/ftp"
+                  },
+                  "pool": "ftp_pool",
+                  "profileProtocolInspection": {
+                      "use": "FTPInspectionProfile"
+                  }
+              },
+              "ftp_pool": {
+                  "class": "Pool",
+                  "monitors": [
+                      "tcp"
+                  ],
+                  "members": [
+                      {
+                          "servicePort": 21,
+                          "serverAddresses": [
+                              "10.1.20.100"
+                          ],
+                          "shareNodes": true
+                      }
+                  ]
+              },
+              "FTPInspectionProfile": {
+                  "class": "Protocol_Inspection_Profile",
+                  "remark": "Custom FTP Inspection Profile",
+                  "collectAVRStats": true,
+                  "enableComplianceChecks": true,
+                  "enableSignatureChecks": true,
+                  "autoAddNewInspections": false,
+                  "autoPublish": false,
+                  "services": [
+                      {
+                          "type": "ftp",
+                          "compliance": [
+                              {
+                                  "check": "ftp_anonymous_user",
+                                  "action": "reject",
+                                  "log": true
+                              },
+                              {
+                                  "check": "ftp_bounce_attack",
+                                  "action": "reject",
+                                  "log": true
+                              }
+                          ],
+                          "signature": [
+                              {
+                                  "check": "ftp_admw0rm_ftp_login_attempt",
+                                  "action": "reject",
+                                  "log": true
+                              }
+                          ]
+                      }
+                  ]
+              }
+          }
+      }
+  }
+}
