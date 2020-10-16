@@ -14,7 +14,8 @@ Once you have the lab guide open, click on the **Deployment** tab to access the 
    :scale: 40%
 
 In order to complete this lab, you will find 2 ways to access the different systems in this lab:
-   1. Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH (**RECOMMENDED**)
+   1. Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH (**RECOMMENDED**).
+
       To access the BIG-IQ directly, click on the *ACCESS* button under **BIG-IQ CM**
       and select *TMUI*. The credentials to access the BIG-IQ TMUI are ``david/david`` and ``paula/paula`` as directed in the labs.
 
@@ -27,6 +28,7 @@ In order to complete this lab, you will find 2 ways to access the different syst
       You can also click on *DETAILS* on each component to see the credentials (login/password).
 
    2. From the Jump Host
+   
       From the lab environment, launch a remote desktop session to access the Jump Host (Ubuntu Desktop). 
       To do this, in your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
       *noVNC*. The password is ``purple123``.
