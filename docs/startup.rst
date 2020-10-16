@@ -291,4 +291,4 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 
 Once you are ready to start your BIG-IQ journey, go back to the `BIG-IQ test drive page`_ and start wth the first Hands-On Lab.
 
-.. _BIG-IQ test drive page: /bigiqtestdrive.html#hands-on-labs
+.. _BIG-IQ test drive page: ./bigiqtestdrive.html#hands-on-labs

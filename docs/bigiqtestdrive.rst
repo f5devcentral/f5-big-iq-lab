@@ -37,18 +37,18 @@ Understand the |location_link_core_feature|.
 
    <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Core Features of BIG-IQ Centralized Management</a>
 
-This lab will cover the following topics:
+**This lab will cover the following topics:**
 
-- Managing application services with legacy and Application Services 3 Extension (AS3) templates *(class 1)*
-- Troubleshooting and assessing health and performance at-a-glance with application-specific dashboards *(class 3)*
-- Keeping certificates compliant and up-to-date with integrated certificate management workflows *(class 6)*
-- Backing-up, patching, and orchestrating upgrades of BIG-IP devices *(class 5)*
+- Managing application services with legacy and Application Services 3 Extension (AS3) templates
+- Troubleshooting and assessing health and performance at-a-glance with application-specific dashboards
+- Keeping certificates compliant and up-to-date with integrated certificate management workflows
+- Backing-up, patching, and orchestrating upgrades of BIG-IP devices
 
-Optional labs:
+**Optional labs:**
 
-- Using BIG-IQ with Venafi, leader in X.509 certificate management *(class 3)*
-- Building advanced, DevOps-aligned automation workflows with BIG-IQ, GitLab, and Ansible configuration management *(class 1)*
-- Solving common challenges associated with importing legacy BIG-IPs into BIG-IQ *(class 6)*
+- Using BIG-IQ with Venafi, leader in X.509 certificate management
+- Building advanced, DevOps-aligned automation workflows with BIG-IQ, GitLab, and Ansible configuration management
+- Solving common challenges associated with importing legacy BIG-IPs into BIG-IQ
 
 Once you are ready to start your BIG-IQ journey, consult the |location_link_getstarted2| page, then start with *BIG-IQ Application Management and AS3* Hands-On Labs.
 

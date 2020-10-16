@@ -7,7 +7,7 @@ Lab 2.1: Application Creation using AS3 through BIG-IQ
 
 Open Chrome and Postman.
 
-For Postman, click right and click on execute (wait ^2 minutes).
+For Postman, click right and click on execute (wait ~2 minutes).
 
 .. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
 
@@ -20,7 +20,7 @@ For Postman, click right and click on execute (wait ^2 minutes).
 Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
 
 Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
-Press Send. This, will save the token value as _f5_token. If your token expires, obtain a new token by resending the ``BIG-IQ Token``
+Press Send. This, will save the token value as **_f5_token**. If your token expires, obtain a new token by resending the ``BIG-IQ Token``
 
 .. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 

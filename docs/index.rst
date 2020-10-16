@@ -40,7 +40,6 @@ Hands-On Labs
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents/Lab:
    :glob:
 
    startup.rst

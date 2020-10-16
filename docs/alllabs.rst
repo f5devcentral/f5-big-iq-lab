@@ -1,4 +1,4 @@
-BIG-IQ all Labs
+BIG-IQ All Labs
 ===============
 
 Hands-On Labs
@@ -6,7 +6,6 @@ Hands-On Labs
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents/Lab:
    :glob:
 
    startup.rst
