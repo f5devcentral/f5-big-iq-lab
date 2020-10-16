@@ -10,7 +10,7 @@ Once you have the lab guide open, click on the **Deployment** tab to access the 
 
 |udf|
 
-.. |welcomebigiq| image:: /pictures/udf.png
+.. |udf| image:: /pictures/udf.png
    :scale: 40%
 
 In order to complete this lab, you will find 2 ways to access the different systems in this lab:
@@ -50,9 +50,9 @@ In order to complete this lab, you will find 2 ways to access the different syst
 Manage SSH Keys
 ---------------
 
-1. Generate Keypair
+1. Generate Key pair
 
-If you do not have an existing keypair that you wish to use for access to UDF components, you'll need to generate a new public / private keypair. 
+If you do not have an existing key pair that you wish to use for access to UDF components, you'll need to generate a new public / private key pair. 
 On OSX or Linux, this can be done using the ssh-keygen utility:
 
 ``ssh-keygen -t rsa -b 4096``
@@ -76,7 +76,7 @@ You'll find the URL and port on your component's Access Methods tab. It should l
 
 |udfssh|
 
-.. |welcomebigiq| image:: /pictures/udf_ssh.png
+.. |udfssh| image:: /pictures/udf_ssh.png
    :scale: 40%
 
 - If using OSX or Linux, you can paste this command directly into your terminal.
@@ -86,7 +86,7 @@ You'll find the URL and port on your component's Access Methods tab. It should l
 
 SCP is similar to the above. The example below is from OSX. Note that the default SCP version on OSX uses -P instead of -p to specify port:
 
-scp -P 47000 ubuntu-16.04.2-server-amd64.iso 2ac1868c-8e44-46af-bc66-af5f8e58c282.access.udf.f5.com:/shared/images
+``scp -P 47000 ubuntu-16.04.2-server-amd64.iso 2ac1868c-8e44-46af-bc66-af5f8e58c282.access.udf.f5.com:/shared/images``
 
 BIG-IQ User Interface
 ---------------------
@@ -185,7 +185,7 @@ Application Services already deployed in this lab
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
 |                  | security_site16_boston              | AS3-F5-HTTP-lb-traffic-capture-template-big-iq-default-v1   | 10.1.10.116          | Boston       |             |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
-|                  | security_fqdn                       | AS3-F5-DNS-FQDN-A-type-template-big-iq-default-v1           | airports.example.com | Boston       |             |
+|                  | security_fqdn                       | AS3-F5-DNS-FADING-A-type-template-big-iq-default-v1           | airports.example.com | Boston       |             |
 +------------------+-------------------------------------+-------------------------------------------------------------+----------------------+--------------+-------------+
 | IT_apps          | backend_site24tcp                   | AS3-F5-TCP-lb-built-in-profile-template-big-iq-v1           | 10.1.10.124          | Seattle      | Paula       |
 |                  +-------------------------------------+-------------------------------------------------------------+----------------------+--------------+             |
