@@ -6,13 +6,13 @@ Lab 6.5: Disable/Enable Pool Member of a Legacy Application Service via the API
 In this lab, we are going to disable a pool member part of a legacy application service managed by BIG-IQ.
 
 We are going to use the following BIG-IQ API:
-    - `Applications`_: API used to get the details of the legacy application service including the virtual server reference
-    - `Pool and Pool Members Management`_: API used to get the details of Pool objects linked to the virtual server
-    - `LTM/ADC Self-Service Task (enable/disable pool member)`_: API used to get the details of the pool member(s)/server(s)
+- `Applications`_: API used to get the details of the legacy application service including the virtual server reference
+- `Pool and Pool Members Management`_: API used to get the details of Pool objects linked to the virtual server
+- `LTM/ADC Self-Service Task (enable/disable pool member)`_: API used to get the details of the pool member(s)/server(s)
 
-.. Applications: https://clouddocs.f5.com/products/big-iq/mgmt-api/v7.1.0/ApiReferences/bigiq_public_api_ref/r_adc_config_set_state.html?highlight=configset
-.. LTM/ADC Pool Member Management: https://clouddocs.f5.com/products/big-iq/mgmt-api/v7.1.0/ApiReferences/bigiq_public_api_ref/r_pool_member_management_60.html
-.. LTM/ADC Self-Service Task (enable/disable pool member): https://clouddocs.f5.com/products/big-iq/mgmt-api/v7.1.0/ApiReferences/bigiq_public_api_ref/r_adc_self_service_60.html#get-mgmt-cm-adc-core-tasks-self-service
+.. _Applications: https://clouddocs.f5.com/products/big-iq/mgmt-api/v7.1.0/ApiReferences/bigiq_public_api_ref/r_adc_config_set_state.html?highlight=configset
+.. _LTM/ADC Pool Member Management: https://clouddocs.f5.com/products/big-iq/mgmt-api/v7.1.0/ApiReferences/bigiq_public_api_ref/r_pool_member_management_60.html
+.. _LTM/ADC Self-Service Task (enable/disable pool member): https://clouddocs.f5.com/products/big-iq/mgmt-api/v7.1.0/ApiReferences/bigiq_public_api_ref/r_adc_self_service_60.html#get-mgmt-cm-adc-core-tasks-self-service
 
 .. include:: /accesslab.rst
 
@@ -31,7 +31,7 @@ For Postman, click right and click on execute (wait ^2 minutes).
 Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
 
 Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
-Press Send. This, will save the token value as _f5_token. If your token expires, obtain a new token by resending the ``BIG-IQ Token``
+Press Send. This, will save the token value as _f5_token. If your token expires, obtain a new token by re-sending the ``BIG-IQ Token``
 
 .. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
