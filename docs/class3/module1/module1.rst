@@ -166,6 +166,7 @@ Let's try to use it!
 1. Click on the *Locust* button on the system *Ubuntu Lamp Server* in the lab environment.
 
 2. Enter the following options:
+
   - Number of total user: ``50``
   - Hatch Rate: ``2``
   - Host: ``http://10.1.10.116`` (airport_security > security_site16_boston)
