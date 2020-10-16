@@ -40,6 +40,8 @@ Press Send. This, will save the token value as **_f5_token**. If your token expi
     :align: center
     :scale: 60%
 
+|
+
 Find the Pool Member Reference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -236,6 +238,7 @@ Force offline a Pool Member
    ``POST /mgmt/cm/adc-core/tasks/self-service``
 
 .. note:: Do not forget to replace ``current-config`` with ``working-config`` in the link.
+
           - **Working configuration** is the BIG-IP service configuration located on BIG-IQ. 
             This is the configuration you manage, edit, and deploy to your managed BIG-IP devices.
           - **Current configuration** is the BIG-IP service configuration running on a BIG-IP device, 
@@ -243,7 +246,7 @@ Force offline a Pool Member
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 3, 5
+   :emphasize-lines: 3
 
     {  
         "resourceReference":{
@@ -257,7 +260,7 @@ Result:
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 7, 9
+   :emphasize-lines: 9
 
     {
         "resourceReference": {
@@ -277,7 +280,7 @@ Result:
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 3
+   :emphasize-lines: 4
 
     {
         "id": "9bc4e08b-d7df-4051-9390-01d0be11bf0a",
