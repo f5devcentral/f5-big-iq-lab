@@ -289,6 +289,9 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 .. _Locust: https://locust.io
 
 
-Once you are ready to start your BIG-IQ journey, go back to the `BIG-IQ test drive page`_ and start wth the first Hands-On Lab.
+Once you are ready to start your BIG-IQ journey, go back to the `BIG-IQ Test Drive Labs`_ and start with the first Hands-On Lab.
 
-.. _BIG-IQ test drive page: ./bigiqtestdrive.html#hands-on-labs
+If you are not following the BIG-IQ Test Drive labs, there are more labs to look at under `BIG-IQ All Labs`_.
+
+.. _BIG-IQ Test Drive Labs: ./bigiqtestdrive.html#hands-on-labs
+.. _BIG-IQ All Labs: ./balllabs.html#hands-on-labs
