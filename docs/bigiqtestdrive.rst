@@ -56,6 +56,8 @@ Once you are ready to start your BIG-IQ journey, consult the |location_link_gets
 
    <a href="/training/community/big-iq-cloud-edition/html/startup.html" target="_blank">Getting Started</a>
 
+.. note:: Labs below are part of a larger BIG-IQ lab guide. The labs on the BIG-IQ Test Drive page need to be done as listed.
+
 Hands-On Labs
 -------------
 
@@ -107,6 +109,9 @@ Hands-On Labs
 
 Optional Hands-On Labs
 ----------------------
+
+.. warning:: Start the **Venafi Trust Protection server** in the UDF environment in order to complete **Lab 1.4** and 
+             follow instructions on the Getting Started page to generate a SSH keys for **Lab 2.12** and **2.13**.
 
 .. toctree::
    :maxdepth: 1

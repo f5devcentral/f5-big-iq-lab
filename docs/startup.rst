@@ -4,8 +4,29 @@ Getting Started
 Starting the Lab
 ----------------
 
+Once you connect to the UDF course portal, you will land on the **Documentation** tab where you can find the link to the lab guide.
+
+Once you have the lab guide open, click on the **Deployment** tab to access the various systems in the lab.
+
+|udf|
+
+.. |welcomebigiq| image:: /pictures/udf.png
+   :scale: 40%
+
 In order to complete this lab, you will find 2 ways to access the different systems in this lab:
-   - From the Jump Host
+   1. Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH (**RECOMMENDED**)
+      To access the BIG-IQ directly, click on the *ACCESS* button under **BIG-IQ CM**
+      and select *TMUI*. The credentials to access the BIG-IQ TMUI are ``david/david`` and ``paula/paula`` as directed in the labs.
+
+      |udf_bigiq_tmui|
+
+      To ssh into a system, you can click on *WEB SHELL* or *SSH* (you will need your ssh keys setup in the lab environment for SSH).
+
+      |    
+
+      You can also click on *DETAILS* on each component to see the credentials (login/password).
+
+   2. From the Jump Host
       From the lab environment, launch a remote desktop session to access the Jump Host (Ubuntu Desktop). 
       To do this, in your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
       *noVNC*. The password is ``purple123``.
@@ -20,23 +41,52 @@ In order to complete this lab, you will find 2 ways to access the different syst
       
       |udf_ubuntu_rdp_vnc|
 
-   - Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH
-      To access the BIG-IQ directly, click on the *ACCESS* button under **BIG-IQ CM**
-      and select *TMUI*. The credentials to access the BIG-IQ TMUI are ``david/david`` and ``paula/paula`` as directed in the labs.
-
-      |udf_bigiq_tmui|
-
-      To ssh into a system, you can click on *WEB SHELL* or *SSH* (you will need your ssh keys setup in the lab environment for SSH).
-
-      |    
-
-      You can also click on *DETAILS* on each component to see the credentials (login/password).
-
 .. |udf_ubuntu_rdp_vnc| image:: /pictures/udf_ubuntu_rdp_vnc.png
    :scale: 60%
 
 .. |udf_bigiq_tmui| image:: /pictures/udf_bigiq_tmui.png
    :scale: 60%
+
+Manage SSH Keys
+---------------
+
+1. Generate Keypair
+
+If you do not have an existing keypair that you wish to use for access to UDF components, you'll need to generate a new public / private keypair. 
+On OSX or Linux, this can be done using the ssh-keygen utility:
+
+``ssh-keygen -t rsa -b 4096``
+
+Follow the prompts to specify the location where the public and private keys will be stored, and to specify a passphrase (if desired).
+
+2. Configure SSH Client
+
+Configure your SSH client to use your private key to authenticate when connecting to the UDF SSH endpoint. 
+How to configure this will differ based on which client you use. Please refer to your client's documentation for detail.
+
+3. Add Public Key to UDF
+
+Log in to the UDF, under **Tools**, click on the link **Manage SSH Keys**.
+
+Enter your public SSH key (typically generated with a .pub extension) and a name for it, then select Save.
+
+4. Connect via SSH
+
+You'll find the URL and port on your component's Access Methods tab. It should look similar to this:
+
+|udfssh|
+
+.. |welcomebigiq| image:: /pictures/udf_ssh.png
+   :scale: 40%
+
+- If using OSX or Linux, you can paste this command directly into your terminal.
+- If using Windows, you'll use the noted URL and port to configure a PuTTY session.
+
+.. note:: Depending on your SSH configuration, you may additionally need to specify which public key to send. The UDF SSH handler only attempts to validate the first key sent.
+
+SCP is similar to the above. The example below is from OSX. Note that the default SCP version on OSX uses -P instead of -p to specify port:
+
+scp -P 47000 ubuntu-16.04.2-server-amd64.iso 2ac1868c-8e44-46af-bc66-af5f8e58c282.access.udf.f5.com:/shared/images
 
 BIG-IQ User Interface
 ---------------------
