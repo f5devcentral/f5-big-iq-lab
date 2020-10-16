@@ -50,7 +50,7 @@ Optional labs:
 - Building advanced, DevOps-aligned automation workflows with BIG-IQ, GitLab, and Ansible configuration management *(class 1)*
 - Solving common challenges associated with importing legacy BIG-IPs into BIG-IQ *(class 6)*
 
-Once you are ready to start your BIG-IQ journey, consult the |location_link_getstarted2| page, then start with *Class 1: BIG-IQ Application Management and AS3* Hands-On Labs.
+Once you are ready to start your BIG-IQ journey, consult the |location_link_getstarted2| page, then start with *BIG-IQ Application Management and AS3* Hands-On Labs.
 
 .. |location_link_getstarted2| raw:: html
 
@@ -59,7 +59,7 @@ Once you are ready to start your BIG-IQ journey, consult the |location_link_gets
 Hands-On Labs
 -------------
 
-**Class 1: BIG-IQ Application Management and AS3** *(Estimated time to complete: 40min)*
+**BIG-IQ Application Management and AS3** *(Estimated time to complete: 40min)*
 
 .. toctree::
    :maxdepth: 1
@@ -72,7 +72,7 @@ Hands-On Labs
    class1/module6/lab2
    class1/module6/lab3
 
-**Class 3: BIG-IQ Analytics** *(Estimated time to complete: 30min)*
+**BIG-IQ Analytics** *(Estimated time to complete: 30min)*
 
 .. toctree::
    :maxdepth: 1
@@ -84,7 +84,7 @@ Hands-On Labs
    class3/module2/lab3
    class3/module4/lab1
 
-**Class 6: BIG-IQ LTM Configuration Management** *(Estimated time to complete: 20min)*
+**BIG-IQ LTM Configuration Management** *(Estimated time to complete: 20min)*
 
 .. toctree::
    :maxdepth: 1
@@ -94,7 +94,7 @@ Hands-On Labs
    class6/module1/lab2
    class6/module1/lab3
 
-**Class 5: BIG-IQ Device Management** *(Estimated time to complete: 30min)*
+**BIG-IQ Device Management** *(Estimated time to complete: 30min)*
 
 .. toctree::
    :maxdepth: 1

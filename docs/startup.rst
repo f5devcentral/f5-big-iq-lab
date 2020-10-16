@@ -287,3 +287,8 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 .. _Visual Studio Code: https://github.com/cdr/code-server
 .. _GitLab: https://gitlab.com
 .. _Locust: https://locust.io
+
+
+Once you are ready to start your BIG-IQ journey, go back to the `BIG-IQ test drive page`_ and start wth the first Hands-On Lab.
+
+.. _BIG-IQ test drive page: /bigiqtestdrive.html#hands-on-labs

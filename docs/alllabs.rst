@@ -1,50 +1,8 @@
-BIG-IQ Labs
-===========
+BIG-IQ all Labs
+===============
 
-Welcome
--------
-
-Welcome to the **F5 BIG-IQ Test Drive**.
-
-This lab provides hands-on experience using F5's BIG-IQ.
-
-BIG-IQ allows you to take an **application-centric** approach to core IT, networking, services provisioning, 
-and deployment with a unified tool for gaining visibility into and managing your F5 application delivery and security portfolio.
-
-BIG-IQ significantly extends the operability and value of your F5 investment. From a single console, 
-BIG-IQ offers users the ability to create, configure, deploy, analyze, troubleshoot, patch, and upgrade 
-F5 **security** and **application delivery services**. BIG-IQ also supports holistic device management of 
-F5 BIG-IP™ **physical and virtual devices** both locally and in the cloud.
-
-From per-app virtual editions to traditional hardware appliances, BIG-IQ makes it possible to gain visibility 
-into apps and devices, leverage **automated workflows**, simplify configuration, and ensure every team—and every 
-app—has the resources required to perform optimally. 
-
-With BIG-IQ you can quickly and easily manage, analyze, and troubleshoot every device, every application, and 
-every policy from one **centralized** location—no matter the operating environment.
-
-New to BIG-IQ? Get started by watching the video below.
-
-.. raw:: html
-
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/YZ6dZa512j8" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-
-|
-
-Understand the |location_link_core_feature|.
-
-.. |location_link_core_feature| raw:: html
-
-   <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Core Features of BIG-IQ Centralized Management</a>
-
-Once you are ready to start your BIG-IQ journey, consult the |location_link_getstarted2| page, then start with one of the labs.
-
-.. |location_link_getstarted2| raw:: html
-
-   <a href="/training/community/big-iq-cloud-edition/html/startup.html" target="_blank">Getting Started</a>
-
-Labs
-----
+Hands-On Labs
+-------------
 
 .. toctree::
    :maxdepth: 1

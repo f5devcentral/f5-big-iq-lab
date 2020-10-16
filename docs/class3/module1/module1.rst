@@ -30,7 +30,7 @@ Check the BIG-IQ documentation on the BIG-IQ knowledge center to learn more on h
 General Views and Configuration Applications
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Login as **paula**.
+1. Login as **paula**.
 
 The screen lists all of your applications and current summary data about health, traffic performance and security. 
 Use this screen to create, delete, deploy and oversee all of your applications.
@@ -42,7 +42,7 @@ Click the elements in this area to filter or sort the application list.
 - **Traffic Performance**: Lists the top 5 applications for each performance data indicator.
 - **Security**: Lists the number of applications that have an active security alert.
 
-Use one of the screen's filter and sort settings to isolate an application of interest, 
+2. Use one of the screen's filter and sort settings to isolate an application of interest, 
 based on summary data or active alerts.
 
 .. image:: ../pictures/module1/img_module1_lab1_1.png
@@ -51,7 +51,7 @@ based on summary data or active alerts.
 
 |
 
-Filter on **Not Protected** Applications:
+3. Filter on **Not Protected** Applications:
 
 .. image:: ../pictures/module1/img_module1_lab1_2a.png
   :align: center
@@ -59,7 +59,7 @@ Filter on **Not Protected** Applications:
 
 |
 
-Click on the ``airport_security`` application. 
+4. Click on the ``airport_security`` application. 
 This screen lists all of the application services that make up this specific application. 
 
 .. image:: ../pictures/module1/img_module1_lab1_2b.png
@@ -68,7 +68,7 @@ This screen lists all of the application services that make up this specific app
 
 |
 
-Select an application name (e.g. ``security_site16_boston``) to redirect you to a more detailed dashboard.
+5. Select an application name (e.g. ``security_site16_boston``) to redirect you to a more detailed dashboard.
 
 This screen displays the current health, traffic performance, security, and configuration details for an application.
 Use this screen to detect application trends, to identify issues that can affect performance, and to adjust application configuration settings.
@@ -88,7 +88,7 @@ The Health area indicates the application's health status.
 - The Alert History area lists the application's five most recent alerts.
 - The Active Alerts area lists the application's ongoing and most severe alerts.
 
-Click the icon to view, or edit, the application health alert rules.
+6. Click the icon to view, or edit, the application health alert rules.
 
 .. image:: ../pictures/module1/img_module1_lab1_4.png
   :align: center
@@ -116,7 +116,7 @@ The ANALYTICS area displays the application's traffic data trends and events and
 
 |
 
-You can use the time settings above the chart to focus the data to a specific time period. You can also control the data refresh period and events in the charts.
+1. You can use the time settings above the chart to focus the data to a specific time period. You can also control the data refresh period and events in the charts.
 
 .. note:: To view events and alerts in charts, ensure that the Events button is set to ON.
 
@@ -126,11 +126,11 @@ Click the menu to the left to navigate among the charts. Take the time to naviga
 The events and alerts are displayed as numbered icons within the charts. You can click these icons to display an information table below the chart.
 You can click rows within the table to view detailed information. Click the buttons below the chart area to filter out displayed events and alerts by Category or Log Level.
 
-Click the arrow tab to the right of the chart to expand the dimensions area.
+2. Click the arrow tab to the right of the chart to expand the dimensions area.
 To filter data in charts and dimensions, expand the dimensions to select specific objects listed.
 Note: Certain dimensions list aggregated data. Click Enhanced Analytics to enable object data for these dimensions.
 
-Take the time to navigate in all the different charts.
+3. Take the time to navigate in all the different charts.
 
 .. note:: When using the filters, do not enter the first ``/`` in your query.
 
@@ -142,12 +142,12 @@ Take the time to navigate in all the different charts.
 
 **Configuration Tab**
 
-Click CONFIGURATION to view and evaluate the settings for application properties.
+1. Click CONFIGURATION to view and evaluate the settings for application properties.
 The Application owner can easily update the BIG-IP configuration (Virtual Server, Node, etc..).
 
-Take the time to navigate in all the different menu.
+2. Take the time to navigate in all the different menu.
 
-See example below with an Application Service deployed using an AS3 template.
+3. See example below with an Application Service deployed using an AS3 template.
 
 .. image:: ../pictures/module1/img_module1_lab1_8.png
   :align: center
@@ -163,14 +163,14 @@ This lab also includes an open source load testing tool called locust.io which c
 
 Let's try to use it!
 
-Click on the *Locust* button on the system *Ubuntu Lamp Server* in the lab environment.
+1. Click on the *Locust* button on the system *Ubuntu Lamp Server* in the lab environment.
 
-Enter the following options:
+2. Enter the following options:
   - Number of total user: ``50``
   - Hatch Rate: ``2``
   - Host: ``http://10.1.10.116`` (airport_security > security_site16_boston)
 
-The hatch rate is the number of users to spawn per second, starting from zero when load generation first begins until the total number of users is reached.
+3. The hatch rate is the number of users to spawn per second, starting from zero when load generation first begins until the total number of users is reached.
 
 .. image:: ../pictures/module1/img_module1_lab1_9.png
   :align: center
@@ -182,20 +182,20 @@ The HTTP traffic simulator is started.
   :align: center
   :scale: 40%
 
-Swtich to the **Charts** tab to see various metrics such as *Total Requests per seconds*, *Response Time* and *Number of users*.
+4. Swtich to the **Charts** tab to see various metrics such as *Total Requests per seconds*, *Response Time* and *Number of users*.
 
 .. image:: ../pictures/module1/img_module1_lab1_11.png
   :align: center
   :scale: 40%
 
-Now, let's go back on BIG-IQ dahsboard and navigate in the various HTTP analytics collected while locust.io 
+5. Now, let's go back on BIG-IQ dahsboard and navigate in the various HTTP analytics collected while locust.io 
 is sending traffic through ``security_site16_boston`` application service down to the application servers.
 
 .. image:: ../pictures/module1/img_module1_lab1_12.png
   :align: center
   :scale: 40%
 
-Once you have finished, do not forget to stop the Load testing tool.
+6. Once you have finished, do not forget to stop the Load testing tool.
 
 .. image:: ../pictures/module1/img_module1_lab1_13.png
   :align: center
