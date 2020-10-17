@@ -97,7 +97,7 @@ Wait for the deployment to complete.
   :scale: 40%
   :align: center
 
-6. You can test the HTTP application service by opening a browser in the **Ubuntu Jump-host**.
+6. You can test the HTTP application service by opening Google Chrome browser on the **Ubuntu Jumphost**.
 
 Open Chrome or Firefox and navigate on the website ``http://site34.example.com``.
 

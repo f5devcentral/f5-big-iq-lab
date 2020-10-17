@@ -13,7 +13,7 @@ Tasks
 
 The virtual IP address ``10.1.10.116`` is configured behind ``site16.example.com`` FQDN.
 
-3. Open Chrome and Firefox in the **Ubuntu Jump-host** and navigate on the website ``http://site16.example.com/f5_browser_issue.php``.
+3. Open Google Chrome in the **Ubuntu Jumphost** and navigate on the website ``http://site16.example.com/f5_browser_issue.php``.
 
 .. note:: Accept the private certificates.
 

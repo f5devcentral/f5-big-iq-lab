@@ -62,7 +62,7 @@ Configured third-party certificate provider on BIG-IQ
 
 1. Start the **Venafi Trust Protection** component (the Windows Server 2019 in the lab). Wait at least 5 min so all the necessary services start.
 
-2. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*..
+2. Login to BIG-IQ as **david** ..
 
 Navigate to **Configuration > Local Traffic > Certificate Management > Third Party CA Management**.
 
@@ -289,7 +289,7 @@ This is only for this lab.
 
 4. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 
-You can test the application service by opening a browser in the **Ubuntu Jump-host** and type the URL ``https://webapp123.f5demo.com``.
+You can test the application service by opening Google Chrome browser on the **Ubuntu Jumphost** and type the URL ``https://webapp123.f5demo.com``.
 
 .. note:: The certificate shows not secure as we are using a demo Root CA not imported in the browser by default.
 

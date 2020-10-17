@@ -13,7 +13,7 @@ In BIG-IQ 7.1, we can associate devices or device groups with a role.
 Tasks
 ^^^^^
 
-1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*.
+1. Login to BIG-IQ as **david** .
 
 2. Navigate to System > User Management > Users
 

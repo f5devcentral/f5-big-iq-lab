@@ -13,10 +13,13 @@ should also disappear from BIG-IQ.
 
 .. note:: We are not using the DELETE method but a POST with a declaration containing a tenant with nothing in it.
 
-1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+.. |location_link_postman| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+
+.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.

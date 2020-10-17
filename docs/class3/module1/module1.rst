@@ -156,7 +156,7 @@ The Application owner can easily update the BIG-IP configuration (Virtual Server
 Traffic Generation with locus.io
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Ubuntu Jump-host in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
+The Ubuntu Jumphost in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
 and Application dashboard in BIG-IQ.
 
 This lab also includes an open source load testing tool called locust.io which can be used to generate HTTP traffic from multiple users.

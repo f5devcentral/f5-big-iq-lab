@@ -11,43 +11,60 @@ Once you have the lab guide open, click on the **Deployment** tab to access the 
 |udf|
 
 .. |udf| image:: /pictures/udf.png
-   :scale: 40%
+   :scale: 30%
 
-In order to complete this lab, you will find 2 ways to access the different systems in this lab:
-   1. Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH (**RECOMMENDED**).
+In order to complete this lab, you will find 2 ways to access the different systems in this lab.
 
-      To access the BIG-IQ directly, click on the *ACCESS* button under **BIG-IQ CM**
-      and select *TMUI*. The credentials to access the BIG-IQ TMUI are ``david/david`` and ``paula/paula`` as directed in the labs.
+1. Going directly to the BIG-IQ CM or BIG-IP TMUI or WEB SHELL/SSH (**RECOMMENDED**).
 
-      |udf_bigiq_tmui|
+   To access the BIG-IQ directly, click on the *ACCESS* button under **BIG-IQ CM**
+   and select *TMUI*. The credentials to access the BIG-IQ TMUI are ``david/david`` and ``paula/paula`` as directed in the labs.
 
-      To ssh into a system, you can click on *WEB SHELL* or *SSH* (you will need your ssh keys setup in the lab environment for SSH).
+   |udf_bigiq_tmui|
 
-      |    
+   To ssh into a system, you can click on *WEB SHELL* or *SSH* (you will need your ssh keys setup in the lab environment for SSH).
 
-      You can also click on *DETAILS* on each component to see the credentials (login/password).
+   |    
 
-   2. From the Jump Host
+   You can also click on *DETAILS* on each component to see the credentials (login/password).
+
+2. From the lab embeded Google Chrome browser.
+
+   In your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
+   *Google Chrome*.
+
+   |
+
+   You can also use *XRDP* as an alternative, click on the resolution that works for your laptop. 
+   When the RDP session launches showing *Session: Xorg*, simply click *OK*, no credentials are needed.
+   Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
+
+   |
    
-      From the lab environment, launch a remote desktop session to access the Jump Host (Ubuntu Desktop). 
-      To do this, in your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
-      *noVNC*. The password is ``purple123``.
-
-      |
-
-      You can also use *XRDP* as an alternative, click on the resolution that works for your laptop. 
-      When the RDP session launches showing *Session: Xorg*, simply click *OK*, no credentials are needed.
-      Modern laptops with higher resolutions you might want to use 1440x900 and once XRDP is launched Zoom to 200%.
-
-      |
-      
-      |udf_ubuntu_rdp_vnc|
+   |udf_ubuntu_rdp_vnc|
 
 .. |udf_ubuntu_rdp_vnc| image:: /pictures/udf_ubuntu_rdp_vnc.png
    :scale: 60%
 
 .. |udf_bigiq_tmui| image:: /pictures/udf_bigiq_tmui.png
    :scale: 60%
+
+BIG-IQ User Interface
+---------------------
+
+Once you connect to BIG-IQ, you can navigate in the following tabs:
+
+- **Applications** - Application Management (Legacy, AS3) and Cloud Environment
+- **System** - Manage all aspects for BIG-IQ and DCDs.
+- **Devices** - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
+- **Deployment** - Manage evaluation task and deployment for Configuration Management (none AS3)
+- **Configuration** - ADC and Security Object Management (ASM, AFM, APM, DDOS, SSLo config/monitoring)
+- **Monitoring** - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
+
+|welcomebigiq|
+
+.. |welcomebigiq| image:: /pictures/welcomebigiq.png
+   :scale: 40%
 
 Manage SSH Keys
 ---------------
@@ -90,22 +107,14 @@ SCP is similar to the above. The example below is from OSX. Note that the defaul
 
 ``scp -P 47000 ubuntu-16.04.2-server-amd64.iso 2ac1868c-8e44-46af-bc66-af5f8e58c282.access.udf.f5.com:/shared/images``
 
-BIG-IQ User Interface
----------------------
+API Rest Client: Postman
+------------------------
 
-Once you connect to BIG-IQ, you can navigate in the following tabs:
+In case you need to use an API Rest Client for this lab, follow |location_link_postman| to configure the **Postman Google Chrome Extention**.
 
-- **Applications** - Application Management (Legacy, AS3) and Cloud Environment
-- **System** - Manage all aspects for BIG-IQ and DCDs.
-- **Devices** - Discover, Import, Create, Onboard (DO) and Manage BIG-IP devices.
-- **Deployment** - Manage evaluation task and deployment for Configuration Management (none AS3)
-- **Configuration** - ADC and Security Object Management (ASM, AFM, APM, DDOS, SSLo config/monitoring)
-- **Monitoring** - Event collection per device, statistics monitoring, iHealth reporting integration, alerting, and audit logging.
+.. |location_link_postman| raw:: html
 
-|welcomebigiq|
-
-.. |welcomebigiq| image:: /pictures/welcomebigiq.png
-   :scale: 40%
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
 Lab Diagram
 -----------
@@ -154,8 +163,8 @@ The following table lists the virtual appliances in the lab along with their cre
 |                         |         | organizational compliance.                                                                   |                                 |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
 | LAMP Server             |         | - Radius, LDAP, TACAx (auth)                                                                 | f5student/purple123             |
-| 10.1.1.5                |         | - xRDP and noVNC for User Remote Desktop                                                     |                                 |
-|                         |         | - AWX/Ansible Tower                                                                          | noVNC password is purple123     |
+| 10.1.1.5                |         | - xRDP/Google Chrome direct access for User Remote Desktop                                   |                                 |
+|                         |         | - AWX/Ansible Tower                                                                          |                                 |
 |                         |         | - GitLab                                                                                     |                                 |
 |                         |         | - Splunk                                                                                     |                                 |
 |                         |         | - Application Servers (Hackazon, dvmw, f5 demo app, arcadia, juice shop)                     |                                 |
@@ -232,7 +241,7 @@ User Roles
 Traffic Generation
 ------------------
 
-The Ubuntu Jump-host in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
+The Ubuntu Jumphost in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
 and Application dashboard in BIG-IQ. Note you can also use `locust.io`_  to generate HTTP traffic toward a specific virtual IP address.
 
 .. _locust.io: ./class3/module1/module1.html#traffic-generation-with-locus-io
@@ -310,12 +319,6 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 |        | - Users: iosadmin/cisco, nxosadmin/cisco                                           |
 +--------+------------------------------------------------------------------------------------+
 
-+-------+-------------------------------+
-| XRDP  | - ip:port 10.1.1.5:3389       |
-+-------+-------------------------------+
-| noVNC | - ip:port 10.1.1.5:6080 https |
-+-------+-------------------------------+
-
 +------------------------+------------------------------------------+
 | `Splunk`_              | - ip:port 10.1.1.5:8000 https            |
 |                        | - HTTP Event Data Collector port 8088    |
@@ -328,6 +331,10 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 +------------------------+------------------------------------------+
 | `Locust`_              | - ip:port 10.1.1.5:7089 https            |
 +------------------------+------------------------------------------+
+| Google Chrome          | - ip:port 10.1.1.5:6080 https            |
++------------------------+------------------------------------------+
+| XRDP                   | - ip:port 10.1.1.5:3389                  |
++------------------------+------------------------------------------+
 | Samba                  | - ip:port 10.1.1.5:445                   |
 |                        | - User: f5student/purple123              |
 |                        | - Domain: ``WORKGROUP``                  |
@@ -339,7 +346,6 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 .. _Visual Studio Code: https://github.com/cdr/code-server
 .. _GitLab: https://gitlab.com
 .. _Locust: https://locust.io
-
 
 Once you are ready to start your BIG-IQ journey, go back to the `BIG-IQ Test Drive Labs`_ and start with the first Hands-On Lab.
 

@@ -45,7 +45,7 @@ if [[  $currentuser == "root" ]]; then
 
         echo "Cleanup previous files..."
         rm -rf f5-* tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token
-        rm -rf arcadia  gitlab ldap locust radius
+        rm -rf arcadia  gitlab ldap locust radius hoppscotch
         rm -rf awx splunk
         ls -lrt
 
@@ -83,18 +83,21 @@ if [[  $currentuser == "root" ]]; then
         touch last_update_$(date +%Y-%m-%d_%H-%M)
     fi
 
-    echo "Check/Restart sevices: NoVNC, Websockify"
+    echo "Check/Restart RDP"
     su - f5student -c "$home/tools/services_monitor.sh"
-    sleep 5
-    service gdm3 status
-    ps -ef | grep vnc | grep -v grep
-    ps -ef | grep websockify | grep -v grep
-    netstat -na | grep 590
 
     # Radius
     echo -e "\Radius"
     RADIUS_HOME="$home/radius" docker-compose -f $home/radius/docker-compose.yml up -d
     radtest david david $jumphostIp 1812 default
+
+    # Chrome https://github.com/TekFik/chrome-web
+    docker run --restart=always -dit --name=chrome --privileged -p 6080:3000 -v $home/chrome:/home/app/config tekfik/chrome
+    sleep 5
+    docker exec chrome cp /home/app/config/Bookmarks /home/app/.config/google-chrome/Default/
+    docker exec chrome cp /home/app/config/Preferences /home/app/.config/google-chrome/Default/
+    docker exec chrome pkill -f chrome
+    docker exec chrome ps -ef
 
     ### Start Ansible Tower/AWX Compose
     echo -e "AWX start\n"
@@ -131,10 +134,9 @@ if [[  $currentuser == "root" ]]; then
 
     ### Add delay, loss and corruption to the nginx web app
     echo -e "Customized Nginx container\n"
-    docker_nginx_id="nginx"
-    docker exec $docker_nginx_id apt-get update
-    docker exec $docker_nginx_id apt-get install iproute2 iputils-ping net-tools -y
-    docker exec $docker_nginx_id tc qdisc add dev eth0 root netem delay 300ms loss 30% corrupt 30%
+    docker exec nginx apt-get update
+    docker exec nginx apt-get install iproute2 iputils-ping net-tools -y
+    docker exec nginx tc qdisc add dev eth0 root netem delay 300ms loss 30% corrupt 30%
     
     ### ASM Policy Validator
     #echo -e "ASM Policy Validator\n"
@@ -155,7 +157,6 @@ if [[  $currentuser == "root" ]]; then
     sleep 30
     docker logs splunk_splunk_1 
     # ==> data stored under /opt/splunk/var/lib/splunk
-    docker_splunk_id="splunk_splunk_1"
     # wait for splunk to initalize
     echo "Sleep 1 min for splunk to be ready."
     sleep 1m
@@ -167,11 +168,11 @@ if [[  $currentuser == "root" ]]; then
     # Splunk set default dashboard for admin user
     cp $home/splunk/user-prefs.conf $home/splunk/etc/users/admin/user-prefs/local
     # Splunk create spunlk HTTP Event Collector and enable it
-    docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description 'demo splunk' -disabled 0 -index main -indexes main -sourcetype _json -auth admin:purple123
-    docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123
-    docker exec $docker_splunk_id /opt/splunk/bin/splunk http-event-collector list -uri https://localhost:8089 -auth admin:purple123 | grep 'token=' | awk 'BEGIN { FS="=" } { print $2 }' | tr -dc '[:print:]' > $home/splunk-token
+    docker exec splunk_splunk_1 sudo -u root /opt/splunk/bin/splunk http-event-collector create token-big-iq -uri https://localhost:8089 -description 'demo splunk' -disabled 0 -index main -indexes main -sourcetype _json -auth admin:purple123
+    docker exec splunk_splunk_1 sudo -u root /opt/splunk/bin/splunk http-event-collector enable -uri https://localhost:8089 -enable-ssl 1 -auth admin:purple123
+    docker exec splunk_splunk_1 /opt/splunk/bin/splunk http-event-collector list -uri https://localhost:8089 -auth admin:purple123 | grep 'token=' | awk 'BEGIN { FS="=" } { print $2 }' | tr -dc '[:print:]' > $home/splunk-token
     sleep 5
-    docker exec $docker_splunk_id sudo -u root /opt/splunk/bin/splunk restart
+    docker exec splunk_splunk_1 sudo -u root /opt/splunk/bin/splunk restart
     docker logs splunk_splunk_1 
     echo -e "\nSplunk end"
 
@@ -192,17 +193,16 @@ if [[  $currentuser == "root" ]]; then
 
     ### Copy some custom files in hackazon docker for labs
     echo -e "\nApp Troubleshooting customization begin"
-    docker_hackazon_id="hackazon"
-    docker cp f5-demo-app-troubleshooting/f5_browser_issue.php $docker_hackazon_id:/var/www/hackazon/web
-    docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png $docker_hackazon_id:/var/www/hackazon/web
-    docker cp f5-demo-app-troubleshooting/f5-logo.png $docker_hackazon_id:/var/www/hackazon/web
-    docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php $docker_hackazon_id:/var/www/hackazon/web
+    docker cp f5-demo-app-troubleshooting/f5_browser_issue.php hackazon:/var/www/hackazon/web
+    docker cp f5-demo-app-troubleshooting/f5-logo-black-and-white.png hackazon:/var/www/hackazon/web
+    docker cp f5-demo-app-troubleshooting/f5-logo.png hackazon:/var/www/hackazon/web
+    docker cp f5-demo-app-troubleshooting/f5_capacity_issue.php hackazon:/var/www/hackazon/web
     # Big files for access lab
     base64 /dev/urandom | head -c 300000000 > grosfichier.html
-    docker cp grosfichier.html $docker_hackazon_id:/var/www/hackazon/web
+    docker cp grosfichier.html hackazon:/var/www/hackazon/web
     rm -f grosfichier.html
     # fix permissions
-    docker exec $docker_hackazon_id sh -c "chown -R www-data:www-data /var/www/hackazon/web"
+    docker exec hackazon sh -c "chown -R www-data:www-data /var/www/hackazon/web"
     echo -e "App Troubleshooting customization end\n"
 
     ### Configure AWX
@@ -220,16 +220,15 @@ if [[  $currentuser == "root" ]]; then
 
     ### Visual Code https://github.com/cdr/code-server
     docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
-    docker_codeserver_id="code-server"
-    docker exec $docker_codeserver_id sh -c "sudo apt-get update"
-    docker exec $docker_codeserver_id sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
-    docker exec $docker_codeserver_id sh -c "pip3 install ansible"
+    docker exec code-server sh -c "sudo apt-get update"
+    docker exec code-server sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
+    docker exec code-server sh -c "pip3 install ansible"
     # Download latest F5 Fast extention
     wget $(curl -s https://api.github.com/repos/DumpySquare/vscode-f5-fast/releases | grep browser_download_url | grep '.vsix' | head -n 1 | cut -d '"' -f 4) 
-    docker cp *.vsix $docker_codeserver_id:/tmp
-    docker exec $docker_codeserver_id code-server --install-extension /tmp/$(ls *vsix)
-    docker exec $docker_codeserver_id code-server --install-extension dawhite.mustache
-    docker restart $docker_codeserver_id
+    docker cp *.vsix code-server:/tmp
+    docker exec code-server code-server --install-extension /tmp/$(ls *vsix)
+    docker exec code-server code-server --install-extension dawhite.mustache
+    docker restart code-server
     rm *.vsix
 
     ### Ldap connectivity check

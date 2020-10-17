@@ -13,7 +13,7 @@ within the Application dashboard of BIG-IQ.
 Tasks
 ^^^^^
 
-1. Login to BIG-IQ as **david** *(open a Remote Desktop session to the Ubuntu Jump-host or access directly to the BIG-IQ CM)*.
+1. Login to BIG-IQ as **david** .
 
 2. Navigate to Applications > Applications. Click on **Create** to Create an Application Service:
 

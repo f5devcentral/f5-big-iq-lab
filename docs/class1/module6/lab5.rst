@@ -17,31 +17,6 @@ We are going to use the following BIG-IQ API:
 
 .. include:: /accesslab.rst
 
-Open Chrome and Postman.
-
-For Postman, click right and click on execute (wait ~2 minutes).
-
-.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
-
-.. image:: ../../pictures/postman.png
-    :align: center
-    :scale: 60%
-
-|
-
-Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
-
-Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
-Press Send. This, will save the token value as **_f5_token**. If your token expires, obtain a new token by re-sending the ``BIG-IQ Token``
-
-.. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
-.. image:: ../pictures/module2/lab-1-1.png
-    :align: center
-    :scale: 60%
-
-|
-
 Find the Pool Member Reference
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -51,14 +26,15 @@ Find the Pool Member Reference
   :scale: 40%
   :align: center
 
-2. Open a RDP session to the system *Ubuntu Lamp Server*. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by re-sending the ``BIG-IQ Token (david)``.
+2. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+.. |location_link_postman| raw:: html
 
-   Use the **BIG-IQ AS3 Declaration** Postman call and copy/paste the below URL using the GET method in order to retrieve 
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+
+3. Use the **BIG-IQ API** Postman call and copy/paste the below URL using the GET method in order to retrieve 
    the Legacy Application **media.site42.example.co,m** details using the BIG-IQ API.
-   Save the link after ``https://localhost/`` for the next query.
+   Save the URL after ``https://localhost/`` for the next query.
 
    ``GET https://10.1.1.4/mgmt/cm/global/config-sets?$filter=configSetName eq 'media.site42.example.com'``
 
@@ -99,7 +75,7 @@ Find the Pool Member Reference
         "selfLink": "https://localhost/mgmt/cm/global/config-sets"
     }
 
-3. Now, let's query the legacy app service details to get the virtual server details.
+4. Now, let's query the legacy app service details to get the virtual server details.
    
    ``GET /mgmt/cm/global/classic-configs/918b8779-1d1a-32a8-a3a7-7126902986ba``
 
@@ -139,7 +115,7 @@ Find the Pool Member Reference
         ]
     }
 
-4. Using the virtual server reference, do another GET on it. This call will give us the reference of the Pool Member attached to this virtual server.
+5. Using the virtual server reference, do another GET on it. This call will give us the reference of the Pool Member attached to this virtual server.
 
    ``GET /mgmt/cm/adc-core/current-config/ltm/virtual/c100e548-106f-3476-b0f5-dacda18ae2e7``
 
@@ -180,7 +156,7 @@ Find the Pool Member Reference
     }
 
 
-5. Finally, let's retrieve the Pool Members or Servers belonging to this Pool.
+6. Finally, let's retrieve the Pool Members or Servers belonging to this Pool.
 
    ``GET /mgmt/cm/adc-core/current-config/ltm/pool/ef21f8dd-c75d-328d-8f21-8816a76d8c1b/members``
 

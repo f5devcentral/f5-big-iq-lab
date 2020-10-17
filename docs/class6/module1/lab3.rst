@@ -55,7 +55,7 @@ Click **Deploy**.
 
 7. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 
-You can test the application service by opening a browser in the **Ubuntu Jump-host** and type the URL ``https://10.1.10.126``.
+You can test the application service by opening Google Chrome browser on the **Ubuntu Jumphost** and type the URL ``https://10.1.10.126``.
 
 Notice the new certificate is now being used by the browser.
 

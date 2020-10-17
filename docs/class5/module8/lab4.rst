@@ -12,30 +12,19 @@ to create and onboard the VE.
 
 Tasks
 ^^^^^
-From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop.
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-Open Postman. Click right and click on execute (wait ~2 minutes).
+.. |location_link_postman| raw:: html
 
-.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
-.. image:: ../../pictures/postman.png
-    :align: center
-    :scale: 60%
 
-|
-
-1. If not already done, run through `Lab 8.1 Prepare your AWS Account`_.
+2. If not already done, run through `Lab 8.1 Prepare your AWS Account`_.
 
 .. _Lab 8.1 Prepare your AWS Account: ./lab1.html
 
 
-2. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by re-sending the ``BIG-IQ Token (david)``.
-
-   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
-3. First, let's get the Cloud Environment Reference. 
-   Using Postman, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``GET https://10.1.1.4/mgmt/cm/cloud/environments``.
+3. First, let's get the Cloud Environment Reference. Using Postman, use the **BIG-IQ API** call and replace the method and URL with ``GET https://10.1.1.4/mgmt/cm/cloud/environments``.
 
    Save the **selfLink** value.
    
@@ -214,10 +203,13 @@ Note the Private DNS and IPs which will be used later. This information could be
       }
    }
 
-9. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by re-sending the ``BIG-IQ Token (david)``.
+9. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+.. |location_link_postman| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+
+.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 10. Using Postman, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``POST https://10.1.1.4/mgmt/shared/declarative-onboarding``.
     Copy/Paste the DO declaration from the validator to the body in Postman.

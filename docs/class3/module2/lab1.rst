@@ -53,7 +53,7 @@ client IP addresses sending requests to the application.
 
 |
 
-4. Let's generate some 404 error, open a terminal in the **Ubuntu Jump-host** and launch the following command:
+4. Let's generate some 404 error, open a ssh session on the **Ubuntu Jumphost** and launch the following command:
 
 ``# /home/f5/f5-demo-app-troubleshooting/404.sh``
 

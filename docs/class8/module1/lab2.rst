@@ -100,27 +100,11 @@ Make sure the deployment is successful.
 DoS Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-Open Chrome and Postman.
+.. |location_link_postman| raw:: html
 
-For Postman, click right and click on execute (wait ~2 minutes).
-
-.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
-
-.. image:: ../../pictures/postman.png
-    :align: center
-    :scale: 40%
-
-|
-
-Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
-
-Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
-Press Send. This, will save the token value as **_f5_token**. If your token expires, 
-obtain a new token by re-sending the ``BIG-IQ Token``
-
-.. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
 2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
    the service on the BIG-IP through BIG-IQ:
@@ -509,32 +493,16 @@ Expand the dimmensions to show *Transaction Outcomes* and *Client IPs*.
 Annex | Run the entire lab configuration part with 1 single API call using AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-Open Chrome and Postman.
+.. |location_link_postman| raw:: html
 
-For Postman, click right and click on execute (wait ~2 minutes).
-
-.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
-
-.. image:: ../../pictures/postman.png
-    :align: center
-    :scale: 40%
-
-|
-
-Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
-
-Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
-Press Send. This, will save the token value as **_f5_token**. If your token expires, 
-obtain a new token by re-sending the ``BIG-IQ Token``
-
-.. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
 2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
    the service on the BIG-IP through BIG-IQ:
 
-  POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
+  ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``
 
 .. code-block:: yaml
    :linenos:

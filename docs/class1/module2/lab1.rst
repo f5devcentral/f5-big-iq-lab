@@ -5,27 +5,6 @@ Lab 2.1: Application Creation using AS3 through BIG-IQ
 
 .. include:: /accesslab.rst
 
-Open Chrome and Postman.
-
-For Postman, click right and click on execute (wait ~2 minutes).
-
-.. note:: If Postman does not open, open a terminal, type ``postman`` to open postman.
-
-.. image:: ../../pictures/postman.png
-    :align: center
-    :scale: 60%
-
-|
-
-Using the declarative AS3 API, let's send the following BIG-IP configuration through BIG-IQ:
-
-Using Postman select ``BIG-IQ Token (david)`` available in the Collections.
-Press Send. This, will save the token value as **_f5_token**. If your token expires, obtain a new token by resending the ``BIG-IQ Token``
-
-.. note:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
-|lab-1-1|
-
 Task 1 - HTTP Application Service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -112,10 +91,13 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
         "address": "10.1.1.8"
     },
 
-4. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+4. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+.. |location_link_postman| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+
+.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 5. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
@@ -231,10 +213,13 @@ Now we are going to create another service but this time, we will do some SSL of
        }
    }
 
-2. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+2. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+.. |location_link_postman| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+
+.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
@@ -346,10 +331,13 @@ Update the WAF policy section below with the policy available on BIG-IP::
        }
    }
 
-1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+.. |location_link_postman| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+
+.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
@@ -434,10 +422,13 @@ Modify the Generic virtual with something other than <generic_virtual>.
        }
    }
 
-1. Using Postman, use the **BIG-IQ Token (david)** collections to authenticate you on the BIG-IQ and save the token.
-   If your token expires, obtain a new token by resending the ``BIG-IQ Token (david)``.
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-   .. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
+.. |location_link_postman| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+
+.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
    
 2. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
@@ -459,8 +450,6 @@ Modify the Generic virtual with something other than <generic_virtual>.
 .. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
 .. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
 
-.. |lab-1-1| image:: ../pictures/module2/lab-1-1.png
-   :scale: 60%
 .. |lab-1-3| image:: ../pictures/module2/lab-1-3.png
    :scale: 60%
 .. |lab-1-4| image:: ../pictures/module2/lab-1-4.png

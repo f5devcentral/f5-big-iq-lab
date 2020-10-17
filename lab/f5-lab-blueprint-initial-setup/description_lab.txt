@@ -5,6 +5,8 @@ BIG-IQ test drive Lab Guide: https://f5.com/bigiqtestdrive
 Full Lab Guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
 Lab Components & Credentials: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/startup.html
 
+/!\ The Cloud Account below is not used as part of the BIG-IQ test drive, please do not try to login to the AWS account below as it won't be used for those labs.
+
 ###################################################
 Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Gitlab
 
@@ -16,7 +18,7 @@ XRDP
 Protocol: RDP
 10.1.1.5 port 3389
 
-noVNC
+Google Chrome
 Protocol: HTTPS(Authenticated)
 10.1.1.5 port 6080
 
@@ -52,6 +54,7 @@ Configuration:
 - Venafi API: https://ec2amaz-bq0fcmk.f5demo.com/vedsdk
 
 Import the RootCA in BIG-IQ restjavad:
+
 echo "" | openssl s_client -host 10.1.1.17 -port 443 -showcerts | awk '/BEGIN CERT/ {p=1} ; p==1; /END CERT/ {p=0}' > /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem
 cat /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem
 mount -o remount,rw /usr
@@ -59,6 +62,7 @@ mount -o remount,rw /usr
 mount -o remount,ro /usr
 
 Add custom DNS for venafi in BIG-IQ:
+
 tmsh modify /sys global-settings remote-host add {ec2amaz-bq0fcmk.f5demo.com {hostname ec2amaz-bq0fcmk.f5demo.com addr 10.1.1.17}}
 tmsh save /sys config
 cat /etc/hosts

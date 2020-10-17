@@ -198,7 +198,7 @@ their Management IP addresses.
 If you click on the ``management IP address`` of the devices. It will
 open a new tab to access its UI.
 
-.. note:: Here you'll need to connect to your ``BIG-IQ`` from the xRDP/noVNC session. The
+.. note:: Here you'll need to connect to your ``BIG-IQ`` from the xRDP or Google Chrome session. The
   VEs in your ``SSG`` will not show up in lab environment and have a mgmt IP in the subnet 10.1.1.0/24.
   In Chrome, connect to your ``BIG-IQ`` (https\:\/\/10.1.1.4 admin/purple123), go to *Applications*
   > *Environments* > *Service Scaling Groups*, click on *SSGClass2*, go to

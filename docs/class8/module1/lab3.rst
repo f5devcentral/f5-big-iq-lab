@@ -56,7 +56,7 @@ Start GitLab and create new a project
     ./gitlab/start-gitlab.sh
 
 3. Wait ~10 min to open GitLab web UI from the lab environment. Click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
-   *GitLab*. The login/password is ``root/purple123``. Or open ``http://localhost:7002`` from a browser in the Jump-host.
+   *GitLab*. The login/password is ``root/purple123``. Or open ``http://localhost:7002`` from Google Chrome browser in the Jumphost.
 
 .. note:: You can check GitLab status with ``docker exec gitlab_gitlab_1 gitlab-ctl status`` and GitLab logs with ``docker logs gitlab_gitlab_1``.
 
@@ -70,7 +70,7 @@ Select *Initialize repository with a README*.
 
 |lab-12-3|
 
-5. Copy the Jump-host *Ubuntu Lamp Server* ssh public key::
+5. Copy the Jumphost *Ubuntu Lamp Server* ssh public key::
 
     cat ~/.ssh/id_rsa.pub 
 
@@ -107,7 +107,7 @@ Finally copy the token value.
 
 |lab-12-10|
 
-8. Back in the Linux Jump-host, run the following command to register the gitlab runner using the token value::
+8. Back in the Linux Jumphost, run the following command to register the gitlab runner using the token value::
 
     ./gitlab/gitlab-runner-register.sh <token>
 
@@ -151,7 +151,7 @@ We are not going to create a custom policy template but use one of the default f
 Clone gitlab project and deploy AS3 WAF HTTPS offload application service to a BIG-IP through BIG-IQ
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. From the Linux Jump-host, clone the repository::
+1. From the Linux Jumphost, open a ssh session and clone the repository::
 
     git clone ssh://git@localhost:7022/root/mywebapp.git
 

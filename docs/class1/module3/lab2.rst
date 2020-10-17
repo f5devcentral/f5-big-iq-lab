@@ -125,7 +125,7 @@ Login to ``SEA-vBIGIP01.termmarc.com`` BIG-IP from lab environment (admin/purple
   :scale: 40%
   :align: center
 
-15.	You can test the HTTPS offload application service by opening a browser in the **Ubuntu Jump-host** and type the Virtual Server IP address.
+15.	You can test the HTTPS offload application service by opening Google Chrome browser on the **Ubuntu Jumphost** and type the Virtual Server IP address.
 
 Open Chrome or Firefox and navigate on the website ``https://10.1.10.120``.
 
