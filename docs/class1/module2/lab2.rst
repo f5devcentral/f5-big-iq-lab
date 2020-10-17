@@ -161,8 +161,6 @@ This declaration will add a HTTPS application to a existing HTTP application. In
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
 4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ.    
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.
@@ -250,8 +248,6 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 .. |location_link_postman| raw:: html
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
-
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ.    
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.

@@ -209,8 +209,6 @@ Note the Private DNS and IPs which will be used later. This information could be
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
 10. Using Postman, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``POST https://10.1.1.4/mgmt/shared/declarative-onboarding``.
     Copy/Paste the DO declaration from the validator to the body in Postman.
 

@@ -11,7 +11,7 @@ Once you have the lab guide open, click on the **Deployment** tab to access the 
 |udf|
 
 .. |udf| image:: /pictures/udf.png
-   :scale: 30%
+   :scale: 20%
 
 In order to complete this lab, you will find 2 ways to access the different systems in this lab.
 
@@ -44,10 +44,10 @@ In order to complete this lab, you will find 2 ways to access the different syst
    |udf_ubuntu_rdp_vnc|
 
 .. |udf_ubuntu_rdp_vnc| image:: /pictures/udf_ubuntu_rdp_vnc.png
-   :scale: 60%
+   :scale: 40%
 
 .. |udf_bigiq_tmui| image:: /pictures/udf_bigiq_tmui.png
-   :scale: 60%
+   :scale: 40%
 
 BIG-IQ User Interface
 ---------------------

@@ -5,7 +5,7 @@ BIG-IQ test drive Lab Guide: https://f5.com/bigiqtestdrive
 Full Lab Guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/
 Lab Components & Credentials: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/startup.html
 
-/!\ The Cloud Account below is not used as part of the BIG-IQ test drive, please do not try to login to the AWS account below as it won't be used for those labs.
+The Cloud Account below is not used as part of the BIG-IQ test drive, please do not try to login to the AWS account below as it won't be used for those labs.
 
 ###################################################
 Name: Ubuntu 19.10 Lamp, RDP, LDAP, Docker, AWX, Gitlab
@@ -69,6 +69,11 @@ cat /etc/hosts
 
 sql database cred 127.0.0.1 port 1433: venafi/venafi
 
+###################################################
+Name: SSLo Service TAP
+
+There is a script which update the Mac address on both BIG-IP Paris and Seattle.
+More details: https://github.com/f5devcentral/f5-big-iq-lab/blob/develop/lab/scripts/sslo/update_mac_tap.sh
 
 ###################################################
 CPU: 16*2 + 8*4 + 4*3 + 2*2 = 80vCPU (64vCPU max)

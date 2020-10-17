@@ -133,8 +133,6 @@ In this task, we will create a template which require a Service_HTTP object, for
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
 2. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
    It will create a new template in BIG-IQ AS3 Service Catalogue:
 
@@ -266,8 +264,6 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
     "password": "olivia",
     "loginProviderName": "RadiusServer"
    }
-
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
 
 2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.

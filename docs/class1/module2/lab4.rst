@@ -19,8 +19,6 @@ should also disappear from BIG-IQ.
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
 2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.
    

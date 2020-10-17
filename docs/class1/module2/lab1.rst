@@ -97,8 +97,6 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
 5. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.
@@ -219,8 +217,6 @@ Now we are going to create another service but this time, we will do some SSL of
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
 3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
@@ -337,8 +333,6 @@ Update the WAF policy section below with the policy available on BIG-IP::
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
 
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
-
 2. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
    Copy/Paste the AS3 declaration from the validator to the body into Postman (**DON'T FORGET TO UPDATE THE WAF Policy**).
@@ -427,8 +421,6 @@ Modify the Generic virtual with something other than <generic_virtual>.
 .. |location_link_postman| raw:: html
 
    <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
-
-.. warning:: The token timeout is set to 5 min. If you get the 401 authorization error, request a new token.
    
 2. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
