@@ -167,15 +167,9 @@ Let's try to use it!
 
 2. Enter the following options:
 
-<<<<<<< HEAD
-  - Number of total user: ``50``
-  - Hatch Rate: ``2``
-  - Host: ``http://10.1.10.116`` (airport_security > security_site16_boston)
-=======
 - Number of total user: ``50``
 - Hatch Rate: ``2``
 - Host: ``http://10.1.10.116`` (airport_security > security_site16_boston)
->>>>>>> develop
 
 3. The hatch rate is the number of users to spawn per second, starting from zero when load generation first begins until the total number of users is reached.
 

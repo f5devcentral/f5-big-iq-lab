@@ -121,7 +121,7 @@ Lab Diagram
 
 .. image:: ./pictures/diagram_udf.png
    :align: center
-   :scale: 40%
+   :scale: 30%
 
 List of instances & Credentials
 -------------------------------
