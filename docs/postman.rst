@@ -1,7 +1,7 @@
 API Rest Client: Postman
 ========================
 
-In case you need to use an API Rest Client for this lab, follow below instruction to configure the **Postman Google Chrome Extension**.
+In case you need to use an API Rest Client for this lab, follow below instructions to configure the **Postman Google Chrome Extension**.
 
 1. Open Google Chrome in the **Ubuntu Jumphost** and click on the link **Install Postman**.
 
@@ -69,7 +69,7 @@ In case you need to use an API Rest Client for this lab, follow below instructio
   :scale: 40%
   :align: center
 
-10. Because the BIG-IQ in his lab has a private SSL certificate, let's open a new tab and accept the BIG-IQ certificate by navigating to ``http://10.1.1.4``. 
+10. Because the BIG-IQ in his lab has a private SSL certificate, let's open a new tab and accept the BIG-IQ certificate by navigating to ``https://10.1.1.4``. 
 
 .. image:: /pictures/postman_install-12.png
   :scale: 40%
