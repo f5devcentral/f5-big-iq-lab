@@ -155,11 +155,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
            }
        }
 
-3. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
-
-.. |location_link_postman| raw:: html
-
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+3. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman2|).
 
 4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ.    
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
@@ -243,11 +239,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
         ]
     }
 
-3. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
-
-.. |location_link_postman| raw:: html
-
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+3. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman2|).
 
 4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ.    
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
@@ -274,3 +266,6 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 .. |lab-1-5| image:: ../pictures/module2/lab-1-5.png
    :scale: 40%
 
+.. |location_link_postman2| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>

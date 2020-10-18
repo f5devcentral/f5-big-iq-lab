@@ -12,12 +12,7 @@ to create and onboard the VE.
 
 Tasks
 ^^^^^
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
-
-.. |location_link_postman| raw:: html
-
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
-
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman3|).
 
 2. If not already done, run through `Lab 8.1 Prepare your AWS Account`_.
 
@@ -203,11 +198,7 @@ Note the Private DNS and IPs which will be used later. This information could be
       }
    }
 
-9. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
-
-.. |location_link_postman| raw:: html
-
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+9. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman3|).
 
 10. Using Postman, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``POST https://10.1.1.4/mgmt/shared/declarative-onboarding``.
     Copy/Paste the DO declaration from the validator to the body in Postman.
@@ -465,3 +456,7 @@ The GET on the URI monitoring the task will also show a success message.
    :width: 60%
 .. |image30| image:: pictures/image30.png
    :width: 60%
+
+.. |location_link_postman3| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>

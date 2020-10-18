@@ -100,11 +100,7 @@ Make sure the deployment is successful.
 DoS Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
-
-.. |location_link_postman| raw:: html
-
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman4|).
 
 2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
    the service on the BIG-IP through BIG-IQ:
@@ -493,11 +489,7 @@ Expand the dimmensions to show *Transaction Outcomes* and *Client IPs*.
 Annex | Run the entire lab configuration part with 1 single API call using AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
-
-.. |location_link_postman| raw:: html
-
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman4|).
 
 2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
    the service on the BIG-IP through BIG-IQ:
@@ -658,3 +650,7 @@ Use following admd command to monitor the learning:
 5. Run section *L7 Behavioral DoS Profile update with Bad Actor Detection*
 
 Update AS3 declaration with ``"detectionEnabled": true``.
+
+.. |location_link_postman4| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
