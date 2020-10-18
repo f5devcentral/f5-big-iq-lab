@@ -24,16 +24,12 @@ In order to complete this lab, you will find 2 ways to access the different syst
 
    To ssh into a system, you can click on *WEB SHELL* or *SSH* (you will need your ssh keys setup in the lab environment for SSH).
 
-   |    
-
    You can also click on *DETAILS* on each component to see the credentials (login/password).
 
 2. From the lab embeded Google Chrome browser.
 
    In your lab deployment, click on the *ACCESS* button of the **Ubuntu Lamp Server** system and click on
    *Google Chrome*.
-
-   |
 
    You can also use *XRDP* as an alternative, click on the resolution that works for your laptop. 
    When the RDP session launches showing *Session: Xorg*, simply click *OK*, no credentials are needed.
@@ -68,6 +64,8 @@ Once you connect to BIG-IQ, you can navigate in the following tabs:
 
 Manage SSH Keys
 ---------------
+
+.. note:: You can also use the **Web Shell** to get to the system's terminals of this lab.
 
 1. Generate Key pair
 
@@ -131,14 +129,14 @@ The following table lists the virtual appliances in the lab along with their cre
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
 | System                  | Version | Description                                                                                  | Credentials                     |
 +=========================+=========+==============================================================================================+=================================+
-| BIG-IQ CM               | 7.1.0.1 | Using BIG-IQ, you can centrally manage your BIG-IP devices,                                  | - admin/purple123 *(local)*     |
+| BIG-IQ CM               | 7.1.0.2 | Using BIG-IQ, you can centrally manage your BIG-IP devices,                                  | - admin/purple123 *(local)*     |
 | 10.1.1.4                |         | performing operations such as backups, licensing, monitoring,                                | - david/david *(RadiusServer)*  |
 |                         |         | and configuration management.                                                                | - paula/paula *(RadiusServer)*  |
 |                         |         |                                                                                              | - paul/paul *(RadiusServer)*    |
 |                         |         |                                                                                              | - olivia/olivia *(RadiusServer)*|
 |                         |         |                                                                                              | - larry/larry *(RadiusServer)*  |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
-| BIG-IQ DCD              | 7.1.0.1 | A data collection device (**DCD**) is a specially provisioned                                | admin/purple123                 |
+| BIG-IQ DCD              | 7.1.0.2 | A data collection device (**DCD**) is a specially provisioned                                | admin/purple123                 |
 | 10.1.1.6                |         | BIG-IQ system that you use to manage and store alerts, events,                               |                                 |
 |                         |         | and statistical data from one or more BIG-IP systems.                                        |                                 |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
@@ -320,20 +318,22 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 +--------+------------------------------------------------------------------------------------+
 
 +------------------------+------------------------------------------+
-| `Splunk`_              | - ip:port 10.1.1.5:8000 https            |
-|                        | - HTTP Event Data Collector port 8088    |
-+------------------------+------------------------------------------+
-| `AWX (Ansible Tower)`_ | - ip:port 10.1.1.5:9001 https            |
-+------------------------+------------------------------------------+
-| `GitLab`_              | - ip:port 10.1.1.5:7002 https 7022 ssh   |
-+------------------------+------------------------------------------+
-| `Visual Studio Code`_  | - ip:port 10.1.1.5:7001 https            |
-+------------------------+------------------------------------------+
-| `Locust`_              | - ip:port 10.1.1.5:7089 https            |
-+------------------------+------------------------------------------+
 | Google Chrome          | - ip:port 10.1.1.5:6080 https            |
 +------------------------+------------------------------------------+
 | XRDP                   | - ip:port 10.1.1.5:3389                  |
++------------------------+------------------------------------------+
+| `Visual Studio Code`_  | - ip:port 10.1.1.5:7001 http             |
++------------------------+------------------------------------------+
+| `AWX (Ansible Tower)`_ | - ip:port 10.1.1.5:9001 http             |
++------------------------+------------------------------------------+
+| `GitLab`_              | - ip:port 10.1.1.5:7002 http  7022 ssh   |
+|                        | *(to be started manually following*      |
+|                        | *instructions in the lab)*               |
++------------------------+------------------------------------------+
+| `Splunk`_              | - ip:port 10.1.1.5:8000 https            |
+|                        | - HTTP Event Data Collector port 8088    |
++------------------------+------------------------------------------+
+| `Locust`_              | - ip:port 10.1.1.5:7089 http             |
 +------------------------+------------------------------------------+
 | Samba                  | - ip:port 10.1.1.5:445                   |
 |                        | - User: f5student/purple123              |
