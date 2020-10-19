@@ -66,6 +66,8 @@ if [[ "$1" = "save" ]]; then
 
         rm -f ~/f5-vmware/*.log
 
+        docker rmi f5-ansible-runner -f
+
         echo -e "\n\nYou can nominate the blueprint now.\n"
     else
         echo -e "The Lamp server initialisation did not complete, please check ~/upgrade_git.log and wait for it to be COMPLETED."
