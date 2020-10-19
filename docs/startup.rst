@@ -293,6 +293,8 @@ To run `Kali Linux`_ Docker Image: ``docker run -t -i kalilinux/kali-rolling /bi
 
 To connect to a docker instance: ``docker exec -i -t <container id or name> /bin/bash``
 
+**3rd party authentication provider available on the Lamp Server:**
+
 +--------+------------------------------------------------------------------------------------+
 | Radius | - ip:port ``10.1.1.5:1812``                                                        |
 |        | - secret = ``default``                                                             |
@@ -316,6 +318,8 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 |        | - Encrypt = ``yes``                                                                |
 |        | - Users: iosadmin/cisco, nxosadmin/cisco                                           |
 +--------+------------------------------------------------------------------------------------+
+
+**Other services available on the Lamp Server:**
 
 +------------------------+------------------------------------------+
 | Google Chrome          | - ip:port 10.1.1.5:6080 https            |
