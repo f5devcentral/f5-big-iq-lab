@@ -327,8 +327,8 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 | `AWX (Ansible Tower)`_ | - ip:port 10.1.1.5:9001 http             |
 +------------------------+------------------------------------------+
 | `GitLab`_              | - ip:port 10.1.1.5:7002 http  7022 ssh   |
-|                        | *(to be started manually following*      |
-|                        | *instructions in the lab)*               |
+|                        | - to be started manually following       |
+|                        |   instructions in the lab                |
 +------------------------+------------------------------------------+
 | `Splunk`_              | - ip:port 10.1.1.5:8000 https            |
 |                        | - HTTP Event Data Collector port 8088    |
