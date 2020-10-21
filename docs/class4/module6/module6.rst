@@ -71,7 +71,7 @@ Finally, start the new BIG-IQ.
 
 Then, start the new BIG-IQ DCD VM.
 
-2. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+2. Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)*.
 
 3. Edit the hosts file and make sure only the ``big-iq-dcd-2.example.com`` is not commented with a ``#``.
 

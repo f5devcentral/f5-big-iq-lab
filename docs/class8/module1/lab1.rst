@@ -408,7 +408,7 @@ Traffic simulation and Dashboard/Events
 
 1. On Lamp server, generate HTTP traffic from a browser and CLI.
 
-Connect via ``SSH`` to the system *Ubuntu Lamp Server* and run:
+Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)* and run:
 
 ``while true; do curl http://10.1.10.126; sleep 1; done``
 

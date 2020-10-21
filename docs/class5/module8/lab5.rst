@@ -46,7 +46,7 @@ Tasks
 
 |lab-5-1|
 
-3. Connect via ``SSH`` to the system *Ubuntu Lamp Server* and ::
+3. Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)* and ::
 
     cd /home/f5/f5-ansible-bigiq-ve-creation-do-demo
     vi bigiq_create_ve_and_app_services_aws.yml

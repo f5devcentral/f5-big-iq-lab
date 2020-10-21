@@ -36,7 +36,7 @@ Follow `Class 6 Module 1 Lab 1.4`_ to configure Venafi with BIG-IQ for Certifica
 SSL Certificate & Key and AS3 HTTPS offload application service creation 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+1. Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)*.
 
 2. Execute the playbook ``bigiq_as3_deploy_venafi_certificate_as3_app.yml``::
 

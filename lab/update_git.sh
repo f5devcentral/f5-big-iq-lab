@@ -93,8 +93,9 @@ if [[  $currentuser == "root" ]]; then
 
     # Chrome https://github.com/TekFik/chrome-web
     docker run --restart=always -dit --name=chrome --privileged -p 6080:3000 -v $home/chrome:/home/app/config tekfik/chrome
-    sleep 20
+    sleep 5
     docker exec chrome cp /home/app/config/Bookmarks /home/app/.config/google-chrome/Default/
+    docker exec chrome cp /home/app/config/Preferences /home/app/.config/google-chrome/Default/
     sleep 1
     docker exec chrome pkill -f chrome
     sleep 1

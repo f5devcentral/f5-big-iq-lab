@@ -17,7 +17,7 @@ Tasks
 .. _Send SNMP events to your Splunk deployment: https://docs.splunk.com/Documentation/Splunk/latest/Data/SendSNMPeventstoSplunk#How_to_index_SNMP_traps
 .. _Monitor files and directories with the CLI: https://docs.splunk.com/Documentation/Splunk/latest/Data/MonitorfilesanddirectoriesusingtheCLI
 
-1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+1. Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)*.
 
 2. Execute the following commands to start the SNMP trap Listener::
 

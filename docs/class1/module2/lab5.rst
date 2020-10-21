@@ -8,7 +8,7 @@ Lab 2.5: FQDN and Service Discovery
 Tasks
 ^^^^^
 
-Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)* 
 
 Execute the playbooks for each tasks
 

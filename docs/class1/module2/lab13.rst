@@ -41,7 +41,7 @@ This playbook is using the `bigiq_migrate_apps`_ ansible role to move all AS3 ap
 
 |lab-13-1|
 
-2. Connect via ``SSH`` to the system *Ubuntu Lamp Server* and add the bigiq_migrate_apps role to the Ansible runner container::
+2. Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)* and add the bigiq_migrate_apps role to the Ansible runner container::
 
     cd /home/f5/f5-ansible-bigiq-as3-demo
     vi Dockerfile

@@ -65,7 +65,7 @@ Once you connect to BIG-IQ, you can navigate in the following tabs:
 Manage SSH Keys
 ---------------
 
-.. note:: You can also use the **Web Shell** to get to the system's terminals of this lab.
+.. note:: You can also use the **Web Shell** to get to the system's terminals of this lab *(if you use the Web Shell, login as f5student first: su - f5student)*
 
 1. Generate Key pair
 

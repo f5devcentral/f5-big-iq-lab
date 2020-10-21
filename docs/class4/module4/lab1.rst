@@ -75,7 +75,7 @@ Then, start the new BIG-IQ CM VM.
     modify /sys db systemauth.disablerootlogin value false
     save sys config
 
-3. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+3. Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)*.
 
 4. Edit the hosts file and make sure **ONLY** the ``big-iq-cm-2.example.com`` is not commented with a ``#``.
 

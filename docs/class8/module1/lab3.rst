@@ -49,7 +49,7 @@ Workflow
 Start GitLab and create new a project
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Connect via ``SSH`` to the system *Ubuntu Lamp Server*.
+1. Connect via ``SSH`` or ``Web Shell`` to the system *Ubuntu Lamp Server*. *(if you use the Web Shell, login as f5student first: su - f5student)*.
 
 2. Execute the following commands::
 
