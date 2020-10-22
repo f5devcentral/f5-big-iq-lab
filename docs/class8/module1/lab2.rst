@@ -333,7 +333,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |
 +---------------------------------------------------------------------------------------------------+
-| * Grouping = New Application                                                                      |
+| * Grouping = ``New Application``                                                                  |
 | * Application Name = ``LAB_BaDOS``                                                                |
 | * Description = ``L7 Behavioral DoS Protection``                                                  |
 | * Application Service Method = ``Using Templates``                                                |

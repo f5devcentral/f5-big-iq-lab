@@ -46,7 +46,7 @@ Tasks
    # The Traffic Management User Interface (TMUI), also referred to as the Configuration utility, 
    # has a Remote Code Execution (RCE) vulnerability in undisclosed pages. (CVE-2020-5902)
 
-   CREDS=admin:purple123
+   CREDS=<username><password>
 
    IP=localhost
 

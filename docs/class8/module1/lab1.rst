@@ -362,7 +362,7 @@ Assign the Bot Defense Profile and the Log Profile previously created.
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |
 +---------------------------------------------------------------------------------------------------+
-| * Grouping = New Application                                                                      |
+| * Grouping = ``New Application``                                                                  |
 | * Application Name = ``LAB_Bot``                                                                  |
 | * Description = ``Bot defense protection``                                                        |
 +---------------------------------------------------------------------------------------------------+

@@ -145,7 +145,7 @@ At the top right corner, click on **Publish and Close**
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |
 +---------------------------------------------------------------------------------------------------+
-| * Grouping = New Application                                                                      |
+| * Grouping = ``New Application``                                                                  |
 | * Application Name = ``LAB_Access``                                                               |
 | * Description = ``Secure website with basic authentication``                                      |
 +---------------------------------------------------------------------------------------------------+

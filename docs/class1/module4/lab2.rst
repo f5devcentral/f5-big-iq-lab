@@ -29,7 +29,7 @@ This Application is composed of 3 Application Services:
 +----------------------------------------------------------------------------------------------------+
 | Application properties:                                                                            |
 +----------------------------------------------------------------------------------------------------+
-| * Grouping = Part of an Existing Application                                                       |
+| * Grouping = ``New Application`` or ``Part of an Existing Application``                            |
 | * Application Name = ``airport_security``                                                          |
 | * Description = ``airports.example.com``                                                           |
 +----------------------------------------------------------------------------------------------------+

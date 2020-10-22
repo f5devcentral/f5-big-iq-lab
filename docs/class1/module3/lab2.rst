@@ -15,7 +15,7 @@ HTTPS Service using AS3 through GUI
 +------------------------------------------------------------------------------------------------------+
 | Application properties:                                                                              |
 +------------------------------------------------------------------------------------------------------+
-| * Grouping = New Application                                                                         |
+| * Grouping = ``New Application``                                                                     |
 | * Application Name = ``LAB_module3``                                                                 |
 | * Description = ``My first AS3 template deployment through a GUI``                                   |
 +------------------------------------------------------------------------------------------------------+
@@ -59,7 +59,7 @@ HTTPS Service using AS3 through GUI
 +----------------------------------------------------------------------------------------------------+
 | Application properties:                                                                            |
 +----------------------------------------------------------------------------------------------------+
-| * Grouping = New Application                                                                       |
+| * Grouping = ``New Application``                                                                   |
 | * Application Name = ``LAB_module3``                                                               |
 | * Description = ``My first AS3 template deployment through a GUI``                                 |
 +----------------------------------------------------------------------------------------------------+

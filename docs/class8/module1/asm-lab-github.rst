@@ -79,7 +79,7 @@ Now let's create the WAF application service using AS3 & BIG-IQ.
 +---------------------------------------------------------------------------------------------+
 | Application properties:                                                                     |
 +---------------------------------------------------------------------------------------------+
-| * Grouping = Part of an Existing Application                                                |
+| * Grouping = ``New Application`` or ``Part of an Existing Application``                     |
 | * Application Name = ``LAB_module3``                                                        |
 +---------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                     |

@@ -26,7 +26,7 @@ Fill out the necessary fields.
 +----------------------------------------------------------------------------------+
 | Application properties:                                                          |
 +----------------------------------------------------------------------------------+
-| * Grouping = New Application                                                     |
+| * Grouping = ``New Application``                                                 |
 | * Application Name = ``LAB_module6``                                             |
 +----------------------------------------------------------------------------------+
 | Application Service Method properties:                                           |

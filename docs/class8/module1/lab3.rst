@@ -212,10 +212,11 @@ Follow the execution of the job and wait for it to end.
 
 |lab-12-13|
 
-7. Login on **BIG-IQ** as **david**, go to Applications tab, under``Unknown Applications`` Application, check the application is there and analytics are showing.
+7. Login on **BIG-IQ** as **david**, go to Applications tab, under``LAB_gitlab`` Application, check the application is there and analytics are showing.
 
 |lab-3-3|
 
+|
 
 |lab-3-4|
 

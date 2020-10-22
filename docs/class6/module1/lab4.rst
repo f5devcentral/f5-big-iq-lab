@@ -232,7 +232,7 @@ AS3 HTTPS offload application service creation
 +---------------------------------------------------------------------------------------------------+
 | Application properties:                                                                           |
 +---------------------------------------------------------------------------------------------------+
-| * Grouping = Part of an Existing Application                                                      |
+| * Grouping = ``New Application`` or ``Part of an Existing Application``                           |
 | * Application Name = ``LAB_module2``                                                              |
 +---------------------------------------------------------------------------------------------------+
 | Select an Application Service Template:                                                           |
