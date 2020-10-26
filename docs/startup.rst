@@ -291,7 +291,7 @@ To run `Kali Linux`_ Docker Image: ``docker run -t -i kalilinux/kali-rolling /bi
 
 .. _Kali Linux: https://en.wikipedia.org/wiki/Kali_Linux
 
-To connect to a docker instance: ``docker exec -i -t <container id or name> /bin/bash``
+To connect to a docker instance: ``docker exec -i -t <container id or name> /bin/sh``
 
 **3rd party authentication provider available on the Lamp Server:**
 

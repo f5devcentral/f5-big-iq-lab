@@ -230,8 +230,8 @@ if [[  $currentuser == "root" ]]; then
     docker exec code-server sh -c "sudo apt-get update"
     docker exec code-server sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
     docker exec code-server sh -c "pip3 install ansible"
-    # Download latest F5 Fast extention
-    wget $(curl -s https://api.github.com/repos/DumpySquare/vscode-f5-fast/releases | grep browser_download_url | grep '.vsix' | head -n 1 | cut -d '"' -f 4) 
+    # Download latest F5 Fast extention https://github.com/f5devcentral/vscode-f5
+    wget $(curl -s https://api.github.com/repos/f5devcentral/vscode-f5/releases | grep browser_download_url | grep '.vsix' | head -n 1 | cut -d '"' -f 4) 
     docker cp *.vsix code-server:/tmp
     docker exec code-server code-server --install-extension /tmp/$(ls *vsix)
     docker exec code-server code-server --install-extension dawhite.mustache

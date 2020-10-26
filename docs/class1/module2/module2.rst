@@ -24,9 +24,11 @@ services, along with per-app manageability and analytics.
 While working through this module we will be focusing on L4-L7 deployments
 (Virtual Servers, Pools, etc).
 
-`AS3 documentation on BIG-IQ integration with AS3`_
+- `AS3 documentation on BIG-IQ integration with AS3`_
+- `How to Use BIG-IQ and Ansible to Build Advanced BIG-IP Automation Workflows`_
 
 .. _AS3 documentation on BIG-IQ integration with AS3: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/big-iq.html
+.. _How to Use BIG-IQ and Ansible to Build Advanced BIG-IP Automation Workflows: https://devcentral.f5.com/s/articles/How-to-Use-BIG-IQ-and-Ansible-to-Build-Advanced-BIG-IP-Automation-Workflows
 
 .. raw:: html
 
