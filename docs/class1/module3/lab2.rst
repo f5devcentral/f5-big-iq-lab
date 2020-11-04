@@ -10,7 +10,9 @@ HTTPS Service using AS3 through GUI
 
 1. Now logout from the **david** session and login to BIG-IQ as **paula**.
 
-2. Click **Create** to create an Application Service
+2. Click **Create** to create an Application Service and look for the template ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1 [AS3]``.
+
+.. warning:: If we want **paula** to deploy this template, we first need to have those templates assigned to her via an administrator. 
 
 +------------------------------------------------------------------------------------------------------+
 | Application properties:                                                                              |
@@ -23,8 +25,6 @@ HTTPS Service using AS3 through GUI
 +------------------------------------------------------------------------------------------------------+
 | * Template Type = Select ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1 [AS3]``  |
 +------------------------------------------------------------------------------------------------------+
-
-.. warning:: If we want **paula** to deploy this template, we first need to have those templates assigned to her via an administrator. 
 
 3. Logout as **paula** and login to BIG-IQ as **david**. (if asked: Leave site? Select: Leave)
 
