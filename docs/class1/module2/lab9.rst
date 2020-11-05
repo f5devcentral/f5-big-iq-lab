@@ -3,10 +3,12 @@ Lab 2.9: AS3 Application Service deployment from Visual Studio Code using BIG-IQ
 
 .. note:: Estimated time to complete: **10 minutes**
 
-In this lab, we are going to use the `F5 Networks FAST extension`_ in Visual Studio code and
+In this lab, we are going to use the `F5 Extension`_ in Visual Studio code and
 use it to deploy an AS3 Application Service on a BIG-IP through BIG-IQ.
 
-.. _F5 Networks FAST extension: https://marketplace.visualstudio.com/items?itemName=F5DevCentral.vscode-f5
+Visit also the `F5 VSCode documentation`_.
+
+.. _F5 Extension: https://marketplace.visualstudio.com/items?itemName=F5DevCentral.vscode-f5
 
 .. include:: /accesslab.rst
 
@@ -147,3 +149,7 @@ You should see a progress window showing in the bottom right.
 .. image:: ../pictures/module2/lab-9-10.png
   :scale: 60%
   :align: center
+
+11. Expore more features of the F5 VSCode Extension by looking at the `F5 VSCode documentation`_.
+
+.. _F5 VSCode documentation: https://f5devcentral.github.io/vscode-f5
