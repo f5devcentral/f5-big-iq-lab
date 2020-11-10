@@ -75,7 +75,7 @@ When the process is done, the status will change to *Finished* and will pause un
   :align: center
   :scale: 50%  
 
-If the upgraded process has completed successfully, the process status will turn to *Finished* and the *Status* will display *Success*
+If the upgraded process has completed successfuly, the process status will turn to *Finished* and the *Status* will display *Success*
 
 .. image:: ../pictures/module3/Upgrade_Step10.png
   :align: center

@@ -127,7 +127,7 @@ Example of assessments comparison.
   :scale: 40%
   :align: center
 
-13. Finally, when the Post-Assessment and software upgrade completed successfully, click on **Mark Finished**.
+13. Finally, when the Post-Assessment and software upgrade completed successfuly, click on **Mark Finished**.
 
 .. image:: ./media/lab-7-15.png
   :scale: 40%

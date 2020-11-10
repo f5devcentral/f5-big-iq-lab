@@ -1,7 +1,7 @@
 Lab 4.2: Deploy your ``SSG`` in ``AWS``
 ---------------------------------------
 
-Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
+Since we have already seen the different components needed to deploy a ``SSG`` successfuly, 
 we will automatically deploy it and review its configuration. 
 
 Access lab orchestrator (using ansible/bash)
@@ -16,7 +16,7 @@ Once connected via ``SSH``, go into the folder: **f5-aws-vpn-ssg**:
 We will need to edit the following files: 
 
 * **config.yml**: This file will contains all the information needed to 
-    deploy the ``AWS`` environment successfully. 
+    deploy the ``AWS`` environment successfuly. 
 * **08a-create-aws-auto-scaling.yml**: we will change the setup of the default ``SSG`` 
     that gets deployed. we want to deploy 2 instances to review how it is setup as 
     part of a ``SSG`` group (**OPTIONAL**).
@@ -37,7 +37,7 @@ In the case you are **NOT** using the UDF Cloud account and using your own AWS a
 
     ``vi config.yml``
 
-Here are the settings you will need to change to deploy everything successfully: 
+Here are the settings you will need to change to deploy everything successfuly: 
 
 * AWS_ACCESS_KEY_ID: Use the ``AWS Access Key`` you retrieved from the previous 
     lab (IAM section).

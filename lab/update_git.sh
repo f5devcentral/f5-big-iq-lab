@@ -75,7 +75,6 @@ if [[  $currentuser == "root" ]]; then
         if [ "$(whoami)" == "$user" ]; then
             crontab < crontab.txt
         else
-            # as root
             su - $user -c "crontab < crontab.txt"
         fi
     
@@ -226,7 +225,7 @@ if [[  $currentuser == "root" ]]; then
     echo -e "AWX end\n"
 
     ### Visual Code https://github.com/cdr/code-server
-    docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
+    su - f5student -c "docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD='purple123' -v '$home:/home/coder/project' codercom/code-server"
     docker exec code-server sh -c "sudo apt-get update"
     docker exec code-server sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
     docker exec code-server sh -c "pip3 install ansible"

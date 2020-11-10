@@ -34,7 +34,7 @@ Now that SJC is a managed AFM device, the default Device DoS Profile can be set 
   :align: center
   :scale: 50%
 
-5. Select OK and the copy should complete successfully
+5. Select OK and the copy should complete successfuly
 6. Browse the SJC *Device Dos* configuration and the same settings for DNS Malformed and UDP Flood from BOS are now on SJC
 7. Deploy the changes to SJC via *Shared Security* or *Network Security* 
 

@@ -273,9 +273,10 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 29
+   :emphasize-lines: 30
 
     {
+        "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
         "class": "AS3",
         "action": "deploy",
         "declaration": {
@@ -330,7 +331,7 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
         }
     }
 
-3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successfull without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 

@@ -15,20 +15,16 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
    Use the IDE available within the lab environment, click on the *Access* button
    of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
-   You can also use an online tool such as `www.jsonschemavalidator.net`_.
-
    .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
    .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
 
-   .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
-
-
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 12,28,44,45
+   :emphasize-lines: 13,29,45,46
 
    {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
        "class": "AS3",
        "action": "deploy",
        "persist": true,
@@ -93,13 +89,17 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
 4. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
+.. note:: Instead of using Google Chrome, you can also use Microsoft Visual Studio Code. See `Module 2 Lab 9`_ to see how to.
+
+.. _Module 2 Lab 9: ./lab9.html
+
 5. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
    Copy/Paste the AS3 declaration from the validator to the body in Postman.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-6. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successfull without errors: 
+6. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
    
@@ -135,6 +135,7 @@ Now we are going to create another service but this time, we will do some SSL of
    :linenos:
 
    {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
        "class": "AS3",
        "action": "deploy",
        "persist": true,
@@ -209,7 +210,7 @@ Now we are going to create another service but this time, we will do some SSL of
 
 2. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
 
-3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
@@ -236,9 +237,10 @@ Update the WAF policy section below with the policy available on BIG-IP::
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 36
+   :emphasize-lines: 37
 
    {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
        "class": "AS3",
        "action": "deploy",
        "persist": true,
@@ -327,7 +329,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
 
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successfull without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
@@ -346,9 +348,10 @@ Modify the Generic virtual with something other than <generic_virtual>.
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 25
+   :emphasize-lines: 26
 
    {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
        "class": "AS3",
        "action": "deploy",
        "persist": true,
@@ -412,7 +415,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 

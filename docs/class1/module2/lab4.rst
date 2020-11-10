@@ -25,9 +25,10 @@ should also disappear from BIG-IQ.
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 14,15,16
+   :emphasize-lines: 15,16,17
 
    {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
        "class": "AS3",
        "action": "deploy",
        "persist": true,

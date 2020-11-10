@@ -22,19 +22,16 @@ This declaration abstracts the complexity of having to configure all the HTTP de
    Use the IDE available within the lab environment, click on the *Access* button
    of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
-   You can also use an online tool such as `www.jsonschemavalidator.net`_.
-
    .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
    .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
-
-   .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
    
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 12,28,44,45
+   :emphasize-lines: 13,29,45,46
 
    {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
        "class": "AS3",
        "action": "deploy",
        "persist": true,

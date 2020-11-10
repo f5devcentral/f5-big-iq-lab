@@ -110,7 +110,7 @@ The virtual IP address ``10.1.10.134`` is configured behind ``site34.example.com
   :align: center
 
 
-7. Back on the BIG-IQ Application dashboard, notice the HTTP traffic starts to appear. This means you have successfully 
+7. Back on the BIG-IQ Application dashboard, notice the HTTP traffic starts to appear. This means you have successfuly 
 attached the HTTP profile to the virtual server. In real-world environments F5 recommends that customers experiment with 
 a small number of legacy applications. BIG-IP resource consumption of memory and CPU should be be monitored both before and after 
 analytics have been enabled. We do not recommend bulk enabling too many applications at once as it may put added burden on BIG-IP or BIG-IQ.

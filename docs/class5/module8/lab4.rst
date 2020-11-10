@@ -221,7 +221,7 @@ You can also check the following logs on BIG-IQ and BIG-IP under ``/var/log/rest
 
 |image25|
 
-When onboarding is completed, you will see the task completed successfully:
+When onboarding is completed, you will see the task completed successfuly:
 
 |image26|
 

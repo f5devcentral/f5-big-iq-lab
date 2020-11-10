@@ -15,6 +15,9 @@ Visit also the `F5 VSCode documentation`_.
 Tasks
 ^^^^^
 
+.. note:: If you need to save json files, create a new folder under ``/home/coder/project/`` and use this folder.
+          Therefore, your file will be saved in the Ubuntu server and persist when stopping the lab environment.
+
 1. Click on the *Visual Studio Code* button on the system *Ubuntu Lamp Server* in the lab environment.
 Use ``purple123`` to authenticate.
 
@@ -49,12 +52,13 @@ Use ``purple123`` to authenticate.
   :scale: 60%
   :align: center
 
-7. Let's now deploy a new AS3 Spplication Service. Open a new tab and copy/past below AS3 declaration:
+7. Let's now deploy a new AS3 Application Service. Open a new tab and copy/past below AS3 declaration:
 
 .. code-block:: yaml
    :linenos:
 
    {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
        "class": "AS3",
        "action": "deploy",
        "persist": true,
@@ -129,7 +133,7 @@ You should see a progress window showing in the bottom right.
   :scale: 80%
   :align: center
 
-9. The task restult opens in a new tab when the AS3 Application Service creation is completed.
+9. The task result opens in a new tab when the AS3 Application Service creation is completed.
    The tenant used ``vscode`` is also now showing in the AS3 Tenants Tree.
 
 .. image:: ../pictures/module2/lab-9-9.png
@@ -150,6 +154,6 @@ You should see a progress window showing in the bottom right.
   :scale: 60%
   :align: center
 
-11. Expore more features of the F5 VSCode Extension by looking at the `F5 VSCode documentation`_.
+11. Explore more features of the F5 VSCode Extension by looking at the `F5 VSCode documentation`_.
 
 .. _F5 VSCode documentation: https://f5devcentral.github.io/vscode-f5

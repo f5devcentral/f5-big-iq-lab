@@ -153,4 +153,4 @@ Open a new tab in your browser and go to this DNS name (https)
 
 |
 
-Your application is deployed successfully.
+Your application is deployed successfuly.

@@ -3,7 +3,7 @@ Lab 2.2: Modify Tenant/Application using AS3
 
 .. note:: Estimated time to complete: **25 minutes**
 
-Using the declarative AS3 API, let's modfiy the HTTP application created during the previous **Lab 1 - Task 1** through BIG-IQ using an updated AS3 declaration.
+Using the declarative AS3 API, let's modify the HTTP application created during the previous **Lab 1 - Task 1** through BIG-IQ using an updated AS3 declaration.
 
 In this lab, we will show 2 use cases.
 
@@ -23,6 +23,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
    :linenos:
 
    {
+       "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
        "class": "AS3",
        "action": "deploy",
        "persist": true,
@@ -83,13 +84,9 @@ This declaration will add a HTTPS application to a existing HTTP application. In
    Use the IDE available within the lab environment, click on the *Access* button
    of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
-   You can also use an online tool such as `www.jsonschemavalidator.net`_.
-
    .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
    .. _validate your AS3 declaration: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/userguide/validate.html
-
-   .. _www.jsonschemavalidator.net: https://www.jsonschemavalidator.net/
    
 .. note:: Add a **","** at the end of the MyWebApp1 statement.
           If you want to "minimize" MyWebApp1 statement (like in the screenshot below), click on the tiny down arrow on the left of this line
@@ -163,7 +160,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
@@ -196,9 +193,10 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 3, 7, 10
+   :emphasize-lines: 4, 8, 11
 
     {
+        "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
         "class": "AS3",
         "action": "patch",
         "patchBody": [
@@ -247,7 +245,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successfull without errors: 
+5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 

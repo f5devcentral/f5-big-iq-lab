@@ -1,7 +1,7 @@
 Lab 5.2: Deploy our ``SSG`` in ``Azure``
 ----------------------------------------
 
-Since we have already seen the different components needed to deploy a ``SSG`` successfully, 
+Since we have already seen the different components needed to deploy a ``SSG`` successfuly, 
 we will automatically deploy it and review its configuration. 
 
 Launch our ``SSG`` - Access our orchestrator - Azure
@@ -22,7 +22,7 @@ Once connected via ``SSH``, go into the folder: **f5-azure-vpn-ssg**:
 we will need to edit the following files: 
 
 * **config.yml**: This file will contains all the information needed to 
-    deploy the ``Azure`` environment successfully. 
+    deploy the ``Azure`` environment successfuly. 
 * **08a-create-Azure-auto-scaling.yml**: we will change the setup of the default ``SSG`` 
     that gets deployed. we want to deploy 2 instances to review how it is setup as 
     part of a ``SSG`` group. 
@@ -38,7 +38,7 @@ Use your favorite editor to update this file.
 
     ``vi config.yml``
 
-Here are the settings you will need to change to deploy everything successfully: 
+Here are the settings you will need to change to deploy everything successfuly: 
 
 * SUBSCRIPTION_ID
 * TENANT_ID

@@ -18,7 +18,7 @@ BIG-IQ supports these VMware cloud environments:
 
 .. Warning:: If you identify the VE installation destination using a VMWare cluster name, the VMware host must have DRS enabled before you try to deploy the SSG, or the deployment will fail. If you use the ESXi hostname, the DRS setting is optional.
 
-.. Note:: After you save the configuration for the BIG-IP VE devices you created, BIG-IQ sends an API call to apply that configuration to the targeted BIG-IP VE devices. After BIG-IQ successfully applies the configuration, it then discovers and imports the services the device is licensed for, this means you don't have to discover and import services in a separate step.
+.. Note:: After you save the configuration for the BIG-IP VE devices you created, BIG-IQ sends an API call to apply that configuration to the targeted BIG-IP VE devices. After BIG-IQ successfuly applies the configuration, it then discovers and imports the services the device is licensed for, this means you don't have to discover and import services in a separate step.
 
 .. raw:: html
 
