@@ -73,7 +73,9 @@ if [[  $currentuser == "root" ]]; then
 
         # Allow ubuntu user to write in f5student home
         usermod -a -G f5student ubuntu
+        usermod -a -G ubuntu f5student
         chmod -R g+w $home
+        chmod 777 $home
 
         echo "Installing new crontab"
         if [ "$(whoami)" == "$user" ]; then
