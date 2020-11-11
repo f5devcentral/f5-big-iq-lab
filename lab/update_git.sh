@@ -60,6 +60,9 @@ if [[  $currentuser == "root" ]]; then
 
         echo "Fixing permissions..."
         chmod +x *sh tools/*sh traffic-scripts/*sh traffic-scripts/*/*sh traffic-scripts/*/*py traffic-scripts/*/*/*py f5-*/*sh f5-*/*py
+        # Allow ubuntu user to write in f5student home
+        usermod -a -G f5student ubuntu
+        chmod -R g+w $home
         
         # create log folder for scripts in cron jobs
         mkdir $home/traffic-scripts/logs
@@ -225,7 +228,7 @@ if [[  $currentuser == "root" ]]; then
     echo -e "AWX end\n"
 
     ### Visual Code https://github.com/cdr/code-server
-    su - f5student -c "docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD='purple123' -v '$home:/home/coder/project' codercom/code-server"
+    docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
     docker exec code-server sh -c "sudo apt-get update"
     docker exec code-server sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
     docker exec code-server sh -c "pip3 install ansible"
