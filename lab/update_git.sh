@@ -60,9 +60,6 @@ if [[  $currentuser == "root" ]]; then
 
         echo "Fixing permissions..."
         chmod +x *sh tools/*sh traffic-scripts/*sh traffic-scripts/*/*sh traffic-scripts/*/*py traffic-scripts/*/*/*py f5-*/*sh f5-*/*py
-        # Allow ubuntu user to write in f5student home
-        usermod -a -G f5student ubuntu
-        chmod -R g+w $home
         
         # create log folder for scripts in cron jobs
         mkdir $home/traffic-scripts/logs
@@ -73,6 +70,10 @@ if [[  $currentuser == "root" ]]; then
         # Cleanup Clouds credentials
         rm -fr $home/.aws/*
         rm -fr $home/.azure/*
+
+        # Allow ubuntu user to write in f5student home
+        usermod -a -G f5student ubuntu
+        chmod -R g+w $home
 
         echo "Installing new crontab"
         if [ "$(whoami)" == "$user" ]; then
