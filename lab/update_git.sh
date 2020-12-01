@@ -58,27 +58,28 @@ if [[  $currentuser == "root" ]]; then
             rm -rf $home/f5-big-iq-lab
         fi
 
-        echo "Fixing permissions..."
+        echo "Fixing permissions executable scripts..."
         chmod +x *sh tools/*sh traffic-scripts/*sh traffic-scripts/*/*sh traffic-scripts/*/*py traffic-scripts/*/*/*py f5-*/*sh f5-*/*py
         
-        # create log folder for scripts in cron jobs
+        echo "create log folder for scripts in cron jobs"
         mkdir $home/traffic-scripts/logs
         mkdir $home/tools/logs
 
         chown -R $user:$user .
-    
-        # Fix permissions ssh key
-        chmod 600 $home/.ssh/id_rsa
 
-        # Cleanup Clouds credentials
-        rm -fr $home/.aws/*
-        rm -fr $home/.azure/*
-
-        # Allow ubuntu user to write in f5student home
+        echo "Allow ubuntu user to write in f5student home"
         usermod -a -G f5student ubuntu
         usermod -a -G ubuntu f5student
         chmod -R g+w $home
         chmod 777 $home
+
+        echo "Cleanup Clouds credentials"
+        rm -fr $home/.aws/*
+        rm -fr $home/.azure/*
+
+        echo "Fix permissions ssh key"
+        chmod 600 $home/.ssh/id_rsa
+        ls -lrt $home/.ssh/id_rsa
 
         echo "Installing new crontab"
         if [ "$(whoami)" == "$user" ]; then
@@ -95,7 +96,7 @@ if [[  $currentuser == "root" ]]; then
     su - f5student -c "$home/tools/services_monitor.sh"
 
     # Radius
-    echo -e "\Radius"
+    echo -e "Radius"
     RADIUS_HOME="$home/radius" docker-compose -f $home/radius/docker-compose.yml up -d
     radtest david david $jumphostIp 1812 default
 

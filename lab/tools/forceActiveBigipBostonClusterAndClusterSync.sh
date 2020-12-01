@@ -18,7 +18,7 @@ fi
 
 ## WA UDF RE-SYNC CLUSTER AFTER RE-LICENCED => Run below checks only first within the fist 30min the lab started
 minutes=`awk '{print $0/60;}' /proc/uptime`;
-if [ $(echo "$minutes > 60" | bc) -eq 0  ]
+if [ $(echo "$minutes > 30" | bc) -eq 0  ]
 then
     ssh -o StrictHostKeyChecking=no admin@$ip tmsh show /cm sync-status | grep Status | grep "In Sync"
     # if 0 = Not In Sync
@@ -31,5 +31,5 @@ then
         echo -e "BOS cluster in sync, nothing to do ($minutes)."
     fi
 else
-    echo -e "It's been more than 60min ($minutes). Manually re-sync the BOS cluster if needed."
+    echo -e "It's been more than $minutes min. Manually re-sync the BOS cluster if needed."
 fi
