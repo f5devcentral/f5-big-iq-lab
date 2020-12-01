@@ -117,28 +117,28 @@ Use ``purple123`` to authenticate.
   
 8. Then, press F1 or cntrl+shift+p to open the extension command line. Type ``F5-AS3`` and select ``F5-AS3: Post Declaration``.
 
-.. warning:: If the POST does not succeed, login on BIG-IQ and navigate under **Applications > Application Deployments**. An possible issue might be the BIG-IP Boston Cluster is not in Sync.
+.. warning:: If the POST does not succeed, login on BIG-IQ and navigate under **Applications > Application Deployments** (Is Boston BIG-IP Cluster in sync?)
 
 .. image:: ../pictures/module2/lab-9-6a.png
-  :scale: 80%
+  :scale: 60%
   :align: center
 
 Or click right, then click on ``Post as AS3 Declaration``.
 
 .. image:: ../pictures/module2/lab-9-6b.png
-  :scale: 80%
+  :scale: 60%
   :align: center
 
 You should see a progress window showing in the bottom right.
 
 .. image:: ../pictures/module2/lab-9-7.png
-  :scale: 80%
+  :scale: 60%
   :align: center
 
 9. Wait few seconds, and refresh the AS3 Tenants Tree 
 
 .. image:: ../pictures/module2/lab-9-8.png
-  :scale: 80%
+  :scale: 60%
   :align: center
 
 9. The task result opens in a new tab when the AS3 Application Service creation is completed.
