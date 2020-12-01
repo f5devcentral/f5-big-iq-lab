@@ -24,8 +24,10 @@ then
     # if 0 = Not In Sync
     if [  $? == 1 ]; then
         echo -e "BOS cluster is not in Sync: trigger sync ($minutes)."
-        ssh -o StrictHostKeyChecking=no admin@$ip tmsh run cm config-sync force-full-load-push to-group datasync-global-dg
-        sleep 60
+        failoverGroupName=$(ssh -o StrictHostKeyChecking=no admin@$ip tmsh show /cm sync-status | grep failover | head -1 | awk '{print $1}')
+        echo $failoverGroupName
+        ssh -o StrictHostKeyChecking=no admin@$ip tmsh run cm config-sync force-full-load-push to-group $failoverGroupName
+        sleep 30
         ssh -o StrictHostKeyChecking=no admin@$ip tmsh show /cm sync-status
     else
         echo -e "BOS cluster in sync, nothing to do ($minutes)."

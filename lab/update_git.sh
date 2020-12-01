@@ -2,10 +2,10 @@
 
 ##### INSTALLATION
 ## Configured in /etc/rc.local
+## rm -f /home/f5student/update_git.sh
 ## curl -o /home/f5student/update_git.sh https://raw.githubusercontent.com/f5devcentral/f5-big-iq-lab/develop/lab/update_git.sh
 ## chmod +x /home/f5student/update_git.sh
 ## /home/f5student/update_git.sh > /home/f5student/update_git.log 2>&1 &
-## chown -R f5student:f5student /home/f5student
 
 # SECONDS used for total execution time (see end of the script)
 SECONDS=0
