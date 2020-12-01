@@ -117,7 +117,15 @@ Use ``purple123`` to authenticate.
   
 8. Then, press F1 or cntrl+shift+p to open the extension command line. Type ``F5-AS3`` and select ``F5-AS3: Post Declaration``.
 
-.. image:: ../pictures/module2/lab-9-6.png
+.. warning:: If the POST does not succeed, login on BIG-IQ and navigate under **Applications > Application Deployments**. An possible issue might be the BIG-IP Boston Cluster is not in Sync.
+
+.. image:: ../pictures/module2/lab-9-6a.png
+  :scale: 80%
+  :align: center
+
+Or click right, then click on ``Post as AS3 Declaration``.
+
+.. image:: ../pictures/module2/lab-9-6b.png
   :scale: 80%
   :align: center
 
