@@ -58,14 +58,7 @@
             "name": "Gitlab",
             "type": "url",
             "url": "http://10.1.1.5:7002/"
-         }, {
-            "date_added": "13247367128521818",
-            "guid": "fdd322ef-4006-4e1e-bb16-03e009042d0c",
-            "id": "15",
-            "name": "Install Postman - REST Client",
-            "type": "url",
-            "url": "https://chrome.google.com/webstore/detail/tabbed-postman-rest-clien/coohjcphdfgbiolnekdpbcijmhambjff?hl=en"
-         } ],
+         }, ],
          "date_added": "13247360939881223",
          "date_modified": "13247428102248000",
          "guid": "00000000-0000-4000-A000-000000000002",

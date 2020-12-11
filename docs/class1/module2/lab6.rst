@@ -8,7 +8,7 @@ Lab 2.6: Enable/Disable Enhanced Analytics via API for AS3 apps on BIG-IQ
 Tasks
 ^^^^^
 
-Using Postman, you can turn Enhanced Analytics on/off directly by updating below attributes within your AS3 declaration:
+Using Visual Studio Code REST client, you can turn Enhanced Analytics on/off directly by updating below attributes within your AS3 declaration:
 
 .. code-block:: yaml
    :linenos:

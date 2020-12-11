@@ -173,7 +173,7 @@ This folder contains:
    - **bigiq_waf_policy_and_as3_deploy.yml**: ansible playbook to deploy the WAF policy, Security Logging Profile and AS3 application services
    - **as3/my_waf_https_app_service1.j2**: AS3 declaration Jinja2 templates defining WAF HTTPS offload application service load balancer
 
-The Ansible playbook will contain the various calls to create the WAF policy, deploy it to the BIG-IP, then create the Application Service with AS3.
+The Ansible playbook will contain the various call to create the WAF policy, deploy it to the BIG-IP, then create the Application Service with AS3.
 
 We have defined at the top of the playbook some variable to use for this service. You can keep everything as is.
 

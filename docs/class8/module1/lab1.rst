@@ -142,13 +142,13 @@ Make sure the deployment is successful.
 ASM Bot Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
+1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
-.. |location_link_postman| raw:: html
+.. |location_link_vscode_restclient| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
-2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
+2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** call in order to create 
    the service on the BIG-IP through BIG-IQ:
 
    ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``

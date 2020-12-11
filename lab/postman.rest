@@ -1,0 +1,172 @@
+# My Variables
+@bigiq= 10.1.1.4
+@contentType = application/json
+@f5_token = {{login.response.body.token.token}}
+
+
+### BIG-IQ Token
+# @name login
+POST https://{{bigiq}}/mgmt/shared/authn/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "username": "david",
+  "password": "david",
+  "loginProviderName": "RadiusServer"
+}
+
+
+### BIG-IQ AS3 Declaration
+# @name as3
+POST https://{{bigiq}}/mgmt/shared/appsvcs/declare?async=true HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+{
+    "class": "AS3",
+    "action": "deploy",
+    "persist": true,
+    "declaration": {
+        "class": "ADC",
+        "schemaVersion": "3.7.0",
+        "id": "example-declaration-01",
+        "label": "Task1",
+        "remark": "Task 1 - HTTP Application Service",
+        "target": {
+            "address": "<BIG-IP ip address>"
+        },
+        "Task1": {
+            "class": "Tenant",
+            "MyWebApp1http": {
+                "class": "Application",
+                "template": "http",
+                "statsProfile": {
+                    "class": "Analytics_Profile",
+                    "collectClientSideStatistics": true,
+                    "collectOsAndBrowser": false,
+                    "collectMethod": false
+                },
+                "serviceMain": {
+                    "class": "Service_HTTP",
+                    "virtualAddresses": [
+                        "<virtual>"
+                    ],
+                    "pool": "web_pool",
+                    "profileAnalytics": {
+                        "use": "statsProfile"
+                    }
+                },
+                "web_pool": {
+                    "class": "Pool",
+                    "monitors": [
+                        "http"
+                    ],
+                    "members": [
+                        {
+                            "servicePort": 80,
+                            "serverAddresses": [
+                                "<node1>",
+                                "<node2>"
+                            ],
+                            "shareNodes": true
+                        }
+                    ]
+                }
+            }
+        }
+    }
+}
+
+
+### BIG-IQ Check AS3 Deployment Task
+GET https://{{bigiq}}/mgmt/shared/appsvcs/task/{{as3.response.body.id}}
+X-F5-Auth-Token: {{f5_token}}
+
+### BIG-IQ AS3 Templates Creation
+POST https://{{bigiq}}/mgmt/cm/global/appsvcs-templates HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+ {
+     "description": "Task 6 - Create custom HTTP AS3 Template on BIG-IQ",
+     "name": "HTTPcustomTemplateTask6",
+     "published": "true",
+     "schemaOverlay": {
+         "type": "object",
+         "properties": {
+             "class": {
+                 "type": "string",
+                 "const": "Application"
+             },
+             "schemaOverlay": {},
+             "label": {},
+             "remark": {},
+             "template": {},
+             "enable": {},
+             "constants": {}
+         },
+         "additionalProperties": {
+             "allOf": [
+                 {
+                     "if": {
+                         "properties": {
+                             "class": {
+                                 "const": "Service_HTTP"
+                             }
+                         }
+                     },
+                     "then": {
+                         "$ref": "#/definitions/Service_HTTP"
+                     }
+                 }
+             ],
+             "not": {
+                 "anyOf": [
+                     {
+                         "properties": {
+                             "class": {
+                                 "const": "IAM_Policy"
+                             }
+                         }
+                     },
+                     {
+                         "properties": {
+                             "class": {
+                                 "const": "WAF_Policy"
+                             }
+                         }
+                     }
+                 ]
+             }
+         },
+         "required": [
+             "class"
+         ],
+         "definitions": {
+             "Service_HTTP": {
+                 "type": "object",
+                 "properties": {
+                     "virtualPort": {
+                         "type": "integer",
+                         "const": 8080,
+                         "default": 8080
+                     }
+                 },
+                 "dependencies": {
+                     "policyIAM": {
+                         "not": {}
+                     },
+                     "policyWAF": {
+                         "not": {}
+                     }
+                 },
+                 "additionalProperties": true
+             }
+         }
+     }
+ }
+
+
+### BIG-IQ App Services Dashboard
+GET https://{{bigiq}}/mgmt/cm/global/config-sets?$filter=configSetName eq 'media.site42.example.com'
+X-F5-Auth-Token: {{f5_token}}

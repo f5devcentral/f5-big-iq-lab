@@ -1,5 +1,5 @@
-Class 8: Web Application Security
-=================================
+Class 8: BIG-IQ Web Application Security
+========================================
 
 Overview
 ^^^^^^^^

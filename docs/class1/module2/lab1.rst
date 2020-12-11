@@ -87,19 +87,19 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
         "address": "10.1.1.8"
     },
 
-4. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
+4. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
-.. note:: Instead of using Google Chrome, you can also use Microsoft Visual Studio Code. See `Module 2 Lab 9`_ to see how to.
+.. note:: Instead of using REST client extension, you can also use F5 vcode extension. See `Module 2 Lab 9`_ to see how to.
 
 .. _Module 2 Lab 9: ./lab9.html
 
-5. Use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
+5. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-6. Use the **BIG-IQ Check AS3 Deployment Task** collection to ensure that the AS3 deployment is successful without errors: 
+6. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
    
@@ -125,9 +125,9 @@ Task 2 - HTTPS Offload
 
 Now we are going to create another service but this time, we will do some SSL offloading.
 
-1. Using Postman, use the **BIG-IQ AS3 Declaration** collection in order to create the service on the BIG-IP through BIG-IQ.
+1. Using Visual Studio Code REST client, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
@@ -208,9 +208,9 @@ Now we are going to create another service but this time, we will do some SSL of
        }
    }
 
-2. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
+2. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
-3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successful without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
@@ -321,15 +321,15 @@ Update the WAF policy section below with the policy available on BIG-IP::
        }
    }
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
+1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 2. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body into Postman (**DON'T FORGET TO UPDATE THE WAF Policy**).
+   Copy/Paste the AS3 declaration from the validator to the body into Visual Studio REST Client (**DON'T FORGET TO UPDATE THE WAF Policy**).
 
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successful without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
@@ -407,15 +407,15 @@ Modify the Generic virtual with something other than <generic_virtual>.
        }
    }
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
+1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
-2. Using Postman, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
+2. Using Visual Studio Code REST client, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-3. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successful without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
@@ -436,6 +436,6 @@ Modify the Generic virtual with something other than <generic_virtual>.
 .. |lab-1-5| image:: ../pictures/module2/lab-1-5.png
    :scale: 40%
 
-.. |location_link_postman| raw:: html
+.. |location_link_vscode_restclient| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>

@@ -108,7 +108,7 @@ Setting up a Service Principal Account
 5. Credentials needed for configuring Azure Provider in BIG-IQ
 
 The following pieces of information is needed to configure an Azure Provider.
-This information is required to make API calls to Azure for resource CRUD operations, either through Java or through Ansible.
+This information is required to make API call to Azure for resource CRUD operations, either through Java or through Ansible.
 
 - **Subscription Id**: You can get this by clicking on Subscriptions in Azure portal and copying the Subscription Id for the f5-AZR_7801_PTG_MANOVA-Dev subscription
 - **Tenant Id**: Go to Azure Active Directory → Properties and copy the value of the Directory ID. This is the tenant Id.

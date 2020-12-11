@@ -127,13 +127,13 @@ To allow just 1 or 2 classes, use an if-then construct within additionalProperti
 
 In this task, we will create a template which require a Service_HTTP object, force the service port to 8080, and prevent WAF (ASM) and IAM (APM) configuration.
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
+1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
-.. |location_link_postman| raw:: html
+.. |location_link_vscode_restclient| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
-2. Copy the below example of an AS3 service template into the Postman **BIG-IQ AS3 Template Creation** call.
+2. Copy the below example of an AS3 service template into the **BIG-IQ AS3 Template Creation** call in Visual Studio REST Client.
    It will create a new template in BIG-IQ AS3 Service Catalogue:
 
     ``POST https://10.1.1.4/mgmt/cm/global/appsvcs-templates``
@@ -252,7 +252,7 @@ Task 8 - Deploy the HTTP Application Service using a Custom Template
 Now, let's deploy an application as **Oliva** using the AS3 template previously created in Task 6. Note in the below declaration, 
 the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
 
-1. Using Postman, use the **BIG-IQ Token** collections to authenticate you on the BIG-IQ and save the token.
+1. Using VS code REST client extension, find the **BIG-IQ Token** call to authenticate you on the BIG-IQ and save the token.
 
    Update the body with olivia's credential as below.
 
@@ -266,7 +266,7 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
    }
 
 2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
    
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
@@ -331,7 +331,7 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
         }
     }
 
-3. Use the **BIG-IQ Check AS3 Deployment Task** Postman calls to ensure that the AS3 deployment is successful without errors: 
+3. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 

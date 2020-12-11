@@ -13,14 +13,14 @@ should also disappear from BIG-IQ.
 
 .. note:: We are not using the DELETE method but a POST with a declaration containing a tenant with nothing in it.
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
+1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
-.. |location_link_postman| raw:: html
+.. |location_link_vscode_restclient| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
 2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``.
-   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
    
 
 .. code-block:: yaml

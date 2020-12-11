@@ -100,9 +100,9 @@ Make sure the deployment is successful.
 DoS Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman4|).
+1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient4|).
 
-2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
+2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** call in order to create 
    the service on the BIG-IP through BIG-IQ:
 
   POST https\:\/\/10.1.1.4/mgmt/shared/appsvcs/declare?async=true
@@ -489,9 +489,9 @@ Expand the dimmensions to show *Transaction Outcomes* and *Client IPs*.
 Annex | Run the entire lab configuration part with 1 single API call using AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman4|).
+1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient4|).
 
-2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** collection in order to create 
+2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** call in order to create 
    the service on the BIG-IP through BIG-IQ:
 
   ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``
@@ -651,6 +651,6 @@ Use following admd command to monitor the learning:
 
 Update AS3 declaration with ``"detectionEnabled": true``.
 
-.. |location_link_postman4| raw:: html
+.. |location_link_vscode_restclient4| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>

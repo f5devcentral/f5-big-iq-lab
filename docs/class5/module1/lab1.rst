@@ -56,7 +56,7 @@ BIG-IQ now exchanges certs with the BIG-IP and pops up a window for the administ
 
 |image2|
 
-The discovery process will start, and you should see a screen similar to the following screenshot. At this point, BIG-IQ is using REST calls to the BIG-IP to pull the selected parts of the BIG-IP configuration into BIG-IQ.
+The discovery process will start, and you should see a screen similar to the following screenshot. At this point, BIG-IQ is using REST call to the BIG-IP to pull the selected parts of the BIG-IP configuration into BIG-IQ.
 
 |image3|
 

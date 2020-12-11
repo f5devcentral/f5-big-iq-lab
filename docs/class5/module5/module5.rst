@@ -19,7 +19,7 @@ There are 3 types of devices you can manage licenses for:
 - **Unmanaged BIG-IP devices**: Unmanaged BIG-IPs are BIG-IPs that BIG-IQ communicates with solely for licensing purposes. Because these BIG-IPs 
   are not actively managed using device trust, you must provide user credentials when assigning a license to an unmanaged BIG-IP.​
 - **Unreachable devices**: For devices that BIG-IQ does not have network access to, a third-party computer or program communicates with BIG-IQ through 
-  API calls to get a license from BIG-IQ and assign it to the BIG-IP device by a method of your choosing. The third party makes a similar API call to 
+  API call to get a license from BIG-IQ and assign it to the BIG-IP device by a method of your choosing. The third party makes a similar API call to 
   BIG-IQ for revoking a license.
   
 In this lab, we will see the difference between the various types of license pools and how to license a **Managed BIG-IP** Virtual Edition (VE) using BIG-IQ as a License Manager.

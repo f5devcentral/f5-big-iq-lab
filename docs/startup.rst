@@ -105,14 +105,14 @@ SCP is similar to the above. The example below is from OSX. Note that the defaul
 
 ``scp -P 47000 ubuntu-16.04.2-server-amd64.iso 2ac1868c-8e44-46af-bc66-af5f8e58c282.access.udf.f5.com:/shared/images``
 
-API Rest Client: Postman
-------------------------
+API Rest Client in Visual Studio Code
+-------------------------------------
 
-In case you need to use an API Rest Client for this lab, follow |location_link_postman| to configure the **Postman Google Chrome Extention**.
+In case you need to use an API Rest Client for this lab, follow |location_link_vscode_restclient| to use the **REST Client for Visual Studio Code**.
 
-.. |location_link_postman| raw:: html
+.. |location_link_vscode_restclient| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
 Lab Diagram
 -----------

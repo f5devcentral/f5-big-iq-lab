@@ -152,15 +152,15 @@ This declaration will add a HTTPS application to a existing HTTP application. In
            }
        }
 
-3. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman2|).
+3. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient2|).
 
-4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ.    
+4. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.    
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successful without errors: 
+5. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
@@ -237,15 +237,15 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
         ]
     }
 
-3. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman2|).
+3. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient2|).
 
-4. Use the **BIG-IQ AS3 Declaration** Postman call in order to create the service on the BIG-IP through BIG-IQ.    
+4. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.    
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body in Postman.
+   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
-5. Use the **BIG-IQ Check AS3 Deployment Task** calls to ensure that the AS3 deployment is successful without errors: 
+5. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
    ``GET https://10.1.1.4/mgmt/shared/appsvcs/task/<id>``
 
@@ -264,6 +264,6 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
 .. |lab-1-5| image:: ../pictures/module2/lab-1-5.png
    :scale: 40%
 
-.. |location_link_postman2| raw:: html
+.. |location_link_vscode_restclient2| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>

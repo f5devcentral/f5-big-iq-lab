@@ -44,10 +44,13 @@ if [[  $currentuser == "root" ]]; then
         #$home/tools/cleanup-docker.sh
 
         echo "Cleanup previous files..."
-        rm -rf f5-* tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token
+        rm -rf f5-* tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token postman.rest
         rm -rf arcadia  gitlab ldap locust radius hoppscotch
         rm -rf awx splunk
         ls -lrt
+
+        echo "Remove empty directories"
+        rmdir $home/*
 
         echo "Install new scripts..."
         git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
@@ -72,6 +75,7 @@ if [[  $currentuser == "root" ]]; then
         usermod -a -G ubuntu f5student
         chmod -R g+w $home
         chmod 777 $home
+        chmod 777 $home/postman.rest
 
         echo "Cleanup Clouds credentials"
         rm -fr $home/.aws/*
@@ -168,8 +172,10 @@ if [[  $currentuser == "root" ]]; then
     docker cp *.vsix code-server:/tmp
     docker exec code-server code-server --install-extension /tmp/$(ls *vsix)
     docker exec code-server code-server --install-extension dawhite.mustache
+    docker exec code-server code-server --install-extension humao.rest-client
     docker exec code-server code-server --list-extensions 
-    docker restart code-server
+    docker restart code-server /home/coder/project/postman.rest
+    docker exec code-server code-server 
     rm *.vsix
 
     ### ASM Brute Force

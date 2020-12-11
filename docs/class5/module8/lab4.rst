@@ -12,14 +12,14 @@ to create and onboard the VE.
 
 Tasks
 ^^^^^
-1. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman3|).
+1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient3|).
 
 2. If not already done, run through `Lab 8.1 Prepare your AWS Account`_.
 
 .. _Lab 8.1 Prepare your AWS Account: ./lab1.html
 
 
-3. First, let's get the Cloud Environment Reference. Using Postman, use the **BIG-IQ API** call and replace the method and URL with ``GET https://10.1.1.4/mgmt/cm/cloud/environments``.
+3. First, let's get the Cloud Environment Reference. Using Visual Studio Code REST client, use the **BIG-IQ API** call and replace the method and URL with ``GET https://10.1.1.4/mgmt/cm/cloud/environments``.
 
    Save the **selfLink** value.
    
@@ -27,7 +27,7 @@ Tasks
 
 4. Click right and duplicate the tab. 
    Replace the method and URL with ``POST https://10.1.1.4/mgmt/cm/cloud/tasks/create-ve``.
-   Copy/Paste the below  from the validator to the body in Postman.
+   Copy/Paste the below  from the validator to the body under the call using the REST client VS code extension.
 
 .. code-block:: yaml
    :linenos:
@@ -198,10 +198,10 @@ Note the Private DNS and IPs which will be used later. This information could be
       }
    }
 
-9. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman3|).
+9. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient3|).
 
-10. Using Postman, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``POST https://10.1.1.4/mgmt/shared/declarative-onboarding``.
-    Copy/Paste the DO declaration from the validator to the body in Postman.
+10. Using Visual Studio Code REST client, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``POST https://10.1.1.4/mgmt/shared/declarative-onboarding``.
+    Copy/Paste the DO declaration from the validator to the body under the call using the REST client VS code extension.
 
 11. You can use GET to the URI ``https://10.1.1.4/mgmt/shared/declarative-onboarding/task/e1f88fa7-47c9-4860-95f9-132ca6dbaa28`` to track whether a 
 declaration is successful or get information on why it failed. Note the ``id`` will be return when doing the initial POST during previous step.
@@ -349,8 +349,8 @@ The GET on the URI monitoring the task will also show a success message.
 
 |image28|
 
-16. Using Postman, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``POST https://10.1.1.4/mgmt/cm/global/tasks/deploy-to-application``.
-    Copy/Paste the AS3 declaration below to the body in Postman.
+16. Using Visual Studio Code REST client, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``POST https://10.1.1.4/mgmt/cm/global/tasks/deploy-to-application``.
+    Copy/Paste the AS3 declaration below to the body under the call using the REST client VS code extension.
 
     Note the target address is one of the BIG-IP public address of the BIG-IQ HA Cluster (you can use either active or standby).
 
@@ -457,6 +457,6 @@ The GET on the URI monitoring the task will also show a success message.
 .. |image30| image:: pictures/image30.png
    :width: 60%
 
-.. |location_link_postman3| raw:: html
+.. |location_link_vscode_restclient3| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>

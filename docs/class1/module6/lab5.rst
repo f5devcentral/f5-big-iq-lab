@@ -26,13 +26,13 @@ Find the Pool Member Reference
   :scale: 40%
   :align: center
 
-2. Open Google Chrome, then open the Postman extension and authenticate to BIG-IQ (follow |location_link_postman|).
+2. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
-.. |location_link_postman| raw:: html
+.. |location_link_vscode_restclient| raw:: html
 
-   <a href="/training/community/big-iq-cloud-edition/html/postman.html" target="_blank">instructions</a>
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
-3. Use the **BIG-IQ API** Postman call and copy/paste the below URL using the GET method in order to retrieve 
+3. Use the **BIG-IQ API** call and copy/paste the below URL using the GET method in order to retrieve 
    the Legacy Application **media.site42.example.co,m** details using the BIG-IQ API.
    Save the URL after ``https://localhost/`` for the next query.
 
