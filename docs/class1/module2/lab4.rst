@@ -13,7 +13,7 @@ should also disappear from BIG-IQ.
 
 .. note:: We are not using the DELETE method but a POST with a declaration containing a tenant with nothing in it.
 
-1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 .. |location_link_vscode_restclient| raw:: html
 

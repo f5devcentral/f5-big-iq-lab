@@ -152,7 +152,7 @@ This declaration will add a HTTPS application to a existing HTTP application. In
            }
        }
 
-3. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient2|).
+3. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient2|).
 
 4. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.    
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
@@ -237,7 +237,7 @@ This declaration will create add a HTTP application to a existing Tenant. In thi
         ]
     }
 
-3. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient2|).
+3. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient2|).
 
 4. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.    
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.

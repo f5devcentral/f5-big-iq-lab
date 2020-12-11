@@ -127,7 +127,7 @@ To allow just 1 or 2 classes, use an if-then construct within additionalProperti
 
 In this task, we will create a template which require a Service_HTTP object, force the service port to 8080, and prevent WAF (ASM) and IAM (APM) configuration.
 
-1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 .. |location_link_vscode_restclient| raw:: html
 
@@ -252,7 +252,7 @@ Task 8 - Deploy the HTTP Application Service using a Custom Template
 Now, let's deploy an application as **Oliva** using the AS3 template previously created in Task 6. Note in the below declaration, 
 the virtualPort is set to 9090 while in the template, we force the virtualPort to a specific value and accept no other.
 
-1. Using VS code REST client extension, find the **BIG-IQ Token** call to authenticate you on the BIG-IQ and save the token.
+1. Using **Visual Studio code REST client extension**, find the **BIG-IQ Token** call to authenticate you on the BIG-IQ and save the token.
 
    Update the body with olivia's credential as below.
 

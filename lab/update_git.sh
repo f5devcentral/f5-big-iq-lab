@@ -119,6 +119,21 @@ if [[  $currentuser == "root" ]]; then
     docker exec chrome ps -ef
     docker exec chrome ls -lrt /home/app/.config/google-chrome/Default
 
+    ### Visual Code https://github.com/cdr/code-server
+    docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
+    docker exec code-server sh -c "sudo apt-get update"
+    docker exec code-server sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
+    docker exec code-server sh -c "pip3 install ansible"
+    # Download latest F5 Fast extention https://github.com/f5devcentral/vscode-f5
+    wget $(curl -s https://api.github.com/repos/f5devcentral/vscode-f5/releases/latest | grep browser_download_url | grep '.vsix' | head -n 1 | cut -d '"' -f 4)
+    docker cp *.vsix code-server:/tmp
+    docker exec code-server code-server --install-extension /tmp/$(ls *vsix)
+    docker exec code-server code-server --install-extension dawhite.mustache
+    docker exec code-server code-server --install-extension humao.rest-client
+    docker exec code-server code-server --list-extensions 
+    docker restart code-server 
+    rm *.vsix
+
     ### Start Ansible Tower/AWX Compose
     echo -e "AWX start\n"
     rm -rf ~/.awx
@@ -161,22 +176,6 @@ if [[  $currentuser == "root" ]]; then
     ### ASM Policy Validator
     #echo -e "ASM Policy Validator\n"
     #docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
-
-    ### Visual Code https://github.com/cdr/code-server
-    docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
-    docker exec code-server sh -c "sudo apt-get update"
-    docker exec code-server sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
-    docker exec code-server sh -c "pip3 install ansible"
-    # Download latest F5 Fast extention https://github.com/f5devcentral/vscode-f5
-    wget $(curl -s https://api.github.com/repos/f5devcentral/vscode-f5/releases/latest | grep browser_download_url | grep '.vsix' | head -n 1 | cut -d '"' -f 4)
-    docker cp *.vsix code-server:/tmp
-    docker exec code-server code-server --install-extension /tmp/$(ls *vsix)
-    docker exec code-server code-server --install-extension dawhite.mustache
-    docker exec code-server code-server --install-extension humao.rest-client
-    docker exec code-server code-server --list-extensions 
-    docker restart code-server /home/coder/project/postman.rest
-    docker exec code-server code-server 
-    rm *.vsix
 
     ### ASM Brute Force
     echo -e "Brute Force\n"

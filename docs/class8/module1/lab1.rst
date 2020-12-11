@@ -142,7 +142,7 @@ Make sure the deployment is successful.
 ASM Bot Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 .. |location_link_vscode_restclient| raw:: html
 

@@ -11,9 +11,9 @@ In case you need to use an API Rest Client for this lab, follow below instructio
   :align: center
 
 
-2. Back on the Explorer tab in VS code, navigate under ``project`` folder and open ``postman.rest`` (the file might be already open).
+2. Back on the Explorer tab in VS code, navigate under ``project`` folder and open ``postman.rest``.
 
-The ``postman.rest`` is a file with a number of BIG-IQ Rest call examples. You will find the BIG-IQ IP address under ``#My Variables`` section at the top of the file.
+The ``postman.rest`` is a file with a number of BIG-IQ Rest call examples. You will find the BIG-IQ IP address under ``# My Variables`` section at the top of the file.
 
 In order to authenticate to the BIG-IQ, click on *Send Request* below the URL.
 

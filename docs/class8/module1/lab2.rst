@@ -100,7 +100,7 @@ Make sure the deployment is successful.
 DoS Log Destinations and Publisher creation using API/AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient4|).
+1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient4|).
 
 2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** call in order to create 
    the service on the BIG-IP through BIG-IQ:
@@ -489,7 +489,7 @@ Expand the dimmensions to show *Transaction Outcomes* and *Client IPs*.
 Annex | Run the entire lab configuration part with 1 single API call using AS3
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient4|).
+1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient4|).
 
 2. Copy below AS3 declaration into the body of the **BIG-IQ AS3 Declaration** call in order to create 
    the service on the BIG-IP through BIG-IQ:

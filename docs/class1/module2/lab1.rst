@@ -87,9 +87,9 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
         "address": "10.1.1.8"
     },
 
-4. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+4. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
-.. note:: Instead of using REST client extension, you can also use F5 vcode extension. See `Module 2 Lab 9`_ to see how to.
+.. note:: Instead of using the Visual Studio Code REST client extension, you can also use F5 vscode extension. See `Module 2 Lab 9`_ to see how to.
 
 .. _Module 2 Lab 9: ./lab9.html
 
@@ -208,7 +208,7 @@ Now we are going to create another service but this time, we will do some SSL of
        }
    }
 
-2. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+2. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 3. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
@@ -321,7 +321,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
        }
    }
 
-1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 2. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
@@ -407,7 +407,7 @@ Modify the Generic virtual with something other than <generic_virtual>.
        }
    }
 
-1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 2. Using Visual Studio Code REST client, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.

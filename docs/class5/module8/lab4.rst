@@ -12,7 +12,7 @@ to create and onboard the VE.
 
 Tasks
 ^^^^^
-1. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient3|).
+1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient3|).
 
 2. If not already done, run through `Lab 8.1 Prepare your AWS Account`_.
 
@@ -198,7 +198,7 @@ Note the Private DNS and IPs which will be used later. This information could be
       }
    }
 
-9. Open Visual Studio Code, then use the VS code REST client extension and authenticate to BIG-IQ (follow |location_link_vscode_restclient3|).
+9. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient3|).
 
 10. Using Visual Studio Code REST client, use the **BIG-IQ AS3 Declaration** call and replace the method and URL with ``POST https://10.1.1.4/mgmt/shared/declarative-onboarding``.
     Copy/Paste the DO declaration from the validator to the body under the call using the REST client VS code extension.
