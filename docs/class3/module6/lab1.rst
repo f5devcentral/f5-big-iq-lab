@@ -4,6 +4,7 @@ Lab 6.1: BIG-IQ integration with F5 Beacon
 .. note:: Estimated time to complete: **20 minutes**
 
 F5 Beacon is an F5 Cloud Service which is suited to deliver end-to-end application visibility by leveraging telemetry data from F5 solutions and third-party eco-systems.
+
 F5 Cloud Services is a cloud-native SaaS platform developed in AWS and delivering application availability and security solutions.
 Beacon can discover existing and new deployed applications on BIG-IQ and will use this information to draw the application map. Furthermore, BIG-IQ will send analytics data to Beacon.
 
@@ -53,9 +54,9 @@ Let’s get to the other side and check F5 Beacon.
 
 Here are the pricing details: https://clouddocs.f5.com/cloud-services/latest/f5-cloud-services-Beacon-Pricing.html#f5-beacon-pricing and be aware that for this lab you will not make any additional costs.
 
-Subscribing to Beacon comes with a 45 day free trial.
+Subscribing to Beacon comes with a **45 day free trial**.
 
-5. Login F5 Cloud Services and subscribe to Beacon. 
+5. Login to F5 Cloud Services and subscribe to Beacon. 
 
 You should see something like underneath.
 
@@ -65,7 +66,7 @@ You should see something like underneath.
 
 Now you are ready to setup the connection between Beacon and BIG-IQ.
 
-6. In the UDF lan, start aan SSH session to BIG-IQ CM by using your favorite SSH client.
+6. In the UDF lab, start an SSH session to BIG-IQ CM by using your favorite SSH client.
 
 .. image:: ../pictures/module6/img_module6_lab1_5.png
   :align: center
@@ -73,7 +74,7 @@ Now you are ready to setup the connection between Beacon and BIG-IQ.
 
 7. First a certificate needs to be generated which will get used to setup the communication between BIG-IQ and Beacon. Therefore, type or copy and paste underneath commands into BIG-IQ CLI.
 
-bash commands::
+::
  
  bash
  cd /config
@@ -85,6 +86,8 @@ bash commands::
  tmsh restart sys service webd
  sleep 30
  openssl x509 -in <(openssl s_client -connect $(ifconfig | grep -A 1 mgmt | grep inet | awk '{print $2}'):443 -prexit 2>/dev/null) | awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' | rev | cut -c3- | rev > /home/admin/server.crt
+
+The below shown output is for your reference.
 
 .. image:: ../pictures/module6/img_module6_lab1_6.png
   :align: center
@@ -165,7 +168,7 @@ Where the second command will start the docker service.
   :align: center
   :scale: 40%
 
-To watch the Beacon service log, follow the ‘latest’ location as mentioned
+To watch the Beacon service log, follow the ‘latest’ location as mentioned in the last line of the shown output.
 
 ``cd /var/log/docker/data-transfer-service:latest``
 
@@ -188,16 +191,20 @@ This included log is for your reference.
   :align: center
   :scale: 40%
  
-They should be ‘Green’. One thing to mention is that Applications defined under ‘Unknown Applications’ will not get discovered or send data to Beacon.
+They should be **‘Green’**. One thing to mention is that Applications defined under ‘Unknown Applications’ will not get discovered or send data to Beacon.
 
 15. Login to F5 Beacon to check the configuration.
  
 
 You should see the three applications we started with in BIG-IQ, those are now published in Beacon.
 
-16. Click on the application **IT_apps** and check the Application Map. F5 Beacon inherits the same structure of applications as BIG-IQ presents them.
+16. Click on the application **finance_apps** and check the Application Map. F5 Beacon inherits the same structure of applications as BIG-IQ presents them.
 
-17. Select **appsvc-backend** and scroll through the **Properties** and notice from which source the application got generated. Go through the **Metrics** and **Events**.
+17. Select **appsvc-backendconference_site41ftp** and scroll through the **Properties** and notice from which source the application got generated. Go through the **Metrics** and **Events**.
+
+.. image:: ../pictures/module6/img_module6_lab1_12.png
+  :align: center
+  :scale: 40%
 
 Configuring F5 Beacon is beyond the scope of this lab, but when you want to explore more about Beacon, I highly encourage to start here: https://clouddocs.f5.com/cloud-services/latest/f5-cloud-services-Beacon-About.html 
 
