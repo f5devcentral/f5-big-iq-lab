@@ -1,5 +1,5 @@
 Lab 6.1: BIG-IQ integration with F5 Beacon
--------------------------------------------
+------------------------------------------
 
 .. note:: Estimated time to complete: **20 minutes**
 
