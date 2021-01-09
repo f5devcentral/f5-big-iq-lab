@@ -29,7 +29,7 @@ ASM Policy and Security Logging Profile creation (Larry)
 
 Let's first deploy the default Advance WAF policy and Security Logging Profile available in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 
-1. Login to BIG-IQ as **david**.
+1. Login to BIG-IQ as **larry**.
 
 2. Go to Configuration > Security > Web Application Security > Policies and clone the policy called ``templates-default``
 and name it as ``templates-default-cloned``.
@@ -318,7 +318,7 @@ ASM Policy Learning review and Dashboard/Events (Larry & Paula)
 
 8. Login as **paula** and select previously created ``LAB_module3`` Application, then click on ``https_waf_app_service``.
 
-9. In 7.x, the protection mode isn't automatically updated on the Application Dashboard. 
+9. In 7.x, the protection mode isn't automatically updated on the Application Dashboard. This is no longer needed for 8.0 version and above.
 
 Under Properties, select CONFIGURATION, then add ``upgradeProtectionMode 3/26/20`` in the Description 
 field and click Save.

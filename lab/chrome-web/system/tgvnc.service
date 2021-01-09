@@ -1,0 +1,12 @@
+[Unit]
+Description=Tiger VNC server
+Documentation=man:Xvnc
+After=systemd-journald.service
+
+[Service]
+User=app
+Type=simple
+ExecStart=/usr/bin/Xvnc :0 -nolisten tcp -UseIPv4 -interface lo -localhost -SecurityTypes None -rfbport 5900 -desktop chrome -nevershared -noclipboard -noreset -DisconnectClients -screen scrn 1280x1024x24
+
+[Install]
+WantedBy=multi-user.target

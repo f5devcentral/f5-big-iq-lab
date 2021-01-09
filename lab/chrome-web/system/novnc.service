@@ -1,0 +1,14 @@
+[Unit]
+Description=NoVNC Service
+Documentation=NoVNC
+After=tgvnc.service chrome.service
+Requires=tgvnc.service chrome.service
+
+[Service]
+User=app
+Type=simple
+ExecStart=/usr/bin/novnc_server --listen 3000 --web /usr/share/novnc --vnc localhost:5900
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
