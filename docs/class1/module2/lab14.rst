@@ -109,6 +109,10 @@ We will use a declaration taken from the `AS3 miscellaneous examples`_ which wil
 
 2. Now that the AS3 declaration is validated, use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
+.. |location_link_vscode_restclient| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
+
 .. note:: Instead of using the Visual Studio Code REST client extension, you can also use F5 vscode extension. See `Module 2 Lab 9`_ to see how to.
 
 .. _Module 2 Lab 9: ./lab9.html
@@ -143,6 +147,10 @@ We will use a declaration taken from the `AS3 miscellaneous examples`_ which wil
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
              You can move those application services using the GUI, the `Move/Merge API`_, `bigiq_move_app_dashboard`_ F5 Ansible Galaxy role 
              or create it directly into Application in BIG-IQ using the `Deploy API`_ to define the BIG-IQ Application name.
+
+.. _Move/Merge API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_move_merge.html
+.. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
+.. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
 
 6. Click on your Application Service called **Tenant1_Application1**, then View Sample API Request, look at AS3 declaration.
 
