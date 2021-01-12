@@ -126,7 +126,7 @@ Before being able to deploy an instance in ``Azure``, you'll have to **subscribe
 
 Go here to **subscribe** to the right F5 instance we will use in this lab: 
 
-`F5 BIG-IP VE – ALL (BYOL, 1 Boot Location) <https://azuremarketplace.microsoft.com/en-us/marketplace/>`_
+*F5 BIG-IP VE – ALL (BYOL, 1 Boot Location)*
 
 Once you've subscribed, you should see something like this: 
 

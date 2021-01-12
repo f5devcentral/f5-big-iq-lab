@@ -46,7 +46,7 @@ if [[  $currentuser == "root" ]]; then
         echo "Cleanup previous files..."
         rm -rf f5-* tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token postman.rest
         rm -rf arcadia  gitlab ldap locust radius hoppscotch
-        rm -rf awx splunk
+        rm -rf awx splunk chrome*
         ls -lrt
 
         echo "Remove empty directories"
