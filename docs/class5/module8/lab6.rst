@@ -104,6 +104,7 @@ The new AS3 .rpm needs to be uploaded in **/home/admin**
 Use the AS3 latest releases on Github to download the latest AS3 package directly onto BIG-IQ.
 
 ::
+
  curl -LJO https://github.com/F5Networks/f5-appsvcs-extension/releases/download/**<latest>/<latest>.rpm**
  curl -LJO https://github.com/F5Networks/f5-appsvcs-extension/releases/download/**<latest>/<latest>.sha256**
 
@@ -122,6 +123,7 @@ Follow the instructions in the README by downloading the script into the created
 The steps are published below for your refrence:
 
 ::
+
  bash
  mkdir /shared/scripts
  cd /shared/scripts
@@ -157,6 +159,7 @@ Actually, this is repeating the previous steps we have seen from the AS3 upgrade
 * Before downloading be sure to be in directory **/home/admin**.
 
 ::
+
  curl -LJO https://github.com/F5Networks/f5-declarative-onboarding/releases/download/<latest>/<latest>.rpm
  curl -LJO https://github.com/F5Networks/f5-declarative-onboarding/releases/download/<latest>/<latest>.sha256
 
@@ -173,6 +176,7 @@ The F5 support article K54909607 also refers to the BIG-IQ F5 PM provided script
 Follow the README instructions and you will find them also here for your reference.
 
 ::
+
  bash
  mkdir /shared/scripts
  cd /shared/scripts
