@@ -77,77 +77,124 @@ AS3: https://github.com/F5Networks/f5-appsvcs-extension/releases
 
 DO: https://github.com/F5Networks/f5-declarative-onboarding/releases 
 
+.. note:: When the BIG-IQ installed version is simular to the latest version on Github, just continue this exercise and assume they are newer ;-).
+
 Notice that both packages are not the latest and should be upgraded to contain the latest features and bug fixes.
 Before doing so we first need to check the compatibility of our BIG-IQ version and the available packages for DO and AS3.
 
 8. Browse to this F5 knowledge base article: https://support.f5.com/csp/article/K54909607 and check the compatibility by looking at the **‘BIG-IQ Centralized Management compatibility with AS3 and DO’** section and related table.
 
-9. From the UDF lab page, go to the Components tab and on the Ubuntu Lamp, select XRDP to login to the system.
+The KB article contains all the required steps to upgrade the DO and AS3 rpm's, but instead of following this article, we will use BIG-IQ F5 PM developed scripts. Links to these scripts are included in the KB article or you can just follow the next steps.
+
+9. From the UDF lab page, go to the Components tab and find BIG-IQ CM, select **Access**, right-click SSH and copy the SSH link location to use within your favorite SSH client.
 
 .. image:: ../module8/pictures/lab-6-7.png
   :align: center
   :scale: 40%
 
-Ignore the connection verification warning and click **Connect** and **Yes**.
-Hit **OK to** login the Xorg Session.
+10. Login with SSH into BIG-IQ as user admin.
 
-10. On the Ubuntu host start a Terminal from the left upper corner and using the Favorites menu.
+Upgrading BIG-IQ AS3 .rpm
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-11. Download the new .rpm packages shown in step 7 and store them locally on the Ubuntu Jumphost. (or do we have the latest .rpm’s already stored locally)
- 
- 
-12. Copy the .rpm’s from the Jumphost to BIG-IQ via SCP.
+11. First we will download the AS3 .rpm on BIG-IQ. 
 
-On the Jumphost, select a **Terminal** through the ‘Activities’ section in the left top corner.
-In the Terminal, navigate to the downloaded package.
+The new AS3 .rpm needs to be uploaded in **/home/admin**
+
+Use the AS3 latest releases on Github to download the latest AS3 package directly onto BIG-IQ.
 
 ::
+ curl -LJO https://github.com/F5Networks/f5-appsvcs-extension/releases/download/**<latest>/<latest>.rpm**
+ curl -LJO https://github.com/F5Networks/f5-appsvcs-extension/releases/download/**<latest>/<latest>.sha256**
 
- cd Downloads 
- ls -l (double check if the .rpm is in this directory)
- scp f5-appsvcs-3.24.0-5.noarch.rpm admin@10.1.1.4:/shared/tmp
- scp f5-declarative-onboarding-1.17.0-3.noarch.rpm  admin@10.1.1.4:/shared/tmp
+.. note:: Replace **<latest>** with the latest AS3 version. at the time of writing this lab the latest is v3.25.0. Please be aware that your 'latest' version might be different.
 
-13. Upgrading AS3 on BIG-IQ
+.. image:: ../module8/pictures/lab-6-8.png
+  :align: center
+  :scale: 40%
 
-Use the same terminal to login to BIG-IQ via SSH.
+Verify that the AS3 .rpm is in /home/admin by using **ls -l**
 
-``ssh admin@10.1.1.4`` 
+12. Use a browser and go to https://github.com/f5devcentral/f5-big-iq-pm-team/tree/master/f5-bigiq-as3-rpm-updated
 
-14. Before being able to copy the AS3 package to its final destination, we need to remount the /usr file system read-write mode by typing:
+Follow the instructions in the README by downloading the script into the created directory **/shared/scripts**
 
-``mount -o remount,rw /usr``
+The steps are published below for your refrence:
 
-Copy the AS3 package to /usr.
+::
+ bash
+ mkdir /shared/scripts
+ cd /shared/scripts
+ curl https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-as3-rpm-update/as3_rpm_update_bigiq.sh > as3_rpm_update_bigiq.sh
+ chmod +x as3_rpm_update_bigiq.sh
 
-``cp /shared/tmp/f5-appsvcs-3.24.0-5.noarch.rpm /usr/lib/dco/packages/f5-appsvcs/``
+.. image:: ../module8/pictures/lab-6-9.png
+  :align: center
+  :scale: 40%
 
-This will be the version which will get pushed to managed BIG-IPs the next time an application service by AS3 gets deployed through BIG-IQ.
-Remount the /usr file back to read-only mode.
+13. Upgrade AS3 on BIG-IQ by installing the package.
 
-``mount -o remount,ro /usr``
+* From the previous step notice that you are in **/shared/scripts**, you can check this by using **pwd**. Otherwise switch directories with entering **cd /shared/scripts**.
+* Use the Shell script to update the current AS3 version with the latest.
 
-15. Upgrade AS3 on BIG-IQ by installing the package.
+``./as3_rpm_update_bigiq.sh <<your-latest-AS3-Version>>.rpm``
 
-``rpm -Uv /usr/lib/dco/packages/f5-appsvcs/f5-appsvcs-3.24.0-5.noarch.rpm``
+.. image:: ../module8/pictures/lab-6-10.png
+  :align: center
+  :scale: 40%
 
-16. It is needed to restart the BIG-IQ services restjavad and restnoded.
-
-``tmsh restart /sys service restjavad restnoded``
-
-17. Let’s check if the package got installed. This can be done by repeating a previous step where we checked the appsvcs info via Postman. But instead, let’s check it locally on the BIG-IQ.
+14. Let’s check if the package got installed. This can be done by repeating a previous step where we checked the appsvcs info via Postman. But instead, let’s check it locally on the BIG-IQ.
 
 ``curl http://localhost:8105/shared/appsvcs/info``
 
-18. Upgrading DO on BIG-IQ
+Upgrading DO on BIG-IQ
+^^^^^^^^^^^^^^^^^^^^^^
+Actually, this is repeating the previous steps we have seen from the AS3 upgrade.
 
-``rpm -Uv /shared/tmp/f5-declarative-onboarding-1.17.0-3.noarch.rpm``
+15. Download the latest DO .rpm package.
 
-19. It is needed to restart the BIG-IQ services restjavad and restnoded.
+* Use the DO URL from the previous step to copy the link location
+* Before downloading be sure to be in directory **/home/admin**.
 
-``tmsh restart /sys service restjavad restnoded``
+::
+ curl -LJO https://github.com/F5Networks/f5-declarative-onboarding/releases/download/<latest>/<latest>.rpm
+ curl -LJO https://github.com/F5Networks/f5-declarative-onboarding/releases/download/<latest>/<latest>.sha256
 
-20. Check if the package got updated. On the BIG-IQ (localhost) type:
+.. note:: Also here you need to download the **<latest>** DO .rpm package and if this happens to be the same as already available on BIG-IQ, just download accordingly and follow the steps.
+
+.. image:: ../module8/pictures/lab-6-11.png
+  :align: center
+  :scale: 40%
+
+16. Use your browser to go to the DO update tool: https://github.com/f5devcentral/f5-big-iq-pm-team/tree/master/f5-bigiq-do-rpm-update
+
+The F5 support article K54909607 also refers to the BIG-IQ F5 PM provided script for upgrading DO.
+
+Follow the README instructions and you will find them also here for your reference.
+
+::
+ bash
+ mkdir /shared/scripts
+ cd /shared/scripts
+ curl https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-do-rpm-update/do_rpm_update_bigiq.sh > do_rpm_update_bigiq.sh
+ chmod +x do_rpm_update_bigiq.sh
+
+.. image:: ../module8/pictures/lab-6-12.png
+  :align: center
+  :scale: 40%
+
+17. Upgrade the DO package by using the downloaded shell script.
+
+* The previous step got you in the **/shared/scripts/** directory, you can check this by using **pwd**.
+* Use the shell script to update the BIG-iQ DO package.
+
+``./do_rpm_update_bigiq.sh f5-declarative-onboarding-1.18.0-4.noarch.rpm``
+
+.. image:: ../module8/pictures/lab-6-13.png
+  :align: center
+  :scale: 40%
+
+20. Check if the package got updated. On the BIG-IQ type:
 
 ``curl http://localhost:8105/shared/declarative-onboarding/info``
 
