@@ -20,7 +20,7 @@ Tasks for this lab are:
 
 1. In the BIG-IQ UDF lab, go to the **Components** section and find Ubuntu Lamp. Select **Access** and click **Visual Studio Code**.
 
-**Note:** When you are not familar with the UDF lab environment, please use tge **Get Started** page which can be found here:  https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/startup.html
+**Note:** When you are not familar with the UDF lab environment using VSC, please use the **Get Started** page which can be found here:  https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/startup.html
 
 Enter the password (purple123).
 
