@@ -80,7 +80,9 @@ The **'f5-bigiq-generate-cert-with-SAN'** script can be found here: https://gith
 
 Check the curl command:
 
-``curl -sS https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-generate-cert-with-SAN/generate-self-signed-cert | bash -s <BIG-IQ IP address> <Cert validity in days> <RSA key-length>``
+::
+ 
+ curl -sS https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-generate-cert-with-SAN/generate-self-signed-cert | bash -s <BIG-IQ IP address> <Cert validity in days> <RSA key-length>
 
 After the pipe cmd you are asked to fill in the:
 
@@ -90,7 +92,9 @@ After the pipe cmd you are asked to fill in the:
 
 **Use** the **curl** command:
 
-``curl -sS https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-generate-cert-with-SAN/generate-self-signed-cert | bash -s 10.1.1.4 365 2048``
+::
+ 
+ curl -sS https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-generate-cert-with-SAN/generate-self-signed-cert | bash -s 10.1.1.4 365 2048
 
 The below shown output is for your reference.
 
@@ -136,7 +140,9 @@ In this beacon.json we need to set your Beacon username and password, BIG-IQ use
 
 9. Put a copy of generated server.crt into **/home/admin/** by copy and pasting underneath **openSSL** cmd.
 
-``openssl x509 -in <(openssl s_client -connect $(ifconfig | grep -A 1 mgmt | grep inet | awk '{print $2}'):443 -prexit 2>/dev/null) | awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' | rev | cut -c3- | rev > /home/admin/server.crt``
+::
+
+ openssl x509 -in <(openssl s_client -connect $(ifconfig | grep -A 1 mgmt | grep inet | awk '{print $2}'):443 -prexit 2>/dev/null) | awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' | rev | cut -c3- | rev > /home/admin/server.crt
 
 Display the BIG-IQ server certificate by typing:
 
