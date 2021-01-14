@@ -64,19 +64,21 @@ tailored to your custom needs.
   :scale: 40%
   :align: center
 
-3. Open the template ``AS3-LAB-HTTPS-WAF-custom-template2`` and select the ``WAF_Policy`` AS3 class. Check the *Override* box for each of the below properties:
+3. Open the template ``AS3-LAB-HTTPS-WAF-custom-template2`` and select the ``WAF_Policy`` AS3 class. Check the *Override* chec kbox for each of the below properties:
   
-    - url: ``https://10.1.1.4/mgmt/cm/asm/policy-files/download/Common~asm-lab4/14.1.0``
-    - skipCertificateCheck: ``true``
-    - authentication:
-        - method: ``basic``
-        - username: ``admin``
-        - passphrase:
-            - ciphertext: ``cHVycGxlMTIz``
-            - JOSE header: ``eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0``
+- url: ``https://10.1.1.4/mgmt/cm/asm/policy-files/download/Common~asm-lab4/14.1.0``
+- skipCertificateCheck: ``true``
+- authentication:
+    - method: ``basic``
+    - username: ``admin``
+    - passphrase:
+        - ciphertext: ``cHVycGxlMTIz``
+        - JOSE header: ``eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0``
 
 .. note:: In order to get the value of the Ciphertext, we convert the SSL key password (``purple123``) using https://www.url-encode-decode.com/base64-encode-decode/
           More details on the AS3 Certificate class `here <https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/refguide/schema-reference.html#certificate-passphrase>`_.
+
+Confirm the ``enforcementMode`` property has *Editable* check box checked so Paula will have the ability to change the WAF policy enforcement mode.
 
 .. image:: ../pictures/asm-as3/lab-6-5.png
   :scale: 40%
