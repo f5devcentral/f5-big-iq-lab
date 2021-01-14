@@ -28,13 +28,13 @@ We will use a Visual Studio Code Extension as a REST Client to get info from the
 
 3. In VSC, go to Explorer in the Left pane and select **project > bigiq-atc-package-info-postman.rest** and explore the body.
 
-.. image:: ../module8/pictures/lab-6-3.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-1.png
   :align: center
   :scale: 40%
 
 4. First we need to authenticate against the BIG-IQ by generating a token. In the REST body click **'Send Request'** of the BIG-IQ Token and watch the response.
 
-.. image:: ../module8/pictures/lab-6-4.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-2.png
   :align: center
   :scale: 40%
 
@@ -43,7 +43,7 @@ We will use a Visual Studio Code Extension as a REST Client to get info from the
 The URI is asking AS3 package info from BIG-IQ
 Now press **‘Send Request’**.
 
-.. image:: ../module8/pictures/lab-6-5.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-3.png
   :align: center
   :scale: 40%
 
@@ -53,7 +53,7 @@ The response should return a version number meaning that the AS3 .rpm package is
 
 Press **'Send Request'**.
 
-.. image:: ../module8/pictures/lab-6-6.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-4.png
   :align: center
   :scale: 40%
 
@@ -76,7 +76,7 @@ The KB article contains all the required steps to upgrade the DO and AS3 rpm's, 
 
 9. From the UDF lab page, go to the Components tab and find BIG-IQ CM, select **Access**, right-click SSH and copy the SSH link location to use within your favorite SSH client.
 
-.. image:: ../module8/pictures/lab-6-7.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-5.png
   :align: center
   :scale: 40%
 
@@ -99,7 +99,7 @@ Use the AS3 latest releases on Github to download the latest AS3 package directl
 .. note:: Replace **<latest>** with the latest AS3 version. at the time of writing this lab the latest is v3.25.0. Please be aware that your 'latest' version might be different.
 
 
-.. image:: ../module8/pictures/lab-6-8.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-6.png
   :align: center
   :scale: 40%
 
@@ -119,7 +119,7 @@ The steps are published below for your refrence:
  curl https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-as3-rpm-update/as3_rpm_update_bigiq.sh > as3_rpm_update_bigiq.sh
  chmod +x as3_rpm_update_bigiq.sh
 
-.. image:: ../module8/pictures/lab-6-9.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-7.png
   :align: center
   :scale: 40%
 
@@ -130,7 +130,7 @@ The steps are published below for your refrence:
 
 ``./as3_rpm_update_bigiq.sh <<your-latest-AS3-Version>>.rpm``
 
-.. image:: ../module8/pictures/lab-6-10.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-8.png
   :align: center
   :scale: 40%
 
@@ -154,7 +154,7 @@ Actually, this is repeating the previous steps we have seen from the AS3 upgrade
 
 .. note:: Also here you need to download the **<latest>** DO .rpm package and if this happens to be the same as already available on BIG-IQ, just download accordingly and follow the steps.
 
-.. image:: ../module8/pictures/lab-6-11.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-9.png
   :align: center
   :scale: 40%
 
@@ -172,7 +172,7 @@ Follow the README instructions and you will find them also here for your referen
  curl https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-do-rpm-update/do_rpm_update_bigiq.sh > do_rpm_update_bigiq.sh
  chmod +x do_rpm_update_bigiq.sh
 
-.. image:: ../module8/pictures/lab-6-12.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-10.png
   :align: center
   :scale: 40%
 
@@ -183,7 +183,7 @@ Follow the README instructions and you will find them also here for your referen
 
 ``./do_rpm_update_bigiq.sh f5-declarative-onboarding-1.18.0-4.noarch.rpm``
 
-.. image:: ../module8/pictures/lab-6-13.png
+.. image:: ../pictures/module1/pictures/img_module1_lab3-11.png
   :align: center
   :scale: 40%
 
