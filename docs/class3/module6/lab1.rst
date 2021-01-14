@@ -107,6 +107,7 @@ Copy and paste underneath beacon.json file to:
 Type **‘i’** to insert the .json script.
 
 ::
+
   {
   "name": "beacon_service",
   "dataCollectionFrequencyInMinutes": 1,
