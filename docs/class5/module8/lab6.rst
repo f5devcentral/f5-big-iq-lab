@@ -20,25 +20,13 @@ Tasks for this lab are:
 
 1. In the BIG-IQ UDF lab, go to the **Components** section and find Ubuntu Lamp. Select **Access** and click **Visual Studio Code**.
 
-.. image:: ../module8/pictures/lab-6-1.png
-  :align: center
-  :scale: 40%
+**Note:** When you are not familar with the UDF lab environment, please use tge **Get Started** page which can be found here:  https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/startup.html
 
 Enter the password (purple123).
 
-2. We will use a Visual Studio Code Extension as a REST Client to get info from the current installed BIG-IQ F5 automation toolchain packages.
+We will use a Visual Studio Code Extension as a REST Client to get info from the current installed BIG-IQ F5 automation toolchain packages.
 
-Check the Rest Client Extension by selecting **Extensions** in the left pane of Visual Studio Code.
-
-.. image:: ../module8/pictures/lab-6-2.png
-  :align: center
-  :scale: 40%
-
-Though this is a side-step of this lab. Using an VSC extension as REST Client can be beneficial to keep you away from switching back and foreword between applications to get the job done. Now, one can stick at VSC and do code/scripting development and test within the same window.
-
-Of course, if you prefer to use Curl or Postman you are allowed to do so.
-
-3. In VSC, go to Explorer in the Left pane and select **project > f5-bigiq-atc-package-update > bigiq-atc-package-info-postman.rest** and explore the body.
+3. In VSC, go to Explorer in the Left pane and select **project > bigiq-atc-package-info-postman.rest** and explore the body.
 
 .. image:: ../module8/pictures/lab-6-3.png
   :align: center
@@ -109,6 +97,7 @@ Use the AS3 latest releases on Github to download the latest AS3 package directl
  curl -LJO https://github.com/F5Networks/f5-appsvcs-extension/releases/download/**<latest>/<latest>.sha256**
 
 .. note:: Replace **<latest>** with the latest AS3 version. at the time of writing this lab the latest is v3.25.0. Please be aware that your 'latest' version might be different.
+
 
 .. image:: ../module8/pictures/lab-6-8.png
   :align: center
