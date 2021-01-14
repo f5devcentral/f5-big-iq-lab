@@ -103,7 +103,7 @@ Now let's create the WAF application service using AS3 & BIG-IQ.
 | Certificate                                                                                 |
 +---------------------------------------------------------------------------------------------+
 | * privateKey: *use private key example below*                                               |
-| * certificate: *use certificate example below*                                             |
+| * certificate: *use certificate example below*                                              |
 +---------------------------------------------------------------------------------------------+
 | Service_HTTPS                                                                               |
 +---------------------------------------------------------------------------------------------+
