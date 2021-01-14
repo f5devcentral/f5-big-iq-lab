@@ -120,6 +120,8 @@ if [[  $currentuser == "root" ]]; then
     docker exec code-server code-server --install-extension dawhite.mustache
     docker exec code-server code-server --install-extension humao.rest-client
     docker exec code-server code-server --list-extensions 
+    docker exec code-server mkdir /home/coder/.vscode
+    docker exec code-server cp /home/coder/project/settings_vscode.json /home/coder/.vscode/settings.json
     docker restart code-server 
     rm *.vsix
 
