@@ -72,20 +72,25 @@ Now you are ready to setup the connection between Beacon and BIG-IQ.
   :align: center
   :scale: 40%
 
-7. First a certificate needs to be generated which will get used to setup the communication between BIG-IQ and Beacon. Therefore, type or copy and paste underneath commands into BIG-IQ CLI.
+7. First a self-signed certificate needs to be generated with the BIG-IQ IP address in the SAN field. This certificate will get used to setup the communication between BIG-IQ and Beacon.
 
-::
- 
- bash
- cd /config
- curl -sS https://raw.githubusercontent.com/antelle/generate-ip-cert/master/generate-ip-cert.sh | bash -s $(ifconfig | grep -A 1 mgmt | grep inet | awk '{print $2}')
- mv -f /config/httpd/conf/ssl.crt/server.crt /config/httpd/conf/ssl.crt/server.crt.default
- mv -f /config/httpd/conf/ssl.key/server.key /config/httpd/conf/ssl.key/server.key.default
- mv -f cert.pem /config/httpd/conf/ssl.crt/server.crt
- mv -f key.pem /config/httpd/conf/ssl.key/server.key
- tmsh restart sys service webd
- sleep 30
- openssl x509 -in <(openssl s_client -connect $(ifconfig | grep -A 1 mgmt | grep inet | awk '{print $2}'):443 -prexit 2>/dev/null) | awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' | rev | cut -c3- | rev > /home/admin/server.crt
+We will use a script for generating and installing the self-signed certicate on BIG-IQ, but if you want to understand the steps and details, please use this article which is avialble on AskF5: https://support.f5.com/csp/article/K52425065
+
+The **'f5-bigiq-generate-cert-with-SAN'** script can be found here: https://github.com/f5devcentral/f5-big-iq-pm-team/tree/master/f5-bigiq-generate-cert-with-SAN. The usage of the script is explained in the next steps.
+
+Check the curl command:
+
+``curl -sS https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-generate-cert-with-SAN/generate-self-signed-cert | bash -s <BIG-IQ IP address> <Cert validity in days> <RSA key-length>``
+
+After the pipe cmd you are asked to fill in the:
+
+* BIG-IQ IP address
+* Amount of days the cert will be valid
+* The RSA key length, like 2048 or 4096 bit length
+
+**Use** the **curl** command:
+
+``curl -sS https://raw.githubusercontent.com/f5devcentral/f5-big-iq-pm-team/master/f5-bigiq-generate-cert-with-SAN/generate-self-signed-cert | bash -s 10.1.1.4 365 2048``
 
 The below shown output is for your reference.
 
@@ -101,10 +106,8 @@ Copy and paste underneath beacon.json file to:
 
 Type **‘i’** to insert the .json script.
 
-.. code-block:: yaml
-   :lineos:
-
-   {
+::
+  {
   "name": "beacon_service",
   "dataCollectionFrequencyInMinutes": 1,
   "beaconHost": "api.cloudservices.f5.com",
@@ -130,7 +133,11 @@ Type **‘:wq’** to save and close beacon.json
 
 In this beacon.json we need to set your Beacon username and password, BIG-IQ username and password, but also include the BIG-IQ server certificate.
 
-9. Display the BIG-IQ server certificate by typing:
+9. Put a copy of generated server.crt into **/home/admin/** by copy and pasting underneath **openSSL** cmd.
+
+``openssl x509 -in <(openssl s_client -connect $(ifconfig | grep -A 1 mgmt | grep inet | awk '{print $2}'):443 -prexit 2>/dev/null) | awk 'NF {sub(/\r/, ""); printf "%s\\n",$0;}' | rev | cut -c3- | rev > /home/admin/server.crt``
+
+Display the BIG-IQ server certificate by typing:
 
 ``cat /home/admin/server.crt``
 
