@@ -1,4 +1,4 @@
-.. TITLE: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP
+.. TITLE: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP using Policy Builder
 
 .. note:: Estimated time to complete: **25 minutes**
 
@@ -261,7 +261,7 @@ Open Chrome and navigate to the following URL: ``https://10.1.10.122``.
   :scale: 40%
   :align: center
 
-10. Paula does the necessary testing of her application, she reach to Larry.
+10. Paula does the necessary testing of her application, she reaches out to Larry when she is done.
 
 .. note:: There are traffic generator sending good and bad traffic from the Lamp server in the lab.
 
