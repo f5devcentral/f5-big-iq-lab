@@ -4,12 +4,16 @@ Lab 2.1: Analyzing security policy status - ASM (new 8.0)
 .. note:: Estimated time to complete: **30 minutes**
 
 Your Web Application Security policies secure applications from layer 7 web-based vulnerabilities. Application security policies can be implemented and 
-later fine-tuned based on observed traffic patterns and repeated attacks. This allows you to customize your application's protection based on the security required and 
+later fine-tuned based on observed traffic patterns and repeated attacks. This allows you to customize your application's protection based on the security required and
 the acceptable risk in your business environment. 
+
+Security Policy Configuration Analyzer is a new feature getting introduced only for BigIQ. It generates an audit report containing Suggestions and
+score for a given policy so that the SecOp Engineer will have a visibility about the policy's security level and suggestions to improve it.
+The policy analyzer runs for both the type of policies, the one which is imported from a BigIP as well the policy which is created in BigIQ.
 
 Generating a security audit of your security policy allows you to analyze the current application protection offered, in addition to recommendations for improvement.
 
-Once you have generated a security policy audit, you can use the recommendations to perform	immediate policy tuning to improve application protection. 
+Once you have generated a security policy audit, you can use the recommendations to perform	immediate policy tuning to improve application protection.
 Any changes can be immediately assessed by the audit and then deployed.
 
 Generate a security policy audit
@@ -179,11 +183,11 @@ An overview on how the **Policy Security Score** been calculated is listed in th
 |                |               +-----------------------------------------------------+
 |                |               |                     0-149   Info                    |
 +----------------+---------------+-----------------------------------------------------+
-|                |               |              0-15 (or   more) Critical              |
+|                |               |              0-15 (or more) Critical                |
 |                |               +-----------------------------------------------------+
-|        F       |      Bad      |               0-45(or   more) Warning               |
+|        F       |      Bad      |               0-45 (or more) Warning                |
 |                |               +-----------------------------------------------------+
-|                |               |                0-150   (or more) Info               |
+|                |               |                0-150 (or more) Info                 |
 +----------------+---------------+-----------------------------------------------------+
 
 Security Policy Analyzer recommendations
@@ -309,3 +313,259 @@ You can either approve or ignore these suggestions based on your application pro
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+-----------------------------------------+
 | Disallowed File Upload Content Detected violation enabled with File Upload data type parameter. Disallow File upload of Executables is disabled on the parameter. | F5 recommends enabling (Disallow) the setting Disallow File upload of Executables on the parameter to improve the security level.                                               | Info     | File Upload                             |
 +-------------------------------------------------------------------------------------------------------------------------------------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+----------+-----------------------------------------+
+
+
+BIG-IQ ASM Policy Analyzer API Documentation
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Beside the Policy Analyzer usage via WebUI, an API is available in case you want to collect the result of the Policy analysation in a JSON Format.
+The API documentation is available on .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
+
+Some API examples to interact with the BIG-IQ ASM Policy Analyzer API been listed below.
+
+1. The following API call is used to retrieve an overview of historic initiated policy analyzer tasks. The method and URL used will be: ``GET https://10.1.1.4/mgmt/cm/asm/tasks/policy-analyzer``
+
+The outcome of the request within the body:
+
+.. image:: ../pictures/module2/img_module2_lab1_13.png
+  :align: center
+  :scale: 40%
+
+2. In case you want to gather a list of categories of your policy configuration analyses, the method and URL to collect these information will be ``GET https://10.1.1.4/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/<TASK-ID>``
+
+.. note:: Taken the result from outcome of Step 1 the **<TASK-ID>** would be **98445670-354e-3ca8-8ef1-0340ccf5d538**.
+
+The outcome of the request within the body will be similar to:
+
+.. image:: ../pictures/module2/img_module2_lab1_14.png
+  :align: center
+  :scale: 40%
+
+.. note:: In the example we got 15 recommendations in thre categories: Violations, Signatures, Entities.
+
+3. While you collected the categories in Step 2 you may be more intrested to retrieve suggestions generated by the policy analyzer.
+   The method and URL to collect these information will be ``GET https://10.1.1.4/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/<Policy-ID>/suggestions``
+
+.. note:: The outcome will be a detailed list of recommandations on the policy configuration analyses like the UI provide.
+
+.. image:: ../pictures/module2/img_module2_lab1_15.png
+  :align: center
+  :scale: 40%
+
+A JSON formated detailed list of recommandations:
+
+.. code-block:: JSON
+   :linenos:
+   :emphasize-lines: 9,20,22
+{
+{
+    "items": [
+        {
+            "id": "f33ba15e-ffa5-310e-873b-f3842afb46a6",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1012",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/f33ba15e-ffa5-310e-873b-f3842afb46a6",
+            "isIgnored": false,
+            "generation": 1,
+            "description": "More than 10% of attack signatures are in staging [3278/3278] ",
+            "lastUpdateMicros": 1610709655008539,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/f33ba15e-ffa5-310e-873b-f3842afb46a6"
+            }
+        },
+        {
+            "id": "509b6bbf-180e-328f-8e86-8170be07c01b",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1023",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/509b6bbf-180e-328f-8e86-8170be07c01b",
+            "isIgnored": false,
+            "generation": 1,
+            "resourceId": "3389dae3-61af-39b0-8c9c-8e7057f60cc6",
+            "description": "File type * is not enforced",
+            "lastUpdateMicros": 1610709655008264,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/ce5140df-15d0-36a6-a883-807d18d0264b"
+            }
+        },
+        {
+            "id": "b9141aff-1412-3c76-b40b-3822d9ea6c72",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1043",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/b9141aff-1412-3c76-b40b-3822d9ea6c72",
+            "isIgnored": false,
+            "generation": 1,
+            "description": "CSRF Protection violation is enabled with CSRF Protection disabled ",
+            "lastUpdateMicros": 1610709655008428,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/b9141aff-1412-3c76-b40b-3822d9ea6c72"
+            }
+        },
+        {
+            "id": "e777c1d5-9584-3437-801b-060e86560822",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1024",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/e777c1d5-9584-3437-801b-060e86560822",
+            "isIgnored": false,
+            "generation": 1,
+            "resourceId": "4a8d15b7-2a7c-3d36-abd0-954605fa2837",
+            "description": "HTTPS URL * is in not enforced",
+            "lastUpdateMicros": 1610709655008411,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/021bbc7e-e20b-3113-8d53-e20206bd6feb"
+            }
+        },
+        {
+            "id": "537d9b6c-9272-33c7-96ca-c288cced29df",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1040",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/537d9b6c-9272-33c7-96ca-c288cced29df",
+            "isIgnored": false,
+            "generation": 1,
+            "description": "Brute Force enabled without login page configured",
+            "lastUpdateMicros": 1610709655008494,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/537d9b6c-9272-33c7-96ca-c288cced29df"
+            }
+        },
+        {
+            "id": "92bff68d-7275-360f-a9d4-c2c42673dcda",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1024",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/92bff68d-7275-360f-a9d4-c2c42673dcda",
+            "isIgnored": false,
+            "generation": 1,
+            "resourceId": "96009cdc-01c5-37bd-a5d1-1189937a16a0",
+            "description": "HTTP URL * is in not enforced",
+            "lastUpdateMicros": 1610709655008324,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/021bbc7e-e20b-3113-8d53-e20206bd6feb"
+            }
+        },
+        {
+            "id": "8dbffcac-d725-30e9-829c-13dd9dbaedfa",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1025",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/8dbffcac-d725-30e9-829c-13dd9dbaedfa",
+            "isIgnored": false,
+            "generation": 1,
+            "resourceId": "0e0e8049-14e9-3263-992e-dd75ffb55310",
+            "description": "WebSocket WS URL * is not enforced",
+            "lastUpdateMicros": 1610709655008211,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/82b8a343-4904-311a-9fdc-43ca87cee70c"
+            }
+        },
+        {
+            "id": "83fa5a43-2ae5-3c25-bd0e-60dbfa716723",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1036",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/83fa5a43-2ae5-3c25-bd0e-60dbfa716723",
+            "isIgnored": false,
+            "generation": 1,
+            "description": "Disallowed File Types list is empty",
+            "lastUpdateMicros": 1610709655008502,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/83fa5a43-2ae5-3c25-bd0e-60dbfa716723"
+            }
+        },
+        {
+            "id": "d760662c-ddf1-3c3b-9e4b-4a200c95d730",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1025",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/d760662c-ddf1-3c3b-9e4b-4a200c95d730",
+            "isIgnored": false,
+            "generation": 1,
+            "resourceId": "019898a2-370f-367a-992e-babd13717b74",
+            "description": "WebSocket WSS URL * is not enforced",
+            "lastUpdateMicros": 1610709655008213,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/82b8a343-4904-311a-9fdc-43ca87cee70c"
+            }
+        },
+        {
+            "id": "229c5b33-7391-3634-8ff8-10e9a8f61593",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1022",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/229c5b33-7391-3634-8ff8-10e9a8f61593",
+            "isIgnored": false,
+            "generation": 1,
+            "resourceId": "138afd59-dc95-373f-8b73-03a871dd863f",
+            "description": "Parameter * is not enforced",
+            "lastUpdateMicros": 1610709655008226,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/93d65641-ff3f-3586-a14c-f2c1ad240b6c"
+            }
+        },
+        {
+            "id": "9ac403da-7947-3183-884c-18a67d3aa8de",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1042",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/9ac403da-7947-3183-884c-18a67d3aa8de",
+            "isIgnored": false,
+            "generation": 1,
+            "description": "Modified cookie violation protection is enabled without enforced cookie configured ",
+            "lastUpdateMicros": 1610709655008430,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/9ac403da-7947-3183-884c-18a67d3aa8de"
+            }
+        },
+        {
+            "id": "0b2ba8c8-b755-38ee-9aa4-bc3704a4ede2",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1023",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/0b2ba8c8-b755-38ee-9aa4-bc3704a4ede2",
+            "isIgnored": false,
+            "generation": 1,
+            "resourceId": "570cb2d0-8602-3f96-bbcd-4b72436bb33e",
+            "description": "File type no_ext is not enforced",
+            "lastUpdateMicros": 1610709655008310,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/ce5140df-15d0-36a6-a883-807d18d0264b"
+            }
+        },
+        {
+            "id": "bdb106a0-560c-3e46-8cc4-88ef010af787",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1034",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/bdb106a0-560c-3e46-8cc4-88ef010af787",
+            "isIgnored": false,
+            "generation": 1,
+            "description": "Data Guard disabled",
+            "lastUpdateMicros": 1610709655008414,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/bdb106a0-560c-3e46-8cc4-88ef010af787"
+            }
+        },
+        {
+            "id": "27ed0fb9-50b8-36b0-ae12-73989422e7d3",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1039",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/27ed0fb9-50b8-36b0-ae12-73989422e7d3",
+            "isIgnored": false,
+            "generation": 1,
+            "description": "Access to Disallowed Geolocation violation enabled with no countries selected",
+            "lastUpdateMicros": 1610709655008432,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/27ed0fb9-50b8-36b0-ae12-73989422e7d3"
+            }
+        },
+        {
+            "id": "a0e2a2c5-63d5-3df2-b213-ede1ac4ac780",
+            "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulestate",
+            "ruleId": "1045",
+            "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions/a0e2a2c5-63d5-3df2-b213-ede1ac4ac780",
+            "isIgnored": false,
+            "generation": 1,
+            "description": "File Type violation enabled without file upload data type configured",
+            "lastUpdateMicros": 1610709655008442,
+            "suggestionRuleReference": {
+                "link": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-rules/a0e2a2c5-63d5-3df2-b213-ede1ac4ac780"
+            }
+        }
+    ],
+    "generation": 61,
+    "kind": "cm:asm:reports:analyzer:config-analyzer-suggestions:suggestions:configanalyzersuggestionrulecollectionstate",
+    "lastUpdateMicros": 1610709655171240,
+    "selfLink": "https://localhost/mgmt/cm/asm/reports/analyzer/config-analyzer-suggestions/98445670-354e-3ca8-8ef1-0340ccf5d538/suggestions"
+}
+}
