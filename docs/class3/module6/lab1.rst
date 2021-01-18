@@ -13,8 +13,9 @@ Tasks
 In this lab we are going to:
 
 * Create a Beacon account if you haven’t done so already.
-* Setup the connection between BIG-IQ and Beacon
-* Discover and display BIG-IQ applications in Beacon
+* Create a Beacon ClientID and Secret.
+* Setup the connection between BIG-IQ and Beacon.
+* Discover and display BIG-IQ applications in Beacon.
 
 1. In the BIG-IQ UDF lab, go to the Components tab and click BIG-IQ CM Access and launch a TMUI session.
 
@@ -64,15 +65,28 @@ You should see something like underneath.
   :align: center
   :scale: 40%
 
-Now you are ready to setup the connection between Beacon and BIG-IQ.
+6. Next, Beacon needs to have access keys which will get defined as a ClienID and a ClientSecret.
 
-6. In the UDF lab, start an SSH session to BIG-IQ CM by using your favorite SSH client.
+* In the UDF lab, go to **Components** and at the **Ubuntu Lamp** server select **Access** and select **Visual Studio Code**.
+* In **Visual Studio Code** in the left pane select **project > beacon-access-keys.rest**.
+* In the **My Variables** section, fill in your Beacon Username and Password.
+
+7. To generate the access keys deploy the requests from top to bottom.
+
+ 1. First generate a Beacon access token by POST-ing **Beacon Login**.
+ 2. Now we will gather AccountID and UserID object information via GET **Beacon User Info**.
+ 3. We need another object called RoleID and use GET **Beacon RoleID**
+ 4. Finally, Let's use the gathered object info by POST-ing **Beacon Create ClientID and ClientSecret**
+ 5. From the **Response** Copy and paste **client_id, client_secret and account_id** to a place where you can use this information to include in the Beacon.json file.
+
+
+8. In the UDF lab, start an SSH session to BIG-IQ CM by using your favorite SSH client.
 
 .. image:: ../pictures/module6/img_module6_lab1_5.png
   :align: center
   :scale: 40%
 
-7. First a self-signed certificate needs to be generated with the BIG-IQ IP address in the SAN field. This certificate will get used to setup the communication between BIG-IQ and Beacon.
+9. First a self-signed certificate needs to be generated with the BIG-IQ IP address in the SAN field. This certificate will get used to setup the communication between BIG-IQ and Beacon.
 
 We will use a script for generating and installing the self-signed certicate on BIG-IQ, but if you want to understand the steps and details, please use this article which is avialble on AskF5: https://support.f5.com/csp/article/K52425065
 
@@ -102,7 +116,7 @@ The below shown output is for your reference.
   :align: center
   :scale: 40%
 
-8. Next, we will create a Beacon configuration file by using Vim.
+10. Next, we will create a Beacon configuration file by using Vim.
 
 Copy and paste underneath beacon.json file to:
 
@@ -118,6 +132,9 @@ Type **‘i’** to insert the .json script.
   "beaconHost": "api.cloudservices.f5.com",
   "beaconUsername": "<changme>",
   "beaconPassword": "<changme>",
+  "beaconClientID": "<changme>",
+  "beaconClientSecret": "<changme>",
+  "beaconPreferredAccountID": "accountID",
   "beaconCertificate": "-----BEGIN CERTIFICATE-----\nMIIG9TCCBd2gAwIBAgIRAKXpRCySDLUNAAAAAFD/ubIwDQYJKoZIhvcNAQELBQAw\ngboxCzAJBgNVBAYTAlVTMRYwFAYDVQQKEw1FbnRydXN0LCBJbmMuMSgwJgYDVQQL\nEx9TZWUgd3d3LmVudHJ1c3QubmV0L2xlZ2FsLXRlcm1zMTkwNwYDVQQLEzAoYykg\nMjAxMiBFbnRydXN0LCBJbmMuIC0gZm9yIGF1dGhvcml6ZWQgdXNlIG9ubHkxLjAs\nBgNVBAMTJUVudHJ1c3QgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgLSBMMUswHhcN\nMjAwMjI4MjIxNzI3WhcNMjEwMjI4MjI0NzI3WjBxMQswCQYDVQQGEwJVUzETMBEG\nA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHU2VhdHRsZTEaMBgGA1UEChMRRjUg\nTmV0d29ya3MsIEluYy4xHzAdBgNVBAMMFiouY2xvdWRzZXJ2aWNlcy5mNS5jb20w\nggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDMQRf7t/eIOTgaHJwMz3Ws\nUR+aOgUiD25tTcdNvbXAZHhCZgDQH4vGsYraJL6Lh2yChFw+pm+8yXu4MS+GE9QV\nIalFOWzya8Cq6vd2m0uG8ArDzcPEhdZ7YdX5RQf7kWJR15tfQUqwhlB7RExGovaC\nfH0e5qZqpvJbJA6n6u8D4Hv0RepELNndlFr95InJQczC/KZs77aw2pt/mGzPUDWn\nYIs03De7eLqVwI5tWJ8H0gLKPNAT6m9lSc5/VDLlOCZdLe1b5OlyqIXsoPLmfNbh\nSkcNCk2LDtMUYodDB/9+RMnHNyV0H2BjZoPe0TzHhbs35/XnzX8ku7uOzPmA4Ldx\nAgMBAAGjggM8MIIDODBPBgNVHREESDBGghYqLmNsb3Vkc2VydmljZXMuZjUuY29t\nghRjbG91ZHNlcnZpY2VzLmY1LmNvbYILKi5jcy5mNS5jb22CCWNzLmY1LmNvbTCC\nAX0GCisGAQQB1nkCBAIEggFtBIIBaQFnAHUAh3W/51l8+IxDmV+9827/Vo1HVjb/\nSrVgwbTq/16ggw8AAAFwjfu4TAAABAMARjBEAiBoUrQ7WIwDxU04CasrV1wEVPWv\nKdgM5KZy2+g7yQvqRwIgB9/69VAYP56FFjZ6JOtEpILRv3JMozfFsX/coxIIpKsA\ndgBVgdTCFpA2AUrqC5tXPFPwwOQ4eHAlCBcvo6odBxPTDAAAAXCN+7hXAAAEAwBH\nMEUCIG/HonkT55nx54BUKP1+LnzFnOchhaToynoeBj4/gO6bAiEA4gBMR+pLiupU\ngFuONsBViUBbGtfBZtKDqBdPvaqz1dwAdgC72d+8H4pxtZOUI5eqkntHOFeVCqtS\n6BqQlmQ2jh7RhQAAAXCN+7gWAAAEAwBHMEUCID04iAkSELKEe/HX8hE4w7gRNkRN\nBmWWqfge4dBhAI6XAiEA+iWnz1ipSB71nW8P2fsRsZtatw3AK2DcFNX3eabBO1Uw\nDgYDVR0PAQH/BAQDAgWgMB0GA1UdJQQWMBQGCCsGAQUFBwMBBggrBgEFBQcDAjAz\nBgNVHR8ELDAqMCigJqAkhiJodHRwOi8vY3JsLmVudHJ1c3QubmV0L2xldmVsMWsu\nY3JsMEsGA1UdIAREMEIwNgYKYIZIAYb6bAoBBTAoMCYGCCsGAQUFBwIBFhpodHRw\nOi8vd3d3LmVudHJ1c3QubmV0L3JwYTAIBgZngQwBAgIwaAYIKwYBBQUHAQEEXDBa\nMCMGCCsGAQUFBzABhhdodHRwOi8vb2NzcC5lbnRydXN0Lm5ldDAzBggrBgEFBQcw\nAoYnaHR0cDovL2FpYS5lbnRydXN0Lm5ldC9sMWstY2hhaW4yNTYuY2VyMB8GA1Ud\nIwQYMBaAFIKicHTdvFM/z3vU981/p2DGCky/MB0GA1UdDgQWBBTGdKVRZzQ0gboj\n2+v7l13szGXkqDAJBgNVHRMEAjAAMA0GCSqGSIb3DQEBCwUAA4IBAQA5FjChoVKi\nQS0szoLHCqqH2a9FW5Fgai5i462xjao0V59jfMomLfumBwP2JeY987Ubut+Locod\nhl2QeKWrM8v8Xy+k8VwoIyD2U7U2v5W/ipIsNJmEX0qgjvc7jg0Y/kasqGgHxAaQ\naa4qxr112obRF/XCiHC4zAgBMwVJ5XsyBdA6Swxngy9DwLjKq/8P75Ee3OHe1iG0\nlsU7VUiUxMBtNxjgl6rfLLOu7dasVMm1Ug9JTjQkcSYSyZ+nbfTFZYh4+4o2oKkj\nsjlUBaTbHRstx13FLr7ex+2RhrXSrg19F6WtVta50N0uBOxAPGzMh5503l9aZngA\nItEqzWWOMB7b\n-----END CERTIFICATE-----\n-----BEGIN CERTIFICATE-----\nMIIFDjCCA/agAwIBAgIMDulMwwAAAABR03eFMA0GCSqGSIb3DQEBCwUAMIG+MQsw\nCQYDVQQGEwJVUzEWMBQGA1UEChMNRW50cnVzdCwgSW5jLjEoMCYGA1UECxMfU2Vl\nIHd3dy5lbnRydXN0Lm5ldC9sZWdhbC10ZXJtczE5MDcGA1UECxMwKGMpIDIwMDkg\nRW50cnVzdCwgSW5jLiAtIGZvciBhdXRob3JpemVkIHVzZSBvbmx5MTIwMAYDVQQD\nEylFbnRydXN0IFJvb3QgQ2VydGlmaWNhdGlvbiBBdXRob3JpdHkgLSBHMjAeFw0x\nNTEwMDUxOTEzNTZaFw0zMDEyMDUxOTQzNTZaMIG6MQswCQYDVQQGEwJVUzEWMBQG\nA1UEChMNRW50cnVzdCwgSW5jLjEoMCYGA1UECxMfU2VlIHd3dy5lbnRydXN0Lm5l\ndC9sZWdhbC10ZXJtczE5MDcGA1UECxMwKGMpIDIwMTIgRW50cnVzdCwgSW5jLiAt\nIGZvciBhdXRob3JpemVkIHVzZSBvbmx5MS4wLAYDVQQDEyVFbnRydXN0IENlcnRp\nZmljYXRpb24gQXV0aG9yaXR5IC0gTDFLMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A\nMIIBCgKCAQEA2j+W0E25L0Tn2zlem1DuXKVh2kFnUwmqAJqOV38pa9vH4SEkqjrQ\njUcj0u1yFvCRIdJdt7hLqIOPt5EyaM/OJZMssn2XyP7BtBe6CZ4DkJN7fEmDImiK\nm95HwzGYei59QAvS7z7Tsoyqj0ip/wDoKVgG97aTWpRzJiatWA7lQrjV6nN5ZGhT\nJbiEz5R6rgZFDKNrTdDGvuoYpDbwkrK6HIiPOlJ/915tgxyd8B/lw9bdpXiSPbBt\nLOrJz5RBGXFEaLpHPATpXbo+8DX3Fbae8i4VHj9HyMg4p3NFXU2wO7GOFyk36t0F\nASK7lDYqjVs1/lMZLwhGwSqzGmIdTivZGwIDAQABo4IBDDCCAQgwDgYDVR0PAQH/\nBAQDAgEGMBIGA1UdEwEB/wQIMAYBAf8CAQAwMwYIKwYBBQUHAQEEJzAlMCMGCCsG\nAQUFBzABhhdodHRwOi8vb2NzcC5lbnRydXN0Lm5ldDAwBgNVHR8EKTAnMCWgI6Ah\nhh9odHRwOi8vY3JsLmVudHJ1c3QubmV0L2cyY2EuY3JsMDsGA1UdIAQ0MDIwMAYE\nVR0gADAoMCYGCCsGAQUFBwIBFhpodHRwOi8vd3d3LmVudHJ1c3QubmV0L3JwYTAd\nBgNVHQ4EFgQUgqJwdN28Uz/Pe9T3zX+nYMYKTL8wHwYDVR0jBBgwFoAUanImetAe\n733nO2lR1GyNn5ASZqswDQYJKoZIhvcNAQELBQADggEBADnVjpiDYcgsY9NwHRkw\ny/YJrMxp1cncN0HyMg/vdMNY9ngnCTQIlZIv19+4o/0OgemknNM/TWgrFTEKFcxS\nBJPok1DD2bHi4Wi3Ogl08TRYCj93mEC45mj/XeTIRsXsgdfJghhcg85x2Ly/rJkC\nk9uUmITSnKa1/ly78EqvIazCP0kkZ9Yujs+szGQVGHLlbHfTUqi53Y2sAEo1GdRv\nc6N172tkw+CNgxKhiucOhk3YtCAbvmqljEtoZuMrx1gL+1YQ1JH7HdMxWBCMRON1\nexCdtTix9qrKgWRs6PLigVWXUX/hwidQosk8WwBD9lu51aX8/wdQQGcHsFXwt35u\nLcw=\n-----END CERTIFICATE-----",
   "beaconDataPlaneHost": "ingestion.ovr.prd.f5aas.com:50443",
   "beaconDataPlaneTokenName": "bigiqToken",
@@ -138,7 +155,7 @@ Type **‘:wq’** to save and close beacon.json
 
 In this beacon.json we need to set your Beacon username and password, BIG-IQ username and password, but also include the BIG-IQ server certificate.
 
-9. Put a copy of generated server.crt into **/home/admin/** by copy and pasting underneath **openSSL** cmd.
+11. Put a copy of generated server.crt into **/home/admin/** by copy and pasting underneath **openSSL** cmd.
 
 ::
 
@@ -148,23 +165,23 @@ Display the BIG-IQ server certificate by typing:
 
 ``cat /home/admin/server.crt``
 
-10. The BIG-IQ server certificate needs to be included in the beacon.json and therefore copy the output from the server.crt
+12. The BIG-IQ server certificate needs to be included in the beacon.json and therefore copy the output from the server.crt
 
 .. image:: ../pictures/module6/img_module6_lab1_7.png
   :align: center
   :scale: 40%
 
-11. Now open beacon.json to modify it.
+13. Now open beacon.json to modify it.
 
 ``vim /home/admin/beacon.json``
 
 Find the ‘bigServerCertificate’ by scrolling down to the bottom, remove ‘<changeme>’ and paste the actual certificate between the punctuations “”.
 
-12. Don’t close the beacon.json yet, since we need to replace the other ‘<changeme>’ entries. These entries can be found at beaconUsername and beaconPassword (begin of the script) and should be changed into your Beacon credentials.
+14. Don’t close the beacon.json yet, since we need to replace the other ‘<changeme>’ entries. These entries can be found at beaconUsername and beaconPassword (begin of the script) and should be changed into your Beacon credentials.
 
 Once you have filled in your credentials, you can save and close the beacon.json file.
 
-13. Now we need to set the communication in motion by executing to commands which will first initiate the data transfer service to beacon and then the service will get started, making use of the just defined beacon.json config file.
+15. Now we need to set the communication in motion by executing to commands which will first initiate the data transfer service to beacon and then the service will get started, making use of the just defined beacon.json config file.
 
 ``/usr/bin/data-transfer-service init``
 
@@ -199,7 +216,7 @@ This included log is for your reference.
   :align: center
   :scale: 40%
  
-14. Login to **BIG-IQ > Applications > Applications** and check the Beacon Icon.
+16. Login to **BIG-IQ > Applications > Applications** and check the Beacon Icon.
 
 .. image:: ../pictures/module6/img_module6_lab1_11.png
   :align: center
@@ -207,14 +224,14 @@ This included log is for your reference.
  
 They should be **‘Green’**. One thing to mention is that Applications defined under ‘Unknown Applications’ will not get discovered or send data to Beacon.
 
-15. Login to F5 Beacon to check the configuration.
+17. Login to F5 Beacon to check the configuration.
  
 
 You should see the three applications we started with in BIG-IQ, those are now published in Beacon.
 
-16. Click on the application **finance_apps** and check the Application Map. F5 Beacon inherits the same structure of applications as BIG-IQ presents them.
+18. Click on the application **finance_apps** and check the Application Map. F5 Beacon inherits the same structure of applications as BIG-IQ presents them.
 
-17. Select **appsvc-backendconference_site41ftp** and scroll through the **Properties** and notice from which source the application got generated. Go through the **Metrics** and **Events**.
+19. Select **appsvc-backendconference_site41ftp** and scroll through the **Properties** and notice from which source the application got generated. Go through the **Metrics** and **Events**.
 
 .. image:: ../pictures/module6/img_module6_lab1_12.png
   :align: center
