@@ -160,6 +160,6 @@ We will use a declaration taken from the `AS3 miscellaneous examples`_ which wil
 
 7. Finally, navigate under **Applications > Application Deployments** where David can look at the full definition of the app service including the objects in /Common/Shared.
 
-.. image:: ../pictures/module2/lab-14-4.png
+.. image:: ../pictures/module2/lab-14-5.png
   :scale: 40%
   :align: center

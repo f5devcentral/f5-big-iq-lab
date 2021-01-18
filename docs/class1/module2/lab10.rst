@@ -39,9 +39,6 @@ This declaration abstracts the complexity of having to configure all the HTTP de
            "id": "example-declaration-01",
            "label": "Task1",
            "remark": "Task 1 - HTTP Application Service",
-           "target": {
-               "address": "<BIG-IP ip address>"
-           },
            "Task1": {
                "class": "Tenant",
                "MyWebApp1http": {
@@ -112,12 +109,13 @@ Deploy AS3 Application Service through BIG-IQ
 
 1. Now the application service has been deployed directly on the BIG-IP, let's re-deploy the same AS3 declaration but through BIG-IQ.
 
-2. Add the target (BIG-IP device) to the AS3 declaration used earlier::
+2. Add the target (BIG-IP device) to the AS3 declaration used earlier between ``remark`` and ``Task1``::
 
+    "remark": "Task 1 - HTTP Application Service",
     "target": {
-        "address": "10.1.1.8"
+        "address": "<BIG-IP ip address>"
     },
-
+    "Task1": {
 
 3. Using **Visual Studio code REST client extension**, find the **BIG-IQ Token** call to authenticate you on the BIG-IQ and save the token.
    Replace IP address in the URL with ``10.1.1.4`` instead of ``10.1.1.8``.
