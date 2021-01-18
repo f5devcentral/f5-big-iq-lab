@@ -64,7 +64,7 @@ Schedule Report BIG-IP device health
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Let's now schedule a report to get daily report on the health of a set of BIG-IP devices.
-   Navigate under **Monitoring > Dashboards > Device > Health**. expand the BIG-IP Host names dimension and select the 2 Boston BIG-IPs (**BOS-vBIGIP01/BOS-vBIGIP02).
+   Navigate under **Monitoring > Dashboards > Device > Health**. expand the BIG-IP Host names dimension and select the 2 Boston BIG-IPs (*BOS-vBIGIP01/BOS-vBIGIP02*).
 
    Then click on **Export & Schedule Report** located above the dimensions and click on the option ``Schedule``.
 

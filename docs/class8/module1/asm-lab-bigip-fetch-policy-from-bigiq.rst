@@ -11,9 +11,9 @@ Workflow
 2. **David** creates the AS3 template and reference ASM policy created by **Larry** in the template.
 3. **David** assigns the AS3 template to Paula.
 4. **Paula** creates her application service using the template given by **david**.
-5. **Paula** run tests against her application in staging environment.
-6. **Larry** tune the policy until there are no test failures in the pipeline.
-7. **Paula** Paula promote the policy to production environment.
+5. **Paula** runs tests against her application in staging environment.
+6. **Larry** tunes the policy until there are no test failures in the pipeline.
+7. **Paula** promotes the policy to production environment.
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -268,6 +268,6 @@ Expend the dimensions and filter on **Blocked** attack to see attacks being bloc
   :scale: 40%
   :align: center
 
-6. **Larry** tune the policy until there are no test failures in the pipeline.
+6. **Larry** tunes the policy until there are no test failures in the pipeline.
 
-7. **Paula** Paula promote the policy to production environment.
+7. **Paula** promotes the policy to production environment.

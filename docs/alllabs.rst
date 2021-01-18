@@ -37,7 +37,7 @@ Resources
 - `Glossary`_
 
 .. _BIG-IQ Centralized Management for Complete Visibility and Control: https://www.f5.com/products/automation-and-orchestration/big-iq
-.. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
+.. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management
 .. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
 .. _Light Product Demo: https://www.f5.com/products/automation-and-orchestration/big-iq/app-visibility-demo
 .. _Troubleshoot Your Application Health and Performance with F5: https://interact.f5.com/troubleshooting-your-application-health-webinar.html
@@ -57,14 +57,10 @@ Videos
 Tools
 -----
 
-- BIG-IQ License Manager Public Cloud Template `AWS`_ and `Azure`_
 - `BIG-IQ Trial on AWS and Azure`_
 - `BIG-IQ Onboarding with Docker and Ansible`_
 - `BIG-IQ PM team GitHub (various automation tools)`_
 
-
-.. _AWS: https://github.com/F5Networks/f5-aws-cloudformation/tree/master/experimental/bigiq/licenseManagement
-.. _Azure: https://github.com/F5Networks/f5-azure-arm-templates/tree/master/experimental/bigiq/licenseManagement
 .. _BIG-IQ Trial on AWS and Azure: https://github.com/f5devcentral/f5-big-iq-trial-quick-start
 .. _BIG-IQ PM team GitHub (various automation tools): https://github.com/f5devcentral/f5-big-iq-pm-team
 .. _BIG-IQ Onboarding with Docker and Ansible: https://github.com/f5devcentral/f5-big-iq-onboarding
