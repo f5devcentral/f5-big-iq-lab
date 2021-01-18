@@ -75,6 +75,36 @@ Application creation with one Declarative API call
                             ]
                         }
                     },
+                    "virtualServers": [
+                        {
+                            "port": "433",
+                            "destinationIpAddress": "10.10.1.2",
+                            "targetDevice": "BOS-vBIGIP01.termmarc.com",
+                            "clientsideSsl": "/Common/clientssl",
+                            "serversideSsl": "/Common/serverssl",
+                            "poolServer": {
+                                "monitors": {
+                                    "http": [
+                                        "/Common/http"
+                                    ],
+                                    "https": [
+                                        "/Common/https"
+                                    ]
+                                },
+                                "members": [
+                                    {
+                                        "ipAddress": "10.11.2.2",
+                                        "port": "443",
+                                        "priorityGroup": 10
+                                    },
+                                    {
+                                        "ipAddress": "10.10.3.2",
+                                        "port": "80"
+                                    }
+                                ]
+                            }
+                        }
+                    ],
                     "accessProfile": {},
                     "singleSignOn": {
                         "type": "httpHeaders",
