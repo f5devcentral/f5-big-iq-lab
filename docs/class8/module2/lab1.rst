@@ -33,7 +33,7 @@ Generate an audit that allows you to view the policy's overall protection capabi
 2. Click the check box next to the name of the security policy you would like to audit.
    Security Policy which has been choosen in this example is named: ``asm-lab3``
 
-3. Click **More** and select **Policy Analyzer**
+3. Click *More* and select *Policy Analyzer*
 
 .. image:: ../pictures/module2/img_module2_lab1_1.png
   :align: center
@@ -49,7 +49,7 @@ You´ll get to the Policy Analyzer Section via "Configuration > Security > Web A
   :align: center
   :scale: 40%
 
-Once you select a policy, click	**Analyze**.
+Once you select a policy, click	*Analyze*.
 
 .. image:: ../pictures/module2/img_module2_lab1_3.png
   :align: center
@@ -57,7 +57,7 @@ Once you select a policy, click	**Analyze**.
 
 4. You have now generated a security policy audit, which will allow you to asses the current status of the policy's application protection capabilities.
 
-5. If you want to save a local copy of the generated security policy audit file, click ``Export`` to download a CSV formated file containing the information of the audit.
+5. If you want to save a local copy of the generated security policy audit file, click *Export* to download a CSV formated file containing the information of the audit.
 
 .. image:: ../pictures/module2/img_module2_lab1_4.png
   :align: center
@@ -86,7 +86,7 @@ Edit Policy
 ^^^^^^^^^^^
 
 Edit the policy based on the system-provided recommendations.
-By clicking on the text	in the **Recommendation** column, you can go directly to the configuration area that will allow you to implement policy or system configuration changes. 
+By clicking on the text	in the *Recommendation* column, you can go directly to the configuration area that will allow you to implement policy or system configuration changes. 
 
 In the example the **Recommendation** called **Disallowed File Types list is empty** been selected:
 
@@ -94,14 +94,14 @@ In the example the **Recommendation** called **Disallowed File Types list is emp
   :align: center
   :scale: 40%
 
-After clicking the text in the **Recommendation** you been navigated to Section and be able to adjust the settings.
+After clicking the text in the *Recommendation* you been navigated to Section and be able to adjust the settings.
 In our case we could to a modification on **Disallowed File Types** by no allowing **png**.
 
 .. image:: ../pictures/module2/img_module2_lab1_7.png
   :align: center
   :scale: 40%
 
-Type “png” in the File Type (Explicit only) box and click ``Save & Close``.
+Type **png** in the File Type (Explicit only) box and click *Save & Close*.
 
 .. image:: ../pictures/module2/img_module2_lab1_8.png
   :align: center
@@ -110,7 +110,7 @@ Type “png” in the File Type (Explicit only) box and click ``Save & Close``.
 Ignore Recommendations
 ^^^^^^^^^^^^^^^^^^^^^^
 
-If the system-provided policy recommendations do not meet your application's protection requirements, you can select the recommendation's row and click ``Ignore``.
+If the system-provided policy recommendations do not meet your application's protection requirements, you can select the recommendation's row and click *Ignore*.
 .. warning:: This action can change the system assessment of your overall security score, once you review or re-analyze the policy.
 
 .. image:: ../pictures/module2/img_module2_lab1_9.png
@@ -121,7 +121,7 @@ Review Policy Edits
 ^^^^^^^^^^^^^^^^^^^
 
 If you have saved changes to the policy, or the objects configured to the policy, you can perform a new audit before you deploy changes.
-To do so, select the ``Refresh`` option from the **SECURITY	POLICY** area in the summary screen. The summary bar and recommendations adjusts the policy analysis according to changes.
+To do so, select the *Refresh* option from the **SECURITY	POLICY** area in the summary screen. The summary bar and recommendations adjusts the policy analysis according to changes.
 
 .. image:: ../pictures/module2/img_module2_lab1_10.png
   :align: center
@@ -130,7 +130,7 @@ To do so, select the ``Refresh`` option from the **SECURITY	POLICY** area in the
 Deploy Policy Edits
 ^^^^^^^^^^^^^^^^^^^
 
-If you would like to deploy policy changes, select the Deploy option from the **SECURITY POLICY** area in the summary screen.
+If you would like to deploy policy changes, select the *Deploy* option from the **SECURITY POLICY** area in the summary screen.
 This will immediately deploy changes to BIG-IP devices associated with the policy.
 
 .. image:: ../pictures/module2/img_module2_lab1_11.png
@@ -319,7 +319,10 @@ BIG-IQ ASM Policy Analyzer API Documentation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Beside the Policy Analyzer usage via WebUI, an API is available in case you want to collect the result of the Policy analysation in a JSON Format.
-The API documentation is available on .. _F5 BIG-IQ API: "https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/"
+The API documentation is available on `F5 BIG-IQ API`_.
+
+.. _`F5 BIG-IQ API`: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
+
 
 Some API examples to interact with the BIG-IQ ASM Policy Analyzer API been listed below.
 

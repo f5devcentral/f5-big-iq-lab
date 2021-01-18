@@ -11,10 +11,10 @@ This is particularly useful for comparing a security policy in staging and a pro
 
 You can compare any imported or configured security policies including:
 
-   - Active security policies (with or without Policy Builder)
-   - Child PoliciesParent Policies
-   - Inactive security policies
-   - Policies not yet deployed to BIG-IP 
+- Active security policies (with or without Policy Builder)
+- Child PoliciesParent Policies
+- Inactive security policies
+- Policies not yet deployed to BIG-IP 
 
 
 Comparing Security Policies
@@ -33,9 +33,10 @@ To be able to see differences between **asm-lab3** and **asm-lab3_prod** we will
 on **asm-lab3_prod**. After those modofication have been saved to **asm-lab3_prod**, Security Policy **asm-lab3** will be compared with **asm-lab3_prod**.
 
 1. Start with creating a clone of Security Policy named **asm-lab3**.
-   - To do go to "Configuration > Security > Web Application Security > Policies".
-   - Check Secuirty Policy named **asm-lab3**.
-   - Out of the drop-down menu called **More** select **Clone**
+
+- To do go to "Configuration > Security > Web Application Security > Policies".
+- Check Secuirty Policy named **asm-lab3**.
+- Out of the drop-down menu called **More** select *Clone*
 
 .. image:: ../pictures/module2/img_module2_lab2_1.png
   :align: center
@@ -48,13 +49,14 @@ Name the Clone Policy **asm-lab3_prod**. No change needed on the Partition.
   :scale: 40%
 
 2. Generate a security policy audit of Security Policy **asm-lab3_prod**.
+
 .. note:: The procedure of generating a security policy audit is documented in Lab 2.1: Analyzing security policy status. 
 
 3. To introduce changes in Security Policy **asm-lab3_prod**:
 
-    - Enable **Data Guard** 
-    - Remove **Attack signatures** from Staging
-    - Configure a **Disallowed File Type** named **png**.
+- Enable **Data Guard** 
+- Remove **Attack signatures** from Staging
+- Configure a **Disallowed File Type** named **png**.
 
 .. image:: ../pictures/module2/img_module2_lab2_3.png
   :align: center
@@ -65,9 +67,10 @@ Name the Clone Policy **asm-lab3_prod**. No change needed on the Partition.
 4. Compare Security Policy **asm-lab3** and **asm-lab3_prod**
 
 To compare the two Security Policy **asm-lab3** and **asm-lab3_prod**
-    -   Go to "Configuration > Security > Web Application Security > Policies"
-    -   Select  Security Policy **asm-lab3** and **asm-lab3_prod**
-    -   Navigate to the drop-down Menu called **More** and select **Compare Policies**
+
+-   Go to "Configuration > Security > Web Application Security > Policies"
+-   Select  Security Policy **asm-lab3** and **asm-lab3_prod**
+-   Navigate to the drop-down Menu called **More** and select *Compare Policies*
 
 .. image:: ../pictures/module2/img_module2_lab2_4.png
   :align: center
@@ -79,10 +82,10 @@ To compare the two Security Policy **asm-lab3** and **asm-lab3_prod**
   :align: center
   :scale: 40%    
 
-6. To get an brief overview on the differences between Security Policy **asm-lab3** and **asm-lab3_prod** select ``Collapse All Sections``.
+6. To get an brief overview on the differences between Security Policy **asm-lab3** and **asm-lab3_prod** select *Collapse All Sections*.
 
-7. To export the results of the audit to PDF, click ``Export`` and select ``Print Prieview``.
-   The system will prompt you to confirm your selection. To proceed, click ``ok``.
+7. To export the results of the audit to PDF, click *Export* and select *Print Prieview*.
+   The system will prompt you to confirm your selection. To proceed, click *ok*.
    
 .. image:: ../pictures/module2/img_module2_lab2_6.png
   :align: center
