@@ -75,9 +75,9 @@ You should see something like underneath.
 
 1. First generate a Beacon access token by POST-ing **"Beacon Login"**.
 2. Now we will gather AccountID and UserID object information via GET **"Beacon User Info"**.
-3. We need another object called RoleID and use GET **"Beacon RoleID"**
-4. Finally, Let's use the gathered object info by POST-ing **"Beacon Create ClientID and ClientSecret"**
-5. From the **Response** Copy and paste **client_id, client_secret and account_id** to a place where you can use this information to include in the Beacon.json file.
+3. We need another object called RoleID and use GET **"Beacon RoleID"**.
+4. Finally, Let's use the gathered object info by POST-ing **"Beacon Create ClientID and ClientSecret"**.
+5. Use the **Save** in the top right corner to copy ans paste the  **Response** and save **client_id, client_secret and account_id** to a place where you can use this information to include in the Beacon.json file.
 
 The last two REST API requests can be used optional.
 
