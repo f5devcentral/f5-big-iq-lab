@@ -22,7 +22,7 @@ Application creation with one Declarative API call
 
 #. VSC will open, and on the left menu, click on file ``postman_class9.rest`` in ``project`` directory
 
-     .. image:: ../pictures/module2/link_postman_file.png
+     .. image:: ../pictures/module2/link_postman_file_v2.png
        :align: center
        :scale: 60%
 
