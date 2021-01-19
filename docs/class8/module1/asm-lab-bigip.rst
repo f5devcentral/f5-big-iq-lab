@@ -1,4 +1,4 @@
-.. TITLE: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP
+.. TITLE: Deploy a WAF with BIG-IQ and AS3 using an ASM policy on BIG-IP using Policy Builder
 
 .. note:: Estimated time to complete: **25 minutes**
 
@@ -29,7 +29,7 @@ ASM Policy and Security Logging Profile creation (Larry)
 
 Let's first deploy the default Advance WAF policy and Security Logging Profile available in **BIG-IQ** to **SEA-vBIGIP01.termmarc.com**.
 
-1. Login to BIG-IQ as **david**.
+1. Login to BIG-IQ as **larry**.
 
 2. Go to Configuration > Security > Web Application Security > Policies and clone the policy called ``templates-default``
 and name it as ``templates-default-cloned``.
@@ -261,7 +261,7 @@ Open Chrome and navigate to the following URL: ``https://10.1.10.122``.
   :scale: 40%
   :align: center
 
-10. Paula does the necessary testing of her application, she reach to Larry.
+10. Paula does the necessary testing of her application, she reaches out to Larry when she is done.
 
 .. note:: There are traffic generator sending good and bad traffic from the Lamp server in the lab.
 
@@ -318,7 +318,7 @@ ASM Policy Learning review and Dashboard/Events (Larry & Paula)
 
 8. Login as **paula** and select previously created ``LAB_module3`` Application, then click on ``https_waf_app_service``.
 
-9. In 7.x, the protection mode isn't automatically updated on the Application Dashboard. 
+9. In 7.x, the protection mode isn't automatically updated on the Application Dashboard. This is no longer needed for 8.0 version and above.
 
 Under Properties, select CONFIGURATION, then add ``upgradeProtectionMode 3/26/20`` in the Description 
 field and click Save.

@@ -46,7 +46,7 @@ if [[  $currentuser == "root" ]]; then
         echo "Cleanup previous files..."
         rm -rf f5-* tools traffic-scripts scripts crontab.txt bigiq_version* build* mywebapp splunk-token postman.rest
         rm -rf arcadia  gitlab ldap locust radius hoppscotch
-        rm -rf awx splunk
+        rm -rf awx splunk chrome*
         ls -lrt
 
         echo "Remove empty directories"
@@ -105,19 +105,8 @@ if [[  $currentuser == "root" ]]; then
     radtest david david $jumphostIp 1812 default
 
     # Chrome https://github.com/TekFik/chrome-web
-    docker run --restart=always -dit --name=chrome --privileged -p 6080:3000 -v $home/chrome:/home/app/config tekfik/chrome
-    sleep 20
-    echo -e "Copy Bookmarks and Preferences files"
-    docker exec chrome mkdir -p /home/app/.config/google-chrome/Default
-    docker exec chrome cp /home/app/config/Bookmarks /home/app/.config/google-chrome/Default
-    docker exec chrome cp /home/app/config/Preferences /home/app/.config/google-chrome/Default
-    sleep 1
-    echo -e "Restart Chrome"
-    docker exec chrome pkill -f chrome
-    sleep 1
-    echo -e "Checks"
-    docker exec chrome ps -ef
-    docker exec chrome ls -lrt /home/app/.config/google-chrome/Default
+    docker build $home/chrome-web -t chrome-web
+    docker run --restart=always -dit --name=chrome-web --privileged -p 6080:3000 chrome-web
 
     ### Visual Code https://github.com/cdr/code-server
     docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server
@@ -131,6 +120,8 @@ if [[  $currentuser == "root" ]]; then
     docker exec code-server code-server --install-extension dawhite.mustache
     docker exec code-server code-server --install-extension humao.rest-client
     docker exec code-server code-server --list-extensions 
+    docker exec code-server mkdir /home/coder/.vscode
+    docker exec code-server cp /home/coder/project/settings_vscode.json /home/coder/.vscode/settings.json
     docker restart code-server 
     rm *.vsix
 

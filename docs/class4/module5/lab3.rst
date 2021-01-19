@@ -26,4 +26,4 @@ Once the BIG-IQ VE are up and running, Ansible Galaxy Role used in Lab 1 can be 
 
 .. _F5 Trial Azure Resource Manager Template: https://github.com/f5devcentral/f5-big-ip-cloud-edition-trial-quick-start
 .. _F5 License Manager ARM Template: https://github.com/F5Networks/f5-azure-arm-templates/tree/master/experimental/bigiq/licenseManagement
-.. _F5 BIG-IQ Setup Documentation: https://techdocs.f5.com/kb/en-us/products/big-iq-centralized-mgmt/manuals/product/big-iq-centralized-management-and-msft-azure-setup-6-0-0.html
+.. _F5 BIG-IQ Setup Documentation: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-centralized-management-and-msft-azure-setup.html
