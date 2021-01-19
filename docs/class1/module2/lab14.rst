@@ -152,7 +152,7 @@ We will use a declaration taken from the `AS3 miscellaneous examples`_ which wil
 .. _Deploy API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/ApiReferences/bigiq_public_api_ref/r_as3_deploy.html
 .. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
 
-6. Click on your Application Service called **Tenant1_Application1**, then View Sample API Request, look at AS3 declaration.
+6. Click on your Application Service called **Tenant1_Application1**, then View Sample API Request, look at the AS3 declaration.
 
 .. image:: ../pictures/module2/lab-14-4.png
   :scale: 40%
