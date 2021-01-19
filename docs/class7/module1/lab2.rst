@@ -14,7 +14,7 @@ BIG-IP and BIG-IQ object models have long lacked support for renaming core confi
 Rename Port Lists
 ^^^^^^^^^^^^^^^^^
 
-#. Connect to your BIG-IQ (as *Larry*)and go to : *Configuration* > *Security* > *Network Security* > *Port Lists*
+#. Connect to your BIG-IQ (as *Larry*) and go to : *Configuration* > *Security* > *Network Security* > *Port Lists*
 #. Click the checkbox next to ``deployed_app_ports``, and click the *Rename* button in top right of UI view.
 #. In the text box for New Name, enter ``deployed_web_app_ports``
 #. Once rename is complete, go to *Network Security* > *Rule Lists*, and click the rule list ``deployed_app_filters``

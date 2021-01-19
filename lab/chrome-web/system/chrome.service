@@ -1,0 +1,14 @@
+[Unit]
+Description=Google Chrome
+Documentation=Chrome
+After=tgvnc.service
+Requires=tgvnc.service
+
+[Service]
+User=app
+Type=simple
+ExecStart=/usr/bin/google-chrome-stable --display=:0 --disable-gpu --disable-software-rasterizer --disable-dev-shm-usage --disable-plugins --disable-plugins-discovery --disable-notifications --disable-sync --mute-audio --dns-prefetch-disable --noremote --window-size=1280,1024
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

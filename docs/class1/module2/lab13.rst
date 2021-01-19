@@ -3,7 +3,7 @@ Lab 2.13: Migrate AS3 application service(s) with its referenced objects from a 
 
 .. note:: Estimated time to complete: **15 minutes**
 
-In this lab, we are going show you how to use Ansible to migrate Application Services from one BIG-IP to another.
+In this lab, we are goin to show you how to use Ansible to migrate Application Services from one BIG-IP to another.
 
 For the example, we are going to migrate a backend application service running on the Seattle BIG-IP to the San Jose BIG-IP (visit *Getting Started* page for more details on the lab topology.)
 

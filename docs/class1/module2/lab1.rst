@@ -10,10 +10,8 @@ Task 1 - HTTP Application Service
 
 This declaration will create an HTTP application on BIG-IQ using an HTTP template. This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistence, etc...
 
-1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE (Integrated development environment).
-   
-   Use the IDE available within the lab environment, click on the *Access* button
-   of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
+1. Copy below example of an AS3 Declaration into the IDE (Integrated development environment) available within the lab environment, 
+   click on the *Access* button of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
    .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
@@ -87,7 +85,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
         "address": "10.1.1.8"
     },
 
-4. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+4. In Visual Studio Code, use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 .. note:: Instead of using the Visual Studio Code REST client extension, you can also use F5 vscode extension. See `Module 2 Lab 9`_ to see how to.
 
@@ -95,7 +93,7 @@ This declaration will create an HTTP application on BIG-IQ using an HTTP templat
 
 5. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
+   Copy/Paste the AS3 declaration to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
@@ -127,7 +125,7 @@ Now we are going to create another service but this time, we will do some SSL of
 
 1. Using Visual Studio Code REST client, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
+   Copy/Paste the AS3 declaration to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
@@ -208,7 +206,7 @@ Now we are going to create another service but this time, we will do some SSL of
        }
    }
 
-2. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+2. In Visual Studio Code, use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 3. Use the **BIG-IQ Check AS3 Deployment Task** call to ensure that the AS3 deployment is successful without errors: 
 
@@ -321,7 +319,7 @@ Update the WAF policy section below with the policy available on BIG-IP::
        }
    }
 
-1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+1. In Visual Studio Code, use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 2. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
@@ -407,11 +405,11 @@ Modify the Generic virtual with something other than <generic_virtual>.
        }
    }
 
-1. Open Visual Studio Code, then use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
+1. In Visual Studio Code, use the **Visual Studio code REST client extension** and authenticate to BIG-IQ (follow |location_link_vscode_restclient|).
 
 2. Using Visual Studio Code REST client, use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
+   Copy/Paste the AS3 declaration to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 

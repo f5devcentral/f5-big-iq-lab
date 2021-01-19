@@ -1,0 +1,150 @@
+# My Variables
+@bigiq= 10.1.1.4
+@contentType = application/json
+@f5_token = {{login.response.body.token.token}}
+@workflow_id = 6fe131ef-4edb-4977-9073-fdea042b47ec
+
+### BIG-IQ Token
+# @name login
+POST https://{{bigiq}}/mgmt/shared/authn/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "username": "david",
+  "password": "david",
+  "loginProviderName": "RadiusServer"
+}
+
+
+#### BIG-IQ SAML SP Declartive Call ####
+POST https://{{bigiq}}/mgmt/cm/access/workflow/access-workflow HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+{
+    "name": "workflow_saml_3",
+    "type": "samlSP",
+    "accessDeviceGroup": "boston",
+    "configurations": {
+        "samlSPService": {
+            "entityId": "https://www.testsaml.com",
+            "idpConnectors": [
+                {
+                    "connector": {
+                        "entityId": "https://www.testidp.com",
+                        "ssoUri": "https://www.testidp.com/sso"
+                    }
+                }
+            ],
+            "attributeConsumingServices": [
+                {
+                    "service": {
+                        "serviceName": "wf_service4",
+                        "isDefault": true,
+                        "attributes": [
+                            {
+                                "attributeName": "wf_name4"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "authContextClassList": {
+                "classes": [
+                    {
+                        "value": "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"
+                    }
+                ]
+            }
+        },
+        "virtualServers": [
+            {
+                "port": "433",
+                "destinationIpAddress": "10.10.1.2",
+                "targetDevice": "BOS-vBIGIP01.termmarc.com",
+                "clientsideSsl": "/Common/clientssl",
+                "serversideSsl": "/Common/serverssl",
+                "poolServer": {
+                    "monitors": {
+                        "http": [
+                            "/Common/http"
+                        ],
+                        "https": [
+                            "/Common/https"
+                        ]
+                    },
+                    "members": [
+                        {
+                            "ipAddress": "10.11.2.2",
+                            "port": "443",
+                            "priorityGroup": 10
+                        },
+                        {
+                            "ipAddress": "10.10.3.2",
+                            "port": "80"
+                        }
+                    ]
+                }
+            }
+        ],
+        "accessProfile": {},
+        "singleSignOn": {
+            "type": "httpHeaders",
+            "httpHeaders": [
+                {
+                    "headerName": "Authorization",
+                    "headerValue": "%{session.saml.last.identity}"
+                },
+                {
+                    "headerName": "Authorization2",
+                    "headerValue": "%{session.saml.last.identity2}"
+                }
+            ]
+        },
+        "endpointCheck": {
+            "clientOS": {
+                "windows": {
+                    "windows7": true,
+                    "windows10": true,
+                    "windows8_1": true,
+                    "antivirus": {},
+                    "firewall": {},
+                    "machineCertAuth": {}
+                },
+                "windowsRT": {
+                    "antivirus": {},
+                    "firewall": {}
+                },
+                "linux": {
+                    "antivirus": {
+                        "dbAge": 102,
+                        "lastScan": 102
+                    },
+                    "firewall": {}
+                },
+                "macOS": {
+                    "antivirus": {
+                        "dbAge": 103,
+                        "lastScan": 103
+                    }
+                },
+                "iOS": {},
+                "android": {},
+                "chromeOS": {
+                    "antivirus": {
+                        "dbAge": 104,
+                        "lastScan": 104
+                    },
+                    "firewall": {}
+                }
+            }
+        }
+    }
+}
+
+
+#### Check status of the deployment ####
+
+GET https://{{bigiq}}/mgmt/cm/access/workflow/access-workflow/{{workflow_id}} HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}

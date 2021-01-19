@@ -1,5 +1,5 @@
-Module 1: Banner and SNMP configuration and upgrade of Automated Toolchain RPMs on BIG-IQ
-=========================================================================================
+Module 1: Banner, SNMP configuration and Automated Toolchain installation on BIG-IQ
+===================================================================================
 
 In this module, we will learn about how to customize the banner on BIG-IQ login page.
 Next, we will learn on how to configure BIG-IQ to send traps to external systems.

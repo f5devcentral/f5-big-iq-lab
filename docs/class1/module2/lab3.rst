@@ -266,7 +266,7 @@ the virtualPort is set to 9090 while in the template, we force the virtualPort t
    }
 
 2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare?async=true``.
-   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
+   Copy/Paste the AS3 declaration to the body under the call using the REST client VS code extension.
    
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.

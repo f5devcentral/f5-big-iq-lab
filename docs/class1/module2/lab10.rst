@@ -17,10 +17,8 @@ Deploy AS3 Application Service directly to the BIG-IP
 This declaration will create an HTTP application on BIG-IQ using an HTTP template. 
 This declaration abstracts the complexity of having to configure all the HTTP defaults such as cookies, persistence, etc...
 
-1. Copy below example of an AS3 Declaration into a JSON validator. The validator is your IDE (Integrated development environment).
-   
-   Use the IDE available within the lab environment, click on the *Access* button
-   of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
+1. Copy below example of an AS3 Declaration into the IDE (Integrated development environment) available within the lab environment, 
+   click on the *Access* button of the *Ubuntu Lamp Server* system and select *Visual Studio Code*.
 
    .. note:: It is recommended to `validate your AS3 declaration`_ against the schema using Microsoft Visual Studio Code.
 
@@ -41,9 +39,6 @@ This declaration abstracts the complexity of having to configure all the HTTP de
            "id": "example-declaration-01",
            "label": "Task1",
            "remark": "Task 1 - HTTP Application Service",
-           "target": {
-               "address": "<BIG-IP ip address>"
-           },
            "Task1": {
                "class": "Tenant",
                "MyWebApp1http": {
@@ -103,7 +98,7 @@ This declaration abstracts the complexity of having to configure all the HTTP de
 4. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP.
    Replace IP address in the URL with ``10.1.1.8`` instead of ``10.1.1.4``.
    The method and URL used will be ``POST https://10.1.1.8/mgmt/shared/appsvcs/declare``.
-   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
+   Copy/Paste the AS3 declaration to the body under the call using the REST client VS code extension.
    
    This will give you an ID which you can query using the **BIG-IQ Check AS3 Deployment Task**.
 
@@ -114,12 +109,13 @@ Deploy AS3 Application Service through BIG-IQ
 
 1. Now the application service has been deployed directly on the BIG-IP, let's re-deploy the same AS3 declaration but through BIG-IQ.
 
-2. Add the target (BIG-IP device) to the AS3 declaration used earlier::
+2. Add the target (BIG-IP device) to the AS3 declaration used earlier between ``remark`` and ``Task1``::
 
+    "remark": "Task 1 - HTTP Application Service",
     "target": {
-        "address": "10.1.1.8"
+        "address": "<BIG-IP ip address>"
     },
-
+    "Task1": {
 
 3. Using **Visual Studio code REST client extension**, find the **BIG-IQ Token** call to authenticate you on the BIG-IQ and save the token.
    Replace IP address in the URL with ``10.1.1.4`` instead of ``10.1.1.8``.
@@ -127,7 +123,7 @@ Deploy AS3 Application Service through BIG-IQ
 4. Use the **BIG-IQ AS3 Declaration** call in order to create the service on the BIG-IP through BIG-IQ.
    Replace IP address in the URL with ``10.1.1.4`` instead of ``10.1.1.8``.
    The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``.
-   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
+   Copy/Paste the AS3 declaration to the body under the call using the REST client VS code extension.
 
 .. warning:: If the request is failing, check if the Boston BIG-IP Cluster in sync.
 

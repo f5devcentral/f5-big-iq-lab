@@ -20,7 +20,7 @@ should also disappear from BIG-IQ.
    <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
 2. The method and URL used will be ``POST https://10.1.1.4/mgmt/shared/appsvcs/declare``.
-   Copy/Paste the AS3 declaration from the validator to the body under the call using the REST client VS code extension.
+   Copy/Paste the AS3 declaration to the body under the call using the REST client VS code extension.
    
 
 .. code-block:: yaml

@@ -7,11 +7,14 @@
 Workflow
 ^^^^^^^^
 
-1. **Larry** upload the ASM policy in transparent mode on GitHub.
+1. **Larry** upload the ASM policy in blocking mode on GitHub.
 2. **David** creates the AS3 template and reference ASM policy URL created by **Larry** using URL.
 3. **David** assigns the AS3 template to Paula.
 4. **Paula** creates her application service using the template given by **david**.
-5. **Paula** test her application and change the policy to blocking mode from her application dashboard.
+5. **Paula** runs tests against her application in staging environment.
+6. **Larry** tunes the policy until there are no test failures in the pipeline.
+7. **Paula** promotes the policy to production environment.
+
 
 Prerequisites
 ^^^^^^^^^^^^^
@@ -100,10 +103,12 @@ Now let's create the WAF application service using AS3 & BIG-IQ.
 +---------------------------------------------------------------------------------------------+
 | WAF_Policy. Keep default.                                                                   |
 +---------------------------------------------------------------------------------------------+
+| * Enforcement Mode: ``blocking``                                                            |
++---------------------------------------------------------------------------------------------+
 | Certificate                                                                                 |
 +---------------------------------------------------------------------------------------------+
-| * privateKey: *use private key exampke below*                                               |
-| * certificate: *use certificsate example below*                                             |
+| * privateKey: *use private key example below*                                               |
+| * certificate: *use certificate example below*                                              |
 +---------------------------------------------------------------------------------------------+
 | Service_HTTPS                                                                               |
 +---------------------------------------------------------------------------------------------+
@@ -130,6 +135,8 @@ Now let's create the WAF application service using AS3 & BIG-IQ.
 
 4. Check the application service ``https_waf_url_app_service`` has been created under Application ``LAB_module3``.
 
+.. note:: If not visible, refresh the page. It can take few seconds for the application service to appears on the dashboard.
+
 .. image:: ../pictures/asm-as3/lab-7-6.png
   :scale: 40%
   :align: center
@@ -144,8 +151,8 @@ Now let's create the WAF application service using AS3 & BIG-IQ.
   :scale: 40%
   :align: center
 
-Test and enforcement mode update (Paula)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Application Tests & Validation (Paula)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
 
@@ -172,89 +179,9 @@ Test and enforcement mode update (Paula)
    [Filters] Test Systems to exclude (Separated by ',') []: 
    [Filters] Test Attack Types to exclude (Separated by ',') []: 
 
-4. Now, let's launch an attack on this application service while the policy is in transparent mode. 
+4. Now, let's launch an attack on this application service. 
 
 On the *Ubuntu Lamp Server*, run:
-
-.. code-block:: bash
-   :emphasize-lines: 38,39
-
-   f5student@ip-10-1-1-5:~$ sudo f5-waf-tester
-   09-06-20 02:32:27 INFO Test 100000002/parameter failed
-   09-06-20 02:32:27 INFO Test 100000002/url failed
-   09-06-20 02:32:27 INFO Test 100000001/parameter failed
-   09-06-20 02:32:27 INFO Test 100000001/header failed
-   09-06-20 02:32:27 INFO Test 100000004/parameter failed
-   09-06-20 02:32:27 INFO Test 100000006/parameter failed
-   09-06-20 02:32:27 INFO Test 100000004/header failed
-   09-06-20 02:32:27 INFO Test 100000007/url failed
-   09-06-20 02:32:27 INFO Test 100000003/header failed
-   09-06-20 02:32:27 INFO Test 100000005/header failed
-   09-06-20 02:32:27 INFO Test 100000005/parameter failed
-   09-06-20 02:32:27 INFO Test 100000002/header failed
-   09-06-20 02:32:27 INFO Test 100000001/url failed
-   09-06-20 02:32:27 INFO Test 100000006/header failed
-   09-06-20 02:32:27 INFO Test 100000009/parameter failed
-   09-06-20 02:32:27 INFO Test 100000010/request failed
-   ...
-      "100000024": {
-         "CVE": "", 
-         "attack_type": "Server Side Request Forgery", 
-         "name": "SSRF attempt - Local network IP range 10.x.x.x", 
-         "results": {
-         "request": {
-            "expected_result": {
-               "type": "signature", 
-               "value": "200020201"
-            }, 
-            "pass": false, 
-            "reason": "Unknown, Maybe ASM Policy is not in blocking mode", 
-            "support_id": ""
-         }
-         }, 
-         "system": "All systems"
-      }
-   }, 
-   "summary": {
-      "fail": 48, 
-      "pass": 0
-   }
-
-5. Back to the BIG-IQ and logged in as **paula**, let's look at the attack on the BIG-IQ Dashboard.
-
-Under **F5 Services**, Security > Analytics > All Transactions
-
-.. image:: ../pictures/asm-as3/lab-7-9.png
-  :scale: 40%
-  :align: center
-
-Violations:
-
-.. image:: ../pictures/asm-as3/lab-7-10.png
-  :scale: 40%
-  :align: center
-
-6. Now, Paula change the WAF policy mode from Transparent to Blocking in order to apply L7 protection to her application.
-
-Under **F5 Services**, Configuration, update Enforcement Mode to **Blocking**.
-
-.. image:: ../pictures/asm-as3/lab-7-11.png
-  :scale: 40%
-  :align: center
-
-Notice the shield changing color in the BIG-IQ dashboard.
-
-.. image:: ../pictures/asm-as3/lab-7-12.png
-  :scale: 40%
-  :align: center
-
-Wait for the current major and critical alerts to clear before moving to the next step.
-
-.. image:: ../pictures/asm-as3/lab-7-13.png
-  :scale: 40%
-  :align: center
-
-7. Back on the *Ubuntu Lamp Server*, let's launch a second attack on this application service while the policy is in blocking mode. 
 
 .. code-block:: bash
    :emphasize-lines: 35,36
@@ -298,15 +225,18 @@ Wait for the current major and critical alerts to clear before moving to the nex
    }
 
 
-8. Notice after few seconds the BIG-IQ dashboard reporting the attack.
+5. Notice after few seconds the BIG-IQ dashboard reporting the attack.
 
-.. image:: ../pictures/asm-as3/lab-7-14.png
+.. image:: ../pictures/asm-as3/lab-7-9.png
   :scale: 40%
   :align: center
 
 Expend the dimensions and filter on **Blocked** attack to see attacks being blocked by the WAF policy.
 
-.. image:: ../pictures/asm-as3/lab-7-15.png
+.. image:: ../pictures/asm-as3/lab-7-10.png
   :scale: 40%
   :align: center
 
+6. **Larry** tunes the policy until there are no test failures in the pipeline.
+
+7. **Paula** promotes the policy to production environment.
