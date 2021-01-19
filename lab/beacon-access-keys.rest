@@ -1,0 +1,52 @@
+# My Variables
+@username = <beaconUsername>
+@password = <beaconPassword>
+@baseUrl = api.cloudservices.f5.com
+@contentType = application/json
+@beaconAccessToken = {{login.response.body.access_token}}
+@beaconUserID = {{userinfo.response.body.id}}
+@beaconAccountID = {{userinfo.response.body.primary_account_id}}
+@beaconRoleID = {{roleid.response.body.role_id}}
+@beaconAccessKeyID = {{accesskeys.response.body.access_key_id}}
+
+
+### Beacon Login
+# @name login
+POST https://{{baseUrl}}/v1/svc-auth/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+    "username": "{{username}}",
+    "password": "{{password}}"
+}
+
+### Beacon User info
+# @name userinfo
+GET https://{{baseUrl}}/v1/svc-account/user HTTP/1.1
+Authorization: Bearer {{beaconAccessToken}}
+
+### Beacon RoleID
+# @name roleid
+GET https://{{baseUrl}}/v1/svc-account/accounts/{{beaconAccountID}}/members/{{beaconUserID}} HTTP/1.1
+Authorization: Bearer {{beaconAccessToken}}
+
+### Beacon Create ClientID and ClientSecret
+# @name accesskeys
+POST https://{{baseUrl}}/v1/svc-account/accounts/{{beaconAccountID}}/access-keys HTTP/1.1
+Authorization: Bearer {{beaconAccessToken}}
+
+{
+    "name": "my-access-key",
+    "description": "access key created via API",
+    "account_id": "{{beaconAccountID}}",
+    "role_id": "{{beaconRoleID}}",
+    "resource_id": []
+}
+
+### Show Access Keys
+GET https://{{baseUrl}}/v1/svc-account/accounts/{{beaconAccountID}}/access-keys HTTP/1.1
+Authorization: Bearer {{beaconAccessToken}}
+
+### Delete Access Keys
+DELETE  https://{{baseUrl}}/v1/svc-account/accounts/{{beaconAccountID}}/access-keys/{{beaconAccessKeyID}} HTTP/1.1
+Authorization: Bearer {{beaconAccessToken}}
