@@ -2,7 +2,9 @@ Module 1: Banner, SNMP configuration and Automated Toolchain installation on BIG
 ===================================================================================
 
 In this module, we will learn about how to customize the banner on BIG-IQ login page.
-We will also learn on how to configure BIG-IQ to send traps to external systems.
+Next, we will learn on how to configure BIG-IQ to send traps to external systems.
+Finally, we will learn how to upgrade F5 Automated Toolchain packages for AS3 and DO on BIG-IQ.
+
 
 .. toctree::
    :maxdepth: 1
