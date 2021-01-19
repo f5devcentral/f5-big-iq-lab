@@ -20,11 +20,11 @@ Application creation with one Declarative API call
 
    <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
-
 #. VSC will open, and on the left menu, click on file ``postman_class9.rest`` in ``project`` directory
 
      .. image:: ../pictures/module2/link_postman_file.png
        :align: center
+       :scale: 60%
 
 #. Now, on the right frame, you can see the different ``Postman`` calls. We will run them, one by one. It is important to understand each of them
 
@@ -176,6 +176,7 @@ Application creation with one Declarative API call
 
         .. image:: ../pictures/module2/workflow_status.png
            :align: center
+           :scale: 60%
 
     #. Connect to BIG-IQ GUI as ``david`` and check your ``APM policy`` and ``Virtual Server`` are created.
     #. The last step -> Deploy your configuration.
