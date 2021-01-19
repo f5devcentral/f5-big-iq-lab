@@ -7,7 +7,7 @@
 @beaconUserID = {{userinfo.response.body.id}}
 @beaconAccountID = {{userinfo.response.body.primary_account_id}}
 @beaconRoleID = {{roleid.response.body.role_id}}
-
+@beaconAccessKeyID = {{accesskeys.response.body.access}}
 
 
 ### Beacon Login
@@ -45,4 +45,8 @@ Authorization: Bearer {{beaconAccessToken}}
 
 ### Show Access Keys
 GET https://{{baseUrl}}/v1/svc-account/accounts/{{beaconAccountID}}/access-keys HTTP/1.1
+Authorization: Bearer {{beaconAccessToken}}
+
+### Delete Access Keys
+DELETE  https://{{baseUrl}}/v1/svc-account/accounts/{{beaconAccountID}}/access-keys/{{beaconAccessKeyID}} HTTP/1.1
 Authorization: Bearer {{beaconAccessToken}}
