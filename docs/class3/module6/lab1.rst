@@ -79,7 +79,7 @@ You should see something like underneath.
 4. Finally, Let's use the gathered object info by POST-ing **"Beacon Create ClientID and ClientSecret"**.
 5. Use the **Save** in the top right corner to copy ans paste the **Respons body**
 6. Click **OK** to give the file the self-generated name and click **Open** in the right lower part in the **pop-up**.
-7 Save **client_id, client_secret and account_id** to a place where you can use this information to include in the Beacon.json file.
+7. Save **client_id, client_secret and account_id** to a place where you can use this information to include in the Beacon.json file.
 
 The last two REST API requests can be used optional.
 
