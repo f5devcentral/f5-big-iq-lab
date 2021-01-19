@@ -14,11 +14,11 @@ Workflow
 Application creation with one Declarative API call
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-#. Connect to ``Visual Studio Code`` by clicking on the link under ``Access`` menu on ``Ubuntu 19.10`` machine.
+#. Connect to ``Visual Studio Code`` by clicking on the link under ``Access`` menu on ``Ubuntu`` machine (follow |location_link_vscode_restclient|).
 
-    .. image:: ../pictures/module2/link_vsc.png
-       :align: center
-       :scale: 60%
+.. |location_link_vscode_restclient| raw:: html
+
+   <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
 #. VSC will open, and on the left menu, click on file ``postman_class9.rest`` in ``project`` directory
 

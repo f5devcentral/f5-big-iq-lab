@@ -25,7 +25,7 @@ For more information about requirements and recommendations for creating a BIG-I
 
 .. warning:: `BIG-IQ Application Service Sizing Guidelines`_
 
-.. _BIG-IQ Application Service Sizing Guidelines: https://techdocs.f5.com
+.. _BIG-IQ Application Service Sizing Guidelines: https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-sizing-guidelines/big-iq-sizing-guidelines.html#big-iq-sizing-guidelines
 
 .. raw:: html
 

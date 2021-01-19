@@ -1,0 +1,35 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"files.exclude": {
+		"**/.*": true,
+		"**/*.log": true,
+		"**/arcadia": true,
+		"**/awx": true,
+		"**/chrome-web": true,
+		"**/Desktop": true,
+		"**/last_update_*": true,
+		"**/ldap": true,
+		"**/locust": true,
+		"**/radius": true,
+		"**/splunk": true,
+		"**/tools": true,
+		"**/traffic-scripts": true,
+		"**/crontab.txt": true,
+		"**/update_git.sh": true,
+		"**/settings_vscode.json": true,
+		"**/snap": true,
+		"**/splunk-token": true,
+		"**/f5-bigiq-service-catalog-demo": true,
+		"**/f5-certs": true,
+		"**/f5-lab-blueprint-initial-setup": true,
+		"**/f5-tomcat-challenge-webapp": true,
+		"**/f5-aws-vpn-ssg": true,
+		"**/f5-azure-vpn-ssg": true,
+		"**/f5-gpc-vpn": true,
+		"**/f5-vmware": true
+	}
+}

@@ -22,7 +22,7 @@ We will use a declaration taken from the `AS3 miscellaneous examples`_ which wil
 
 .. code-block:: yaml
    :linenos:
-   :emphasize-lines: 12,13,14,66,76
+   :emphasize-lines: 12-54,66,76
 
    {
        "$schema": "https://raw.githubusercontent.com/F5Networks/f5-appsvcs-extension/master/schema/latest/as3-schema.json",
@@ -141,7 +141,7 @@ We will use a declaration taken from the `AS3 miscellaneous examples`_ which wil
    Note that because the WAF policy is shared between the 2 app services, the protection mode isn't reflected on the BIG-IQ dashboard.
 
 .. image:: ../pictures/module2/lab-14-3.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 .. warning:: Starting 7.0, BIG-IQ displays AS3 application services created using the AS3 Declare API as Unknown Applications.
@@ -155,11 +155,11 @@ We will use a declaration taken from the `AS3 miscellaneous examples`_ which wil
 6. Click on your Application Service called **Tenant1_Application1**, then View Sample API Request, look at AS3 declaration.
 
 .. image:: ../pictures/module2/lab-14-4.png
-  :scale: 60%
+  :scale: 40%
   :align: center
 
 7. Finally, navigate under **Applications > Application Deployments** where David can look at the full definition of the app service including the objects in /Common/Shared.
 
-.. image:: ../pictures/module2/lab-14-4.png
-  :scale: 60%
+.. image:: ../pictures/module2/lab-14-5.png
+  :scale: 40%
   :align: center
