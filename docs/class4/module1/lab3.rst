@@ -1,4 +1,4 @@
-Lab 8.6: Upgrade BIG-IQ F5 Automated Toolchain .rpm packages
+Lab 1.3: Upgrade BIG-IQ F5 Automated Toolchain .rpm packages
 ------------------------------------------------------------
 
 .. note:: Estimated time to complete: **20 minutes**
