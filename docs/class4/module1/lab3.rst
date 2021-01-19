@@ -105,7 +105,7 @@ Use the AS3 latest releases on Github to download the latest AS3 package directl
 
 Verify that the AS3 .rpm is in /home/admin by using **ls -l**
 
-12. Use a browser and go to https://github.com/f5devcentral/f5-big-iq-pm-team/tree/master/f5-bigiq-as3-rpm-updated
+12. Use a browser and go to https://github.com/f5devcentral/f5-big-iq-pm-team/tree/master/f5-bigiq-as3-rpm-update
 
 Follow the instructions in the README by downloading the script into the created directory **/shared/scripts**
 
