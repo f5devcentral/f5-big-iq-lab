@@ -84,7 +84,7 @@ You should see something like underneath.
 The last two REST API requests can be used optional.
 
 * The GET **"Show Access Keys"** will deliver the same output as step 5, but will omit the ClientSecret.
-* Use DELETE **"Delete Access Keys"** when you used **"Show Access Keys"** too early ;-)
+* Use DELETE **"Delete Access Keys"** when you used GET **"Show Access Keys"** too early ;-)
 
 8. In the UDF lab, start an SSH session to BIG-IQ CM by using your favorite SSH client.
 
