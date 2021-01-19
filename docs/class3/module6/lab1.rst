@@ -17,21 +17,19 @@ In this lab we are going to:
 * Setup the connection between BIG-IQ and Beacon.
 * Discover and display BIG-IQ applications in Beacon.
 
+**Note:** When you are not familar with the UDF lab environment using VSC, please use the **Get Started** page which can be found here: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/startup.html
+ 
 1. In the BIG-IQ UDF lab, go to the Components tab and click BIG-IQ CM Access and launch a TMUI session.
+
+2. In the browser select the Big-IQ CM bookmark and login as David (david/david) and go to the Applications tab and select Applications.
 
 .. image:: ../pictures/module6/img_module6_lab1_1.png
   :align: center
   :scale: 40%
 
-2. In the browser select the Big-IQ CM bookmark and login as David (david/david) and go to the Applications tab and select Applications.
-
-.. image:: ../pictures/module6/img_module6_lab1_2.png
-  :align: center
-  :scale: 40%
-
 3. Watch each application carefully and notice icon after the Applications name.
 
-.. image:: ../pictures/module6/img_module6_lab1_3.png
+.. image:: ../pictures/module6/img_module6_lab1_2.png
   :align: center
   :scale: 40%
 
@@ -61,7 +59,7 @@ Subscribing to Beacon comes with a **45 day free trial**.
 
 You should see something like underneath.
 
-.. image:: ../pictures/module6/img_module6_lab1_4.png
+.. image:: ../pictures/module6/img_module6_lab1_3.png
   :align: center
   :scale: 40%
 
@@ -71,7 +69,7 @@ You should see something like underneath.
 * In **Visual Studio Code** in the left pane select **project > beacon-access-keys.rest**.
 * In the **My Variables** section, fill in your **Beacon Username and Password**.
 
-.. image:: ../pictures/module6/img_module6_lab1_5.png
+.. image:: ../pictures/module6/img_module6_lab1_4.png
   :align: center
   :scale: 40%
 
@@ -91,10 +89,6 @@ The last two REST API requests can be used optional.
 * Use DELETE **"Delete Access Keys"** when you used GET **"Show Access Keys"** too early ;-)
 
 8. In the UDF lab, start an SSH session to BIG-IQ CM by using your favorite SSH client.
-
-.. image:: ../pictures/module6/img_module6_lab1_6.png
-  :align: center
-  :scale: 40%
 
 9. First a self-signed certificate needs to be generated with the BIG-IQ IP address in the SAN field. This certificate will get used to setup the communication between BIG-IQ and Beacon.
 
@@ -122,7 +116,7 @@ After the pipe cmd you are asked to fill in the:
 
 The below shown output is for your reference.
 
-.. image:: ../pictures/module6/img_module6_lab1_7.png
+.. image:: ../pictures/module6/img_module6_lab1_5.png
   :align: center
   :scale: 40%
 
@@ -187,7 +181,7 @@ Display the BIG-IQ server certificate by typing:
 
 12. The BIG-IQ server certificate needs to be included in the beacon.json and therefore copy the output from the server.crt
 
-.. image:: ../pictures/module6/img_module6_lab1_8.png
+.. image:: ../pictures/module6/img_module6_lab1_6.png
   :align: center
   :scale: 40%
 
@@ -205,13 +199,13 @@ Find the ‘bigServerCertificate’ by scrolling down to the bottom, remove ‘<
 
 The first cmd will initiate a Docker Swarm token.
 
-.. image:: ../pictures/module6/img_module6_lab1_9.png
+.. image:: ../pictures/module6/img_module6_lab1_7.png
   :align: center
   :scale: 40%
 
 Where the second command will start the docker service.
 
-.. image:: ../pictures/module6/img_module6_lab1_10.png
+.. image:: ../pictures/module6/img_module6_lab1_8.png
   :align: center
   :scale: 40%
 
@@ -228,13 +222,13 @@ Your log file will be named differently.
 You will see that DTS service started successfully and that data about BIG-IQ defined applications is being pushed to Beacon.
 This included log is for your reference.
 
-.. image:: ../pictures/module6/img_module6_lab1_11.png
+.. image:: ../pictures/module6/img_module6_lab1_9.png
   :align: center
   :scale: 40%
  
 15. Login to **BIG-IQ > Applications > Applications** and check the Beacon Icon.
 
-.. image:: ../pictures/module6/img_module6_lab1_12.png
+.. image:: ../pictures/module6/img_module6_lab1_10.png
   :align: center
   :scale: 40%
  
@@ -249,7 +243,7 @@ You should see the three applications we started with in BIG-IQ, those are now p
 
 18. Select **appsvc-backendconference_site41ftp** and scroll through the **Properties** and notice from which source the application got generated. Go through the **Metrics** and **Events**.
 
-.. image:: ../pictures/module6/img_module6_lab1_13.png
+.. image:: ../pictures/module6/img_module6_lab1_11.png
   :align: center
   :scale: 40%
 
