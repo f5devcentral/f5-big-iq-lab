@@ -73,16 +73,16 @@ You should see something like underneath.
 
 7. To generate the access keys deploy the requests from top to bottom.
 
-1. First generate a Beacon access token by POST-ing **Beacon Login**.
-2. Now we will gather AccountID and UserID object information via GET **Beacon User Info**.
-3. We need another object called RoleID and use GET **Beacon RoleID**
-4. Finally, Let's use the gathered object info by POST-ing **Beacon Create ClientID and ClientSecret**
+1. First generate a Beacon access token by POST-ing **"Beacon Login"**.
+2. Now we will gather AccountID and UserID object information via GET **"Beacon User Info"**.
+3. We need another object called RoleID and use GET **"Beacon RoleID"**
+4. Finally, Let's use the gathered object info by POST-ing **"Beacon Create ClientID and ClientSecret"**
 5. From the **Response** Copy and paste **client_id, client_secret and account_id** to a place where you can use this information to include in the Beacon.json file.
 
 The last two REST API requests can be used optional.
 
-* The GET **Show Access Keys** will deliver the same output as step 5, but will omit the ClientSecret.
-* Use DELETE **Delete Access Keys** when you used **Show Access Keys** too early ;-)
+* The GET **"Show Access Keys"** will deliver the same output as step 5, but will omit the ClientSecret.
+* Use DELETE **"Delete Access Keys"** when you used **"Show Access Keys"** too early ;-)
 
 8. In the UDF lab, start an SSH session to BIG-IQ CM by using your favorite SSH client.
 
