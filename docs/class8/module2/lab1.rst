@@ -40,8 +40,8 @@ Generate an audit that allows you to view the policy's overall protection capabi
   :scale: 40%
 
 .. note:: You are not required to select a policy at this stage. 
-If you have not yet selected a policy, or you would like to analyze a different policy,
-select a security policy from ``Security Policy`` area in the upper left side of the screen.
+          If you have not yet selected a policy, or you would like to analyze a different policy,
+          select a security policy from ``Security Policy`` area in the upper left side of the screen.
 
 You´ll get to the Policy Analyzer Section via "Configuration > Security > Web Application Security > Policies > More > Policy Analyzer".
 
