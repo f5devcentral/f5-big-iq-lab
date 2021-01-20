@@ -7,7 +7,7 @@ We will use these personas through out the lab. We are not trying to demonstrate
 We will be using 4 main personas for this lab:
 
 1. **David** or **Marco**: Full Administrator
-2. **Larry** or **Chris**: Security Manager
+2. **Larry**: Security Manager
 3. **Paula** & **Paul**: Application Manager
 4. **Olivia**: Super-NetOps
 

@@ -164,6 +164,8 @@ BIG-IQ also offers the ability to specify alerts for certificate expiration.
 
 Navigate to **Configuration > Local Traffic > Certificate Management > Certificates & Keys** and click the **Alert Settings** button to see the alerts options.
 
+.. note:: Starting with BIG-IQ 8.0, the alert settings now provide up to three scheduled alerts prior to SSL certificates expiration. 
+
 .. image:: ./media/img_module1_lab2-8.png
   :scale: 40%
   :align: center
