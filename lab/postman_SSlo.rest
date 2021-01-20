@@ -1,0 +1,129 @@
+# My Variables
+@bigiq= 10.1.1.4
+@contentType = application/json
+@f5_token = {{login.response.body.token.token}}
+
+
+### BIG-IQ Token
+# @name login
+POST https://{{bigiq}}/mgmt/shared/authn/login HTTP/1.1
+content-type: {{contentType}}
+
+{
+  "username": "david",
+  "password": "david",
+  "loginProviderName": "RadiusServer"
+}
+
+### SSlo L3 Outbound
+
+POST https://{{bigiq}}/mgmt/cm/sslo/api/topology HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+{
+    "template": {
+        "TOPOLOGY": {
+            "name": "sslo_NewTopology_Dec",
+            "ingressNetwork": {
+                "vlans": [
+                    {
+                        "name": "/Common/VLAN_TAP"
+                    }
+                ]
+            },
+            "type": "topology_l3_outbound",
+            "sslSetting": "ssloT_NewSsl_Dec",
+            "securityPolicy": "ssloP_NewPolicy_Dec"
+        },
+        "SSL_SETTINGS": {
+            "name": "ssloT_NewSsl_Dec"
+        },
+        "SECURITY_POLICY": {
+            "name": "ssloP_NewPolicy_Dec",
+            "rules": [
+                {
+                    "mode": "edit",
+                    "name": "Pinners_Rule",
+                    "action": "allow",
+                    "operation": "AND",
+                    "conditions": [
+                        {
+                            "type": "SNI Category Lookup",
+                            "options": {
+                                "category": [
+                                    "Pinners"
+                                ]
+                            }
+                        },
+                        {
+                            "type": "SSL Check",
+                            "options": {
+                                "ssl": true
+                            }
+                        }
+                    ],
+                    "actionOptions": {
+                        "ssl": "bypass",
+                        "serviceChain": "ssloSC_NewServiceChain_Dec"
+                    }
+                },
+                {
+                    "mode": "edit",
+                    "name": "All Traffic",
+                    "action": "allow",
+                    "isDefault": true,
+                    "operation": "AND",
+                    "actionOptions": {
+                        "ssl": "intercept"
+                    }
+                }
+            ]
+        },
+        "SERVICE_CHAIN": {
+            "ssloSC_NewServiceChain_Declarative": {
+                "name": "ssloSC_NewServiceChain_Dec",
+                "orderedServiceList": [
+                    {
+                        "name":"ssloS_ICAP_Dec"
+                    }
+                ]
+            }
+        },
+        "SERVICE": {
+            "ssloS_ICAP_Declarative": {
+                "name": "ssloS_ICAP_Dec",
+                "customService": {
+                    "name": "ssloS_ICAP_Dec",
+                    "serviceType": "icap",
+                    "loadBalancing": {
+                        "devices": [
+                            {
+                                "ip": "3.3.3.3",
+                                "port": "1344"
+                            }
+                        ]
+                    }
+                }
+            }
+        }
+    },
+    "targetList": [
+        {
+            "type": "DEVICE",
+            "name": "SEA-vBIGIP01.termmarc.com"
+        }
+    ]
+}
+
+### Check status
+
+GET https://{{bigiq}}/mgmt/cm/sslo/tasks/api/9a471a9b-d087-4ff0-ba6d-df13bdd1f587 HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+### Delete Topology
+
+DELETE https://{{bigiq}}/mgmt/cm/sslo/api/topology/sslo_NewTopology_Dec HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
