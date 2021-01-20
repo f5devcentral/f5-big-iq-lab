@@ -124,6 +124,6 @@ X-F5-Auth-Token: {{f5_token}}
 
 ### Delete Topology
 
-DELETE https://{{bigiq}}/mgmt/cm/sslo/api/topology/sslo_NewTop02 HTTP/1.1
+DELETE https://{{bigiq}}/mgmt/cm/sslo/api/topology/sslo_NewTopology_Dec HTTP/1.1
 content-type: {{contentType}}
 X-F5-Auth-Token: {{f5_token}}
