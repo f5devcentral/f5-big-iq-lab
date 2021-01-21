@@ -33,7 +33,7 @@ Application creation with one Declarative API call
         .. image:: ../pictures/module2/postman_auth.png
            :align: center
 
-    #. You should see on the right frame, the response from BIG-IQ. Now, you have a token, and you send REST calls to BIG-IQ.
+    #. You should see on the right frame, the response from BIG-IQ. Now, you have a token, and you can send REST calls to BIG-IQ.
     #. It is time to send our ``declarative API call`` that will configure our new VS + APM policy as SAML SP.
     #. The JSON blob (the declarative call) is below. You can notice the different sections (SAML SP, SAML IDP connector, VS, SSO, EndPoint check)
 
@@ -179,7 +179,22 @@ Application creation with one Declarative API call
            :scale: 60%
 
     #. Connect to BIG-IQ GUI as ``david`` and check your ``APM policy`` and ``Virtual Server`` are created.
-    #. The last step -> Deploy your configuration.
+
+        .. image:: ../pictures/module2/per_session_policy.png
+           :align: center
+           :scale: 60%
+
+
+        .. image:: ../pictures/module2/sp.png
+           :align: center
+           :scale: 60%
+
+
+        .. image:: ../pictures/module2/vs.png
+           :align: center
+           :scale: 60%
+
+    #. The last step -> Deploy your configuration if you want.
 
 .. note:: Congrats, with one call, you deployed a new Service protected by APM as a SAML Service Provider. You can now replicate the same call for every new app by changing the name of the SAML SP object, and the VS config.
 
