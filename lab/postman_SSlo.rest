@@ -118,12 +118,36 @@ X-F5-Auth-Token: {{f5_token}}
 
 ### Check status
 
-GET https://{{bigiq}}/mgmt/cm/sslo/tasks/api/9a471a9b-d087-4ff0-ba6d-df13bdd1f587 HTTP/1.1
+GET https://{{bigiq}}/mgmt/cm/sslo/tasks/api/6eeb08c9-e4a5-4f92-90e0-88b8cea681bc HTTP/1.1
 content-type: {{contentType}}
 X-F5-Auth-Token: {{f5_token}}
 
 ### Delete Topology
 
 DELETE https://{{bigiq}}/mgmt/cm/sslo/api/topology/sslo_NewTopology_Dec HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+### Delete Security Policy - Wait Topology is deleted
+
+DELETE https://{{bigiq}}/mgmt/cm/sslo/api/security-policy/ssloP_NewPolicy_Dec HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+### Delete Service Chain - Wait Service Security Policy is deleted
+
+DELETE https://{{bigiq}}/mgmt/cm/sslo/api/service-chain/ssloSC_NewServiceChain_Dec HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+### Delete ICAP Service - Wait Service Chain is deleted
+
+DELETE https://{{bigiq}}/mgmt/cm/sslo/api/service/ssloS_ICAP_Dec HTTP/1.1
+content-type: {{contentType}}
+X-F5-Auth-Token: {{f5_token}}
+
+### Delete SSL Configuration - Wait ICAP Service is deleted
+
+DELETE https://{{bigiq}}/mgmt/cm/sslo/api/ssl/ssloT_NewSsl_Dec HTTP/1.1
 content-type: {{contentType}}
 X-F5-Auth-Token: {{f5_token}}
