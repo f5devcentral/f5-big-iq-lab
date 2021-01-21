@@ -11,7 +11,7 @@ Workflow
 
 
 
-Application creation with one Declarative API call
+Service creation with one Declarative API call
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Connect to ``Visual Studio Code`` by clicking on the link under ``Access`` menu on ``Ubuntu`` machine (follow |location_link_vscode_restclient|).
@@ -22,7 +22,7 @@ Application creation with one Declarative API call
 
 #. VSC will open, and on the left menu, click on file ``postman_class9.rest`` in ``project`` directory
 
-     .. image:: ../pictures/module2/link_postman_file_v2.png
+     .. image:: ../pictures/module3/click_postman_SSLo.png
        :align: center
        :scale: 60%
 
