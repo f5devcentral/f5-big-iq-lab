@@ -20,7 +20,7 @@ Service creation with one Declarative API call
 
    <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
-#. VSC will open, and on the left menu, click on file ``postman_class9.rest`` in ``project`` directory
+#. VSC will open, and on the left menu, click on file ``postman_SSLo.rest`` in ``project`` directory
 
      .. image:: ../pictures/module3/click_postman_SSLo.png
        :align: center
@@ -30,7 +30,7 @@ Service creation with one Declarative API call
 
     #. The ``first call`` is to authenticate against the BIG-IQ, and get a token. Use the first call (line #9). Click on ``Send Request``
 
-        .. image:: ../pictures/module2/postman_auth.png
+        .. image:: ../pictures/module3/authenticate.png
            :align: center
 
     #. You should see on the right frame, the response from BIG-IQ. Now, you have a token, and you send REST calls to BIG-IQ.
@@ -39,126 +39,100 @@ Service creation with one Declarative API call
 
         .. code :: javascript
 
-            {
-                "name": "workflow_saml_2",
-                "type": "samlSP",
-                "accessDeviceGroup": "boston",
-                "configurations": {
-                    "samlSPService": {
-                        "entityId": "https://www.testsaml.com",
-                        "idpConnectors": [
-                            {
-                                "connector": {
-                                    "entityId": "https://www.testidp.com",
-                                    "ssoUri": "https://www.testidp.com/sso"
-                                }
-                            }
-                        ],
-                        "attributeConsumingServices": [
-                            {
-                                "service": {
-                                    "serviceName": "wf_service4",
-                                    "isDefault": true,
-                                    "attributes": [
-                                        {
-                                            "attributeName": "wf_name4"
-                                        }
-                                    ]
-                                }
-                            }
-                        ],
-                        "authContextClassList": {
-                            "classes": [
-                                {
-                                    "value": "urn:oasis:names:tc:SAML:2.0:ac:classes:PasswordProtectedTransport"
-                                }
-                            ]
-                        }
-                    },
-                    "virtualServers": [
+  {
+    "template": {
+        "TOPOLOGY": {
+            "name": "sslo_NewTopology_Dec",
+            "ingressNetwork": {
+                "vlans": [
+                    {
+                        "name": "/Common/VLAN_TAP"
+                    }
+                ]
+            },
+            "type": "topology_l3_outbound",
+            "sslSetting": "ssloT_NewSsl_Dec",
+            "securityPolicy": "ssloP_NewPolicy_Dec"
+        },
+        "SSL_SETTINGS": {
+            "name": "ssloT_NewSsl_Dec"
+        },
+        "SECURITY_POLICY": {
+            "name": "ssloP_NewPolicy_Dec",
+            "rules": [
+                {
+                    "mode": "edit",
+                    "name": "Pinners_Rule",
+                    "action": "allow",
+                    "operation": "AND",
+                    "conditions": [
                         {
-                            "port": "433",
-                            "destinationIpAddress": "10.10.1.2",
-                            "targetDevice": "BOS-vBIGIP01.termmarc.com",
-                            "clientsideSsl": "/Common/clientssl",
-                            "serversideSsl": "/Common/serverssl",
-                            "poolServer": {
-                                "monitors": {
-                                    "http": [
-                                        "/Common/http"
-                                    ],
-                                    "https": [
-                                        "/Common/https"
-                                    ]
-                                },
-                                "members": [
-                                    {
-                                        "ipAddress": "10.11.2.2",
-                                        "port": "443",
-                                        "priorityGroup": 10
-                                    },
-                                    {
-                                        "ipAddress": "10.10.3.2",
-                                        "port": "80"
-                                    }
+                            "type": "SNI Category Lookup",
+                            "options": {
+                                "category": [
+                                    "Pinners"
                                 ]
+                            }
+                        },
+                        {
+                            "type": "SSL Check",
+                            "options": {
+                                "ssl": true
                             }
                         }
                     ],
-                    "accessProfile": {},
-                    "singleSignOn": {
-                        "type": "httpHeaders",
-                        "httpHeaders": [
+                    "actionOptions": {
+                        "ssl": "bypass",
+                        "serviceChain": "ssloSC_NewServiceChain_Dec"
+                    }
+                },
+                {
+                    "mode": "edit",
+                    "name": "All Traffic",
+                    "action": "allow",
+                    "isDefault": true,
+                    "operation": "AND",
+                    "actionOptions": {
+                        "ssl": "intercept"
+                    }
+                }
+            ]
+        },
+        "SERVICE_CHAIN": {
+            "ssloSC_NewServiceChain_Declarative": {
+                "name": "ssloSC_NewServiceChain_Dec",
+                "orderedServiceList": [
+                    {
+                        "name":"ssloS_ICAP_Dec"
+                    }
+                ]
+            }
+        },
+        "SERVICE": {
+            "ssloS_ICAP_Declarative": {
+                "name": "ssloS_ICAP_Dec",
+                "customService": {
+                    "name": "ssloS_ICAP_Dec",
+                    "serviceType": "icap",
+                    "loadBalancing": {
+                        "devices": [
                             {
-                                "headerName": "Authorization",
-                                "headerValue": "%{session.saml.last.identity}"
-                            },
-                            {
-                                "headerName": "Authorization2",
-                                "headerValue": "%{session.saml.last.identity2}"
+                                "ip": "3.3.3.3",
+                                "port": "1344"
                             }
                         ]
-                    },
-                    "endpointCheck": {
-                        "clientOS": {
-                            "windows": {
-                                "windows7": true,
-                                "windows10": true,
-                                "windows8_1": true,
-                                "antivirus": {},
-                                "firewall": {},
-                                "machineCertAuth": {}
-                            },
-                            "windowsRT": {
-                                "antivirus": {},
-                                "firewall": {}
-                            },
-                            "linux": {
-                                "antivirus": {
-                                    "dbAge": 102,
-                                    "lastScan": 102
-                                },
-                                "firewall": {}
-                            },
-                            "macOS": {
-                                "antivirus": {
-                                    "dbAge": 103,
-                                    "lastScan": 103
-                                }
-                            },
-                            "iOS": {},
-                            "android": {},
-                            "chromeOS": {
-                                "antivirus": {
-                                    "dbAge": 104,
-                                    "lastScan": 104
-                                },
-                                "firewall": {}
-                            }
-                        }
                     }
                 }
             }
+        }
+    },
+    "targetList": [
+        {
+            "type": "DEVICE",
+            "name": "SEA-vBIGIP01.termmarc.com"
+        }
+    ]
+}
 
     #. Click on ``Send Request`` and check the right frame of the screen. You should see a ``2O2 Accepted``
     #. Scroll down and copy the ``access-workflow ID``. This ID is the last string in ``selflink`` attribut. In my example belown the ID is ``6fe131ef-4edb-4977-9073-fdea042b47ec``
