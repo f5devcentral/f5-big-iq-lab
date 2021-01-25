@@ -10,7 +10,7 @@ In this lab, **Larry** will provide to **David** with a new JSON blob so that **
 
 
 Service creation with one Declarative API call
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 #. Connect to ``Visual Studio Code`` by clicking on the link under ``Access`` menu on ``Ubuntu`` machine (follow |location_link_vscode_restclient|).
 
@@ -160,7 +160,7 @@ Service creation with one Declarative API call
 #. Connect to BIG-IQ GUI as ``david`` and double check under ``SSL Orchestrator`` that the ``Topologies: sslo_NewTopology_Dec `` got created.
 
 .. image:: ../pictures/module3/BIG-IQ_SSLO_Topo_view.png
-       :align: center
-       :scale: 60%
+   :align: center
+   :scale: 60%
            
 .. note:: Congrats, with one call, you deployed a new SSLo Topology including SSL_Settings, Security Policy, Service_Chain and Service
