@@ -132,27 +132,28 @@ Service creation with one Declarative API call
     ]
 }
 
-    #. Click on ``Send Request`` and check the right frame of the screen. You should see a ``2O2 Accepted``
+    #. Click on ``Send Request`` and check the right frame of the screen.
     
             .. image:: ../pictures/module3/send_decl_config.png
                :align: center
     
-    #. Scroll down and copy the ``access-workflow ID``. This ID is the last string in ``selflink`` attribut. In this example the ID is ``d9b6664f-5f5b-47d8-a663-d43b1726f0c4``
+    #. Now, let's check the status. To do so, we will use another REST call.
+    #. Scroll down on the right side and copy the ``access-workflow ID``. This ID is the last string in ``selflink`` attribut. In this example the ID is ``d9b6664f-5f5b-47d8-a663-d43b1726f0c4``. You might need to click on the link and then copy it from the URL in the new tab to get it copied.
         
         .. image:: ../pictures/module3/access_workflow_id.png
            :align: center
 
-
-NEEDs TO WORK ON
-
-
-    #. Now, let's check if the workflow passed. To do so, we will use another REST call. On the left frame, at the top, in the ``My Variables`` section, change the value of ``@workflow_id`` by the copied ID.
+    #. On the left side scroll down to the section "Check status" and replace the ID by the one you just copied.
+    #. For example:
+    
+    GET https://{{bigiq}}/mgmt/cm/sslo/tasks/api/a8d44084-0ace-4cd9-99d0-c9ba789ef128 HTTP/1.1
         
         .. image:: ../pictures/module2/my_variables.png
            :align: center
-
-    #. Scroll down, and use the last REST call ``Check status of the deployment``. Click ``Send Request``
-    #. You should see a ``200 OK``, and ``status : finshed``
+           
+    #. Now click on ``Send Request``
+    
+    #. You should see a ``200 OK``, and ``status : Finshed``
 
         .. image:: ../pictures/module2/workflow_status.png
            :align: center
