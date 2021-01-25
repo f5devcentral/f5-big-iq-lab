@@ -30,9 +30,11 @@ Settings for our already created Cloud Environment should be left unchanged.
 
   |image04|
 
-Several parts of the Cloud Environment you may not want to be configured because you are planning on using F5 Declarative Onboarding.
-  - Device Templates are used for Service Scaling Groups, not a single or cluster of BIG-IP.
-  - VM image: Follow `K44134742`_ to install VMware tools on the VM template (required).
+.. warning:: 
+            Several parts of the Cloud Environment you may not want to be configured because you are planning on using F5 Declarative Onboarding.
+             - **Device Templates** are used for Service Scaling Groups, not a single or cluster of BIG-IP.
+             - Ensure the **IP Pool Alias Mapping: IP Pool** is set to "None".
+             - **VM image**: Follow `K44134742`_ to install VMware tools on the VM template (required).
 
 .. _`K44134742`: https://support.f5.com/csp/article/K44134742 
 
