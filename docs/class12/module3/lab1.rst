@@ -138,7 +138,7 @@ Service creation with one Declarative API call
                :align: center
     
     #. Now, let's check the status. To do so, we will use another REST call.
-    #. Scroll down on the right side and copy the ``access-workflow ID``. This ID is the last string in ``selflink`` attribut. In this example the ID is ``d9b6664f-5f5b-47d8-a663-d43b1726f0c4``. You might need to click on the link and then copy it from the URL in the new tab to get it copied.
+    #. Scroll down on the right side and copy the ``access-workflow ID``. This ID is the last string in ``selflink`` attribut. In this example the ID is ``a8d44084-0ace-4cd9-99d0-c9ba789ef128``. You might need to click on the link and then copy it from the URL in the new tab to get it copied.
         
         .. image:: ../pictures/module3/access_workflow_id.png
            :align: center
@@ -156,7 +156,10 @@ Service creation with one Declarative API call
            :align: center
            :scale: 60%
 
-    #. Connect to BIG-IQ GUI as ``david`` and check your ``APM policy`` and ``Virtual Server`` are created.
-    #. The last step -> Deploy your configuration.
-
+    #. Connect to BIG-IQ GUI as ``david`` and double check under ``SSL Orchestrator`` that the ``Topologies: sslo_NewTopology_Dec `` got created.
+    
+    .. image:: ../pictures/module3/BIG-IQ_SSLO_Topo_view.png
+           :align: center
+           :scale: 60%
+           
 .. note:: Congrats, with one call, you deployed a new Service protected by APM as a SAML Service Provider. You can now replicate the same call for every new app by changing the name of the SAML SP object, and the VS config.
