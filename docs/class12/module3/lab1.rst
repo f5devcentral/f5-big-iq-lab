@@ -36,101 +36,102 @@ Service creation with one Declarative API call
 #. The JSON blob (the declarative call) is below. You can notice the different sections (Topology, SSL_Settings, Security Policy, Service_Chain, Service)
 
 .. code :: javascript
-
-  {
-    "template": {
-        "TOPOLOGY": {
-            "name": "sslo_NewTopology_Dec",
-            "ingressNetwork": {
-                "vlans": [
-                    {
-                        "name": "/Common/VLAN_TAP"
-                    }
-                ]
-            },
-            "type": "topology_l3_outbound",
-            "sslSetting": "ssloT_NewSsl_Dec",
-            "securityPolicy": "ssloP_NewPolicy_Dec"
-        },
-        "SSL_SETTINGS": {
-            "name": "ssloT_NewSsl_Dec"
-        },
-        "SECURITY_POLICY": {
-            "name": "ssloP_NewPolicy_Dec",
-            "rules": [
-                {
-                    "mode": "edit",
-                    "name": "Pinners_Rule",
-                    "action": "allow",
-                    "operation": "AND",
-                    "conditions": [
-                        {
-                            "type": "SNI Category Lookup",
-                            "options": {
-                                "category": [
-                                    "Pinners"
-                                ]
-                            }
-                        },
-                        {
-                            "type": "SSL Check",
-                            "options": {
-                                "ssl": true
-                            }
-                        }
-                    ],
-                    "actionOptions": {
-                        "ssl": "bypass",
-                        "serviceChain": "ssloSC_NewServiceChain_Dec"
-                    }
-                },
-                {
-                    "mode": "edit",
-                    "name": "All Traffic",
-                    "action": "allow",
-                    "isDefault": true,
-                    "operation": "AND",
-                    "actionOptions": {
-                        "ssl": "intercept"
-                    }
-                }
-            ]
-        },
-        "SERVICE_CHAIN": {
-            "ssloSC_NewServiceChain_Declarative": {
-                "name": "ssloSC_NewServiceChain_Dec",
-                "orderedServiceList": [
-                    {
-                        "name":"ssloS_ICAP_Dec"
-                    }
-                ]
-            }
-        },
-        "SERVICE": {
-            "ssloS_ICAP_Declarative": {
-                "name": "ssloS_ICAP_Dec",
-                "customService": {
-                    "name": "ssloS_ICAP_Dec",
-                    "serviceType": "icap",
-                    "loadBalancing": {
-                        "devices": [
-                            {
-                                "ip": "3.3.3.3",
-                                "port": "1344"
-                            }
-                        ]
-                    }
-                }
-            }
-        }
-    },
-    "targetList": [
-        {
-            "type": "DEVICE",
-            "name": "SEA-vBIGIP01.termmarc.com"
-        }
-    ]
-}
+   :linenos:
+   
+   {
+       "template": {
+           "TOPOLOGY": {
+               "name": "sslo_NewTopology_Dec",
+               "ingressNetwork": {
+                   "vlans": [
+                       {
+                           "name": "/Common/VLAN_TAP"
+                       }
+                   ]
+               },
+               "type": "topology_l3_outbound",
+               "sslSetting": "ssloT_NewSsl_Dec",
+               "securityPolicy": "ssloP_NewPolicy_Dec"
+           },
+           "SSL_SETTINGS": {
+               "name": "ssloT_NewSsl_Dec"
+           },
+           "SECURITY_POLICY": {
+               "name": "ssloP_NewPolicy_Dec",
+               "rules": [
+                   {
+                       "mode": "edit",
+                       "name": "Pinners_Rule",
+                       "action": "allow",
+                       "operation": "AND",
+                       "conditions": [
+                           {
+                               "type": "SNI Category Lookup",
+                               "options": {
+                                   "category": [
+                                       "Pinners"
+                                   ]
+                               }
+                           },
+                           {
+                               "type": "SSL Check",
+                               "options": {
+                                   "ssl": true
+                               }
+                           }
+                       ],
+                       "actionOptions": {
+                           "ssl": "bypass",
+                           "serviceChain": "ssloSC_NewServiceChain_Dec"
+                       }
+                   },
+                   {
+                       "mode": "edit",
+                       "name": "All Traffic",
+                       "action": "allow",
+                       "isDefault": true,
+                       "operation": "AND",
+                       "actionOptions": {
+                           "ssl": "intercept"
+                       }
+                   }
+               ]
+           },
+           "SERVICE_CHAIN": {
+               "ssloSC_NewServiceChain_Declarative": {
+                   "name": "ssloSC_NewServiceChain_Dec",
+                   "orderedServiceList": [
+                       {
+                           "name": "ssloS_ICAP_Dec"
+                       }
+                   ]
+               }
+           },
+           "SERVICE": {
+               "ssloS_ICAP_Declarative": {
+                   "name": "ssloS_ICAP_Dec",
+                   "customService": {
+                       "name": "ssloS_ICAP_Dec",
+                       "serviceType": "icap",
+                       "loadBalancing": {
+                           "devices": [
+                               {
+                                   "ip": "3.3.3.3",
+                                   "port": "1344"
+                               }
+                           ]
+                       }
+                   }
+               }
+           }
+       },
+       "targetList": [
+           {
+               "type": "DEVICE",
+               "name": "SEA-vBIGIP01.termmarc.com"
+           }
+       ]
+   }
 
 #. Click on ``Send Request`` and check the right frame of the screen.
 
@@ -152,9 +153,9 @@ Service creation with one Declarative API call
 
 #. You should see a ``200 OK``, and ``status : Finshed``
 
-    .. image:: ../pictures/module3/response_check_status.png
-       :align: center
-       :scale: 60%
+.. image:: ../pictures/module3/response_check_status.png
+   :align: center
+   :scale: 60%
 
 #. Connect to BIG-IQ GUI as ``david`` and double check under ``SSL Orchestrator`` that the ``Topologies: sslo_NewTopology_Dec `` got created.
 
