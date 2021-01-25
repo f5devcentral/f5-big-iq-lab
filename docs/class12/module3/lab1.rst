@@ -155,7 +155,7 @@ Service creation with one Declarative API call
     
     #. You should see a ``200 OK``, and ``status : Finshed``
 
-        .. image:: ../pictures/module2/workflow_status.png
+        .. image:: ../pictures/module3/response_check_status.png
            :align: center
            :scale: 60%
 
