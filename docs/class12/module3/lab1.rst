@@ -147,9 +147,6 @@ Service creation with one Declarative API call
     #. For example:
     
     GET https://{{bigiq}}/mgmt/cm/sslo/tasks/api/a8d44084-0ace-4cd9-99d0-c9ba789ef128 HTTP/1.1
-        
-        .. image:: ../pictures/module2/my_variables.png
-           :align: center
            
     #. Now click on ``Send Request``
     
