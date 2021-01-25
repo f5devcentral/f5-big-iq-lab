@@ -18,7 +18,7 @@ Service creation with one Declarative API call
 
    <a href="/training/community/big-iq-cloud-edition/html/vscode_restclient.html" target="_blank">instructions</a>
 
-#. VSC will open, and on the left menu, click on file ``postman_SSLo.rest`` in ``project`` directory
+   #. VSC will open, and on the left menu, click on file ``postman_SSLo.rest`` in ``project`` directory
 
      .. image:: ../pictures/module3/click_postman_SSLo.png
        :align: center
@@ -162,4 +162,4 @@ Service creation with one Declarative API call
            :align: center
            :scale: 60%
            
-.. note:: Congrats, with one call, you deployed a new Service protected by APM as a SAML Service Provider. You can now replicate the same call for every new app by changing the name of the SAML SP object, and the VS config.
+.. note:: Congrats, with one call, you deployed a new SSLo Topology including SSL_Settings, Security Policy, Service_Chain and Service
