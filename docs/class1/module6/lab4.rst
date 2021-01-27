@@ -84,7 +84,7 @@ Tasks
         cleanup.main()
 
 .. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+.. _How to Use the vi Editor: https://www.cs.colostate.edu/helpdocs/vi.html
 
 2. The first step is to force-delete the Application Service on the BIG-IQ, execute the following command from BIG-IQ CLI::
 

@@ -32,7 +32,7 @@ Launch our ``SSG`` - Update config.yml - Azure
 ***********************************************
 
 .. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+.. _How to Use the vi Editor: https://www.cs.colostate.edu/helpdocs/vi.html
 
 Use your favorite editor to update this file. 
 

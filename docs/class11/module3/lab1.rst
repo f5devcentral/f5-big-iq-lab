@@ -44,7 +44,7 @@ Clicking on each of these views allow for selection/deselection of many objects 
 1. On the Ubuntu host edit a new file using vi/vim: *vi soa.txt*
 
 .. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+.. _How to Use the vi Editor: https://www.cs.colostate.edu/helpdocs/vi.html
 
 2. Add the following query to 10 lines: *example.com soa*
 3. Save and exit, then cat the file to validate

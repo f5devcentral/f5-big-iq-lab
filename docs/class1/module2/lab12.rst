@@ -189,7 +189,7 @@ Add the pool member ``10.1.20.111`` as showing below:
    }
 
 .. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+.. _How to Use the vi Editor: https://www.cs.colostate.edu/helpdocs/vi.html
 
 3. Commit and push the changes::
 

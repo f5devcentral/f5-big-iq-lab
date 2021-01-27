@@ -107,7 +107,7 @@ You should see only ``big-iq-cm-2.example.com`` and the IPs addresses needs to b
 
 
 .. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+.. _How to Use the vi Editor: https://www.cs.colostate.edu/helpdocs/vi.html
 
 5. Once the new VE is full up and running, execute the following script to onboard this new secondary BIG-IQ CM.
 

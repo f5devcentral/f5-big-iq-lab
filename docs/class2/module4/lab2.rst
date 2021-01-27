@@ -103,7 +103,7 @@ Here is an example of the updated **config.yml** file:
 In case want to use your own AWS account, comment out the line ``01-configure-cloud-udf.sh`` in ``000-RUN_ALL.sh``.
 
 .. note:: `How to Use the vi Editor`_
-.. _How to Use the vi Editor: https://www.washington.edu/computing/unix/vi.html
+.. _How to Use the vi Editor: https://www.cs.colostate.edu/helpdocs/vi.html
 
 Update our SSG configuration (OPTIONAL)
 ***************************************
