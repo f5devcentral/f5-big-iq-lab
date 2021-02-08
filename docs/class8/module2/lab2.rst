@@ -32,7 +32,9 @@ A clone of this Security Policy will be generated and named **asm-lab3_prod**.
 To be able to see differences between **asm-lab3** and **asm-lab3_prod** we will analyzing the Security Policy **asm-lab3_prod** with help of **Policy Analyzer** and do some modification 
 on **asm-lab3_prod**. After those modofication have been saved to **asm-lab3_prod**, Security Policy **asm-lab3** will be compared with **asm-lab3_prod**.
 
-1. Start with creating a clone of Security Policy named **asm-lab3**.
+1. Login to BIG-IQ as **larry**.
+
+2. Start with creating a clone of Security Policy named **asm-lab3**.
 
 - To do go to "Configuration > Security > Web Application Security > Policies".
 - Check Secuirty Policy named **asm-lab3**.
@@ -48,11 +50,11 @@ Name the Clone Policy **asm-lab3_prod**. No change needed on the Partition.
   :align: center
   :scale: 40%
 
-2. Generate a security policy audit of Security Policy **asm-lab3_prod**.
+3. Generate a security policy audit of Security Policy **asm-lab3_prod**.
 
 .. note:: The procedure of generating a security policy audit is documented in Lab 2.1: Analyzing security policy status. 
 
-3. To introduce changes in Security Policy **asm-lab3_prod**:
+4. To introduce changes in Security Policy **asm-lab3_prod**:
 
 - Enable **Data Guard** 
 - Remove **Attack signatures** from Staging
@@ -64,7 +66,7 @@ Name the Clone Policy **asm-lab3_prod**. No change needed on the Partition.
 
 .. note:: The procedure of generating a security policy audit is documented in Lab 2.1: Edit Policy  
 
-4. Compare Security Policy **asm-lab3** and **asm-lab3_prod**
+5. Compare Security Policy **asm-lab3** and **asm-lab3_prod**
 
 To compare the two Security Policy **asm-lab3** and **asm-lab3_prod**
 
@@ -76,21 +78,21 @@ To compare the two Security Policy **asm-lab3** and **asm-lab3_prod**
   :align: center
   :scale: 40%    
 
-5. As a result you will get an overview of the changes between Security Policy **asm-lab3** and **asm-lab3_prod**.
+6. As a result you will get an overview of the changes between Security Policy **asm-lab3** and **asm-lab3_prod**.
 
 .. image:: ../pictures/module2/img_module2_lab2_5.png
   :align: center
   :scale: 40%    
 
-6. To get an brief overview on the differences between Security Policy **asm-lab3** and **asm-lab3_prod** select *Collapse All Sections*.
+7. To get an brief overview on the differences between Security Policy **asm-lab3** and **asm-lab3_prod** select *Collapse All Sections*.
 
-7. To export the results of the audit to PDF, click *Export* and select *Print Prieview*.
+8. To export the results of the audit to PDF, click *Export* and select *Print Prieview*.
    The system will prompt you to confirm your selection. To proceed, click *ok*.
    
 .. image:: ../pictures/module2/img_module2_lab2_6.png
   :align: center
   :scale: 40%    
 
-8. To run a comparison for another policy, or pair of policies, select a policy from the list at the table header and click.
+9. To run a comparison for another policy, or pair of policies, select a policy from the list at the table header and click.
 
 .. note:: Finally you can now use the results of the policy comparison audit to adjust your security policies, as required.

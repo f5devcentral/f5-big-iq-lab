@@ -108,7 +108,7 @@ Select ``AnsibleTower`` Application, select ``AnsibleTower_MyApp139`` Applicatio
 Application Service Deletion
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The application owner has informed Paul that the application is no longer needed and needs to be deleted. Paul will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
+The application owner has informed David that the application is no longer needed and needs to be deleted. David will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
 
 1. Return to *AWX (Ansible Tower)* and if needed log back in as **david** *(david\\david)*  
    Navigate to the **Templates** page and click on *(Agility 2020) Delete_AS3_App*

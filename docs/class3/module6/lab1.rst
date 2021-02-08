@@ -51,7 +51,7 @@ Let’s get to the other side and check F5 Beacon.
 
 4. If you don’t have an F5 Cloud Services account, please go: https://portal.cloudservices.f5.com/register and create one.
 
-Here are the pricing details: https://clouddocs.f5.com/cloud-services/latest/f5-cloud-services-Beacon-Pricing.html#f5-beacon-pricing and be aware that for this lab you will not make any additional costs.
+Here are the pricing details: https://f5cloudservices.zendesk.com/hc/en-us/articles/360046013674-F5-Beacon-pricing and be aware that for this lab you will not make any additional costs.
 
 Subscribing to Beacon comes with a **45 day free trial**.
 

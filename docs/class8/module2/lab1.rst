@@ -24,16 +24,18 @@ Generate an audit that allows you to view the policy's overall protection capabi
 
 .. warning:: When analyzing a Web Application Security policy, ensure that it is a child policy.
 
-1. First go to "Configuration > Security > Web Application Security > Policies".
+1. Login to BIG-IQ as **larry**.
+
+2. First go to "Configuration > Security > Web Application Security > Policies".
 
 .. image:: ../pictures/module2/img_module2_lab1_0.png
   :align: center
   :scale: 40%
 
-2. Click the check box next to the name of the security policy you would like to audit.
+3. Click the check box next to the name of the security policy you would like to audit.
    Security Policy which has been choosen in this example is named: ``asm-lab3``
 
-3. Click *More* and select *Policy Analyzer*
+4. Click *More* and select *Policy Analyzer*
 
 .. image:: ../pictures/module2/img_module2_lab1_1.png
   :align: center
@@ -55,9 +57,9 @@ Once you select a policy, click	*Analyze*.
   :align: center
   :scale: 40%
 
-4. You have now generated a security policy audit, which will allow you to asses the current status of the policy's application protection capabilities.
+5. You have now generated a security policy audit, which will allow you to asses the current status of the policy's application protection capabilities.
 
-5. If you want to save a local copy of the generated security policy audit file, click *Export* to download a CSV formated file containing the information of the audit.
+6. If you want to save a local copy of the generated security policy audit file, click *Export* to download a CSV formated file containing the information of the audit.
 
 .. image:: ../pictures/module2/img_module2_lab1_4.png
   :align: center

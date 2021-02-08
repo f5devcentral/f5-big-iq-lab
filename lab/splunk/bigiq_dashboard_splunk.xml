@@ -3,7 +3,7 @@
   <description>Analytics Reporting and SNMP Event export to external source</description>
   <row>
     <panel>
-      <title>Application Service conference-site41waf: Number of transactions - Check lab guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/class3/module4/lab3.html</title>
+      <title>Application Service conference-site41waf: Number of transactions</title>
       <chart>
         <title>The average number of transactions per second that reached the server and got response, hence have relevant information of server latency</title>
         <search>
@@ -52,7 +52,7 @@
     <panel>
       <title>BIG-IQ Events</title>
       <event>
-        <title>SNMP Traps - Check Lab Guide: https://clouddocs.f5.com/training/community/big-iq-cloud-edition/html/class4/module1/lab2.html</title>
+        <title>SNMP Traps</title>
         <search>
           <query>source="/var/log/snmp/snmp-traps.log" AND OID</query>
           <earliest>-24h@h</earliest>
