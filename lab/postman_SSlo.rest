@@ -2,7 +2,7 @@
 @bigiq= 10.1.1.4
 @contentType = application/json
 @f5_token = {{login.response.body.token.token}}
-
+@status_id = {{status.response.body.id}}
 
 ### BIG-IQ Token
 # @name login
@@ -16,6 +16,7 @@ content-type: {{contentType}}
 }
 
 ### SSlo L3 Outbound
+# @name status
 
 POST https://{{bigiq}}/mgmt/cm/sslo/api/topology HTTP/1.1
 content-type: {{contentType}}
@@ -118,7 +119,7 @@ X-F5-Auth-Token: {{f5_token}}
 
 ### Check status
 
-GET https://{{bigiq}}/mgmt/cm/sslo/tasks/api/6eeb08c9-e4a5-4f92-90e0-88b8cea681bc HTTP/1.1
+GET https://{{bigiq}}/mgmt/cm/sslo/tasks/api/{{status_id}} HTTP/1.1
 content-type: {{contentType}}
 X-F5-Auth-Token: {{f5_token}}
 
