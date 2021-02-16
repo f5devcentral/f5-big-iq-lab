@@ -24,7 +24,7 @@ for **BOS-vBIGIP01.termmarc.com** and **BOS-vBIGIP02.termmarc.com** under Device
   :align: center
 
 2. Check if the **Access** service is Active  
-under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
+under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 .. image:: ../pictures/module1/lab-1-2.png
   :scale: 60%

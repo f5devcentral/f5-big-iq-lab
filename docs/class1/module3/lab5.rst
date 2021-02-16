@@ -25,7 +25,7 @@ for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 
 3. Check if the **Network Security** service is Active 
-under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
+under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 
 AS3 application service deployment (Paula)

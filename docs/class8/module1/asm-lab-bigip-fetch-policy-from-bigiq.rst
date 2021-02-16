@@ -22,7 +22,7 @@ Prerequisites
 for **SEA-vBIGIP01.termmarc.com** under Devices > BIG-IP DEVICES.
 
 2. Check if the **Web Application Security** service is Active 
-under System > BIOG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
+under System > BIG-IQ DATA COLLECTION > BIG-IQ Data Collection Devices.
 
 ASM Policy creation (Larry)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -77,7 +77,7 @@ tailored to your custom needs.
         - JOSE header: ``eyJhbGciOiJkaXIiLCJlbmMiOiJub25lIn0``
 - enforcementMode: ``blocking``
 
-.. note:: In order to get the value of the Ciphertext, we convert the SSL key password (``purple123``) using https://www.url-encode-decode.com/base64-encode-decode/
+.. note:: In order to get the value of the Ciphertext, we convert the admin password (``purple123``) using https://www.url-encode-decode.com/base64-encode-decode/
           More details on the AS3 Certificate class `here <https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/refguide/schema-reference.html#certificate-passphrase>`_.
 
 .. image:: ../pictures/asm-as3/lab-6-5.png
