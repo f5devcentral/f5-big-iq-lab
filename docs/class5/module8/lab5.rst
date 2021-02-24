@@ -13,7 +13,7 @@ This lab will be using following F5 Ansible Galaxy roles:
     - `bigiq_move_app_dashboard`_ **ansible Role**: Move Application Service(s) in BIG-IQ Application Dashboard.
     
 .. _bigiq_create_ve: https://galaxy.ansible.com/f5devcentral/bigiq_create_ve
-.. _ansible.builtin.uri: https://docs.ansible.com/ansible/latest/modules/uri_module.html
+.. _ansible.builtin.uri: https://docs.ansible.com/ansible/latest/collections/ansible/builtin/uri_module.html
 .. _bigiq_pinning_deploy_objects: https://galaxy.ansible.com/f5devcentral/bigiq_pinning_deploy_objects
 .. _atc_deploy: https://galaxy.ansible.com/f5devcentral/atc_deploy
 .. _bigiq_move_app_dashboard: https://galaxy.ansible.com/f5devcentral/bigiq_move_app_dashboard
