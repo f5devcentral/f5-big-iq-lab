@@ -168,6 +168,9 @@ if [[  $currentuser == "root" ]]; then
     #echo -e "ASM Policy Validator\n"
     #docker run --restart=unless-stopped --name=app-sec -dit -p 446:8443 artioml/f5-app-sec
 
+    # OWASP Zap Attack Proxy (ZAP) https://www.zaproxy.org/docs/docker/webswing/
+    docker run --restart=always -dit --name=zap -p 7090:8080 -i owasp/zap2docker-stable zap-webswing.sh
+
     ### ASM Brute Force
     echo -e "Brute Force\n"
     docker build $home/traffic-scripts/asm-brute-force -t asm-brute-force

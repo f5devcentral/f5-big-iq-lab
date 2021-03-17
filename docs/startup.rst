@@ -239,7 +239,7 @@ User Roles
 Traffic Generation
 ------------------
 
-The Ubuntu Jumphost in the lab environment has multiple cron jobs that are generating traffic that populates the Monitoring tab 
+The Ubuntu Jumphost in the lab environment has multiple cron jobs (run ``crontab -l`` to see all scripts used) that are generating traffic that populates the Monitoring tab 
 and Application dashboard in BIG-IQ. Note you can also use `locust.io`_  to generate HTTP traffic toward a specific virtual IP address.
 
 .. _locust.io: ./class3/module1/module1.html#traffic-generation-with-locus-io
@@ -321,35 +321,38 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 
 **Other services available on the Lamp Server:**
 
-+------------------------+------------------------------------------+
-| Google Chrome          | - ip:port 10.1.1.5:6080 https            |
-+------------------------+------------------------------------------+
-| XRDP                   | - ip:port 10.1.1.5:3389                  |
-+------------------------+------------------------------------------+
-| `Visual Studio Code`_  | - ip:port 10.1.1.5:7001 http             |
-+------------------------+------------------------------------------+
-| `AWX (Ansible Tower)`_ | - ip:port 10.1.1.5:9001 http             |
-+------------------------+------------------------------------------+
-| `GitLab`_              | - ip:port 10.1.1.5:7002 http  7022 ssh   |
-|                        | - to be started manually following       |
-|                        |   instructions in the lab                |
-+------------------------+------------------------------------------+
-| `Splunk`_              | - ip:port 10.1.1.5:8000 https            |
-|                        | - HTTP Event Data Collector port 8088    |
-+------------------------+------------------------------------------+
-| `Locust`_              | - ip:port 10.1.1.5:7089 http             |
-+------------------------+------------------------------------------+
-| Samba                  | - ip:port 10.1.1.5:445                   |
-|                        | - User: f5student/purple123              |
-|                        | - Domain: ``WORKGROUP``                  |
-|                        | - Storage Path: ``//10.1.1.5/dcdbackup`` |
-+------------------------+------------------------------------------+
++---------------------------+------------------------------------------+
+| Google Chrome             | - ip:port 10.1.1.5:6080 https            |
++---------------------------+------------------------------------------+
+| XRDP                      | - ip:port 10.1.1.5:3389                  |
++---------------------------+------------------------------------------+
+| `Visual Studio Code`_     | - ip:port 10.1.1.5:7001 http             |
++---------------------------+------------------------------------------+
+| `AWX (Ansible Tower)`_    | - ip:port 10.1.1.5:9001 http             |
++---------------------------+------------------------------------------+
+| `GitLab`_                 | - ip:port 10.1.1.5:7002 http  7022 ssh   |
+|                           | - to be started manually following       |
+|                           |   instructions in the lab                |
++---------------------------+------------------------------------------+
+| `Splunk`_                 | - ip:port 10.1.1.5:8000 https            |
+|                           | - HTTP Event Data Collector port 8088    |
++---------------------------+------------------------------------------+
+| `Locust`_                 | - ip:port 10.1.1.5:7089 http             |
++---------------------------+------------------------------------------+
+| `OWASP Zap Attack Proxy`_ | - ip:port 10.1.1.5:7090/zap http         |
++---------------------------+------------------------------------------+
+| Samba                     | - ip:port 10.1.1.5:445                   |
+|                           | - User: f5student/purple123              |
+|                           | - Domain: ``WORKGROUP``                  |
+|                           | - Storage Path: ``//10.1.1.5/dcdbackup`` |
++---------------------------+------------------------------------------+
 
 .. _AWX (Ansible Tower): https://www.ansible.com/products/awx-project/faq
 .. _Splunk: https://www.splunk.com
 .. _Visual Studio Code: https://github.com/cdr/code-server
 .. _GitLab: https://gitlab.com
 .. _Locust: https://locust.io
+.. _OWASP Zap Attack Proxy: https://www.zaproxy.org/docs/docker/webswing/
 
 Once you are ready to start your BIG-IQ journey, go back to the `BIG-IQ Test Drive Labs`_ and start with the first Hands-On Lab.
 

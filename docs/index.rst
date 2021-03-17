@@ -20,7 +20,13 @@ that are not currently covered in this lab.
 This lab environment is available for internal F5 users. Please reach out to your local **F5 Sales representative** 
 if you are interested in running one of the labs or to schedule a live demo.
 
-New to BIG-IQ? Get started by watching the video below.
+New to BIG-IQ? Get started by watching the videos below.
+
+.. raw:: html
+
+   <iframe width="560" height="315" src="https://www.youtube.com/embed/QAPeSOd7O40" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+|
 
 .. raw:: html
 
