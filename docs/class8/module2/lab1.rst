@@ -323,7 +323,7 @@ BIG-IQ ASM Policy Analyzer API Documentation
 Beside using the Policy Analyzer via WebUI, an API is available in case you want to collect the result of the Policy analysation in a JSON Format.
 The API documentation is available on `F5 BIG-IQ API`_.
 
-.. _`F5 BIG-IQ API`: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
+.. _`F5 BIG-IQ API`: https://clouddocs.f5.com/products/big-iq/mgmt-api/v0.0/
 
 Some BIG-IQ ASM Policy Analyzer API examples have been put together for the Demo in``Visual Studio Code``.
 

@@ -1,14 +1,16 @@
-Module 3: HTTP Traffic Capture Analytics in BIG-IQ
-==================================================
-``Ça arrive bientôt זה בקרוב Viene pronto すぐに来る Sta arrivando presto قادم قريبا Coming soon 即將到來``
+Module 3: Analytics Reporting
+=============================
 
-Are you interested to see a lab on this topic? `Open an issue on GitHub`_
+BIG-IQ offers new ways to export the statistical data that is stored on the BIG-IQ.
 
-.. _Open an issue on GitHub: https://github.com/f5devcentral/f5-big-iq-lab/issues
+BIG-IQ now supports exporting chart data from Analytics dashboards to PDF. You can convert either all data from a selected time period, 
+or filtered data within an Analytics screen.
 
-.. image:: ../../pictures/under-construction-03.jpg
-  :align: center
-  :scale: 15%
+BIG-IQ now provides Analytics querying capabilities from the REST-API. This allows you to access application or 
+environment data that is specific to queried metrics, devices, device groups, and resource groups over a selected period of time.
 
-.. note:: Traffic Capture is turned on Application ``Security``, Application Service ``security_site16_boston``.
+.. toctree::
+   :maxdepth: 1
+   :glob:
 
+   lab*

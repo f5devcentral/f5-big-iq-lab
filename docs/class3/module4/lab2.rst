@@ -1,41 +1,75 @@
-Lab 4.2: Generate Reports in CSV using the API 
-----------------------------------------------
+Lab 4.2: Troubleshooting latency and packet loss
+------------------------------------------------
 
-.. note:: Estimated time to complete: **5 minutes**
+.. note:: Estimated time to complete: **15 minutes**
+
+In this lab, we are going to identify latency and packet loss issues happening on an application sitting behind the BIG-IP.
 
 .. include:: /accesslab.rst
 
 Tasks
 ^^^^^
-1. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
+1. Login as **paula** on BIG-IQ. Select the application service ``backend_site20tcp`` located under ``IT_apps`` application.
 
-2. Open a terminal and execute the following script to export the analytics of ``site16_boston`` into a CSV::
+Notice the alerts raised. The server side RTT exceeded the critical threshold of 100ms. Since the traffic is sent in bursts
+you may not see an **Active Alert**. You can view the **Alert History** to see the last time the application exceeded the threshold.
 
-    cd f5-demo-bigiq-analytics-export-restapi
-    ./export_app_http_stats_csv_demo.sh /security/site16_boston/serviceMain -1h now 60 -1h now 60
-
-
-.. image:: ../pictures/module4/img_lab2_1.png
+.. image:: ../pictures/module5/img_module5_lab2_1.png
   :align: center
   :scale: 40%
 
-The `script`_ is getting the Analytics using BIG-IQ API and exports it to a JSON file.
-Then, the JSON output is converted to a CSV file using a json2csv tool.
 
-.. _script: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-demo-bigiq-analytics-export-restapi
 
-.. image:: ../pictures/module4/img_lab2_2.png
+2. Look for the details of the alert. A delay of ~300ms between the F5 BIG-IP and the application server can be observed.
+
+.. image:: ../pictures/module5/img_module5_lab2_2.png
   :align: center
   :scale: 40%
 
-3. Navigate in the ``f5-demo-bigiq-analytics-export-restapi`` folder and open the ``output.csv`` file.
+|
 
-.. image:: ../pictures/module4/img_lab2_3.png
+3. Now, let's look at the Server Side Goodput, especially at the *Connection Duration* under **Remote Host IP Addresses** dimension.
+
+The connection duration metric isn't showing by default in the dimension, you will need to right click, select **Columns** and add it. 
+Notice one of the pool member is almost double the duration of the other.
+
+.. image:: ../pictures/module5/img_module5_lab2_3.png
   :align: center
   :scale: 40%
 
-The data exported correspond to the HTTP Transactions for ``site16_boston`` application services.
+|
 
-.. image:: ../pictures/module4/img_lab2_4.png
+.. note:: We have added 300ms delay to an NGINX instance running in a docker container acting as an application server in this lab.
+
+4. We are now going to remove the healthy node and only keep the NGINX node. Navigate to the Configuration tab in the application dashboard
+   and delete the node ``10.1.20.115:8081``. Then click **Save**.
+
+.. image:: ../pictures/module5/img_module5_lab2_4.png
   :align: center
   :scale: 40%
+
+|
+
+
+5. From the lab environment, launch a remote desktop session to have access to the Ubuntu Desktop. 
+
+Open a terminal and run the following commands:
+
+.. code::
+
+    f5student@ip-10-1-1-5:~$ docker exec nginx tc qdisc change dev eth0 root netem loss 70%
+
+    f5student@ip-10-1-1-5:~$ curl http://10.1.10.124
+    curl: (56) Recv failure: Connection reset by peer
+
+You may run the curl command multiple times. Here we removed the delay and add a packet loss of 70%.
+
+6. Back to BIG-IQ Application dashboard, navigate to the **Server Side Packets** and look a the packets loss showing on the dashboard.
+This completes the TCP analytics lab.
+
+
+.. image:: ../pictures/module5/img_module5_lab2_5.png
+  :align: center
+  :scale: 40%
+
+|

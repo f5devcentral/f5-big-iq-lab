@@ -1,4 +1,4 @@
-Lab 4.3: BIG-IQ Analytics and Splunk
+Lab 3.3: BIG-IQ Analytics and Splunk
 ------------------------------------
 
 .. note:: Estimated time to complete: **5 minutes**

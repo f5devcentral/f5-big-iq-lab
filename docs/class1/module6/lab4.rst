@@ -11,6 +11,8 @@ F5 highly recommend to use AS3 Application Templates over the original Applicati
 If you have existing application services deployed with the original Application Templates (*BIG-IQ Service Catalog*), 
 you could either translate and re-deploy it using AS3 or convert it to an Legacy Application Service on BIG-IQ.
 
+More information is also available on the following knowledge article https://support.f5.com/csp/article/K87924313.
+
 In this lab, we are going to convert the BIG-IQ Service Catalog Application Service called ``site36.example.com`` under ``IT Apps`` to a Legacy Application Service.
 
 .. include:: /accesslab.rst

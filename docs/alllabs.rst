@@ -38,7 +38,7 @@ Resources
 
 .. _BIG-IQ Centralized Management for Complete Visibility and Control: https://www.f5.com/products/automation-and-orchestration/big-iq
 .. _BIG-IQ Knowledge Center: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management
-.. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/latest/
+.. _F5 BIG-IQ API: https://clouddocs.f5.com/products/big-iq/mgmt-api/v0.0/
 .. _Light Product Demo: https://www.f5.com/products/automation-and-orchestration/big-iq/app-visibility-demo
 .. _Troubleshoot Your Application Health and Performance with F5: https://interact.f5.com/troubleshooting-your-application-health-webinar.html
 .. _AS3 Documentation: https://clouddocs.f5.com/products/extensions/f5-appsvcs-extension/latest/

@@ -1,4 +1,4 @@
-Lab 4.4: BIG-IQ Scheduled PDF Report (new 8.0)
+Lab 3.4: BIG-IQ Scheduled PDF Report (new 8.0)
 ----------------------------------------------
 
 .. note:: Estimated time to complete: **10 minutes**

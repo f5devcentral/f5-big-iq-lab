@@ -16,9 +16,11 @@ There are three steps to managing software images for devices:
     - Managed Device Upgrade - use this process for installing a software image on managed BIG-IP devices running version 11.5.0 or later.
     - Legacy Device Upgrade - use this process for installing a software image on BIG-IP devices running versions 10.2.4 to 11.4.1.
 
-Official documentation about BIG-IP Software Upgrades can be found on the `F5 Knowledge Center`_.
+Official documentation about BIG-IP Software Upgrades can be found on the `F5 Knowledge Center`_ and also `K14812626`.
 
-.. _F5 Knowledge Center: https://techdocs.f5.com/en-us/bigiq-7-1-0/managing-big-ip-devices-from-big-iq/big-ip-software-upgrades.html
+.. _F5 Knowledge Center: https://techdocs.f5.com/en-us/bigiq-8-0-0/managing-big-ip-devices-from-big-iq/big-ip-software-upgrades.html
+
+.. _K14812626: https://support.f5.com/csp/article/K14812626
 
 .. raw:: html
 
@@ -70,6 +72,8 @@ Click on **Add/Remove Devices**
 .. image:: ./media/lab-7-5.png
   :scale: 40%
   :align: center
+
+.. note:: If the required iso image already exists in the /shared/images directory of the target BIG-IP system, BIG-IQ skips the transfer of the iso file and proceeds with the next step.
 
 8. Once the image transfer is completed, the next step is to take a ucs backup of the device. Click on **Back Up Devices**.
 
