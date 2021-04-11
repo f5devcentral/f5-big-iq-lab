@@ -19,11 +19,9 @@ Also:
 
 - `F5 Newsroom Article`_
 - `DevCentral Technical Blog Post`_
-- `F5 Venafi Solution for Enterprise Key and Certificate Management without AS3`_
 
 .. _`F5 Newsroom Article`: https://www.f5.com/company/blog/machine-identity-protection-is-a-critical-part-of-modern-app-dev
 .. _`DevCentral Technical Blog Post`: https://devcentral.f5.com/s/articles/F5-Venafi-Solution-for-enterprise-Key-and-Certificate-management
-.. _`F5 Venafi Solution for Enterprise Key and Certificate Management without AS3`: https://www.f5.com/services/resources/use-cases/automating-protection--machine-identities--f5-and-venafi
 
 .. raw:: html
 
