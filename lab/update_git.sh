@@ -106,7 +106,7 @@ if [[  $currentuser == "root" ]]; then
 
     # Chrome https://github.com/TekFik/chrome-web
     docker build $home/chrome-web -t chrome-web
-    docker run --restart=always -dit --name=chrome-web --privileged -p 6080:3000 chrome-web
+    docker run --restart=always -dit --name=chrome-web -v /etc/hosts:/etc/hosts --privileged -p 6080:3000 chrome-web
 
     ### Visual Code https://github.com/cdr/code-server
     docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server

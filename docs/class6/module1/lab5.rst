@@ -242,7 +242,7 @@ Repeat the same with the SSL Key:
 
 4. Deploy the SSL objects to the BIG-IP.
 
-Navigate **Deployment > Evaluate & Deploy > Local Traffic & Networks**.
+Navigate **Deployment > Evaluate & Deploy > Local Traffic & Network**.
 
 Create a new deployment:
 

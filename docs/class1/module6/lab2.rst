@@ -99,7 +99,7 @@ Wait for the deployment to complete.
 
 6. You can test the HTTP application service by opening Google Chrome browser on the **Ubuntu Jumphost**.
 
-Open Chrome or Firefox and navigate on the website ``http://site34.example.com``.
+Navigate on the website ``http://site34.example.com``.
 
 The virtual IP address ``10.1.10.134`` is configured behind ``site34.example.com`` FQDN.
 

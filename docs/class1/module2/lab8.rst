@@ -25,7 +25,7 @@ Use ``admin/purple123`` to authenticate.
   :scale: 60%
   :align: center
 
-2. Navigate to the **Templates** page and review ``(Class1-Mod2-Lab8) New_AS3_App``
+2. Navigate to the **Templates** page and review ``New_AS3_App``
 
 .. image:: ../pictures/module2/lab-8-3.png
   :scale: 60%
@@ -41,7 +41,7 @@ You can go on the `GitHub repository`_ and check review the playbooks and Jinja2
 
 .. _GitHub repository: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/f5-ansible-bigiq-as3-demo/tower
 
-3. Back on the **Templates** page, next to the *(Class1-Mod2-Lab8) New_AS3_App* template, click on the *Start a job using this template*.
+3. Back on the **Templates** page, next to the *New_AS3_App* template, click on the *Start a job using this template*.
 
 .. image:: ../pictures/module2/lab-8-5.png
   :scale: 60%
@@ -111,7 +111,7 @@ Application Service Deletion
 The application owner has informed David that the application is no longer needed and needs to be deleted. David will use an AS3 declaration and BIG-IQ to remove the previously added application from the BIG-IPs. 
 
 1. Return to *AWX (Ansible Tower)* and if needed log back in as **david** *(david\\david)*  
-   Navigate to the **Templates** page and click on *(Agility 2020) Delete_AS3_App*
+   Navigate to the **Templates** page and click on *Delete_AS3_App*
 
 2. Click on the *Launch* button to start a job using this
    template*. 

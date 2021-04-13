@@ -27,7 +27,7 @@ sys.path.insert(0, os.path.abspath('.'))
 import f5_sphinx_theme
 
 year = time.strftime("%Y")
-eventname = "Agility %s Hands-on Lab Guide" % (year)
+eventname = "%s Hands-on Lab Guide" % (year)
 
 rst_prolog = """
 .. |classname| replace:: %s

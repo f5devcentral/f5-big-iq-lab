@@ -88,7 +88,7 @@ The Health area indicates the application's health status.
 - The Alert History area lists the application's five most recent alerts.
 - The Active Alerts area lists the application's ongoing and most severe alerts.
 
-6. Click the icon to view, or edit, the application health alert rules.
+6. Click the Health icon to view, or edit, the application health alert rules.
 
 .. image:: ../pictures/module1/img_module1_lab1_4.png
   :align: center

@@ -38,7 +38,7 @@ Tasks
 
 6. Deploy the SSL objects to the BIG-IP.
 
-Navigate **Deployment > Evaluate & Deploy > Local Traffic & Networks**.
+Navigate **Deployment > Evaluate & Deploy > Local Traffic & Network**.
 
 Create a new deployment:
 

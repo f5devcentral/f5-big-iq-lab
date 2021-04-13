@@ -18,7 +18,7 @@ Add ``Lab_Module6 Manager`` Role as seen below.
   :scale: 40%
   :align: center
 
-Next add the ``legacy-app-service`` Role and then Click **Save & Close**.
+Next add the ``legacy-app-service Manager`` Role and then Click **Save & Close**.
 
 .. image:: ../pictures/module6/lab-3-3.png
   :scale: 40%
@@ -31,7 +31,7 @@ Next add the ``legacy-app-service`` Role and then Click **Save & Close**.
   :scale: 40%
   :align: center
 
-4. Select ``LAB_module6`` Application, then ``legacy-app-service`` Application Service.
+4. Select ``LAB_module6`` Application, then ``legacy-app-service Manager`` Application Service.
 
 .. image:: ../pictures/module6/lab-3-5.png
   :scale: 40%

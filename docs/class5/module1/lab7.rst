@@ -35,21 +35,22 @@ Tasks
 
 1. Login to BIG-IQ as **david**.
 
-2. Navigate to the **Device** tab. Look at the device list, specifically at the BIG-IP versions. In this lab, we are going to upgrade the **SEA-vBIGIP01.termmarc.com** BIG-IP to the latest 14.1 version.
+2. Navigate to the **Device** tab. Look at the device list, specifically at the BIG-IP versions. 
+   In this lab, we are going to upgrade the **SEA-vBIGIP01.termmarc.com** BIG-IP to the latest **15.1 version**.
 
 .. image:: ./media/lab-7-0.png
   :scale: 40%
   :align: center
 
-3. Navigate under **Software Management > Software Images**. Select the BIG-IP 14.1 image and click on **Manage Device Install**.
+3. Navigate under **Software Management > Software Images**. Select the BIG-IP **15.1** image and click on **Manage Device Install**.
 
 .. image:: ./media/lab-7-1.png
   :scale: 40%
   :align: center
 
-4. Type a name for the task (e.g. ``seattle-upgrade``) and select the desired option for the BIG-IP upgrade.
+4. Type a name for the task (e.g. ``seattle-upgrade``) and select the desired option for the BIG-IP upgrade (e.g. check the *Perform backup box*).
 
-Click on **Add/Remove Devices**
+Click on **Add/Remove Devices**.
 
 .. image:: ./media/lab-7-2.png
   :scale: 40%

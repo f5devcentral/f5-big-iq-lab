@@ -94,66 +94,9 @@
     }, 
     "asset_type": "credential", 
     "name": "Tower_Creds"
-  }, 
+  },
   {
-    "name": "(Agility 2020) Delete_AS3_App", 
-    "ask_credential_on_launch": true, 
-    "asset_relation": {
-      "notification_templates_error": [], 
-      "notification_templates_success": [], 
-      "roles": [
-        {
-          "team": [], 
-          "name": "Admin", 
-          "user": [
-            "admin"
-          ]
-        }, 
-        {
-          "team": [], 
-          "name": "Execute", 
-          "user": [
-            "david"
-          ]
-        }, 
-        {
-          "team": [], 
-          "name": "Read", 
-          "user": []
-        }
-      ], 
-      "labels": [], 
-      "schedules": [], 
-      "credentials": [
-        "Tower_Creds"
-      ], 
-      "survey_spec": {
-        "spec": [
-          {
-            "required": true, 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_name": "Tenant Name", 
-            "choices": "", 
-            "new_question": true, 
-            "question_description": "Partition on BIG-IP", 
-            "variable": "tenant_name", 
-            "type": "text"
-          }
-        ], 
-        "description": "", 
-        "name": ""
-      }
-    }, 
-    "project": "BIG-IQ-LAB", 
-    "inventory": "F5Env", 
-    "asset_type": "job_template", 
-    "survey_enabled": true, 
-    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_delete.yml"
-  }, 
-  {
-    "name": "(Class1-Mod2-Lab8) Delete_AS3_App", 
+    "name": "Delete_AS3_App", 
     "ask_credential_on_launch": true, 
     "asset_relation": {
       "notification_templates_error": [], 
@@ -672,126 +615,9 @@
     "asset_type": "job_template", 
     "survey_enabled": true, 
     "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/delete_offboard_bigip_gcp_managed_do.yml"
-  }, 
+  },
   {
-    "name": "(Agility 2020) New_AS3_App", 
-    "ask_credential_on_launch": true, 
-    "asset_relation": {
-      "notification_templates_error": [], 
-      "notification_templates_success": [], 
-      "roles": [
-        {
-          "team": [], 
-          "name": "Admin", 
-          "user": [
-            "admin"
-          ]
-        }, 
-        {
-          "team": [], 
-          "name": "Execute", 
-          "user": [
-            "david"
-          ]
-        }, 
-        {
-          "team": [], 
-          "name": "Read", 
-          "user": []
-        }
-      ], 
-      "labels": [], 
-      "schedules": [], 
-      "credentials": [
-        "Tower_Creds"
-      ], 
-      "survey_spec": {
-        "spec": [
-          {
-            "required": true, 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_name": "Tenant Name", 
-            "choices": "", 
-            "new_question": true, 
-            "question_description": "Partition on BIG-IP", 
-            "variable": "tenant_name", 
-            "type": "text"
-          }, 
-          {
-            "required": true, 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_name": "App Service Name", 
-            "choices": "", 
-            "new_question": true, 
-            "question_description": "", 
-            "variable": "app_name", 
-            "type": "text"
-          }, 
-          {
-            "required": true, 
-            "min": null, 
-            "default": "http_app", 
-            "max": null, 
-            "question_name": "App Type", 
-            "choices": "http_app\nwaf_app", 
-            "new_question": true, 
-            "question_description": "", 
-            "variable": "app_type", 
-            "type": "multiplechoice"
-          }, 
-          {
-            "required": true, 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_name": "Service IP", 
-            "choices": "", 
-            "new_question": true, 
-            "question_description": "", 
-            "variable": "vsip", 
-            "type": "text"
-          }, 
-          {
-            "required": true, 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_name": "Node 1", 
-            "choices": "", 
-            "new_question": true, 
-            "question_description": "", 
-            "variable": "node1", 
-            "type": "text"
-          }, 
-          {
-            "required": true, 
-            "min": 0, 
-            "default": "", 
-            "max": 1024, 
-            "question_name": "Node 2", 
-            "choices": "", 
-            "new_question": true, 
-            "question_description": "", 
-            "variable": "node2", 
-            "type": "text"
-          }
-        ], 
-        "description": "", 
-        "name": ""
-      }
-    }, 
-    "project": "BIG-IQ-LAB", 
-    "inventory": "F5Env", 
-    "asset_type": "job_template", 
-    "survey_enabled": true, 
-    "playbook": "lab/f5-ansible-bigiq-as3-demo/tower/app_create.yml"
-  }, 
-  {
-    "name": "(Class1-Mod2-Lab8) New_AS3_App", 
+    "name": "New_AS3_App", 
     "ask_credential_on_launch": true, 
     "asset_relation": {
       "notification_templates_error": [], 
