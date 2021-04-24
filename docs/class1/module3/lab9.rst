@@ -1,15 +1,16 @@
 Lab 3.9: Build custom AS3 template with multiple monitors, iRule and Data Group
 -------------------------------------------------------------------------------
 
-.. note:: Estimated time to complete: **20 minutes**
+.. note:: Estimated time to complete: **15 minutes**
 
-In this lab, we are going to build a custom AS3 template using BIG-IQ template User Interface (UI). 
-To use a real life example, we are going to build a template to deploy an F5 application service for one 
-of the popular `Epic https://www.epic.com/about`_ application, the BCA (Business Continuity Access).
+In this lab, we are going to use community AS3 template available in the `community folder`_ of the BIG-IQ AS3 template GitHub repository.
+We are going to import and use templates to deploy an F5 application service for one of the popular `Epic`_ application, the BCA (Business Continuity Access).
+
+.. _Epic: https://www.epic.com/about
 
 Here is the details of BIG-IP configuration for BCA:
 
-The BCA will require the following components in the F5 BIG-IP:
+The BCA requires the following components in the F5 BIG-IP:
 
 - Server nodes
 - Three health monitors
@@ -20,8 +21,12 @@ The BCA will require the following components in the F5 BIG-IP:
 - TCP Profile
 - Two virtual servers on port 21 and 443 ﴾with the same IP address﴿ to collect the pieces together
 
-Because we are not going to use AS3 to define the BCA application services, we do not need to create each of those objects individually.
-Indeed, we will create appropriate templates to define the application services, then use those templates to deploy the configuration on the BIG-IP.
+Thanks to AS3 declarative interface which will use to define the BCA application services, we do not need to create each of those objects individually on the BIG-IP.
+Instead, we will use appropriate templates defining the application services, then use those templates to deploy the configuration on the BIG-IP.
+
+More information about AS3 templates available in the `product documentation`_.
+
+.. _product documentation: https://techdocs.f5.com/en-us/bigiq-8-0-0/monitoring-managing-applications-using-big-iq/deploy-multiple-monitors.html
 
 .. warning:: You will need to use AS3.27 min to use those templates. More info on how to upgrade AS3 on BIG-IQ https://support.f5.com/csp/article/K54909607
 
@@ -38,13 +43,13 @@ Workflow
 Application Service Definition
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In our example use case (Epic BCA app service), the app service is composed of 2 virtual servers on 2 different ports serving different part of the BCA application.
+In our example use case (Epic BCA app services), the app service is composed of 2 virtual servers on 2 different ports serving different part of the BCA application.
 Because the 2 virtual servers are serving 2 different type of traffic, FTP and HTTPS, it makes sense to break the definition of this application services into 2 parts.
 
 1. The FTP application service will use the ``Service_TCP`` AS3 object which represents a virtual server for TCP traffic.
 2. The HTTPS application service in the BCA app context is using a ``Performance ﴾Layer 4﴿`` virtual server which translate into ``Service_L4`` AS3 object.
 
-As it is not possible to define 2 different type of application services within the same BIG-IQ AS3 template, we will create 2 different templates which will define both services.
+As it is not possible to define 2 different type of application services within the same BIG-IQ AS3 template, therefore, we are going to create 2 different templates which will define both services.
 
 The first template will be an FTP app service template using the following AS3 classes:
     - ``Service_TCP`` defines the virtual IP address
@@ -68,7 +73,7 @@ Import Community AS3 templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. Let's first import the AS3 templates AS3-EPIC-BCA-HTTPS-template-big-iq and AS3-EPIC-BCA-FTP-template-big-iq available in the `community folder`_.
-  Navigate under **Applications > Application Templates**, click **Import Templates** at the right top corner.
+   Navigate under **Applications > Application Templates**, click **Import Templates** at the right top corner.
 
 .. _community folder: https://github.com/f5devcentral/f5-big-iq/tree/7.1.0/f5-appsvcs-templates-big-iq/community
 
