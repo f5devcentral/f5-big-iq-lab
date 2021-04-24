@@ -107,6 +107,41 @@ to deploy the HTTP challenge file. This API needs to be developed and added into
         ]
     }
 
+Here how the "challenges" in POST body should look for DNS and TLS:
+
+**DNS**:
+
+.. code-block:: yaml
+
+    {
+      "username": "username",
+      "password": "password",
+      "challenges": [
+          {
+              "type": "dns",
+              "content": "<DNS text>"
+          }
+      ]
+    }
+
+**TLS**:
+
+.. code-block:: yaml
+
+    {
+        "username": "username",
+        "password": "password",
+        "challenges": [
+            {
+                "type": "tls",
+                "content": "<TLS challenge cert content>"
+                "keyContent": "<TLS challenge key content>",
+            }
+        ]
+    }
+
+
+
 .. note:: The use of an API to deploy automatically the HTTP challenge file to the web server is optional.
           The challenge file can be uploaded manually in the ``.well-known/acme-challenge`` folder in the web server.
 

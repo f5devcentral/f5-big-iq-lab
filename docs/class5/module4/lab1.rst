@@ -62,9 +62,17 @@ New Monitor
 
 Click “Save and Close”
 
-|image4|
+|image4a|
 
-2. Next, we will add the new monitor to the app2pool.
+2. Now, let's pin the new monitor to a device. Navigate to Pinning Policies under Local Traffic.
+
+Click on **BOS-vBIGIP01.termmarc.com** device.
+
+Look for the Monitor and add it to the device.
+
+|image4b|
+
+3. Next, we will add the new monitor to the app2pool.
 
 Add newly created Health Monitor **mon-https** to Pool “app2pool”
 
@@ -85,7 +93,7 @@ Click Save and Close to add the pool member, and then click on Save and Close ag
 Now that we made multiple changes, a new member to pool app1pool, a new mon-https monitor, the association of monitor to the app2pool, and a new member to app2pool. 
 
 
-3. Next, we will create evaluation and deploy one of these changes we just made above.
+4. Next, we will create evaluation and deploy one of these changes we just made above.
 
 Click on top Deployment tab, select under EVALUATE & DEPLOY: Local Traffic & Network
 
@@ -136,9 +144,11 @@ You can see that the change went in is only the addition of the pool member whic
 .. |image3| image:: media/image3.png
    :width: 6.22917in
    :height: 2.67708in
-.. |image4| image:: media/image4.png
+.. |image4a| image:: media/image4a.png
    :width: 6.48958in
    :height: 4.21875in
+.. |image4b| image:: media/image4b.png
+   :scale: 40%
 .. |image5| image:: media/image5.png
    :width: 6.50000in
    :height: 4.22917in

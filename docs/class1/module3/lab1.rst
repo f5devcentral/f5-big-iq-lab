@@ -25,7 +25,8 @@ through the following link: https://github.com/f5devcentral/f5-big-iq
 
 Import AS3 BIG-IQ templates
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-1. Select **Import Templates** at the right top corner.
+
+1. Navigate under **Applications > Application Templates**, click **Import Templates** at the right top corner.
 
 .. image:: ../pictures/module3/lab-1-2.png
   :scale: 60%

@@ -50,7 +50,7 @@ the naming conflict will have been removed.
 
 Official documentation about Silo feature can be found on the `BIG-IQ Knowledge Center`_.
 
-.. _`BIG-IQ Knowledge Center`: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management&version=7.1.0
+.. _`BIG-IQ Knowledge Center`: https://support.f5.com/csp/knowledge-center/software/BIG-IQ?module=BIG-IQ%20Centralized%20Management
 
 .. raw:: html
 
