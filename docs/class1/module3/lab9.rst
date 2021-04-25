@@ -56,8 +56,8 @@ The first template will be an FTP app service template using the following AS3 c
     - ``Pool`` defines the pool and pool members
     - ``Monitor`` defines the FTP Health Monitor
     - ``TCP_profile`` defines custom TCP attributes (e.g. disable Nagle's algorithm and Slow-start)
-    - ``Data_Group``defines which servers are allowed to access the BCA servers’ incoming directory using FTP
-    - ``iRule`` prevents access to the BCA servers’ incoming report directory using FTP unless the connection comes from an authorized server
+    - ``Data_Group`` defines which servers are allowed to access the BCA servers incoming directory using FTP
+    - ``iRule`` prevents access to the BCA servers incoming report directory using FTP unless the connection comes from an authorized server
     - ``Analytics_TCP_Profile`` defining the Analytic profile use to collect TCP metric on the service
 
 The second template will be an HTTPS/L4 app service template using the following AS3 classes:
@@ -193,7 +193,7 @@ Fill in information as below:
 +----------------------------------------------------------------------------------------------------+
 | Pool                                                                                               |
 +----------------------------------------------------------------------------------------------------+
-| * Members: ``10.1.20.32``, port ``80``                                                            |
+| * Members: ``10.1.20.32``, port ``80``                                                             |
 +----------------------------------------------------------------------------------------------------+
 
 .. image:: ../pictures/module3/lab-9-10.gif
