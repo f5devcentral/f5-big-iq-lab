@@ -1,5 +1,5 @@
-Lab 3.9: Build custom AS3 template with multiple monitors, iRule and Data Group
--------------------------------------------------------------------------------
+Lab 3.9: Create AS3 app services with multiple monitors, iRule and Data Group
+-----------------------------------------------------------------------------
 
 .. note:: Estimated time to complete: **15 minutes**
 
