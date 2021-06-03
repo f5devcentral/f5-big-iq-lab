@@ -129,14 +129,14 @@ The following table lists the virtual appliances in the lab along with their cre
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
 | System                  | Version | Description                                                                                  | Credentials                     |
 +=========================+=========+==============================================================================================+=================================+
-| BIG-IQ CM               | 8.0.0   | Using BIG-IQ, you can centrally manage your BIG-IP devices,                                  | - admin/purple123 *(local)*     |
+| BIG-IQ CM               | 8.0.0.1 | Using BIG-IQ, you can centrally manage your BIG-IP devices,                                  | - admin/purple123 *(local)*     |
 | 10.1.1.4                |         | performing operations such as backups, licensing, monitoring,                                | - david/david *(RadiusServer)*  |
 |                         |         | and configuration management.                                                                | - paula/paula *(RadiusServer)*  |
 |                         |         |                                                                                              | - paul/paul *(RadiusServer)*    |
 |                         |         |                                                                                              | - olivia/olivia *(RadiusServer)*|
 |                         |         |                                                                                              | - larry/larry *(RadiusServer)*  |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
-| BIG-IQ DCD              | 8.0.0   | A data collection device (**DCD**) is a specially provisioned                                | admin/purple123                 |
+| BIG-IQ DCD              | 8.0.0.1 | A data collection device (**DCD**) is a specially provisioned                                | admin/purple123                 |
 | 10.1.1.6                |         | BIG-IQ system that you use to manage and store alerts, events,                               |                                 |
 |                         |         | and statistical data from one or more BIG-IP systems.                                        |                                 |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
@@ -160,7 +160,7 @@ The following table lists the virtual appliances in the lab along with their cre
 | 10.1.1.17               |         | that provides enterprise-wide security, operational efficiency and                           |                                 |
 |                         |         | organizational compliance.                                                                   |                                 |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
-| LAMP Server             |         | - Radius, LDAP, TACAx (auth)                                                                 | f5student/purple123             |
+| LAMP Server             | 19.04   | - Radius, LDAP, TACAx (auth)                                                                 | f5student/purple123             |
 | 10.1.1.5                |         | - xRDP/Google Chrome direct access for User Remote Desktop                                   |                                 |
 |                         |         | - AWX/Ansible Tower                                                                          |                                 |
 |                         |         | - GitLab                                                                                     |                                 |

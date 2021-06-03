@@ -32,28 +32,6 @@ if [[  $answer == "Y" ]]; then
     curl -s https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python3 -
 fi
 
-read -p "Perform Ubuntu Upgrade from 18.04 (bionic) to 20.04 (focal)? (Y/N) (Default=N): " answer
-if [[  $answer == "Y" ]]; then
-    lsb_release -a
-    apt update
-    export DEBIAN_FRONTEND=noninteractive; apt dist-upgrade -y
-    apt install update-manager-core -y
-    sed -i 's/normal/lts/g' /etc/update-manager/release-upgrades
-    sed -i 's/bionic/focal/g' /etc/apt/sources.list
-    apt update
-    apt upgrade -y
-    apt update
-    export DEBIAN_FRONTEND=noninteractive; apt dist-upgrade -y
-    apt autoremove -y
-    apt clean
-
-    lsb_release -a
-    read -p "Reboot? (Y/N) (Default=N): " answer
-    if [[  $answer == "Y" ]]; then
-        shutdown -r now
-    fi
-fi
-
 read -p "Change Kernel to boot on old one 4.15 to mitigate speed issue? (Y/N) (Default=N): " answer
 if [[  $answer == "Y" ]]; then
     cp -p /etc/default/grub /etc/default/grub.orig

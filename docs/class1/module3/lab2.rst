@@ -12,7 +12,7 @@ HTTPS Service using AS3 through GUI
 
 2. Click **Create** to create an Application Service and look for the template ``AS3-F5-HTTPS-offload-lb-existing-cert-template-big-iq-default-v1 [AS3]``.
 
-.. warning:: If we want **paula** to deploy this template, we first need to have those templates assigned to her via an administrator. 
+.. warning:: You will notice that the template is not available. If we want **paula** to deploy this template, we first need to have those templates assigned to her via an administrator. 
 
 +------------------------------------------------------------------------------------------------------+
 | Application properties:                                                                              |
