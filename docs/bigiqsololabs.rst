@@ -1,5 +1,5 @@
-BIG-IQ Solo use cases 
-======================
+BIG-IQ Solo Use Cases 
+=====================
 
 Welcome
 -------
@@ -47,8 +47,7 @@ Understand the |location_link_core_feature|.
 
    <a href="https://techdocs.f5.com/en-us/bigiq-7-1-0/big-iq-core-concepts/understanding-core-features-of-big-iq-centralized-management.html#ch-understanding-core-features-of-big-iq-centralized-management" target="_blank">Core Features of BIG-IQ Centralized Management</a>
 
-.
-
+|
 
 Once you are ready to start your BIG-IQ journey, consult the |location_link_getstarted2| page, then start with *BIG-IQ Application Management and AS3* Hands-On Labs.
 
@@ -62,18 +61,16 @@ Once you are ready to start your BIG-IQ journey, consult the |location_link_gets
 Hands-On Labs
 -------------
 
-
 **BIG-IQ Certificate Management** *(Estimated time to complete: 20min)*
 - Keeping certificates compliant and up-to-date with integrated certificate management workflows
-
+   
 .. toctree::
     :maxdepth: 1
     :glob:
 
-   class6/module1/lab1
-   class6/module1/lab2
-   class6/module1/lab3
-
+    class6/module1/lab1
+    class6/module1/lab2
+    class6/module1/lab3
 
 **BIG-IQ Upgrade Managed Devices** *(Estimated time to complete: 20min)*
    
@@ -81,8 +78,7 @@ Hands-On Labs
     :maxdepth: 1
     :glob:
    
-   class5/module1/lab7
-
+    class5/module1/lab7
 
 **BIG-IQ Backups** *(Estimated time to complete: 30min)*
 
@@ -90,10 +86,8 @@ Hands-On Labs
     :maxdepth: 1
     :glob:
    
-   class5/module3/lab1
-   class5/module3/lab2
-
-
+    class5/module3/lab1
+    class5/module3/lab2
 
 **BIG-IQ Analytics** *(Estimated time to complete: 30 min)*
 
@@ -101,12 +95,11 @@ Hands-On Labs
     :maxdepth: 1
     :glob:
 
-   class3/module1/module1
-   class3/module2/lab1
-   class3/module2/lab2
-   class3/module2/lab3
-   class3/module4/lab1
-
+    class3/module1/module1
+    class3/module2/lab1
+    class3/module2/lab2
+    class3/module2/lab3
+    class3/module4/lab1
 
 
 Resources
