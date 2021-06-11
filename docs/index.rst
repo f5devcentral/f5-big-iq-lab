@@ -49,5 +49,6 @@ Hands-On Labs
    :glob:
 
    startup.rst
+   bigiqsololabs.rst
    bigiqtestdrive.rst
    alllabs.rst
