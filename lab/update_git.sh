@@ -53,7 +53,7 @@ if [[  $currentuser == "root" ]]; then
         rmdir $home/*
 
         echo "Install new scripts..."
-        git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch develop
+        git clone https://github.com/f5devcentral/f5-big-iq-lab.git --branch dev
         mv $home/f5-big-iq-lab/lab/* $home
 
         if [[  $env == "udf" ]]; then
