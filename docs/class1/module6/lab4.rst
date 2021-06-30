@@ -20,6 +20,8 @@ In this lab, we are going to convert the BIG-IQ Service Catalog Application Serv
 Tasks
 ^^^^^
 
+.. note:: If the site36.example.com application services is already converted to a Legacy App, choose an older version of the lab (prior 8.1) to do this lab
+
 1. Connect via ``SSH`` to the **BIG-IQ CM** and create the following python script which will be used later on::
 
     vi /home/admin/f5_remove_app_tags.py
