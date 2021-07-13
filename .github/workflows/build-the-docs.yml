@@ -1,0 +1,36 @@
+name: Build the Docs
+on:
+  push:
+    branches:
+      - dev
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      S3_DIR: automation-sandbox
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - run: ./scripts/docker-docs.sh
+
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1
+
+    - name: Copy files to s3 (Staging Clouddocs)
+      if:
+        github.ref == 'refs/heads/develop'
+      run: |
+        aws s3 sync --delete $PWD/docs/_build/html/ s3://clouddocs.f5networks.net/training/$S3_DIR/
+
+    - name: Copy files to s3 (Production Clouddocs)
+      if:
+        github.ref == 'refs/heads/main'
+      run: |
+        aws s3 sync --delete $PWD/docs/_build/html/ s3://clouddocs.f5.com/training/$S3_DIR/
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DIST_ID }} --paths /training/$S3_DIR
