@@ -8,7 +8,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      S3_DIR: automation-sandbox
+      S3_DIR: training/community/big-iq-cloud-edition/html
 
     steps:
     - uses: actions/checkout@v2
@@ -26,11 +26,11 @@ jobs:
       if:
         github.ref == 'refs/heads/develop'
       run: |
-        aws s3 sync --delete $PWD/docs/_build/html/ s3://clouddocs.f5networks.net/training/$S3_DIR/
+        aws s3 sync --delete $PWD/docs/_build/html/ s3://clouddocs.f5networks.net/$S3_DIR/
 
     - name: Copy files to s3 (Production Clouddocs)
       if:
         github.ref == 'refs/heads/main'
       run: |
-        aws s3 sync --delete $PWD/docs/_build/html/ s3://clouddocs.f5.com/training/$S3_DIR/
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DIST_ID }} --paths /training/$S3_DIR
+        aws s3 sync --delete $PWD/docs/_build/html/ s3://clouddocs.f5.com/$S3_DIR/
+        aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DIST_ID }} --paths /$S3_DIR
