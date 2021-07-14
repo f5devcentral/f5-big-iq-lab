@@ -264,7 +264,3 @@ texinfo_documents = [
      author, classname, classname,
      'Training'),
 ]
-
-
-
-{"mode":"full","isActive":false}
