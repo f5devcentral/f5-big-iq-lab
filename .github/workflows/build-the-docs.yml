@@ -33,4 +33,3 @@ jobs:
         github.ref == 'refs/heads/main'
       run: |
         aws s3 sync --delete $PWD/docs/_build/html/ s3://clouddocs.f5.com/$S3_DIR/
-        aws cloudfront create-invalidation --distribution-id ${{ secrets.AWS_DIST_ID }} --paths /$S3_DIR
