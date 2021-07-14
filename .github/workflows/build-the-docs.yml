@@ -13,7 +13,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - run: ./scripts/docker-docs.sh
+    - run: ./containthedocs-build.sh
 
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
