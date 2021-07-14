@@ -10,9 +10,6 @@ classname = "F5 BIG-IQ Centralized Management Lab"
 # OPTIONAL: The URL to the GitHub Repository for this class
 github_repo = "https://github.com/f5devcentral/f5-big-iq-lab"
 
-# OPTIONAL: Google Analytics
-# googleanalytics_id = 'UA-85156643-4'
-
 #
 # END CONFIG
 # ----------
@@ -69,34 +66,6 @@ if 'github_repo' in locals() and len(github_repo) > 0:
 else:
     rst_prolog += ".. |repoinfo| replace:: \ \n"
 
-on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
-on_snops = os.environ.get('SNOPS_ISALIVE', None) == 'True'
-
-print "on_rtd = %s" % on_rtd
-print "on_snops = %s" % on_snops
-
-branch_map = {
-    "stable":"master",
-    "latest":"master"
-}
-
-try:
-    if not on_rtd:
-        from git import Repo
-        repo = Repo("%s/../" % os.getcwd())
-        git_branch = repo.active_branch
-        git_branch_name = git_branch.name
-    else:
-        git_branch_name = os.environ.get('READTHEDOCS_VERSION', None)
-except:
-    git_branch_name = 'master'
-
-print "guessed git branch: %s" % git_branch_name
-
-if git_branch_name in branch_map:
-    git_branch_name = branch_map[git_branch_name]
-    print " remapped to git branch: %s" % git_branch_name
-
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -111,15 +80,11 @@ extensions = [
   'sphinx.ext.todo',
   'sphinx.ext.extlinks',
   'sphinx.ext.graphviz',
+  'sphinxcontrib.nwdiag',
   'sphinx_copybutton',
-  #'sphinxcontrib.nwdiag',
-  #'sphinxcontrib.blockdiag'
+  'sphinxcontrib.blockdiag'
   #'sphinx.ext.autosectionlabel'
 ]
-
-if 'googleanalytics_id' in locals() and len(googleanalytics_id) > 0:
-  extensions += ['sphinxcontrib.googleanalytics']
-  googleanalytics_enabled = True
 
 graphviz_output_format = 'svg'
 graphviz_font = 'DejaVu Sans:style=Book'
@@ -128,11 +93,6 @@ graphviz_dot_args = [
      "-Nfontname='%s'" % graphviz_font,
      "-Efontname='%s'" % graphviz_font
 ]
-
-html_context = {
-  "github_url":github_repo,
-  "github_branch":git_branch_name
-}
 
 diag_fontpath = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 diag_html_image_format = 'SVG'
@@ -159,10 +119,6 @@ if found:
   spelling_ignore_importable_modules=True
   spelling_filters=[]
 
-source_parsers = {
-   '.md': 'recommonmark.parser.CommonMarkParser',
-}
-
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -176,7 +132,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = classname
-copyright = u'2019, F5 Networks, Inc.'
+copyright = u'2021, F5 Networks, Inc.'
 author = u'F5 Networks, Inc.'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -212,21 +168,15 @@ todo_include_todos = True
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 
+html4_writer = True
 html_theme = 'f5_sphinx_theme'
 html_theme_path = f5_sphinx_theme.get_html_theme_path()
-#html_theme_path = ["_themes/"]
-html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html','relations.html']}
+html_sidebars = {'**': ['searchbox.html', 'localtoc.html', 'globaltoc.html']}
 html_theme_options = {
                         'site_name': 'Community Training Classes & Labs',
                         'next_prev_link': True
                      }
-html_last_updated_fmt = '%Y-%m-%d %I:%M:%S'
-
-def setup(app):
-    app.add_stylesheet('css/f5_agility_theme.css')
-
-if on_rtd:
-    templates_path = ['_templates']
+html_last_updated_fmt = '%Y-%m-%d %H:%M:%S'
 
 extlinks = {
     'issues':( ("%s/issues/%%s" % github_repo), 'issue ' )
@@ -317,3 +267,4 @@ texinfo_documents = [
 
 
 
+{"mode":"full","isActive":false}
