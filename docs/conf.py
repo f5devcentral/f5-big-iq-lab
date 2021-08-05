@@ -47,7 +47,7 @@ rst_prolog = """
 .. |icr| replace:: iControl REST API
 .. |ics| replace:: iControl SOAP API
 .. |f5|  replace:: F5 Networks
-.. |f5i| replace:: F5 Networks, Inc.
+.. |f5i| replace:: F5, Inc.
 .. |year| replace:: %s
 .. |github_repo| replace:: %s
 """ % (classname,
@@ -132,8 +132,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = classname
-copyright = u'2021, F5 Networks, Inc.'
-author = u'F5 Networks, Inc.'
+copyright = u'2021, F5, Inc.'
+author = u'F5, Inc.'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -241,7 +241,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, '%s.tex' % cleanname, u'%s Documentation' % classname,
-     u'F5 Networks, Inc.', 'manual', True),
+     u'F5, Inc.', 'manual', True),
 ]
 
 # -- Options for manual page output ---------------------------------------
