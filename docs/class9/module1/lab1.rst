@@ -41,20 +41,23 @@ Select both BIG-IPs and click on Configure. Wait until Stats shows **Enabled**.
 
 4. Create a simple HTTP Access Policy.
 
-4.1 Configuration > ACCESS > Acess Groups, select Boston, then go under AUTHENTICATION section, 
+4.1 Configuration > ACCESS > Access Groups, select Boston, then go under AUTHENTICATION section, 
 select RADIUS and create a Radius Shared object.
 
 Click Create.
 
 Name: ``RadiusLab``
+Server Connection: ``Direct``
 Server: ``10.1.1.5``
 Password: ``default``
+
+.. warning:: Make sure you select Direct for Server Connection
 
 .. image:: ../pictures/module1/lab-1-5.png
   :scale: 60%
   :align: center
 
-4.2 Configuration > ACCESS > Acess Groups, navigate under ACCESS POLICIES > Per-Session Policies.
+4.2 Configuration > ACCESS > Access Groups, navigate under ACCESS POLICIES > Per-Session Policies.
 
 Click Create.
 
@@ -116,7 +119,7 @@ Target Device(s): select both BOS BIG-IPs
   :scale: 60%
   :align: center
 
-Click Create.
+Click **Deploy**.
 
 AS3 Access template creation and application service deployement
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
