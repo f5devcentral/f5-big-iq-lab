@@ -237,6 +237,9 @@ if [[  $currentuser == "root" ]]; then
     echo -e "\nTacacs"
     docker run --restart=always --name=tacacs -dit -p 49:49 dchidell/docker-tacacs
 
+    # Syslog Server
+    #docker run --restart=always --name=syslog -dit -e SYSLOG_USERNAME=admin -e SYSLOG_PASSWORD=purple123 -p 8080:80 -p 514:514/udp pbertera/syslogserver
+
     ### Copy some custom files in hackazon docker for labs
     echo -e "\nApp Troubleshooting customization begin"
     docker cp f5-demo-app-troubleshooting/f5_browser_issue.php hackazon:/var/www/hackazon/web
