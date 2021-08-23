@@ -327,6 +327,6 @@ fi
 echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time: $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
 
 echo -e "\n\nErrors:"
-grep -i error update_git.log
+grep -i error $home/update_git.log
 echo
 exit 0
