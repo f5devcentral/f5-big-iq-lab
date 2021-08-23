@@ -109,13 +109,13 @@ if [[  $currentuser == "root" ]]; then
     docker run --restart=always -dit --name=chrome-web -v /etc/hosts:/etc/hosts --privileged -p 6080:3000 chrome-web
 
     ### Visual Code https://github.com/cdr/code-server
+    docker pull codercom/code-server:latest
     docker run --restart=always --name=code-server -d -p 7001:8080 -e PASSWORD="purple123" -v "$home:/home/coder/project" codercom/code-server:latest
     docker exec code-server sh -c "sudo apt-get update"
     docker exec code-server sh -c "sudo apt-get install -y python3 python3-dev python3-pip python3-jmespath"
     docker exec code-server sh -c "pip3 install ansible"
     
     # Download latest https://github.com/f5devcentral/vscode-f5
-    docker pull codercom/code-server:latest
     wget $(curl -s https://api.github.com/repos/f5devcentral/vscode-f5/releases/latest | grep browser_download_url | grep '.vsix' | head -n 1 | cut -d '"' -f 4)
     docker cp *.vsix code-server:/tmp
     docker exec code-server code-server --install-extension /tmp/$(ls *vsix)
@@ -327,6 +327,6 @@ fi
 echo -e "$(date +'%Y-%d-%m %H:%M'): elapsed time: $(($SECONDS / 3600))hrs $((($SECONDS / 60) % 60))min $(($SECONDS % 60))sec"
 
 echo -e "\n\nErrors:"
-grep -i error $home/update_git.log
+cat $home/update_git.log | grep -i error 
 echo
 exit 0
