@@ -4,7 +4,7 @@ from locust import HttpUser, task, between
 # https://docs.locust.io/en/stable/quickstart.html
 
 class QuickstartUser(HttpUser):
-    wait_time = between(1, 2)
+    wait_time = between(5, 10)
 
     @task
     def index_page(self):
@@ -12,14 +12,9 @@ class QuickstartUser(HttpUser):
         self.client.get("/contact")
         self.client.get("/wishlist")
         self.client.get("/faq")
-        self.client.get("/f5_capacity_issue.php")
-        self.client.get("/f5_browser_issue.php")
-
-    @task(3)
-    def view_item(self):
-        for item_id in range(200):
-            self.client.get(f"/product/view?id={item_id}", name="/product-view")
-            time.sleep(1)
+        self.client.get("/product/view?id=72")
+        self.client.get("/product/view?id=64")
+        self.client.get("/product/view?id=56")
 
     def on_start(self):
         self.client.post("/user/login", json={"username":"test_user", "password":"123456"})
