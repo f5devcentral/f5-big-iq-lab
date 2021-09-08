@@ -8,13 +8,13 @@ class QuickstartUser(HttpUser):
 
     @task
     def index_page(self):
-        self.client.get("/index.php")
-        self.client.get("/contact")
-        self.client.get("/wishlist")
-        self.client.get("/faq")
-        self.client.get("/product/view?id=72")
-        self.client.get("/product/view?id=64")
-        self.client.get("/product/view?id=56")
+        self.client.get("/index.php", verify=False)
+        self.client.get("/contact", verify=False)
+        self.client.get("/wishlist", verify=False)
+        self.client.get("/faq", verify=False)
+        self.client.get("/product/view?id=72", verify=False)
+        self.client.get("/product/view?id=64", verify=False)
+        self.client.get("/product/view?id=56", verify=False)
 
     def on_start(self):
-        self.client.post("/user/login", json={"username":"test_user", "password":"123456"})
+        self.client.post("/user/login", json={"username":"test_user", "password":"123456"}, verify=False)
