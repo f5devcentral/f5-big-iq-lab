@@ -306,10 +306,8 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 |        | - Bind User Password: ``ldappass``                                                 |
 |        | - User Bind Template: ``uid={username},ou=People,dc=f5demo,dc=com``                |
 |        | - Root Distinguished Name: ``dc=f5demo,dc=com``                                    |
-|        | - Group Search Filter: ``(&(objectClass=groupOfUniqueNames)(cn={searchterm}*))``   |
-|        | - Group Membership Filter: ``uniqueMember={userDN}``                               |
-|        | - Directory User Search Filter: ``uid={username}``                                 |
-|        | - Group Distinguished Name: ``cn=admin,ou=Groups,dc=f5demo,dc=com``                |
+|        | - Group Search Filter: ``(&(objectClass=groupOfUniqueNames)(cn={searchterm}))``    |
+|        | - Group Membership Filter: *empty*                                                 |
 |        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/ldap       |
 +--------+------------------------------------------------------------------------------------+
 | Tacac+ | - ip:port ``10.1.1.5:49``                                                          |
@@ -318,6 +316,8 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 |        | - Encrypt = ``yes``                                                                |
 |        | - Users: iosadmin/cisco, nxosadmin/cisco                                           |
 +--------+------------------------------------------------------------------------------------+
+
+Users part of the employees group: ``ldapsearch -H ldap://localhost -D "cn=admin,dc=f5demo,dc=com" -w ldappass -b "dc=f5demo,dc=com" "(&(objectClass=groupOfUniqueNames)(cn=employees))"``
 
 **Other services available on the Lamp Server:**
 

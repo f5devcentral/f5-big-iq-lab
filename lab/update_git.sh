@@ -271,6 +271,7 @@ if [[  $currentuser == "root" ]]; then
 
     ### Ldap connectivity check
     ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > $home/ldap/f5-ldap.log
+    ldapsearch -x -H ldap://localhost -D "cn=admin,dc=f5demo,dc=com" -w ldappass -b "dc=f5demo,dc=com" "(&(objectClass=groupOfUniqueNames)(cn=employees))" >> $home/ldap/f5-ldap.log
 
     docker images
     docker ps -a
