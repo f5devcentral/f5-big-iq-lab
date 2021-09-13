@@ -223,17 +223,6 @@ if [[  $currentuser == "root" ]]; then
     docker logs splunk_splunk_1 
     echo -e "\nSplunk end"
 
-    ### LDAP: load f5demo.ldif and expose port 389 for LDAP access
-    echo -e "\nLdap"
-    docker run --volume $home/ldap:/container/service/slapd/assets/config/bootstrap/ldif/custom \
-            -e LDAP_ORGANISATION="F5, Inc" \
-            -e LDAP_DOMAIN="f5demo.com" \
-            -e LDAP_ADMIN_PASSWORD=ldappass \
-            -p 389:389 \
-            --name my-openldap-container \
-            --detach osixia/openldap:1.2.4 \
-            --copy-service
-
     # TACAC+ https://hub.docker.com/r/dchidell/docker-tacacs
     echo -e "\nTacacs"
     docker run --restart=always --name=tacacs -dit -p 49:49 dchidell/docker-tacacs
@@ -267,11 +256,6 @@ if [[  $currentuser == "root" ]]; then
     tower-cli send ~/.awx/awxcompose/awx_backup.json
     tower-cli send ~/.awx/awxcompose/awx_backup.json
     echo -e "AWX end\n"
-
-
-    ### Ldap connectivity check
-    ldapsearch -x -H ldap://localhost -b dc=f5demo,dc=com -D "cn=admin,dc=f5demo,dc=com" -w ldappass > $home/ldap/f5-ldap.log
-    ldapsearch -x -H ldap://localhost -D "cn=admin,dc=f5demo,dc=com" -w ldappass -b "dc=f5demo,dc=com" "(&(objectClass=groupOfUniqueNames)(cn=employees))" >> $home/ldap/f5-ldap.log
 
     docker images
     docker ps -a

@@ -295,29 +295,27 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 
 **3rd party authentication provider available on the Lamp Server:**
 
-+--------+------------------------------------------------------------------------------------+
-| Radius | - ip:port ``10.1.1.5:1812``                                                        |
-|        | - secret = ``default``                                                             |
-|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/radius     |
-+--------+------------------------------------------------------------------------------------+
-| LDAP   | - ip:port ``10.1.1.5:389``                                                         |
-|        | - SSL: ``Disabled``                                                                |
-|        | - Bind User Distinguished Name: ``cn=admin,dc=f5demo,dc=com``                      |
-|        | - Bind User Password: ``ldappass``                                                 |
-|        | - User Bind Template: ``uid={username},ou=People,dc=f5demo,dc=com``                |
-|        | - Root Distinguished Name: ``dc=f5demo,dc=com``                                    |
-|        | - Group Search Filter: ``(&(objectClass=groupOfUniqueNames)(cn={searchterm}))``    |
-|        | - Group Membership Filter: *empty*                                                 |
-|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/ldap       |
-+--------+------------------------------------------------------------------------------------+
-| Tacac+ | - ip:port ``10.1.1.5:49``                                                          |
-|        | - secret = ``ciscotacacskey``                                                      |
-|        | - Primary Service = ``shell``                                                      |
-|        | - Encrypt = ``yes``                                                                |
-|        | - Users: iosadmin/cisco, nxosadmin/cisco                                           |
-+--------+------------------------------------------------------------------------------------+
-
-Users part of the employees group: ``ldapsearch -H ldap://localhost -D "cn=admin,dc=f5demo,dc=com" -w ldappass -b "dc=f5demo,dc=com" "(&(objectClass=groupOfUniqueNames)(cn=employees))"``
++--------+------------------------------------------------------------------------------------------------------------------------------+
+| Radius | - ip:port ``10.1.1.5:1812``                                                                                                  |
+|        | - secret = ``default``                                                                                                       |
+|        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/radius                                               |
++--------+------------------------------------------------------------------------------------------------------------------------------+
+| LDAP   | - ip:port ``ldap.forumsys.com:389``                                                                                          |
+|        | - SSL: ``Disabled``                                                                                                          |
+|        | - Bind User Distinguished Name: ``cn=read-only-admin,dc=example,dc=com``                                                     |
+|        | - Bind User Password: ``password``                                                                                           |
+|        | - User Bind Template: ``uid={username},dc=example,dc=com``                                                                   |
+|        | - Root Distinguished Name: ``dc=example,dc=com``                                                                             |
+|        | - Group Search Filter: ``(&(objectClass=groupOfUniqueNames)(cn={searchterm}))``                                              |
+|        | - Group Membership Filter: ``(&(objectClass=groupOfUniqueNames)(uniqueMember=uid={username},dc=example,dc=com))``            |
+|        | - Users: https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server                                  |
++--------+------------------------------------------------------------------------------------------------------------------------------+
+| Tacac+ | - ip:port ``10.1.1.5:49``                                                                                                    |
+|        | - secret = ``ciscotacacskey``                                                                                                |
+|        | - Primary Service = ``shell``                                                                                                |
+|        | - Encrypt = ``yes``                                                                                                          |
+|        | - Users: iosadmin/cisco, nxosadmin/cisco                                                                                     |
++--------+------------------------------------------------------------------------------------------------------------------------------+
 
 **Other services available on the Lamp Server:**
 
