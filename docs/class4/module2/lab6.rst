@@ -17,8 +17,8 @@ Tasks
 Fill out the necessary fields following below table.
 
 +--------+------------------------------------------------------------------------------------------------------------------------------+
-| LDAP   | - name ``serverLdap``                                                                                                        |
-|        | - ip:port ``ldap.forumsys.com:389``                                                                                          |
+| LDAP   | - name: ``serverLdap``                                                                                                       |
+|        | - ip:port: ``ldap.forumsys.com:389``                                                                                         |
 |        | - SSL: ``Disabled``                                                                                                          |
 |        | - Bind User Distinguished Name: ``cn=read-only-admin,dc=example,dc=com``                                                     |
 |        | - Bind User Password: ``password``                                                                                           |
@@ -30,13 +30,13 @@ Fill out the necessary fields following below table.
 +--------+------------------------------------------------------------------------------------------------------------------------------+
 
 .. image:: media/img_module2_lab6_1.png
-  :scale: 40%
+  :scale: 70%
   :align: center
 
 At the bottom of the page, test the LDAP configuration with this user:
 
-Test User: ``newton``
-Test Password: ``password``
+- Test User: ``newton``
+- Test Password: ``password``
 
 Click on **Test**. The result should show success.
 
@@ -49,7 +49,7 @@ Select the previously created auth provider, enter ``*`` in the remove group fil
 Select the group called ``scientists`` and assign the *Administrator Role* to this user group. Save.
 
 .. image:: media/img_module2_lab6_2.png
-  :scale: 40%
+  :scale: 70%
   :align: center
 
 4. Before trying our new LDAP User Group, let's quickly check the current list of users, navigate under System > User Management > Users.
@@ -57,17 +57,17 @@ Select the group called ``scientists`` and assign the *Administrator Role* to th
 Notice there are no LDAP users.
 
 .. image:: media/img_module2_lab6_3.png
-  :scale: 40%
+  :scale: 70%
   :align: center
 
 5. Logout from **david** user, login using the **newton**, selecting **serverLdap** in the Auth Provider list. Password is *password*.
 
 .. image:: media/img_module2_lab6_4.png
-  :scale: 40%
+  :scale: 70%
   :align: center
 
 6. You are now successfully authenticated as **newton**, navigate under System > User Management > Users to our newton user was automatically created on the BIG-IQ as belonging to the user group **scientists**.
 
 .. image:: media/img_module2_lab6_5.png
-  :scale: 40%
+  :scale: 70%
   :align: center

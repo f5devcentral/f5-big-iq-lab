@@ -296,11 +296,11 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 **3rd party authentication provider available on the Lamp Server:**
 
 +--------+------------------------------------------------------------------------------------------------------------------------------+
-| Radius | - ip:port ``10.1.1.5:1812``                                                                                                  |
-|        | - secret = ``default``                                                                                                       |
+| Radius | - ip:port: ``10.1.1.5:1812``                                                                                                 |
+|        | - secret: ``default``                                                                                                        |
 |        | - Users: https://github.com/f5devcentral/f5-big-iq-lab/tree/develop/lab/radius                                               |
 +--------+------------------------------------------------------------------------------------------------------------------------------+
-| LDAP   | - ip:port ``ldap.forumsys.com:389``                                                                                          |
+| LDAP   | - ip:port: ``ldap.forumsys.com:389``                                                                                         |
 |        | - SSL: ``Disabled``                                                                                                          |
 |        | - Bind User Distinguished Name: ``cn=read-only-admin,dc=example,dc=com``                                                     |
 |        | - Bind User Password: ``password``                                                                                           |
@@ -310,10 +310,10 @@ To connect to a docker instance: ``docker exec -i -t <container id or name> /bin
 |        | - Group Membership Filter: ``(&(objectClass=groupOfUniqueNames)(uniqueMember=uid={username},dc=example,dc=com))``            |
 |        | - Users: https://www.forumsys.com/tutorials/integration-how-to/ldap/online-ldap-test-server                                  |
 +--------+------------------------------------------------------------------------------------------------------------------------------+
-| Tacac+ | - ip:port ``10.1.1.5:49``                                                                                                    |
-|        | - secret = ``ciscotacacskey``                                                                                                |
-|        | - Primary Service = ``shell``                                                                                                |
-|        | - Encrypt = ``yes``                                                                                                          |
+| Tacac+ | - ip:port: ``10.1.1.5:49``                                                                                                   |
+|        | - secret: ``ciscotacacskey``                                                                                                 |
+|        | - Primary Service: ``shell``                                                                                                 |
+|        | - Encrypt: ``yes``                                                                                                           |
 |        | - Users: iosadmin/cisco, nxosadmin/cisco                                                                                     |
 +--------+------------------------------------------------------------------------------------------------------------------------------+
 
