@@ -31,7 +31,7 @@ Tasks
   :scale: 40%
   :align: center
 
-3. Type a name (e.g. ``CVE-2020-5902``), and copy the code below or copy the |location_link_cve| and replace the credentials with ``CREDS=admin:purple123`` instead of ``CREDS=<username><password>``.
+3. Type a name (e.g. ``CVE-2020-5902``), and copy the code below or copy the |location_link_cve| and replace the credentials with ``CREDS=admin:purple123`` instead of ``CREDS=<username>:<password>``.
 
 .. |location_link_cve| raw:: html
 
@@ -46,7 +46,7 @@ Tasks
    # The Traffic Management User Interface (TMUI), also referred to as the Configuration utility, 
    # has a Remote Code Execution (RCE) vulnerability in undisclosed pages. (CVE-2020-5902)
 
-   CREDS=<username><password>
+   CREDS=<username>:<password>
 
    IP=localhost
 
