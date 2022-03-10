@@ -55,9 +55,11 @@ Configuration:
 
 Import the RootCA in BIG-IQ restjavad:
 
+cp -p /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem.exp_march2023
 echo "" | openssl s_client -host 10.1.1.17 -port 443 -showcerts | awk '/BEGIN CERT/ {p=1} ; p==1; /END CERT/ {p=0}' > /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem
 cat /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem
 mount -o remount,rw /usr
+/usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/keytool -delete -noprompt -alias example.com -keystore /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el6_10.x86_64/jre/lib/security/cacerts
 /usr/lib/jvm/jre-1.8.0-openjdk.x86_64/bin/keytool -import -trustcacerts -keystore /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.212.b04-0.el6_10.x86_64/jre/lib/security/cacerts -alias example.com -file /home/admin/ec2amaz-bq0fcmk.f5demo.com.pem
 mount -o remount,ro /usr
 
