@@ -130,14 +130,14 @@
           bigiq_task_name: "Deployment through Ansible/API - GitLab"
           modules: 
           - name: ltm
-            pins:
+            pin:
               - { type: "sslCertReferences", name: "{{ certificate }}" }
               - { type: "sslKeyReferences", name: "{{ privateKey }}" }
           - name: asm
-            pins:
+            pin:
               - { type: "attachedPoliciesReferences", name: "{{ waf_policy_name }}"}
           - name: shared_security
-            pins:
+            pin:
               - { type: "logProfileReferences", name: "{{ security_logging_profile }}" }
           device_address: "{{ target_device }}"
         register: status
@@ -162,6 +162,6 @@
         vars:
             apps: 
             - name: LAB_gitlab
-              pins:
+              pin:
                 - name: gitlab_MyWebApp10waf_https
         register: status

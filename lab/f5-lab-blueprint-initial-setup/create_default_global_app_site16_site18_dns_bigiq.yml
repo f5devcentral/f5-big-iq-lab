@@ -18,17 +18,17 @@
         vars:
             apps: 
             - name: airport_security
-              pins:
+              pin:
                 - name: security_site16_boston
                 - name: security_site18_seattle
                 - name: security_fqdn
             - name: IT_apps
-              pins:
+              pin:
                 - name: backend_site24tcp
                 - name: site36.example.com
                 - name: media.site42.example.com
             - name: finance_apps
-              pins:
+              pin:
                 - name: conference_site41https
                 - name: conference_site41ftp
                 - name: mail_site40https

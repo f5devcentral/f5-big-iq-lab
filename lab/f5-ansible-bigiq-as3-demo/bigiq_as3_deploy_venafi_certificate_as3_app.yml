@@ -159,7 +159,7 @@
         bigiq_task_name: "Deployment through Ansible/API - {{ cn }}"
         modules: 
           - name: ltm
-            pins:
+            pin:
               - { type: "sslCertReferences", name: "{{ cn }}.crt" }
               - { type: "sslKeyReferences", name: "{{ cn }}.key" }
         device_address: 10.1.1.7
@@ -262,6 +262,6 @@
       vars:
           apps: 
           - name: LAB_module2
-            pins:
+            pin:
               - name: tenant4_https_app_service
       register: status
