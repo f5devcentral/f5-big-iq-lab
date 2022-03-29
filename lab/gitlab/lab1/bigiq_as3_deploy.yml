@@ -33,6 +33,6 @@
         vars:
             apps: 
             - name: LAB_gitlab
-              pins:
+              pin:
                 - name: gitlab_MyWebApp10http
         register: status

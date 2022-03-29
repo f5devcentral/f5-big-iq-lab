@@ -40,6 +40,6 @@
       vars:
           apps: 
           - name: "{{ tenant_name }}"
-            pins:
+            pin:
               - name: "{{ tenant_name }}_{{ app_name }}"
       register: status

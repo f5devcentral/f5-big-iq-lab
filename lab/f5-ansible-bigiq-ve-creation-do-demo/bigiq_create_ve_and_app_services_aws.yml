@@ -120,7 +120,7 @@
         bigiq_task_name: "Deployment through Ansible/API - {{ cn }}"
         modules: 
           - name: ltm
-            pins:
+            pin:
               - { type: "sslCertReferences", name: "{{ cn }}.crt" }
               - { type: "sslKeyReferences", name: "{{ cn }}.key" }
         device_address: "{{ ve_ip_address }}"
@@ -143,6 +143,6 @@
       vars:
           apps: 
           - name: myWebApp
-            pins:
+            pin:
               - name: "{{ tenant }}_{{ appName }}"
       register: status
