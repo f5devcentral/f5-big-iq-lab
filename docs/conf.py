@@ -20,8 +20,9 @@ import time
 import re
 import pkgutil
 import string
-sys.path.insert(0, os.path.abspath('.'))
 import f5_sphinx_theme
+
+sys.path.insert(0, os.path.abspath('.'))
 
 year = time.strftime("%Y")
 eventname = "%s Hands-on Lab Guide" % (year)
@@ -119,6 +120,10 @@ if found:
   spelling_ignore_importable_modules=True
   spelling_filters=[]
 
+source_parsers = {
+   '.md': 'recommonmark.parser.CommonMarkParser',
+}
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -177,6 +182,8 @@ html_theme_options = {
                         'next_prev_link': True
                      }
 html_last_updated_fmt = '%Y-%m-%d %H:%M:%S'
+html_codeblock_linenos_style = 'table'
+html_context = {"github_url":github_repo}
 
 extlinks = {
     'issues':( ("%s/issues/%%s" % github_repo), 'issue ' )
