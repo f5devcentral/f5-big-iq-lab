@@ -143,7 +143,7 @@ The following table lists the virtual appliances in the lab along with their cre
 | BIG-IP Boston           | 16.1    | HA Pair                                                                                      | admin/purple123                 |
 | 10.1.1.8/10.1.1.10      |         |                                                                                              |                                 |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
-| BIG-IP Seattle          | 14.1    | Standalone                                                                                   | admin/purple123                 |
+| BIG-IP Seattle          | 16.1    | Standalone                                                                                   | admin/purple123                 |
 | 10.1.1.7                |         |                                                                                              |                                 |
 +-------------------------+---------+----------------------------------------------------------------------------------------------+---------------------------------+
 | BIG-IP Paris            | 14.1    | Standalone                                                                                   | admin/purple123                 |
